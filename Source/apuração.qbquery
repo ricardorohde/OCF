@@ -1,0 +1,29 @@
+﻿select gm.campeonato,gm.rodada,gm.jogo,gm.manda,gv.visita,golsma,golsvi
+from
+(select p.campeonato,p.rodada,ma.jogo,manda,sum(gols) golsma
+    from cad_palpite p,
+        (select campeonato,rodada,jogo,userid manda
+               from cad_rodada_copa
+               where tipo = 'M') ma
+    where
+        ma.campeonato = p.campeonato
+        and ma.rodada = p.rodada
+        and ma.manda = p.userid
+    group by
+    campeonato,rodada,ma.jogo,manda) gm,
+
+(select p.campeonato,p.rodada,vi.jogo,visita,sum(gols) golsvi
+    from cad_palpite p,
+        (select campeonato,rodada,jogo,userid visita
+               from cad_rodada_copa
+               where tipo = 'V') vi
+    where
+        vi.campeonato = p.campeonato
+        and vi.rodada = p.rodada
+        and vi.visita = p.userid
+    group by
+    campeonato,rodada,vi.jogo,visita) gv
+where
+gm.campeonato = gv.campeonato
+and gm.rodada = gv.rodada
+and gm.jogo = gv.jogo

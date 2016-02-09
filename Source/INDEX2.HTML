@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-BR" lang="pt-BR">
+
+	<head>
+		
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		
+		<title>Exemplo de Hover em um Menu</title>
+			
+        <style type="text/css">
+			* { padding: 0; margin: 0; }
+			
+			ul { width: 1003px; height: 235px; margin: 0px auto; background: transparent url(./imagens/topo1003x.jpg) no-repeat center; list-style: none; }
+			ul li { float: left; }
+			
+			ul li a { color: #000; font-size: 11px; display: block; width: 100px; height: 30px; position: relative; }
+			ul li a span { width: 100%; height: 100%; position: absolute; top: 0; left: 0; cursor: pointer; }
+			ul li a:hover { background-color: #fff; }
+			
+			ul li.mn_item1 a { width: 75px; top:100px; left: 100px;}
+			
+			ul li.mn_item2 a { width: 105px; }
+			ul li.mn_item2 a span { background: transparent url(mn_menuexemplo.gif) no-repeat -75px center; }
+			
+			ul li.mn_item3 a { width: 120px; }						
+			ul li.mn_item3 a span { background: transparent url(mn_menuexemplo.gif) no-repeat -180px center; }
+			
+			p { text-align: center; font: normal 12px Arial, Helvetica, sans-serif; }
+		</style>
+	</head>
+
+	<body>
+		
+        <div id="principal">
+        	
+        	<ul>
+            	<li class="mn_item1"><a href="#" title="Item 1"><span></span>Item 1</a></li>
+                <li class="mn_item2"><a href="#" title="Item 2"><span></span>Item 2</a></li>
+                <li class="mn_item3"><a href="#" title="Item 3"><span></span>Item 3</a></li>
+            </ul>
+        </div>
+		
+	</body>
+	
+</html>

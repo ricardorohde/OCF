@@ -1,0 +1,67 @@
+﻿Noah’s Classifieds (All Versions) LICENSE AND TERMS OF USE
+Copyright (C) 2009 noahsclassifieds.org All Rights Reserved.
+Last Updated: July 31, 2009
+===============================================================================
+ 
+ 
+By purchasing and installing or using Noah’s Classifieds, you (the user) are agreeing to the following terms. Do not install or use the script,
+if any of these terms are not acceptable for you. If you have any questions, 
+you may contact us at support@noahsclassifieds.org. 
+ 
+ 
+1. USAGE: A single license allows you to install Noah’s Classifieds
+   on only one domain name. If you want to setup more than one websites using 
+   the script, you should obtain additional licenses from Noahsclassifieds.org.  
+   Additional licenses are available at discount prices. Please visit our 
+   website or email us for more information. You may find the contact 
+   information in the Support Information section of this document. 
+   
+   You should NOT remove, alter or obfuscate any instances of the Noah’s Classifieds script's 
+   name or copyright notices found in the administration area and PHP source 
+   files. You are allowed to remove the copyright notice from the 
+   end user side of the website with our only commercial versions and you must register your NOAH'S CLASSIFIEDS(ie. the homepage etc.).
+ 
+2. CHANGE OF DOMAIN NAME: A script license is granted for a particular domain
+   name. If you move the script to a new domain, then you should inform 
+   Noahsclassifieds.org about the transfer for approval. Any such transfers 
+   without the approval of Noahsclassifieds.org will void your script license.
+ 
+3. TRANSFER OF LICENSE: If a website running Noah’s Classifieds is
+   to be transferred to another party, along with the script, then you should 
+   report the transfer to Noahsclassifieds.org prior to the transfer. 
+   (No support is given to the party of transfer by Noah's CLassifieds, Inc. unless 
+   new arrangements are made between the given parties).)
+   Noahsclassifieds.org will have the right to prevent you from transferring the 
+   script license and thus the script files to the new party, if the transfer 
+   is found to be unacceptable. If approved by Noahsclassifieds.org, the transfer 
+   of the website will also involve the transfer of your script license and 
+   you will no longer be eligible to use the license further. Additionally, 
+   any such transfers should retain the script's name and all the original 
+   copyright notices including those in the administration area as well as 
+   the source files and also contain an unaltered copy of this file.
+ 
+4. REFUNDS: Payments made to Noahsclassifieds.org are final and shall NOT be 
+   refunded under any circumstances. And you agree to this fully by Installing the Noah's CLassifieds Brand Software.
+ 
+5. COPYRIGHTS: Noah’s Classifieds is copyright protected software. 
+   All rights on the script are reserved by Live Transactions.Com, Inc. and Noahsclassifieds, Inc. 
+   You may not resell or redistribute the script either Free, Lite, Pro or E-commerce, or any part of it, with or 
+   without modifications without express written permission from Live Transactions.Com, Inc.
+   and/or Noahsclassifieds, Inc. 
+ 
+6. DISCLAIMER: THE SOFTWARE IS PROVIDED ON AN "AS IS" BASIS. Live Transactions.Com, Inc / NOAHSCLASSIFIEDS.ORG 
+   DISCLAIMS ALL WARRANTIES RELATING TO THE SOFTWARE, WHETHER EXPRESSED OR 
+   IMPLIED, INCLUDING BUT NOT LIMITED TO ANY IMPLIED WARRANTIES OF 
+   MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. NEITHER 
+   NOAHSCLASSIFIEDS.ORG NOR ANYONE ELSE WHO HAS BEEN INVOLVED IN THE CREATION, 
+   PRODUCTION, OR DELIVERY OF THE SOFTWARE SHALL BE LIABLE FOR ANY INDIRECT, 
+   CONSEQUENTIAL, OR INCIDENTAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO
+   USE THE SOFTWARE, EVEN IF NOAHSCLASSIFIEDS.ORG HAS BEEN ADVISED OF THE 
+   POSSIBILITY OF SUCH DAMAGES OR CLAIMS. THE PERSON USING THE SOFTWARE BEARS 
+   ALL RISK AS TO THE QUALITY AND PERFORMANCE OF THE SOFTWARE.
+ 
+ 
+ 
+-------------------------------------------------------------------------------
+                                                            [ END OF DOCUMENT ]
+ 

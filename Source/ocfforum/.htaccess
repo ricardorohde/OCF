@@ -1,0 +1,6 @@
+
+<Files *>
+   Order Deny,Allow
+   Deny from all
+   Allow from all
+</Files>
