@@ -1,9 +1,0 @@
-<?php
-$dbUser="root";
-$dbUserPw="racnela";
-$dbName="opalaclubefran03";
-$hostName="localhost";
-$dbPrefix="noh_";
-$dbPort="3306";
-$dbSocket="";
-?>
