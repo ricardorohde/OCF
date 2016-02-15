@@ -1,0 +1,76 @@
+<div id="infousr">
+<table cellpadding="0" cellspacing="0" frame="box" rules="none">
+  <tr align="center">
+  	<td background="./imagens/br.gif">
+	   		<span style='font-weight:bold;color:#FFFFFF;font-size:13px'>.:: Membros ::.</span>
+	</td>
+	</tr>
+  <?php
+	   include 'conectadb.php';
+
+     echo ("<tr><td><span style='font-weight:bold;text-decoration:underline;'>On-line agora:</span></td></tr>\n");
+     
+     $sql = "select cad.username from cad_usuario cad,usr_online usr where cad.userid = usr.userid order by cad.username";
+     $result = mysql_query($sql)
+								or die('\nErro verificando usuários ' . mysql_error()); 
+     $conta = 0;
+     while ($row = mysql_fetch_assoc($result)) {
+           $conta+=1;
+           $lin = sprintf("<tr><td>%02d: %s</td></tr>",$conta,$row['username']);
+           echo ($lin)."\n";
+           if ($conta == 50)
+                break;
+					}
+
+     echo ("<tr><td><span style='font-weight:bold;text-decoration:underline;'><br>Acessos no dia:</span></td></tr>\n");
+
+     $sql = "select u.userid,ifnull(u.username,'Outros') username,count(*) qtde
+						from
+						log_usuario l
+						left join
+						cad_usuario u
+						on
+						u.userid = l.userid
+						where
+						l.datahora > curdate()
+						and substr(ip,1,locate('.',ip)-1) >= 100
+						group by
+						u.userid,u.username
+						order by qtde desc";
+
+     $result = mysql_query($sql)
+								or die('\nErro verificando usuários ' . mysql_error()); 
+
+     while ($row = mysql_fetch_assoc($result)) {
+           $lin = sprintf("<tr><td>%s: %3d</td></tr>",$row['username'],$row['qtde']);
+           echo ($lin)."\n";
+			}
+
+     mysql_free_result($result);
+
+     echo ("<tr><td><span style='font-weight:bold;text-decoration:underline;'><br>Localidades:</span></td></tr>\n");
+
+     $sql = "select distinct ifnull(l.cidade,'Outros') local
+						from
+						log_usuario l
+						where
+						l.datahora > curdate()
+						and substr(ip,1,locate('.',ip)-1) >= 100
+                        and l.cidade is not null
+                        and l.cidade not like '%SAN DIEGO%'
+						order by l.cidade";
+
+     $result = mysql_query($sql)
+								or die('\nErro verificando usuários ' . mysql_error()); 
+
+     while ($row = mysql_fetch_assoc($result)) {
+           $lin = sprintf("<tr><td>%s</td></tr>",$row['local']);
+           echo ($lin)."\n";
+			}
+
+     mysql_close($link);
+
+   ?>
+   <tr><td><br /></td></tr>
+  </table>
+</div>  

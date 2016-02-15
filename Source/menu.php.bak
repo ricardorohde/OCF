@@ -1,0 +1,29 @@
+<?php include_once("scpbolao.php"); ?>
+<!-- Menu -->
+<div id="menubv">
+<fieldset>
+<ul>
+  <li> <a href="index.php"><img src="./imagens/casinha.gif" width="16px" height="16px"/> Home</a> </li>
+  <li> <a href="frm_cadusuario.php"><img src="./imagens/invite.gif" width="16px" height="16px"/> Cadastre-se</a></li>
+  <li> <a href="lst_membros.php"><img src="./imagens/membros.png" width="16px" height="16px"/> Sócios</a></li>
+  <li> <a href='lst_cadastro.php'><img src='./imagens/membros.png' width='16px' height='16px'/> Opaleiros</a></li>
+  <li> <a href="entrevistas.php"><img src="./imagens/microfone3.jpg" width="16px" height="16px"/> Entrevistas</a></li>
+  <li> <a href="./album" target="_blank"><img src="./imagens/camera.png" width="16px" height="16px"/><b> Galeria de Fotos</b></a></li>
+<!--  <li> <a href="./forum" target="_blank"><img src="./imagens/dicas.gif" width="16px" height="16px"/><b> Forum</b></a></li> -->
+  <li> <a target="_blank" href="estatuto.doc"><img src="./imagens/livro6.gif" width="16px" height="16px"/> Estatuto</a></li>
+  <li> <a href="frm_oclube.php"><img src="./imagens/chevro.jpg" width="16px" height="16px"/> O Clube</a></li>
+  <li> <a href="frm_diretoria.php"><img src="./imagens/engrena.jpg" width="16px" height="16px"/> Diretoria</a></li>
+  <li> <a href="frm_contato.php"><img src="./imagens/email2.gif" width="16px" height="16px"/> Fale Conosco</a></li>
+
+
+  <?php 
+       if ($_SESSION['logado'] == "SIM" && $_SESSION['niveluser'] == 999999) {
+             echo ("<li> <a href='menu_admin.php'><img src='./imagens/adm.png' width='16px' height='16px'/> Administra&ccedil;&atilde;o</a> </li>")."\n";
+          }
+       if ($_SESSION['logado'] == "SIM" && $_SESSION['aprovado'] == 'S') {
+             echo ("<li> <a target='_blank' href='caixa.xls'><img src='./imagens/cifrao.jpg' width='16px' height='16px'/> Caixa</a> </li>")."\n";
+          }
+   ?>
+</ul>
+</fieldset>
+</div>

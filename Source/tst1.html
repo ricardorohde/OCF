@@ -1,0 +1,209 @@
+<!-- Header da pagina -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+  <META HTTP-EQUIV="control-cache" CONTENT="no-cache">
+  <META NAME="author" CONTENT="Alencar Mendes de Oliveira">
+  <META NAME="copyright" CONTENT="copyright 2005 Bolao.net">
+  <META NAME="robots" CONTENT="all">
+  <META NAME="description" CONTENT="Clube do Opala de Franca">
+  <META NAME="keywords" CONTENT="Clube do opala, opaleiros de Franca">
+	<META HTTP-EQUIV="refresh" CONTENT="600">  <title>Opala Clube Franca - http://www.opalaclubefranca.com.br</title>
+	<link rel="stylesheet" type="text/css" media="screen" href="estilos.css" />
+ </head>
+ <body class="padrao">
+ <div align="center">
+	<div style="width:770px;border:solid 1px #a0b0b0;background:#fff;">
+<!-- Topo da pagina -->
+<table border="0" cellspacing="0" cellpadding="0" width="780px" background="./imagens/topoaco.gif">
+    <tr height="142px"> <td width="100%"> </td>	</tr>
+</table>
+<table bgcolor="#FFFF99" width="780px" height="5px" border="0" cellspacing="0" cellpadding="0">
+    <tr  background="./imagens/br.gif">
+		<td>	<!-- Formulário de Login -->
+ <form method="post" action="prc_login.php" name="frmlogin">
+   Usuário:
+   <input style="background:#FFFEE2;" tabindex="10" align="right" maxlength="20" size="10" name="username">
+   Senha:
+   <input style="background:#FFFEE2;" tabindex="11" align="right" maxlength="20" size="10" type="password" tabindex="1" name="senha" >
+   <input tabindex="12" name="login" value="Login" type="submit"> 
+   <a href="frm_novapsw.php">»Esqueci minha senha </a>
+ </form>
+ </td>
+		<td>
+     <span style="font-weight:bold; font: 8px Verdana, sans-serif;color:white;"><b>
+        Sábado, 25 de Novembro de 2006
+		</b>
+	</td>
+</tr>
+</table>
+<table class="tabprin" cellspacing="0" margin="0" cellpadding="0" width="100%" style="width:100%;">
+  <tr>
+    <td name="esquerda" bgcolor="#CEDEFD" valign="top" align="center" width="170px">
+<table cellpadding="0" cellspacing="0" border="0" margin="0" width="100%" style="width:100%;">
+<tr><td> <script language="JavaScript">
+function janela(URL,vtop,vleft,vw,vh) {
+
+  window.open(URL,'',"top="+vtop+",left="+vleft+",width="+vw+",height="+vh+",location=NO, Menubar=no, statusbar=no,toolbar=no,scrollbars=yes");	
+}	
+
+function loadfoco(elemento) {
+     alert(elemento);
+     document.getElementById(elemento).setfocus(); 
+}
+
+</script>
+<!-- Menu -->
+<div id="menubv">
+<fieldset>
+<ul>
+  <li> <a href="index.php"><img src="./imagens/casinha.gif" width="16px" height="16px"/> Home</a> </li>
+  <li> <a href="frm_cadusuario.php"><img src="./imagens/invite.gif" width="16px" height="16px"/> Cadastre-se</a></li>
+  <li> <a href="lst_cadpalpite.php"><img src="./imagens/membros.png" width="16px" height="16px"/> Membros</a></li>
+ <li> <a href="lst_classifca.php">
+ <img src="./imagens/carro2.gif" width="16px" height="16px"/> Classificados</a></li>
+  <li> <a href="lst_fotos.php"><img src="./imagens/camera.png" width="16px" height="16px"/> Fotos</a></li>
+  <li> <a href="lst_Dicas.php"><img src="./imagens/dicas.gif" width="16px" height="16px"/> Dicas</a></li>
+  <li> <a href="frm_contato.php"><img src="./imagens/email2.gif" width="16px" height="16px"/> Fale Conosco</a></li>
+  <li> <a href='menu_admin.php'><img src='./imagens/adm.png' width='16px' height='16px'/> Administra&ccedil;&atilde;o</a> </li>
+</ul>
+</fieldset>
+</div>
+ </td></tr>
+<tr><td> <div id="infousr">
+<table cellpadding="0" cellspacing="0" frame="box" rules="none">
+  <tr align="center">
+  	<td background="./imagens/br.gif">
+	   		<span style='font-weight:bold;color:#FFFFFF;font-size:13px'>.:: Usuários ::.</span>
+	</td>
+	</tr>
+  <tr><td>Cadastrados:  83</td></tr>
+<tr><td><br></td></tr>
+<tr><td><span style='font-weight:bold;text-decoration:underline;'>On-line agora:</span></td></tr>
+<tr><td>01: alencar</td></tr>
+   <tr><td><br /></td></tr>
+  </table>
+</div>  
+ </td></tr>
+<tr><td> <div id="infousr">
+<table cellpadding="0" cellspacing="0" frame="box" rules="none">
+  <tr align="center">
+  	<td background="./imagens/br.gif" colspan=2>
+	   		<span style='font-weight:bold;color:#FFFFFF;font-size:13px'>.:: Enquete ::.</span>
+	</td>
+	</tr>
+   <form method="post" action="prc_votaenq.php" name="enq0001">
+<input type=hidden name="enquete"  value="1">
+<tr><td colspan=2>Quem se classifica na Libertadores?</td></tr>
+<tr><td colspan=2> <input type="radio" tabindex="1" name="opcoes" value="1">São Paulo e River Plate</td></tr><tr><td colspan=2> <input type="radio" tabindex="2" name="opcoes" value="2">São Paulo e Corinthians</td></tr><tr><td colspan=2> <input type="radio" tabindex="3" name="opcoes" value="3">Palmeiras e River Plate</td></tr><tr><td colspan=2> <input type="radio" tabindex="4" name="opcoes" value="4">Palmeiras e Corinthians</td></tr><tr><td><a href="javascript:document.enq0001.submit();"><b>Votar</a></td><td align="center"><a href="lst_resenquete.php?enq=1"><b>Resultado</a></td></tr></form>  </table>
+</div>   </td></tr>
+<!--     include("mercadolivre.php"); -->
+</table>
+ </td>
+    <td name="centro" valign="top" align="left" style="float:left;" width="450px">
+  <table id="menuadm" border="0" cellspacing="0">
+	<tr align=center><td style="float:left;" align="left">
+<div style="height:150px;overflow: auto;">
+<table style='font-size:11px; border-color:#0033CC; border-style:inset; height:150px;' frame="box" height="150px" cellpadding="0" cellspacing="0" rules="none" >
+  <tr><td background="./imagens/br.gif" style="color:yellow"><b><i>Mural</td></tr>
+  <tr><td><a href="frm_cadmural.php" class="dettab" style="background:rgb(240, 255, 240); color:green;font-weight:bold;"><b>Deixe seu Recado</a></td></tr>
+<tr><td><b>Zatta:</b> Acho q deveria ter uma alteração na regra do bolão , dispoensando a pior rodada de cada jogdor...acho mto injusto começar uma roada atras de todos os pariticipantes, afinal mtosnão participarama da primeira rodada....acho q seria o mais justo!</td></tr>
+<tr><td><b>caschroeder:</b> Foi seu irmão quem escreveu isso.Ele estavaaqui em casa tomando uma lavada no Perfil.Ganhei todas.</td></tr>
+<tr><td><b>Zatta:</b> vcs estao demorando mto pra atualiza os resultados.
+Já tem 3 gols na rodada</td></tr>
+<tr><td><b>rlzenha:</b> a educação continua a mesma hein??!</td></tr>
+<tr><td><b>caschroeder:</b>LEIA O REGULAMENTO,BURRÃO!!!!</td></tr>
+<tr><td><b>rlzenha:</b> não pode mais alterar os palpites para amanhã???
+</td></tr>
+<tr><td><b>Zatta:</b> atualiza o joigo do fortaleza</td></tr>
+<tr><td><b>caschroeder:</b> tudo certo,Mauro</td></tr>
+<tr><td><b>rlzenha:</b> BOLÃO ESPN BRASIL - "GRUPO BOLÃO DO CACÁ" ESTAMOS COM O PRZO QUASE ESGOTADO. QUEM DESEJAR INTEGRAR O GRUPO DO CACÁ MANDAR E-MAIL PARA rlzenha@uol.com.br. PRAZO PARA PALPITES SE ENCERRA NESTA SEXTA - FEIRA ÀS 23H59MIN. VAMOS LÁ PESSOAL</td></tr>
+<tr><td><b>mauro:</b> O Caca, vc não respondeu o e-mail...o cheque já caiu....me confirma se tá tudo certo.
+abraço
+Mauro</td></tr>
+<tr><td><b>rlzenha:</b>  BOLÃO ESPN BRASIL - "GRUPO BOLÃO DO CACÁ" ESTAMOS COM O PRZO QUASE ESGOTADO. QUEM DESEJAR INTEGRAR O GRUPO DO CACÁ MANDAR E-MAIL PARA rlzenha@uol.com.br. PRAZO PARA PALPITES SE ENCERRA NESTA SEXTA - FEIRA ÀS 23H59MIN. VAMOS LÁ PESSOAL
+  BOLÃO ESPN BRASIL - "GRUPO BOLÃO DO CACÁ" ESTAMOS COM O PRZO QUASE ESGOTADO. QUEM DESEJAR INTEGRAR O GRUPO DO CACÁ MANDAR E-MAIL PARA rlzenha@uol.com.br. PRAZO PARA PALPITES SE ENCERRA NESTA SEXTA - FEIRA ÀS 23H59MIN. VAMOS LÁ PESSOAL
+  BOLÃO ESPN BRASIL - "GRUPO BOLÃO DO CACÁ" ESTAMOS COM O PRZO QUASE ESGOTADO. QUEM DESEJAR INTEGRAR O GRUPO DO CACÁ MANDAR E-MAIL PARA rlzenha@uol.com.br. PRAZO PARA PALPITES SE ENCERRA NESTA SEXTA - FEIRA ÀS 23H59MIN. VAMOS LÁ PESSOAL
+  BOLÃO ESPN BRASIL - "GRUPO BOLÃO DO CACÁ" ESTAMOS COM O PRZO QUASE ESGOTADO. QUEM DESEJAR INTEGRAR O GRUPO DO CACÁ MANDAR E-MAIL PARA rlzenha@uol.com.br. PRAZO PARA PALPITES SE ENCERRA NESTA SEXTA - FEIRA ÀS 23H59MIN. VAMOS LÁ PESSOAL
+  BOLÃO ESPN BRASIL - "GRUPO BOLÃO DO CACÁ" ESTAMOS COM O PRZO QUASE ESGOTADO. QUEM DESEJAR INTEGRAR O GRUPO DO CACÁ MANDAR E-MAIL PARA rlzenha@uol.com.br. PRAZO PARA PALPITES SE ENCERRA NESTA SEXTA - FEIRA ÀS 23H59MIN. VAMOS LÁ PESSOAL
+  BOLÃO ESPN BRASIL - "GRUPO BOLÃO DO CACÁ" ESTAMOS COM O PRZO QUASE ESGOTADO. QUEM DESEJAR INTEGRAR O GRUPO DO CACÁ MANDAR E-MAIL PARA rlzenha@uol.com.br. PRAZO PARA PALPITES SE ENCERRA NESTA SEXTA - FEIRA ÀS 23H59MIN. VAMOS LÁ PESSOAL</td></tr>
+<tr><td><b>rlzenha:</b>   BOLÃO ESPN BRASIL - "GRUPO BOLÃO DO CACÁ" ESTAMOS COM O PRZO QUASE ESGOTADO. QUEM DESEJAR INTEGRAR O GRUPO DO CACÁ MANDAR E-MAIL PARA rlzenha@uol.com.br. PRAZO PARA PALPITES SE ENCERRA NESTA SEXTA - FEIRA ÀS 23H59MIN. VAMOS LÁ PESSOAL</td></tr>
+<tr><td><b>rlzenha:</b>   BOLÃO ESPN BRASIL - "GRUPO BOLÃO DO CACÁ" ESTAMOS COM O PRZO QUASE ESGOTADO. QUEM DESEJAR INTEGRAR O GRUPO DO CACÁ MANDAR E-MAIL PARA rlzenha@uol.com.br. PRAZO PARA PALPITES SE ENCERRA NESTA SEXTA - FEIRA ÀS 23H59MIN. VAMOS LÁ PESSOAL</td></tr>
+<tr><td><b>caschroeder:</b> Não vou conseguir participar.Esqueci meu login ou minha senha,játentei várias combinações.Não consigo recadastrar pois o CPF já existe,e o e-mail cadastrado não recebe a senha</td></tr>
+<tr><td><b>rlzenha:</b> juliano barra você também não entrou na espn brasil...qual o seu e-mail..???
+</td></tr>
+<tr><td><b>rlzenha:</b> alencar...convite enviado.
+</td></tr>
+<tr><td><b>alencar:</b> alencarmo@bol.com.br</td></tr>
+<tr><td><b>rlzenha:</b> preciso do seu e-mail para te convidar...
+</td></tr>
+<tr><td><b>alencar:</b>rlzenha, pode me incluir no bolão espn, meu usuário lá é alencarmo.</td></tr>
+<tr><td><b>rlzenha:</b>cacá, apenas treze inscritos na espn brasil...contribua...incentive...repasse a mensagem para o pessoal.</td></tr>
+<tr><td><b>caschroeder:</b> Mauro confirmado.</td></tr>
+<tr><td><b>caschroeder:</b> Vocês gostaram do regulamento da Copa?</td></tr>
+<tr><td><b>mauro:</b> caca, depositei hoje, vc recebeu meu e-mail?
+</td></tr>
+<tr><td><b>caschroeder:</b> Pessoal,só 22 participantes pagaram o Bolão até agora.Espero a confirmação dos inadimplentes o mais breve possível.Banco do Brasil,ag 2665-4,conta 5472-0</td></tr>
+<tr><td><b>rlzenha:</b>segue a lista de inscritos, até o presente momento, no bolão do cacá:
+- mauro
+- enio luiz
+- carlos baracat
+- rlzenha
+- lioga
+- andré
+- rsilveira
+- fabio queiroz
+- telo
+- marco tj
+- Alex
+- valerio
+- Zenha
+ </td></tr>
+<tr><td><b>rlzenha:</b>cacá e alencar, vamos ajudar...cade o poder ditatorial??? </td></tr>
+<tr><td><b>rlzenha:</b>até o momento temos os seguintes inscritos no bolão da espn brasil: - enio luiz
+- carlos baracat
+- rlzenha
+- rsilveira
+- fabio queiroz
+- Alex
+- valerio
+ </td></tr>
+<tr><td><b>alencar:</b>rlzenha, gostaria de registrar minhas desculpas pela mensagem anterior sobre seus votos na enquete, verifiquei que realmente estava com problema. o Erro foi corrigido.</td></tr>
+<tr><td><b>caschroeder:</b> Já vi,é só clicar na classificação do Bolão</td></tr>
+<tr><td><b>caschroeder:</b> Beleza,Alencar parece que deu certo.Agoraé só tirar o Fábio Cristiano,o Cleitonoll e o Baby da classificação geral.E as colocações para bônus?</td></tr>
+	</table>
+	</div>
+  </td>
+	</tr>
+	<tr align=center><td style="float:left;" align="left">
+<div style="height:150px;overflow: auto;">
+<table style='font-size:11px; border-color:#0033CC; border-style:inset; height:150px;' frame="box" height="150px" cellpadding="0" cellspacing="0" rules="none" >
+  <tr><td background="./imagens/br.gif" style="color:yellow"><b><i>Noticias</td></tr>
+<tr><td><li align=left><a href="javascript:janela('frm_noticias.php?noticia=37',50,50,450,400);"> REGULAMENTO COPA BOLÃO</a></li></td></tr>
+<tr><td><li align=left><a href="javascript:janela('frm_noticias.php?noticia=35',50,50,450,400);"> Adendo ao Regulamento</a></li></td></tr>
+<tr><td><li align=left><a href="javascript:janela('frm_noticias.php?noticia=34',50,50,450,400);"> Regulamento Brasileirão 2006</a></li></td></tr>
+<tr><td><li align=left><a href="javascript:janela('frm_noticias.php?noticia=33',50,50,450,400);"> BOLÃO BRASILEIRÃO</a></li></td></tr>
+<tr><td><li align=left><a href="javascript:janela('frm_noticias.php?noticia=26',50,50,450,400);"> Rateio do Bolão</a></li></td></tr>
+	</table>
+	</div>
+ </td>
+</tr>
+    <tr><td><br></td></tr>
+    <tr><td background="./imagens/br.gif" style="color:yellow"><b><i> Apoio </td></tr>
+	<tr align=center><td><img src="./imagens/newmaster.gif"/></td>
+
+
+</tr>
+    <tr><td><br></td></tr>
+</table>
+    <td  name="direito" align="left" valign="top"  width="150px">
+	 <!-- Barra direita -->
+ </td>
+  </tr>
+</table>
+</div>
+<center style="font-size:11px; color:#0033FF">www.opalaclubefranca.com.br - Franca/SP </center>
+</div>
+</body>
+</html>
