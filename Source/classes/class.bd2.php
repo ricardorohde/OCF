@@ -8,9 +8,9 @@
 class BD2
 {
  
-		private $Link = "";
-		private $ResultSet = "";
-		private $Row = "";
+		var $Link = "";
+		var $ResultSet = "";
+		var $Row = "";
 
 function BD2($strBD) {
      $this->Conecta($strBD);
@@ -21,7 +21,7 @@ function BD2($strBD) {
 */
 function Conecta($strBD) {
 	
-	$this->Link = mysql_connect('mysql.opalaclubefranca.com.br', $strBD, 'racnela')
+	$this->Link = mysql_connect('localhost', $strBD, 'racnela')
 		or die('Erro BD_Conecta: ' ."<br>". mysql_error($this->Link)); 
 			mysql_select_db($strBD,$this->Link)
 	 				or die('\nErro Selecionando DB prod: ' . mysql_error($this->Link)); 

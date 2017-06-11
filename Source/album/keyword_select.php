@@ -2,31 +2,18 @@
 /*************************
   Coppermine Photo Gallery
   ************************
-  Copyright (c) 2003-2008 Dev Team
-  v1.1 originally written by Gregory DEMAR
+  Copyright (c) 2003-2016 Coppermine Dev Team
+  v1.0 originally written by Gregory Demar
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License version 3
   as published by the Free Software Foundation.
-  
-  ********************************************
-  Coppermine version: 1.4.18
-  $HeadURL: https://coppermine.svn.sourceforge.net/svnroot/coppermine/trunk/cpg1.4.x/keyword_select.php $
-  $Revision: 4380 $
-  $Author: gaugau $
-  $Date: 2008-04-12 12:00:19 +0200 (Sa, 12 Apr 2008) $
-**********************************************/
 
-// +----------------------------------------------------------------------+
-// | Filename: keyword_select.php                                         |
-// +----------------------------------------------------------------------+
-// | Copyright (c) http://www.sanisoft.com                                |
-// +----------------------------------------------------------------------+
-// | Description:                                                         |
-// +----------------------------------------------------------------------+
-// | Authors: Original Author                                             |
-// |          SANIsoft Developement Team                                  |
-// +----------------------------------------------------------------------+
+  ********************************************
+  Coppermine version: 1.5.42
+  $HeadURL: https://svn.code.sf.net/p/coppermine/code/trunk/cpg1.5.x/keyword_select.php $
+  $Revision: 8846 $
+**********************************************/
 
 define('IN_COPPERMINE', true);
 define('UPLOAD_PHP', true);
@@ -37,83 +24,95 @@ if (!USER_CAN_UPLOAD_PICTURES) {
     cpg_die(ERROR, $lang_errors['perm_denied'], __FILE__, __LINE__);
 }
 
-$query = "SELECT * FROM {$CONFIG['TABLE_PREFIX']}dict ORDER BY keyword";
+pageheader_mini($lang_upload_php['keywords_sel']);
+
+$query = "SELECT keyword FROM {$CONFIG['TABLE_DICT']} ORDER BY keyword";
 $result = cpg_db_query($query);
-while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
-    $keywordIds[] = $row["keyId"];
-    $keywords[]   = $row["keyword"];
+
+$keywords = array();
+
+while ($row = mysql_fetch_assoc($result)) {
+    $keywords[] = $row['keyword'];
 }
 
 $total = mysql_num_rows($result);
 
-
 mysql_free_result($result);
 
-$charset = $CONFIG['charset'] == 'language file' ? $lang_charset : $CONFIG['charset'];
+if ($superCage->get->keyExists('id')) {
+    $formFieldId = $superCage->get->getInt('id');
+}
 
-$html_header = <<<EOT
-<html dir="ltr">
-<head>
-<title>{$CONFIG['gallery_name']}</title>
-<meta http-equiv="Content-Type" content="text/html; charset=$charset" />
-<meta http-equiv="Pragma" content="no-cache" />
+echo '<form name="keywordform" action="">'.$LINEBREAK;
 
-<link rel="stylesheet" href="themes/{$CONFIG['theme']}/style.css" />
-</head>
-<body>
-EOT;
+starttable("100%", $lang_upload_php['keywords_sel'], 3);
 
-print $html_header;
-starttable("100%",$lang_upload_php['keywords_sel'], 3);
+$keyword_separator = $CONFIG['keyword_separator'];
+
 if ($total > 0) {
 
-    $form = '
+    $options = '';
+
+    foreach ($keywords as $keyword) {
+        $options .= '              <option value="'.$keyword.'">'.$keyword.'</option>' . $LINEBREAK;
+    }
+
+    echo <<< EOT
+
     <script type="text/javascript">
     <!--
     var str;
 
     function CM_select(f)
     {
-        str = window.document.form.elements[0].value;
-        var substrings = window.opener.document.getElementById(\'keywords\').value.split(str);
-        if (substrings.length <= 1){
-                window.opener.document.getElementById(\'keywords\').value += \' \' + str;
+        new_keyword = f.value;
+        var current_keywords = window.parent.document.getElementById('keywords{$formFieldId}').value;
+        var substrings = current_keywords.split(new_keyword);
+        if (substrings.length <= 1) {
+                keyword_separator = (current_keywords.length == 0) ? '' : '$keyword_separator';
+                window.parent.document.getElementById('keywords{$formFieldId}').value += keyword_separator + new_keyword;
         }
 
-
         return false;
-
     }
 
     //-->
     </script>
 
-    <form name="form" name="keywordform">
-    <table align="center">
     <tr>
-        <td align="center"><select name="keyword" size="15" onChange="CM_select(this)">';
-
-        foreach ($keywords as $keyword) {
-            $form.= '<option value="'.$keyword.'">'.$keyword.'</option>';
-        }
-    $form .= '
+        <td class="tableb" align="left">
+            <select name="keyword" size="20" onchange="CM_select(this);" class="listbox">
+                $options
             </select>
         </td>
     </tr>
-    <tr>
-        <td align="center"><a href="#" onClick="window.close()">'.$lang_upload_php['close'].'</a></td>
-    </tr>
-    </table>
-    </form>';
+EOT;
+
 } else {
-    echo '<b>'.$lang_upload_php['no_keywords'].'</b>';
+
+    echo <<< EOT
+    <tr>
+        <td class="tablef" align="center">
+            <a href="#" onclick="parent.parent.GB_hide();" class="admin_menu">{$lang_upload_php['no_keywords']}</a>
+        </td>
+    </tr>
+EOT;
 }
-print($form);
-endtable();
 
 if (GALLERY_ADMIN_MODE) {
-        echo '<center><a href="keyword_create_dict.php">'.$lang_upload_php['regenerate_dictionary'].'</a></center>';
+    echo <<< EOT
+    <tr>
+        <td class="tablef" align="center">
+            <a href="keyword_create_dict.php?referer=keyword_select.php" class="admin_menu">{$lang_upload_php['regenerate_dictionary']}</a>
+        </td>
+    </tr>
+EOT;
 }
+
+endtable();
+
+echo '</form>';
+
+pagefooter_mini();
+
 ?>
-</body>
-</html>

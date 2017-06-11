@@ -2,43 +2,41 @@
 /*************************
   Coppermine Photo Gallery
   ************************
-  Copyright (c) 2003-2008 Dev Team
-  v1.1 originally written by Gregory DEMAR
+  Copyright (c) 2003-2016 Coppermine Dev Team
+  v1.0 originally written by Gregory Demar
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License version 3
   as published by the Free Software Foundation.
-  
+
   ********************************************
-  Coppermine version: 1.4.18
-  $HeadURL: https://coppermine.svn.sourceforge.net/svnroot/coppermine/trunk/cpg1.4.x/anycontent.php $
-  $Revision: 4380 $
-  $Author: gaugau $
-  $Date: 2008-04-12 12:00:19 +0200 (Sa, 12 Apr 2008) $
+  Coppermine version: 1.5.42
+  $HeadURL: https://svn.code.sf.net/p/coppermine/code/trunk/cpg1.5.x/anycontent.php $
+  $Revision: 8846 $
 **********************************************/
 
 /**
-* Coppermine Photo Gallery 1.4.14 anycontent.php
-*
-* This file file gets included in the index.php if you set the option in admin
-* can be used to display any content from any program, it is always to be edited
-* according to tastes and then used
-*
-* @copyright 2002,2007 Gregory DEMAR, Coppermine Dev Team
-* @license http://www.gnu.org/licenses/gpl.html GNU General Public License V3
-* @package Coppermine
-* @version $Id: anycontent.php 4380 2008-04-12 10:00:19Z gaugau $
+* This file gets included in index.php if you set the option on the configuration panel: "content of the main page".
+* It can be used to display any content from any program, it is to be edited according to one's tastes.
 */
 
-if (!defined('IN_COPPERMINE')) die('Not in Coppermine...');
+if (!defined('IN_COPPERMINE')) {
+    die('Not in Coppermine...');
+}
 
-starttable("100%", "Welcome");
+starttable("100%", $lang_index_php['welcome']);
 
-?>
-<tr><td class="tableb" >
-This is for any content block - just a test - Edit the file "anycontent.php" to change what is shown here
-</td></tr>
-<?php
+echo <<< EOT
+    <tr>
+        <td class="tableb">
+            Here is text in the "anycontent" block.<br />
+            Edit the file "anycontent.php" in your Coppermine folder to change what is shown here.<br />
+            To show this block on your gallery, go to the configuration panel under "Album List View", then "content of the main page".
+        </td>
+    </tr>
+
+EOT;
+
 endtable();
 
 ?>

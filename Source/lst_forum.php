@@ -18,15 +18,15 @@
 
 	    $ln = sprintf("<a href=/forum/index.php?topic=%d.msg%d#new>",$u['id_topic'],$u['id_topic']);
 
-        $l1 = sprintf('<td style="width:105px;">'.$ln.'(%s %s)'.'</a></td>',date("d/m/Y",$u['postertime']),date("H:i",$u['postertime']));      	
+        $l1 = sprintf('<td style="width:100px;font-size:10px;">'.$ln.'(%s %s)'.'</a></td>',date("d/m/Y",$u['postertime']),date("H:i",$u['postertime']));      	
 
-        $l2 = sprintf('<td>'.$ln.'<b>%s </b></a></td>',$u['postername']);      	
+        $l2 = sprintf('<td style="width:100px;">'.$ln.'<b>%s </b></a></td>',$u['postername']);      	
 
         $l3 = sprintf('<td>'.$ln.'%s: - %s: %s...</a></td>',$u['name'],$u['subject'],$u['body']);      	
 
         $ln = $l1.$l2.$l3;
 
-         echo ("<tr>".$ln."</tr>\n");       	
+         echo ('<tr style="vertical-align:top;">'.$ln."</tr>\n");       	
 
 	}
 ?>

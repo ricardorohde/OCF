@@ -2,1582 +2,1880 @@
 /*************************
   Coppermine Photo Gallery
   ************************
-  Copyright (c) 2003-2008 Coppermine Dev Team
-  v1.1 originally written by Gregory DEMAR
+  Copyright (c) 2003-2016 Coppermine Dev Team
+  v1.0 originally written by Gregory Demar
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License version 3
   as published by the Free Software Foundation.
-  
+
   ********************************************
-  Coppermine version: 1.4.18
-  $HeadURL: https://coppermine.svn.sourceforge.net/svnroot/coppermine/trunk/cpg1.4.x/lang/hungarian.php $
-  $Revision: 4380 $
-  $Author: gaugau $
-  $Date: 2008-04-12 12:00:19 +0200 (Sa, 12 Apr 2008) $
+  Coppermine version: 1.5.42
+  $HeadURL: https://svn.code.sf.net/p/coppermine/code/trunk/cpg1.5.x/lang/hungarian.php $
+  $Revision: 8846 $
 **********************************************/
 
-if (!defined('IN_COPPERMINE')) { die('Not in Coppermine...');}
+if (!defined('IN_COPPERMINE')) die('Not in Coppermine...');
 
 // info about translators and translated language
-$lang_translation_info = array(
-  'lang_name_english' => 'Hungarian', //cpg1.4
-  'lang_name_native' => 'Magyar', //cpg1.4
-  'lang_country_code' => 'hu', //cpg1.4
-  'trans_name'=> array('Zsolt Fenyvesvölgyi','Nagymáté Péter'),
-  'trans_email' => array('mailfed@gmail.com','pepe@ludens.elte.hu'),
-  'trans_website' => array('http://www.egermuzeum.hu', 'http://www.beagle.hu'),
-  'trans_date' => array('2007-04-10', '2006-02-25'),
-);
+$lang_translation_info['lang_name_english'] = 'Hungarian';
+$lang_translation_info['lang_name_native'] = 'Magyar';
+$lang_translation_info['lang_country_code'] = 'hu';
+$lang_translation_info['trans_name'] = 'Halasi Miklós';
+$lang_translation_info['trans_email'] = '';
+$lang_translation_info['trans_website'] = 'http://www.acegem.hu/';
+$lang_translation_info['trans_date'] = '2010-06-28';
+
 
 $lang_charset = 'utf-8';
 $lang_text_dir = 'ltr'; // ('ltr' for left to right, 'rtl' for right to left)
 
-// shortcuts for Byte, Kilo, Mega
-$lang_byte_units = array('Bytes', 'KB', 'MB');
+// shortcuts for Bytes, Kibibytes, Mebibytes, Gibibytes
+$lang_byte_units = array('Bytes', 'KiB', 'MiB', 'GiB');
+$lang_decimal_separator = array(' ', ','); //cpg1.5 // symbol used to separate thousands from hundreds and rounded number from decimal place
 
 // Day of weeks and months
 $lang_day_of_week = array('Vasárnap', 'Hétfő', 'Kedd', 'Szerda', 'Csütörtök', 'Péntek', 'Szombat');
 $lang_month = array('Január', 'Február', 'Március', 'Április', 'Május', 'Június', 'Július', 'Augusztus', 'Szeptember', 'Október', 'November', 'December');
 
-// Some common strings
-$lang_yes = 'Igen';
-$lang_no  = 'Nem';
-$lang_back = 'vissza';
-$lang_continue = 'folytatás';
-$lang_info = 'Információ';
-$lang_error = 'Hiba';
-$lang_check_uncheck_all = 'összes ellenőrzése'; //cpg1.4
-
 // The various date formats
 // See http://www.php.net/manual/en/function.strftime.php to define the variable below
-$album_date_fmt =    '%Y %B %d.';
-$lastcom_date_fmt =  '%y.%m.%d %H:%M kor';
-$lastup_date_fmt = '%Y %B %d.';
-$register_date_fmt = '%Y %B %d.';
-$lasthit_date_fmt = '%Y %B %d. %H:%M kor';
-$comment_date_fmt =  '%Y %B %d. %H:%M kor';
-$log_date_fmt = '%Y %B %d. %H:%M kor'; //cpg1.4
+$lang_date['album'] = '%Y %B %e.';
+$lang_date['lastcom'] = '%Y. %B %e. %H:%M-kor';
+$lang_date['lastup'] = '%Y. %B %e.';
+$lang_date['register'] = '%Y. %B %e.';
+$lang_date['lasthit'] = '%Y. %B %e. %H:%M-kor';
+$lang_date['comment'] = '%Y. %B %e. %H:%M-kor';
+$lang_date['log'] = '%Y. %B %e. %H:%M-kor';
+$lang_date['scientific'] = '%Y. %B %e. %H:%M:%S';
 
 // For the word censor
-$lang_bad_words = array('*fuck*', 'Fu\(*', 'fuk*', 'masturbat*', 'motherfucker', 'nigger*', 'penis', 'pussy', 'shit', 'titties', 'titty',  'arsch*', 'fick*', 'fotze', 'votze', 'Sieg Heil', 'Heil Hitler', 'Nutte', 'Möse', 'Moese', 'Pimmel', 'Schwengel', 'Titte*', 'bums*', 'Scheiss*', 'Scheiß*');
+$lang_bad_words = array('*fuck*', 'asshole', 'assramer', 'assrammer', 'bitch*', 'c0ck', 'clits', 'Cock', 'cum', 'cunt*', 'dago', 'daygo', 'dego', 'dick*', 'dildo', 'fanculo', 'feces', 'foreskin', 'Fu\(*', 'fuk*', 'honkey', 'hore', 'injun', 'kike', 'lesbo', 'masturbat*', 'motherfucker', 'nazis', 'nigger*', 'nutsack','penis', 'phuck', 'poop', 'pussy', 'scrotum', 'shit', 'slut', 'titties', 'titty', 'twaty', 'wank*', 'whore', 'wop*', 'arsch*', 'fick*', 'fotze', 'votze', 'Sieg Heil', 'Heil Hitler', 'Nutte', 'Möse', 'Moese', 'Pimmel', 'Schwengel', 'Titte*', 'bums*', 'Scheiss*', 'Scheiß*');
 
-$lang_meta_album_names = array(
-  'random' => 'Válogatás',
-  'lastup' => 'Legutóbb feltöltött',
-  'lastalb'=> 'Legutóbb frissített album',
-  'lastcom' => 'Legújabb hozászólás',
-  'topn' => 'Legtöbbet nézett',
-  'toprated' => 'Legjobb helyezett',
-  'lasthits' => 'Legutóbb megnézett',
-  'search' => 'Keresés eredménye',
-  'favpics'=> 'Kedvenc képek',  //cpg1.4
-);
+$lang_meta_album_names['random'] = 'Válogatás';
+$lang_meta_album_names['lastup'] = 'Legutóbb feltöltött';
+$lang_meta_album_names['lastalb'] = 'Legutóbb frissített album';
+$lang_meta_album_names['lastcom'] = 'Legújabb hozászólás';
+$lang_meta_album_names['topn'] = 'Legtöbbet nézett';
+$lang_meta_album_names['toprated'] = 'Legjobb helyezett';
+$lang_meta_album_names['lasthits'] = 'Legutóbb megnézett';
+$lang_meta_album_names['search'] = 'Keresés eredménye';
+$lang_meta_album_names['album_search'] = 'Album keresés eredménye';
+$lang_meta_album_names['category_search'] = 'Kategória keresés eredménye';
+$lang_meta_album_names['favpics'] = 'Kedvenc képek';
+$lang_meta_album_names['datebrowse'] = 'Tallózás dátum szerint'; //cpg1.5
 
-$lang_errors = array(
-  'access_denied' => 'Nincs jogod megnézni ezt az oldalt.',
-  'perm_denied' => 'Nincs jogosultságod a művelethez.',
-  'param_missing' => 'Hiányzó paraméterek.',
-  'non_exist_ap' => 'A kiválasztott album vagy kép nem létezik!',
-  'quota_exceeded' => 'Lemez terület kvóta túllépés<br /><br />A Te kvótád [quota] kB, jellenleg ennyi [space] kB-ot foglalsz, ennek a képnek a feltöltésekor túlléped a kvótád.',
-  'gd_file_type_err' => 'Amikor GD-könyvtárat használsz, a megengedett fájlformátum csak JPG vagy PNG .',
-  'invalid_image' => 'A feltöltött kép sérült vagy a GD könyvtár nem kezeli a fáljformátumot',
-  'resize_failed' => 'Nem lehet a képet átméretezni.',
-  'no_img_to_display' => 'Nincs megjeleníthető kép',
-  'non_exist_cat' => 'A kiválasztott kategória nem létezik',
-  'orphan_cat' => 'A kategóriának nem létezik szülője, futtassd a kategória rendezőt a hiba kijavításához!',
-  'directory_ro' => 'A \'%s\' könyvtár nem írható, a fájlt nem lehet törölni',
-  'non_exist_comment' => 'A kiválasztott megjegyzés nem létezik.',
-  'pic_in_invalid_album' => 'A kép egy nem létező albumban van (%s)!?',
-  'banned' => 'Jelenleg ki vagy zárva erről a weboldalról',
-  'not_with_udb' => 'Ez a funkció le van tiltva a Coppemine-ban , mert integrálva van egy fórum programmal. a kért művelet nincs támogatva, vagy a funkciót a fórum program kezeli.',
-  'offline_title' => 'Kikapcsolva',
-  'offline_text' => 'Ez a képgaléria kikapcsolt állapotban van - néz vissza később.', //cpg1.3.0
-  'ecards_empty' => 'Jellenleg egyetlen Ecard-ot sem lehet megjeleníteni!',
-  'action_failed' => 'Hibás művelet.A Coppermine nem tudja kiszolgálni a kérést.', //cpg1.3.0
-  'no_zip' => 'Nincs feltelepítve program a zip fájlok kezeléséhez. Keresd fel a rendszergazdát!',
-  'zip_type' => 'Nincs jogosultságod zip fájlok feltöltésére.',
-  'database_query' => 'Hiba történt az adatbázis lekérdezése közben.', //cpg1.4
-  'non_exist_comment' => 'A kiválasztott megjegyzés nem létezik', //cpg1.4
-);
+$lang_errors['access_denied'] = 'Nincs jogod megnézni ezt az oldalt.';
+$lang_errors['invalid_form_token'] = 'Nem található érvényes azonosító'; //cpg1.5
+$lang_errors['perm_denied'] = 'Nincs jogosultságod a művelethez.';
+$lang_errors['param_missing'] = 'Hiányzó paraméterek.';
+$lang_errors['non_exist_ap'] = 'A kiválasztott album vagy kép nem létezik!';
+$lang_errors['quota_exceeded'] = 'Lemez terület kvóta túllépés'; //cpg1.5
+$lang_errors['quota_exceeded_details'] = 'A Te kvótád [quota] KiB, jellenleg ennyi [space] KiB-ot foglalsz, ennek a képnek a feltöltésekor túlléped a kvótád.'; //cpg1.5
+$lang_errors['gd_file_type_err'] = 'Ha GD-könyvtárat használsz, a megengedett fájlformátum csak JPG vagy PNG lehet.';
+$lang_errors['invalid_image'] = 'A feltöltött kép sérült vagy a GD könyvtár nem kezeli a fáljformátumot';
+$lang_errors['resize_failed'] = 'Nem lehet a képet átméretezni.';
+$lang_errors['no_img_to_display'] = 'Nincs megjeleníthető kép';
+$lang_errors['non_exist_cat'] = 'A kiválasztott kategória nem létezik';
+$lang_errors['directory_ro'] = 'A \'%s\' könyvtár nem írható, a fájlt nem lehet törölni';
+$lang_errors['pic_in_invalid_album'] = 'A kép egy nem létező albumban van (%s)!?';
+$lang_errors['banned'] = 'Jelenleg ki vagy zárva erről a weboldalról';
+$lang_errors['offline_title'] = 'Kikapcsolva';
+$lang_errors['offline_text'] = 'Ez a képgaléria kikapcsolt állapotban van - nézz vissza később.';
+$lang_errors['ecards_empty'] = 'Jelenleg egyetlen Ecard-ot sem lehet megjeleníteni!';
+$lang_errors['database_query'] = 'Hiba történt az adatbázis lekérdezése közben.';
+$lang_errors['non_exist_comment'] = 'A kiválasztott hozzászólás nem létezik';
+$lang_errors['captcha_error'] = 'A megerősítő kód nem megfelelő'; // cpg1.5
+$lang_errors['login_needed'] = '%sRegisztrálj%s/%sJelentkezz be%s az oldalra'; // cpg1.5
+$lang_errors['error'] = 'Hiba'; // cpg1.5
+$lang_errors['critical_error'] = 'Kritikus hiba'; // cpg1.5
+$lang_errors['access_thumbnail_only'] = 'Csak az indexképeket nézheted meg.'; // cpg1.5
+$lang_errors['access_intermediate_only'] = 'Nem nézheted meg a teljes méretű képeket.'; // cpg1.5
+$lang_errors['access_none'] = 'Semmilyen képet nem nézhetsz meg.'; // cpg1.5
+$lang_errors['register_globals_title'] = 'Register Globals bekapcsolva van!';// cpg1.5
+$lang_errors['register_globals_warning'] = 'A PHP beállítások között a register_globals engedélyezve van a kiszolgálódon, ami biztonságilag veszélyes. Erősen ajánlott ennek kikapcsolása (pl. php.ini használatával).'; //cpg1.5
 
-$lang_bbcode_help_title = 'Bulletin Board kód segítség'; //cpg1.4
-$lang_bbcode_help = 'Lehetőség van linkek hozzáadására és néhány formázásra, ha használod ezeket a BBCode formázókat: <li>[b]Kövér[/b] =&gt; <b>Kövér</b></li><li>[i]Dőlt[/i] =&gt; <i>Dőlt</i></li><li>[url=http://weblapod.hu/]Url szöveg[/url] =&gt; <a href="http://weblapod.hu">Url szöveg</a></li><li>[email]felhasználó@weblapod.hu[/email] =&gt; <a href="mailto:felhasználó@weblapod.hu">felhasználó@weblapod.hu</a></li><li>[color=red]Valami szöveg[/color] =&gt; <span style="color:red">Valami szöveg</span></li><li>[img]http://coppermine-gallery.net/demo/cpg14x/images/red.gif[/img] => <img src="../images/red.gif" border="0" alt="" /></li>'; //cpg1.4
+$lang_bbcode_help_title = 'BBCode segítség';
+$lang_bbcode_help = 'Lehetőség van linkek hozzáadására és néhány formázásra, ha használod ezeket a BBCode formázókat: <li>[b]Kövér[/b] =&gt; <b>Kövér</b></li><li>[i]Dőlt[/i] =&gt; <i>Dőlt</i></li><li>[url=http://weblapod.hu/]Url szöveg[/url] =&gt; <a href="http://weblapod.hu">Url szöveg</a></li><li>[email]felhasználó@weblapod.hu[/email] =&gt; <a href="mailto:felhasználó@weblapod.hu">felhasználó@weblapod.hu</a></li><li>[color=red]Valami szöveg[/color] =&gt; <span style="color:red">Valami szöveg</span></li><li>[img]http://documentation.coppermine-gallery.net/images/browser.png[/img] =&gt; <img src="docs/images/browser.png" border="0" alt="" /></li>';
+
+$lang_common['yes'] = 'Igen'; // cpg1.5
+$lang_common['no'] = 'Nem'; // cpg1.5
+$lang_common['back'] = 'Vissza'; // cpg1.5
+$lang_common['continue'] = 'Folytatás'; // cpg1.5
+$lang_common['information'] = 'Információ'; // cpg1.5
+$lang_common['error'] = 'Hiba'; // cpg1.5
+$lang_common['check_uncheck_all'] = 'Jelölés/Jelölés megszüntetése'; // cpg1.5
+$lang_common['confirm'] = 'Megerősítés'; // cpg1.5
+$lang_common['captcha_help_title'] = 'Vizuális megerősítés (captcha)'; // cpg1.5
+$lang_common['captcha_help'] = 'A spamek elkerülése miatt, bizonyítva, hogy te ember vagy és nem kártékony robot, írd be a képen látható kódot.<br />A nagy- és kisbetű nem számít, írd úgy, ahogyan szeretnéd.'; // cpg1.5
+$lang_common['title'] = 'Cím'; // cpg1.5
+$lang_common['caption'] = 'Felirat'; // cpg1.5
+$lang_common['keywords'] = 'Kulcsszavak'; // cpg1.5
+$lang_common['keywords_insert1'] = 'Kulcsszavak (elkülönítve így: %s)'; // cpg1.5
+$lang_common['keywords_insert2'] = 'Beszúrás listáról'; // cpg1.5
+$lang_common['keyword_separator'] = 'Kulcsszó elkülönítése'; //cpg1.5
+$lang_common['keyword_separators'] = array(' '=>'szóköz', ','=>'vessző', ';'=>'pontosvessző'); // cpg1.5
+$lang_common['owner_name'] = 'Tulajdonos neve'; // cpg1.5
+$lang_common['filename'] = 'Fájlnév'; // cpg1.5
+$lang_common['filesize'] = 'Fájlméret'; // cpg1.5
+$lang_common['album'] = 'Album'; // cpg1.5
+$lang_common['file'] = 'Fájl'; // cpg1.5
+$lang_common['date'] = 'Dátum'; // cpg1.5
+$lang_common['help'] = 'Segítség'; // cpg1.5
+$lang_common['close'] = 'Zárva'; // cpg1.5
+$lang_common['go'] = 'Mehet'; // cpg1.5
+$lang_common['javascript_needed'] = 'Ehhez az oldalhoz szükséged van JavaScriptre. Engedélyezd vagy telepítsd a JavaScriptet a böngésződben.'; // cpg1.5
+$lang_common['move_up'] = 'Ugrás fel'; // cpg1.5
+$lang_common['move_down'] = 'Ugrás le'; // cpg1.5
+$lang_common['move_top'] = 'Ugrás a tetejére'; // cpg1.5
+$lang_common['move_bottom'] = 'Ugrás az aljára'; // cpg1.5
+$lang_common['delete'] = 'Törlés'; // cpg1.5
+$lang_common['edit'] = 'Szerkesztés'; // cpg1.5
+$lang_common['username_if_blank'] = 'Ismeretlen azonosító'; // cpg1.5
+$lang_common['albums_no_category'] = 'Az albumnak nincs kategóriája'; // cpg1.5
+$lang_common['personal_albums'] = '* Személyes album'; // cpg1.5
+$lang_common['select_album'] = 'Album választása'; // cpg1.5
+$lang_common['ok'] = 'OK'; // cpg1.5
+$lang_common['status'] = 'Állapot'; // cpg1.5
+$lang_common['apply_changes'] = 'Változások rögzítése'; // cpg1.5
+$lang_common['done'] = 'Kész'; // cpg1.5
+$lang_common['album_properties'] = 'Album tulajdonságai'; // cpg1.5
+$lang_common['parent_category'] = 'Szülő kategória'; // cpg1.5
+$lang_common['edit_files'] = 'Fájl szerkesztése'; // cpg1.5
+$lang_common['thumbnail_view'] = 'Indexkép nézet'; // cpg1.5
+$lang_common['album_manager'] = 'Albumkezelő'; // cpg1.5
+$lang_common['more'] = 'Többet'; // cpg1.5
 
 // ------------------------------------------------------------------------- //
 // File theme.php
 // ------------------------------------------------------------------------- //
 
-$lang_main_menu = array(
-  'home_title' => 'Ugrás a kezdőlapra',
-  'home_lnk' => 'Kezdőlap',
-  'alb_list_title' => 'Ugrás az album listára',
-  'alb_list_lnk' => 'Album lista',
-  'my_gal_title' => 'Ugrás a személyes képtárba',
-  'my_gal_lnk' => 'Személyes képtáram',
-  'my_prof_title' => 'Ugrás a profilomhoz', //cpg1.4
-  'my_prof_lnk' => 'Profilom',
-  'adm_mode_title' => 'Átváltás admin módba',
-  'adm_mode_lnk' => 'Admin mód',
-  'usr_mode_title' => 'Átváltás felhasználói módba',
-  'usr_mode_lnk' => 'Felhasználói mód',
-  'upload_pic_title' => 'Fájl feltöltése az albumba',
-  'upload_pic_lnk' => 'Fájl feltöltése',
-  'register_title' => 'Felhasználó létrehozása',
-  'register_lnk' => 'Regisztráció',
-  'login_title' => 'Léptess be!', //cpg1.4
-  'login_lnk' => 'Bejelentkezés',
-  'logout_title' => 'Léptess ki!', //cpg1.4
-  'logout_lnk' => 'Kijelentkezés',
-  'lastup_title' => 'Mutasd a legutóbbi feltöltéseket', //cpg1.4
-  'lastup_lnk' => 'Legújabb feltöltések',
-  'lastcom_title' => 'Mutasd a legutóbbi hozzászólásokat', //cpg1.4
-  'lastcom_lnk' => 'Legutolsó hozzászólás',
-  'topn_title' => 'Mutasd a legtöbbet nézet képeket', //cpg1.4
-  'topn_lnk' => 'Legtöbbet nézett',
-  'toprated_title' => 'Mutasd a tegtöbb szavazatot kapott képeket', //cpg1.4
-  'toprated_lnk' => 'Legjobb helyezett',
-  'search_title' => 'Keresés a képtárban', //cpg1.4
-  'search_lnk' => 'Keresés',
-  'fav_title' => 'Ugrás a kedvencekhez', //cpg1.4
-  'fav_lnk' => 'Kedvencek',
-  'memberlist_title' => 'Mutasd a felhasználók listáját',
-  'memberlist_lnk' => 'Felhasználók listája',
-  'faq_title' => 'Gyakran felett kérdések (Frequently Asked Questions)',
-  'faq_lnk' => 'GYIK',
-);
+$lang_main_menu['home_title'] = 'Ugrás a Kezdőlapra';
+$lang_main_menu['home_lnk'] = 'Kezdőlap';
+$lang_main_menu['alb_list_title'] = 'Ugrás az Albumlistára';
+$lang_main_menu['alb_list_lnk'] = 'Albumlista';
+$lang_main_menu['my_gal_title'] = 'Ugrás a személyes képtárba';
+$lang_main_menu['my_gal_lnk'] = 'Személyes képtáram';
+$lang_main_menu['my_prof_title'] = 'Ugrás az adataimhoz';
+$lang_main_menu['my_prof_lnk'] = 'Adataim';
+$lang_main_menu['adm_mode_title'] = 'Admin vezérlők megjelenítése'; // cpg1.5
+$lang_main_menu['adm_mode_lnk'] = 'Admin vezérlők megjelenítése'; // cpg1.5
+$lang_main_menu['usr_mode_title'] = 'Admin vezérlők letiltása'; // cpg1.5
+$lang_main_menu['usr_mode_lnk'] = 'Admin vezérlők elrejtése'; // cpg1.5
+$lang_main_menu['upload_pic_title'] = 'Fájl feltöltése egy albumba';
+$lang_main_menu['upload_pic_lnk'] = 'Fájl feltöltése';
+$lang_main_menu['register_title'] = 'Felhasználó létrehozása';
+$lang_main_menu['register_lnk'] = 'Regisztráció';
+$lang_main_menu['login_title'] = 'Léptess be';
+$lang_main_menu['login_lnk'] = 'Bejelentkezés';
+$lang_main_menu['logout_title'] = 'Léptess ki';
+$lang_main_menu['logout_lnk'] = 'Kijelentkezés';
+$lang_main_menu['lastup_title'] = 'Mutasd a legutóbbi feltöltéseket';
+$lang_main_menu['lastup_lnk'] = 'Legújabb feltöltések';
+$lang_main_menu['lastcom_title'] = 'Mutasd a legutóbbi hozzászólásokat';
+$lang_main_menu['lastcom_lnk'] = 'Legutolsó hozzászólás';
+$lang_main_menu['topn_title'] = 'Mutasd a legtöbbet nézett képeket';
+$lang_main_menu['topn_lnk'] = 'Legtöbbet nézett';
+$lang_main_menu['toprated_title'] = 'Mutasd a tegtöbb szavazatot kapott képeket';
+$lang_main_menu['toprated_lnk'] = 'Legjobb helyezett';
+$lang_main_menu['search_title'] = 'Keresés a képtárban';
+$lang_main_menu['search_lnk'] = 'Keresés';
+$lang_main_menu['fav_title'] = 'Ugrás a kedvencekhez';
+$lang_main_menu['fav_lnk'] = 'Kedvenceim';
+$lang_main_menu['memberlist_title'] = 'Mutasd a felhasználók listáját';
+$lang_main_menu['memberlist_lnk'] = 'Taglista';
+$lang_main_menu['browse_by_date_lnk'] = 'Dátum szerint'; // cpg1.5
+$lang_main_menu['browse_by_date_title'] = 'Tallózás feltöltési dátum szerint'; // cpg1.5
+$lang_main_menu['contact_title'] = 'Vedd fel a kapcsolatot velünk (%s)'; // cpg1.5
+$lang_main_menu['contact_lnk'] = 'Kapcsolat'; // cpg1.5
+$lang_main_menu['sidebar_title'] = 'Add a Sidebart a böngésződhöz'; // cpg1.5
+$lang_main_menu['sidebar_lnk'] = 'Sidebar'; // cpg1.5
 
-$lang_gallery_admin_menu = array(
-  'upl_app_title' => 'Új feltöltések jóváhagyása', //cpg1.4
-  'upl_app_lnk' => 'Feltöltés jóváhagyás',
-  'admin_title' => 'Ugrás a beállításokhoz', //cpg1.4
-  'admin_lnk' => 'Beállítások', //cpg1.4
-  'albums_title' => 'Ugrás az album beállításhoz', //cpg1.4
-  'albums_lnk' => 'Albumok',
-  'categories_title' => 'Ugrás a kategória beállításhoz', //cpg1.4
-  'categories_lnk' => 'Kategóriák',
-  'users_title' => 'Ugrás a felhasználó beállításhoz', //cpg1.4
-  'users_lnk' => 'Felhasználók',
-  'groups_title' => 'Ugrás a csoport beállításhoz', //cpg1.4
-  'groups_lnk' => 'Csoportok',
-  'comments_title' => 'Az összes hozzászólás megtekintése', //cpg1.4
-  'comments_lnk' => 'Hozzászólások',
-  'searchnew_title' => 'Ugrás a csoportos hozzáadáshoz', //cpg1.4
-  'searchnew_lnk' => 'Csoportos hozzáadás',
-  'util_title' => 'Ugrás az admin eszközökhöz', //cpg1.4
-  'util_lnk' => 'Admin eszközök',
-  'key_title' => 'Ugrás a kulcsszavakhoz', //cpg1.4
-  'key_lnk' => 'Kulcsszavak', //cpg1.4
-  'ban_title' => 'Ugrás a kitiltottak listájához ', //cpg1.4
-  'ban_lnk' => 'Kitiltott felhasználók',
-  'db_ecard_title' => 'Képeslapok megtekintése', //cpg1.4
-  'db_ecard_lnk' => 'Képeslapok',
-  'pictures_title' => 'Képek rendezése', //cpg1.4
-  'pictures_lnk' => 'Képek rendezése', //cpg1.4
-  'documentation_lnk' => 'Dokumentáció', //cpg1.4
-  'documentation_title' => 'Coppermine - Felhasználói Kézikönyv', //cpg1.4
-);
+$lang_gallery_admin_menu['upl_app_title'] = 'Új feltöltések jóváhagyása';
+$lang_gallery_admin_menu['upl_app_lnk'] = 'Feltöltés jóváhagyás';
+$lang_gallery_admin_menu['admin_title'] = 'Ugrás a beállításokhoz';
+$lang_gallery_admin_menu['admin_lnk'] = 'Beállítások';
+$lang_gallery_admin_menu['albums_title'] = 'Ugrás az album beállításhoz';
+$lang_gallery_admin_menu['albums_lnk'] = 'Albumok';
+$lang_gallery_admin_menu['categories_title'] = 'Ugrás a kategória beállításhoz';
+$lang_gallery_admin_menu['categories_lnk'] = 'Kategóriák';
+$lang_gallery_admin_menu['users_title'] = 'Ugrás a felhasználó beállításhoz';
+$lang_gallery_admin_menu['users_lnk'] = 'Felhasználók';
+$lang_gallery_admin_menu['groups_title'] = 'Ugrás a csoport beállításhoz';
+$lang_gallery_admin_menu['groups_lnk'] = 'Csoportok';
+$lang_gallery_admin_menu['comments_title'] = 'Az összes hozzászólás megtekintése';
+$lang_gallery_admin_menu['comments_lnk'] = 'Hozzászólások';
+$lang_gallery_admin_menu['searchnew_title'] = 'Ugrás a csoportos hozzáadáshoz';
+$lang_gallery_admin_menu['searchnew_lnk'] = 'Csoportos feltöltés';
+$lang_gallery_admin_menu['util_title'] = 'Ugrás az admin eszközökhöz';
+$lang_gallery_admin_menu['util_lnk'] = 'Admin eszközök';
+$lang_gallery_admin_menu['key_lnk'] = 'Kulcsszó könyvtár';
+$lang_gallery_admin_menu['ban_title'] = 'Ugrás a kitiltottak listájához';
+$lang_gallery_admin_menu['ban_lnk'] = 'Kitiltott felhasználók';
+$lang_gallery_admin_menu['db_ecard_title'] = 'Képeslapok megtekintése';
+$lang_gallery_admin_menu['db_ecard_lnk'] = 'Képeslapok';
+$lang_gallery_admin_menu['pictures_title'] = 'Képeim rendezése';
+$lang_gallery_admin_menu['pictures_lnk'] = 'Képeim rendezése';
+$lang_gallery_admin_menu['documentation_lnk'] = 'Dokumentáció';
+$lang_gallery_admin_menu['documentation_title'] = 'Coppermine - Felhasználói Kézikönyv';
+$lang_gallery_admin_menu['phpinfo_lnk'] = 'phpinfo'; // cpg1.5
+$lang_gallery_admin_menu['phpinfo_title'] = 'Technikai információk a kiszolgálódról. Ebből nézhetsz ki információkat, ha a problémád során kérdeznek.'; // cpg1.5
+$lang_gallery_admin_menu['update_database_lnk'] = 'Adatbázis frissítése'; // cpg1.5
+$lang_gallery_admin_menu['update_database_title'] = 'Ha lecserélted a Coppermine fájlokat, módosítottál vagy frissítetted a Copperminet, egyszer szükséges ennek a lefuttatása. Ez létrehozza/módosítja a szükséges Coppermine táblákat.'; // cpg1.5
+$lang_gallery_admin_menu['view_log_files_lnk'] = 'Naplófájlok megtekintése'; // cpg1.5
+$lang_gallery_admin_menu['view_log_files_title'] = 'A Coppermine fel tudja jegyezni a különböző felhasználói folyamatokat. Ezeket naplózhatod, ha bekapcsoltad ezt az opciót a Coppermine beállítások között.'; // cpg1.5
+$lang_gallery_admin_menu['check_versions_lnk'] = 'Verzióellenőrzés'; // cpg1.5
+$lang_gallery_admin_menu['check_versions_title'] = 'Egy frissítés után leellenőrizheted a fájlokat, vagy megtudhatod, hogy a telepítésed óta léteznek-e újabb állományok.'; // cpg1.5
+$lang_gallery_admin_menu['bridgemgr_lnk'] = 'Átkötés kezelő'; // cpg1.5
+$lang_gallery_admin_menu['bridgemgr_title'] = 'Engedélyezheted vagy letilthatod a más alkalmazásokkal (pl. PHPBB, BBS) való átkötést (bridging).'; // cpg1.5
+$lang_gallery_admin_menu['pluginmgr_lnk'] = 'Beépülők kezelése'; // cpg1.5
+$lang_gallery_admin_menu['pluginmgr_title'] = 'Beépülők kezelése'; // cpg1.5
+$lang_gallery_admin_menu['overall_stats_lnk'] = 'Statisztika'; // cpg1.5
+$lang_gallery_admin_menu['overall_stats_title'] = 'Megnézheted az általános statisztikát böngészőre és operációs rendszerre (ha engedélyezted a beállításokban).'; // cpg1.5
+$lang_gallery_admin_menu['keywordmgr_lnk'] = 'Kulcsszó kezelő'; // cpg1.5
+$lang_gallery_admin_menu['keywordmgr_title'] = 'Kulcsszavak kezelése (ha ezt a beállítást engedélyezted).'; // cpg1.5
+$lang_gallery_admin_menu['exifmgr_lnk'] = 'EXIF kezelő'; // cpg1.5
+$lang_gallery_admin_menu['exifmgr_title'] = 'EXIF adatok kezelése (ha ezt a beállítást engedélyezted).'; // cpg1.5
+$lang_gallery_admin_menu['shownews_lnk'] = 'Hírek megjelenítése'; // cpg1.5
+$lang_gallery_admin_menu['shownews_title'] = 'A coppermine-gallery.net híreinek megjelenítése'; // cpg1.5
 
-$lang_user_admin_menu = array(
-  'albmgr_title' => 'Saját albumok készítése és rendezése', //cpg1.4
-  'albmgr_lnk' => 'Album készítés/rendezés',
-  'modifyalb_title' => 'Ugrás az album módosításhoz',  //cpg1.4
-  'modifyalb_lnk' => 'Az albumom módosítása',
-  'my_prof_title' => 'Ugrás a személyes beállításaimhoz', //cpg1.4
-  'my_prof_lnk' => 'Személyes beállításaim',
-);
+$lang_user_admin_menu['albmgr_title'] = 'Albumaim készítése vagy rendezése';
+$lang_user_admin_menu['albmgr_lnk'] = 'Albumaim készítése / rendezése';
+$lang_user_admin_menu['modifyalb_title'] = 'Ugrás az albummódosításra';
+$lang_user_admin_menu['modifyalb_lnk'] = 'Albumom módosítása';
+$lang_user_admin_menu['my_prof_title'] = 'Ugrás az adataimhoz';
+$lang_user_admin_menu['my_prof_lnk'] = 'Adataim';
 
-$lang_cat_list = array(
-  'category' => 'Kategória',
-  'albums' => 'Albumok',
-  'pictures' => 'Képek',
-);
+$lang_cat_list['category'] = 'Kategória';
+$lang_cat_list['albums'] = 'Albumok';
+$lang_cat_list['pictures'] = 'Fájlok';
 
-$lang_album_list = array(
-  'album_on_page' => '%d Album %d Oldalakon',
-);
+$lang_album_list['album_on_page'] = '%d album %d oldalon';
 
-$lang_thumb_view = array(
-  'date' => 'Dátum',
-  //Sort by filename and title
-  'name' => 'Fájl neve',
-  'title' => 'Címe',
-  'sort_da' => 'Rendezés dátum szerint növekvő',
-  'sort_dd' => 'Rendezés dátum szerint csökkenő',
-  'sort_na' => 'Rendezés név szerint növekvő',
-  'sort_nd' => 'Rendezés név szerint csökkenő',
-  'sort_ta' => 'Rendezés cím szerint növekvő',
-  'sort_td' => 'Rendezés cím szerint csökenő',
-  'position' => 'Pozíció', //cpg1.4
-  'sort_pa' => 'Rendezés pozició szerint növekvő', //cpg1.4
-  'sort_pd' => 'Rendezés pozició szerint csökkenő', //cpg1.4
-  'download_zip' => 'Letöltés zip fájlként',
-  'pic_on_page' => '%d fájl %d oldalon',
-  'user_on_page' => '%d felhasználó %d oldalon',
-  'enter_alb_pass' => 'Add meg a jelszót az albumhoz', //cpg1.4
-  'invalid_pass' => 'Hibás jelszó', //cpg1.4
-  'pass' => 'Jelszó', //cpg1.4
-  'submit' => 'Mehet', //cpg1.4
-);
+$lang_thumb_view['date'] = 'Dátum';
+//Sort by filename and title
+$lang_thumb_view['name'] = 'Fájl neve';
+$lang_thumb_view['sort_da'] = 'Rendezés dátum szerint: növekvő';
+$lang_thumb_view['sort_dd'] = 'Rendezés dátum szerint: csökkenő';
+$lang_thumb_view['sort_na'] = 'Rendezés név szerint: növekvő';
+$lang_thumb_view['sort_nd'] = 'Rendezés név szerint: csökkenő';
+$lang_thumb_view['sort_ta'] = 'Rendezés cím szerint: növekvő';
+$lang_thumb_view['sort_td'] = 'Rendezés cím szerint: csökkenő';
+$lang_thumb_view['position'] = 'Pozíció';
+$lang_thumb_view['sort_pa'] = 'Rendezés pozició szerint: növekvő';
+$lang_thumb_view['sort_pd'] = 'Rendezés pozició szerint: csökkenő';
+$lang_thumb_view['download_zip'] = 'Letöltés ZIP fájlként';
+$lang_thumb_view['pic_on_page'] = '%d fájl %d oldalon';
+$lang_thumb_view['user_on_page'] = '%d felhasználó %d oldalon';
+$lang_thumb_view['enter_alb_pass'] = 'Írd be az album jelszavát';
+$lang_thumb_view['invalid_pass'] = 'Hibás jelszó';
+$lang_thumb_view['pass'] = 'Jelszó';
+$lang_thumb_view['submit'] = 'Küldés';
+$lang_thumb_view['zipdownload_copyright'] = 'Figyelj a szerzői jogokra! - Csak azokat a fájlokat használhatod, amihez a galéria tulajdonosa hozájárult!'; // cpg1.5
+$lang_thumb_view['zipdownload_username'] = 'Ez a tömörített állomány a következő kedvenceket tartalmazza: %s'; // cpg1.5
 
-$lang_img_nav_bar = array(
-  'thumb_title' => 'Vissza az áttekintő oldalra',
-  'pic_info_title' => 'Fájl információk megjelenítése/elrejtése',
-  'slideshow_title' => 'Diavetítés',
-  'ecard_title' => 'Kép küldése képeslapként ',
-  'ecard_disabled' => 'Képeslap funkció letiltva',
-  'ecard_disabled_msg' => 'Nincs jogod képeslapot küldeni',
-  'prev_title' => 'előző kép',
-  'next_title' => 'következő kép',
-  'pic_pos' => 'Kép %s/%s',
-  'report_title' => 'Jelezd ezt a képet a rendszergazdának', //cpg1.4
-  'go_album_end' => 'Ugrás a végére', //cpg1.4
-  'go_album_start' => 'Ugrás az elejére', //cpg1.4
-  'go_back_x_items' => 'menj vissza %s képet', //cpg1.4
-  'go_forward_x_items' => 'menj előre %s képet', //cpg1.4
-);
+$lang_img_nav_bar['thumb_title'] = 'Vissza az áttekintő oldalra';
+$lang_img_nav_bar['pic_info_title'] = 'Információk megjelenítése/elrejtése';
+$lang_img_nav_bar['slideshow_title'] = 'Diavetítés';
+$lang_img_nav_bar['ecard_title'] = 'Kép küldése képeslapként';
+$lang_img_nav_bar['ecard_disabled'] = 'Képeslap funkció letiltva';
+$lang_img_nav_bar['ecard_disabled_msg'] = 'Nincs jogod képeslapot küldeni'; // js-alert
+$lang_img_nav_bar['prev_title'] = 'Előző kép';
+$lang_img_nav_bar['next_title'] = 'Következő kép';
+$lang_img_nav_bar['pic_pos'] = 'Kép %s/%s';
+$lang_img_nav_bar['report_title'] = 'Jelentsd ezt a képet a rendszergazdának';
+$lang_img_nav_bar['go_album_end'] = 'Ugrás a végére';
+$lang_img_nav_bar['go_album_start'] = 'Ugrás az elejére';
 
-$lang_rate_pic = array(
-  'rate_this_pic' => 'Szavazz erre a képre',
-  'no_votes' => '(nem kapott szavazatot)',
-  'rating' => 'jelenlegi helyezés : %s/5 %s szavazatból',
-  'rubbish' => 'vacak',
-  'poor' => 'gyenge',
-  'fair' => 'közepes',
-  'good' => 'jó',
-  'excellent' => 'nagyon jó',
-  'great' => 'tökéletes',
-);
-
-// ------------------------------------------------------------------------- //
-// File include/exif.inc.php
-// ------------------------------------------------------------------------- //
-
-// void
+$lang_rate_pic['rate_this_pic'] = 'Szavazz erre a képre ';
+$lang_rate_pic['no_votes'] = '(Még nem kapott szavazatot)';
+$lang_rate_pic['rating'] = '(Jelenlegi helyezés : %s / %s, ennyi szavatzatból: %s)';
+$lang_rate_pic['rubbish'] = 'Vacak';
+$lang_rate_pic['poor'] = 'Gyenge';
+$lang_rate_pic['fair'] = 'Átlagos';
+$lang_rate_pic['good'] = 'Jó';
+$lang_rate_pic['excellent'] = 'Kiváló';
+$lang_rate_pic['great'] = 'Tökéletes';
+$lang_rate_pic['js_warning'] = 'Engedélyezd/Telepítsd a Javascriptet a szavazás rendezéséhez'; // cpg1.5
+$lang_rate_pic['already_voted'] = 'Már szavaztál erre a képre.'; // cpg1.5
+$lang_rate_pic['forbidden'] = 'Nem szavazhatsz a saját képedre.'; // cpg1.5
+$lang_rate_pic['rollover_to_rate'] = 'Szavazat módosítása ehhez a képhez'; // cpg1.5
 
 // ------------------------------------------------------------------------- //
 // File include/functions.inc.php
 // ------------------------------------------------------------------------- //
 
-$lang_cpg_die = array(
-  INFORMATION => $lang_info,
-  ERROR => $lang_error,
-  CRITICAL_ERROR => 'Súlyos hiba',
-  'file' => 'Fájl: ',
-  'line' => 'Sor: ',
-);
+$lang_cpg_die['file'] = 'Fájl: ';
+$lang_cpg_die['line'] = 'Sor: ';
 
-$lang_display_thumbnails = array(
-  'filename' => 'Fájlnév : ',
-  'filesize' => 'Fájlméret : ',
-  'dimensions' => 'Méretek : ',
-  'date_added' => 'Hozzáadás dátuma : ',
-);
+$lang_display_thumbnails['dimensions'] = 'Méretek=';
+$lang_display_thumbnails['date_added'] = 'Hozzáadás dátuma=';
 
-$lang_get_pic_data = array(
-  'n_comments' => '%s Hozászólások',
-  'n_views' => '%s Megtekintés',
-  'n_votes' => '(%s Szavazat)',
-);
+$lang_get_pic_data['n_comments'] = '%s hozzászólás';
+$lang_get_pic_data['n_views'] = '%s megtekintés';
+$lang_get_pic_data['n_votes'] = '(%s szavazat)';
 
-$lang_cpg_debug_output = array(
-  'debug_info' => 'Debug információ',
-  'select_all' => 'Összes kiválasztása',
-  'copy_and_paste_instructions' => 'Ha segítségre van szükséged, akkor másold ki és küld el ezt a hibajelenség leírást a Coppermine Technikai Támogatásnak. Ügyelj arra, hogy jelszavak helyére *** -at írj.<br />Megjegyzés: ez csak egy információ, és nem jeleni azt, hogy baj van a képtáraddal.', //cpg1.4
-  'phpinfo' => 'php információk',
-  'notices' => 'Megjegyzések', //cpg1.4
-);
+$lang_cpg_debug_output['debug_info'] = 'Debug információ';
+$lang_cpg_debug_output['debug_output'] = 'Debug végeredmény'; // cpg1.5
+$lang_cpg_debug_output['select_all'] = 'Összes kiválasztása';
+$lang_cpg_debug_output['copy_and_paste_instructions'] = 'Ha segítségre van szükséged, akkor másold ki és küld el ezt a hibajelenség leírást a Coppermine Technikai Támogatásnak. Ügyelj arra, hogy jelszavak helyére *** -at írj.<br />Megjegyzés: ez csak egy információ, és nem jeleni azt, hogy baj van a képtáraddal.'; // cpg1.5
+$lang_cpg_debug_output['debug_output_explain'] = 'Megjegyzés: ez csak egy információ és nem azt jelenti, hogy hibás a képtárad.'; // cpg1.5
+$lang_cpg_debug_output['phpinfo'] = 'php információk';
+$lang_cpg_debug_output['notices'] = 'Megjegyzések';
+$lang_cpg_debug_output['notices_help_admin'] = 'The notices displayed on this page appear because you (as gallery admin) deliberately enabled that feature in Coppermine\'s config. They don\'t necessarily mean that something is wrong with your gallery. In fact, they are a developer feature that only skilled coders should enable to track bugs. If notices display bothers you and/or you have no idea what those notices mean, turn the corresponding feature off in config.'; // cpg1.5
+$lang_cpg_debug_output['notices_help_non_admin'] = 'The notices display has been deliberately enabled by the admin. It doesn\'t mean that something is wrong on your end. You can safely ignore the notices displayed here.'; // cpg1.5
+$lang_cpg_debug_output['show_hide'] = 'Megmutat / Elrejt'; // cpg1.5
 
-$lang_language_selection = array(
-  'reset_language' => 'Alapértelmezett nyelv',
-  'choose_language' => 'Válassz nyelvet!',
-);
+$lang_language_selection['reset_language'] = 'Alapértelmezett nyelv';
+$lang_language_selection['choose_language'] = 'Válassz nyelvet!';
 
-$lang_theme_selection = array(
-  'reset_theme' => 'Alapértelmezett Téma',
-  'choose_theme' => 'Válassz témát!',
-);
+$lang_theme_selection['reset_theme'] = 'Alapértelmezett téma';
+$lang_theme_selection['choose_theme'] = 'Válassz témát!';
 
-$lang_version_alert = array(
-  'version_alert' => 'Nem támogatott verzió!', //cpg1.4
-  'security_alert' => 'Biztonsági riasztás!', //cpg1.4.3
-  'relocate_exists' => 'Távolítsd el a <a href="http://coppermine-gallery.net/forum/index.php?topic=24217.0" target=_blank>relocate_server.php</a> fájlt a webszerveredről!',
-  'no_stable_version' => 'Te most a Coppermine %s (%s) verziót használod, melyhez nem tartozik támogatás. Csak saját felelősségedre használd!', //cpg1.4
-  'gallery_offline' => 'A képtár jelenleg kikapcsolt állapotban van, csak rendszergazdaként léphetsz be. Ha végeztél a karbantartással, ne felejtsd el bekapcsolni.', //cpg1.4
-);
+$lang_version_alert['version_alert'] = 'Nem támogatott verzió!';
+$lang_version_alert['no_stable_version'] = 'A Coppermine  ezen verziója %s (%s) csak haladó felhasználóknak való - erre a verzióra nincs támogatás vagy garancia. Csak saját felelősségre használd, vagy térj vissza egy stabil verzióra, ha szükséged van a terméktámogatásra!';
+$lang_version_alert['gallery_offline'] = 'A képtár jelenleg kikapcsolt állapotban van, csak rendszergazdaként léphetsz be. Ha végeztél a karbantartással, ne felejtsd el bekapcsolni.';
+$lang_version_alert['coppermine_news'] = 'A coppermine-gallery.net hírei'; // cpg1.5
+$lang_version_alert['no_iframe'] = 'A böngésződ nem támogatja az inline frames (iframe) lehetőséget'; // cpg1.5
+$lang_version_alert['hide'] = 'Elrejt'; // cpg1.5
 
-$lang_create_tabs = array(
-  'previous' => 'előző', //cpg1.4
-  'next' => 'következő', //cpg1.4
-);
+$lang_create_tabs['previous'] = 'Előző'; // cpg1.5
+$lang_create_tabs['next'] = 'Következő'; // cpg1.5
+$lang_create_tabs['jump_to_page'] = 'Ugrás erre az oldalra'; // cpg1.5
+
+$lang_get_remote_file_by_url['no_data_returned'] = 'Nincs visszatérő adat használatban %s'; // cpg1.5
+$lang_get_remote_file_by_url['curl'] = 'CURL'; // cpg1.5
+$lang_get_remote_file_by_url['fsockopen'] = 'Socket connection (FSOCKOPEN)'; // cpg1.5
+$lang_get_remote_file_by_url['fopen'] = 'fopen'; // cpg1.5
+$lang_get_remote_file_by_url['curl_not_available'] = 'Curl nincs telepítve a kiszolgálódra'; // cpg1.5
+$lang_get_remote_file_by_url['error_number'] = 'Hiba száma: %s'; // cpg1.5
+$lang_get_remote_file_by_url['error_message'] = 'Hibaüzenet: %s'; // cpg1.5
 
 // ------------------------------------------------------------------------- //
-// File include/init.inc.php
+// File include/mailer.inc.php
 // ------------------------------------------------------------------------- //
-
-// void
-
-// ------------------------------------------------------------------------- //
-// File keyword.inc.php                                                      //
-// ------------------------------------------------------------------------- //
-
-// void
-
-// ------------------------------------------------------------------------- //
-// File include/picmgmt.inc.php
-// ------------------------------------------------------------------------- //
-
-// void
+$lang_mailer['provide_address'] = 'Legalább egyet válassz ki ';
+$lang_mailer['mailer_not_supported'] = ' levelező nem támogatott.';
+$lang_mailer['execute'] = 'Nem futtathatod: ';
+$lang_mailer['instantiate'] = 'A mail funkció nem használható.';
+$lang_mailer['authenticate'] = 'SMTP hiba: nem sikerült az azonosítás.';
+$lang_mailer['from_failed'] = 'A következő feladó címe hibás: ';
+$lang_mailer['recipients_failed'] = 'SMTP hiba: A következő ';
+$lang_mailer['data_not_accepted'] = 'SMTP hiba: Adat nem elfogadható.';
+$lang_mailer['connect_host'] = 'SMTP hiba: az SMTP kiszolgálóhoz nem lehet csatlakozni.';
+$lang_mailer['file_access'] = 'A fájl nem hozzáférhető: ';
+$lang_mailer['file_open'] = 'Fájlhiba: A fájl nem nyitható meg: ';
+$lang_mailer['encoding'] = 'Ismeretlen kódolás: ';
+$lang_mailer['signing'] = 'Aláírás hiba: ';
 
 // ------------------------------------------------------------------------- //
 // File include/plugin_api.inc.php
 // ------------------------------------------------------------------------- //
-$lang_plugin_api = array(
-  'error_wakeup' => "Ezt a plugint '%s' nem tudtam aktíválni", //cpg1.4
-  'error_install' => "Ezt a plugint '%s' nem sikerült telepíteni", //cpg1.4
-  'error_uninstall' => "Ezt a plugint '%s' nem sikerült eltávolítani", //cpg1.4
-  'error_sleep' => "Ezt a plugint '%s' nem tudtam inaktíválni.<br />", //cpg1.4
-);
+$lang_plugin_api['error_install'] = 'Nem telepítheted ezt a beépülőt: \'%s\'';
+$lang_plugin_api['error_uninstall'] = 'Nem távolíthatod el ezt a beépülőt: \'%s\'';
+$lang_plugin_api['error_sleep'] = 'Nem kapcsolhatod ki ezt a beépülőt: \'%s\''; // cpg1.5
 
 // ------------------------------------------------------------------------- //
 // File include/smilies.inc.php
 // ------------------------------------------------------------------------- //
-
-if (defined('SMILIES_PHP')) $lang_smilies_inc_php = array(
-  'Exclamation' => 'Kiáltás',
-  'Question' => 'Kérdés',
-  'Very Happy' => 'Nagyon boldog',
-  'Smile' => 'Mosolyog',
-  'Sad' => 'Bús',
-  'Surprised' => 'Meglepett',
-  'Shocked' => 'Sokkolt',
-  'Confused' => 'Zavarodott',
-  'Cool' => 'Cool',
-  'Laughing' => 'Nevet',
-  'Mad' => 'Őrült',
-  'Razz' => 'Gúnyos',
-  'Embarassed' => 'Zavarban van',
-  'Crying or Very sad' => 'Üvőlt',
-  'Evil or Very Mad' => 'Ördögi',
-  'Twisted Evil' => 'Kirekesztő',
-  'Rolling Eyes' => 'Jojózik a szeme',
-  'Wink' => 'Kacsintás',
-  'Idea' => 'Ötlet',
-  'Arrow' => 'Nyíl',
-  'Neutral' => 'Természetes',
-  'Mr. Green' => 'Mr. Green',
-);
-
-// ------------------------------------------------------------------------- //
-// File addpic.php
-// ------------------------------------------------------------------------- //
-
-// void
-
-// ------------------------------------------------------------------------- //
-// File mode.php //cpg1.4
-// ------------------------------------------------------------------------- //
-
-if (defined('MODE_PHP')) $lang_mode_php = array(
-  0 => 'Kilépés rendszergazda módból...',
-  1 => 'Belépés rendszergazda módba...',
-);
+if (defined('SMILIES_PHP')) {
+$lang_smilies_inc_php['Exclamation'] = 'Kiáltó';
+$lang_smilies_inc_php['Question'] = 'Kérdő';
+$lang_smilies_inc_php['Very Happy'] = 'Nagyon boldog';
+$lang_smilies_inc_php['Smile'] = 'Mosolyog';
+$lang_smilies_inc_php['Sad'] = 'Szomorú';
+$lang_smilies_inc_php['Surprised'] = 'Meglepett';
+$lang_smilies_inc_php['Shocked'] = 'Sokkolt';
+$lang_smilies_inc_php['Confused'] = 'Zavarodott';
+$lang_smilies_inc_php['Cool'] = 'Tuti';
+$lang_smilies_inc_php['Laughing'] = 'Nevető';
+$lang_smilies_inc_php['Mad'] = 'Őrült';
+$lang_smilies_inc_php['Razz'] = 'Gúnyos';
+$lang_smilies_inc_php['Embarrassed'] = 'Zavarodott'; // cpg1.5
+$lang_smilies_inc_php['Crying or Very sad'] = 'Sírós vagy Nagyon szomorú';
+$lang_smilies_inc_php['Evil or Very Mad'] = 'Ördögi vagy Nagyon rossz';
+$lang_smilies_inc_php['Twisted Evil'] = 'Kirekesztő';
+$lang_smilies_inc_php['Rolling Eyes'] = 'Szemforgató';
+$lang_smilies_inc_php['Wink'] = 'Kacsintó';
+$lang_smilies_inc_php['Idea'] = 'Ötlet';
+$lang_smilies_inc_php['Arrow'] = 'Nyíl';
+$lang_smilies_inc_php['Neutral'] = 'Természetes';
+$lang_smilies_inc_php['Mr. Green'] = 'Mr. Green';
+}
 
 // ------------------------------------------------------------------------- //
 // File albmgr.php
 // ------------------------------------------------------------------------- //
-
-if (defined('ALBMGR_PHP')) $lang_albmgr_php = array(
-  'alb_need_name' => 'Kötelező nevet adni az albumnak!', //js-alert
-  'confirm_modifs' => 'Biztos, hogy végrehajtsuk a változtatásokat ?', //js-alert
-  'no_change' => 'Nem történt változtatás!', //js-alert
-  'new_album' => 'Új album',
-  'confirm_delete1' => 'Biztos, hogy törölni akarod?', //js-alert
-  'confirm_delete2' => '\nAz öszses fájl és hozzászólás törlődni fog!', //js-alert
-  'select_first' => 'Először válasz egy albumot', //js-alert
-  'alb_mrg' => 'Alben-kezelő',
-  'my_gallery' => '* Saját képtár *',
-  'no_category' => '* Nincs kategória *',
-  'delete' => 'Törlés',
-  'new' => 'Új',
-  'apply_modifs' => 'Változtatások elfogadása',
-  'select_category' => 'Válassz kategóriát',
-);
+if (defined('ALBMGR_PHP')) {
+$lang_albmgr_php['title'] = 'Albumkezelő'; // cpg1.5
+$lang_albmgr_php['alb_need_name'] = 'Kötelező nevet adni az albumnak!'; // js-alert
+$lang_albmgr_php['confirm_modifs'] = 'iztos, hogy végrehajtsuk a változtatásokat?'; // js-alert
+$lang_albmgr_php['no_change'] = 'Nem történt változtatás'; // js-alert
+$lang_albmgr_php['new_album'] = 'Új album';
+$lang_albmgr_php['delete_album'] = 'Album törlése'; // cpg1.5
+$lang_albmgr_php['confirm_delete1'] = 'Biztos, hogy törölni akarod ezt az albumot?'; // js-alert
+$lang_albmgr_php['confirm_delete2'] = 'Az összes fájl és hozzászólás törlődni fog!'; // js-alert
+$lang_albmgr_php['select_first'] = 'Először válassz egy albumot'; // js-alert
+$lang_albmgr_php['my_gallery'] = '* Képtáram *';
+$lang_albmgr_php['no_category'] = '* Nincs kategória *';
+$lang_albmgr_php['select_category'] = 'Válassz kategóriát';
+$lang_albmgr_php['category_change'] = 'Ha kategóriát váltasz, minden módosításod elveszik!'; // cpg1.5
+$lang_albmgr_php['page_change'] = 'Ha erre a linkre kattintasz, minden módosításod elveszik!'; // cpg1.5
+$lang_albmgr_php['cancel'] = 'Mégsem'; // cpg1.5
+$lang_albmgr_php['submit_reminder'] = 'A rendezés nem lesz elmentve, amíg nem kattintasz a &quot;Változások mentésére&quot;.'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
 // File banning.php
 // ------------------------------------------------------------------------- //
 
-if (defined('BANNING_PHP')) $lang_banning_php = array(
-  'title' => 'Kitiltott felhasználók', //cpg1.4
-  'user_name' => 'Felhasználó neve', //cpg1.4
-  'ip_address' => 'IP-cím', //cpg1.4
-  'expiry' => 'Lejár (üres, ha állandó)', //cpg1.4
-  'edit_ban' => 'Változások mentése', //cpg1.4
-  'delete_ban' => 'Törlés', //cpg1.4
-  'add_new' => 'Új letiltás hozzáadása', //cpg1.4
-  'add_ban' => 'Hozzáadás', //cpg1.4
-  'error_user' => 'Ismeretlen felhasználó', //cpg1.4
-  'error_specify' => 'Meg kell adni a felhasználónevet vagy IP címet!', //cpg1.4
-  'error_ban_id' => 'Hibás tiltás azonosító!', //cpg1.4
-  'error_admin_ban' => 'Saját magad nem tudod letiltani!', //cpg1.4
-  'error_server_ban' => 'Ki akarod tiltani a saját szerverünket? Tán nem kéne...', //cpg1.4
-  'error_ip_forbidden' => 'Ezt az IP címet nem lehet letiltani, mert ez egy belső cím!<br />Ha engedélyezni akarod a belső IP-k tiltását, változtasd meg a beállítást a <a href="admin.php">Konfiguráció</a> nál (csak akkor műkődik, ha a képtár helyi hálózaton fut).', //cpg1.4
-  'lookup_ip' => 'IP-cím keresése', //cpg1.4
-  'submit' => 'Mehet!', //cpg1.4
-  'select_date' => 'Válassz dátumot', //cpg1.4
-);
+if (defined('BANNING_PHP')) {
+$lang_banning_php['title'] = 'Kitiltott felhasználók';
+$lang_banning_php['user_name'] = 'Felhasználó neve';
+$lang_banning_php['user_account'] = 'Felhasználó fiókja';
+$lang_banning_php['email_address'] = 'Email cím'; // cpg1.5
+$lang_banning_php['ip_address'] = 'IP Address';
+$lang_banning_php['expires'] = 'Lejárat'; // cpg1.5
+$lang_banning_php['expiry_date'] = 'Lejárat dátuma'; // cpg1.5
+$lang_banning_php['expired'] = 'Lejárt'; // cpg1.5
+$lang_banning_php['edit_ban'] = 'Módosítások mentése';
+$lang_banning_php['add_new'] = 'Új kitiltás';
+$lang_banning_php['add_ban'] = 'Hozzáadás';
+$lang_banning_php['error_user'] = 'Ismeretlen felhasználó';
+$lang_banning_php['error_specify'] = 'Egy nevet vagy IP címet adj meg';
+$lang_banning_php['error_ban_id'] = 'Nem megfelelő azonosító!';
+$lang_banning_php['error_admin_ban'] = 'Nem tilthatod ki saját magad!';
+$lang_banning_php['error_server_ban'] = 'A saját kiszolgálód akarod kitiltani? Hogyan is gondolhattál erre...';
+$lang_banning_php['skipping'] = 'Utasítás kihagyása.'; // cpg1.5
+$lang_banning_php['lookup_ip'] = 'IP cím megkeresése';
+$lang_banning_php['select_date'] = 'dátum kiválasztása';
+$lang_banning_php['delete_comments'] = 'Utasítás törlése'; // cpg1.5
+$lang_banning_php['current'] = 'jelenlegi'; // cpg1.5
+$lang_banning_php['all'] = 'mind'; // cpg1.5
+$lang_banning_php['none'] = 'nincs'; // cpg1.5
+$lang_banning_php['view'] = 'nézet'; // cpg1.5
+$lang_banning_php['ban_id'] = 'Kitiltás ID'; // cpg1.5
+$lang_banning_php['existing_bans'] = 'Jelenlegi tiltottak'; // cpg1.5
+$lang_banning_php['no_banning_when_bridged'] = 'You are currently running your gallery bridged to another application. Use that bridge application\'s banning mechanism instead of the one built into Coppermine. Coppermine\'s built-in banning mechanisms hardly apply when bridged.'; // cpg1.5
+$lang_banning_php['records_on_page'] = '%d bejegyzés %d oldalon'; // cpg1.5
+$lang_banning_php['ascending'] = 'növekvő'; // cpg1.5
+$lang_banning_php['descending'] = 'csökkenő'; // cpg1.5
+$lang_banning_php['sort_by'] = 'Rendezési sorrend'; // cpg1.5
+$lang_banning_php['sorted_by'] = 'rendezve'; // cpg1.5
+$lang_banning_php['ban_record_x_updated'] = 'A kitiltott bejegyzések (%s) frissültek'; // cpg1.5
+$lang_banning_php['ban_record_x_deleted'] = 'A kitiltott bejegyzések (%s) törlődtek'; // cpg1.5
+$lang_banning_php['new_ban_record_created'] = 'Új kitiltás elkészült'; // cpg1.5
+$lang_banning_php['ban_record_x_already_exists'] = 'Ez a kitiltás már létezik: %s!'; // cpg1.5
+$lang_banning_php['comment_deleted'] = '%s bejegyzés tőle: %s törölve lett'; // cpg1.5
+$lang_banning_php['comments_deleted'] = '%s bejegyzések tőle: %s törölve lettek'; // cpg1.5
+$lang_banning_php['email_field_invalid'] = 'Írj be egy létező mailcímet'; // cpg1.5
+$lang_banning_php['ip_address_field_invalid'] = 'Írj be egy valós IP címet (x.x.x.x)'; // cpg1.5
+$lang_banning_php['expiry_field_invalid'] = 'Írj be egy valós lejárati időt (YYYY-MM-DD)'; // cpg1.5
+$lang_banning_php['form_not_submit'] = 'Az űrlap nem került elküldésre - valami hiba történt, amit javítanod kell!'; // cpg1.5
+};
 
 // ------------------------------------------------------------------------- //
-// File bridgemgr.php //cpg1.4
+// File bridgemgr.php
 // ------------------------------------------------------------------------- //
-
-if (defined('BRIDGEMGR_PHP')) $lang_bridgemgr_php = array(
-  'title' => 'Kötés varázsló',
-  'warning' => 'Figyelmeztetés: a varázsló használatával személyes adatokat küldesz html űrlapokon keresztül. Csak a saját PC-den futtasd (ne nyilvános gépen, mint pl. Internet kávézó), és bizonyosodj meg arról, hogy a böngésződ kiűritette az ideiglenes tárolóját a használat után, különben mások is hozzáférhetnek az adataidhoz! ',
-  'back' => 'vissza',
-  'next' => 'következő',
-  'start_wizard' => 'A kötés varázsló indítása',
-  'finish' => 'Befejezés',
-  'hide_unused_fields' => 'nem használt mezők elrejtése (ajánlott)',
-  'clear_unused_db_fields' => 'érvénytelen adatok törlése (ajánlott)',
-  'custom_bridge_file' => 'saját kötésfájl neve (ha a kötésfájl neve:  <i>sajátfájl.inc.php</i> akkor <i>sajátfájl</i>-t írj ebbe a mezőbe)',
-  'no_action_needed' => 'Ennél a lépésnél nincs más feladatod, kattints a &quot;következő&quot;-re a folytatáshoz',
-  'reset_to_default' => 'Beállítás alapértelmezetre',
-  'choose_bbs_app' => 'Válassz alkalmazást, amit összekötni kivánsz a Coppermine-nal',
-  'support_url' => 'Támogatási információk',
-  'settings_path' => 'a saját fórum program útvonala',
-  'database_connection' => 'Adatbázis kapcsolat',
-  'database_tables' => 'Adatbázis táblák',
-  'bbs_groups' => 'Fórum csoportok',
-  'license_number' => 'Szériaszám',
-  'license_number_explanation' => 'Add meg a szériaszámot (ha létezik)',
-  'db_database_name' => 'Adatbázis neve',
-  'db_database_name_explanation' => 'Add meg a fórum által használt adatbázis nevét',
-  'db_hostname' => 'Adatbázis szerver',
-  'db_hostname_explanation' => 'Szerver neve, ahol a mySQL adatbázis található. Általában &quot;localhost&quot;',
-  'db_username' => 'Adatbázis felhasználó',
-  'db_username_explanation' => 'mySQL felhasználó, amit a fórum program használ',
-  'db_password' => 'Adatbázis jelszó',
-  'db_password_explanation' => 'A mySQL felhasználó jelszava',
-  'full_forum_url' => 'Fórum-Url',
-  'full_forum_url_explanation' => 'A fórum teljes webcíme ( http:// előtaggal együtt , pl. http://www.sajátoldal.hu/forum)',
-  'relative_path_of_forum_from_webroot' => 'Relatív útvonal a fórumhoz',
-  'relative_path_of_forum_from_webroot_explanation' => 'A fórum relatív elérési útvonala a dokumentum gyökértől (Például: ha a fórum URL-je http://www.sajátoldal.hu/forum/ , akkor írj &quot;/forum/&quot;-ot ebbe a mezőbe)',
-  'relative_path_to_config_file' => 'Relatív elérés a fórum konfigurációs fájljához',
-  'relative_path_to_config_file_explanation' => 'A fórum relatív elérési útvonala a Coppermine könyvtárától  (pl.:. &quot;../forum/&quot; ha a fórum URL-je http://www.sajátoldal.hu/forum/  és a Coppermine URL-je http://www.sajátgép.hu/gallery/)',
-  'cookie_prefix' => 'Süti előtag',
-  'cookie_prefix_explanation' => 'ez lesz a fórum süti neve',
-  'table_prefix' => 'Tábla előtag (prefix)',
-  'table_prefix_explanation' => 'Az előtagnak(prefix) meg kell egyeznie azzal, amit a fórumban használsz.',
-  'user_table' => 'Felhasználói táblák',
-  'user_table_explanation' => '(Az alapértelmezett érték jó, kivéve, ha a fórum nem az alapértelmezett telepítés)',
-  'session_table' => 'Session-tábla',
-  'session_table_explanation' => '(Az alapértelmezett érték jó, kivéve, ha a fórum nem az alapértelmezett telepítés)',
-  'group_table' => 'Csoport-tábla',
-  'group_table_explanation' => '(Az alapértelmezett érték jó, kivéve, ha a fórum nem az alapértelmezett telepítés)',
-  'group_relation_table' => 'Csoport-kapcsolat tábla',
-  'group_relation_table_explanation' => '(Az alapértelmezett érték jó, kivéve, ha a fórum nem az alapértelmezett telepítés)',
-  'group_mapping_table' => 'Csoport átfedés tábla',
-  'group_mapping_table_explanation' => '(Az alapértelmezett érték jó, kivéve, ha a fórum nem az alapértelmezett telepítés)',
-  'use_standard_groups' => 'használd az alapértelmezett fórum felhasználói csoportokat ',
-  'use_standard_groups_explanation' => 'Használd a beépített felhasználói csoportokat (ajánlott). Ez az opcíó érvényteleníti az összes egyedi felhasználói csoport beállítást. Csak akkor tilts le ezt az opciót, ha TÉNYLEG tudod mit csinálsz!',
-  'validating_group' => 'jóváhagyó csoport',
-  'validating_group_explanation' => 'Ez annak csoportnak az ID-ja a fórumban, ahol a engedély kell a felhasználóknak  (Az alapértelmezett érték jó, kivéve, ha a fórum nem az alapértelmezett telepítés)',
-  'guest_group' => 'Vendég csoport',
-  'guest_group_explanation' => 'Ez a vendég csoport ID-ja a fórumban  (Az alapértelmezett érték jó, kivéve, ha a fórum nem az alapértelmezett telepítés)',
-  'member_group' => 'Tagság csoport',
-  'member_group_explanation' => 'Normál felhasználók csoport ID-ja (Az alapértelmezett érték jó, csak akkor módosítsd, ha tudod mit csinálsz)',
-  'admin_group' => 'Admin csoport',
-  'admin_group_explanation' => 'Adminisztrátorok csoport ID-ja (Az alapértelmezett érték jó, csak akkor módosítsd, ha tudod mit csinálsz)',
-  'banned_group' => 'Kitiltottak csoport',
-  'banned_group_explanation' => 'Kitiltottak csoport ID -ja (Az alapértelmezett érték jó, csak akkor módosítsd, ha tudod mit csinálsz)',
-  'global_moderators_group' => 'Globális moderátor csoport',
-  'global_moderators_group_explanation' => 'Moderátorok csoport ID-ja (Az alapértelmezett érték jó, csak akkor módosítsd, ha tudod mit csinálsz)',
-  'special_settings' => 'Fórum specifikus beállítások',
-  'logout_flag' => 'phpBB Verzió (kilépés jelző)',
-  'logout_flag_explanation' => 'A használt fórum verziója (ez a beállítása adja meg a kilépés módját)',
-  'use_post_based_groups' => 'Kötött küldésű csoport?',
-  'logout_flag_yes' => '2.0.5, vagy újabb',
-  'logout_flag_no' => '2.0.4, vagy régebbi',
-  'use_post_based_groups_explanation' => 'Ennél a csoportnál meghatározott a beküldések száma (részletes beállítások), vagy az alap csoport (könnyű adminisztráció, ajánlott). Késöbb is megváltoztathatod.',
-  'use_post_based_groups_yes' => 'igen',
-  'use_post_based_groups_no' => 'nem',
-  'error_title' => 'Háritsd el a hibát, mielött tovább lépnél. Menj vissza az elöző képernyőre!',
-  'error_specify_bbs' => 'Meg kell adnod melyik programmal akarod összekötni a Coppermine-t',
-  'error_no_blank_name' => 'Nem hagyhatod üresen a saját kötésfájl nevét.',
-  'error_no_special_chars' => 'A kötésfájl neve nem tartalmazhat speciális karaktereket kivéve az aláhúzást (_) és a kötőjelet (-)!',
-  'error_bridge_file_not_exist' => 'A fájl %s nem található a szerveren. Ellenőrizd, ha most töltötted fel.',
-  'finalize' => 'Fórum integráció engedélyezés / tiltás',
-  'finalize_explanation' => 'Tehát a megadott beállítások rögzítve lettek az adatbázisban, de a fórum-integráció (kötés) nincs engedélyezve. Az integrációt bármikor ki/be lehet kapcsolni. Jegyezzd meg a rendszergazda nevét és jelszavát, mert szükség lehet rá a késöbbi változtatásokhoz. Ha bármi hiba adódik, akkor menj ide %s, és tiltsd le az integrációt, használd a telepítéskor megadott felhasználó nevet és jelszót.',
-  'your_bridge_settings' => 'Saját kötés beállításaid',
-  'title_enable' => 'Az integráció/kötés engedélyezése  %s -val',
-  'bridge_enable_yes' => 'engedélyez',
-  'bridge_enable_no' => 'letilt',
-  'error_must_not_be_empty' => 'nem lehet üres',
-  'error_either_be' => 'az egyiknek %s vagy %s kell lennie',
-  'error_folder_not_exist' => '%s nem létezik. Add meg a helyes adatokat %s számára',
-  'error_cookie_not_readible' => 'A Coppermine nem tudja olvasni a %s nevű sütit. Add meg a helyes adatokat %s számára , vagy menj a fórum adminisztrációs felületére és ellenőrizd, hogy a süti útvonala olvasható a Coppermin számára.',
-  'error_mandatory_field_empty' => 'A %s mező nem lehet üres - töltsd ki a megfelelő adattal.',
-  'error_no_trailing_slash' => 'A %s mezőben nem kell használni könytárlezárót (ferdevonal).',
-  'error_trailing_slash' => 'A %s mezőben kell használni könytárlezárót (ferdevonal).',
-  'error_db_connect' => 'Nem lehetséges kapcsolódni a mySQL adatbázishoz. A mySQL hibaüzenete:',
-  'error_db_name' => 'A Coppermine nem tudja létrehozni a kapcsolatot, mert nem találja az %s adatbázist. Ellenőrizd, hogy a(z) %s adatbázisnév helyes. A MYSQL hibaüzenet:',
-  'error_prefix_and_table' => '%s és',
-  'error_db_table' => 'A %s tábla nem található. Ellenőrízd, hogy  %s táblanév helyes.',
-  'recovery_title' => 'Kötés-kezelő: vész helyreállítás',
-  'recovery_explanation' => 'Ha adminisztrálni akkarod a Coppermine képtár fórum integrációját, először rendszergazdaként kell bejelentkezni. Ha nem sikerül bejelentkezned, mert nem működik megfelelően a kötés, akkor ezen az oldalon ki tudod kapcsolni az integrációt. A megadott felhasználónévvel és jelszóval nem lépsz be, csak kikapcsolod az integrációt. További infóért nézd meg a dokumentációt.',
-  'username' => 'Felhasználó',
-  'password' => 'Jelszó',
-  'disable_submit' => 'Tovább!',
-  'recovery_success_title' => 'Azonosítás elfogadva',
-  'recovery_success_content' => 'Sikerült kikapcsolni az integrációt. A képtár most önálló szerver módban van.',
-  'recovery_success_advice_login' => 'Jelentkezz be rendszergazdaként, hogy megváltoztasd a kötés beállításokat és(vagy) engedélyezd újra az integrációt',
-  'goto_login' => 'Ugrás a bejelentkezéshez',
-  'goto_bridgemgr' => 'Ugrás a kötés kezelőhöz',
-  'recovery_failure_title' => 'Azonosítás elutasítva',
-  'recovery_failure_content' => 'Rossz azonosító adatok. Az önálló szerver változat rendszergazda adatait kell megadni (általában a telepítéskor megadott adatok).',
-  'try_again' => 'próbáld újra',
-  'recovery_wait_title' => 'a várakozás idő nem telt le',
-  'recovery_wait_content' => 'Biztonsági okokból a script nem enged több probálkozást egymás után, tehát várnod kell egy keveset, míg újra megpróbálhatod az azonosítást.',
-  'wait' => 'Várakozás',
-  'create_redir_file' => 'Átirányítási fájl létrehozása (ajánlott)',
-  'create_redir_file_explanation' => 'Hogy a fórumba bejelentkezett felhasználókat átírányithasd a képtárba, szükség van erre a fájlra a fórum könyvtárban. Ha ezt az opciót kiválasztod akkor a kötés-kezelő létrehozza neked, vagy megadja a bemásolásra kész kódot, ha kézzel akarod létrehozni ',
-  'browse' => 'böngészés',
-);
+if (defined('BRIDGEMGR_PHP')) {
+$lang_bridgemgr_php['title'] = 'Átkötés kezelő';
+$lang_bridgemgr_php['back'] = 'vissza';
+$lang_bridgemgr_php['next'] = 'tovább';
+$lang_bridgemgr_php['start_wizard'] = 'Átkötés kezelő indítása';
+$lang_bridgemgr_php['finish'] = 'Befejezés';
+$lang_bridgemgr_php['no_action_needed'] = 'Ennél a lépésnél nincs más feladatod, kattints a \'tovább\' gombra a folytatáshoz.';
+$lang_bridgemgr_php['reset_to_default'] = 'Beállítás alapértelmezettre';
+$lang_bridgemgr_php['choose_bbs_app'] = 'Válassz alkalmazást, amit összekötsz a Coppermine-nal';
+$lang_bridgemgr_php['support_url'] = 'Támogatási információk';
+$lang_bridgemgr_php['settings_path'] = 'az átkötéshez használt másik program útvonala';
+$lang_bridgemgr_php['full_forum_url'] = 'Az átkötéshez használt alkalmazás webcíme';
+$lang_bridgemgr_php['relative_path_of_forum_from_webroot'] = 'Abszolút átkötési útvonal az alkalmazáshoz';
+$lang_bridgemgr_php['relative_path_to_config_file'] = 'Relatív útvonal az átkötendő alkalmazáshoz';
+$lang_bridgemgr_php['cookie_prefix'] = 'Cookie előtag';
+$lang_bridgemgr_php['special_settings'] = 'átkötendő alkalmazás speciális paraméterei';
+$lang_bridgemgr_php['use_post_based_groups'] = 'Használsz átkötést speciális csoportokhoz?';
+$lang_bridgemgr_php['use_post_based_groups_yes'] = 'igen';
+$lang_bridgemgr_php['use_post_based_groups_no'] = 'nem';
+$lang_bridgemgr_php['error_title'] = 'Háritsd el a hibát, mielött tovább lépnél. Menj vissza az elöző képernyőre!';
+$lang_bridgemgr_php['error_specify_bbs'] = 'Meg kell adnod melyik programmal akarod összekötni a Coppermine-t';
+$lang_bridgemgr_php['finalize'] = 'átkötés engedélyezése/letiltása';
+$lang_bridgemgr_php['finalize_explanation'] = 'Tehát a megadott beállítások rögzítve lettek az adatbázisban, de az átkötés nincs engedélyezve. Az integrációt bármikor ki/be lehet kapcsolni. Jegyezd meg a rendszergazda nevét és jelszavát, mert szükség lehet rá a késöbbi változtatásokhoz. Ha bármi hiba adódik, akkor menj ide %s, és tiltsd le az integrációt, használd a telepítéskor megadott felhasználó nevet és jelszót.';
+$lang_bridgemgr_php['your_bridge_settings'] = 'Átkötés beállításaid';
+$lang_bridgemgr_php['title_enable'] = 'Átkötés emgedélyezése ehhez: %s';
+$lang_bridgemgr_php['bridge_enable_yes'] = 'engedélyezés';
+$lang_bridgemgr_php['bridge_enable_no'] = 'letiltás';
+$lang_bridgemgr_php['error_must_not_be_empty'] = 'ne legyen üres';
+$lang_bridgemgr_php['error_either_be'] = 'csak legyen ez: %s vagy %s';
+$lang_bridgemgr_php['error_folder_not_exist'] = '%s nem létezik. A helyes érték, amit beírtál: %s';
+$lang_bridgemgr_php['error_cookie_not_readible'] = 'A Coppermine nem tudja olvasni a %s nevű sütit. Add meg a helyes adatokat %s számára , vagy menj a fórum adminisztrációs felületére és ellenőrizd, hogy a süti útvonala olvasható a Coppermin számára.';
+$lang_bridgemgr_php['error_mandatory_field_empty'] = 'Ezt a mezőt nem hagyhatod üresen: %s - töltsd ki megfelelően.';
+$lang_bridgemgr_php['error_no_trailing_slash'] = 'Nincs perjel ebben a mezőben: %s.';
+$lang_bridgemgr_php['error_trailing_slash'] = 'Legyen egy perjel ebben a mezőben %s.';
+$lang_bridgemgr_php['error_prefix_and_table'] = '%s és ';
+$lang_bridgemgr_php['recovery_title'] = 'Átkötés kezelő: vészvisszaállítás';
+$lang_bridgemgr_php['recovery_explanation'] = 'Ha adminisztrálni akkarod a Coppermine képtár fórum integrációját, először rendszergazdaként kell bejelentkezni. Ha nem sikerül bejelentkezned, mert nem működik megfelelően a kötés, akkor ezen az oldalon ki tudod kapcsolni az integrációt. A megadott felhasználónévvel és jelszóval nem lépsz be, csak kikapcsolod az integrációt. További infóért nézd meg a dokumentációt.';
+$lang_bridgemgr_php['username'] = 'Felhasználónév';
+$lang_bridgemgr_php['password'] = 'Jelszó';
+$lang_bridgemgr_php['disable_submit'] = 'küldés';
+$lang_bridgemgr_php['recovery_success_title'] = 'Azonosítás megtörtént';
+$lang_bridgemgr_php['recovery_success_content'] = 'Sikerült kikapcsolni az integrációt. A képtár most önálló szerver módban van.';
+$lang_bridgemgr_php['recovery_success_advice_login'] = 'Jelentkezz be rendszergazdaként, hogy megváltoztasd a kötés beállításokat és(vagy) engedélyezd újra az integrációt';
+$lang_bridgemgr_php['goto_login'] = 'Vissza a belépő oldalra';
+$lang_bridgemgr_php['goto_bridgemgr'] = 'Vissza az Átkötés kezelőhöz';
+$lang_bridgemgr_php['recovery_failure_title'] = 'Azonosítás sikertelen';
+$lang_bridgemgr_php['recovery_failure_content'] = 'Rossz azonosító adatok. Az önálló szerver változat rendszergazda adatait kell megadni (általában a telepítéskor megadott adatok).';
+$lang_bridgemgr_php['try_again'] = 'próbáld újra';
+$lang_bridgemgr_php['recovery_wait_title'] = 'Hátralévő idő';
+$lang_bridgemgr_php['recovery_wait_content'] = 'Biztonsági okokból a script nem enged több probálkozást egymás után, tehát várnod kell egy keveset, míg újra megpróbálhatod az azonosítást.';
+$lang_bridgemgr_php['wait'] = 'várj';
+$lang_bridgemgr_php['browse'] = 'tallózás';
+}
 
 // ------------------------------------------------------------------------- //
-// File calendar.php //cpg1.4
+// File calendar.php
 // ------------------------------------------------------------------------- //
-
-if (defined('CALENDAR_PHP')) $lang_calendar_php = array(
-  'title' => 'Naptár', //cpg1.4
-  'close' => 'Becsuk', //cpg1.4
-  'clear_date' => 'Dátum törlése', //cpg1.4
-);
+if (defined('CALENDAR_PHP')) {
+$lang_calendar_php['title'] = 'Naptár';
+$lang_calendar_php['clear_date'] = 'dátum törlése';
+$lang_calendar_php['files'] = 'fájlok'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
 // File catmgr.php
 // ------------------------------------------------------------------------- //
-
-if (defined('CATMGR_PHP')) $lang_catmgr_php = array(
-  'miss_param' => 'Paraméter szükséges \'%s\' művelet nincs végrehajtva',
-  'unknown_cat' => 'A választott kategória nem létezik az adatbázisban',
-  'usergal_cat_ro' => 'A felhasználói képtár kategória nem törölhető!',
-  'manage_cat' => 'Kategóriák kezelése',
-  'confirm_delete' => 'Biztos, hogy törölni akarod ezt a kategóriát?', //js-alert
-  'category' => 'Kategória',
-  'operations' => 'Műveletek',
-  'move_into' => 'Átmozgatás',
-  'update_create' => 'Kategória frissítés/létrehozás',
-  'parent_cat' => 'Szülő kategória',
-  'cat_title' => 'Kategória címe',
-  'cat_thumb' => 'Kategória áttekintő',
-  'cat_desc' => 'Kategória leírás',
-  'categories_alpha_sort' => 'Kategóriák névsorba rendezése (vagy saját rendezés)', //cpg1.4
-  'save_cfg' => 'Beállítások elmentése', //cpg1.4
-);
+if (defined('CATMGR_PHP')) {
+$lang_catmgr_php['miss_param'] = 'Paraméter szükséges \'%s\' művelet nincs végrehajtva!';
+$lang_catmgr_php['unknown_cat'] = 'A választott kategória nem létezik az adatbázisban';
+$lang_catmgr_php['usergal_cat_ro'] = 'A felhasználói képtár kategória nem törölhető!';
+$lang_catmgr_php['manage_cat'] = 'Kategóriák kezelése';
+$lang_catmgr_php['confirm_delete'] = 'Biztos, hogy TÖRÖLNI akarod ezt a kategóriát'; // js-alert
+$lang_catmgr_php['category'] = 'Kategóriák'; // cpg1.5
+$lang_catmgr_php['operations'] = 'Műveletek';
+$lang_catmgr_php['move_into'] = 'Áthelyezés ide';
+$lang_catmgr_php['update_create'] = 'Kategória frissítése/létrehozása';
+$lang_catmgr_php['parent_cat'] = 'Szülő kategória';
+$lang_catmgr_php['cat_title'] = 'Kategória címe';
+$lang_catmgr_php['cat_thumb'] = 'Kategória áttekintő';
+$lang_catmgr_php['cat_desc'] = 'Kategória leírás';
+$lang_catmgr_php['categories_alpha_sort'] = 'Kategóriák névsorba rendezése (vagy saját rendezés)';
+$lang_catmgr_php['save_cfg'] = 'Beállítások elmentése';
+$lang_catmgr_php['no_category'] = '* Nincs kategória *'; // cpg1.5
+$lang_catmgr_php['group_create_alb'] = 'A csoport(ok) hozhatnak létre albumokat ebben a kategóriában'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
-// File admin.php //cpg1.4
+// File contact.php
 // ------------------------------------------------------------------------- //
+if (defined('CONTACT_PHP')) {
+$lang_contact_php['title'] = 'Kapcsolat'; // cpg1.5
+$lang_contact_php['your_name'] = 'Neved'; // cpg1.5
+$lang_contact_php['your_email'] = 'Mailcímed'; // cpg1.5
+$lang_contact_php['subject'] = 'Tárgy'; // cpg1.5
+$lang_contact_php['your_message'] = 'Üzeneted'; // cpg1.5
+$lang_contact_php['name_field_mandatory'] = 'Kérlek, add meg a neved'; // cpg1.5 // js-alert
+$lang_contact_php['name_field_invalid'] = 'Írd be a neved'; // cpg1.5 // js-alert
+$lang_contact_php['email_field_mandatory'] = 'Kérlek, add meg a mailcímed'; // cpg1.5 // js-alert
+$lang_contact_php['email_field_invalid'] = 'Egy valódi mailcímet adj meg'; // cpg1.5 // js-alert
+$lang_contact_php['subject_field_mandatory'] = 'Kérlek, töltsd ki a Tárgy mezőt'; // cpg1.5 // js-alert
+$lang_contact_php['message_field_mandatory'] = 'Kérlek, írj be üzenetet'; // cpg1.5 // js-alert
+$lang_contact_php['confirmation'] = 'Megerősítés'; // cpg1.5
+$lang_contact_php['email_headline'] = 'Az e-mailt elküldték ekkor: %s,<br />erről a helyről: %s,<br />erről az IP címről %s'; // cpg1.5
+$lang_contact_php['registered_user'] = 'regisztrált felhasználó'; // cpg1.5
+$lang_contact_php['guest'] = 'vendég'; // cpg1.5
+$lang_contact_php['unknown'] = 'ismeretlen'; // cpg1.5
+$lang_contact_php['user_info'] = 'Egy %s: %s<br />erről a mailcímről: %s<br />ezt írta:<br />'; // cpg1.5
+$lang_contact_php['failed_sending_email'] = 'A mail elküldése nem sikerült. Próbáld meg később.'; // cpg1.5
+$lang_contact_php['email_sent'] = 'A mailt elküldtük.'; // cpg1.5
+}
 
-if (defined('ADMIN_PHP')) $lang_admin_php = array(
-  'title' => 'Képtár konfiguráció', //cpg1.4
-  'manage_exif' => 'Exif (cserélhető képformátum) képernyő kezelése', //cpg1.4
-  'manage_plugins' => 'Beépülők kezelése', //cpg1.4
-  'manage_keyword' => 'Kulcsszavak kezelése', //cpg1.4
-  'restore_cfg' => 'Gyári beállítások visszaállítása',
-  'save_cfg' => 'Új konfiguráció mentése',
-  'notes' => 'Megjegyzések',
-  'info' => 'Információ',
-  'upd_success' => 'Coppermine konfiguráció frissítve.',
-  'restore_success' => 'Coppermine alapértelmezett konfiguráció visszaállítva.',
-  'name_a' => 'Név szerint növekvő',
-  'name_d' => 'Név szerint csökkenő',
-  'title_a' => 'Cím szerint növekvő',
-  'title_d' => 'Cím szerint csökkenő',
-  'date_a' => 'Dátum szerint növekvő',
-  'date_d' => 'Dátum szerint csökkenő',
-  'pos_a' => 'Pozíció szerint növekvő', //cpg1.4
-  'pos_d' => 'Pozíció szerint csökkenő', //cpg1.4
-  'th_any' => 'Legnagyobb nézet',
-  'th_ht' => 'Magasság',
-  'th_wd' => 'Szélesség',
-  'label' => 'Címke',
-  'item' => 'Elem',
-  'debug_everyone' => 'Mindenki',
-  'debug_admin' => 'Csak rendszergazda',
-  'no_logs'=> 'Ki', //cpg1.4
-  'log_normal'=> 'Normál', //cpg1.4
-  'log_all' => 'Minden', //cpg1.4
-  'view_logs' => 'Log megtekintése', //cpg1.4
-  'click_expand' => 'Kattints a szekció nevére a kibontáshoz', //cpg1.4
-  'expand_all' => 'Összes kibontása', //cpg1.4
-  'notice1' => '(*) Ezek a beállítások nem változnak, ha már vannak fájlok az adatbázisban.', //cpg1.4 - (relocated)
-  'notice2' => '(**) A változtatások csak az ezután feltöltött fájlokra érvényesek, a régebbi fájlokra nem. Ha a már létező fájloknál is érvényre akarod juttani, menj a &quot;<a href="util.php">Rendszergazda eszközök</a> > Képek átméretezése&quot; menübe.', //cpg1.4 - (relocated)
-  'notice3' => '(***) Minden log fájl angol nyelvű.', //cpg1.4 - (relocated)
-  'bbs_disabled' => 'Funkció letiltva, ha az integráció használatban van', //cpg1.4
-  'auto_resize_everyone' => 'Mindenki', //cpg1.4
-  'auto_resize_user' => 'Csak felhasználók', //cpg1.4
-  'ascending' => 'Növekvő', //cpg1.4
-  'descending' => 'Csökkenő', //cpg1.4
-);
-
-if (defined('ADMIN_PHP')) $lang_admin_data = array(
-  'Általános beállítások',
-  array('Képtár neve', 'gallery_name', 0, 'f=index.htm&amp;as=admin_general_name&amp;ae=admin_general_name_end'), //cpg1.4
-  array('Képtár leírása', 'gallery_description', 0, 'f=index.htm&amp;as=admin_general_description&amp;ae=admin_general_description_end'), //cpg1.4
-  array('Képtár rendszergazda email címe', 'gallery_admin_email', 0, 'f=index.htm&amp;as=admin_general_email&amp;ae=admin_general_email_end'), //cpg1.4
-  array('Coppermine képtár URL címe (elég a könyvtár címe, ne használj \'index.php\' végű URL-t)', 'ecards_more_pic_target', 0, 'f=index.htm&amp;as=admin_general_coppermine-url&amp;ae=admin_general_coppermine-url_end'), //cpg1.4
-  array('Honlapod címe', 'home_target', 0, 'f=index.htm&amp;as=admin_general_home-url&amp;ae=admin_general_home-url_end'), //cpg1.4
-  array('Kedvencek zippelt letöltésének engedélyezése', 'enable_zipdownload', 1, 'f=index.htm&amp;as=admin_general_zip-download&amp;ae=admin_general_zip-download_end'), //cpg1.4
-  array('Az időzóna eltérése a Greenwich-i középidőtől (jelenlegi idő: ' . localised_date(-1, $comment_date_fmt) . ')','time_offset',0, 'f=index.htm&amp;as=admin_general_time-offset&amp;ae=admin_general_time-offset_end&amp;top=1'), //cpg1.4
-  array('Titkosított jelszavak engedélyezése (nem lehet visszavonni)','enable_encrypted_passwords',1, 'f=index.htm&amp;as=admin_general_encrypt_password_start&amp;ae=admin_general_encrypt_password_end&amp;top=1'), // cpg 1.4
-  array('Súgó ikonos engedélyezése (a súgó csak angolul érhető el.)','enable_help',9, 'f=index.htm&amp;as=admin_general_help&amp;ae=admin_general_help_end'), //cpg1.4
-  array('Kulcsszó kiválasztás keresés engedélyezése','clickable_keyword_search',14, 'f=index.htm&amp;as=admin_general_keywords_start&amp;ae=admin_general_keywords_end'), //cpg1.4
-  array('Beépülők engedélyezése', 'enable_plugins', 12, 'f=index.htm&amp;as=admin_general_enable-plugins&amp;ae=admin_general_enable-plugins_end'),  //cpg1.4
-  array('Belső IP címek tiltásának engedélyezése ', 'ban_private_ip', 1,  'f=index.htm&amp;as=admin_general_private-ip&amp;ae=admin_general_private-ip_end'), //cpg1.4
-  array('Böngészhető kötegelt hozzáadás felület', 'browse_batch_add', 1, 'f=index.htm&amp;as=admin_general_browsable_batch_add&amp;ae=admin_general_browsable_batch_add_end'), //cpg1.4
-
-  'Nyelv &amp; karakterkészlet beállítás',
-  array('Nyelv', 'lang', 5, 'f=index.htm&amp;as=admin_language_language&amp;ae=admin_language_language_end'), //cpg1.4
-  array('Angol felirat használata, ha nincs lefordítva?', 'language_fallback', 1, 'f=index.htm&amp;as=admin_language_fallback&amp;ae=admin_language_fallback_end'), //cpg1.4
-  array('Karakter kódolás', 'charset', 4, 'f=index.htm&amp;as=admin_language_charset&amp;ae=admin_language_charset_end'), //cpg1.4
-  array('Mutassa a nyelvek listáját', 'language_list', 1, 'f=index.htm&amp;as=admin_language_list&amp;ae=admin_language_list_end'), //cpg1.4
-  array('Mutassa a nyelvek zászlóját', 'language_flags', 8, 'f=index.htm&amp;as=admin_language_flags&amp;ae=admin_language_flags_end&amp;top=1'), //cpg1.4
-  array('Mutassa az alapértelmezett nyelvet a nyelvi menűben', 'language_reset', 1, 'f=index.htm&amp;as=admin_language_reset&amp;ae=admin_language_reset_end&amp;top=1'), //cpg1.4
-  //array('Mutassa az elöző/következő -t a fülecskés oldalakon', 'previous_next_tab', 1), //cpg1.4
-
-  'Téma beállítások',
-  array('Témák', 'theme', 6, 'f=index.htm&amp;as=admin_theme_theme&amp;ae=admin_theme_theme_end'), //cpg1.4
-  array('Mutassa a téma választékot', 'theme_list', 1, 'f=index.htm&amp;as=admin_theme_theme_list&amp;ae=admin_theme_theme_list_end'), //cpg1.4
-  array('Mutassa az alapértelmezett témát a téma választó menüben', 'theme_reset', 1, 'f=index.htm&amp;as=admin_theme_theme_reset&amp;ae=admin_theme_theme_reset_end'), //cpg1.4
-  array('Mutassa a GYIK-ot', 'display_faq', 1, 'f=index.htm&amp;as=admin_theme_faq&amp;ae=admin_theme_faq_end'), //cpg1.4
-  array('Saját menü neve', 'custom_lnk_name', 0,'f=index.htm&amp;as=admin_theme_custom_lnk_name&amp;ae=admin_theme_custom_lnk_name_end'), //cpg1.4
-  array('Saját menü URL címe', 'custom_lnk_url', 0,'f=index.htm&amp;as=admin_language_custom_lnk_url&amp;ae=admin_language_custom_lnk_url_end'), //cpg1.4
-  array('BBCode segítség megjelenítése', 'show_bbcode_help', 1, 'f=index.htm&amp;as=admin_theme_bbcode&amp;ae=admin_theme_bbcode_end&amp;top=1'), //cpg1.4
-  array('Mutassa az XHTML vagy CSS validitásra utaló lábrészt a témában?','vanity_block',1, 'f=index.htm&amp;as=vanity_block&amp;ae=vanity_block_end'), //cpg1.4
-  array('Saját fejléc helye', 'custom_header_path', 0, 'f=index.htm&amp;as=admin_theme_include_path_start&amp;ae=admin_theme_include_path_end'), //cpg1.4
-  array('Saját lábléc helye', 'custom_footer_path', 0, 'f=index.htm&amp;as=admin_theme_include_path_start&amp;ae=admin_theme_include_path_end'), //cpg1.4
-
-  'Képalbum lista nézet',
-  array('A fő tábla szélessége (képpontban vagy % -ban)', 'main_table_width', 0, 'f=index.htm&amp;as=admin_album_table-width&amp;ae=admin_album_table-width_end'), //cpg1.4
-  array('Hány szintig mutassa a kategóriákat', 'subcat_level', 0, 'f=index.htm&amp;as=admin_album_category-levels&amp;ae=admin_album_category-levels_end'), //cpg1.4
-  array('Oldalanként hány képalbum jelenjen meg', 'albums_per_page', 0, 'f=index.htm&amp;as=admin_album_number&amp;ae=admin_album_number_end'), //cpg1.4
-  array('A képalbum lista hány oszlopból álljon', 'album_list_cols', 0, 'f=index.htm&amp;as=admin_album_columns&amp;ae=admin_album_columns_end'), //cpg1.4
-  array('Indexképek mérete képpontban', 'alb_list_thumb_size', 0, 'f=index.htm&amp;as=admin_album_thumbnail-size&amp;ae=admin_album_thumbnail-size_end'), //cpg1.4
-  array('A főoldal tartalma', 'main_page_layout', 0, 'f=index.htm&amp;as=admin_album_list_content&amp;ae=admin_album_list_content_end'), //cpg1.4
-  array('Mutassa az első szintű képalbum indexképet a kategóriában','first_level',1, 'f=index.htm&amp;as=admin_album_first-level_thumbs&amp;ae=admin_album_first-level_thumbs_end'), //cpg1.4
-  array('Kategóriák névsorba rendezése (esteleg saját rendezés használata)','categories_alpha_sort',1, 'f=index.htm&amp;as=admin_album_list_alphasort_start&amp;ae=admin_album_list_alphasort_end'), //cpg1.4
-  array('Mutassa a kapcsolt fájlok számát','link_pic_count',1, 'f=index.htm&amp;as=admin_album_linked_files_start&amp;ae=admin_album_linked_files_end'), //cpg1.4
-
-  'Indexkép nézet',
-  array('Oszlopok száma az indexkép oldalon', 'thumbcols', 0, 'f=index.htm&amp;as=admin_thumbnail_columns&amp;ae=admin_thumbnail_columns_end'), //cpg1.4
-  array('Sorok száma az indexkép oldalon', 'thumbrows', 0, 'f=index.htm&amp;as=admin_thumbnail_rows&amp;ae=admin_thumbnail_rows_end'), //cpg1.4
-  array('A fülek maximális száma', 'max_tabs', 10, 'f=index.htm&amp;as=admin_thumbnail_tabs&amp;ae=admin_thumbnail_tabs_end'), //cpg1.4
-  array('A képek feliratának megjelenítése (a címén kivül) az indexkép alatt', 'caption_in_thumbview', 1, 'f=index.htm&amp;as=admin_thumbnail_display_caption&amp;ae=admin_thumbnail_display_caption_end'), //cpg1.4
-  array('A megtekintések számának megjelenítése az indexkép alatt', 'views_in_thumbview', 1, 'f=index.htm&amp;as=admin_thumbnail_display_views&amp;ae=admin_thumbnail_display_views_end'), //cpg1.4
-  array('A hozászólások számának megjelenítése az indexkép alatt', 'display_comment_count', 1, 'f=index.htm&amp;as=admin_thumbnail_display_comments&amp;ae=admin_thumbnail_display_comments_end'), //cpg1.4
-  array('A feltöltő nevének megjelenítése az indexkép alatt', 'display_uploader', 1, 'f=index.htm&amp;as=admin_thumbnail_display_uploader&amp;ae=admin_thumbnail_display_uploader_end'), //cpg1.4
-  //array('A deltöltő Rendszergazda nevének megjelenítése az indexkép alatt ', 'display_admin_uploader', 1, 'f=index.htm&amp;as=admin_thumbnail_display_admin_uploader&amp;ae=admin_thumbnail_display_admin_uploader_end'), //cpg1.4
-  array('A fájl név megjelenítése az indexkép alatt', 'display_filename', 1, 'f=index.htm&amp;as=admin_thumbnail_display_filename&amp;ae=admin_thumbnail_display_filename_end'), //cpg1.4
-  //array('A képalbum elnevezésének megjelenítése', 'alb_desc_thumb', 1, 'f=index.htm&amp;as=admin_thumbnail_display_description&amp;ae=admin_thumbnail_display_description_end'), //cpg1.4
-  array('A képek alapértelmezett sorrendje', 'default_sort_order', 3, 'f=index.htm&amp;as=admin_thumbnail_default_sortorder&amp;ae=admin_thumbnail_default_sortorder_end'), //cpg1.4
-  array('A szükséges szavazatok száma a megjelenéshez  \'A legtöbb szavazatot kapottak\'-listájában', 'min_votes_for_rating', 0, 'f=index.htm&amp;as=admin_thumbnail_minimum_votes&amp;ae=admin_thumbnail_minimum_votes_end'), //cpg1.4
-
-  'Kép nézet', //cpg1.4
-  array('A tábla szélessége (képpontban vagy %-ban)', 'picture_table_width', 0, 'f=index.htm&amp;as=admin_image_comment_table-width&amp;ae=admin_image_comment_table-width_end'), //cpg1.4
-  array('A kép információ megjelenése alapértelmezetten', 'display_pic_info', 1, 'f=index.htm&amp;as=admin_image_comment_info_visible&amp;ae=admin_image_comment_info_visible_end'), //cpg1.4
-  array('A kép leírás maximális hossza', 'max_img_desc_length', 0, 'f=index.htm&amp;as=admin_image_comment_descr_length&amp;ae=admin_image_comment_descr_length_end'), //cpg1.4
-  array('A szavak maximális hossza', 'max_com_wlength', 0, 'f=index.htm&amp;as=admin_image_comment_chars_per_word&amp;ae=admin_image_comment_chars_per_word_end'), //cpg1.4
-  array('Filmszalag megjelenítése', 'display_film_strip', 1, 'f=index.htm&amp;as=admin_image_comment_filmstrip_toggle&amp;ae=admin_image_comment_filmstrip_toggle_end'), //cpg1.4
-  array('Fájlnév megjelenítése a filmszalag alatt', 'display_film_strip_filename', 1, 'f=index.htm&amp;as=admin_image_comment_display_film_strip_filename&amp;ae=admin_image_comment_display_film_strip_filename_end'), //cpg1.4
-  array('Elemek száma a filmszalagban', 'max_film_strip_items', 0, 'f=index.htm&amp;as=admin_image_comment_filmstrip_number&amp;ae=admin_image_comment_filmstrip_number_end'), //cpg1.4
-  array('Diavetítés időzítése ezredmásodpercben (1 mp = 1000 ezredmásodperc)', 'slideshow_interval', 0, 'f=index.htm&amp;as=admin_image_comment_slideshow_interval&amp;ae=admin_image_comment_slideshow_interval_end'), //cpg1.4
-
-  'Hozzászólás beállítások', //cpg1.4
-  array('Csúnya szavak kiszűrése', 'filter_bad_words', 1, 'f=index.htm&amp;as=admin_image_comment_bad_words&amp;ae=admin_image_comment_bad_words_end'), //cpg1.4
-  array('Szmájlik engedélyezése a hozzászólásokban', 'enable_smilies', 1, 'f=index.htm&amp;as=admin_image_comment_smilies&amp;ae=admin_image_comment_smilies_end'), //cpg1.4
-  array('Több folyamatos hozzászólás enegedélyezése egy képhez ugyanazon felhasználótól (elárasztás -flood- védelem kikapcsolása)', 'disable_comment_flood_protect', 1, 'f=index.htm&amp;as=admin_image_comment_flood&amp;ae=admin_image_comment_flood_end'), //cpg1.4
-  array('A hozzászólás sorainak maximumma', 'max_com_lines', 0, 'f=index.htm&amp;as=admin_image_comment_lines&amp;ae=admin_image_comment_lines_end'), //cpg1.4
-  array('A hozzászólás maximális hossza', 'max_com_size', 0, 'f=index.htm&amp;as=admin_image_comment_length&amp;ae=admin_image_comment_length_end'), //cpg1.4
-  array('A rendszergazda értesítése a hozzászólásról', 'email_comment_notification', 1, 'f=index.htm&amp;as=admin_image_comment_admin_notify&amp;ae=admin_image_comment_admin_notify_end'), //cpg1.4
-  array('Hozzászólások sorrendje', 'comments_sort_descending', 17, 'f=index.htm&amp;as=admin_comment_sort_start&amp;ae=admin_comment_sort_end'), //cpg1.4
-  array('Előtag a névtelen hozzászólások számára ', 'comments_anon_pfx', 0, 'f=index.htm&amp;as=comments_anon_pfx&amp;ae=comments_anon_pfx_end'), //cpg1.4
-
-  'Kép és indexkép beállítások',
-  array('A jpeg képek minősége', 'jpeg_qual', 0, 'f=index.htm&amp;as=admin_picture_thumbnail_jpeg_quality&amp;ae=admin_picture_thumbnail_jpeg_quality_end'), //cpg1.4
-  array('Az indexkép maximális mérete <a href="#notice2" class="clickable_option">**</a>', 'thumb_width', 0, 'f=index.htm&amp;as=admin_picture_thumbnail_max-dimension&amp;ae=admin_picture_thumbnail_max-dimension_end'), //cpg1.4
-  array('Méretezés (szélesség vagy magasság vagy legnagyobb nézet)<a href="#notice1" class="clickable_option">**</a>', 'thumb_use', 7, 'f=index.htm&amp;as=admin_picture_thumbnail_use-dimension&amp;ae=admin_picture_thumbnail_use-dimension_end'), //cpg1.4
-  array('Közbenső kép készítése','make_intermediate',1, 'f=index.htm&amp;as=admin_picture_thumbnail_intermediate_toggle&amp;ae=admin_picture_thumbnail_intermediate_toggle_end'), //cpg1.4
-  array('A közbenső kép vagy videó legnagyobb szélessége vagy magassága<a href="#notice2" class="clickable_option">**</a>', 'picture_width', 0, 'f=index.htm&amp;as=admin_picture_thumbnail_intermediate_dimension&amp;ae=admin_picture_thumbnail_intermediate_dimension_end'), //cpg1.4
-  array('A feltölhető fájl maximális mérete (kB)', 'max_upl_size', 0, 'f=index.htm&amp;as=admin_picture_thumbnail_max_upload_size&amp;ae=admin_picture_thumbnail_max_upload_size_end'), //cpg1.4
-  array('A feltölthető kép vagy videó legnagyobb szélessége vagy magassága (képpontban)', 'max_upl_width_height', 0, 'f=index.htm&amp;as=admin_picture_thumbnail_max_upload_dimension&amp;ae=admin_picture_thumbnail_max_upload_dimension_end'), //cpg1.4
-  array('Automatikus átméretezés, ha nagyobb mint a megengedett méret', 'auto_resize', 16, 'f=index.htm&amp;as=admin_picture_thumbnail_auto-resize&amp;ae=admin_picture_thumbnail_auto-resize_end'), //cpg1.4
-
-  'Kép és indexkép haladó beállítások',
-  array('Lehetséges magán képalbum (megjegyzés: ha átváltasz \'igen\' -ből \'nem\' -be az <i>összes</i> magán képalbum nyilvános lesz)', 'allow_private_albums', 1, 'f=index.htm&amp;as=admin_picture_thumb_advanced_private_toggle&amp;ae=admin_picture_thumb_advanced_private_toggle_end'), //cpg1.4
-  array('Magán album ikon megjelenítése látogatóknak?','show_private',1, 'f=index.htm&amp;as=admin_picture_thumb_advanced_private_icon_show&amp;ae=admin_picture_thumb_advanced_private_icon_show_end'), //cpg1.4
-  array('Nem használható karakterek a fájlnévben', 'forbiden_fname_char',0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_filename_forbidden_chars&amp;ae=admin_picture_thumb_advanced_filename_forbidden_chars_end'), //cpg1.4
-  //array('Elfogadott fájl kiterjesztések', 'allowed_file_extensions',0, 'f=index.htm&amp;as=&amp;ae=_end'), //cpg1.4
-  array('Megengedett kép formátumok', 'allowed_img_types',0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_pic_extensions&amp;ae=admin_picture_thumb_advanced_pic_extensions_end'), //cpg1.4
-  array('Megengedett videó formátumok', 'allowed_mov_types',0, 'f=index.htm&amp;as=admin_thumbs_advanced_movie&amp;ae=admin_thumbs_advanced_movie_end'), //cpg1.4
-  array('Automatikus film lejátszás', 'media_autostart',1, 'f=index.htm&amp;as=admin_movie_autoplay&amp;ae=admin_movie_autoplay_end'), //cpg1.4
-  array('Megengedett audió formátumok', 'allowed_snd_types',0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_audio_extensions&amp;ae=admin_picture_thumb_advanced_audio_extensions_end'), //cpg1.4
-  array('Megengedett dokumentum formátumok', 'allowed_doc_types',0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_doc_extensions&amp;ae=admin_picture_thumb_advanced_doc_extensions_end'), //cpg1.4
-  array('Képátméretezési eljárások','thumb_method',2, 'f=index.htm&amp;as=admin_picture_thumb_advanced_resize_method&amp;ae=admin_picture_thumb_advanced_resize_method_end'), //cpg1.4
-  array('Az ImageMagick program \'convert\' eszköz elérési útvonala (pl.: /usr/bin/X11/)', 'impath', 0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_im_path&amp;ae=admin_picture_thumb_advanced_im_path_end'), //cpg1.4
-  //array('Megengedett kép formátumok (csak az ImageMagick számára)', 'allowed_img_types',0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_allowed_imagetypes&amp;ae=admin_picture_thumb_advanced_allowed_imagetypes_end'), //cpg1.4
-  array('Parancssori opciók az ImageMagick számára', 'im_options', 0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_im_commandline&amp;ae=admin_picture_thumb_advanced_im_commandline_end'), //cpg1.4
-  array('EXIF adat olvasásása jpeg fájlban', 'read_exif_data', 13, 'f=index.htm&amp;as=admin_picture_thumb_advanced_exif&amp;ae=admin_picture_thumb_advanced_exif_end'), //cpg1.4
-  array('IPTC adat olvasásása jpeg fájlban', 'read_iptc_data', 1, 'f=index.htm&amp;as=admin_picture_thumb_advanced_iptc&amp;ae=admin_picture_thumb_advanced_iptc_end'), //cpg1.4
-  array('Album könyvtár <a href="#notice1" class="clickable_option">*</a>', 'fullpath', 0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_albums_dir&amp;ae=admin_picture_thumb_advanced_albums_dir_end'), //cpg1.4
-  array('A felhasználói fájlok könyvtára <a href="#notice1" class="clickable_option">*</a>', 'userpics', 0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_userpics_dir&amp;ae=admin_picture_thumb_advanced_userpics_dir_end'), //cpg1.4
-  array('Közbenső képek előtagja <a href="#notice1" class="clickable_option">*</a>', 'normal_pfx', 0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_intermediate_prefix&amp;ae=admin_picture_thumb_advanced_intermediate_prefix_end'), //cpg1.4
-  array('Indexképek előtagja <a href="#notice1" class="clickable_option">*</a>', 'thumb_pfx', 0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_thumbs_prefix&amp;ae=admin_picture_thumb_advanced_thumbs_prefix_end'), //cpg1.4
-  array('Alapértelmezett mód a könyvtárak számára', 'default_dir_mode', 0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_chmod_folder&amp;ae=admin_picture_thumb_advanced_chmod_folder_end'), //cpg1.4
-  array('Alapértelmezett mód a fájlok számára', 'default_file_mode', 0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_chmod_files&amp;ae=admin_picture_thumb_advanced_chmod_files_end'), //cpg1.4
-
-  'Felhasználó beállítások',
-  array('Új felhasználó regisztrációjának engedélyezése', 'allow_user_registration', 1, 'f=index.htm&amp;as=admin_allow_registration&amp;ae=admin_allow_registration_end'), //cpg1.4
-  array('Vendég hozzáférés engedélyezése', 'allow_unlogged_access', 1, 'f=index.htm&amp;as=admin_allow_unlogged_access&amp;ae=admin_allow_unlogged_access_end'), //cpg1.4
-  array('Regisztráció igazolása email-ben', 'reg_requires_valid_email', 1, 'f=index.htm&amp;as=admin_registration_verify&amp;ae=admin_registration_verify_end'), //cpg1.4
-  array('Rendszergazda értesítése email-ben a regisztrációról', 'reg_notify_admin_email', 1, 'f=index.htm&amp;as=admin_registration_notify&amp;ae=admin_registration_notify_end'), //cpg1.4
-  array('A regisztráció rendszergazdai jóváhagyása', 'admin_activation', 1, 'f=index.htm&amp;as=admin_activation&amp;ae=admin_activation_end'),  //cpg1.4
-  array('2 felhasználó azonos email címének engedélyezése', 'allow_duplicate_emails_addr', 1, 'f=index.htm&amp;as=admin_allow_duplicate_emails_addr&amp;ae=admin_allow_duplicate_emails_addr_end'), //cpg1.4
-  array('Rendszergazda értesítése a jóváhagyásra váró feltöltésekről', 'upl_notify_admin_email', 1, 'f=index.htm&amp;as=admin_approval_notify&amp;ae=admin_approval_notify_end'), //cpg1.4
-  array('Taglista megtekintése bejelentkezett felhasználóknak', 'allow_memberlist', 1, 'f=index.htm&amp;as=admin_user_memberlist&amp;ae=admin_user_memberlist_end'), //cpg1.4
-  array('A felhasználó megváltoztathatja az email címét', 'allow_email_change', 1, 'f=index.htm&amp;as=admin_user_allow_email_change&amp;ae=admin_user_allow_email_change_end'), //cpg1.4
-  array('A felhasználó kiterjesztett jogainak engélyezése a publikus képtáraiban lévő képekre', 'users_can_edit_pics', 1, 'f=index.htm&amp;as=admin_user_editpics_public_start&amp;ae=admin_user_editpics_public_end'), //cpg1.4
-  array('Hibás bejelentkezések száma, ami után ideiglenes tiltásba kerül (nyers erő támadás elleni védelem)', 'login_threshold', 0, 'f=index.htm&amp;as=admin_user_login_start&amp;ae=admin_user_login_end'), //cpg1.4
-  array('Ideiglenes tiltás időtartama', 'login_expiry', 0, 'f=index.htm&amp;as=admin_user_login_start&amp;ae=admin_user_login_end'), //cpg1.4
-  array('&quot;Jelentés a rendszergazdának&quot; engedélyezése', 'report_post', 1, 'f=index.htm&amp;as=admin_user_enable_report&amp;ae=admin_user_enable_report_end'),  //cpg1.4
-
-// custom profile fields,  //cpg1.4
-  'Saját mezők a felhasználói profilokban (hagyd üresen, ha nem használod).
-  Használd a 6. mezőt a hosszú bejegyzésekhez, például életrajzhoz.', //cpg1.4
-  array('Saját mező 1', 'user_profile1_name', 0, 'f=index.htm&amp;as=admin_custom&amp;ae=admin_custom_end'), //cpg1.4
-  array('Saját mező 2', 'user_profile2_name', 0), //cpg1.4
-  array('Saját mező 3', 'user_profile3_name', 0), //cpg1.4
-  array('Saját mező 4', 'user_profile4_name', 0), //cpg1.4
-  array('Saját mező 5', 'user_profile5_name', 0), //cpg1.4
-  array('Saját mező 6', 'user_profile6_name', 0), //cpg1.4
-
-  'Saját mezők a képek leírására (hagyd üresen, ha nem használod).',
-  array('Saját mező 1', 'user_field1_name', 0, 'f=index.htm&amp;as=admin_custom_image&amp;ae=admin_custom_image_end'), //cpg1.4
-  array('Saját mező 2', 'user_field2_name', 0),
-  array('Saját mező 3', 'user_field3_name', 0),
-  array('Saját mező 4', 'user_field4_name', 0),
-
-  'Süti beállítások',
-  array('Süti neve', 'cookie_name', 0, 'f=index.htm&amp;as=admin_cookie_name&amp;ae=admin_cookie_name_end'), //cpg1.4
-  array('Süti útvonala', 'cookie_path', 0, 'f=index.htm&amp;as=admin_cookie_path&amp;ae=admin_cookie_path_end'), //cpg1.4
-
-  'Email beállítások (rendszerint nem kell változtatni rajta; hagyj minden mezőt üresen, ha nem vagy biztos benne)', //cpg1.4
-  array('Kimenő levélkiszolgáló (smtp) , ha üres akkor a sendmail az alapértelmezett', 'smtp_host', 0, 'f=index.htm&amp;as=admin_email&amp;ae=admin_email_end'), //cpg1.4
-  array('Kimenő levélkiszolgáló felhasználó', 'smtp_username', 0), //cpg1.4
-  array('Kimenő levélkiszolgáló jelszó', 'smtp_password', 0), //cpg1.4
-
-  'Naplózás és statisztika', //cpg1.4
-  array('Naplózási mód <a href="#notice3" class="clickable_option">***</a>', 'log_mode', 11, 'f=index.htm&amp;as=admin_logging_log_mode&amp;ae=admin_logging_log_mode_end'), //cpg1.4
-  array('Képeslapok naplózása ', 'log_ecards', 1, 'f=index.htm&amp;as=admin_general_log_ecards&amp;ae=admin_general_log_ecards_end'), //cpg1.4
-  array('Részletes szavazási statisztika','vote_details',1, 'f=index.htm&amp;as=admin_logging_votedetails&amp;ae=admin_logging_votedetails_end'), //cpg1.4
-  array('Részletes találati statisztika','hit_details',1, 'f=index.htm&amp;as=admin_logging_hitdetails&amp;ae=admin_logging_hitdetails_end'), //cpg1.4
-
-  'Karbantartási beállítások', //cpg1.4
-  array('Nyomkövetési mód bekapcsolása', 'debug_mode', 9, 'f=index.htm&amp;as=debug_mode&amp;ae=debug_mode_end'), //cpg1.4
-  array('Nyomkövetési módra való figyelmesztetés', 'debug_notice', 1, 'f=index.htm&amp;as=admin_misc_debug_notices&amp;ae=admin_misc_debug_notices_end'), //cpg1.4
-  array('Képtár kikapcsolva', 'offline', 1, 'f=index.htm&amp;as=admin_general_offline&amp;ae=admin_general_offline_end'), //cpg1.4
-);
+// ------------------------------------------------------------------------- //
+// File admin.php
+// ------------------------------------------------------------------------- //
+if (defined('ADMIN_PHP')) {
+$lang_admin_php['title'] = 'Gallery Configuration';
+$lang_admin_php['general_settings'] = 'General settings'; // cpg1.5
+$lang_admin_php['language_charset_settings'] = 'Language &amp; Charset settings'; // cpg1.5
+$lang_admin_php['themes_settings'] = 'Themes settings'; // cpg1.5
+$lang_admin_php['album_list_view'] = 'Album list view'; // cpg1.5
+$lang_admin_php['thumbnail_view'] = 'Thumbnail view'; // cpg1.5
+$lang_admin_php['image_view'] = 'Image view'; // cpg1.5
+$lang_admin_php['comment_settings'] = 'Comment settings'; // cpg1.5
+$lang_admin_php['thumbnail_settings'] = 'Thumbnails settings'; // cpg1.5
+$lang_admin_php['file_settings'] = 'File settings'; // cpg1.5
+$lang_admin_php['image_watermarking'] = 'Image watermarking'; // cpg1.5
+$lang_admin_php['registration'] = 'Registration'; // cpg1.5
+$lang_admin_php['user_settings'] = 'User settings'; // cpg1.5
+$lang_admin_php['custom_fields_user_profile'] = 'Custom fields for user profile (leave blank if unused). Use Profile 6 for long entries, such as biographies'; // cpg1.5
+$lang_admin_php['custom_fields_image_description'] = 'Custom fields for image description (leave blank if unused)'; // cpg1.5
+$lang_admin_php['cookie_settings'] = 'Cookies settings'; // cpg1.5
+$lang_admin_php['email_settings'] = 'Email settings (usually nothing has to be changed here; leave all fields blank when not sure)'; // cpg1.5
+$lang_admin_php['logging_stats'] = 'Logging and statistics'; // cpg1.5
+$lang_admin_php['maintenance_settings'] = 'Maintenance settings'; // cpg1.5
+$lang_admin_php['manage_exif'] = 'Manage EXIF display';
+$lang_admin_php['manage_plugins'] = 'Manage plugins';
+$lang_admin_php['manage_keyword'] = 'Manage keywords';
+$lang_admin_php['restore_cfg'] = 'Restore factory defaults';
+$lang_admin_php['restore_cfg_confirm'] = 'Do you really want to restore the entire configuration to factory defaults? This cannot be undone!'; // cpg1.5 // js-alert
+$lang_admin_php['save_cfg'] = 'Save new configuration';
+$lang_admin_php['notes'] = 'Notes';
+$lang_admin_php['info'] = 'Information';
+$lang_admin_php['upd_success'] = 'Coppermine configuration was updated';
+$lang_admin_php['restore_success'] = 'Coppermine default configuration restored';
+$lang_admin_php['name_a'] = 'Name ascending';
+$lang_admin_php['name_d'] = 'Name descending';
+$lang_admin_php['title_a'] = 'Title ascending';
+$lang_admin_php['title_d'] = 'Title descending';
+$lang_admin_php['date_a'] = 'Date ascending';
+$lang_admin_php['date_d'] = 'Date descending';
+$lang_admin_php['pos_a'] = 'Position ascending';
+$lang_admin_php['pos_d'] = 'Position descending';
+$lang_admin_php['th_any'] = 'Max Aspect';
+$lang_admin_php['th_ht'] = 'Height';
+$lang_admin_php['th_wd'] = 'Width';
+$lang_admin_php['th_ex'] = 'Exact'; // cpg1.5
+$lang_admin_php['debug_everyone'] = 'Everyone';
+$lang_admin_php['debug_admin'] = 'Admin only';
+$lang_admin_php['no_logs'] = 'Off';
+$lang_admin_php['log_normal'] = 'Normal';
+$lang_admin_php['log_all'] = 'All';
+$lang_admin_php['view_logs'] = 'View logs';
+$lang_admin_php['click_expand'] = 'click section name to expand';
+$lang_admin_php['click_collapse'] = 'click section name to collapse'; // cpg1.5
+$lang_admin_php['expand_all'] = 'Expand All';
+$lang_admin_php['toggle_all'] = 'Toggle All'; // cpg1.5
+$lang_admin_php['notice1'] = '(*) These settings mustn\'t be changed if you already have files in your database.';
+$lang_admin_php['notice2'] = '(**) When changing this setting, only the files that are added from that point on are affected, so it is advisable that this setting is not changed if there are already files in the gallery. You can, however, apply the changes to the existing files with the &quot;<a href="util.php">admin tools</a> (resize pictures)&quot; utility from the admin menu.';
+$lang_admin_php['notice3'] = '(***) All log files are written in English.';
+$lang_admin_php['bbs_disabled'] = 'Function disabled when using bridging/integration';
+$lang_admin_php['auto_resize_everyone'] = 'Everyone';
+$lang_admin_php['auto_resize_user'] = 'User only';
+$lang_admin_php['ascending'] = 'ascending';
+$lang_admin_php['descending'] = 'descending';
+$lang_admin_php['collapse_all'] = 'Collapse all'; // cpg1.5
+$lang_admin_php['separate_page'] = 'on a separate page'; // cpg1.5
+$lang_admin_php['inline'] = 'inline'; // cpg1.5
+$lang_admin_php['guests_only'] = 'Guests only'; // cpg1.5
+$lang_admin_php['wm_bottomright'] = 'Bottom right'; // cpg1.5
+$lang_admin_php['wm_bottomleft'] = 'Bottom left'; // cpg1.5
+$lang_admin_php['wm_topleft'] = 'Top left'; // cpg1.5
+$lang_admin_php['wm_topright'] = 'Top Right'; // cpg1.5
+$lang_admin_php['wm_center'] = 'Center'; // cpg1.5
+$lang_admin_php['wm_both'] = 'Both'; // cpg1.5
+$lang_admin_php['wm_original'] = 'Original'; // cpg1.5
+$lang_admin_php['wm_resized'] = 'Resized'; // cpg1.5
+$lang_admin_php['gallery_name'] = 'Gallery name'; // cpg1.5
+$lang_admin_php['gallery_description'] = 'Gallery description'; // cpg1.5
+$lang_admin_php['gallery_admin_email'] = 'Gallery administrator email'; // cpg1.5
+$lang_admin_php['ecards_more_pic_target'] = 'URL of your Coppermine gallery folder'; // cpg1.5
+$lang_admin_php['ecards_more_pic_target_detail'] = '(with a trailing slash, no \'index.php\' or similar at the end)'; // cpg1.5
+$lang_admin_php['home_target'] = 'URL of your home page'; // cpg1.5
+$lang_admin_php['enable_zipdownload'] = 'Allow ZIP-download of favorites'; // cpg1.5
+$lang_admin_php['enable_zipdownload_no_textfile'] = 'just the favorites'; // cpg1.5
+$lang_admin_php['enable_zipdownload_additional_textfile'] = 'favorites and readme file'; // cpg1.5
+$lang_admin_php['time_offset'] = 'Timezone difference relative to GMT'; // cpg1.5
+$lang_admin_php['time_offset_detail'] = '(current time: %s)'; // cpg1.5
+$lang_admin_php['enable_help'] = 'Enable help-icons'; // cpg1.5
+$lang_admin_php['enable_help_description'] = 'help partially available in English only'; // cpg1.5
+$lang_admin_php['clickable_keyword_search'] = 'Enable clickable keywords in search'; // cpg1.5
+$lang_admin_php['keyword_separator'] = 'Keyword separator'; // cpg1.5
+$lang_admin_php['keyword_convert'] = 'Convert keyword separator'; // cpg1.5
+$lang_admin_php['enable_plugins'] = 'Enable plugins'; // cpg1.5
+$lang_admin_php['purge_expired_bans'] = 'Automatically purge expired bans'; // cpg1.5
+$lang_admin_php['browse_batch_add'] = 'Browsable batch-add interface'; // cpg1.5
+$lang_admin_php['batch_proc_limit'] = 'Process concurrency for batch-add interface'; // cpg1.5
+$lang_admin_php['display_thumbs_batch_add'] = 'Display preview thumbnails on batch-add interface'; // cpg1.5
+$lang_admin_php['lang'] = 'Default language'; // cpg1.5
+$lang_admin_php['language_autodetect'] = 'Autodetect language'; // cpg1.5
+$lang_admin_php['charset'] = 'Character encoding'; // cpg1.5
+// 'previous_next_tab'] = 'Display previous/next on tabbed pages'; // cpg1.5
+$lang_admin_php['theme'] = 'Theme'; // cpg1.5
+$lang_admin_php['custom_lnk_name'] = 'Custom menu link name'; // cpg1.5
+$lang_admin_php['custom_lnk_url'] = 'Custom menu link URL'; // cpg1.5
+$lang_admin_php['enable_menu_icons'] = 'Enable menu icons'; // cpg1.5
+$lang_admin_php['show_bbcode_help'] = 'Display BBCode help'; // cpg1.5
+$lang_admin_php['vanity_block'] = 'Show the vanity block on themes that are defined as XHTML and CSS compliant'; // cpg1.5
+$lang_admin_php['highlight_multiple'] = 'To highlight multiple lines, hold the [Ctrl]-key down'; // cpg1.5
+$lang_admin_php['custom_header_path'] = 'Path to custom header include'; // cpg1.5
+$lang_admin_php['custom_footer_path'] = 'Path to custom footer include'; // cpg1.5
+$lang_admin_php['browse_by_date'] = 'Enable browsing by date'; // cpg1.5
+$lang_admin_php['display_redirection_page'] = 'Display redirection pages'; // cpg1.5
+$lang_admin_php['display_xp_publish_link'] = 'Promote usage of XP Publisher by displaying a corresponding link on upload page'; // cpg1.5
+$lang_admin_php['main_table_width'] = 'Width of the main table'; // cpg1.5
+$lang_admin_php['pixels_or_percent'] = 'pixels or %'; // cpg1.5
+$lang_admin_php['subcat_level'] = 'Number of levels of categories to display'; // cpg1.5
+$lang_admin_php['albums_per_page'] = 'Number of albums to display'; // cpg1.5
+$lang_admin_php['album_list_cols'] = 'Number of columns for the album list'; // cpg1.5
+$lang_admin_php['alb_list_thumb_size'] = 'Size of album thumbnails'; // cpg1.5
+$lang_admin_php['main_page_layout'] = 'The content of the main page'; // cpg1.5
+$lang_admin_php['first_level'] = 'Show first level album thumbnails in categories'; // cpg1.5
+$lang_admin_php['categories_alpha_sort'] = 'Sort categories alphabetically'; // cpg1.5
+$lang_admin_php['categories_alpha_sort_details'] = '(instead of custom sort order)'; // cpg1.5
+$lang_admin_php['link_pic_count'] = 'Show number of linked files'; // cpg1.5
+$lang_admin_php['thumbcols'] = 'Number of columns on thumbnail page'; // cpg1.5
+$lang_admin_php['thumbrows'] = 'Number of rows on thumbnail page'; // cpg1.5
+$lang_admin_php['max_tabs'] = 'Maximum number of tabs to display'; // cpg1.5
+$lang_admin_php['tabs_dropdown'] = 'Show dropdown list of all pages next to tabs'; // cpg1.5
+$lang_admin_php['caption_in_thumbview'] = 'Display file caption (in addition to title) below the thumbnail'; // cpg1.5
+$lang_admin_php['views_in_thumbview'] = 'Display number of views below the thumbnail'; // cpg1.5
+$lang_admin_php['display_comment_count'] = 'Display number of comments below the thumbnail'; // cpg1.5
+$lang_admin_php['display_uploader'] = 'Display uploader name below the thumbnail'; // cpg1.5
+// 'display_admin_uploader'] = 'Display name of admin uploaders below the thumbnail'; // cpg1.5
+$lang_admin_php['display_filename'] = 'Display file name below the thumbnail'; // cpg1.5
+$lang_admin_php['display_thumbnail_rating'] = 'Display rating below the thumbnail'; // cpg1.5
+$lang_admin_php['alb_desc_thumb'] = 'Display album description'; // cpg1.5
+$lang_admin_php['thumbnail_to_fullsize'] = 'Go directly from thumbnail to full-sized image'; // cpg1.5
+$lang_admin_php['default_sort_order'] = 'Default sort order for files'; // cpg1.5
+$lang_admin_php['min_votes_for_rating'] = 'Minimum number of votes for a file to appear in the \'top rated\' list'; // cpg1.5
+$lang_admin_php['picture_table_width'] = 'Width of the table for file display'; // cpg1.5
+$lang_admin_php['display_pic_info'] = 'File information is visible by default'; // cpg1.5
+$lang_admin_php['picinfo_movie_download_link'] = 'Display movie download link in the file information area'; // cpg1.5
+$lang_admin_php['max_img_desc_length'] = 'Max length for an image description'; // cpg1.5
+$lang_admin_php['max_com_wlength'] = 'Max number of characters in a word'; // cpg1.5
+$lang_admin_php['display_film_strip'] = 'Show film strip'; // cpg1.5
+$lang_admin_php['max_film_strip_items'] = 'Number of items in film strip'; // cpg1.5
+$lang_admin_php['slideshow_interval'] = 'Slideshow interval'; // cpg1.5
+$lang_admin_php['milliseconds'] = 'milliseconds'; // cpg1.5
+$lang_admin_php['slideshow_interval_detail'] = '1 second = 1000 milliseconds'; // cpg1.5
+$lang_admin_php['slideshow_hits'] = 'Count hits in slideshow'; // cpg1.5
+$lang_admin_php['ecard_flash'] = 'Allow Flash in Ecards'; // cpg1.5
+$lang_admin_php['not_recommended'] = 'not recommended'; // cpg1.5
+$lang_admin_php['recommended'] = 'recommended'; // cpg1.5
+$lang_admin_php['transparent_overlay'] = 'Insert a transparent overlay to minimize image theft'; // cpg1.5
+$lang_admin_php['old_style_rating'] = 'Go back to old rating system'; // cpg1.5
+$lang_admin_php['old_style_rating_extra'] = 'This will disable the \'Number of rating stars to be used\' option'; // cpg1.5
+$lang_admin_php['rating_stars_amount'] = 'Number of rating stars to be used when voting'; // cpg1.5
+$lang_admin_php['rate_own_files'] = 'Users can rate their own files'; // cpg1.5
+$lang_admin_php['filter_bad_words'] = 'Filter bad words in comments'; // cpg1.5
+$lang_admin_php['enable_smilies'] = 'Allow smileys in comments'; // cpg1.5
+$lang_admin_php['disable_comment_flood_protect'] = 'Allow several consecutive comments on one file from the same user'; // cpg1.5
+$lang_admin_php['disable_comment_flood_protect_details'] = '(disable flood protection)'; // cpg1.5
+$lang_admin_php['max_com_lines'] = 'Max number of lines in a comment'; // cpg1.5
+$lang_admin_php['max_com_size'] = 'Maximum length of a comment'; // cpg1.5
+$lang_admin_php['email_comment_notification'] = 'Notify admin of comments by email'; // cpg1.5
+$lang_admin_php['comments_sort_descending'] = 'Sort order of comments'; // cpg1.5
+$lang_admin_php['comments_per_page'] = 'Comments per page'; // cpg1.5
+$lang_admin_php['comments_anon_pfx'] = 'Prefix for anonymous comments authors'; // cpg1.5
+$lang_admin_php['comment_approval'] = 'Comments require approval'; // cpg1.5
+$lang_admin_php['display_comment_approval_only'] = 'Only display comments needing approval on the &quot;Review Comments&quot; page'; // cpg1.5
+$lang_admin_php['comment_placeholder'] = 'Display placeholder text to end users for comments waiting for admin approval'; // cpg1.5
+$lang_admin_php['comment_user_edit'] = 'Allow users to edit their comments'; // cpg1.5
+$lang_admin_php['comment_captcha'] = 'Display Captcha (Visual Confirmation) for adding comments'; // cpg1.5
+$lang_admin_php['comment_akismet_enable'] = 'Akismet Options'; // cpg1.5
+$lang_admin_php['comment_akismet_enable_description'] = 'What should be done if Akismet rejects a comment as spam?'; // cpg1.5
+$lang_admin_php['comment_akismet_applicable_only'] = 'Options only apply if Akismet has been enabled by entering a valid API key'; // cpg1.5
+$lang_admin_php['comment_akismet_enable_approval'] = 'Allow comments that fail to pass Akismet, but mark them unapproved'; // cpg1.5
+$lang_admin_php['comment_akismet_drop_tell'] = 'Drop comment that fails to validate, and tell author that it was rejected'; // cpg1.5
+$lang_admin_php['comment_akismet_drop_lie'] = 'Drop comment that fails to validate, but tell author (spammer) it has been added'; // cpg1.5
+$lang_admin_php['comment_akismet_api_key'] = 'Akismet API key'; // cpg1.5
+$lang_admin_php['comment_akismet_api_key_description'] = 'Leave empty to disable Akismet'; // cpg1.5
+$lang_admin_php['comment_akismet_group'] = 'Apply Akismet for comments made by'; // cpg1.5
+$lang_admin_php['comment_promote_registration'] = 'Ask guests to log in to post comments'; // cpg1.5
+$lang_admin_php['thumb_width'] = 'Max dimension of a thumbnail (width, if you use "exact" in "Use dimension")'; // cpg1.5
+$lang_admin_php['thumb_use'] = 'Use dimension'; // cpg1.5
+$lang_admin_php['thumb_use_detail'] = '(width or height or max aspect for thumbnail)'; // cpg1.5
+$lang_admin_php['thumb_height'] = 'Height of a thumbnail'; // cpg1.5
+$lang_admin_php['thumb_height_detail'] = '(only applies if you use &quot;exact&quot; in &quot;Use dimension&quot;)'; // cpg1.5
+$lang_admin_php['movie_audio_document'] = 'movie, audio, document'; // cpg1.5
+$lang_admin_php['thumb_pfx'] = 'The prefix for thumbnails'; // cpg1.5
+$lang_admin_php['enable_unsharp'] = 'Thumb Sharpening: enable Unsharp Mask'; // cpg1.5
+$lang_admin_php['unsharp_amount'] = 'Thumb Sharpening amount'; // cpg1.5
+$lang_admin_php['unsharp_radius'] = 'Thumb Sharpening radius'; // cpg1.5
+$lang_admin_php['unsharp_threshold'] = 'Thumb Sharpening threshold'; // cpg1.5
+$lang_admin_php['jpeg_qual'] = 'Quality for JPEG files'; // cpg1.5
+$lang_admin_php['make_intermediate'] = 'Create intermediate pictures'; // cpg1.5
+$lang_admin_php['picture_use'] = 'Use dimension'; // cpg1.5
+$lang_admin_php['picture_use_detail'] = '(width or height or max aspect for an intermediate picture)'; // cpg1.5
+$lang_admin_php['picture_use_thumb'] = 'Like thumbnail'; // cpg1.5
+$lang_admin_php['picture_width'] = 'Max width or height of an intermediate picture'; // cpg1.5
+$lang_admin_php['max_upl_size'] = 'Max size for uploaded files'; // cpg1.5
+$lang_admin_php['kilobytes'] = 'KB'; // cpg1.5
+$lang_admin_php['pixels'] = 'pixels'; // cpg1.5
+$lang_admin_php['max_upl_width_height'] = 'Max width or height for uploaded pictures'; // cpg1.5
+$lang_admin_php['auto_resize'] = 'Auto resize images that are larger than max width or height'; // cpg1.5
+$lang_admin_php['fullsize_padding_x'] = 'Horizontal padding for full-size pop-up'; // cpg1.5
+$lang_admin_php['fullsize_padding_y'] = 'Vertical padding for full-size pop-up'; // cpg1.5
+$lang_admin_php['allow_private_albums'] = 'Albums can be private'; // cpg1.5
+$lang_admin_php['allow_private_albums_note'] = '(Note: if you switch from \'yes\' to \'no\' any current private albums will be visible)'; // cpg1.5
+$lang_admin_php['show_private'] = 'Show private album icon to unlogged user'; // cpg1.5
+$lang_admin_php['forbiden_fname_char'] = 'Characters forbidden in filenames'; // cpg1.5
+$lang_admin_php['silly_safe_mode'] = 'Enable &quot;silly safe mode&quot;'; // cpg1.5
+$lang_admin_php['allowed_img_types'] = 'Allowed image types'; // cpg1.5
+$lang_admin_php['allowed_mov_types'] = 'Allowed movie types'; // cpg1.5
+$lang_admin_php['media_autostart'] = 'Movie playback autostart'; // cpg1.5
+$lang_admin_php['allowed_snd_types'] = 'Allowed audio types'; // cpg1.5
+$lang_admin_php['allowed_doc_types'] = 'Allowed document types'; // cpg1.5
+$lang_admin_php['thumb_method'] = 'Method for resizing images'; // cpg1.5
+$lang_admin_php['impath'] = 'Path to ImageMagick \'convert\' utility'; // cpg1.5
+$lang_admin_php['impath_example'] = '(eg. /usr/bin/)'; // cpg1.5
+$lang_admin_php['im_options'] = 'Additional command line options for ImageMagick'; // cpg1.5
+$lang_admin_php['read_exif_data'] = 'Read EXIF data from JPEG files'; // cpg1.5
+$lang_admin_php['read_iptc_data'] = 'Read IPTC data from JPEG files'; // cpg1.5
+$lang_admin_php['fullpath'] = 'The album directory'; // cpg1.5
+$lang_admin_php['userpics'] = 'The directory for user files'; // cpg1.5
+$lang_admin_php['normal_pfx'] = 'The prefix for intermediate pictures'; // cpg1.5
+$lang_admin_php['default_dir_mode'] = 'Default mode for directories'; // cpg1.5
+$lang_admin_php['default_file_mode'] = 'Default mode for files'; // cpg1.5
+$lang_admin_php['enable_watermark'] = 'Watermark images'; // cpg1.5
+$lang_admin_php['enable_thumb_watermark'] = 'Watermark custom thumbs'; // cpg1.5
+$lang_admin_php['where_put_watermark'] = 'Where to place the watermark'; // cpg1.5
+$lang_admin_php['which_files_to_watermark'] = 'Which files to watermark'; // cpg1.5
+$lang_admin_php['watermark_file'] = 'Which file to use for watermark'; // cpg1.5
+$lang_admin_php['watermark_transparency'] = 'Transparency for entire image'; // cpg1.5
+$lang_admin_php['zero_2_hundred'] = '0-100'; // cpg1.5
+$lang_admin_php['reduce_watermark'] = 'Downsize watermark if width of a picture is smaller than entered value. That is the 100% reference point. Resizing of the watermark is linear (0 to disable)'; // cpg1.5
+$lang_admin_php['watermark_transparency_featherx'] = 'Set color transparent x'; // cpg1.5
+$lang_admin_php['watermark_transparency_feathery'] = 'Set color transparent y'; // cpg1.5
+$lang_admin_php['gd2_only'] = 'GD2 only'; // cpg1.5
+$lang_admin_php['allow_user_registration'] = 'Allow new user registrations'; // cpg1.5
+$lang_admin_php['global_registration_pw'] = 'Global password for registration'; // cpg1.5
+$lang_admin_php['user_registration_disclaimer'] = 'Display disclaimer on user registration'; // cpg1.5
+$lang_admin_php['registration_captcha'] = 'Display Captcha (Visual Confirmation) on registration page'; // cpg1.5
+$lang_admin_php['reg_requires_valid_email'] = 'User registration requires email verification'; // cpg1.5
+$lang_admin_php['reg_notify_admin_email'] = 'Notify admin of user registration by email'; // cpg1.5
+$lang_admin_php['admin_activation'] = 'Admin activation of registrations'; // cpg1.5
+$lang_admin_php['personal_album_on_registration'] = 'Create user album in personal gallery on registration'; // cpg1.5
+$lang_admin_php['allow_unlogged_access'] = 'Allow unlogged users (guest or anonymous) access'; // cpg1.5
+$lang_admin_php['thumbnail_intermediate_full'] = 'thumbnail, intermediate, and full-size image'; // cpg1.5
+$lang_admin_php['thumbnail_intermediate'] = 'thumbnail and intermediate image'; // cpg1.5
+$lang_admin_php['thumbnail_only'] = 'thumbnail only'; // cpg1.5
+$lang_admin_php['upload_mechanism'] = 'Default upload method'; // cpg1.5
+$lang_admin_php['upload_swf'] = 'advanced - multiple files, Flash-driven (recommended)'; // cpg1.5
+$lang_admin_php['upload_single'] = 'simple - one file at a time'; // cpg1.5
+$lang_admin_php['allow_user_upload_choice'] = 'Allow users to choose the upload method'; // cpg1.5
+$lang_admin_php['allow_duplicate_emails_addr'] = 'Allow two users to have the same email address'; // cpg1.5
+$lang_admin_php['upl_notify_admin_email'] = 'Notify admin of user upload awaiting approval'; // cpg1.5
+$lang_admin_php['allow_memberlist'] = 'Allow logged in users to view the memberlist'; // cpg1.5
+$lang_admin_php['allow_email_change'] = 'Allow users to change email address in their profile'; // cpg1.5
+$lang_admin_php['allow_user_account_delete'] = 'Allow users to delete their own user account'; // cpg1.5
+$lang_admin_php['users_can_edit_pics'] = 'Allow users to retain control over their pics in public galleries'; // cpg1.5
+$lang_admin_php['allow_user_move_album'] = 'Allow users to move their albums from/to allowed categories'; // cpg1.5
+$lang_admin_php['allow_user_album_keyword'] = 'Allow users to assign album keywords'; // cpg1.5
+$lang_admin_php['allow_user_edit_after_cat_close'] = 'Allow users to edit their albums when in a locked category'; // cpg1.5
+$lang_admin_php['login_method_username'] = 'Username'; // cpg1.5
+$lang_admin_php['login_method_email'] = 'Email address'; // cpg1.5
+$lang_admin_php['login_method_both'] = 'Both'; // cpg1.5
+$lang_admin_php['login_method'] = 'How do you want your users to be able to login'; // cpg1.5
+$lang_admin_php['login_threshold'] = 'Number of failed login attempts until temporary ban'; // cpg1.5
+$lang_admin_php['login_threshold_detail'] = '(to avoid brute force attacks)'; // cpg1.5
+$lang_admin_php['login_expiry'] = 'Duration of a temporary ban after failed logins'; // cpg1.5
+$lang_admin_php['minutes'] = 'minutes'; // cpg1.5
+$lang_admin_php['report_post'] = 'Enable Report to Admin'; // cpg1.5
+$lang_admin_php['user_profile1_name'] = 'Profile 1 name'; // cpg1.5
+$lang_admin_php['user_profile2_name'] = 'Profile 2 name'; // cpg1.5
+$lang_admin_php['user_profile3_name'] = 'Profile 3 name'; // cpg1.5
+$lang_admin_php['user_profile4_name'] = 'Profile 4 name'; // cpg1.5
+$lang_admin_php['user_profile5_name'] = 'Profile 5 name'; // cpg1.5
+$lang_admin_php['user_profile6_name'] = 'Profile 6 name'; // cpg1.5
+$lang_admin_php['user_field1_name'] = 'Field 1 name'; // cpg1.5
+$lang_admin_php['user_field2_name'] = 'Field 2 name'; // cpg1.5
+$lang_admin_php['user_field3_name'] = 'Field 3 name'; // cpg1.5
+$lang_admin_php['user_field4_name'] = 'Field 4 name'; // cpg1.5
+$lang_admin_php['cookie_name'] = 'Cookie name'; // cpg1.5
+$lang_admin_php['cookie_path'] = 'Cookie path'; // cpg1.5
+$lang_admin_php['smtp_host'] = 'SMTP Host (when left blank, sendmail will be used)'; // cpg1.5
+$lang_admin_php['smtp_username'] = 'SMTP Username'; // cpg1.5
+$lang_admin_php['smtp_password'] = 'SMTP Password'; // cpg1.5
+$lang_admin_php['log_mode'] = 'Logging mode'; // cpg1.5
+$lang_admin_php['log_mode_details'] = 'All log files are written in English.'; // cpg1.5
+$lang_admin_php['log_ecards'] = 'Log ecards'; // cpg1.5
+$lang_admin_php['log_ecards_detail'] = 'Note: logging can have legal impacts. The user should be informed on registration that ecards are being logged. It is recommended to provide a separate page with a privacy policy as well.'; // cpg1.5
+$lang_admin_php['vote_details'] = 'Keep detailed vote statistics'; // cpg1.5
+$lang_admin_php['hit_details'] = 'Keep detailed hit statistics'; // cpg1.5
+$lang_admin_php['display_stats_on_index'] = 'Display statistics on index page'; // cpg1.5
+$lang_admin_php['count_file_hits'] = 'Count file views'; // cpg1.5
+$lang_admin_php['count_album_hits'] = 'Count album views'; // cpg1.5
+$lang_admin_php['count_admin_hits'] = 'Count admin views'; // cpg1.5
+$lang_admin_php['debug_mode'] = 'Enable debug mode'; // cpg1.5
+$lang_admin_php['debug_notice'] = 'Display notices in debug mode'; // cpg1.5
+$lang_admin_php['offline'] = 'Gallery is offline'; // cpg1.5
+$lang_admin_php['display_coppermine_news'] = 'Display news from coppermine-gallery.net'; // cpg1.5
+$lang_admin_php['display_coppermine_detail'] = 'will only be displayed for the admin'; // cpg1.5
+$lang_admin_php['config_setting_invalid'] = 'The value you have set for &laquo;%s&raquo; is invalid, please review it.'; // cpg1.5
+$lang_admin_php['config_setting_ok'] = 'Your setting for &laquo;%s&raquo; has been saved.'; // cpg1.5
+$lang_admin_php['contact_form_settings'] = 'Contact form settings'; // cpg1.5
+$lang_admin_php['contact_form_guest_enable'] = 'Display contact form to anonymous visitors (guests)'; // cpg1.5
+$lang_admin_php['contact_form_registered_enable'] = 'Display contact form to registered users'; // cpg1.5
+$lang_admin_php['with_captcha'] = 'with captcha'; // cpg1.5
+$lang_admin_php['without_captcha'] = 'without captcha'; // cpg1.5
+$lang_admin_php['optional'] = 'optional'; // cpg1.5
+$lang_admin_php['mandatory'] = 'mandatory'; // cpg1.5
+$lang_admin_php['contact_form_guest_name_field'] = 'Display sender name field for guests'; // cpg1.5
+$lang_admin_php['contact_form_guest_email_field'] = 'Display sender email field for guests'; // cpg1.5
+$lang_admin_php['contact_form_subject_field'] = 'Display subject field'; // cpg1.5
+$lang_admin_php['contact_form_subject_content'] = 'Subject line for emails generated by contact form'; // cpg1.5
+$lang_admin_php['contact_form_sender_email'] = 'Use the sender\'s email address as &quot;from&quot; address'; // cpg1.5
+$lang_admin_php['allow_no_link'] = 'allow, but don\'t display link'; // cpg1.5
+$lang_admin_php['allow_show_link'] = 'allow and promote it by displaying a link'; // cpg1.5
+$lang_admin_php['display_sidebar_user'] = 'Sidebar for registered users'; // cpg1.5
+$lang_admin_php['display_sidebar_guest'] = 'Sidebar for guests'; // cpg1.5
+$lang_admin_php['do_not_change'] = 'Don\'t change this unless you REALLY know what you\'re doing!'; // cpg1.5
+$lang_admin_php['reset_to_default'] = 'Reset to default'; // cpg1.5
+$lang_admin_php['no_change_needed'] = 'No change needed, config option already is set to default'; // cpg1.5
+$lang_admin_php['enabled'] = 'enabled'; // cpg1.5
+$lang_admin_php['disabled'] = 'disabled'; // cpg1.5
+$lang_admin_php['none'] = 'none'; // cpg1.5
+$lang_admin_php['warning_change'] = 'When changing this setting, only the files that are added from that point on are affected, so it\'s advisable that this setting is not changed if there are already files in the gallery. You can, however, apply the changes to the existing files with the "admin tools (resize pictures)" utility from the admin menu.'; // cpg1.5
+$lang_admin_php['warning_exist'] = 'These settings mustn\'t be changed if you already have files in your database.'; // cpg1.5
+$lang_admin_php['warning_dont_submit'] = 'If you are not sure about the impact that changing this setting will have, do not submit the form and review the documentation first.'; // cpg1.5 // js-alert
+$lang_admin_php['menu_only'] = 'menu only'; // cpg1.5
+$lang_admin_php['everywhere'] = 'everywhere'; // cpg1.5
+$lang_admin_php['manage_languages'] = 'Manage languages'; // cpg1.5
+$lang_admin_php['form_token_lifetime'] = 'Form token lifetime'; // cpg1.5
+$lang_admin_php['seconds'] = 'Seconds'; // cpg1.5
+$lang_admin_php['display_reset_boxes_in_config'] = 'Display reset boxes in config'; // cpg1.5
+$lang_admin_php['upd_not_needed'] = 'Update not needed.'; // cpg 1.5
+}
 
 
 // ------------------------------------------------------------------------- //
 // File db_ecard.php
 // ------------------------------------------------------------------------- //
-
-if (defined('DB_ECARD_PHP')) $lang_db_ecard_php = array(
-  'title' => 'Elküldött képeslapok',
-  'ecard_sender' => 'Feladó',
-  'ecard_recipient' => 'Címzett',
-  'ecard_date' => 'Dátum',
-  'ecard_display' => 'Képeslap megjelenítése',
-  'ecard_name' => 'Név',
-  'ecard_email' => 'E-mail cím',
-  'ecard_ip' => 'IP cím',
-  'ecard_ascending' => 'növekvő',
-  'ecard_descending' => 'csökkenő',
-  'ecard_sorted' => 'Rendezett',
-  'ecard_by_date' => 'Dátum szerint',
-  'ecard_by_sender_name' => 'Feladó szerint',
-  'ecard_by_sender_email' => 'Feladó email címe szerint',
-  'ecard_by_sender_ip' => 'A feladó IP címe szerint',
-  'ecard_by_recipient_name' => 'Címzett szerint',
-  'ecard_by_recipient_email' => 'Címzett email címe szerint',
-  'ecard_number' => 'Rekordok megjelenítése  %s -tól %s -ig %s -ból',
-  'ecard_goto_page' => 'Ugráss az oldalra',
-  'ecard_records_per_page' => 'Rekordok oldalanként',
-  'check_all' => 'Összes bejelölése',
-  'uncheck_all' => 'Összes bejelölés törlése',
-  'ecards_delete_selected' => 'Kiválasztott képeslapok törlése',
-  'ecards_delete_confirm' => 'Biztos törölni akarod ezeket a rekordokat? Jelöld be a négyzetet!',
-  'ecards_delete_sure' => 'Biztos',
-);
-
+if (defined('DB_ECARD_PHP')) {
+$lang_db_ecard_php['title'] = 'Elküldött képeslapok';
+$lang_db_ecard_php['ecard_sender'] = 'Feladó';
+$lang_db_ecard_php['ecard_recipient'] = 'Címzett';
+$lang_db_ecard_php['ecard_date'] = 'Dátum';
+$lang_db_ecard_php['ecard_display'] = 'Képeslap megjelenítése';
+$lang_db_ecard_php['ecard_name'] = 'Név';
+$lang_db_ecard_php['ecard_email'] = 'E-mail cím';
+$lang_db_ecard_php['ecard_ip'] = 'IP cím';
+$lang_db_ecard_php['ecard_ascending'] = 'növekvő';
+$lang_db_ecard_php['ecard_descending'] = 'csökkenő';
+$lang_db_ecard_php['ecard_sorted'] = 'Rendezés';
+$lang_db_ecard_php['ecard_by_date'] = 'Dátum szerint';
+$lang_db_ecard_php['ecard_by_sender_name'] = 'Feladó szerint';
+$lang_db_ecard_php['ecard_by_sender_email'] = 'Feladó email címe szerint';
+$lang_db_ecard_php['ecard_by_sender_ip'] = 'A feladó IP címe szerint';
+$lang_db_ecard_php['ecard_by_recipient_name'] = 'Címzett szerint';
+$lang_db_ecard_php['ecard_by_recipient_email'] = 'Címzett email címe szerint';
+$lang_db_ecard_php['ecard_number'] = 'Rekordok megjelenítése  %s-tól %s-ig %s-ból';
+$lang_db_ecard_php['ecard_goto_page'] = 'Ugrás az oldalra';
+$lang_db_ecard_php['ecard_records_per_page'] = 'Rekordok oldalanként';
+$lang_db_ecard_php['check_all'] = 'Összes bejelölése';
+$lang_db_ecard_php['uncheck_all'] = 'Összes bejelölés törlése';
+$lang_db_ecard_php['ecards_delete_selected'] = 'Kiválasztott képeslapok törlése';
+$lang_db_ecard_php['ecards_delete_confirm'] = 'Biztos törölni akarod ezeket a rekordokat? Jelöld be a négyzetet!';
+$lang_db_ecard_php['ecards_delete_sure'] = 'Biztos';
+$lang_db_ecard_php['invalid_data'] = 'A képeslap adatai nem tudtak hozzáférni a mail klienshez. Kattints a linkre a folytatáshoz.';
+}
 
 // ------------------------------------------------------------------------- //
 // File db_input.php
 // ------------------------------------------------------------------------- //
-
-if (defined('DB_INPUT_PHP')) $lang_db_input_php = array(
-  'empty_name_or_com' => 'Szükséges megadnod a neved és a hozzászólásod',
-  'com_added' => 'Hozzászólásodat feljegyeztük',
-  'alb_need_title' => 'A képalbumnak címet kell adni!',
-  'no_udp_needed' => 'Nincs szükség frissítésre.',
-  'alb_updated' => 'A képalbumot frissítettük',
-  'unknown_album' => 'A kiválasztott képalbum nem létezik, vagy nincs jogod képet feltölteni',
-  'no_pic_uploaded' => 'Nem lett fájl feltöltve!<br /><br />Ha volt feltöltésre kiválasztott kép, akkor ellenőrizd, hogy engedélyezett a feltöltés...',
-  'err_mkdir' => 'Hiba a %s könyvtár létrehozásakor!',
-  'dest_dir_ro' => 'A cél könyvtár %s nem írható!',
-  'err_move' => 'Lehetetlen %st átmozgatni a %s könyvtárba!',
-  'err_fsize_too_large' => 'Túl nagy fájlméret (A megendett legnagyobb méret %s x %s) !', //obsolete since cpg1.3 - consider removal in cpg1.4 once upload.php has been overhauled
-  'err_imgsize_too_large' => 'Túl nagy fájlméret (A megendett legnagyobb méret %s kB) !', //obsolete since cpg1.3 - consider removal in cpg1.4 once upload.php has been overhauled
-  'err_invalid_img' => 'A feltöltött fájl nem megfelelő formátumú!',
-  'allowed_img_types' => 'Csak %s db fájlt tölthetsz fel.',
-  'err_insert_pic' => 'A \'%s\' képet nem lehet elhelyezni a képalbumba ',
-  'upload_success' => 'Sikeres feltöltés.<br /><br />Látható lesz, amint a rendszergazda jóváhagyja.',
-  'notify_admin_email_subject' => '%s - Feltöltési értesítő',
-  'notify_admin_email_body' => '%s által feltöltött kép jóváhagyásra vár. Nézd meg %s',
-  'info' => 'Információ',
-  'com_added' => 'Hozzászólás bejegyezve',
-  'alb_updated' => 'Képalbum frissítve',
-  'err_comment_empty' => 'Üres hozzászólás!',
-  'err_invalid_fext' => 'Csak a következő kiterjesztésű fájlok elfogadottak: <br /><br />%s.',
-  'no_flood' => 'Sajnálom, de te voltál az útolsó hozzászóló ehhez a képhez.<br /><br />Szerkezd újra a hozzászólásodat, ha módosítani akarsz rajta',
-  'redirect_msg' => 'Át lettél irányítva.<br /><br /><br />Kattints a \'folytatás\'-ra, ha az oldal nem frissül automatikusan',
-  'upl_success' => 'A képet sikeresen hozzáadtuk',
-  'email_comment_subject' => 'Hozzászólás érkezet a Coppermine Képtárba',
-  'email_comment_body' => 'Valaki hozzászólást küldött a képtáradba. A megtekintéshez kattints ide: ',
-  'album_not_selected' => 'Nincs kiválasztva képalbum', //cpg1.4
-  'com_author_error' => 'Ezt a nevet egy regisztrált tag használja, jelentkezz be vagy használj másik nevet.', //cpg1.4
-);
+if (defined('DB_INPUT_PHP')) {
+$lang_db_input_php['empty_name_or_com'] = 'Írd be a neved és a hozzászólásod';
+$lang_db_input_php['com_added'] = 'Hozzászólásodat feljegyeztük'; // cpg1.5
+$lang_db_input_php['alb_need_title'] = 'Az albumnak címet kell adni!';
+$lang_db_input_php['no_udp_needed'] = 'Nincs szükség frissítésre.';
+$lang_db_input_php['alb_updated'] = 'Az albumot frissítettük';
+$lang_db_input_php['unknown_album'] = 'A kiválasztott képalbum nem létezik, vagy nincs jogod képet feltölteni';
+$lang_db_input_php['no_pic_uploaded'] = 'Nem lett fájl feltöltve!<br />Ha volt feltöltésre kiválasztott kép, akkor ellenőrizd, hogy engedélyezett-e a feltöltés...';
+$lang_db_input_php['err_mkdir'] = 'Hiba a %s könyvtár létrehozásakor!';
+$lang_db_input_php['dest_dir_ro'] = 'A cél könyvtár %s nem írható!';
+$lang_db_input_php['err_move'] = 'A %s áthelyezése nem lehetséges ide: %s!';
+$lang_db_input_php['err_fsize_too_large'] = 'Túl nagy a a fájl felbontása (A megendett legnagyobb méret: %s x %s)!';
+$lang_db_input_php['err_imgsize_too_large'] = 'Túl nagy fájlméret (A megendett legnagyobb méret %s KB)!';
+$lang_db_input_php['err_invalid_img'] = 'A feltöltött fájl nem megfelelő formátumú!';
+$lang_db_input_php['allowed_img_types'] = 'Csak %s fájlt tölthetsz fel.';
+$lang_db_input_php['err_insert_pic'] = 'A \'%s\' képet nem lehet elhelyezni az albumba ';
+$lang_db_input_php['upload_success'] = 'Sikeres feltöltés.<br />Látható lesz, amint a rendszergazda jóváhagyja.';
+$lang_db_input_php['notify_admin_email_subject'] = '%s - Feltöltési értesítő';
+$lang_db_input_php['notify_admin_email_body'] = '%s által feltöltött kép jóváhagyásra vár. Nézd meg %s';
+$lang_db_input_php['info'] = 'Információ';
+$lang_db_input_php['com_updated'] = 'Hozzászólás frissítve'; // cpg1.5
+$lang_db_input_php['alb_updated'] = 'Album frissítve';
+$lang_db_input_php['err_comment_empty'] = 'Üres hozzászólás!';
+$lang_db_input_php['err_invalid_fext'] = 'Csak a következő kiterjesztésű fájlok elfogadottak:'; // js-alert
+$lang_db_input_php['no_flood'] = 'Sajnálom, de te voltál az utolsó hozzászóló ehhez a képhez.<br />Szerkeszd újra a hozzászólásodat, ha módosítani akarsz rajta';
+$lang_db_input_php['redirect_msg'] = 'Át lettél irányítva.<br /><br />Kattints a \'tovább\'-ra, ha az oldal nem frissül automatikusan';
+$lang_db_input_php['upl_success'] = 'A képet sikeresen hozzáadtuk';
+$lang_db_input_php['email_comment_subject'] = 'Hozzászólás érkezett a Coppermine Képtárba';
+$lang_db_input_php['email_comment_body'] = 'Valaki hozzászólást küldött a képtáradba. A megtekintéshez kattints ide:';
+$lang_db_input_php['album_not_selected'] = 'Nincs kiválasztva album';
+$lang_db_input_php['com_author_error'] = 'Ezt a nevet egy regisztrált tag használja, jelentkezz be vagy használj másik nevet.';
+}
 
 // ------------------------------------------------------------------------- //
 // File delete.php
 // ------------------------------------------------------------------------- //
-
-if (defined('DELETE_PHP')) $lang_delete_php = array(
-  'caption' => 'Felirat',
-  'fs_pic' => 'Teljes méretű kép ',
-  'del_success' => 'Sikeresen törölve',
-  'ns_pic' => 'Normál méretű kép',
-  'err_del' => 'Nem lehet törölni',
-  'thumb_pic' => 'Indexkép',
-  'comment' => 'Hozzászólás',
-  'im_in_alb' => 'Kép az albumban',
-  'alb_del_success' => '&laquo;%s&raquo; album törölve', //cpg1.4
-  'alb_mgr' => 'Album kezelő',
-  'err_invalid_data' => 'Hibás adat \'%s\'-ban',
-  'create_alb' => 'A \'%s\'képalbum létrehozása',
-  'update_alb' => 'A \'%s\' képalbum frissítve  \'%s\' címmel és \'%s\' indexszel',
-  'del_pic' => 'Kép törlése',
-  'del_alb' => 'Album törlése',
-  'del_user' => 'Felhasználó törlése',
-  'err_unknown_user' => 'A kiválasztott felhasználó nem létezik!',
-  'err_empty_groups' => 'Nincs egyetlen csoporttábla sem vagy a csoporttábla üres!', //cpg1.4
-  'comment_deleted' => 'Hozzászólás sikeresen törölve',
-  'npic' => 'Kép', //cpg1.4
-  'pic_mgr' => 'Képkezelő', //cpg1.4
-  'update_pic' => 'A \'%s\' kép frissítve \'%s\' fájlnévvel \'%s\'és indexszel', //cpg1.4
-  'username' => 'felhasználónév', //cpg1.4
-  'anonymized_comments' => '%s Névtelen hozzászólás', //cpg1.4
-  'anonymized_uploads' => '%s Névtelen publikus feltöltés', //cpg1.4
-  'deleted_comments' => '%s Törölt hozzászólás', //cpg1.4
-  'deleted_uploads' => '%s Törölt publikus feltöltés', //cpg1.4
-  'user_deleted' => '%s felhasználó törölve', //cpg1.4
-  'activate_user' => 'Felhasználó engedélyezése', //cpg1.4
-  'user_already_active' => 'A felhasználó már engedélyezett', //cpg1.4
-  'activated' => 'Engedélyezés', //cpg1.4
-  'deactivate_user' => 'Felhasználó tiltása ', //cpg1.4
-  'user_already_inactive' => 'A felhasználó már le van tiltva', //cpg1.4
-  'deactivated' => 'tiltás', //cpg1.4
-  'reset_password' => 'Jelszó visszaállítás', //cpg1.4
-  'password_reset' => 'Jelszó beállítva %s -re', //cpg1.4
-  'change_group' => 'Elsődleges csoport választás', //cpg1.4
-  'change_group_to_group' => 'Változtatás %s -ről  %s -re', //cpg1.4
-  'add_group' => 'Másodlagogos csoport hozzáadása', //cpg1.4
-  'add_group_to_group' => 'A %s felhasználó hozzáadása %s csoporthoz. Ő most a(z)  %s elsődleges csoport tagja és %s a másodlagos csoportja.', //cpg1.4
-  'status' => 'Státusz', //cpg1.4
-);
-
-// ------------------------------------------------------------------------- //
-// File displayecard.php
-// ------------------------------------------------------------------------- //
-
-if (defined('DISPLAYECARD_PHP')) {
-
-$lang_displayecard_php = array(
-  'invalid_data' => 'Sérült adatok a képeslapodhoz az email kliens szerint. További információért ellenőrizd a linket.', //cpg1.4
-);
+if (defined('DELETE_PHP')) {
+$lang_delete_php['orig_pic'] = 'Eredeti kép'; // cpg1.5
+$lang_delete_php['fs_pic'] = 'Teljes méretű kép';
+$lang_delete_php['del_success'] = 'A törlés sikerült';
+$lang_delete_php['ns_pic'] = 'Normál méretű kép';
+$lang_delete_php['err_del'] = 'Nem törölheted';
+$lang_delete_php['thumb_pic'] = 'Indexkép';
+$lang_delete_php['comment'] = 'Hozzászólás';
+$lang_delete_php['im_in_alb'] = 'Kép az albumban';
+$lang_delete_php['alb_del_success'] = '&laquo;%s&raquo; album törölve';
+$lang_delete_php['alb_mgr'] = 'Albumkezelő';
+$lang_delete_php['err_invalid_data'] = 'Hibás adat \'%s\'-ban';
+$lang_delete_php['create_alb'] = 'A \'%s\'képalbum létrehozása';
+$lang_delete_php['update_alb'] = 'A \'%s\' képalbum frissítve  \'%s\' címmel és \'%s\' indexszel';
+$lang_delete_php['del_pic'] = 'Kép törlése';
+$lang_delete_php['del_alb'] = 'Album törlése';
+$lang_delete_php['del_user'] = 'Felhasználó törlése';
+$lang_delete_php['err_unknown_user'] = 'A kiválasztott felhasználó nem létezik!';
+$lang_delete_php['err_empty_groups'] = 'Nincs egyetlen csoporttábla sem vagy a csoporttábla üres!';
+$lang_delete_php['comment_deleted'] = 'Hozzászólás sikeresen törölve';
+$lang_delete_php['npic'] = 'Kép';
+$lang_delete_php['pic_mgr'] = 'Képkezelő';
+$lang_delete_php['update_pic'] = 'A \'%s\' kép frissítve \'%s\' fájlnévvel \'%s\'és indexszel';
+$lang_delete_php['username'] = 'Felhasználónév';
+$lang_delete_php['anonymized_comments'] = '%s Névtelen hozzászólás';
+$lang_delete_php['anonymized_uploads'] = '%s Névtelen publikus feltöltés';
+$lang_delete_php['deleted_comments'] = '%s Törölt hozzászólás';
+$lang_delete_php['deleted_uploads'] = '%s Törölt publikus feltöltés';
+$lang_delete_php['user_deleted'] = '%s felhasználó törölve';
+$lang_delete_php['activate_user'] = 'Felhasználó aktiválása';
+$lang_delete_php['user_already_active'] = 'A felhasználó már aktiválva van';
+$lang_delete_php['activated'] = 'Aktivált';
+$lang_delete_php['deactivate_user'] = 'Felhasználó inaktiválása';
+$lang_delete_php['user_already_inactive'] = 'A felhasználó már inaktiválva van';
+$lang_delete_php['deactivated'] = 'Inaktivált';
+$lang_delete_php['reset_password'] = 'Jelszó visszaállítás';
+$lang_delete_php['password_reset'] = 'Jelszó beállítva erre: %s';
+$lang_delete_php['change_group'] = 'Elsődleges csoport választása';
+$lang_delete_php['change_group_to_group'] = 'Változtatás erről: %s erre: %s';
+$lang_delete_php['add_group'] = 'Másodlagogos csoport hozzáadása';
+$lang_delete_php['add_group_to_group'] = 'A %s felhasználó hozzáadása %s csoporthoz. Ő most a(z) %s elsődleges csoport tagja és %s a másodlagos csoportja.';
+$lang_delete_php['status'] = 'Állapot';
+$lang_delete_php['updating_album'] = 'Album frissítése '; // cpg1.5
+$lang_delete_php['moved_picture_to_position'] = '%s kép áthelyezése ide: %s'; // cpg1.5
 }
 
 // ------------------------------------------------------------------------- //
 // File displayimage.php
 // ------------------------------------------------------------------------- //
-
 if (defined('DISPLAYIMAGE_PHP')){
+$lang_display_image_php['confirm_del'] = 'Biztos, hogy TÖRLÖD ezt a fájlt?\\nA hozzászólások is törlődnek!'; // js-alert
+$lang_display_image_php['del_pic'] = 'Fájl törlése';
+$lang_display_image_php['size'] = '%s x %s pixel';
+$lang_display_image_php['views'] = '%s alkalommal';
+$lang_display_image_php['slideshow'] = 'Diavetítés';
+$lang_display_image_php['stop_slideshow'] = 'Diavetítés megállítása';
+$lang_display_image_php['view_fs'] = 'A teljes méretű képhez kattints ide';
+$lang_display_image_php['edit_pic'] = 'Fájl információk szerkesztése';
+$lang_display_image_php['crop_pic'] = 'Vágás és forgatás';
+$lang_display_image_php['set_player'] = 'Lejátszó váltása';
 
-$lang_display_image_php = array(
-  'confirm_del' => 'Biztos, hogy törölni akarod ezt a képet? \\nKommentare werden ebenfalls gelöscht.',
-  'del_pic' => 'Kép törlése',
-  'size' => '%s x %s képpont',
-  'views' => '%s szor',
-  'slideshow' => 'Diavetítés indítása',
-  'stop_slideshow' => 'Dia',
-  'view_fs' => 'Kattints ide a teljes kép megtekintéséhez',
-  'edit_pic' => 'Kép információk szerkesztése', //cpg1.4
-  'crop_pic' => 'Vágás és forgatás',
-  'set_player' => 'Lejátszó választás',
-);
+$lang_picinfo['title'] = 'Fájlinformáció';
+$lang_picinfo['Album name'] = 'Album neve';
+$lang_picinfo['Rating'] = 'Szavazat (%s szavazat)';
+$lang_picinfo['Date Added'] = 'Hozzáadva';
+$lang_picinfo['Dimensions'] = 'Képfelbontás';
+$lang_picinfo['Displayed'] = 'Megjelenítve';
+$lang_picinfo['URL'] = 'Közvetlen webcím';
+$lang_picinfo['Make'] = 'Make';
+$lang_picinfo['Model'] = 'Model';
+$lang_picinfo['DateTime'] = 'Date Time';
+$lang_picinfo['ISOSpeedRatings'] = 'ISO';
+$lang_picinfo['MaxApertureValue'] = 'Max Aperture';
+$lang_picinfo['FocalLength'] = 'Focal length';
+$lang_picinfo['Comment'] = 'Hozzászólás';
+$lang_picinfo['addFav'] = 'Hozzáadás kedvencekhez';
+$lang_picinfo['addFavPhrase'] = 'Kedvencek';
+$lang_picinfo['remFav'] = 'Eltávolítás a Kedvencekből';
+$lang_picinfo['iptcTitle'] = 'IPTC Title';
+$lang_picinfo['iptcCopyright'] = 'IPTC Copyright';
+$lang_picinfo['iptcKeywords'] = 'IPTC Keywords';
+$lang_picinfo['iptcCategory'] = 'IPTC Category';
+$lang_picinfo['iptcSubCategories'] = 'IPTC Sub Categories';
+$lang_picinfo['ColorSpace'] = 'Color Space';
+$lang_picinfo['ExposureProgram'] = 'Exposure Program';
+$lang_picinfo['Flash'] = 'Flash';
+$lang_picinfo['MeteringMode'] = 'Metering Mode';
+$lang_picinfo['ExposureTime'] = 'Exposure Time';
+$lang_picinfo['ExposureBiasValue'] = 'Exposure Bias';
+$lang_picinfo['ImageDescription'] = 'Image Description';
+$lang_picinfo['Orientation'] = 'Orientation';
+$lang_picinfo['xResolution'] = 'X Resolution';
+$lang_picinfo['yResolution'] = 'Y Resolution';
+$lang_picinfo['ResolutionUnit'] = 'Resolution Unit';
+$lang_picinfo['Software'] = 'Software';
+$lang_picinfo['YCbCrPositioning'] = 'YCbCrPositioning';
+$lang_picinfo['ExifOffset'] = 'EXIF Offset';
+$lang_picinfo['IFD1Offset'] = 'IFD1 Offset';
+$lang_picinfo['FNumber'] = 'FNumber';
+$lang_picinfo['ExifVersion'] = 'EXIF Version';
+$lang_picinfo['DateTimeOriginal'] = 'DateTime Original';
+$lang_picinfo['DateTimedigitized'] = 'DateTime digitized';
+$lang_picinfo['ComponentsConfiguration'] = 'Components Configuration';
+$lang_picinfo['CompressedBitsPerPixel'] = 'Compressed Bits Per Pixel';
+$lang_picinfo['LightSource'] = 'Light Source';
+$lang_picinfo['ISOSetting'] = 'ISO Setting';
+$lang_picinfo['ColorMode'] = 'Color Mode';
+$lang_picinfo['Quality'] = 'Quality';
+$lang_picinfo['ImageSharpening'] = 'Image Sharpening';
+$lang_picinfo['FocusMode'] = 'Focus Mode';
+$lang_picinfo['FlashSetting'] = 'Flash Setting';
+$lang_picinfo['ISOSelection'] = 'ISO Selection';
+$lang_picinfo['ImageAdjustment'] = 'Image Adjustment';
+$lang_picinfo['Adapter'] = 'Adapter';
+$lang_picinfo['ManualFocusDistance'] = 'Manual Focus Distance';
+$lang_picinfo['DigitalZoom'] = 'Digital Zoom';
+$lang_picinfo['AFFocusPosition'] = 'AF Focus Position';
+$lang_picinfo['Saturation'] = 'Saturation';
+$lang_picinfo['NoiseReduction'] = 'Noise Reduction';
+$lang_picinfo['FlashPixVersion'] = 'FlashPix Version';
+$lang_picinfo['ExifImageWidth'] = 'EXIF Image Width';
+$lang_picinfo['ExifImageHeight'] = 'EXIF Image Height';
+$lang_picinfo['ExifInteroperabilityOffset'] = 'EXIF Interoperability Offset';
+$lang_picinfo['FileSource'] = 'File Source';
+$lang_picinfo['SceneType'] = 'Scene Type';
+$lang_picinfo['CustomerRender'] = 'Customer Render';
+$lang_picinfo['ExposureMode'] = 'Exposure Mode';
+$lang_picinfo['WhiteBalance'] = 'White Balance';
+$lang_picinfo['DigitalZoomRatio'] = 'Digital Zoom Ratio';
+$lang_picinfo['SceneCaptureMode'] = 'Scene Capture Mode';
+$lang_picinfo['GainControl'] = 'Gain Control';
+$lang_picinfo['Contrast'] = 'Contrast';
+$lang_picinfo['Sharpness'] = 'Sharpness';
+$lang_picinfo['ManageExifDisplay'] = 'Manage EXIF Display';
+$lang_picinfo['success'] = 'Information updated successfully.';
+$lang_picinfo['show_details'] = 'Részletek mutatása'; // cpg1.5
+$lang_picinfo['hide_details'] = 'Részletek elrejtése'; // cpg1.5
+$lang_picinfo['download_URL'] = 'Letöltési cím';
+$lang_picinfo['movie_player'] = 'Lejátszás a saját gépen és lejátszóval (válaszd a Futtatást)';
 
-$lang_picinfo = array(
-  'title' =>'Kép információ',
-  'Filename' => 'Fájlnév',
-  'Album name' => 'A képalbum neve',
-  'Rating' => 'Helyezés (%s szavazat)',
-  'Keywords' => 'Kulcsszavak',
-  'File Size' => 'Fájlméret',
-  'Date Added' => 'Hozzáadás dátuma', //cpg1.4
-  'Dimensions' => 'Méretek',
-  'Displayed' => 'Megjelenítve',
-  'URL' => 'URL', //cpg1.4
-  'Make' => 'Készítő', //cpg1.4
-  'Model' => 'Modell', //cpg1.4
-  'DateTime' => 'Dátum &amp; idő', //cpg1.4
-  'DateTimeOriginal' => 'Eredeti idő', //cpg1.4
-  'ISOSpeedRatings'=>'ISO', //cpg1.4
-  'MaxApertureValue' => 'Legnagyobb blende nyílás', //cpg1.4
-  'FocalLength' => 'Fókusz távolság', //cpg1.4
-  'Comment' => 'Hozzászólás',
-  'addFav'=>'Hozzáadás a kedvencekhez',
-  'addFavPhrase'=>'Kedvencek',
-  'remFav'=>'Eltávolítás a kedvencekből',
-  'iptcTitle'=>'IPTC cím',
-  'iptcCopyright'=>'IPTC copyright',
-  'iptcKeywords'=>'IPTC kulcsszavak',
-  'iptcCategory'=>'IPTC kategória',
-  'iptcSubCategories'=>'IPTC alkategóriák',
-  'ColorSpace' => 'Színtér', //cpg1.4
-  'ExposureProgram' => 'Expozíciós program', //cpg1.4
-  'Flash' => 'Vaku', //cpg1.4
-  'MeteringMode' => 'Mérési mód', //cpg1.4
-  'ExposureTime' => 'Expozíciós idő', //cpg1.4
-  'ExposureBiasValue' => 'Expozíciós előlállítás', //cpg1.4
-  'ImageDescription' => ' Kép meghatározás', //cpg1.4
-  'Orientation' => 'Orientáció', //cpg1.4
-  'xResolution' => 'x felbontás', //cpg1.4
-  'yResolution' => 'y felbontás', //cpg1.4
-  'ResolutionUnit' => 'A felbontás egysége', //cpg1.4
-  'Software' => 'Program', //cpg1.4
-  'YCbCrPositioning' => 'YCbCr pozíció', //cpg1.4
-  'ExifOffset' => 'Exif eltolás', //cpg1.4
-  'IFD1Offset' => 'IFD1 eltolás', //cpg1.4
-  'FNumber' => 'Blende', //cpg1.4
-  'ExifVersion' => 'Exif verzió', //cpg1.4
-  'DateTimeOriginal' => 'Eredeti dátum & idő', //cpg1.4
-  'DateTimedigitized' => 'Digitalizálás dátuma & ideje', //cpg1.4
-  'ComponentsConfiguration' => 'Komponens konfiguráció', //cpg1.4
-  'CompressedBitsPerPixel' => 'Tömörített bitek száma képpontonként', //cpg1.4
-  'LightSource' => 'Fényforrás', //cpg1.4
-  'ISOSetting' => 'ISO beállítás', //cpg1.4
-  'ColorMode' => 'Színmód', //cpg1.4
-  'Quality' => 'Minőség', //cpg1.4
-  'ImageSharpening' => 'Kép élesség', //cpg1.4
-  'FocusMode' => 'Fókusz mód', //cpg1.4
-  'FlashSetting' => 'Vaku beállítás', //cpg1.4
-  'ISOSelection' => 'ISO választás', //cpg1.4
-  'ImageAdjustment' => 'Képbeállítás', //cpg1.4
-  'Adapter' => 'Adapter', //cpg1.4
-  'ManualFocusDistance' => 'Kézi fókusztáv', //cpg1.4
-  'DigitalZoom' => 'Digitális zoom', //cpg1.4
-  'AFFocusPosition' => 'Autofókusz pozició', //cpg1.4
-  'Saturation' => 'Telítettség', //cpg1.4
-  'NoiseReduction' => 'Zaj csökkentés', //cpg1.4
-  'FlashPixVersion' => 'Vaku Pix verzió', //cpg1.4
-  'ExifImageWidth' => 'Exif képszélesség', //cpg1.4
-  'ExifImageHeight' => 'Exif képmagasság', //cpg1.4
-  'ExifInteroperabilityOffset' => 'Exif együttműködési ellenérték', //cpg1.4
-  'FileSource' => 'Fájl forrás', //cpg1.4
-  'SceneType' => 'Színhely típus', //cpg1.4
-  'CustomerRender' => 'Ügyfél beállítás', //cpg1.4
-  'ExposureMode' => 'Expozíciós mód', //cpg1.4
-  'WhiteBalance' => 'Fehér egyensúly', //cpg1.4
-  'DigitalZoomRatio' => 'Digitális zoom arány', //cpg1.4
-  'SceneCaptureMode' => 'Táj felvételi mód', //cpg1.4
-  'GainControl' => 'Nyereség kontroll', //cpg1.4
-  'Contrast' => 'Kontraszt', //cpg1.4
-  'Saturation' => 'Telítetség', //cpg1.4
-  'Sharpness' => 'Élesség', //cpg1.4
-  'ManageExifDisplay' => 'Exif képernyő kezelés', //cpg1.4
-  'submit' => 'Tovább', //cpg1.4
-  'success' => 'Információ sikeresen frissítve.', //cpg1.4
-  'details' => 'Részletek', //cpg1.4
-);
+$lang_display_comments['comment_x_to_y_of_z'] = '%d írt ide: %d, erről: %d'; // cpg1.5
+$lang_display_comments['page'] = 'Oldal'; // cpg1.5
+$lang_display_comments['edit_title'] = 'Hozzászólás szerkesztése';
+$lang_display_comments['delete_title'] = 'Hozzászólás törlése'; // cpg1.5
+$lang_display_comments['confirm_delete'] = 'Biztos, hogy törlöd a hozzászólást?'; // js-alert
+$lang_display_comments['add_your_comment'] = 'Hozzászólás küldése';
+$lang_display_comments['name'] = 'Név';
+$lang_display_comments['comment'] = 'Hozzászólás';
+$lang_display_comments['your_name'] = 'Neved';
+$lang_display_comments['report_comment_title'] = 'Hozzászólás jelentése az adminnnak';
+$lang_display_comments['pending_approval'] = 'A hozzászólás az admin jóváhagyása után lesz látható'; // cpg1.5
+$lang_display_comments['unapproved_comment'] = 'Nem jóváhagyott hozzászólás'; // cpg1.5
+$lang_display_comments['pending_approval_message'] = 'Valaki már hozzászólt itt. Ez csak az admin jóváhagyása után jelenik meg.'; // cpg1.5
+$lang_display_comments['approve'] = 'Hozzászólás engedélyezése'; // cpg1.5
+$lang_display_comments['disapprove'] = 'Hozzászólás elutasítása'; // cpg1.5
+$lang_display_comments['log_in_to_comment'] = 'Névtelen hozzászólás nem engedélyezett. %sLépj be%s, ha írni szeretnél'; // cpg1.5 // do not translate the %s placeholders - they will be used as wrappers for the link (<a>)
+$lang_display_comments['default_username_message'] = 'Írd be a neved a hozzászóláshoz'; // cpg1.5
+$lang_display_comments['comment_rejected'] = 'A hozzászólásodat elutasították'; // cpg1.5
 
-$lang_display_comments = array(
-  'OK' => 'OK',
-  'edit_title' => 'Hozzászólás szerkesztése',
-  'confirm_delete' => 'Biztos, hogy törölni akarod ezt a hozzászólást?', //js-alert
-  'add_your_comment' => 'Hozzászólásod hozzáadása',
-  'name'=>'Név',
-  'comment'=>'Hozzászólás',
-  'your_name' => 'Saját neved',
-  'report_comment_title' => 'Jelentés a hozzászólásról a rendszergazdának', //cpg1.4
-);
-
-$lang_fullsize_popup = array(
-  'click_to_close' => 'Kattints a képre az ablak bezárásához!',
-);
-
+$lang_fullsize_popup['click_to_close'] = 'Kattints a képre az ablak bezárásához';
+$lang_fullsize_popup['close_window'] = 'ablak bezárása'; // cpg1.5
 }
 
 // ------------------------------------------------------------------------- //
 // File ecard.php
 // ------------------------------------------------------------------------- //
 
-if (defined('ECARDS_PHP') || defined('DISPLAYECARD_PHP')) $lang_ecard_php =array(
-  'title' => 'Képeslap küldés',
-  'invalid_email' => '<b>Figyelem</b>: Hibás email cím!',
-  'ecard_title' => 'Egy képeslap neked %s -től',
-  'error_not_image' => 'Csak kép küldhető képeslapként.', //cpg1.3.0
-  'view_ecard' => 'Alternatív link, ha a kép nem jelenik meg helyesen: ',
-  'view_ecard_plaintext' => 'Hogy megtekintsd ezt a képeslapot, másold ki és illesztd be ezt az URL-t a böngésződ címsorába:', //cpg1.4
-  'view_more_pics' => 'Még több kép megtekintése!', //cpg1.4
-  'send_success' => 'A képeslapod elküldve',
-  'send_failed' => 'Sajnáljuk, de szerver nem tudta kézbesíteni a képeslapod...',
-  'from' => 'Feladó',
-  'your_name' => 'A Te neved',
-  'your_email' => 'A Te email címed',
-  'to' => 'Cimzett',
-  'rcpt_name' => 'Cimzett neve',
-  'rcpt_email' => 'Cimzett Email címe',
-  'greetings' => 'Üdvözlet', //cpg1.4
-  'message' => 'Üzenet', //cpg1.4
-  'ecards_footer' => 'Küldte: %s erről az %s IP címről %s -kor (képgaléria ideje)', //cpg1.4
-  'preview' => 'Képeslap megtekintése', //cpg1.4
-  'preview_button' => 'Megtekintés', //cpg1.4
-  'submit_button' => 'Képeslap küldése', //cpg1.4
-  'preview_view_ecard' => 'Ez egy alternatív link a képeslaphoz, ami egyszer lett legenerálva. A megtekintéshez nem fog működni.', //cpg1.4
-);
+if (defined('ECARDS_PHP')) {
+$lang_ecard_php['title'] = 'Képeslap küldése';
+$lang_ecard_php['invalid_email'] = 'Hiba: nem valódi mailcím:'; // cpg1.5
+$lang_ecard_php['ecard_title'] = 'Képeslapot kaptál tőle: %s';
+$lang_ecard_php['error_not_image'] = 'Csak képeket küldhetsz képeslapként.'; // cpg1.5
+$lang_ecard_php['error_not_image_flash'] = 'Csak képeket és flasht küldhetsz képeslapként.'; // cpg1.5
+$lang_ecard_php['view_ecard'] = 'Kattints ide, ha a képeslap nem jelenik meg megfelelően';
+$lang_ecard_php['view_ecard_plaintext'] = 'A képeslap megjelenítéséhez másold ki vágólapra ezt a linket, és illeszd be a böngésződ keresősávjába:';
+$lang_ecard_php['view_more_pics'] = 'Több kép megtekintése';
+$lang_ecard_php['send_success'] = 'A képeslapod elküldtük';
+$lang_ecard_php['send_failed'] = 'Sajnálom, de a kiszolgáló nem tudta elküldeni a képeslapod...';
+$lang_ecard_php['from'] = 'Feladó';
+$lang_ecard_php['your_name'] = 'Neved';
+$lang_ecard_php['your_email'] = 'Mail címed';
+$lang_ecard_php['to'] = 'Címzett';
+$lang_ecard_php['rcpt_name'] = 'Címzett neve';
+$lang_ecard_php['rcpt_email'] = 'Címzett mailcíme';
+$lang_ecard_php['greetings'] = 'Tárgy';
+$lang_ecard_php['message'] = 'Üzenet';
+$lang_ecard_php['ecards_footer'] = '%s küldte, erről az IP címről: %s, ekkor: %s (Képtár idő szerint)';
+$lang_ecard_php['preview'] = 'Képeslap előnézete';
+$lang_ecard_php['preview_button'] = 'Előnézet';
+$lang_ecard_php['submit_button'] = 'Képeslap küldése';
+$lang_ecard_php['preview_view_ecard'] = 'Egy egyedi hivatkozást fogsz kapni. Ez nem elérhető az előnézetnél.';
+}
 
 // ------------------------------------------------------------------------- //
-// File report_file.php //cpg1.4
+// File report_file.php
 // ------------------------------------------------------------------------- //
 
-if (defined('REPORT_FILE_PHP') || defined('DISPLAYREPORT_PHP')) $lang_report_php =array(
-  'title' => 'Jelentés a rendszergazdának', //cpg1.4
-  'invalid_email' => '<b>Figyelem</b>: hibás email cím!', //cpg1.4
-  'report_subject' => 'Jelentés %s -tól ezen %s Képtárról', //cpg1.4
-  'view_report' => 'Alternativ link, ha nem jelenik meg helyesen a képernyőn', //cpg1.4
-  'view_report_plaintext' => 'Hogy megtekintsd ezt a jelentést, másold ki és illesztd be ezt az URL-t a böngésződ címsorába:', //cpg1.4
-  'view_more_pics' => 'Képtár', //cpg1.4
-  'send_success' => 'A jelentés elküldve', //cpg1.4
-  'send_failed' => 'Sajnáljuk, de szerver nem tudta kézbesíteni a jelentésed...', //cpg1.4
-  'from' => 'Feladó', //cpg1.4
-  'your_name' => 'Saját neved', //cpg1.4
-  'your_email' => 'Saját email címed', //cpg1.4
-  'to' => 'Cimzett', //cpg1.4
-  'administrator' => 'Renszergazda/moderátor', //cpg1.4
-  'subject' => 'Tárgy', //cpg1.4
-  'comment_field_name' => 'Jelentés a hozzászólásról "%s"-tól', //cpg1.4
-  'reason' => 'Indíték', //cpg1.4
-  'message' => 'Üzenet', //cpg1.4
-  'report_footer' => 'Küldte: %s erről az %s IP címről %s -kor (képgaléria ideje)', //cpg1.4
-  'obscene' => 'trágár ', //cpg1.4
-  'offensive' => 'erőszakos', //cpg1.4
-  'misplaced' => 'Lezárt téma/eltévesztett', //cpg1.4
-  'missing' => 'hiányzó', //cpg1.4
-  'issue' => 'hiba/nem lehet megnézni', //cpg1.4
-  'other' => 'másik', //cpg1.4
-  'refers_to' => 'Kép jelentése', //cpg1.4
-  'reasons_list_heading' => 'A jelntés oka:', //cpg1.4
-  'no_reason_given' => 'Nincs ok megadva', //cpg1.4
-  'go_comment' => 'Ugrás a hozzászóláshoz', //cpg1.4
-  'view_comment' => 'Teljes jelentés hozzászólásokkal', //cpg1.4
-  'type_file' => 'Fájl', //cpg1.4
-  'type_comment' => 'Hozzászólás', //cpg1.4
-);
+if (defined('REPORT_FILE_PHP')) {
+$lang_report_php['title'] = 'Jelentés az adminnak';
+$lang_report_php['invalid_email'] = '<strong>Figyelem</strong>: hibás email cím!';
+$lang_report_php['report_subject'] = '%s jelenti, ebből a képtárból: %s';
+$lang_report_php['view_report'] = 'Alternativ link, ha nem jelenik meg helyesen a képernyőn';
+$lang_report_php['view_report_plaintext'] = 'A jelentés megtekintéséhez, másold ki és illesztd be ezt az URL-t a böngésződ címsorába:';
+$lang_report_php['view_more_pics'] = 'Képtár';
+$lang_report_php['send_success'] = 'A jelentés elküldve';
+$lang_report_php['send_failed'] = 'Sajnáljuk, de a kiszolgáló nem tudta kézbesíteni a jelentésed...';
+$lang_report_php['from'] = 'Feladó';
+$lang_report_php['your_name'] = 'Neved';
+$lang_report_php['your_email'] = 'E-mail címed';
+$lang_report_php['to'] = 'Cimzett';
+$lang_report_php['administrator'] = 'Rendszergazda/Moderátor';
+$lang_report_php['subject'] = 'Tárgy';
+$lang_report_php['comment_field_name'] = '"%s" jelentése egy hozzászólásról';
+$lang_report_php['reason'] = 'Indoklás';
+$lang_report_php['message'] = 'Üzenet';
+$lang_report_php['report_footer'] = 'Küldte: %s, erről az IP címről: %s, ekkor: %s (képgaléria ideje)';
+$lang_report_php['obscene'] = 'trágár';
+$lang_report_php['offensive'] = 'erőszakos';
+$lang_report_php['misplaced'] = 'Lezárt téma/eltévesztett';
+$lang_report_php['missing'] = 'hiányzó';
+$lang_report_php['issue'] = 'hiba/nem lehet megnézni';
+$lang_report_php['other'] = 'másik';
+$lang_report_php['refers_to'] = 'Kép jelentése';
+$lang_report_php['reasons_list_heading'] = 'A jelntés oka:';
+$lang_report_php['no_reason_given'] = 'Nincs indoklás megadva';
+$lang_report_php['go_comment'] = 'Ugrás a hozzászóláshoz';
+$lang_report_php['view_comment'] = 'Teljes jelentés hozzászólásokkal';
+$lang_report_php['type_file'] = 'Fájl';
+$lang_report_php['type_comment'] = 'Hozzászólás';
+$lang_report_php['invalid_data'] = 'A jelentés adatai nem tudtak hozzáférni a mail klienshez. Kattints a linkre a folytatáshoz.';
+}
 
 // ------------------------------------------------------------------------- //
 // File editpics.php
 // ------------------------------------------------------------------------- //
 
-if (defined('EDITPICS_PHP')) $lang_editpics_php = array(
-  'pic_info' => 'Kép információ',
-  'album' => 'Képalbum',
-  'title' => 'Cím',
-  'filename' => 'Fájlnév', //cpg1.4
-  'desc' => 'Meghatározás',
-  'keywords' => 'Kulcsszavak',
-  'new_keyword' => 'Új kulcsszó', //cpg1.4
-  'new_keywords' => 'Új kulcsszavak keresése', //cpg1.4
-  'existing_keyword' => 'Létező kulcsszó', //cpg1.4
-  'pic_info_str' => '%sx%s - %s kB - %s x megtekintés - %s x szavazat',
-  'approve' => 'Kép jóváhagyása',
-  'postpone_app' => 'Elhalasztott jóváhagyás',
-  'del_pic' => 'Kép törlése',
-  'del_all' => 'Összes kép törlése', //cpg1.4
-  'read_exif' => 'EXIF adatok újraolvasása',
-  'reset_view_count' => 'Nézettségi számláló nullázása',
-  'reset_all_view_count' => 'Az összes nézettségi számláló nullázása', //cpg1.4
-  'reset_votes' => 'Szavazatok nullázása',
-  'reset_all_votes' => 'Összes szavazatok nullázása', //cpg1.4
-  'del_comm' => 'Hozzászólás törlése',
-  'del_all_comm' => 'Összes hozzászólás törlése', //cpg1.4
-  'upl_approval' => 'Feltöltés jóváhagyása', //cpg1.4
-  'edit_pics' => 'Kép szerkesztése',
-  'see_next' => 'A következő kép',
-  'see_prev' => 'Az előző kép',
-  'n_pic' => '%s Kép',
-  'n_of_pic_to_disp' => 'Kép oldalanként',
-  'apply' => 'Módosítások elfogadása',
-  'crop_title' => 'Coppermine képszerkesztő',
-  'preview' => 'Megtekintés',
-  'save' => 'Kép mentése',
-  'save_thumb' =>'Mentés indexképként',
-  'gallery_icon' => 'Legyen ez a képtáram ikonja', //cpg1.4
-  'sel_on_img' =>'A teljes kép kiválasztása', //js-alert
-  'album_properties' =>'Album tulajdonságok', //cpg1.4
-  'parent_category' =>'Szülő kategória', //cpg1.4
-  'thumbnail_view' =>'Indexkép nézet', //cpg1.4
-  'select_unselect' =>'Összes kiválasztása', //cpg1.4
-  'file_exists' => "A célfájl '%s' már létezik.", //cpg1.4
-  'rename_failed' => "Az átnevezés'%s'-ről '%s'-re nem sikerült.", //cpg1.4
-  'src_file_missing' => "A forrásfájl '%s' hiányzik.", // cpg 1.4
-  'mime_conv' => "Nem lehet átkonvertálni '%s'-ről '%s'-re",//cpg1.4
-  'forb_ext' => 'Tiltott fájlkiterjesztés.',//cpg1.4
-);
-
-// ------------------------------------------------------------------------- //
-// File faq.php
-// ------------------------------------------------------------------------- //
-
-if (defined('FAQ_PHP')) $lang_faq_php = array(
-  'faq' => 'Gyakran Ismételt Kérdések (Frequently Asked Questions)',
-  'toc' => 'Tárgymutató',
-  'question' => 'Kérdés: ',
-  'answer' => 'Válasz: ',
-);
-
-if (defined('FAQ_PHP')) $lang_faq_data = array(
-  'Általános',
-  array('Miért szükséges regisztrálni?', 'A regisztráció szükségességét a rendszergazda dönti el. A regisztrált tagok plusz funkciókat érnek el, mint pl.: képfeltöltés, kedvencek listája, kép értékelés, hozzászólások stb. ', 'allow_user_registration', '0'),
-  array('Hogy tudok regisztrálni?', 'Kattints a &quot;Registráció&quot;-ra és töltsd ki a szükséges mezőket (az opcionális mezők kitöltése nem kötelező).<br />Ha a rendszergazda engedélyezte az email aktiválást, akkor az adatok elfogadása után kapsz egy email üzenetet arra a címre , amelyet a regisztrációkor megadtál. A levél részletes utasításokat tartalmaz a regisztráció aktíválásának lépéseiről. Hogy be tudj jelentkezni, szükséges aktivált tagság.', 'allow_user_registration', '1'),
-  array('Hogy tudok bejelentkezni?', 'Kattints a &quot;Bejelentkezés&quot;-re, és add meg felhasználó neved és jelszavad, és jelöld be az &quot;Emlékezz rám&quot;opciót, hogy a képtár emlékezzen rád .<br /><b>Fontos: Hogy müködjön el kell fogadnos a sütiket erről az oldalról a böngésződben.</b>', 'offline', 0),
-  array('Miért nem tudok bejelentkezni?', 'Regisztráltál? Előfordulhat, hogy a képtár látogatása regisztrációhoz kötött. Ki lettél tiltva a képtárból (ezt egy üzenet jelzi)? Lépj kapcsolatba a webmesterrel, vagy az adminisztrátorral, hogy megtudd az okát. Ha regisztrált vagy, és nem vagy kitiltva az oldalról, akkor ellenőrizd, hogy nem gépelted-e el a nevet, vagy a jelszót. Ellenőrizd kétszer is, mivel legtöbbször ez a hiba. Ha a hiba még mindig fennáll, akkor lépj kapcsolatba az adminisztrátorral, pontosan leírva a hibajelenséget.', 'offline', 0),
-  array('Mit tegyek, ha elfelejtettem a jelszavam?', ' Ha van &quot;Elfejetettem a jelszót&quot; link, akkor használd. Más esetekben keresd meg a rendszergazdát', 'offline', 0),
-  //array('Mit tegyek ha meg akarom változtatni az Email címemet?', 'Egyszerüen jelentkezz be és menj a &quot; saját profil&quot;-ra', 'offline', 0),
-  array('Hogy vehetem fel a képet a &quot;Kedvenceim&quot; közé?', 'Kattints a képre , majd kattints a &quot;kép információ&quot;-ra (<img src="images/info.gif" width="16" height="16" border="0" alt="Kép-információ" />); menj az adatok aljára és kattints a &quot;Kedvencek hozzáadása&quot;-ra.<br />A rendszergazda engedélyezheti alapból a képinformációkat.<br />Fontos: A sütiket engedélyezned kell.', 'offline', 0),
-  array('Hogy tudom értékelni a képet?', 'Kattints az indexképre és a kép alján válassz egy helyezést.', 'offline', 0),
-  array('Hogy tudok hozzászolni a képhez?', 'Kattints az indexképre és menj az aljára, ahol be tudod írni a hozzászólásod.', 'offline', 0),
-  array('Hogy lehet képet feltölteni?', 'Kattints a &quot;Kép feltöltés&quot;-re és válassz albumot, hogy hova akarsz feltölteni.Kattints a &quot;Böngészés&quot;-re keresd meg a fájlt amit fel akarsz tölteni és kattints a &quot;megnyitás&quot; -ra. Adj neki címet és meghatározást ha akarsz, majd kattints az &quot;Elfogad&quot;-ra', 'allow_private_albums', 0),
-  array('Hova tudok képet feltölteni?', 'A saját albumaid közül bármelyikbe, amelyek a &quot;Saját képtár&quot;-adban találhatóak ', 'allow_private_albums', 0),
-  array('Milyen formátumú és méretű képet lehet feltölteni?', 'A formátumot (jpg,png stb..) és a méretet a rendszergazda határozza meg.', 'allow_private_albums', 0),
-  array('Mi az a  &quot;Saját képtár &quot;?', 'A &quot;Saját képtár&quot; az hely ahova el tudod helyezni az albumaidat.', 'allow_private_albums', 0),
-  array('Hogyan tudok létrehozni, átnevezni és törölni albumot a &quot;saját Képtár&quot;-ban?', 'Ehhez rendszergazda módban kell lenni.Menj a &quot; Saját album létrehozás/rendezés&quot;menübe és kattints az &quot;új&quot;-ra. Írd át az &quot;Új album&quot;nevet amire szeretnéd nevezni az albumodat .<br />Itt bármelyik létező albumod nevét meg tudod változtatni .<br />Kattints a &quot;Változtatások elfogadás&quot;-ára .', 'allow_private_albums', 0),
-  array('Hogy tudom módosítani az albumom tulajdonságait?', 'Ehhez rendszergazda módban kell lenni.<br />Meny a &quot; Saját album módosítása&quot; menübe. Az &quot;album frissítése&quot; listában válaszd ki a módosítani kivánt albumot.<br />Itt tudsz nevet, leírást, indexképet, megtekintés korlátozást és véleményezés korlátozást változtatni.<br />A végén kattints az  &quot;Album frissítés&quot; -re.', 'allow_private_albums', 0),
-  array('Mik azok a sütik?', 'A sütik kisméretü text fájlok , melyet a webszerver küld a számítógépednek. A sütik segítségével jegyzi meg a böngésző a felhasználó beálításait.<br /> ', 'offline', 0),
-  array('Hogyan használhatnám ezt a programot a saját weboldalomon?', 'A Coppermine egy szabadon felhasználható multimédiás képtár,mely a GNU alatt ljelent meg. Az összes szolgáltatása elérhető különböző platformokon. Láttogasd meg a  <a href="http://coppermine.sf.net/">Coppermine weboldalát</a> további információkért és a program letöltéséhez .', 'offline', 0),
-
-  'Navigálás az oldalon',
-  array('Mi az &quot;Album lista&quot;?', 'Itt tudod megnézni az egész képtárat, minden albumhoz tartozik link. Ha nem vagy benne valamelyik képtárban akkor a képtárak listáját látod.', 'offline', 0),
-  array('Mi a  &quot;Saját képtár;?', 'Itt tud a felhasználó létrehozni saját albumot, törölni vagy módosítani már meglévőket.', 'allow_private_albums', 1), //cpg1.4
-  array('Mi a különbség az &quot;Rendszergazda mód&quot; és &quot;Felhasználó mód&quot; között?', 'Rendszergazda módban lehet módosítani a saját albumokon, képtárakon', 'allow_private_albums', 0),
-  array('Mi a &quot;Kép feltöltés&quot;?', 'Itt lehet képeket feltölteni a képtárba (méret és formátum a rendszergazda által meghatározva)', 'allow_private_albums', 0),
-  array('Mi a &quot;Legújabb feltöltések&quot;?', 'Itt lehet megnézni az utolsó feltöltéseket.', 'offline', 0),
-  array('Mi a &quot;Legújabb hozzászólások&quot;?', 'itt lehet megnézni a legújabb hozászólásokat, amelyeket a felhasználók beküldtek .', 'offline', 0),
-  array('Mi a &quot;Legtöbbet nézet&quot;?', 'Itt lehet megtekinteni a legtöbbször nézett képet az összes kép közül.', 'offline', 0),
-  array('Mi a &quot;Legtöbb szavazatot&quot;?', 'Ez a szolgáltatás mutatja a felhasználók által legjobban kedvelt képeket, megjelenítve az átlagos osztályzatot (pl. 5 néző ad  <img src="images/rating3.gif" width="65" height="14" border="0" alt="" />:-ot, akkor a kép átlagos osztályzata <img src="images/rating3.gif" width="65" height="14" border="0" alt="" /> ;Ha 5 néző osztályozza a képet  1-től 5-ig (1,2,3,4,5), akkor az átlag: <img src="images/rating3.gif" width="65" height="14" border="0" alt="" /> .)<br />A helyezés skála  <img src="images/rating5.gif" width="65" height="14" border="0" alt="" /> (legjobb)-tól a <img src="images/rating0.gif" width="65" height="14" border="0" alt="" /> (legrosszabb) -ig terjed.', 'offline', 0),
-  array('Mi a &quot;Kedvenceim&quot;?', 'Ez a szolgáltatás tárolja a felhasználó kedvenc képeit, melyet a sütiben el is küld a felhasználó számítógépére.', 'offline', 0),
-);
-
+if (defined('EDITPICS_PHP')) {
+$lang_editpics_php['pic_info'] = 'Fájl információ';
+$lang_editpics_php['desc'] = 'Leírás';
+$lang_editpics_php['approval'] = 'Jóváhagyás'; //cpg 1.5
+$lang_editpics_php['approved'] = 'Jóváhagyott'; // cpg 1.5
+$lang_editpics_php['unapproved'] = 'Nem jóváhagyott'; // cpg 1.5
+$lang_editpics_php['new_keyword'] = 'Új kulcsszó';
+$lang_editpics_php['new_keywords'] = 'Új kulcsszavak keresése';
+$lang_editpics_php['existing_keyword'] = 'Létező kulcsszó';
+$lang_editpics_php['pic_info_str'] = '%sx%s felbontás - %s KB - %s megtekintés - %s szavazat';
+$lang_editpics_php['approve'] = 'Kép jóváhagyása';
+$lang_editpics_php['postpone_app'] = 'Elhalasztott jóváhagyás';
+$lang_editpics_php['del_pic'] = 'Kép törlése';
+$lang_editpics_php['del_all'] = 'Összes kép törlése';
+$lang_editpics_php['read_exif'] = 'EXIF adatok újraolvasása';
+$lang_editpics_php['reset_view_count'] = 'Nézettségi számláló nullázása';
+$lang_editpics_php['reset_all_view_count'] = 'Az összes nézettségi számláló nullázása';
+$lang_editpics_php['reset_votes'] = 'Szavazatok nullázása';
+$lang_editpics_php['reset_all_votes'] = 'Összes szavazatok nullázása';
+$lang_editpics_php['del_comm'] = 'Hozzászólás(ok) törlése';
+$lang_editpics_php['del_all_comm'] = 'Összes hozzászólás törlése';
+$lang_editpics_php['upl_approval'] = 'Feltöltés jóváhagyása';
+$lang_editpics_php['edit_pics'] = 'Fájlok szerkesztése';
+$lang_editpics_php['edit_pic'] = 'Fájl szerkesztése'; // cpg 1.5
+$lang_editpics_php['see_next'] = 'Következő fájlok';
+$lang_editpics_php['see_prev'] = 'Előző fájlok';
+$lang_editpics_php['n_pic'] = '%s fájl';
+$lang_editpics_php['n_of_pic_to_disp'] = 'Fájlok oldalanként';
+$lang_editpics_php['crop_title'] = 'Coppermine képszerkesztő';
+$lang_editpics_php['preview'] = 'Megtekintés';
+$lang_editpics_php['save'] = 'Kép mentése';
+$lang_editpics_php['save_thumb'] = 'Mentés indexképként';
+$lang_editpics_php['gallery_icon'] = 'Legyen ez a képtáram ikonja';
+$lang_editpics_php['sel_on_img'] = 'A teljes kép kiválasztása'; // js-alert
+$lang_editpics_php['album_properties'] = 'Album tulajdonságok';
+$lang_editpics_php['parent_category'] = 'Szülő kategória';
+$lang_editpics_php['thumbnail_view'] = 'Indexkép nézet';
+$lang_editpics_php['select_unselect'] = 'Összes kiválasztása';
+$lang_editpics_php['file_exists'] = 'A célfájl \'%s\' már létezik.';
+$lang_editpics_php['rename_failed'] = 'Az átnevezés erről: \'%s\' erre: \'%s\' nem sikerült.';
+$lang_editpics_php['src_file_missing'] = 'A forrásfájl \'%s\' hiányzik.';
+$lang_editpics_php['mime_conv'] = 'Nem lehet átkonvertálni ezt: \'%s\' erre: \'%s\'';
+$lang_editpics_php['forb_ext'] = 'Tiltott fájlkiterjesztés.';
+$lang_editpics_php['error_editor_class'] = 'A szerkesztő nem támogatja az átméretezési lehetőségeket'; // cpg 1.5
+$lang_editpics_php['error_document_size'] = 'A dokumentumnak nincs szélesége vagy magassága'; // cpg 1.5 // js-alert
+$lang_editpics_php['success_picture'] = 'A kép mentése sikerült - most már %sbezárhatod%s ezt az ablakot'; // cpg1.5 // do not translate "%s" here
+$lang_editpics_php['success_thumb'] = 'Az indexkép mentése sikerült - most már %sbezárhatod%s ezt az ablakot'; // cpg1.5 // do not translate "%s" here
+$lang_editpics_php['rotate'] = 'Forgatás'; // cpg 1.5
+$lang_editpics_php['mirror'] = 'Tükrözés'; // cpg 1.5
+$lang_editpics_php['scale'] = 'Átméretezés'; // cpg 1.5
+$lang_editpics_php['new_width'] = 'Új szélesség'; // cpg 1.5
+$lang_editpics_php['new_height'] = 'Új magasság'; // cpg 1.5
+$lang_editpics_php['enable_clipping'] = 'Kivágás engedélyezése'; // cpg 1.5
+$lang_editpics_php['jpeg_quality'] = 'JPEG kimeneti minősége'; // cpg 1.5
+$lang_editpics_php['or'] = 'VAGY'; // cpg 1.5
+$lang_editpics_php['approve_pic'] = 'Fájl jóváhagyása'; // cpg 1.5
+$lang_editpics_php['approve_all'] = 'Minden fájl jóváhagyása'; // cpg 1.5
+$lang_editpics_php['error_empty'] = 'Az album üres vagy nem töltöttél fel ide képet'; // cpg1.5
+$lang_editpics_php['error_approval_empty'] = 'Nincs több jóváhagyandó kép'; // cpg1.5
+$lang_editpics_php['error_linked_only'] = 'Az album csak hivatkozott képeket tartalmaz, melyeket itt nem szerkeszthetsz'; // cpg1.5
+$lang_editpics_php['note_approve_public'] = 'A fájlok egy nyilvános mappába kerültek, amihez az adminisztrátori jóváhagyás kell.'; // cpg1.5
+$lang_editpics_php['note_approve_private'] = 'A fájlok egy személyes mappába kerültek, amihez az adminisztrátori jóváhagyás kell.' ; // cpg1.5
+$lang_editpics_php['note_edit_control'] = 'A nyilvános mappába tett fájlok nem szerkeszthetők'; // cpg1.5
+$lang_editpics_php['confirm_move'] = 'Biztos, hogy áthelyezed ezt a fájlt?'; // cpg1.5 //js-alert
+$lang_editpics_php['success_changes'] = 'A változások elmentésre kerültek'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
 // File forgot_passwd.php
 // ------------------------------------------------------------------------- //
 
-if (defined('FORGOT_PASSWD_PHP')) $lang_forgot_passwd_php = array(
-  'forgot_passwd' => 'Jelszó emlékeztető',
-  'err_already_logged_in' => 'Már be vagy jelentkezve!',
-  'enter_email' => 'Add meg az email címedet', //cpg1.4
-  'submit' => 'Tovább!',
-  'illegal_session' => 'Az elfelejtett jelszó időszak érvénytelen vagy lejárt.', //cpg1.4
-  'failed_sending_email' => 'Nem lehet elküldeni a jelszó emlékeztető email-t!',
-  'email_sent' => 'A felhasználó nevet és jelszót tartalmazó levelet elküldtük a(z) %s címre.', //cpg1.4
-  'verify_email_sent' => 'Az email elküldve %s címre. Kérjük, ellenőrizd a postaládádat a folyamat befejezéséhez.', //cpg1.4
-  'err_unk_user' => 'Nemlétező felhasználó!',
-  'account_verify_subject' => '%s - Új jelszót kér', //cpg1.4
-  'account_verify_body' => 'Új jelszót kértél. Ha azt akarod , hogy az új jelszót elküldjük, kattints a következő linkre:
+if (defined('FORGOT_PASSWD_PHP')) {
+$lang_forgot_passwd_php['forgot_passwd'] = 'Jelszó emlékeztető';
+$lang_forgot_passwd_php['err_already_logged_in'] = 'Már be vagy jelentkezve!';
+$lang_forgot_passwd_php['enter_email'] = 'Add meg az email címedet';
+$lang_forgot_passwd_php['submit'] = 'Tovább';
+$lang_forgot_passwd_php['illegal_session'] = 'Az elfelejtett jelszó-időszak érvénytelen vagy lejárt.';
+$lang_forgot_passwd_php['failed_sending_email'] = 'Nem lehet elküldeni a jelszó emlékeztető email-t!';
+$lang_forgot_passwd_php['email_sent'] = 'A felhasználó nevet és jelszót tartalmazó levelet elküldtük erre a címre: %s';
+$lang_forgot_passwd_php['verify_email_sent'] = 'Az email elküldve erre a címre: %s. Kérjük, ellenőrizd a postaládádat (levélszemetet is!) a folyamat befejezéséhez.';
+$lang_forgot_passwd_php['err_unk_user'] = 'Nem létező felhasználó!';
+$lang_forgot_passwd_php['account_verify_subject'] = '%s - Új jelszót kér';
+$lang_forgot_passwd_php['passwd_reset_subject'] = '%s - Új jelszavad';
+$lang_forgot_passwd_php['account_verify_email'] = <<< EOT
+Új jelszót kértél ehhez az oldalhoz: {SITE_NAME}. Ha azt akarod , hogy az új jelszót elküldjük, kattints a következő linkre:
 
-%s', //cpg1.4
-  'passwd_reset_subject' => '%s - Az új jelszavad', //cpg1.4
-  'passwd_reset_body' => 'A kért új jelszó:
-Felhasználónév: %s
-Jelszó: %s
-Kattints %s-ra, a bejelentkezéshez.', //cpg1.4
-);
+<a href="{VERIFY_LINK}">{VERIFY_LINK}</a>
+
+
+Üdvözlettel:
+
+{SITE_NAME} oldal üzemeltetői
+
+EOT;
+
+$lang_forgot_passwd_php['reset_email'] = <<< EOT
+A következő adatokkal tudsz bejelentkezni ide: {SITE_NAME}:
+
+Felhasználónév: {USER_NAME}
+Jelszó: {PASSWORD}
+
+Kattints ide a bejelentkezéshez: <a href="{SITE_LINK}">{SITE_LINK}</a>.
+
+
+Üdvözlettel:
+
+{SITE_NAME} oldal üzemeltetői
+
+EOT;
+}
 
 // ------------------------------------------------------------------------- //
 // File groupmgr.php
 // ------------------------------------------------------------------------- //
-
-if (defined('GROUPMGR_PHP')) $lang_groupmgr_php = array(
-  'group_name' => 'Csoport neve', //cpg1.4
-  'permissions' => 'Jogosultságok', //cpg1.4
-  'public_albums' => 'Nyilvános feltöltési album', //cpg1.4
-  'personal_gallery' => 'Személyes képtár', //cpg1.4
-  'upload_method' => 'Feltöltési módszerek', //cpg1.4
-  'disk_quota' => 'Lemezterület', //cpg1.4
-  'rating' => 'Osztályozás', //cpg1.4
-  'ecards' => 'Képeslapok', //cpg1.4
-  'comments' => 'Hozzászólások', //cpg1.4
-  'allowed' => 'Engedélyezett', //cpg1.4
-  'approval' => 'Elfogadott', //cpg1.4
-  'boxes_number' => 'Dobozok száma', //cpg1.4
-  'variable' => 'Változó', //cpg1.4
-  'fixed' => 'Állandó', //cpg1.4
-  'apply' => 'Módosítások elfogadása',
-  'create_new_group' => 'Új csoport létrehozása',
-  'del_groups' => 'Csoport(ok) törlése',
-  'confirm_del' => 'Figyelem: amikor egy csoport törlésre kerül, akkor a csoportba tartozó felhasználók át lesznek mozgatva a  \'Regisztrált felhasználók\' csoportba!\n\nBiztos, hogy ezt akarod?', //js-alert
-  'title' => 'Felhasználói csoportok kezelése',
-  'num_file_upload' => 'Kép feltöltő doboz', //cpg1.4
-  'num_URI_upload' => 'URI feltöltő doboz', //cpg1.4
-  'reset_to_default' => 'Alapértelmezett névre állítás (%s) - ajánlott!', //cpg1.4
-  'error_group_empty' => 'A csoport tábla üres!<br /><br />Az alap csoportok elkészítve, töltsd újra az oldalt', //cpg1.4
-  'explain_greyed_out_title' => 'Miért szürke ez a sor?', //cpg1.4
-  'explain_guests_greyed_out_text' => 'Nem tudod változtatni ezt a tulajdonságot, mert kikapcsoltad a  &quot;Vendég felhasználók engedélyezése&quot; opciót a Coppermine konfigurációs oldalán. A vendégek (a %s csoport tagjai) semmit sem tudnak csinálni a bejelentkezésen kivűl, tehát a csoportbeállítások nem érvényesek rájuk.', //cpg1.4
-  'explain_banned_greyed_out_text' => 'Die Eigenschaften der Gruppe %s können nicht verändert werden, da deren Mitglieder sowieso nichts tun dürfen.', //cpg1.4
-  'group_assigned_album' => 'Hozzárendelt album', //cpg1.4
-);
+if (defined('GROUPMGR_PHP')) {
+$lang_groupmgr_php['group_manager'] = 'Group manager'; // cpg1.5.x
+$lang_groupmgr_php['group_name'] = 'Group';
+$lang_groupmgr_php['permissions'] = 'Permissions';
+$lang_groupmgr_php['public_albums'] = 'Public albums upload';
+$lang_groupmgr_php['personal_gallery'] = 'Personal gallery';
+$lang_groupmgr_php['disk_quota'] = 'Quota';
+$lang_groupmgr_php['rating'] = 'Rating';
+$lang_groupmgr_php['ecards'] = 'Ecards';
+$lang_groupmgr_php['comments'] = 'Comments';
+$lang_groupmgr_php['allowed'] = 'Allowed';
+$lang_groupmgr_php['approval'] = 'Approval';
+$lang_groupmgr_php['create_new_group'] = 'Create new group';
+$lang_groupmgr_php['del_groups'] = 'Delete selected group(s)';
+$lang_groupmgr_php['confirm_del'] = 'Warning, when you delete a group, users that belong to this group will be transferred to the \'Registered\' group!\n\nDo you want to proceed?'; // js-alert
+$lang_groupmgr_php['title'] = 'Manage user groups';
+$lang_groupmgr_php['reset_to_default'] = 'Reset to default name (%s) - recommended!';
+$lang_groupmgr_php['error_group_empty'] = 'Group table was empty!<br />Default groups created, please reload this page';
+$lang_groupmgr_php['explain_greyed_out_title'] = 'Why is this row grayed out?';
+$lang_groupmgr_php['explain_guests_greyed_out_text'] = 'You cannot change the properties of this group because the access level of this group is NONE. All unlogged users (members of the group %s) can\'t do anything but login; therefore group settings don\'t apply for them. Change the access level here or on the Gallery Configuration page under "User Settings", "Allow unlogged users access".';
+$lang_groupmgr_php['group_assigned_album'] = 'assigned album(s)';
+$lang_groupmgr_php['access_level'] = 'Access level'; // cpg1.5
+$lang_groupmgr_php['thumbnail_intermediate_full'] = 'thumbnail, intermediate, and full-size image'; // cpg1.5
+$lang_groupmgr_php['thumbnail_intermediate'] = 'thumbnail and intermediate image'; // cpg1.5
+$lang_groupmgr_php['thumbnail_only'] = 'thumbnail only'; // cpg1.5
+$lang_groupmgr_php['none'] = 'none'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
 // File index.php
 // ------------------------------------------------------------------------- //
-
 if (defined('INDEX_PHP')){
+$lang_index_php['welcome'] = 'Üdvözlünk!';
 
-$lang_index_php = array(
-  'welcome' => 'Üdvözlet !',
-);
+$lang_album_admin_menu['confirm_delete'] = 'Biztos, hogy TÖRÖLNI akarod ezt az albumot? \\n Az összes kép és hozzászólás törölve lesz.'; // js-alert
+$lang_album_admin_menu['delete'] = 'Törlés';
+$lang_album_admin_menu['modify'] = 'Tulajdonságok';
+$lang_album_admin_menu['edit_pics'] = 'Fájlok szerkesztése';
+$lang_album_admin_menu['cat_locked'] = 'Ez az album zárolt, nem szerkeszthető'; // cpg1.5.x
 
-$lang_album_admin_menu = array(
-  'confirm_delete' => 'Biztos, hogy TÖRÖLNI akarod ezt az albumot? \\n Az összes kép és hozzászólás törölve lesz.',
-  'delete' => 'Törlés',
-  'modify' => 'Módosítás',
-  'edit_pics' => 'Kép szerkesztés',
-);
+$lang_list_categories['home'] = 'Főoldal';
+$lang_list_categories['stat1'] = '[pictures] kép van [albums] albumban és [cat] kategóriában, [comments] hozzászólással, [views] megtekintéssel'; // do not translate the stuff in square brackets
+$lang_list_categories['stat2'] = '[pictures] kép van [albums] albumban és [views] megtekintéssel'; // do not translate the stuff in square brackets
+$lang_list_categories['xx_s_gallery'] = '%s\'s képtára';
+$lang_list_categories['stat3'] = '[pictures] kép van [albums] albumban, [comments] hozzászólással és [views] megtekintéssel'; // do not translate the stuff in square brackets
 
-$lang_list_categories = array(
-  'home' => 'Képtár',
-  'stat1' => '<b>[pictures]</b> kép <b>[albums]</b> albumban és <b>[cat]</b> kategoriában, <b>[comments]</b> hozzászólással, <b>[views]</b> alkalommal megtekintve',
-  'stat2' => '<b>[pictures]</b> kép <b>[albums]</b> albumban, <b>[views]</b> alkalommal megtekintve',
-  'xx_s_gallery' => '%s képtára',
-  'stat3' => '<b>[pictures]</b> kép <b>[albums]</b> albumban, <b>[comments]</b> hozzászólással, <b>[views]</b> alkalommal megtekintve'
-);
+$lang_list_users['user_list'] = 'Taglista';
+$lang_list_users['no_user_gal'] = 'Nincs felhasználói képtár';
+$lang_list_users['n_albums'] = '%s album';
+$lang_list_users['n_pics'] = '%s fájl';
 
-$lang_list_users = array(
-  'user_list' => 'Felhasználó lista',
-  'no_user_gal' => 'Nincs felhasználó a képtárban.',
-  'n_albums' => '%s album',
-  'n_pics' => '%s kép',
-);
+$lang_list_albums['n_pictures'] = '%s fájl';
+$lang_list_albums['last_added'] = ', utolsó feltöltés ekkor: %s';
+$lang_list_albums['n_link_pictures'] = '%s kapcsolt kép';
+$lang_list_albums['total_pictures'] = '%s fájl összesen';
+$lang_list_albums['alb_hits'] = 'Az albumot ennyiszer nézték meg: %s'; // cpg1.5
+$lang_list_albums['from_category'] = ' - Kategóriából: '; // cpg1.5
+}
 
-$lang_list_albums = array(
-  'n_pictures' => '%s kép',
-  'last_added' => ', utoljára ez lett hozzáadva %s',
-  'n_link_pictures' => '%s kapcsolt kép', //cpg1.4
-  'total_pictures' => '%s kép összesen', //cpg1.4
-);
+// ------------------------------------------------------------------------- //
+// File install.php
+// ------------------------------------------------------------------------- //
+
+if (defined('INSTALL_PHP')) {
+$lang_install['already_succ'] = 'The installer has already been successfully run once and is now locked.';
+$lang_install['already_succ_explain'] = 'If you want to run the installer again, you first need to delete the \'include/config.inc.php\' file that was created in the directory where you put Coppermine. You can do this with any FTP program';
+$lang_install['cant_read_tmp_conf'] = 'The installer can\'t read the temporary config file %s.';
+$lang_install['cant_write_tmp_conf'] = 'The installer can\'t write the temporary config file %s.';
+$lang_install['review_permissions'] = 'Please review directory permissions.';
+$lang_install['change_lang'] = 'Change language';
+$lang_install['check_path'] = 'Check path';
+$lang_install['continue'] = 'Next step';
+$lang_install['conv_said'] = 'The convert program said:';
+$lang_install['license_info'] = 'Coppermine is a picture/multimedia gallery package that is released under GNU GPL v3. By installing, you agree to be bound to Coppermine\'s license:';
+$lang_install['cpg_info_frames'] = 'Your browser appears incapable of displaying inline frames. You can review the license within the docs folder that ships with your Coppermine package.';
+$lang_install['license'] = 'Coppermine license agreement';
+$lang_install['create_table'] = 'Creating table \'%s\'';
+$lang_install['db_populating'] = 'Trying to insert data in the database.';
+$lang_install['db_alr_populated'] = 'Already inserted required data in the database.';
+$lang_install['dir_ok'] = 'Directory found';
+$lang_install['directory'] = 'Directory';
+$lang_install['email'] = 'Email address';
+$lang_install['email_no_match'] = 'Email addresses do not match or are invalid.';
+$lang_install['email_verif'] = 'Verify email';
+$lang_install['err_cpgnuke'] = '<h1>ERROR</h1>You seem to be trying to install the standalone Coppermine into your Nuke portal.<br />This version can only be used as standalone!<br />Some server setups might display this warning even though you don\'t have a nuke portal installed - if this is the case for you, <a href="%s?continue_anyway=1">continue</a> with the install. If you are using a nuke portal, you might want to take a look into <a href=\"http://www.cpgnuke.com/\">CpgNuke</a> or use one of the (unsupported)<a href=\"http://sourceforge.net/project/showfiles.php?group_id=89658&amp;package_id=95984\">Coppermine ports</a> - do not continue!';
+$lang_install['error'] = 'ERROR';
+$lang_install['error_need_corr'] = 'The following errors were encountered and need to be corrected first:';
+$lang_install['finish'] = 'Finish installation';
+$lang_install['gd_note'] = '<strong>Important :</strong> older versions of the GD graphic library support only JPEG and PNG images. If this is the case for you, then the script will not be able to create thumbnails for GIF images.';
+$lang_install['go_to_main'] = 'Go to the main page';
+$lang_install['im_no_convert_ex'] = 'The installer found the ImageMagick \'convert\' program in \'%s\', however it can\'t be executed by the script.<br />You may consider using GD instead of ImageMagick.';
+$lang_install['im_not_found'] = 'The installer tried to find ImageMagick, but could not determine its existence or there was an error. <br />Coppermine can use the <a href="http://www.imagemagick.org/">ImageMagick</a> \'convert\' program to create thumbnails. Quality of images produced by ImageMagick is superior to GD1 but equivalent to GD2.<br />If ImageMagick is installed on your system and you want to use it, <br />you need to input the full path to the \'convert\' program below. <br />On Windows the path should look something like \'c:/ImageMagick/\' and should not contain any space, on Unix is it something like \'/usr/bin/\'.<br />If you have no idea wether you have ImageMagick or not, leave this field empty - the installer will then try to use GD2 by default (which is what most users have). <br />You can change this later as well (in Coppermine\'s config screen), so don\'t be afraid if you\'re not sure what to enter here - leave it blank.';
+$lang_install['im_packages'] = 'Your server supports the following image package(s)';
+$lang_install['im_path'] = 'Path to ImageMagick:';
+$lang_install['im_path_space'] = 'The path to ImageMagick (\'%s\') contains at least one space. This will cause problems in the script.<br />You must move ImageMagick to another directory.';
+$lang_install['installation'] = 'installation';
+$lang_install['installer_locked'] = 'The installer is locked';
+$lang_install['installer_selected'] = 'The installer selected';
+$lang_install['inv_im_path'] = 'The installer cannot find the \'%s\' directory you have specified for ImageMagick or it does not have permission to access it. Check that your typing is correct and that you have access to the specified directory.';
+$lang_install['lets_go'] = 'Let\'s Go!';
+$lang_install['mysql_create_btn'] = 'Create';
+$lang_install['mysql_create_db'] = 'Create new MySQL database';
+$lang_install['mysql_db_name'] = 'MySQL database name';
+$lang_install['mysql_error'] = 'MySQL error: ';
+$lang_install['mysql_host'] = 'MySQL host<br />(localhost is usually OK)';
+$lang_install['mysql_username'] = 'MySQL username'; // cpg1.5
+$lang_install['mysql_password'] = 'MySQL password'; // cpg1.5
+$lang_install['mysql_no_create_db'] = 'Could not create MySQL database.';
+$lang_install['mysql_no_sel_dbs'] = 'Could not retrieve available MySQL databases';
+$lang_install['mysql_succ'] = 'Successful connection with database';
+$lang_install['mysql_tbl_pref'] = 'MySQL table prefix';
+$lang_install['mysql_test_connection'] = 'Test connection';
+$lang_install['mysql_wrong_db'] = 'MySQL could not locate a database called \'%s\' please check the value entered for this';
+$lang_install['n_a'] = 'N/A';
+$lang_install['no_admin_email'] = 'You have to enter an admin email address';
+$lang_install['no_admin_password'] = 'You have to enter an admin password';
+$lang_install['no_admin_username'] = 'You have to enter an admin username';
+$lang_install['no_dir'] = 'Directory not available';
+$lang_install['no_gd'] = 'Your installation of PHP does not seem to include the \'GD\' graphic library extension and you have not indicated that you want to use ImageMagick. Coppermine has been configured to use GD2 because the automatic GD detection sometimes fails. If GD is installed on your system, the script should work else you will need to install ImageMagick.';
+$lang_install['no_mysql_conn'] = 'Could not create a MySQL connection, please check the MySQL details entered';
+$lang_install['no_mysql_support'] = 'PHP does not have MySQL support enabled.';
+$lang_install['no_thumb_method'] = 'You have to choose an image manipulation application (GD/IM)';
+$lang_install['nok'] = 'Not OK';
+$lang_install['not_here_yet'] = 'Nothing here yet, please click %shere%s to go back.';
+$lang_install['ok'] = 'OK';
+$lang_install['on_q'] = 'on query';
+$lang_install['or'] = 'or';
+$lang_install['pass_err'] = 'Passwords don\'t match, you used illegal characters or didn\'t provide one.';
+$lang_install['password'] = 'Password';
+$lang_install['password_verif'] = 'Verify Password';
+$lang_install['perm_error'] = 'The permissions of \'%s\' are set to %s, please set them to';
+$lang_install['perm_ok'] = 'The permissions on certain directories have been checked, and seem to be ok. <br />Please proceed to the next step.';
+$lang_install['perm_not_ok'] = 'The permissions on certain directories are not set correctly.<br />Please change the permissions of the directories below that are marked "Not OK".'; // cpg1.5
+$lang_install['please_go_back'] = 'Please %sclick here%s to go back and fix this problem before proceeding.';
+$lang_install['populate_db'] = 'Populate database';
+$lang_install['ready_to_roll'] = '<a href="index.php">Coppermine</a> is now properly configured and ready to use.<br /><a href="login.php">Login</a> using the information you provided for your admin account.';
+$lang_install['sect_create_adm'] = 'This section requires information to create your Coppermine administration account. Use only alphanumeric characters. Enter the data carefully!';
+$lang_install['sect_mysql_info'] = 'This section requires information on how to access your MySQL database.<br />If you don\'t know how to fill them, check with your webhost support.';
+$lang_install['sect_mysql_sel_db'] = 'Here you have to choose which database you want to use for Coppermine.<br />If your MySQL account has the needed privileges, you can create a new database from within the installer or you can use an existing database. If you don\'t like both options, you will have to create a database first outside the Coppermine installer, then return here then select the new database from the dropdown box below. You can also change the table prefix (don\'t use dots though), but keeping the default prefix is recommended.';
+$lang_install['select_lang'] = 'Select default language: ';
+$lang_install['sql_file_not_found'] = 'The file \'%s\' could not be found. Check that you have uploaded all Coppermine files to your server.';
+$lang_install['status'] = 'Status';
+$lang_install['subdir_called'] = 'A subdirectory called \'%s\' should normally exist in the directory where you uploaded Coppermine.<br />The installer can\'t find this directory. Check that you have uploaded all Coppermine files to your server.';
+$lang_install['title_admin'] = 'Create Coppermine administrator';
+$lang_install['title_dir_check'] = 'Checking directory permissions';
+$lang_install['title_file_check'] = 'Checking installation files';
+$lang_install['title_finished'] = 'Installation completed';
+$lang_install['title_imp'] = 'Image package selection';
+$lang_install['title_imp_test'] = 'Testing image library';
+$lang_install['title_mysql_db_sel'] = 'MySQL database selection';
+$lang_install['title_mysql_pop'] = 'Creating database structure';
+$lang_install['title_mysql_user'] = 'MySQL user authentication';
+$lang_install['title_welcome'] = 'Welcome to Coppermine installation';
+$lang_install['tmp_conf_error'] = 'Unable to write the temporary config file - make sure the \'include\' folder is writable for the script.';
+$lang_install['tmp_conf_ser_err'] = 'A serious error occurred in the installer, try reloading your page or start over by removing the \'include/config.tmp\' file.';
+$lang_install['try_again'] = 'Try again!';
+$lang_install['unable_write_config'] = 'Unable to write config file';
+$lang_install['user_err'] = 'Admin username must contain only alphanumeric characters and can\'t be empty.';
+$lang_install['username'] = 'Username';
+$lang_install['your_admin_account'] = 'Your admin account';
+$lang_install['no_cookie'] = 'Your browser did not accept our cookie. It is recommended to accept cookies.';
+$lang_install['no_javascript'] = 'Your browser doesn\'t seem to have Javascript enabled - it is highly recommended to enable it.';
+$lang_install['register_globals_detected'] = 'It seems your PHP configuration has \'register_globals\' enabled - you should disable this for security reasons.';
+$lang_install['more'] = 'more';
+$lang_install['version_undetected'] = 'The script could not determine the version of %s your server is using. Be sure it is at least version %s.';
+$lang_install['version_incompatible'] = 'The script detected an incompatible version (%s) of %s on your server.<br />Make sure to use a compatible version (%s or better) before continuing!';
+$lang_install['read_gif'] = 'Read/write .gif file';
+$lang_install['read_png'] = 'Read/write .png file';
+$lang_install['read_jpg'] = 'Read/write .jpg file';
+$lang_install['write_error'] = 'Could not write generated image to disk.';
+$lang_install['read_error'] = 'Could not read the source image.';
+$lang_install['combine_error'] = 'Could not combine the source images';
+$lang_install['text_error'] = 'Could not add text to the source image';
+$lang_install['scale_error'] = 'Could not scale the source image';
+$lang_install['pixels'] = 'pixels';
+$lang_install['combine'] = 'Combine 2 images';
+$lang_install['text'] = 'Write text on image';
+$lang_install['scale'] = 'Scale an image';
+$lang_install['generated_image'] = 'Generated image';
+$lang_install['reference_image'] = 'Reference image';
+$lang_install['imp_test_error'] = 'There was an error in one or more of the tests, please make sure you selected the appropriate Image Processing Package and it is configured correctly!';
+$lang_install['writable'] = 'Writable';
+$lang_install['not_writable'] = 'Not writable';
+$lang_install['not_exist'] = 'Does not exist';
+$lang_install['old_install'] = 'This is the new install wizard. Click %shere%s for the classic install screen.'; //cpg1.5
 
 }
 
 // ------------------------------------------------------------------------- //
-// File keywordmgr.php //cpg1.4
+// File keywordmgr.php
 // ------------------------------------------------------------------------- //
+if (defined('KEYWORDMGR_PHP')) {
+$lang_keywordmgr_php['title'] = 'Kulcsszavak kezelése';
+$lang_keywordmgr_php['search'] = 'Keresés';
+$lang_keywordmgr_php['keyword_test_search'] = 'Keresés erre: %s új ablakban';
+$lang_keywordmgr_php['keyword_del'] = '%s kulcsszó törlése';
+$lang_keywordmgr_php['confirm_delete'] = 'Biztos, hogy törölni akarod ezt a kulcsszót a képtáradból: %s?'; // js-alert
+$lang_keywordmgr_php['change_keyword'] = 'Kulcsszó módosítása';
+}
 
-if (defined('KEYWORDMGR_PHP')) $lang_keywordmgr_php = array(
-  'title' => 'Kulcsszavak kezelése', //cpg1.4
-  'edit' => 'szerkesztés', //cpg1.4
-  'delete' => 'törlés', //cpg1.4
-  'search' => 'keresés', //cpg1.4
-  'keyword_test_search' => 'a(z) %s keresése új ablakban', //cpg1.4
-  'keyword_del' => 'a(z) %s kulcsszó törlése', //cpg1.4
-  'confirm_delete' => 'Biztos, hogy törölni akarod a(z) %s kulcszót a képtárból?', //cpg1.4  // js-alert
-  'change_keyword' => 'Kulcsszó változtatása', //cpg1.4
-);
+// ------------------------------------------------------------------------- //
+// File langmgr.php
+// ------------------------------------------------------------------------- //
+if (defined('LANGMGR_PHP')) {
+$lang_langmgr_php['title'] = 'Language manager';
+$lang_langmgr_php['english_language_name'] = 'English';
+$lang_langmgr_php['native_language_name'] = 'Native';
+$lang_langmgr_php['custom_language_name'] = 'Custom';
+$lang_langmgr_php['language_name'] = 'Language name';
+$lang_langmgr_php['language_file'] = 'Language file';
+$lang_langmgr_php['flag'] = 'Flag';
+$lang_langmgr_php['file_available'] = 'Available';
+$lang_langmgr_php['enabled'] = 'Enabled';
+$lang_langmgr_php['complete'] = 'Complete';
+$lang_langmgr_php['default'] = 'Default';
+$lang_langmgr_php['missing'] = 'missing';
+$lang_langmgr_php['broken'] = 'appears to be broken or inaccessible';
+$lang_langmgr_php['exists_in_db_and_file'] = 'exists in database and as file';
+$lang_langmgr_php['exists_as_file_only'] = 'exists as file only';
+$lang_langmgr_php['pick_a_flag'] = 'Pick one';
+$lang_langmgr_php['replace_x_with_y'] = 'Replace %s with %s';
+$lang_langmgr_php['tanslator_information'] = 'Translator information';
+$lang_langmgr_php['cpg_version'] = 'Coppermine version';
+$lang_langmgr_php['hide_details'] = 'Hide details';
+$lang_langmgr_php['show_details'] = 'Show details';
+$lang_langmgr_php['loading'] = 'Loading';
+$lang_langmgr_php['english_missing'] = 'The English language file is missing although it should never be removed. You need to restore it immediately.';
+$lang_langmgr_php['enable_at_least_one'] = 'You need to enable at least one language for the gallery to work';
+$lang_langmgr_php['enable_default'] = 'You chose a default language that is not enabled. Pick another default language or enable the language you selected as default!';
+$lang_langmgr_php['available_default'] = 'You chose a default language that is not even available. Pick another default language!';
+$lang_langmgr_php['version_does_not_match'] = 'The version of this file does not match your Coppermine version. Use with caution and test thoroughly!';
+$lang_langmgr_php['no_version'] = 'No version information could be retrieved. It\'s very likely that this language file doesn\'t work at all or isn\'t an actual language file.';
+$lang_langmgr_php['filesize'] = 'Filesize %s is implausible';
+$lang_langmgr_php['content_missing'] = 'The file doesn\'t seem to contain the needed data, so it\'s probably not a valid language file.';
+$lang_langmgr_php['status'] = 'Status';
+$lang_langmgr_php['default_language'] = 'Default language set to %s';
+}
 
 // ------------------------------------------------------------------------- //
 // File login.php
 // ------------------------------------------------------------------------- //
-
-if (defined('LOGIN_PHP')) $lang_login_php = array(
-  'login' => 'Bejelentkezés (Login)',
-  'enter_login_pswd' => 'Add meg a felhasználóneved és jelszavad a bejelentkezéshez',
-  'username' => 'Felhasználó név',
-  'password' => 'Jelszó',
-  'remember_me' => 'Emlékezz rám',
-  'welcome' => 'Üdvözöllek %s ...',
-  'err_login' => '*** Nem sikerült bejelentkezned. Próbáld újra ***',
-  'err_already_logged_in' => 'Már be vagy jelentkezve!',
-  'forgot_password_link' => 'Elfelejtettem a jelszavam',
-  'cookie_warning' => 'Figyelmeztetés: a böngésződ nem fogadja el a sütiket', //cpg1.4
-);
+if (defined('LOGIN_PHP')) {
+$lang_login_php['login'] = 'Bejelentkezés';
+$lang_login_php['enter_login_pswd'] = 'Írd be a neved és jelszavad a belépéshez';
+$lang_login_php['username'] = 'Felhasználónév';
+$lang_login_php['email'] = 'Email cím'; // cpg1.5
+$lang_login_php['both'] = 'Felhasználónév vagy Email cím'; // cpg1.5
+$lang_login_php['password'] = 'Jelszó';
+$lang_login_php['remember_me'] = 'Emlékezz rám';
+$lang_login_php['welcome'] = 'Szia %s ...';
+$lang_login_php['err_login'] = 'A belépés nem sikerült. Próbáld újra.';
+$lang_login_php['err_already_logged_in'] = 'Már be vagy jelentkezve!';
+$lang_login_php['forgot_password_link'] = 'Elfelejtettem a jelszavam';
+$lang_login_php['cookie_warning'] = 'A böngésződ nem támogatja a sütiket (cookie-kat)!';
+$lang_login_php['send_activation_link'] = 'Aktiváló link küldése?';
+$lang_login_php['force_login'] = 'Az oldal megtekintéséhez be kell jelentkezned'; // cpg1.5
+$lang_login_php['force_login_title'] = 'Belépés a folytatáshoz'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
 // File logout.php
 // ------------------------------------------------------------------------- //
 
-if (defined('LOGOUT_PHP')) $lang_logout_php = array(
-  'logout' => 'Kijelentkezés',
-  'bye' => 'Viszlát %s ...',
-  'err_not_loged_in' => 'Nem vagy bejelentkezve!',
-);
+if (defined('LOGOUT_PHP')) {
+$lang_logout_php['logout'] = 'Kijelentkezés';
+$lang_logout_php['bye'] = 'Viszlát %s ...';
+$lang_logout_php['err_not_logged_in'] = 'Nem léptél be!'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
-// File minibrowser.php  //cpg1.4
+// File minibrowser.php
 // ------------------------------------------------------------------------- //
+if (defined('MINIBROWSER_PHP')) {
+$lang_minibrowser_php['up'] = 'up one level';
+$lang_minibrowser_php['current_path'] = 'current path';
+$lang_minibrowser_php['select_directory'] = 'please select a directory';
+$lang_minibrowser_php['click_to_close'] = 'Click image to close this window';
+$lang_minibrowser_php['folder'] = 'Folder'; // cpg1.5
+}
 
-if (defined('MINIBROWSER_PHP')) $lang_minibrowser_php = array(
-  'close' => 'bezárás', //cpg1.4
-  'submit' => 'OK', //cpg1.4
-  'up' => 'egy szinttel feljebb', //cpg1.4
-  'current_path' => 'mostani útvonal', //cpg1.4
-  'select_directory' => 'válassz könyvtárat', //cpg1.4
-  'click_to_close' => 'Kattints a képre az ablak bezárásához',
-);
+// ------------------------------------------------------------------------- //
+// File mode.php
+// ------------------------------------------------------------------------- //
+if (defined('MODE_PHP')) {
+$lang_mode_php[0] = 'Turning display of admin controls off...'; // cpg1.5
+$lang_mode_php[1] = 'Turning display of admin controls on...'; // cpg1.5
+$lang_mode_php['news_hide'] = 'Hiding news...'; // cpg1.5
+$lang_mode_php['news_show'] = 'Showing news...'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
 // File modifyalb.php
 // ------------------------------------------------------------------------- //
-
-if (defined('MODIFYALB_PHP')) $lang_modifyalb_php = array(
-  'upd_alb_n' => 'A(z)%s album frissítve',
-  'general_settings' => 'Általános beállítások',
-  'alb_title' => 'Album címe',
-  'alb_cat' => 'Album kategória',
-  'alb_desc' => 'Album meghatározás',
-  'alb_keyword' => 'Album kulcsszó', //cpg1.4
-  'alb_thumb' => 'Album indexkép',
-  'alb_perm' => 'Jogosultságok erre az albumra',
-  'can_view' => 'Album megtekinthetik',
-  'can_upload' => 'Vendégek is feltölthetnek képeket',
-  'can_post_comments' => 'Vendégek is hozzászolhatnak',
-  'can_rate' => 'Vendégek is osztályozhatnak',
-  'user_gal' => 'Felhasználói képtár',
-  'no_cat' => '* nincs kategória *',
-  'alb_empty' => 'Üres album',
-  'last_uploaded' => 'utoljára feltöltött',
-  'public_alb' => 'Mindenki (nyilvános album)',
-  'me_only' => 'Csak én',
-  'owner_only' => 'Csak az album tulajdonos (%s)',
-  'groupp_only' => 'A(z) \'%s\'csoport tagjai',
-  'err_no_alb_to_modify' => 'Nincs modósítható album az adatbázisban.',
-  'update' => 'Album frissítve',
-  'reset_album' => 'Album visszaállítása', //cpg1.4
-  'reset_views' => 'Megtekintési számláló visszaállítása &quot;0&quot; -ra %s -ban', //cpg1.4
-  'reset_rating' => 'Az összes kép helyezésének alaphelyzetbe állítása a(z) %s albumban', //cpg1.4
-  'delete_comments' => 'Összes hozzászólás törlése a(z) %s albumban', //cpg1.4
-  'delete_files' => 'Az összes kép törlése %sVisszavonhatatlanul%s a(z) %s albumban', //cpg1.4
-  'views' => 'Megtekintések', //cpg1.4
-  'votes' => 'Szavazatok', //cpg1.4
-  'comments' => 'Hozzászólások', //cpg1.4
-  'files' => 'Képek', //cpg1.4
-  'submit_reset' => 'változások elfogadása', //cpg1.4
-  'reset_views_confirm' => 'Biztos vagyok benne!', //cpg1.4
-  'notice1' => '(*) függ a  %sCsoport%s beállításoktól',  //cpg1.4 //(do not translate %s!)
-  'alb_password' => 'Az album jelszava', //cpg1.4
-  'alb_password_hint' => 'Tipp album jelszóra', //cpg1.4
-  'edit_files' =>'Képek szerkesztése', //cpg1.4
-  'parent_category' =>'Szülő kategória', //cpg1.4
-  'thumbnail_view' =>'Indexkép nézet', //cpg1.4
-);
+if (defined('MODIFYALB_PHP')) {
+$lang_modifyalb_php['upd_alb_n'] = 'Update album %s';
+$lang_modifyalb_php['related_tasks'] = 'Related tasks'; // cpg1.5
+$lang_modifyalb_php['choose_album'] = 'Choose album'; // cpg1.5
+$lang_modifyalb_php['general_settings'] = 'General settings';
+$lang_modifyalb_php['alb_title'] = 'Album title';
+$lang_modifyalb_php['alb_cat'] = 'Album category';
+$lang_modifyalb_php['alb_desc'] = 'Album description';
+$lang_modifyalb_php['alb_keyword'] = 'Album keyword';
+$lang_modifyalb_php['alb_thumb'] = 'Album thumbnail';
+$lang_modifyalb_php['alb_perm'] = 'Permissions for this album';
+$lang_modifyalb_php['can_view'] = 'Album can be viewed by';
+$lang_modifyalb_php['can_upload'] = 'Visitors can upload files';
+$lang_modifyalb_php['can_post_comments'] = 'Visitors can post comments';
+$lang_modifyalb_php['can_rate'] = 'Visitors can rate files';
+$lang_modifyalb_php['user_gal'] = 'User Gallery';
+$lang_modifyalb_php['my_gal'] = '* My Gallery *'; // cpg 1.5
+$lang_modifyalb_php['no_cat'] = '* No category *';
+$lang_modifyalb_php['alb_empty'] = 'Album is empty';
+$lang_modifyalb_php['last_uploaded'] = 'Last uploaded';
+$lang_modifyalb_php['public_alb'] = 'Everybody (public album)';
+$lang_modifyalb_php['me_only'] = 'Me only';
+$lang_modifyalb_php['owner_only'] = 'Album owner (%s) only';
+$lang_modifyalb_php['group_only'] = 'Members of the \'%s\' group';
+$lang_modifyalb_php['err_no_alb_to_modify'] = 'No album you can modify in the database.';
+$lang_modifyalb_php['update'] = 'Update album';
+$lang_modifyalb_php['reset_album'] = 'Reset album';
+$lang_modifyalb_php['reset_views'] = 'Reset views counter to &quot;0&quot; in %s';
+$lang_modifyalb_php['reset_rating'] = 'Reset ratings on all files in %s';
+$lang_modifyalb_php['delete_comments'] = 'Delete all comments made in %s';
+$lang_modifyalb_php['delete_files'] = '%sIrreversibly%s delete all files in %s';
+$lang_modifyalb_php['views'] = 'views';
+$lang_modifyalb_php['votes'] = 'votes';
+$lang_modifyalb_php['comments'] = 'comments';
+$lang_modifyalb_php['files'] = 'files';
+$lang_modifyalb_php['submit_reset'] = 'submit changes';
+$lang_modifyalb_php['reset_views_confirm'] = 'I\'m sure';
+$lang_modifyalb_php['notice1'] = '(*) depending on %sgroups%s settings'; // do not translate the %s placeholders
+$lang_modifyalb_php['can_moderate'] = 'Album can be moderated by'; // cpg 1.5
+$lang_modifyalb_php['admins_only'] = 'Admins only'; // cpg 1.5
+$lang_modifyalb_php['alb_password'] = 'Album password (New password)';
+$lang_modifyalb_php['alb_password_hint'] = 'Album password hint';
+$lang_modifyalb_php['edit_files'] = 'Edit files';
+$lang_modifyalb_php['parent_category'] = 'Parent category';
+$lang_modifyalb_php['thumbnail_view'] = 'Thumbnail view';
+$lang_modifyalb_php['random_image'] = 'Random Image'; // cpg 1.5
+$lang_modifyalb_php['password_protect'] = 'Password protect this album (Tick for yes)'; //cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
 // File phpinfo.php
 // ------------------------------------------------------------------------- //
-
-if (defined('PHPINFO_PHP')) $lang_phpinfo_php = array(
-  'php_info' => 'PHP információ',
-  'explanation' => 'Ez a kimenet a PHP-Funkció által lett generálva <a href="http://www.php.net/phpinfo">phpinfo()</a> A Coppermine-on belül megjelenítve.',
-  'no_link' => 'A phpinfo mások általi megtekintése biztonsági kockázatot jelent, ezért lehet csak rendszergazdaként megtekinteni.',
-);
+if (defined('PHPINFO_PHP')) {
+$lang_phpinfo_php['php_info'] = 'PHP info';
+$lang_phpinfo_php['explanation'] = 'This is the output generated by the PHP function <a href="http://www.php.net/phpinfo">phpinfo()</a>, displayed within Coppermine.';
+$lang_phpinfo_php['no_link'] = 'Having others see your phpinfo can be a security risk, that\'s why this page is only visible when you\'re logged in as admin. You cannot post a link to this page for others, they will be denied access.';
+}
 
 // ------------------------------------------------------------------------- //
-// File picmgr.php //cpg1.4
+// File picmgr.php
 // ------------------------------------------------------------------------- //
-if (defined('PICMGR_PHP')) $lang_picmgr_php = array(
-  'pic_mgr' => 'Képkezelő', //cpg1.4
-  'select_album' => 'Válassz albumot', //cpg1.4
-  'delete' => 'Törlés', //cpg1.4
-  'confirm_delete1' => 'Biztos hogy törölni akarod?', //cpg1.4
-  'confirm_delete2' => '\nA kép törlése folyamatban.', //cpg1.4
-  'apply_modifs' => 'Módosítások alkalmazása', //cpg1.4
-  'confirm_modifs' => 'Módosítások megerősítése', //cpg1.4
-  'pic_need_name' => 'A képnek kötelező nevet adni', //cpg1.4
-  'no_change' => 'Nem tudsz változtatni semmit!', //cpg1.4
-  'no_album' => '* Nincs album *', //cpg1.4
-  'explanation_header' => 'Az itt beállított egyéni sorrend csak erre a felhasználóra érvényes', //cpg1.4
-  'explanation1' => 'A rendszergazda be tudja állítani az alapértelmezett sorrendet növekvőre vagy csökkenőre (ez mindenkire vonatkozik, akinek nincs joga egyéni beállításhoz)', //cpg1.4
-  'explanation2' => 'A felhasználó választhat a növekvő vagy csökkenő sorrend között, az indexkép nézetben', //cpg1.4
-);
+if (defined('PICMGR_PHP')) {
+$lang_picmgr_php['pic_mgr'] = 'Picture Manager';
+$lang_picmgr_php['confirm_modifs'] = 'Really perform the modifications?'; // cpg1.5 // js-alert
+$lang_picmgr_php['no_change'] = 'You did not make any change!';
+$lang_picmgr_php['no_album'] = '* No album *';
+$lang_picmgr_php['explanation_header'] = 'The custom sort order you can specify on this page will only be taken into account if';
+$lang_picmgr_php['explanation1'] = 'the admin has set the "Default sort order for files" in the config to "Position descending" or "Position ascending" (global setting for all users who haven\'t chosen another sort option individually)';
+$lang_picmgr_php['explanation2'] = 'the user has chosen "Position descending" or "Position ascending" on the thumbnail page (per user setting)';
+$lang_picmgr_php['change_album'] = 'If you change the album, your changes will be lost!'; // cpg1.5 // js-alert
+$lang_picmgr_php['submit_reminder'] = 'Sorting changes are not saved until you click &quot;Apply changes&quot;.'; // cpg1.5
+}
 
 
 // ------------------------------------------------------------------------- //
-// File pluginmgr.php //cpg1.4
+// File pluginmgr.php
 // ------------------------------------------------------------------------- //
-
 if (defined('PLUGINMGR_PHP')){
-
-$lang_pluginmgr_php = array(
-  'confirm_uninstall' => 'Biztos, hogy el akarod távolítani ezt a beépülőt (plugin)?', //cpg1.4
-  'confirm_delete' => 'Biztos, hogy törölni akarod a beépülőt?', //cpg1.4
-  'pmgr' => 'Beépülő kezelő', //cpg1.4
-  'name' => 'Név', //cpg1.4
-  'author' => 'Szerző', //cpg1.4
-  'desc' => 'leírás', //cpg1.4
-  'vers' => 'v', //cpg1.4
-  'i_plugins' => 'Telepített beépülők', //cpg1.4
-  'n_plugins' => 'Nincs telepítve beépülő', //cpg1.4
-  'none_installed' => 'Nincs telepítve semmi', //cpg1.4
-  'operation' => 'Művelet', //cpg1.4
-  'not_plugin_package' => 'A feltöltött fájl nem beépülő csomag.', //cpg1.4
-  'copy_error' => 'Hiba történt a csomag a beépülő könyvtárba másolásakor.', //cpg1.4
-  'upload' => 'Feltöltés', //cpg1.4
-  'configure_plugin' => 'Beépülő konfigurálása', //cpg1.4
-  'cleanup_plugin' => 'Beépülő takarítása', //cpg1.4
-);
+$lang_pluginmgr_php['confirm_uninstall'] = 'Are you sure you want to UNINSTALL this plugin?';
+$lang_pluginmgr_php['confirm_remove'] = 'NOTE: Plugin API is disabled. Do you want to MANUALLY REMOVE this plugin, ignoring any cleanup actions?'; // cpg1.5
+$lang_pluginmgr_php['confirm_delete'] = 'Are you sure you want to DELETE this plugin?';
+$lang_pluginmgr_php['pmgr'] = 'Plugin Manager';
+$lang_pluginmgr_php['explanation'] = 'Install / uninstall / manage plugins using this page.'; // cpg1.5
+$lang_pluginmgr_php['plugin_enabled'] = 'Plugin API enabled'; // cpg1.5
+$lang_pluginmgr_php['name'] = 'Name';
+$lang_pluginmgr_php['author'] = 'Author';
+$lang_pluginmgr_php['desc'] = 'Description';
+$lang_pluginmgr_php['vers'] = 'v';
+$lang_pluginmgr_php['i_plugins'] = 'Installed Plugins';
+$lang_pluginmgr_php['n_plugins'] = 'Plugins Not installed';
+$lang_pluginmgr_php['none_installed'] = 'None Installed';
+$lang_pluginmgr_php['operation'] = 'Operation';
+$lang_pluginmgr_php['not_plugin_package'] = 'The file uploaded is not a plugin package.';
+$lang_pluginmgr_php['copy_error'] = 'There was an error copying the package to the plugins folder.';
+$lang_pluginmgr_php['upload'] = 'Upload';
+$lang_pluginmgr_php['configure_plugin'] = 'Configure plugin';
+$lang_pluginmgr_php['cleanup_plugin'] = 'Cleanup plugin';
+$lang_pluginmgr_php['extra'] = 'Extra'; // cpg1.5
+$lang_pluginmgr_php['install_info'] = 'Install information'; // cpg1.5
+$lang_pluginmgr_php['plugin_disabled_note'] = 'Plugin API is disabled, so that operation is not allowed.'; // cpg1.5
+$lang_pluginmgr_php['install'] = 'install'; // cpg1.5
+$lang_pluginmgr_php['uninstall'] = 'uninstall'; // cpg1.5
+$lang_pluginmgr_php['minimum_requirements_not_met'] = 'Minimum requirements not met'; // cpg1.5
+$lang_pluginmgr_php['confirm_version'] = 'Could not determine the version requirements for this plugin. This is usually an indicator that the plugin was not designed for your version of Coppermine and might therefore crash your gallery. Continue anyway (not recommended)?'; // cpg1.5 // js-alert
 }
 
 // ------------------------------------------------------------------------- //
 // File ratepic.php
 // ------------------------------------------------------------------------- //
-
-if (defined('RATEPIC_PHP')) $lang_rate_pic_php = array(
-  'already_rated' => 'Bocsi, már osztályoztad a képet',
-  'rate_ok' => 'Szavazatod elfogadva',
-  'forbidden' => 'A saját képedet nem osztályozhatod.', //cpg1.3.0
-);
+if (defined('RATEPIC_PHP')) {
+$lang_rate_pic_php['already_rated'] = 'Sorry but you have already rated this file';
+$lang_rate_pic_php['rate_ok'] = 'Your vote was accepted';
+$lang_rate_pic_php['forbidden'] = 'You cannot rate your own files.';
+}
 
 // ------------------------------------------------------------------------- //
 // File register.php & profile.php
 // ------------------------------------------------------------------------- //
-
 if (defined('REGISTER_PHP') || defined('PROFILE_PHP')) {
-
-$lang_register_disclamer = <<<EOT
- Noha a(z) {SITE_NAME} adminisztrátorai mindent megtesznek, hogy minél hamarabb eltávolítsák vagy töröljék a képtárból az általánosan kifogásolható anyagokat, lehetetlen, hogy minden egyes hozzászólást és képet átnézzenek. Ebből adódóan elfogadom, hogy a képtárban található összes hozzászólás és kép a szerző nézeteit tükrözi, és nem az adminisztrátorok, vagy a webmester álláspontját - így ők nem vállalnak felelősséget a hozzászólások és képek tartalmáért.<br />
+$lang_register_php['disclamer'] = <<< EOT
+Noha a(z) {SITE_NAME} adminisztrátorai mindent megtesznek, hogy minél hamarabb eltávolítsák vagy töröljék a képtárból az általánosan kifogásolható anyagokat, lehetetlen, hogy minden egyes hozzászólást és képet átnézzenek. Ebből adódóan elfogadom, hogy a képtárban található összes hozzászólás és kép a szerző nézeteit tükrözi, és nem az adminisztrátorok, vagy a webmester álláspontját - így ők nem vállalnak felelősséget a hozzászólások és képek tartalmáért.<br />
 <br />
-Beleegyezek, hogy nem küldök sértegető, obszcén, vulgáris, rágalmazó, gyűlöletkeltő, támadó anyagot vagy bármely más olyan tartalmat, mely törvényt sért. Sem olyan anyagot, mely ellentétes az általános közízléssel, mivel ez egy nyilvános képtár. A fentiek megsértése azonnali és végleges törlést von maga után.
-Elfogadom, hogy a képtár webmesterének, az adminisztrátornak  jogában áll eltávolítani, szerkeszteni a hozzászólásaimat, vagy törölni az általam felrakott képeket, amennyiben úgy ítéli meg, hogy ez szükséges. Mint felhasználó, elfogadom, hogy néhány, általam megadott információ tárolásra kerül a képtár adatbázisában. Ezek az adatok semmilyen módon nem kerülnek ki egy harmadik félhez, de az adminisztrátorok sem tudnak felelősséget vállalni, amennyiben az adatokat harmadik fél törvénytelen eszközökkel szerzi meg (például a képtár feltörésével).<br />
+Beleegyezek, hogy nem küldök sértegető, obszcén, vulgáris, rágalmazó, gyűlöletkeltő, támadó anyagot vagy bármely más olyan tartalmat, mely törvényt sért. Sem olyan anyagot, mely ellentétes az általános közízléssel, mivel ez egy nyilvános képtár. A fentiek megsértése azonnali és végleges törlést von maga után.<br />
+Elfogadom, hogy a képtár webmesterének, az adminisztrátornak  jogában áll eltávolítani, szerkeszteni a hozzászólásaimat, vagy törölni az általam felrakott képeket, amennyiben úgy ítéli meg, hogy ez szükséges. Mint felhasználó, elfogadom, hogy néhány, általam megadott információ tárolásra kerül a képtár adatbázisában. Ezek az adatok semmilyen módon nem kerülnek ki egy harmadik félhez, de az adminisztrátorok sem tudnak felelősséget vállalni, amennyiben az adatokat harmadik fél törvénytelen eszközökkel szerzi meg (például a képtár feltörésével).
 <br />
-A Képtár "cookie"-kat (sütiket) használ, hogy adatokat tároljon a felhasználó számítógépén, de egyik sem tartalmaz személyes adatokat, melyek a regisztrációnál kerültek megadásra: a sütik pusztán technikai szempontból szükségesek (például ezek segítségével jegyzi meg a böngésző az egyéni beállításokat). A megadott email cím csak a regisztráció (és új jelszó) érvényesítésénél kerül felhasználásra.
-<br />
+A Képtár "cookie"-kat (sütiket) használ, hogy adatokat tároljon a felhasználó számítógépén, de egyik sem tartalmaz személyes adatokat, melyek a regisztrációnál kerültek megadásra: a sütik pusztán technikai szempontból szükségesek (például ezek segítségével jegyzi meg a böngésző az egyéni beállításokat). A megadott email cím csak a regisztráció (és új jelszó) érvényesítésénél kerül felhasználásra.<br />
 <br />
 Az 'Elfogadom'-ra kattintva elfogadom a fenti feltételeket.
 EOT;
+$lang_register_php['page_title'] = 'Felhasználó regisztráció';
+$lang_register_php['term_cond'] = 'Felhasználói szabályzat';
+$lang_register_php['i_agree'] = 'Elfogadom';
+$lang_register_php['submit'] = 'Regisztráció elfogadása';
+$lang_register_php['err_user_exists'] = 'A megadott felhasználónév már létezik, válassz egy másikat!';
+$lang_register_php['err_global_pw'] = 'A regisztráláshoz szükséges jelszó nem megfelelő'; // cpg1.5
+$lang_register_php['err_global_pass_same'] = 'A jelszavad nem lehet azonos a regisztráláshoz szükséges jelszóval'; // cpg1.5
+$lang_register_php['err_duplicate_email'] = 'A megadott email címmel már valaki regisztrálta magát';
+$lang_register_php['err_disclaimer'] = 'El kell fogadnod a feltételeket'; // cpg1.5
+$lang_register_php['enter_info'] = 'Add meg a regisztrációs adatokat';
+$lang_register_php['required_info'] = 'Kötelező adat';
+$lang_register_php['optional_info'] = 'Nem kötelező adat';
+$lang_register_php['username'] = 'Felhasználónév';
+$lang_register_php['password'] = 'Jelszó';
+$lang_register_php['password_again'] = 'Jelszó újra';
+$lang_register_php['global_registration_pw'] = 'Regisztráláshoz szükséges jelszó'; // cpg1.5
+$lang_register_php['email'] = 'Email';
+$lang_register_php['location'] = 'Helység';
+$lang_register_php['interests'] = 'Érdeklődési kör';
+$lang_register_php['website'] = 'Honlap';
+$lang_register_php['occupation'] = 'Foglalkozás';
+$lang_register_php['error'] = 'HIBA';
+$lang_register_php['confirm_email_subject'] = '%s - Regisztráció megerősítése';
+$lang_register_php['information'] = 'Információ';
+$lang_register_php['failed_sending_email'] = 'A regisztráció megerősítéséhez szükséges email nem lett elküldve!';
+$lang_register_php['thank_you'] = 'Köszönjük a regisztrációt!<br />Egy emailt küldtünk a megadott címre, melyben további információk találhatók a felhasználói azonosító aktiválásáról. Ha nem találná, kérjük, nézze meg a levélszemétben is!';
+$lang_register_php['acct_created'] = 'A hozzáférés elkészült, kérjük, lépjen be a felhasználónevével és jelszavával.';
+$lang_register_php['acct_active'] = 'A hozzáférés aktiválva lett, kérjük, lépjen be a felhasználónevével és jelszavával.';
+$lang_register_php['acct_already_act'] = 'A hozzáférés már aktiválva van!';
+$lang_register_php['acct_act_failed'] = 'Ez a hozzáférés nem aktiválható!';
+$lang_register_php['err_unk_user'] = 'A kiválasztott felhasználó nem létezik!';
+$lang_register_php['x_s_profile'] = '%s adatlapja';
+$lang_register_php['group'] = 'Csoport';
+$lang_register_php['reg_date'] = 'Csatlakozott';
+$lang_register_php['disk_usage'] = 'Lemezhasználat';
+$lang_register_php['change_pass'] = 'Jelszó módosítása';
+$lang_register_php['current_pass'] = 'Jelenlegi jelszó';
+$lang_register_php['new_pass'] = 'Új jelszó';
+$lang_register_php['new_pass_again'] = 'Új jelszó ismét';
+$lang_register_php['err_curr_pass'] = 'A jelenlegi jelszó nem megfelelő';
+$lang_register_php['change_pass'] = 'Jelszavam módosítása';
+$lang_register_php['update_success'] = 'Az adatlapod frissült';
+$lang_register_php['pass_chg_success'] = 'A jelszavad megváltozott';
+$lang_register_php['pass_chg_error'] = 'A jelszavad nem változott meg';
+$lang_register_php['notify_admin_email_subject'] = '%s - Regisztrációs figyelmeztetés';
+$lang_register_php['last_uploads'] = 'Legutóbb feltöltött fájlok'; // cpg1.5
+$lang_register_php['last_uploads_detail'] = '(Kattints ide, hogy megnézd a feltöltéseit: %s)'; // cpg1.5
+$lang_register_php['last_comments'] = 'Legutóbb írt hozzászólások'; // cpg1.5
+$lang_register_php['you'] = 'saját magam'; // cpg1.5
+$lang_register_php['last_comments_detail'] = '(Kattints ide, hogy megtekintsd a hozzászólásait: %s)'; // cpg1.5
+$lang_register_php['notify_admin_email_body'] = 'Egy új felhasználó, "%s" regisztrált a képtáradba';
+$lang_register_php['pic_count'] = 'Feltöltött képek száma';
+$lang_register_php['notify_admin_request_email_subject'] = '%s - Regisztrációs kérelem';
+$lang_register_php['thank_you_admin_activation'] = 'Köszönjük!<br />A kérelmedről értesítettük az adminisztrátort. Amikor engedélyezi a hozzáférésed, egy emailt kapsz majd. Időnként nézd meg a levélszemetet is!';
+$lang_register_php['acct_active_admin_activation'] = 'A hozzáférés aktiválva, egy emailt küldtünk a felhasználónak.';
+$lang_register_php['notify_user_email_subject'] = '%s - Aktiválás emlékeztető';
+$lang_register_php['delete_my_account'] = 'Hozzáférésem törlése'; // cpg1.5
+$lang_register_php['warning_delete'] = 'Figyelem: a hozzáférés törlése nem visszavonható! A %sfeltöltött fájljaid%s nyilvános albumba kerülnek és a %shozzászólásaid%s nem lesznek törölve! A személyes galériádba feltöltött állományok törlésre kerülnek (ha volt ilyen)!'; // cpg1.5 // The %s-placeholders mustn't be removed, they will later be replaced by the wrappers for the links
+$lang_register_php['i_am_sure'] = 'Biztos vagyok a döntésemben és törölni akarom a hozzáférésem'; // cpg1.5
+$lang_register_php['really_delete'] = 'Valóban törlöd a hozzáférésed?'; // cpg1.5 // js-alert
+$lang_register_php['edit_xs_profile'] = '%s adatainak szerkesztése'; // cpg1.5
+$lang_register_php['edit_my_profile'] = 'Adataim szerkesztése'; // cpg1.5
+$lang_register_php['none'] = 'nincs'; // cpg1.5
+$lang_register_php['user_name_banned'] = 'A kiválasztott felhasználónév tiltott. Válassz másik nevet'; // cpg1.5
+$lang_register_php['email_address_banned'] = 'Kizártunk erről a helyről. Nem engedélyezzük, hogy újra regisztrálj. Viszlát!'; // cpg1.5
+$lang_register_php['email_warning1'] = 'Az email mező nem lehet üres!'; // cpg1.5
+$lang_register_php['email_warning2'] = 'Az email cím nem valódi. Ellenőrizd!'; // cpg1.5
+$lang_register_php['username_warning1'] = 'A felhasználónév mező nem lehet üres!'; // cpg1.5
+$lang_register_php['username_warning2'] = 'A felhasználónév legalább két betű hosszú legyen (inkább több)!'; // cpg1.5
+$lang_register_php['password_warning1'] = 'A jelszó legalább két karakter hosszú legyen (inkább több)!'; // cpg1.5
+$lang_register_php['password_warning2'] = 'A felhasználónév és jelszó nem lehet azonos!'; // cpg1.5
+$lang_register_php['password_verification_warning1'] = 'Az általad megadott két jelszó nem azonos, írd be mindkettőt újra!'; // cpg1.5
+$lang_register_php['form_not_submit'] = 'Az űrlap kitöltése hiányos - nézd át a hibákat, hogy mi a probléma!'; // cpg1.5
+$lang_register_php['banned'] = 'Kizárva!'; // cpg1.5
 
-$lang_register_php = array(
-  'page_title' => 'Felhasználó regisztráció',
-  'term_cond' => 'Felhasználói szabályzat',
-  'i_agree' => 'Elfogadom',
-  'submit' => 'Regisztráció elfogadása',
-  'err_user_exists' => 'A megadott felhasználónév már létezik, válassz egy másikat!',
-  'err_password_mismatch' => 'A két jelszó nem egyezik, írd be újra',
-  'err_uname_short' => 'A felhasználó név legalább 2 karakter hosszú legyen',
-  'err_password_short' => 'A jelszó legalább 2 karakter hosszú legyen',
-  'err_uname_pass_diff' => 'A felhasználónév és a jelszó nem lehet azonos',
-  'err_invalid_email' => 'Nem érvényes email cím',
-  'err_duplicate_email' => 'A megadott email címmel már valaki regisztrálta magát',
-  'enter_info' => 'Add meg a regisztrációs adatokat',
-  'required_info' => 'Kötelező',
-  'optional_info' => 'Válaszható',
-  'username' => 'Felhasználónév',
-  'password' => 'Jelszó',
-  'password_again' => 'Jelszó újra',
-  'email' => 'Email cím',
-  'location' => 'Helység',
-  'interests' => 'Hobbi',
-  'website' => 'Honlap',
-  'occupation' => 'Foglalkozás',
-  'error' => 'HIBA',
-  'confirm_email_subject' => '%s - Regisztráció megerősítés',
-  'information' => 'Információ',
-  'failed_sending_email' => 'A regisztráció megerősítéséhez szükséges levél nem lett elküldve',
-  'thank_you' => 'Köszönjük a regisztrációt.<br /><br />Az emailt a felhasználói azonosító aktíválásának ismertetésével elküldtük a megadott címre.',
-  'acct_created' => 'Az azonosító elkészült, bejelentkezés a felhasználó névvel és jelszóval',
-  'acct_active' => 'Az azonosító aktiválva, bejelentkezés a felhasználó névvel és jelszóval',
-  'acct_already_act' => 'Az azonosító már aktív!', //cpg1.4
-  'acct_act_failed' => 'Az azonosító aktíválása nem lehetséges!',
-  'err_unk_user' => 'Nem létező felhasználó!',
-  'x_s_profile' => '%s felhasználói adatai',
-  'group' => 'Csoport',
-  'reg_date' => 'Regisztrálás ideje',
-  'disk_usage' => 'Lemez használat',
-  'change_pass' => 'Jelszó változtatás',
-  'current_pass' => 'Jelenlegi jelszó',
-  'new_pass' => 'Új jelszó',
-  'new_pass_again' => 'Új jelszó mégegyszer',
-  'err_curr_pass' => 'A jelenlegi jelszó hibás',
-  'apply_modif' => 'Módosítások jóváhagyása',
-  'change_pass' => 'Jelszó változtatás',
-  'update_success' => 'A felhasználói adatok frissítve',
-  'pass_chg_success' => 'A jelszavad megváltoztatva',
-  'pass_chg_error' => 'A jelszavad nem változott',
-  'notify_admin_email_subject' => '%s - Regisztrációs értesítő',
-  'last_uploads' => 'Utoljára feltöltött fájl.<br />Kattints ide az összes feltöltésének megtekintéséhez', //cpg1.4
-  'last_comments' => 'Utolsó hozzászólás.<br />Kattints ide az öszzes hozzászólás megtekintéséhez', //cpg1.4
-  'notify_admin_email_body' => 'Egy új felhasználó "%s" néven regisztrálta magát a képtáradba',
-  'pic_count' => 'Feltöltött képek', //cpg1.4
-  'notify_admin_request_email_subject' => '%s - Regisztrációs kérés', //cpg1.4
-  'thank_you_admin_activation' => 'Köszönjük.<br /><br />Az azonosító aktíválási kérelem elküldve a rendszergazdának. Email-ben értesítünk az elfogadásról.', //cpg1.4
-  'acct_active_admin_activation' => 'Az azonosító aktív, email elküldve a felhasználónak.', //cpg1.4
-  'notify_user_email_subject' => '%s - Aktíválási értesitő', //cpg1.4
-);
+$lang_register_php['confirm_email'] = <<< EOT
+Köszönjük, hogy regisztráltál hozzánk: {SITE_NAME}
 
-$lang_register_confirm_email = <<<EOT
-Köszönjük, hogy regisztrált a {SITE_NAME}-ra
-
-Az Ön felhasználóneve : "{USER_NAME}"
-Az Ön jelszava : "{PASSWORD}"
-
-Az azonosító aktíválásához kattintson az alábbi linkre, vagy másolja a böngésző címsorába.
+A felhasználóneved "{USER_NAME}" akkor használhatod belépésre, ha az alábbi aktiváló linkre kattintasz, vagy vágólappal bemásolod a böngésződ címsorába:
 <a href="{ACT_LINK}">{ACT_LINK}</a>
 
 Üdvözlettel:
 
-A {SITE_NAME} csapata.
+{SITE_NAME} oldal üzemeltetői
 
 EOT;
 
-$lang_register_approve_email = <<<EOT
-A(z) "{USER_NAME}" nevű felhasználó regisztrálta magát a képtárban.
-
-Az azonosító aktíválásához kattintson az alábbi linkre, vagy másolja a böngésző címsorába.
+$lang_register_approve_email = <<< EOT
+Egy új felhasználó regisztrált a képtáradba a következő névvel: "{USER_NAME}"
+Ahhoz, hogy aktiválhasd ezt a hozzáférést, kattints az alábbi linkre, vagy másold be a böngésződ címsorába:
 
 <a href="{ACT_LINK}">{ACT_LINK}</a>
 
 EOT;
 
-$lang_register_activated_email = <<<EOT
-A kért azonosítót elfogadtuk és aktíváltuk.
+$lang_register_php['activated_email'] = <<< EOT
+A hozzáférésed elfogadtuk és aktiváltuk.
 
-A bejelentkezéshez a(z) <a href="{SITE_LINK}">{SITE_LINK}</a> oldalon használd a(z) "{USER_NAME}" felhasználónevet.
+Most már beléphetsz ide: <a href="{SITE_LINK}">{SITE_LINK}</a>
+
+A belépéshez használd ezt a felhasználónevet: "{USER_NAME}"
 
 
-Üdvözlettel,
+Üdvözlettel:
 
-A(z) {SITE_NAME} csapata
+{SITE_NAME} oldal üzemeltetői
 
 EOT;
 }
@@ -1585,529 +1883,714 @@ EOT;
 // ------------------------------------------------------------------------- //
 // File reviewcom.php
 // ------------------------------------------------------------------------- //
+if (defined('REVIEWCOM_PHP')) {
+$lang_reviewcom_php['title'] = 'Review comments';
+$lang_reviewcom_php['no_comment'] = 'There are no comments to review';
+$lang_reviewcom_php['n_comm_del'] = '%s comment(s) deleted';
+$lang_reviewcom_php['n_comm_disp'] = 'Number of comments to display';
+$lang_reviewcom_php['see_prev'] = 'See previous';
+$lang_reviewcom_php['see_next'] = 'See next';
+$lang_reviewcom_php['del_comm'] = 'Delete selected comments';
+$lang_reviewcom_php['user_name'] = 'Name';
+$lang_reviewcom_php['date'] = 'Date';
+$lang_reviewcom_php['comment'] = 'Comment';
+$lang_reviewcom_php['file'] = 'File';
+$lang_reviewcom_php['name_a'] = 'User name ascending';
+$lang_reviewcom_php['name_d'] = 'User name descending';
+$lang_reviewcom_php['date_a'] = 'Date ascending';
+$lang_reviewcom_php['date_d'] = 'Date descending';
+$lang_reviewcom_php['comment_a'] = 'Comment message ascending';
+$lang_reviewcom_php['comment_d'] = 'Comment message descending';
+$lang_reviewcom_php['file_a'] = 'File ascending';
+$lang_reviewcom_php['file_d'] = 'File descending';
+$lang_reviewcom_php['approval_a'] = 'Approval ascending'; // cpg1.5
+$lang_reviewcom_php['approval_d'] = 'Approval descending'; // cpg1.5
+$lang_reviewcom_php['ip_a'] = 'IP address ascending'; // cpg1.5
+$lang_reviewcom_php['ip_d'] = 'IP address descending'; // cpg1.5
+$lang_reviewcom_php['akismet_a'] = 'Akismet rating (valid comments at the bottom)'; // cpg1.5
+$lang_reviewcom_php['akismet_d'] = 'Akismet rating (valid comments at the top)'; // cpg1.5
+$lang_reviewcom_php['n_comm_appr'] = '%s approved comment(s)'; // cpg1.5
+$lang_reviewcom_php['n_comm_unappr'] = '%s unapproved comment(s)'; // cpg1.5
+$lang_reviewcom_php['configuration_changed'] = 'Approval config changed'; // cpg1.5
+$lang_reviewcom_php['only_approval'] = 'only display comments needing approval'; // cpg1.5
+$lang_reviewcom_php['approval'] = 'Approved'; // cpg1.5
+$lang_reviewcom_php['save_changes'] = 'Save changes'; // cpg1.5
+$lang_reviewcom_php['n_confirm_delete'] = 'Do you really want to delete the selected comment(s)?'; // cpg1.5
+$lang_reviewcom_php['with_selected'] = 'With selected'; // cpg1.5
+$lang_reviewcom_php['delete'] = 'delete'; // cpg1.5
+$lang_reviewcom_php['approve'] = 'approve'; // cpg1.5
+$lang_reviewcom_php['disapprove'] = 'mark unapproved'; // cpg1.5
+$lang_reviewcom_php['do_nothing'] = 'do nothing'; // cpg1.5
+$lang_reviewcom_php['comment_approved'] = 'Comment approved'; // cpg1.5
+$lang_reviewcom_php['comment_unapproved'] = 'Comment marked unapproved'; // cpg1.5
+$lang_reviewcom_php['ban_and_delete'] = 'Ban user and delete comment(s)'; // cpg1.5
+$lang_reviewcom_php['akismet_status'] = 'Akismet said'; // cpg1.5
+$lang_reviewcom_php['is_spam'] = 'is spam'; // cpg1.5
+$lang_reviewcom_php['is_not_spam'] = 'is not spam'; // cpg1.5
+$lang_reviewcom_php['akismet'] = 'Akismet'; // cpg1.5
+$lang_reviewcom_php['akismet_count'] = 'Akismet has found %s spam messages for you until now'; // cpg1.5
+$lang_reviewcom_php['akismet_test_result'] = 'Test result for your Akismet API key %s'; // cpg1.5
+$lang_reviewcom_php['invalid'] = 'invalid'; // cpg1.5
+$lang_reviewcom_php['missing_gallery_url'] = 'You need to specify a gallery URL in Coppermine\'s config'; // cpg1.5
+$lang_reviewcom_php['unable_to_connect'] = 'Unable to connect to akismet.com'; // cpg1.5
+$lang_reviewcom_php['not_found'] = 'The target URL was not found. Maybe the site structure of akismet.com has changed.'; // cpg1.5
+$lang_reviewcom_php['unknown_error'] = 'Unknown error'; // cpg1.5
+$lang_reviewcom_php['error_message'] = 'The error message returned was'; // cpg1.5
+$lang_reviewcom_php['ip_address'] = 'IP address'; // cpg1.5
+}
 
-if (defined('REVIEWCOM_PHP')) $lang_reviewcom_php = array(
-  'title' => 'Hozzászólások megtekintése',
-  'no_comment' => 'Nincs megtekinthető hozzászólás',
-  'n_comm_del' => '%s db hozzászólás törölve',
-  'n_comm_disp' => 'A megjelenített hozzászólások száma',
-  'see_prev' => 'elöző',
-  'see_next' => 'következő',
-  'del_comm' => 'Kiválasztott hozzászólások törlése',
-  'user_name' => 'Név', //cpg1.4
-  'date' => 'Dátum', //cpg1.4
-  'comment' => 'Hozzászólás', //cpg1.4
-  'file' => 'Fájl', //cpg1.4
-  'name_a' => 'név szerint növekvő', //cpg1.4
-  'name_d' => 'név szerint csökkenő', //cpg1.4
-  'date_a' => 'Dátum szerint növekvő', //cpg1.4
-  'date_d' => 'Dátum szerint csökkenő', //cpg1.4
-  'comment_a' => 'Hozzászólás szerint növekvő', //cpg1.4
-  'comment_d' => 'Hozzászólás szerint csökkenő', //cpg1.4
-  'file_a' => 'Fájl szerint növekvő', //cpg1.4
-  'file_d' => 'Fájl szerint csökkenő', //cpg1.4
-);
+// ------------------------------------------------------------------------- //
+// File sidebar.php
+// ------------------------------------------------------------------------- //
+if (defined('SIDEBAR_PHP')) {
+$lang_sidebar_php['sidebar'] = 'Side Bar'; // cpg1.5
+$lang_sidebar_php['install'] = 'install'; // cpg1.5
+$lang_sidebar_php['install_explain'] = 'Among the many smart access methods to get to information quickly on the site, we provide sidebars for the most popular browsers used on different operating systems to access pages easily. Here you can find setup and uninstall information for the browsers supported.'; // cpg1.5
+$lang_sidebar_php['os_browser_detect'] = 'Detecting your OS and browser'; // cpg1.5
+$lang_sidebar_php['os_browser_detect_explain'] = 'The script is trying to detect your operating system and browser version - please wait a second. If auto-detection fails, you might want to %sunhide%s all possible sidebar install options manually.'; // cpg1.5
+$lang_sidebar_php['mozilla'] = 'Mozilla, Firefox, Netscape 6+, Konqueror 3.2+'; // cpg1.5
+$lang_sidebar_php['mozilla_explain'] = 'If you use Mozilla 0.9.4 or later, you can %sadd our sidebar to your set%s. You can uninstall this sidebar using the "Customize Sidebar" dialog in Mozilla.'; // cpg1.5
+$lang_sidebar_php['ie_mac'] = 'Internet Explorer 5 and above on Mac OS'; // cpg1.5
+$lang_sidebar_php['ie_mac_explain'] = 'If you use Internet Explorer 5 or above on MacOS, %sopen our sidebar page%s in a separate window. In that window, open the "Page Holder" tab on the left side of the window. Click "Add". If you want to keep it for future use, click on "Favorites" and select "Add to Page Holder Favorites".'; // cpg1.5
+$lang_sidebar_php['ie_win'] = 'Internet Explorer 5 and above on Windows'; // cpg1.5
+$lang_sidebar_php['ie_win_explain'] = 'If you use Internet Explorer 5 or above on Windows, you can add the Side Bar to your Links toolbar or you can add it to your favorites and clicking on it you can see our bar displayed in place of your usual search bar by right-clicking %shere%s and selecting "Add to favorites" from the context menu. This link does not install our bar as your default search bar, so no modification is made to your system.'; // cpg1.5
+$lang_sidebar_php['ie7_win'] = 'Internet Explorer 7 on Windows XP/Vista'; // cpg1.5
+$lang_sidebar_php['ie7_win_explain'] = 'If you use Internet Explorer 7 on Windows, you can add a navigation pop-up to your Links toolbar or you can add it to your favorites and clicking on it you can see our bar displayed as a pop-up window by right-clicking %shere%s and selecting "Add to favorites" from the context menu. In previous versions of IE, it was possible to add an actual side bar, but in IE7 you cannot accomplish this without applying complicated registry hacks. It is recommended to use another browser if you want to use an actual sidebar.'; // cpg1.5
+$lang_sidebar_php['opera'] = 'Opera 6 and above'; // cpg1.5
+$lang_sidebar_php['opera_explain'] = 'If you are using Opera, you can %sclick on this link to add our sidebar to your set%s. Tick "Show in panel" then. You can uninstall the sidebar by right clicking on it\'s tab and choosing "Delete" from the context menu.'; // cpg1.5
+$lang_sidebar_php['additional_options'] = 'Additional options'; // cpg1.5
+$lang_sidebar_php['additional_options_explain'] = 'If you have another browser than the one mentioned above, then click %shere%s to display all possible sidebar options.'; // cpg1.5
+$lang_sidebar_php['cannot_add_sidebar'] = 'Sidebar cannot be added! Your browser does not support this method!'; // cpg1.5 // js-alert
+$lang_sidebar_php['search'] = 'Search'; // cpg1.5
+$lang_sidebar_php['reload'] = 'Reload'; // cpg1.5
+}
 
 
 // ------------------------------------------------------------------------- //
-// File search.php                                                           //
+// File search.php
 // ------------------------------------------------------------------------- //
-
-
 if (defined('SEARCH_PHP')){
-
-$lang_search_php = array(
-  'title' => 'Képgyüjtemény keresés', //cpg1.4
-  'submit_search' => 'keresés', //cpg1.4
-  'keyword_list_title' => 'Kulcsszavak listája', //cpg1.4
-  'keyword_msg' => 'A fenti lista nem tartalmaz mindent - nincsenek benne a képek címeinek és leírásainak szavai. Próbáld meg a keresést ateljes szövegben.',  //cpg1.4
-  'edit_keywords' => 'Kulcsszavak szerkesztése', //cpg1.4
-  'search in' => 'Keresés itt:', //cpg1.4
-  'ip_address' => 'IP-cím', //cpg1.4
-  'fields' => 'Keresési mezők', //cpg1.4
-  'age' => 'Kor', //cpg1.4
-  'newer_than' => 'újabb mint', //cpg1.4
-  'older_than' => 'régebbi mint', //cpg1.4
-  'days' => 'Napok', //cpg1.4
-  'all_words' => 'Teljes egyezés (és)', //cpg1.4
-  'any_words' => 'Részleges egyezés (vagy)', //cpg1.4
-);
-
-$lang_adv_opts = array(
-  'title' => 'Cím', //cpg1.4
-  'caption' => 'Felirat', //cpg1.4
-  'keywords' => 'Kulcsszó', //cpg1.4
-  'owner_name' => 'Tulajdonos neve', //cpg1.4
-  'filename' => 'Fájlnév', //cpg1.4
-);
-
+$lang_search_php['title'] = 'Keresés';
+$lang_search_php['submit_search'] = 'keresés';
+$lang_search_php['keyword_list_title'] = 'Kulcsszavak listája';
+$lang_search_php['keyword_msg'] = 'The above list is not all inclusive. It does not include words from file titles or descriptions. Try a full-text search.';
+$lang_search_php['edit_keywords'] = 'Kulcsszavak szerkesztése';
+$lang_search_php['search in'] = 'Keresés ebben:';
+$lang_search_php['ip_address'] = 'IP cím';
+$lang_search_php['imgfields'] = 'Képek keresése';
+$lang_search_php['albcatfields'] = 'Keresés albumokban és kategóriákban';
+$lang_search_php['age'] = 'Év';
+$lang_search_php['newer_than'] = 'Újabb mint';
+$lang_search_php['older_than'] = 'Régebi mint';
+$lang_search_php['days'] = 'nap';
+$lang_search_php['all_words'] = 'Mindegyik szó keresése (ÉS)';
+$lang_search_php['any_words'] = 'Bármelyik szó keresése (VAGY)';
+$lang_search_php['regex'] = 'Pontos kifejezés keresése';
+$lang_search_php['album_title'] = 'Album címek';
+$lang_search_php['category_title'] = 'Kategória címek';
 }
 
 // ------------------------------------------------------------------------- //
 // File searchnew.php
 // ------------------------------------------------------------------------- //
-
-if (defined('SEARCHNEW_PHP')) $lang_search_new_php = array(
-  'page_title' => 'Új képek keresése',
-  'select_dir' => 'Válassz könyvtárat',
-  'select_dir_msg' => 'Ez a szólgáltatás lehetővé teszi egynél több kép egyidejü feltöltését FTP-n keresztül.<br /><br />Válassz könyvtárat, ahová feltölteni kívánsz.', //cpg1.4
-  'no_pic_to_add' => 'Nem lett hozzáadva semmi sem',
-  'need_one_album' => 'Legalább 1 albumnak léteznie kell a szolgáltatás használatához',
-  'warning' => 'Figyelem',
-  'change_perm' => 'A program nem tud írni a könyvtárba. Meg kell változtatnod a jogosultságokat (chmod) 755-ra vagy 777-re, mielőtt fájlokat adnál hozzá!',
-  'target_album' => '<b>Tedd a  &quot;</b>%s<b>&quot; képeit </b>%s helyre',
-  'folder' => 'Könyvtár',
-  'image' => 'Kép',
-  'album' => 'Album',
-  'result' => 'Eredmény',
-  'dir_ro' => 'Nem írható',
-  'dir_cant_read' => 'Nem olvasható',
-  'insert' => 'Új kép beillesztése a képtárba',
-  'list_new_pic' => 'Új képek listája',
-  'insert_selected' => 'Kiválasztott képek beillesztése',
-  'no_pic_found' => 'Nincs új kép',
-  'be_patient' => 'Légy türelemmel, a képek hozzáadása időbe telik',
-  'no_album' => 'Nincs album kiválasztva',
-  'result_icon' => 'Kattints ide a részletekért',  //cpg1.4
-  'notes' =>  '<ul>'.
-    '<li><b>OK</b> : jelentése - a kép sikeresen hozzáadva'.
-    '<li><b>DP</b> : jelentése - a kép már szerepel az adatbázisban'.
-    '<li><b>PB</b> : Jelentése - a képet nem sikerült hozzáadni, ellenőrizd a konfigurációt és a könyvtár jogusultságokat'.
-    '<li><b>NA</b> : jelentése - nem lett album kiválasztva, kattints a \'<a href="javascript:history.back(1)">vissza</a>\' -ra és válassz egyet. Ha nincs kiválasztható album, akkor <a href="albmgr.php">hozz létre elöszőr egyet</a>.</li>'.
-    '<li>Ha OK, DP, PB \'jelek\' nem jelennek meg, kattints a törött fájlra, hogy megnézhesd a PHP által adott hibaüzenetet'.
-    '<li>Ha a böngésződ időtúllépést jelez, kattints az Újratöltés (F5) gombra'.
-    '</ul>',
-  'select_album' => 'Válassz albumot',
-  'check_all' => 'Összes kiválasztása',
-  'uncheck_all' => 'Összes kiválasztás törlése',
-  'no_folders' => 'Nincs könyvtár létrehozva az "albums" könyvtáron belül. Létre kell hoznod legalább 1 felhasználói könyvtárat az "albums" könyvtár alatt és fájlokat kell feltöltened. Tilos feltöltésre használni a "userpics" vagy az "edit" könyvtárakat, e könyvtárak fenntartva vannak belső használatra.', //cpg1.4
-   'albums_no_category' => 'Kategória nélküli albumok', //cpg1.4 // album pulldown mod, added by frogfoot
-  'personal_albums' => '* Személyes albumok', //cpg1.4 // album pulldown mod, added by frogfoot
-  'browse_batch_add' => 'Böngészhető felület (ajánlott)', //cpg1.4
-  'edit_pics' => 'Képek szerkesztése', //cpg1.4
-  'edit_properties' => 'Album tulajdonságok', //cpg1.4
-  'view_thumbs' => 'Indexkép nézet', //cpg1.4
-);
-
-// ------------------------------------------------------------------------- //
-// File stat_details.php //cpg1.4
-// ------------------------------------------------------------------------- //
-
-if (defined('STAT_DETAILS_PHP')) $lang_stat_details_php = array(
-  'show_hide' => 'Oszlop megjelenítése/elrejtése', //cpg1.4
-  'vote' => 'Szavazat részletei', //cpg1.4
-  'hits' => 'Találat részletei', //cpg1.4
-  'stats' => 'Szavazat statisztika', //cpg1.4
-  'sdate' => 'Dátum', //cpg1.4
-  'rating' => 'Helyezés', //cpg1.4
-  'search_phrase' => 'Kereső kifejezés', //cpg1.4
-  'referer' => 'Hivatkozás', //cpg1.4
-  'browser' => 'Böngésző', //cpg1.4
-  'os' => 'Operációs rendszer', //cpg1.4
-  'ip' => 'IP-cím', //cpg1.4
-  'sort_by_xxx' => 'Rendezés %s szerint', //cpg1.4
-  'ascending' => 'növekvő', //cpg1.4
-  'descending' => 'csökkenő', //cpg1.4
-  'internal' => 'belső', //cpg1.4
-  'close' => 'bezár', //cpg1.4
-  'hide_internal_referers' => 'belső hivatkozások elrejtése', //cpg1.4
-  'date_display' => 'Dátum formátum', //cpg1.4
-  'submit' => 'elfogad/frissít', //cpg1.4
-);
+if (defined('SEARCHNEW_PHP')) {
+$lang_search_new_php['page_title'] = 'Search new files';
+$lang_search_new_php['select_dir'] = 'Select directory';
+$lang_search_new_php['select_dir_msg'] = 'This function allows you to add a batch of files that you have uploaded to your server by FTP.<br />Select the directory where you have uploaded your files.';
+$lang_search_new_php['no_pic_to_add'] = 'There is no file to add';
+$lang_search_new_php['need_one_album'] = 'You need at least one album to use this function';
+$lang_search_new_php['warning'] = 'Warning';
+$lang_search_new_php['change_perm'] = 'the script can\'t write in this directory, you need to change its mode to 755 or 777 before trying to add the files!';
+$lang_search_new_php['target_album'] = '<strong>Put files of &quot;</strong>%s<strong>&quot; into </strong>%s';
+$lang_search_new_php['folder'] = 'Folder';
+$lang_search_new_php['image'] = 'file';
+$lang_search_new_php['result'] = 'Result';
+$lang_search_new_php['dir_ro'] = 'Not writable. ';
+$lang_search_new_php['dir_cant_read'] = 'Not readable. ';
+$lang_search_new_php['insert'] = 'Adding new files to the gallery';
+$lang_search_new_php['list_new_pic'] = 'List of new files';
+$lang_search_new_php['insert_selected'] = 'Insert selected files';
+$lang_search_new_php['no_pic_found'] = 'No new file was found';
+$lang_search_new_php['be_patient'] = 'Please be patient, the script needs time to add the files';
+$lang_search_new_php['no_album'] = 'no album selected';
+$lang_search_new_php['result_icon'] = 'click for details or to reload';
+$lang_search_new_php['notes'] = <<< EOT
+    <ul>
+        <li>%s: the file was successfully added</li>
+        <li>%s: the file is a duplicate and is already in the database</li>
+        <li>%s: the file could not be added, check your configuration and the permission of directories where the files are located</li>
+        <li>%s: you need to select an album first</li>
+        <li>%s: the file is broken or inacessible</li>
+        <li>%s: unknown file type</li>
+        <li>%s: the file is actually a GIF image</li>
+        <li>If the icons do not appear click on the broken file to see any error message produced by PHP</li>
+        <li>If your browser timeouts, hit the reload button</li>
+    </ul>
+EOT;
+// Translator note: Do not translate the %s placeholders - they are being replaced with icons
+$lang_search_new_php['check_all'] = 'Check All';
+$lang_search_new_php['uncheck_all'] = 'Uncheck All';
+$lang_search_new_php['no_folders'] = 'There are no folders inside the "albums" folder yet. Make sure to create at least one custom folder within "albums" folder and ftp-upload your files there. You mustn\'t upload to the "userpics" nor "edit" folders, they are reserved for http uploads and internal purposes.';
+$lang_search_new_php['browse_batch_add'] = 'Browsable interface'; // cpg1.5
+$lang_search_new_php['display_thumbs_batch_add'] = 'Display preview thumbnails'; // cpg1.5
+$lang_search_new_php['edit_pics'] = 'Edit files';
+$lang_search_new_php['edit_properties'] = 'Album properties';
+$lang_search_new_php['view_thumbs'] = 'Thumbnail view';
+$lang_search_new_php['add_more_folder'] = 'Batch-add more files from the folder %s'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
-// File thumbnails.php
+//File send_activation.php
+// ------------------------------------------------------------------------- //
+if (defined('SEND_ACTIVATION_PHP')) {
+$lang_send_activation_php['err_already_logged_in'] = 'You are already logged in!'; // cpg1.5
+$lang_send_activation_php['activation_not_required'] = 'This website does not require activation by email'; // cpg1.5
+$lang_send_activation_php['err_unk_user'] = 'Selected user does not exist!'; // cpg1.5
+$lang_send_activation_php['resend_act_link'] = 'Resend activation link'; // cpg1.5
+$lang_send_activation_php['enter_email'] = 'Enter your email address'; // cpg1.5
+$lang_send_activation_php['submit'] = 'Go'; // cpg1.5
+$lang_send_activation_php['failed_sending_email'] = 'Failed to send email with activation link'; // cpg1.5
+$lang_send_activation_php['activation_email_sent'] = 'An email with activation link sent to %s. Please check your email to complete the process'; // cpg1.5
+}
+
+// ------------------------------------------------------------------------- //
+// File stat_details.php
 // ------------------------------------------------------------------------- //
 
-// Void
+if (defined('STAT_DETAILS_PHP')) {
+$lang_stat_details_php['show_hide'] = 'show/hide this column';
+$lang_stat_details_php['title'] = 'Statistic details'; // cpg1.5
+$lang_stat_details_php['vote'] = 'Vote Details';
+$lang_stat_details_php['hits'] = 'Hit Details';
+$lang_stat_details_php['stats'] = 'Vote Statistics';
+$lang_stat_details_php['users'] = 'User Statistics';
+$lang_stat_details_php['sdate'] = 'Date';
+$lang_stat_details_php['rating'] = 'Rating';
+$lang_stat_details_php['search_phrase'] = 'Search phrase';
+$lang_stat_details_php['referer'] = 'Referer';
+$lang_stat_details_php['browser'] = 'Browser';
+$lang_stat_details_php['os'] = 'Operating System';
+$lang_stat_details_php['ip'] = 'IP';
+$lang_stat_details_php['uid'] = 'User'; // cpg1.5
+$lang_stat_details_php['sort_by_xxx'] = 'Sort by %s';
+$lang_stat_details_php['ascending'] = 'ascending';
+$lang_stat_details_php['descending'] = 'descending';
+$lang_stat_details_php['internal'] = 'int';
+$lang_stat_details_php['close'] = 'close';
+$lang_stat_details_php['hide_internal_referers'] = 'hide internal referers';
+$lang_stat_details_php['date_display'] = 'Date display';
+$lang_stat_details_php['records_per_page'] = 'records per page';
+$lang_stat_details_php['submit'] = 'submit / refresh';
+$lang_stat_details_php['overall_stats'] = 'Overall Statistics'; // cpg1.5
+$lang_stat_details_php['stats_by_os'] = 'Stats by operating systems'; // cpg1.5
+$lang_stat_details_php['number_of_hits'] = 'Number of hits'; // cpg1.5
+$lang_stat_details_php['total'] = 'Total'; // cpg1.5
+$lang_stat_details_php['stats_by_browser'] = 'Stats by browser'; // cpg1.5
+$lang_stat_details_php['overall_stats_config'] = 'Overall stats configuration'; // cpg1.5
+$lang_stat_details_php['hit_details'] = 'Keep detailed hit statistics'; // cpg1.5
+$lang_stat_details_php['hit_details_explanation'] = 'Keep detailed hit statistics'; // cpg1.5
+$lang_stat_details_php['vote_details'] = 'Keep detailed voting statistics'; // cpg1.5
+$lang_stat_details_php['vote_details_explanation'] = 'Keep detailed voting statistics'; // cpg1.5
+$lang_stat_details_php['empty_hits_table'] = 'Empty all hit stats'; // cpg1.5
+$lang_stat_details_php['empty_hits_table_confirm'] = 'Are you absolutely sure that you want to delete ALL hit stat records for your ENTIRE gallery? This cannot be undone!'; // cpg1.5 // js-alert
+$lang_stat_details_php['empty_votes_table'] = 'Empty all voting stats'; // cpg1.5
+$lang_stat_details_php['empty_votes_table_confirm'] = 'Are you absolutely sure that you want to delete ALL voting records for your ENTIRE gallery? This cannot be undone!'; // cpg1.5 // js-alert
+$lang_stat_details_php['submit'] = 'Submit'; // cpg1.5
+$lang_stat_details_php['upd_success'] = 'Coppermine configuration was updated'; // cpg1.5
+$lang_stat_details_php['votes'] = 'votes'; // cpg1.5
+$lang_stat_details_php['reset_votes_individual'] = 'Reset selected vote(s)'; // cpg1.5
+$lang_stat_details_php['reset_votes_individual_confirm'] = 'Are you sure that you want to delete the selected votes? This cannot be undone!'; // cpg1.5
+$lang_stat_details_php['back_to_intermediate'] = 'Back to intermediate file view'; // cpg1.5
+$lang_stat_details_php['records_on_page'] = '%s records on %s page(s)'; // cpg1.5
+$lang_stat_details_php['guest'] = 'Guest'; // cpg1.5
+$lang_stat_details_php['not_implemented'] = 'not implemented yet'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
 // File upload.php
 // ------------------------------------------------------------------------- //
 
-if (defined('UPLOAD_PHP')) $lang_upload_php = array(
-  'title' => 'Kép feltöltése',
-  'custom_title' => 'Egyedi kérdőív',
-  'cust_instr_1' => 'Választhatsz egyedi feltölő dobozokat, de nem választhatsz többet az alábbi értékeknél.',
-  'cust_instr_2' => 'Kérhető doboz számok',
-  'cust_instr_3' => 'Kép feltöltő doboz: %s',
-  'cust_instr_4' => 'URI/URL feltöltő doboz: %s',
-  'cust_instr_5' => 'URI/URL feltöltő doboz:',
-  'cust_instr_6' => 'Kép feltöltő doboz:',
-  'cust_instr_7' => 'Töltsd ki adatokkal az itt megadott dobozokat, majd kattints a  \'tovább\'-ra.',
-  'reg_instr_1' => 'Érvénytelen művelet az űrlap létrehozásakor.',
-  'reg_instr_2' => 'Most feltöltheted a képeid a lenti dobozok használatával. A kép mérete nem lehet nagyobb %s kB-nál. Zip fájlok tömörítve kerülnek feltöltésre.',
-  'reg_instr_3' => 'Ha azt akarod, hogy a zip fájlok ki legyenek csomagolva, akkor a megfelelő feltöltő dobozt kell használnod.',
-  'reg_instr_4' => 'Ha az URI/URL feltöltő módot használod, akkor add meg a kép útvonalát pl. ilyen formában: \'http://www.sajat.hu/kepek/kepneve.jpg\'',
-  'reg_instr_5' => 'Ha végeztél a kitöltéssel, kattints a \'tovább\'-ra.',
-  'reg_instr_6' => 'Zip feltöltés:',
-  'reg_instr_7' => 'Kép feltöltés:',
-  'reg_instr_8' => 'URI/URL feltöltés:',
-  'error_report' => 'Hiba jelentés',
-  'error_instr' => 'A következő feltöltésekkel volt probléma:',
-  'file_name_url' => 'Fájlnév/URL',
-  'error_message' => 'Hibaüzenet',
-  'no_post' => 'A kép nem lett feltöltve .',
-  'forb_ext' => 'Nem megengedett kiterjesztés.',
-  'exc_php_ini' => 'A fájlméret túllépte a php.ini-ben megadott értéket.',
-  'exc_file_size' => 'A fájlméret túllépte a Coppermine konfigurációban megadottat.',
-  'partial_upload' => 'Csak részleges feltöltés.',
-  'no_upload' => 'Nem történt feltöltés.',
-  'unknown_code' => 'Ismeretlen PHP-Upload hibakód.',
-  'no_temp_name' => 'Nincs feltöltés - Nincs ideiglenes név.',
-  'no_file_size' => 'Nem tartalamaz adatot/sérült',
-  'impossible' => 'Nem lehet mozgatni.',
-  'not_image' => 'Nem kép/sérült',
-  'not_GD' => 'Nem GD kiterjesztés.',
-  'pixel_allowance' => 'Túl nagy képszélesség vagy képmagasság.',
-  'incorrect_prefix' => 'Hibás URI/URL előtag',
-  'could_not_open_URI' => 'Nem lehet kapcsolodni az URI-hoz.',
-  'unsafe_URI' => 'Nem biztonságos cím.',
-  'meta_data_failure' => 'Meta adat hiba',
-  'http_401' => '401 Nem azonosított felhasználó',
-  'http_402' => '402 Fizetés szükséges',
-  'http_403' => '403 Tiltott',
-  'http_404' => '404 Nem található',
-  'http_500' => '500 Belső hiba',
-  'http_503' => '503 A szolgáltatás nem elérhető',
-  'MIME_extraction_failure' => 'Ismeretlen MIME tartalom.',
-  'MIME_type_unknown' => 'Ismeretlen MIME típus',
-  'cant_create_write' => 'Nem lehet létrehozni az írásfájlt.',
-  'not_writable' => 'Nem lehet írni az írásfájlba.',
-  'cant_read_URI' => 'Nem lehet olvasni az  URI/URL-t',
-  'cant_open_write_file' => 'Nem lehet megnyitni az URI/URL írásfájlt.',
-  'cant_write_write_file' => 'Nem lehet írni az URI írásfájlba.',
-  'cant_unzip' => 'Nem lehet kicsomagolni.',
-  'unknown' => 'Ismeretlen hiba',
-  'succ' => 'Sikeres feltöltés',
-  'success' => '%s db feltöltés sikeres.',
-  'add' => 'Kattints a  \'tovább\'-ra, a képek albumba helyezéséhez.',
-  'failure' => 'Feltöltési hiba',
-  'f_info' => 'Fájl információ',
-  'no_place' => 'Az elöző fájl nem lett elhelyezve.',
-  'yes_place' => 'Az elöző fájl sikeresen elhelyezve.',
-  'max_fsize' => 'A megengedett legnagyobb fájlméret: %s kB',
-  'album' => 'Album',
-  'picture' => 'Kép',
-  'pic_title' => 'Kép címe',
-  'description' => 'Kép leírása',
-  'keywords' => 'Kulcsszavak (veszővel elválasztva)<br /><a href="#" onClick="return MM_openBrWindow(\'keyword_select.php\',\'selectKey\',\'width=250, height=400, scrollbars=yes,toolbar=no,status=yes,resizable=yes\')">beillesztés listából</a>', //cpg1.4
-  'keywords_sel' =>'Válassz kulcsszót', //cpg1.4
-  'err_no_alb_uploadables' => 'Sajnálom, de nincs egy album se, ahova fel tudnád tölteni a képet',
-  'place_instr_1' => 'Kérünk, most helyezd el a képet az albumban.  Minden egyes képnek add meg a lényeges adatait.',
-  'place_instr_2' => 'További fájlok elhelyezéséhez kattints a \'folytatás\'-ra!',
-  'process_complete' => 'Összes fájl sikeresen elhelyezve.',
-  'albums_no_category' => 'Album kategória nélkül', //cpg1.4. //album pulldown mod, added by frogfoot
-  'personal_albums' => '* Személyes album', //cpg1.4 //album pulldown mod, added by frogfoot
-  'select_album' => 'Válassz albumot', //cpg1.4 //album pulldown mod, added by frogfoot
-  'close' => 'bezárás', //cpg1.4
-  'no_keywords' => 'Nincs elérhető kulcsszó!', //cpg1.4
-  'regenerate_dictionary' => 'Szótár frissítése', //cpg1.4
-);
+if (defined('UPLOAD_PHP')) {
+$lang_upload_php['title'] = 'Kép feltöltése';
+$lang_upload_php['restrictions'] = 'Feltételek'; // cpg1.5
+$lang_upload_php['choose_method'] = 'Válassz feltöltési módot'; // cpg1.5
+$lang_upload_php['upload_swf'] = 'Csoportos - Több fájl, Flash-alapú (ajánlott)'; // cpg1.5
+$lang_upload_php['upload_single'] = 'Egyszerű - Egyszerre csak egy fájl'; // cpg1.5
+$lang_upload_php['up_instr_1'] = 'Válassz egy albumot a lenyitható listából';
+$lang_upload_php['up_instr_2'] = 'Kattints a Tallózás gombra és válassz fájlokat a feltöltéshez. Több fájlt is kiválaszthatsz, ha a CTRL gombot lenyomod és úgy kattintasz a fájlokon.';
+$lang_upload_php['up_instr_3'] = 'Több fájlt is kiválaszthatsz a második pontban írtak szerint';
+$lang_upload_php['up_instr_4'] = 'Kattints a Továb gombra, ha már minden fájlt feltöltöttél (a gomb megjelenik majd, ha legalább egy fájlt sikerült feltölteni).';
+$lang_upload_php['up_instr_5'] = 'Egy olyan képernyőre kerülsz majd, ahol bírhatod az információkat. Miután ezeket kitöltötted, kattints a "Módosítások mentése" gombra a képernyő alján.';
+$lang_upload_php['restriction_zip'] = 'A ZIP fájlok tömörített állományok, a kiszolgálón nem kerülnek kibontásra.';
+$lang_upload_php['restriction_filesize'] = 'A kép mérete egyenként nem lehet nagyobb, mint: %s.';
+$lang_upload_php['reg_instr_1'] = 'Érvénytelen művelet az űrlap létrehozásakor.';
+$lang_upload_php['no_name'] = 'Fájlnév nem létezik'; // cpg 1.5
+$lang_upload_php['no_tmp_name'] = 'A feltöltés nem lehetséges'; // cpg 1.5
+$lang_upload_php['no_post'] = 'A fájl nem lett feltöltve.';
+$lang_upload_php['forb_ext'] = 'Nem engedélyezett kiterjesztés.';
+$lang_upload_php['exc_php_ini'] = 'A fájlméret túllépte a php.ini-ben megadott értéket.';
+$lang_upload_php['exc_file_size'] = 'A fájlméret túllépte a Coppermine konfigurációban megadottat.';
+$lang_upload_php['partial_upload'] = 'Csak részleges feltöltés.';
+$lang_upload_php['no_upload'] = 'Nem történt feltöltés.';
+$lang_upload_php['unknown_code'] = 'Ismeretlen PHP-Upload hibakód.';
+$lang_upload_php['impossible'] = 'Az áthelyezés lehetetlen.';
+$lang_upload_php['not_image'] = 'Nem kép/sérült';
+$lang_upload_php['not_GD'] = 'Nem GD kiterjesztés.';
+$lang_upload_php['pixel_allowance'] = 'Túl nagy képszélesség vagy képmagasság.';
+$lang_upload_php['failure'] = 'Sikertelen feltöltés';
+$lang_upload_php['no_place'] = 'Az előbb feltöltött fjl nem került elhelyezésre.';
+$lang_upload_php['max_fsize'] = 'Maximum engedélyezett fájlméret: %s';
+$lang_upload_php['picture'] = 'Fájl helye';
+$lang_upload_php['pic_title'] = 'Elnevezés';
+$lang_upload_php['description'] = 'Leírás';
+$lang_upload_php['keywords_sel'] = 'Kulcsszó választása';
+$lang_upload_php['err_no_alb_uploadables'] = 'Sajnálom, de nincs egy album se, ahova fel tudnád tölteni';
+$lang_upload_php['close'] = 'Bezár';
+$lang_upload_php['no_keywords'] = 'Nincs elérhető kulcsszó!';
+$lang_upload_php['regenerate_dictionary'] = 'Kulcsszótár frissítése';
+$lang_upload_php['allowed_types'] = 'A következő fájltípusok engedélyezettek:'; // cpg1.5
+$lang_upload_php['allowed_img_types'] = 'Képtípusok: %s'; // cpg1.5
+$lang_upload_php['allowed_mov_types'] = 'Videotípusok: %s'; // cpg1.5
+$lang_upload_php['allowed_doc_types'] = 'Dokumentum típusok: %s'; // cpg1.5
+$lang_upload_php['allowed_snd_types'] = 'Hangtípusok: %s'; // cpg1.5
+$lang_upload_php['please_wait'] = 'Légy türelemmel, amíg a feltöltés tart - ez eltarthat egy kis ideig'; // cpg1.5
+$lang_upload_php['alternative_upload'] = 'Más feltöltési lehetőség'; // cpg1.5
+$lang_upload_php['xp_publish_promote'] = 'Ha Windows XP/Vista/Win7 rendszered van, akkor a  Windows XP feltöltő varázslót használd, ennek a kezelése sokkal egyszerűbb.'; // cpg1.5
+$lang_upload_php['err_js_disabled'] = 'A feltöltési felület nem tölthető be. Engedélyezd vagy telepítsd a JavaScriptet a böngésződbe, hogy elérhesd (www.java.com).'; // cpg1.5
+$lang_upload_php['err_flash_disabled'] = 'A feltöltési felület hosszú ideje tölt, vagy nem elérhető. Kérlek, ellenőrizd, hogy a Flash Player engedélyezve vagy telepítve van a gépeden (www.adobe.com).'; // cpg1.5
+$lang_upload_php['err_alternate_method'] = 'Használhatod a másik, <a href="upload.php?single=1">Egyszerű</a> feltöltési felületet is.'; // cpg1.5
+$lang_upload_php['err_flash_version'] = 'A feltöltési felület nem betölthető. Telepítsd vagy frissítsd a Flash Playert. Látogass el az <a href="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash">Adobe weboldalára</a> a Flash Player letöltéséhez.'; // cpg1.5
+$lang_upload_php['flash_loading'] = 'A feltöltési felület töltődik. Kérlek, várj egy kicsit...'; // cpg1.5
 
+$lang_upload_swf_php['browse'] = 'Tallózás...'; //cpg1.5
+$lang_upload_swf_php['cancel_all'] = 'Minden feltöltés megszakítása'; //cpg1.5
+$lang_upload_swf_php['upload_queue'] = 'Feltöltési várósor'; //cpg1.5
+$lang_upload_swf_php['files_uploaded'] = 'fájl feltöltve'; //cpg1.5
+$lang_upload_swf_php['all_files'] = 'Minden fájl'; //cpg1.5
+$lang_upload_swf_php['status_pending'] = 'Folyamatban...'; //cpg1.5
+$lang_upload_swf_php['status_uploading'] = 'Feltöltés...'; //cpg1.5
+$lang_upload_swf_php['status_complete'] = 'Elkészült.'; //cpg1.5
+$lang_upload_swf_php['status_cancelled'] = 'Megszakítva.'; //cpg1.5
+$lang_upload_swf_php['status_stopped'] = 'Megállítva.'; //cpg1.5
+$lang_upload_swf_php['status_failed'] = 'A feltöltés sikertelen.'; //cpg1.5
+$lang_upload_swf_php['status_too_big'] = 'A fájl túl nagy.'; //cpg1.5
+$lang_upload_swf_php['status_zero_byte'] = 'Nem tölthetsz fel nulla méretű fájlt.'; //cpg1.5
+$lang_upload_swf_php['status_invalid_type'] = 'Ismeretlen fájltípus.'; //cpg1.5
+$lang_upload_swf_php['status_unhandled'] = 'Végzetes hiba'; //cpg1.5
+$lang_upload_swf_php['status_upload_error'] = 'Feltöltési hiba: '; //cpg1.5
+$lang_upload_swf_php['status_server_error'] = 'Kiszolgáló (IO) hiba'; //cpg1.5
+$lang_upload_swf_php['status_security_error'] = 'Biztonsági hiba'; //cpg1.5
+$lang_upload_swf_php['status_upload_limit'] = 'A feltöltési limitet elérted.'; //cpg1.5
+$lang_upload_swf_php['status_validation_failed'] = 'Sikertelen azonosítás. A feltöltés kihagyva.'; //cpg1.5
+$lang_upload_swf_php['queue_limit'] = 'Túl sok fájlt akartál feltölteni.'; //cpg1.5
+$lang_upload_swf_php['upload_limit_1'] = 'Elérted a feltöltési limitet.'; //cpg1.5
+$lang_upload_swf_php['upload_limit_2'] = 'Maximimum ennyi fájlt választhatsz ki: %s'; //cpg1.5
+}
 // ------------------------------------------------------------------------- //
 // File usermgr.php
 // ------------------------------------------------------------------------- //
+if (defined('USERMGR_PHP')) {
+$lang_usermgr_php['memberlist'] = 'Taglista';
+$lang_usermgr_php['user_manager'] = 'Felhasználó-kezelő';
+$lang_usermgr_php['title'] = 'Felhasználók kezelése';
+$lang_usermgr_php['name_a'] = 'Név szerint növekvő';
+$lang_usermgr_php['name_d'] = 'Név szerint csökkenő';
+$lang_usermgr_php['group_a'] = 'Csoport szerint növekvő';
+$lang_usermgr_php['group_d'] = 'Csoport szerint csökkenő';
+$lang_usermgr_php['reg_a'] = 'Regisztrálás dátuma szerint növekvő';
+$lang_usermgr_php['reg_d'] = 'Regisztrálás dátuma szerint csökkenő';
+$lang_usermgr_php['pic_a'] = 'Fájlmennyiség szerint növekvő';
+$lang_usermgr_php['pic_d'] = 'Fájlmennyiség szerint csökkenő';
+$lang_usermgr_php['disku_a'] = 'Lemezhasználat szerint növekvő';
+$lang_usermgr_php['disku_d'] = 'Lemezhasználat szerint csökkenő';
+$lang_usermgr_php['lv_a'] = 'Utolsó látogatás szerint növekvő';
+$lang_usermgr_php['lv_d'] = 'Utolsó látogatás szerint csökkenő';
+$lang_usermgr_php['sort_by'] = 'Felhasználók rendezése';
+$lang_usermgr_php['err_no_users'] = 'A felhasználótábla üres!';
+$lang_usermgr_php['err_edit_self'] = 'Nem szerkesztheted a saját adatlapod, használd az \'Adataim\' hivatkozást';
+$lang_usermgr_php['with_selected'] = 'Kiválasztva:';
+$lang_usermgr_php['delete_files_no'] = 'Nyilvános fájlok megtartása (névtelenül)';
+$lang_usermgr_php['delete_files_yes'] = 'Nyilvános fájlok törlése';
+$lang_usermgr_php['delete_comments_no'] = 'Hozzászólások megtartása (névtelenül)';
+$lang_usermgr_php['delete_comments_yes'] = 'Minden hozzászólás törlése';
+$lang_usermgr_php['activate'] = 'Aktiválás';
+$lang_usermgr_php['deactivate'] = 'Inaktiválás';
+$lang_usermgr_php['reset_password'] = 'Jelszó alaphelyzetbe állítása';
+$lang_usermgr_php['change_primary_membergroup'] = 'Elsődleges csoport váltása';
+$lang_usermgr_php['add_secondary_membergroup'] = 'Másodlagos csoport hozzáadása';
+$lang_usermgr_php['name'] = 'Felhasználónév';
+$lang_usermgr_php['group'] = 'Csoport';
+$lang_usermgr_php['inactive'] = 'Inaktív';
+$lang_usermgr_php['operations'] = 'Műveletek';
+$lang_usermgr_php['pictures'] = 'Fájlok';
+$lang_usermgr_php['disk_space_used'] = 'Lemezhasználat';
+$lang_usermgr_php['disk_space_quota'] = 'Limit'; // cpg1.5
+$lang_usermgr_php['registered_on'] = 'Regisztráció';
+$lang_usermgr_php['last_visit'] = 'Utolsó látogatás';
+$lang_usermgr_php['u_user_on_p_pages'] = 'Összesen %d felhasználó - %d oldalon';
+$lang_usermgr_php['confirm_del'] = 'Biztos, hogy TÖLÖD ezt a felhasználót?\\nMinden fájlja és albuma törölve lesz!'; // js-alert
+$lang_usermgr_php['mail'] = 'LEVÉL';
+$lang_usermgr_php['err_unknown_user'] = 'A kiválasztott felhasználó nem létezik!';
+$lang_usermgr_php['modify_user'] = 'Felhasználó módosítása';
+$lang_usermgr_php['notes'] = 'Megjegyzések';
+$lang_usermgr_php['note_list'] = 'Ha nem szeretnél jelszót módosítani, akkor hagyd üresen!';
+$lang_usermgr_php['password'] = 'Jelszó';
+$lang_usermgr_php['user_active'] = 'A felhasználó aktiválva legyen?';
+$lang_usermgr_php['user_group'] = 'Felhasználó csoportja';
+$lang_usermgr_php['user_email'] = 'Felhasználó emailje';
+$lang_usermgr_php['user_web_site'] = 'Felhasználó weboldala';
+$lang_usermgr_php['create_new_user'] = 'Új felhasználó létrehozása';
+$lang_usermgr_php['user_location'] = 'Felhasználó helysége';
+$lang_usermgr_php['user_interests'] = 'Felhasználó érdeklődési köre';
+$lang_usermgr_php['user_occupation'] = 'Felhasználó munkahelye';
+$lang_usermgr_php['user_profile1'] = '$user_profile1';
+$lang_usermgr_php['user_profile2'] = '$user_profile2';
+$lang_usermgr_php['user_profile3'] = '$user_profile3';
+$lang_usermgr_php['user_profile4'] = '$user_profile4';
+$lang_usermgr_php['user_profile5'] = '$user_profile5';
+$lang_usermgr_php['user_profile6'] = '$user_profile6';
+$lang_usermgr_php['latest_upload'] = 'Legutóbbi feltöltések';
+$lang_usermgr_php['no_latest_upload'] = 'Még nem töltött fel fájlt'; // cpg1.5
+$lang_usermgr_php['last_comments'] = 'Legutóbbi hozzászólások'; // cpg1.5
+$lang_usermgr_php['no_last_comments'] = 'Még nem szólt hozzá'; // cpg1.5
+$lang_usermgr_php['comments'] = 'Hozzászólások'; // cpg1.5
+$lang_usermgr_php['never'] = 'soha';
+$lang_usermgr_php['search'] = 'Felhasználó keresése';
+$lang_usermgr_php['submit'] = 'Elfogad';
+$lang_usermgr_php['search_submit'] = 'Tovább!';
+$lang_usermgr_php['search_result'] = 'Keresés eredménye: ';
+$lang_usermgr_php['alert_no_selection'] = 'Legalább egy felhasználót válassz ki!'; // js-alert
+$lang_usermgr_php['select_group'] = 'Csoport kiválasztása';
+$lang_usermgr_php['groups_alb_access'] = 'Csoport album jogosultságai';
+$lang_usermgr_php['category'] = 'Kategória';
+$lang_usermgr_php['modify'] = 'Módosítod?';
+$lang_usermgr_php['group_no_access'] = 'Ennek a csoportnak nincsenek speciális jogosultságai';
+$lang_usermgr_php['notice'] = 'Értesítés';
+$lang_usermgr_php['group_can_access'] = 'Az albumhoz csak "%s" férhet hozzá';
+$lang_usermgr_php['send_login_data'] = 'A belépési adatok elküldése emailben (A jelszó is küldésre kerül!)'; // cpg1.5
+$lang_usermgr_php['send_login_email_subject'] = 'Új hozzáférésed adatai'; // cpg1.5
+$lang_usermgr_php['failed_sending_email'] = 'A belépési információk nem kerültek elküldésre!'; // cpg1.5
+$lang_usermgr_php['view_profile'] = 'Adatlap megtekintése'; // cpg1.5
+$lang_usermgr_php['edit_profile'] = 'Adatlap szerkesztése'; // cpg1.5
+$lang_usermgr_php['ban_user'] = 'Felhasználó kitiltása'; // cpg1.5
+$lang_usermgr_php['user_is_banned'] = 'A felhasználót kitiltottuk'; // cpg1.5
+$lang_usermgr_php['status'] = 'Állapot'; // cpg1.5
+$lang_usermgr_php['status_active'] = 'Aktiválva'; // cpg1.5
+$lang_usermgr_php['status_inactive'] = 'Nincs aktiválva'; // cpg1.5
+$lang_usermgr_php['total'] = 'Összesen'; // cpg1.5
+$lang_usermgr_php['send_login_data_email'] = <<< EOT
+Egy új hozzáférést készítettünk számodra a weboldalunkhoz: {SITE_NAME}.
 
-if (defined('USERMGR_PHP')) $lang_usermgr_php = array(
-  'memberlist' => 'Tagok listája', //cpg1.4
-  'user_manager' => 'Felhasználó kezelés', //cpg1.4
-  'title' => 'Felhasználó kezelő',
-  'name_a' => 'Név szerint növekvő',
-  'name_d' => 'Név szerint csökkenő',
-  'group_a' => 'Csoport szerint növekvő',
-  'group_d' => 'Csoport szerint csökkenő',
-  'reg_a' => 'Regisztráció ideje szerint növekvő',
-  'reg_d' => 'Regisztráció ideje szerint csökkenő',
-  'pic_a' => 'Kép szám szerint növekvő',
-  'pic_d' => 'Kép szám szerint csökkenő',
-  'disku_a' => 'Lemez használat szerint növekvő',
-  'disku_d' => 'Lemez használat szerint csökkenő',
-  'lv_a' => 'Utolsó bejelentkezés szerint növekvő',
-  'lv_d' => 'Utolsó bejelentkezés szerint csökkenő',
-  'sort_by' => 'Felhasználók rendezése',
-  'err_no_users' => 'A felhasználó-tábla üres!',
-  'err_edit_self' => 'Nem tudod szerkeszteni a saját adataidat, használd erre a \'Saját adatok\' menüt!',
-  'edit' => 'szerkesztés', //cpg1.4
-  'with_selected' => 'kiválasztva:', //cpg1.4
-  'delete' => 'törlés', //cpg1.4
-  'delete_files_no' => 'tartsd meg a nyilvános képeket (de névtelenítsd)', //cpg1.4
-  'delete_files_yes' => 'a nyilvános képek törlése is', //cpg1.4
-  'delete_comments_no' => 'tartsd meg a nyilvános hozzászólásokat (de névtelenítsd)', //cpg1.4
-  'delete_comments_yes' => 'a nyilvános hozzászólások törlése is', //cpg1.4
-  'activate' => 'Bekapcsolva', //cpg1.4
-  'deactivate' => 'Kikapcsolva', //cpg1.4
-  'reset_password' => 'Jelszó alaphelyzetbe állítása', //cpg1.4
-  'change_primary_membergroup' => 'Elsődleges csoport beállítása', //cpg1.4
-  'add_secondary_membergroup' => 'Másodlagos csoport beállítása', //cpg1.4
-  'name' => 'Felhasználói név',
-  'group' => 'Csoport',
-  'inactive' => 'Inaktív',
-  'operations' => 'Művelet',
-  'pictures' => 'Képek',
-  'disk_space_used' => 'Használt lemezterület', //cpg1.4
-  'disk_space_quota' => 'Lemezkvóta', //cpg1.4
-  'registered_on' => 'Regisztráció', //cpg1.4
-  'last_visit' => 'Utolsó bejelentkezés',
-  'u_user_on_p_pages' => '%d felhasználó %d oldalon',
-  'confirm_del' => 'Biztos, hogy törlöd ezt a felhasználót? \\nAz összes fájla is törlődni fog.', //js-alert
-  'mail' => 'Levél',
-  'err_unknown_user' => 'Nem létező felhasználó!',
-  'modify_user' => 'Felhasználó módosítása',
-  'notes' => 'Megjegyzések',
-  'note_list' => '<li>Ha nem változtatsz jelszót, akkor hagyd a "Jelszó" mezőt üresen.',
-  'password' => 'Jelszó',
-  'user_active' => 'Aktív felhasználó',
-  'user_group' => 'Felhasználó csoportja',
-  'user_email' => 'Felhasználó email címe',
-  'user_web_site' => 'Felhasználó honlapja',
-  'create_new_user' => 'Új felhasználó létrehozása',
-  'user_location' => 'Helység',
-  'user_interests' => 'Hobbi/érdeklődési kör',
-  'user_occupation' => 'Foglalkozás',
-  'user_profile1' => '$user_profile1', //cpg1.4
-  'user_profile2' => '$user_profile2', //cpg1.4
-  'user_profile3' => '$user_profile3', //cpg1.4
-  'user_profile4' => '$user_profile4', //cpg1.4
-  'user_profile5' => '$user_profile5', //cpg1.4
-  'user_profile6' => '$user_profile6', //cpg1.4
-  'latest_upload' => 'Legújabb feltöltések',
-  'never' => 'Soha',
-  'search' => 'Felhasználó keresése', //cpg1.4
-  'submit' => 'Elfogad', //cpg1.4
-  'search_submit' => 'Tovább!', //cpg1.4
-  'search_result' => 'Keresés eredménye: ', //cpg1.4
-  'alert_no_selection' => 'Először válassz egy felhasználót!', //cpg1.4 //js-alert
-  'password' => 'Jelszó', //cpg1.4
-  'select_group' => 'Válassz csoportot!', //cpg1.4
-  'groups_alb_access' => 'A csoport album-jogosultságai', //cpg1.4
-  'album' => 'Album', //cpg1.4
-  'category' => 'Kategória', //cpg1.4
-  'modify' => 'Módosítod?', //cpg1.4
-  'group_no_access' => 'Ennek a csoportnak nincs speciális hozzáférése', //cpg1.4
-  'notice' => 'Értesítés', //cpg1.4
-  'group_can_access' => 'Az Album(ok)-hoz , csak "%s" férhet hozzá', //cpg1.4
-);
+Most már beléphetsz ezen a linken: <a href="{SITE_LINK}">{SITE_LINK}</a>
+
+Használd ezt a felhasználónevet: {USER_NAME}
+és ezt a jelszót: {USER_PASS}
+
+
+Üdvözlettel:
+
+{SITE_NAME} oldal üzemeltetői
+
+EOT;
+}
+
+// ------------------------------------------------------------------------- //
+// File update.php
+// ------------------------------------------------------------------------- //
+if (defined('UPDATE_PHP')) {
+$lang_update_php['title'] = 'Updater'; // cpg1.5
+$lang_update_php['welcome_updater'] = 'Welcome to Coppermine update'; // cpg1.5
+$lang_update_php['could_not_authenticate'] = 'Could not authenticate you'; // cpg1.5
+$lang_update_php['provide_admin_account'] = 'Please provide your Coppermine admin account details or your MySQL account data'; // cpg1.5
+$lang_update_php['try_again'] = 'Try again'; // cpg1.5
+$lang_update_php['mysql_connect_error'] = 'Could not create a MySQL connection'; // cpg1.5
+$lang_update_php['mysql_database_error'] = 'MySQL could not locate a database called %s'; // cpg1.5
+$lang_update_php['mysql_said'] = 'MySQL said'; // cpg1.5
+$lang_update_php['check_config_file'] = 'Please check the MySQL details in %s'; // cpg1.5
+$lang_update_php['performing_database_updates'] = 'Performing Database Updates'; // cpg1.5
+$lang_update_php['performing_file_updates'] = 'Performing File Updates'; // cpg1.5
+$lang_update_php['already_done'] = 'Already Done'; // cpg1.5
+$lang_update_php['password_encryption'] = 'Encryption of passwords'; // cpg1.5
+$lang_update_php['alb_password_encryption'] = 'Encryption of album passwords'; // cpg1.5
+$lang_update_php['category_tree'] = 'Category tree'; // cpg1.5
+$lang_update_php['authentication_needed'] = 'Authentication needed'; // cpg1.5
+$lang_update_php['username'] = 'Username'; // cpg1.5
+$lang_update_php['password'] = 'Password'; // cpg1.5
+$lang_update_php['update_completed'] = 'Update completed'; // cpg1.5
+$lang_update_php['check_versions'] = 'It\'s recommended to %scheck your file versions%s if you just upgraded from an older version of Coppermine'; // cpg1.5 // Leave the %s untouched when translating - it wraps the link
+$lang_update_php['start_page'] = 'If you didn\'t (or you don\'t want to check), you can go to %syour gallery\'s start page%s'; // cpg1.5 // Leave the %s untouched when translating - it wraps the link
+$lang_update_php['errors_encountered'] = 'The following errors were encountered and need to be corrected first'; // cpg1.5
+$lang_update_php['delete_file'] = 'Delete %s'; // cpg1.5
+$lang_update_php['could_not_delete'] = 'Could not delete due to missing permissions. Delete the file manually!'; // cpg1.5
+$lang_update_php['rename_file'] = 'Rename %s to %s'; // cpg1.5
+$lang_update_php['could_not_rename'] = 'Could not rename due to missing permissions. Rename the file manually!'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
 // File util.php
 // ------------------------------------------------------------------------- //
-
 if (defined('UTIL_PHP')) {
-$lang_util_desc_php = array(
-'Címek frissítése fájlból', //cpg1.4
-'Címek törlése', //cpg1.4
-'Indexképek újragenerálása és a képek átméretezése', //cpg1.4
-'Az eredeti képek felülírása az átméretezett képekkel', //cpg1.4
-'Az eredeti és köztes képek törlése hely felszabadításhoz', //cpg1.4
-'Árva hozzászólások törlése', //cpg1.4
-'A fájlméretek újraolvasása (ha kézzel szerkesztettük a képet)', //cpg1.4
-'Megtekintési számláló nullázása', //cpg1.4
-'phpinfo megjelenítése', //cpg1.4
-'Adatbázis frissítése', //cpg1.4
-'Naplófájlok megjelenítése', //cpg1.4
-);
-$lang_util_php = array(
-  'title' => 'Rendszergazda eszközök (kép átméretezés)',
-  'what_it_does' => 'Mit csinál',
-  'file' => 'Kép',
-  'problem' => 'Hiba', //cpg1.4
-  'status' => 'Státusz', //cpg1.4
-  'title_set_to' => 'A cím beállítva erre',
-  'submit_form' => 'tovább',
-  'updated_succesfully' => 'sikeres frissítés',
-  'error_create' => 'Hibás létrehozás',
-  'continue' => 'további kép',
-  'main_success' => 'A(z) %s sikeresen használható fő fájlként',
-  'error_rename' => 'Hiba az átnevezéskor %s erről %s erre',
-  'error_not_found' => 'A(z) %s fájl nem található',
-  'back' => 'Vissza a főoldalra',
-  'thumbs_wait' => 'Indexképek frissítése vagy a a képek átméretezése folyik, türelmedet kérjük...',
-  'thumbs_continue_wait' => 'tovább a indexképek frissítéséhez vagy az átméretezéshez...',
-  'titles_wait' => 'Címek frissítése, türelmedet kérjük...',
-  'delete_wait' => 'Címek törlése, türelmedet kérjük...',
-  'replace_wait' => 'Az eredeti képek felülírása az átméretezett képekkel, türelmedet kérjük...',
-  'instruction' => 'Gyors útmutató',
-  'instruction_action' => 'Válassz műveletet',
-  'instruction_parameter' => 'Válasz paramétert',
-  'instruction_album' => 'Válasz albumot',
-  'instruction_press' => 'Kattints %s -ra',
-  'update' => 'Indexképek és átméretezett képek frissítése',
-  'update_what' => 'Mi lett frissítve',
-  'update_thumb' => 'Csak az indexkép',
-  'update_pic' => 'Csak az átméretezett kép',
-  'update_both' => 'A kép és az indexkép is',
-  'update_number' => 'Egyszerre feldolgozott képek száma',
-  'update_option' => '(Csökkentsd a számot, ha időtúllépést tapasztalsz)',
-  'filename_title' => 'Fájlnév &rArr; képcím',
-  'filename_how' => 'Mi legyen a fájnévvel',
-  'filename_remove' => 'A .jpg kiterjesztés törlése és kicserélése _ (aláhúzás)-ra',
-  'filename_euro' => '2003_11_23_13_20_20.jpg változtatása 23/11/2003 13:20 -ra',
-  'filename_us' => '2003_11_23_13_20_20.jpg változtatása 11/23/2003 13:20 -ra',
-  'filename_time' => '2003_11_23_13_20_20.jpg változtatása 13:20 -ra',
-  'delete' => 'A képcímek és eredeti képek törlése',
-  'delete_title' => 'Képcímek törlése',
-  'delete_title_explanation' => 'Az összes cím és kép törlése a megadott albumból', //cpg1.4
-  'delete_original' => 'Az eredeti képek törlése',
-  'delete_original_explanation' => 'Teljes méretű képek törlése', //cpg1.4
-  'delete_intermediate' => 'Köztes képek törlése', //cpg1.4
-  'delete_intermediate_explanation' => 'A köztes képek törlése.<br />Használd ezt a lemez terület felszabadításra, ha a \'köztes kép létrehozzása\' opció letiltva a beállításoknál.', //cpg1.4
-  'delete_replace' => 'Az eredeti képek felülírása az átméretezett képekkel',
-  'titles_deleted' => 'Az összes cím eltávolítva a megadott albumból', //cpg1.4
-  'deleting_intermediates' => 'Köztes képek törlése , türelmedet kérjük...', //cpg1.4
-  'searching_orphans' => 'Árva fájlok keresése, türelmedet kérjük...', //cpg1.4
-  'select_album' => 'Válasz albumot',
-  'delete_orphans' => 'A hiányzó képekhez tartozó hozzászólások törlése', //cpg1.4
-  'delete_orphans_explanation' => 'Ez az opció azonosítja és lehetővé teszi a képekhez nem tartozó hozzászólások törlését.<br />Az összes albumot ellenőrizd.', //cpg1.4
-  'refresh_db' => 'A fájméret és képméret adatok újraolvasása.', //cpg1.4
-  'refresh_db_explanation' => 'Az kép adatok újraolvasása. Használata ajánlott kvóta problémák esetén, vagy a kép kézi szerkesztése után..', //cpg1.4
-  'reset_views' => 'Megtekintési számláló nullázása', //cpg1.4
-  'reset_views_explanation' => 'Az összes számláló nullázása a megadott albumban.', //cpg1.4
-  'orphan_comment' => 'Árva hozzászólás található',
-  'delete' => 'törlés',
-  'delete_all' => 'mind törlése',
-  'delete_all_orphans' => 'Az összes árva hozzászólást törlöd?', //cpg1.4
-  'comment' => 'Hozzászólás: ',
-  'nonexist' => 'nem létező fájlhoz csatolva # ',
-  'phpinfo' => 'phpinfo megjelenítése',
-  'phpinfo_explanation' => 'Technikai információk megjelenítése a szerverről.', //cpg1.4
-  'update_db' => 'Adatbázis frissítése',
-  'update_db_explanation' => 'Ha visszamented a Coppermine program fájlait, vagy újabb verzióra cserélted, akkor ajánlott egyszer lefuttattni a frissítést, hogy a megfelelő táblák létrejöjjenek, illetve helyes értékeket tartalmazzanak.',
-  'view_log' => 'Naplófájl megtekintése', //cpg1.4
-  'view_log_explanation' => 'Coppermine sokféle felhasználói műveletet tud rögzíteni. A naplók között keresgélhetünk, ha a naplózás engedélyezve van a <a href="admin.php">Beállítások</a>-ban.', //cpg1.4
-  'versioncheck' => 'Verzió ellenőrzése', //cpg1.4
-  'versioncheck_explanation' => 'A fájl verzió számának ellenőrzése a coppermine program frissítése után.', //cpg1.4
-  'bridgemanager' => 'Kötés kezelő', //cpg1.4
-  'bridgemanager_explanation' => 'Az együttműködés (kötés) engedélyezése/tiltása a Coppermine és más programok (pl. fórum) közt.', //cpg1.4
-);
+$lang_util_php['title'] = 'Admin tools'; // cpg1.5
+$lang_util_php['file'] = 'File';
+$lang_util_php['problem'] = 'Problem';
+$lang_util_php['status'] = 'Status';
+$lang_util_php['title_set_to'] = 'title set to';
+$lang_util_php['submit_form'] = 'submit';
+$lang_util_php['titles_updated'] = '%s Titles Updated.'; // cpg1.5
+$lang_util_php['updated_successfully'] = 'updated successfully'; // cpg1.5
+$lang_util_php['error_create'] = 'ERROR creating';
+$lang_util_php['continue'] = 'Process more files'; // cpg1.5
+$lang_util_php['main_success'] = 'The file %s was successfully used as main file';
+$lang_util_php['error_rename'] = 'Error renaming %s to %s';
+$lang_util_php['error_not_found'] = 'The file %s was not found';
+$lang_util_php['back'] = 'back to Admin tools start'; // cpg1.5
+$lang_util_php['thumbs_wait'] = 'Updating thumbnails and/or resized images, please wait...';
+$lang_util_php['thumbs_continue_wait'] = 'Continuing to update thumbnails and/or resized images...';
+$lang_util_php['titles_wait'] = 'Updating titles, please wait...';
+$lang_util_php['delete_wait'] = 'Deleting titles, please wait...';
+$lang_util_php['replace_wait'] = 'Deleting originals and replacing them with resized images, please wait..';
+$lang_util_php['update'] = 'Update thumbs and/or resized photos';
+$lang_util_php['update_what'] = 'What should be updated';
+$lang_util_php['update_thumb'] = 'Only thumbnails';
+$lang_util_php['update_pic'] = 'Only resized pictures';
+$lang_util_php['update_both'] = 'Both thumbnails and resized pictures';
+$lang_util_php['update_number'] = 'Number of processed images per click';
+$lang_util_php['update_option'] = '(Try setting this option lower if you experience timeout problems)';
+$lang_util_php['update_missing'] = 'Only update missing files'; // cpg1.5
+$lang_util_php['filename_title'] = 'Filename &rArr; File title';
+$lang_util_php['filename_how'] = 'How should the file title be modified';
+$lang_util_php['filename_remove'] = 'Remove extension (.jpg or other) and replace _ (underscores) with spaces'; // cpg1.5
+$lang_util_php['filename_euro'] = 'Change 2003_11_23_13_20_20.jpg to 23/11/2003 13:20';
+$lang_util_php['filename_us'] = 'Change 2003_11_23_13_20_20.jpg to 11/23/2003 13:20';
+$lang_util_php['filename_time'] = 'Change 2003_11_23_13_20_20.jpg to 13:20';
+$lang_util_php['notitle'] = 'Apply only for files with empty titles'; // cpg1.5
+$lang_util_php['delete_title'] = 'Delete file titles';
+$lang_util_php['delete_title_explanation'] = 'This will remove all titles on files in the album you specify.';
+$lang_util_php['delete_original'] = 'Delete original size photos';
+$lang_util_php['delete_original_explanation'] = 'This will remove the full sized pictures.';
+$lang_util_php['delete_intermediate'] = 'Delete intermediate pictures';
+$lang_util_php['delete_intermediate_explanation1'] = 'This will delete intermediate (normal) pictures.'; // cpg1.5
+$lang_util_php['delete_intermediate_explanation2'] = 'Use this to free up disk space if you have disabled \'Create intermediate pictures\' in config after adding pictures.'; // cpg1.5
+$lang_util_php['delete_intermediate_check'] = 'The config option \'Create intermediate pictures\' is currently %s.'; // cpg1.5
+$lang_util_php['no_image'] = '%s has been skipped because it is not an image.'; // cpg1.5
+$lang_util_php['enabled'] = 'enabled'; // cpg1.5
+$lang_util_php['disabled'] = 'disabled'; // cpg1.5
+$lang_util_php['delete_replace'] = 'Deletes the original images replacing them with the sized versions';
+$lang_util_php['titles_deleted'] = 'All titles in specified album removed';
+$lang_util_php['deleting_intermediates'] = 'Deleting intermediate images, please wait...';
+$lang_util_php['searching_orphans'] = 'Searching for orphans, please wait...';
+$lang_util_php['delete_orphans'] = 'Delete comments on missing files';
+$lang_util_php['delete_orphans_explanation'] = 'This will identify and allow you to delete any comments associated with files no longer in the gallery.<br />Checks all albums.';
+$lang_util_php['update_full_normal_thumb'] = 'Everything: full-sized, resized and thumbs'; // cpg1.5
+$lang_util_php['update_full_normal'] = 'Both resized and full sized (if an original copy is available)'; // cpg1.5
+$lang_util_php['update_full'] = 'Just full sized (if an original copy is available)'; // cpg1.5
+$lang_util_php['delete_back'] = 'Delete original image backup for watermarked images'; // cpg1.5
+$lang_util_php['delete_back_explanation'] = 'This will delete the backup image. You will save some disk space but not be able anymore to undo the watermark!!! After that the watermark will be permanent.'; // cpg1.5
+$lang_util_php['finished'] = '<br />Finished updating thumbs/images!<br />'; // cpg1.5
+$lang_util_php['autorefresh'] = 'Auto refresh (no need to click continue button anymore)'; // cpg1.5
+$lang_util_php['refresh_db'] = 'Reload file dimensions and size information.';
+$lang_util_php['refresh_db_explanation'] = 'This will re-read file sizes and dimensions. Use this if quota\'s are incorrect or you have changed the files manually.';
+$lang_util_php['reset_views'] = 'Reset view counters';
+$lang_util_php['reset_views_explanation'] = 'Sets all file view counts to zero in the album specified.';
+$lang_util_php['reset_success'] = 'Reset successful'; // cpg1.5
+$lang_util_php['orphan_comment'] = 'orphan comments found';
+$lang_util_php['delete_all'] = 'Delete all';
+$lang_util_php['delete_all_orphans'] = 'Delete all orphans?';
+$lang_util_php['comment'] = 'Comment: ';
+$lang_util_php['nonexist'] = 'attached to non-existent file # ';
+$lang_util_php['delete_old'] = 'Delete files that are older than a set number of days'; // cpg1.5
+$lang_util_php['delete_old_explanation'] = 'This will delete files that are older than the number of days you specify (full-size, intermediate, thumbnails). Use this feature to free up disk space.'; // cpg1.5
+$lang_util_php['delete_old_warning'] = 'Warning: the files you specify will be deleted for good without further warnings!'; // cpg1.5
+$lang_util_php['deleting_old'] = 'Deleting older images, please wait...'; // cpg1.5
+$lang_util_php['older_than'] = 'Delete files older than %s days'; // cpg1.5
+$lang_util_php['del_orig'] = 'The original file %s was successfully deleted'; // cpg1.5
+$lang_util_php['del_intermediate'] = 'The intermediate image %s was successfully deleted'; // cpg1.5
+$lang_util_php['del_thumb'] = 'The thumbnail %s was successfully deleted'; // cpg1.5
+$lang_util_php['del_error'] = 'Error deleting %s!'; // cpg1.5
+$lang_util_php['affected_records'] = '%s affected records.'; // cpg1.5
+$lang_util_php['all_albums'] = 'All Albums'; // cpg1.5
+$lang_util_php['update_result'] = 'Update results'; // cpg1.5
+$lang_util_php['incorrect_filesize'] = 'Total filesize is incorrect'; // cpg1.5
+$lang_util_php['database'] = 'Database: '; // cpg1.5
+$lang_util_php['bytes'] = ' bytes'; // cpg1.5
+$lang_util_php['actual'] = 'Actual: '; // cpg1.5
+$lang_util_php['updated'] = 'Updated'; // cpg1.5
+$lang_util_php['filesize_error'] = 'Could not obtain file size (may be invalid file), skipping....'; // cpg1.5
+$lang_util_php['skipped'] = 'Skipped'; // cpg1.5
+$lang_util_php['incorrect_dimension'] = 'Dimensions are incorrect'; // cpg1.5
+$lang_util_php['dimension_error'] = 'Could not obtain dimension info, skipping....'; // cpg1.5
+$lang_util_php['cannot_fix'] = 'Cannot fix'; // cpg1.5
+$lang_util_php['fullpic_error'] = 'File %s does not exist!'; // cpg1.5
+$lang_util_php['no_prob_detect'] = 'No problems detected'; // cpg1.5
+$lang_util_php['no_prob_found'] = 'No problems were found.'; // cpg1.5
+$lang_util_php['keyword_convert'] = 'Convert keyword separator'; // cpg1.5
+$lang_util_php['keyword_from_to'] = 'Convert keyword separator from %s to %s'; // cpg1.5
+$lang_util_php['keyword_set'] = 'Set gallery keyword separator to new value'; // cpg1.5
+$lang_util_php['keyword_replace_before'] = 'Before conversion, replace %s with %s'; // cpg1.5
+$lang_util_php['keyword_replace_after'] = 'After conversion, replace %s with %s'; // cpg1.5
+$lang_util_php['keyword_replace_values'] = array('_'=>'underscore', '-'=>'hyphen', '~'=>'tilde'); // cpg1.5
+$lang_util_php['keyword_explanation'] = 'This will convert the keyword separator for all your files from one value to another value. See the help documentation for details.'; // cpg1.5
 }
 
 // ------------------------------------------------------------------------- //
-// File versioncheck.php //cpg1.4
+// File versioncheck.php
 // ------------------------------------------------------------------------- //
-
-if (defined('VERSIONCHECK_PHP')) $lang_versioncheck_php = array(
-  'title' => 'Verzió ellenőrzés', //cpg1.4
-  'what_it_does' => 'Ez az oldal jelentést ad azon felhasználóknak, akik frissítették a programjukat. Ez a eljárás ellenőrzi, hogy a webszerveren található fájlok verziója megegyezik-e http://coppermine.sourceforge.net webhelyen találhatókkal. Így áttekintés kapunk a frissítés sikerességéről.<br />Pirossal azokat mutatja, melyeket muszáj cserélni újabbra. Sárgával azokat, melyeket ajánlott cserélni. Zölddel (vagy az alapértelmezett betűszínnel) azokat mutatja, amely fájlok legújabb verziójúak.<br />Kattints az ikonra a részletekért.', //cpg1.4
-  'online_repository_unable' => 'Nem lehet kapcsolódni a fájlraktárhoz', //cpg1.4
-  'online_repository_noconnect' => 'Coppermine nem tud kapcsolódni a fájlraktárhoz. Ennek két oka lehet:', //cpg1.4
-  'online_repository_reason1' => 'A Coppermine fájlraktár kikapcsolt állapotban van. Ellenőrizd, hogy megtekinthető-e ez a weboldal: %s - ha nem, akkor probálkozz később.', //cpg1.4
-  'online_repository_reason2' => 'A PHP  %s beállítás a böngésződben ki van kapcsolva (alapértelmezetten bekapcsolva van). Ha rendszergazdája vagy a webszervernek akkor kapcsold be a<i>php.ini</i>-ben (%s felülírásának engedélyezése). Ha csak webhostolt vagy, akkor bele kell törődnöd, hogy nem tudod interneten keresztül ellenőrízni a fájlok frisseségét. Ekkor az oldal csak a telepített fájlok verzióját jeleníti meg.', //cpg1.4
-  'online_repository_skipped' => 'A fájlraktárhoz való kapcsolódás kihagyva', //cpg1.4
-  'online_repository_to_local' => 'A program a jelenlegi fájl verziókat veszi alapértelmezetnek. Az adatok pontatlanokká válnak, ha a Coppermine frissítésekor nem sikerül az összes fájlt feltőlteni. Ekkor nem lesz minden fájl a megfelő kiadású.', //cpg1.4
-  'local_repository_unable' => 'Nem lehet a helyi fájlraktárhoz kapcsolódni', //cpg1.4
-  'local_repository_explanation' => 'Coppermine nem tud a(z) %s fájlraktárhoz kapcsolódni a szerveren. Ez azt jelenti, hogy a raktárkészlet fájl nem lett feltöltve. Probáld meg az oldalt újra futattni (kattits a "frissítés"-re).<br />Ha hibát jelez, akkor a webhostodon tiltottak a webelemek számára a <a href="http://www.php.net/manual/de/ref.filesystem.php">PHP fájlműveletek</a> . Ez esetben sajnáljuk, de nem használhatod ezt az eszközt.', //cpg1.4
-  'coppermine_version_header' => 'Telepített Coppermine verzió', //cpg1.4
-  'coppermine_version_info' => 'Jelenleg telepített: %s', //cpg1.4
-  'coppermine_version_explanation' => 'Ha szerinted hibás a megjelenő adat, akkor lehet, hogy nem lett feltöltve a legfrisseb adatokat tartalmazzó <i>include/init.inc.php</i> fájl', //cpg1.4
-  'version_comparison' => 'Verzió összehasonlítás', //cpg1.4
-  'folder_file' => 'Könyvtár/fájl', //cpg1.4
-  'coppermine_version' => 'cpg verzió', //cpg1.4
-  'file_version' => 'Fájl verzió', //cpg1.4
-  'webcvs' => 'web svn', //cpg1.4
-  'writable' => 'írható', //cpg1.4
-  'not_writable' => 'nem írható', //cpg1.4
-  'help' => 'Segítség', //cpg1.4
-  'help_file_not_exist_optional1' => 'Fájl/mappa nem létezik', //cpg1.4
-  'help_file_not_exist_optional2' => 'A(z) %s nem található a szerveren. Ez a fájl opciónális, a probléma megoldásához töltsd fel a szervere valamilyen FTP programot használva.', //cpg1.4
-  'help_file_not_exist_mandatory1' => 'Fájl/mappa nem létezik', //cpg1.4
-  'help_file_not_exist_mandatory2' => 'A(z) %s nem található a szerveren. Ez a fájl szükséges, a probléma megoldásához töltsd fel a szervere valamilyen FTP programot használva.', //cpg1.4
-  'help_no_local_version1' => 'Nincs lokális fájl verzió', //cpg1.4
-  'help_no_local_version2' => 'Nem lehet meghatározni a fájl verzióját. A fájl régi vagy módosítva lett, esetleg eltávolították a fejlécét. Ajánlott a frissítése', //cpg1.4
-  'help_local_version_outdated1' => 'Lejárt a fájl verziója', //cpg1.4
-  'help_local_version_outdated2' => 'Ez a fájl valószinűleg egy régebbi Coppermine verzióhoz tartozik. Bizonyosodj meg, hogy nincs-e újabb.', //cpg1.4
-  'help_local_version_na1' => 'Nem lehet meghatározni a CVS adatokat', //cpg1.4
-  'help_local_version_na2' => 'A program nem tudja eldönteni a CVS verzió adatokat a webszerver fájljairól. A fájlokat felrakhatod csomagból.', //cpg1.4
-  'help_local_version_dev1' => 'Fejlesztői verzió', //cpg1.4
-  'help_local_version_dev2' => 'A fájlok a webszerveren újabbak mint a  Coppermine verziód. Ez azért lehet, mert fejlesztői változatott használsz vagy frissítés után nem töltötted fel az include/init.inc.php fájlt.', //cpg1.4
-  'help_not_writable1' => 'Nem irható könyvtár', //cpg1.4
-  'help_not_writable2' => 'Módosítsd a jogosultságokat (CHMOD), hogy a program írni tudja %s a könyvtárat mindenki számára.', //cpg1.4
-  'help_writable1' => 'A könyvtár írható', //cpg1.4
-  'help_writable2' => 'A %s könyvtár írható. Ez felesleges biztonsági rés, a Coppermine programnak csak olvasási és futtatási jog kell.', //cpg1.4
-  'help_writable_undetermined' => 'Nem lehet meghatározni, hogy a könyvtár írható-e.', //cpg1.4
-  'your_file' => 'Saját fájl', //cpg1.4
-  'reference_file' => 'Referencia fájl', //cpg1.4
-  'summary' => 'Összefoglaló', //cpg1.4
-  'total' => 'Összes fájl/mappa ellenőrízve', //cpg1.4
-  'mandatory_files_missing' => 'Hiányzó szükséges fájlok', //cpg1.4
-  'optional_files_missing' => 'Hiányzó opcionális fájlok', //cpg1.4
-  'files_from_older_version' => 'Régebbi verziójú fájlok', //cpg1.4
-  'file_version_outdated' => 'Lejárt verziójú fájlok', //cpg1.4
-  'error_no_data' => 'A program hibázott, nem tudja meghatározni az információkat, sajnáljuk', //cpg1.4
-  'go_to_webcvs' => 'Ugrás %s -ra', //cpg1.4
-  'options' => 'Opciók', //cpg1.4
-  'show_optional_files' => 'Opciónális fájlok megjelenítése', //cpg1.4
-  'show_mandatory_files' => 'Szükséges fájlok megjelenítése', //cpg1.4
-  'show_file_versions' => 'Fájl verziók megjelenítése', //cpg1.4
-  'show_errors_only' => 'Csak a hibásak megjelenítése', //cpg1.4
-  'show_permissions' => 'Könyvtár jogosultságok', //cpg1.4
-  'show_condensed_output' => 'Tömőrített jelentés (könnyebb screenshot-ot készíteni)', //cpg1.4
-  'coppermine_in_webroot' => 'Coppermine a dokumentum gyökérbe van telepítve', //cpg1.4
-  'connect_online_repository' => 'Kapcsolódás az internetes fájlraktárhoz', //cpg1.4
-  'show_additional_information' => 'Kiegészítő adatok megjelenítése', //cpg1.4
-  'no_webcvs_link' => 'Ne mutassa a Web-CVS linkeket ', //cpg1.4
-  'stable_webcvs_link' => 'A Web-CVS linkek  megjelenítése a "végleges állapot" részben', //cpg1.4
-  'devel_webcvs_link' => 'A Web-CVSl inkek megjelenítése a "fejlesztői állapot" részben', //cpg1.4
-  'submit' => 'változások elfogadása/frissítés', //cpg1.4
-  'reset_to_defaults' => 'Visszaállítás alaphelyzetbe', //cpg1.4
-);
+if (defined('VERSIONCHECK_PHP')) {
+$lang_versioncheck_php['title'] = 'Versioncheck';
+$lang_versioncheck_php['versioncheck_output'] = 'Versioncheck output';
+$lang_versioncheck_php['file'] = 'file';
+$lang_versioncheck_php['folder'] = 'folder';
+$lang_versioncheck_php['outdated'] = 'older than %s';
+$lang_versioncheck_php['newer'] = 'newer than %s';
+$lang_versioncheck_php['modified'] = 'modified';
+$lang_versioncheck_php['not_modified'] = 'unmodified'; // cpg1.5
+$lang_versioncheck_php['needs_change'] = 'needs change';
+$lang_versioncheck_php['review_permissions'] = 'Review Permissions';
+$lang_versioncheck_php['inaccessible'] = 'File is inaccessible';
+$lang_versioncheck_php['review_version'] = 'Your file is outdated';
+$lang_versioncheck_php['review_dev_version'] = 'Your file is newer than anticipated';
+$lang_versioncheck_php['review_modified'] = 'File may be corrupt (or you have deliberately edited it)';
+$lang_versioncheck_php['review_missing'] = '%s missing or inaccessible';
+$lang_versioncheck_php['existing'] = 'existing';
+$lang_versioncheck_php['review_removed_existing'] = 'The file must be removed for security reasons';
+$lang_versioncheck_php['counter'] = 'Counter';
+$lang_versioncheck_php['type'] = 'Type';
+$lang_versioncheck_php['path'] = 'Path';
+$lang_versioncheck_php['missing'] = 'Missing';
+$lang_versioncheck_php['permissions'] = 'Permissions';
+$lang_versioncheck_php['version'] = 'Version';
+$lang_versioncheck_php['revision'] = 'Revision';
+$lang_versioncheck_php['modified'] = 'Modified';
+$lang_versioncheck_php['comment'] = 'Comment';
+$lang_versioncheck_php['help'] = 'Help';
+$lang_versioncheck_php['repository_link'] = 'Repository link';
+$lang_versioncheck_php['browse_corresponding_page_subversion'] = 'Browse page corresponding to this file in the project\'s subversion repository';
+$lang_versioncheck_php['mandatory'] = 'mandatory';
+$lang_versioncheck_php['mandatory_missing'] = 'Mandatory file is missing'; // cpg1.5
+$lang_versioncheck_php['optional'] = 'optional';
+$lang_versioncheck_php['removed'] = 'removed'; // cpg1.5
+$lang_versioncheck_php['options'] = 'Options';
+$lang_versioncheck_php['display_output'] = 'Display output';
+$lang_versioncheck_php['on_screen'] = 'Full Screen';
+$lang_versioncheck_php['text_only'] = 'Text-only';
+$lang_versioncheck_php['errors_only'] = 'Only show potential errors';
+$lang_versioncheck_php['hide_images'] = 'Hide images'; // cpg1.5
+$lang_versioncheck_php['no_modification_check'] = 'Don\'t check for modified files'; // cpg1.5
+$lang_versioncheck_php['do_not_connect_to_online_repository'] = 'Do not connect to the online repository';
+$lang_versioncheck_php['online_repository_explain'] = 'only recommended if connection fails';
+$lang_versioncheck_php['submit'] = 'submit / refresh';
+$lang_versioncheck_php['select_all'] = 'Select All'; // js-alert
+$lang_versioncheck_php['files_folder_processed'] = 'Displaying %s items of %s folders/files processed with %s potential issues';
+$lang_versioncheck_php['read'] = 'Read'; // cpg1.5
+$lang_versioncheck_php['write'] = 'Write'; // cpg1.5
+$lang_versioncheck_php['warning'] = 'Warning'; // cpg1.5
+$lang_versioncheck_php['not_applicable'] = 'n/a'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
-// File view_log.php  //cpg1.4
+// File view_log.php
 // ------------------------------------------------------------------------- //
-
-if (defined('VIEWLOG_PHP')) $lang_viewlog_php = array(
-  'delete_all' => 'Összes naplófájl törlése', //cpg1.4
-  'delete_this' => 'Ennek a naplónak a törlése', //cpg1.4
-  'view_logs' => 'Napló megtekintése', //cpg1.4
-  'no_logs' => 'Nem lett napló létrehozva', //cpg1.4
-);
-
+if (defined('VIEWLOG_PHP')) {
+$lang_viewlog_php['delete_all'] = 'Delete All Logs';
+$lang_viewlog_php['delete_this'] = 'Delete This Log';
+$lang_viewlog_php['view_logs'] = 'View Logs';
+$lang_viewlog_php['no_logs'] = 'No logs created.';
+$lang_viewlog_php['last_updated'] = 'last update'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
-// File xp_publish.php //cpg1.4
+// File xp_publish.php
 // ------------------------------------------------------------------------- //
-
 if (defined('XP_PUBLISH_PHP')) {
-
-$lang_xp_publish_client = <<<EOT
-<h1>XP web közététel varázsló</h1><p>Ez a modul lehetővé teszi a  <b>Windows XP</b> web közététel varázsló használatát a Coppermine Képtárral.</p><p>A kód újságcikkre alapul, beküldte:
-EOT;
-
-$lang_xp_publish_required = <<<EOT
-<h2>Mi szükséges hozzá</h2><ul><li>Windows XP, beépített varázslója.</li><li>Működő Coppermine Képtár<b> helyesen működő webes feltöltéssel</b></li></ul><h2>Mit kell telepíteni a kliens oldalon</h2><ul><li>Jobb kattintás a 
-EOT;
-
-$lang_xp_publish_select = <<<EOT
-Válaszd a &quot;Mentés másként..&quot; pontot. Mentsd le a helyi lemezre. A lementés után ellenőrízd, hogy a fájlnév  <b>cpg_###.reg</b> (A ###-időbélyeget mutat). Kattints kettőt a fájlra, hogy regisztráld a szervered a webes közététel varázsló számára.</li></ul>
-EOT;
-
-$lang_xp_publish_testing = <<<EOT
-<h2>Próba</h2><ul><li>A Windows intézőjében válassz ki néhány képet és kattints a <b>xxx közététele a weben</b> menüre a bal-panelen</li><li>Erősítsd meg a kiválasztásokat, majd kattints a <b>következő</b>-re.</li><li>A megjelenő listából válasszd ki a fotóképtárat (a neve a te képtárad neve). Ha nem látszik a listában, akkor ellenőrízd, hogy telepítve van a <b>cpg_pub_wizard.reg</b> a fent leírtak szerint.</li><li>Add meg a bejelentkezési információkat, ha szükséges.</li><li>Válassz cél albumot a képek számára vagy hoz létre újat.</li><li>Kattints a <b>tovább</b>-ra. A feltöltés elkezdődik.</li><li>Ha befejeződik a feltöltés, ellenőrizd, hogy a képek rendben bekerültek a képtárba.</li></ul>
-EOT;
-
-$lang_xp_publish_notes = <<<EOT
-<h2>Anmerkungen :</h2><ul> Ha a feltöltés elindult, akkor a program már nem tud hibaüzeneteket megjeleníteni, ezért addig nem tudod, hogy sikeres volt-e a feltöltés, amig nem nézed meg a képtárban.</li><li>Ha sikertelen volt akkor, engedélyezd a &quot;Debug-Módquot;-ot a képtár rendszergazdai oldalán, majd 1 képpel probálkoz újra, és nézd meg a hibaüzenetet a
-EOT;
-
-$lang_xp_publish_flood = <<<EOT
-A fájl, amely a szervered Coppermine könyvtárában található.</li><li>Hogy elkerüljük a képtár támadását a képfeltöltő varázslón keresztül, csak a képtár rendszergazdái, illetve azok a felhasználók használhatják ezt a funkciót, akik saját albummal rendelkeznek,</li>
-EOT;
-
-
-
-$lang_xp_publish_php = array(
-  'title' => 'Coppermine - XP Web közzététel segítő', //cpg1.4
-  'welcome' => 'Üdvözzőlek <b>%s</b>,', //cpg1.4
-  'need_login' => 'Be kell jelentkezned a képtárba a böngésződet használva, mielőtt használnád a varázslót.<p/><p>Bejelentkezéskor ne felejts el bejelölni az &quot;<b>Emlékezz rám</b>&quot; opciót.', //cpg1.4
-  'no_alb' => 'Sajnáljuk, de nincs egy album sem, ahova fel tudnál tölteni képet a varázslóval.', //cpg1.4
-  'upload' => 'Képek feltöltése létező albumra', //cpg1.4
-  'create_new' => 'Új album létrehozása a képek számára', //cpg1.4
-  'album' => 'Album', //cpg1.4
-  'category' => 'Kategória', //cpg1.4
-  'new_alb_created' => 'Az új &quot;<b>%s</b>&quot; albumod elkészítve.', //cpg1.4
-  'continue' => 'Kattints a &quot;tovább&quot;-ra, a képek feltöltésére', //cpg1.4
-  'link' => 'Ez a Link', //cpg1.4
-);
+$lang_xp_publish_php['title'] = 'XP Web Publishing Wizard';
+$lang_xp_publish_php['client_header'] = 'XP Web Publishing Wizard Client'; // cpg1.5
+$lang_xp_publish_php['requirements'] = 'Requirements'; // cpg1.5
+$lang_xp_publish_php['windows_xp'] = 'Windows XP / Vista'; // cpg1.5
+$lang_xp_publish_php['no_windows_xp'] = 'You appear to be running another, unsupported operating system'; // cpg1.5
+$lang_xp_publish_php['no_os_detect'] = 'Could not detect your operating system'; // cpg1.5
+$lang_xp_publish_php['requirement_http_upload'] = 'A working installation of Coppermine on which the http upload function works properly'; // cpg1.5
+$lang_xp_publish_php['requirement_ie'] = 'Microsoft Internet Explorer'; // cpg1.5
+$lang_xp_publish_php['requirement_permissions'] = 'The administrator of the gallery must have granted you permission to upload'; // cpg1.5
+$lang_xp_publish_php['requirement_login'] = 'You need to be logged in to upload'; // cpg1.5
+$lang_xp_publish_php['no_ie'] = 'You appear to be using another, unsupported browser'; // cpg1.5
+$lang_xp_publish_php['no_browser_detect'] = 'Could not detect your browser'; // cpg1.5
+$lang_xp_publish_php['no_gallery_name'] = 'You need to specify a gallery name in config'; // cpg1.5
+$lang_xp_publish_php['no_gallery_description'] = 'You need to specify a gallery description in config'; // cpg1.5
+$lang_xp_publish_php['howto_install'] = 'How to install'; // cpg1.5
+$lang_xp_publish_php['install_right_click'] = 'Right click on %sthis link%s and select &quot;save target as...&quot;'; // cpg1.5 // translator note: don't replace the %s - that placeholder token needs to go untranslated
+$lang_xp_publish_php['install_save'] = 'Save the file on your client. When saving the file, make sure that the proposed file name is <tt>cpg_###.reg</tt> (the ### represents a numerical timestamp). Change it to that name if necessary (leave the numbers)'; // cpg1.5
+$lang_xp_publish_php['install_execute'] = 'After the download has finished, execute the file by double clicking on it in order to register your server with the web publishing wizard'; // cpg1.5
+$lang_xp_publish_php['usage'] = 'Usage'; // cpg1.5
+$lang_xp_publish_php['select_files'] = 'In Windows Explorer, select the files you want to upload'; // cpg1.5
+$lang_xp_publish_php['display_tasks'] = 'Make sure that the folders are not being displayed in left bar of the Explorer'; // cpg1.5
+$lang_xp_publish_php['publish_on_the_web'] = 'click on &quot;Publish xxx on the web&quot; in the left pane'; // cpg1.5
+$lang_xp_publish_php['confirm_selection'] = 'Confirm your file selection'; // cpg1.5
+$lang_xp_publish_php['select_service'] = 'In the list of services that appear, select the one for your photo gallery (it has the name of your gallery)'; // cpg1.5
+$lang_xp_publish_php['enter_login'] = 'Enter your login information if required'; // cpg1.5
+$lang_xp_publish_php['select_album'] = 'Select the target album for your pictures or create a new one'; // cpg1.5
+$lang_xp_publish_php['next'] = 'Click on &quot;next&quot;'; // cpg1.5
+$lang_xp_publish_php['upload_starts'] = 'The upload of your pictures should start'; // cpg1.5
+$lang_xp_publish_php['upload_completed'] = 'When it is completed, check your gallery to see if pictures have been properly added'; // cpg1.5
+$lang_xp_publish_php['welcome'] = 'Welcome <strong>%s</strong>,';
+$lang_xp_publish_php['need_login'] = 'You need to login to the gallery using Internet Explorer before you can use this wizard.<p/><p>When you login don\'t forget to select the &quot;remember me&quot; option if it is present.';
+$lang_xp_publish_php['no_alb'] = 'Sorry but there is no album where you are allowed to upload pictures with this wizard.';
+$lang_xp_publish_php['upload'] = 'Upload your pictures into an existing album';
+$lang_xp_publish_php['create_new'] = 'Create a new album for your pictures';
+$lang_xp_publish_php['category'] = 'Category';
+$lang_xp_publish_php['new_alb_created'] = 'Your new album &quot;<strong>%s</strong>&quot; was created.';
+$lang_xp_publish_php['continue'] = 'Press &quot;Next&quot; to start to upload your pictures';
+$lang_xp_publish_php['link'] = '';
 }
+
+// ------------------------------------------------------------------------- //
+// Core plugins
+// ------------------------------------------------------------------------- //
+if (defined('CORE_PLUGIN')) {
+$lang_plugin_php['usergal_alphatabs_config_name'] = 'User Gallery Alphabetic Tabbing'; // cpg1.5
+$lang_plugin_php['usergal_alphatabs_config_description'] = 'What it does: displays tabs from A to Z at the top of user galleries that visitors can click on to directly jump to a page that displays all user galleries of the users who\'s username starts with that letter. Plugin only recommended to be used if you have a really large number of user galleries.'; // cpg1.5
+$lang_plugin_php['usergal_alphatabs_jump_by_username'] = 'Jump by username'; // cpg1.5
+$lang_plugin_php['sample_config_name'] = 'Sample Plugin'; // cpg1.5
+$lang_plugin_php['sample_config_description'] = 'This is a sample plugin. It will not do anything particular useful - it is just meant to demonstrate what plugins can do and how to code them. When enabled, it will display some sample text in red.'; // cpg1.5
+$lang_plugin_php['sample_plugin_documentation'] = 'Plugin Documentation'; // cpg1.5
+$lang_plugin_php['sample_plugin_support'] = 'Plugin Support'; // cpg1.5
+$lang_plugin_php['sample_install_explain'] = 'Enter the username (\'foo\') and password (\'bar\') to install'; // cpg1.5
+$lang_plugin_php['sample_install_username'] = 'Username'; // cpg1.5
+$lang_plugin_php['sample_install_password'] = 'Password'; // cpg1.5
+$lang_plugin_php['sample_output'] = 'This is sample data returned from the sample plugin'; // cpg1.5
+$lang_plugin_php['opensearch_config_name'] = 'OpenSearch'; // cpg1.5
+$lang_plugin_php['opensearch_config_description'] = 'An implementation of <a href="http://www.opensearch.org/" rel="external" class="external">OpenSearch</a> for Coppermine.<br />When enabled, visitors can add your gallery to their browser\'s search bar.'; // cpg1.5
+$lang_plugin_php['opensearch_search'] = 'Search %s'; // cpg1.5
+$lang_plugin_php['opensearch_extra'] = 'You may want to add some text to your site that explains what this plugin does'; // cpg1.5
+$lang_plugin_php['opensearch_failed_to_open_file'] = 'Failed to open file %s - check permissions'; // cpg1.5
+$lang_plugin_php['opensearch_failed_to_write_file'] = 'Failed to write to file %s - check permissions'; // cpg1.5
+$lang_plugin_php['opensearch_form_header'] = 'Enter the details to be used for the description file'; // cpg1.5
+$lang_plugin_php['opensearch_gallery_url'] = 'Gallery URL (must be correct)'; // cpg1.5
+$lang_plugin_php['opensearch_display_name'] = 'Name as displayed in browser'; // cpg1.5
+$lang_plugin_php['opensearch_description'] = 'Description'; // cpg1.5
+$lang_plugin_php['opensearch_character_limit'] = '%s character limit'; // cpg1.5
+$lang_plugin_php['onlinestats_description'] = 'Display a block on each gallery page that shows users and guests actually online.';
+$lang_plugin_php['onlinestats_name'] = 'Ki van belépve?';
+$lang_plugin_php['onlinestats_config_extra'] = 'To enable this plugin (make it actually display the onlinestats block), the string "onlinestats" (separated with a slash) has been added to "the content of the main page" in <a href="admin.php">Coppermine\'s config</a> in the section "Album list view". The setting should now look like "breadcrumb/catlist/alblist/onlinestats" or similar. To change the position of the block, move the string "onlinestats" around inside that config field.';
+$lang_plugin_php['onlinestats_config_install'] = 'The plugin runs additional queries on the database each time it is being executed, burning CPU cycles and using resources. If your Coppermine gallery is slow or has got a lot of users, you shouldn\'t use it.';
+$lang_plugin_php['onlinestats_we_have_reg_member'] = '%s regisztrált felhasználónk van';
+$lang_plugin_php['onlinestats_we_have_reg_members'] = '%s regisztrált felhasználónk van';
+$lang_plugin_php['onlinestats_most_recent'] = '<br />Legújabb regisztrált felhasználónk: %s';
+$lang_plugin_php['onlinestats_is'] = '<br />Összesen %s látogató van az oldalon';
+$lang_plugin_php['onlinestats_are'] = '<br />Összesen %s látogató van az oldalon';
+$lang_plugin_php['onlinestats_and'] = 'és';
+$lang_plugin_php['onlinestats_reg_member'] = '%s regisztrált felhasználó';
+$lang_plugin_php['onlinestats_reg_members'] = '%s regisztrált felhasználó';
+$lang_plugin_php['onlinestats_guest'] = '%s vendég';
+$lang_plugin_php['onlinestats_guests'] = '%s vendég';
+$lang_plugin_php['onlinestats_record'] = '<br />Ennyien voltak itt a legtöbben egy időben: %s, ekkor: %s';
+$lang_plugin_php['onlinestats_since'] = '<br />Az utóbbi %s percben a következő regisztrált felhasználók voltak itt: %s';
+$lang_plugin_php['onlinestats_config_text'] = 'How long do you want to keep users listed as online for before they are assumed to have gone?';
+$lang_plugin_php['onlinestats_minute'] = 'perc';
+$lang_plugin_php['onlinestats_remove'] = 'Remove the table that was used to store online data?';
+$lang_plugin_php['link_target_name'] = 'Link target';
+$lang_plugin_php['link_target_description'] = 'Changes the way external links are being opened: when this plugin is enabled, all links that contain the attribute rel="external" will open in a new window (instead of the same window).';
+$lang_plugin_php['link_target_extra'] = 'This plugin has an impact mostly on the "Powered by Coppermine" link at the bottom of the gallery output.';
+$lang_plugin_php['link_target_recommendation'] = 'It is recommended not to use this plugin to avoid bossing your users around: opening links in a new window means bossing around your site visitors.';
+}
+
 ?>

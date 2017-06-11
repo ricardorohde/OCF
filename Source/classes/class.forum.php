@@ -227,7 +227,7 @@ function Grava() {
 						titulo.`ID_MSG`= topic.`ID_FIRST_MSG`
 						and topic.`ID_topic`= msg.id_topic
 						and brd.id_board = msg.id_board
-						ORDER BY MSG.POSTERTIME desc
+						ORDER BY msg.postertime desc
 						limit 10");
 
    	  $db_forum->Query($sql);

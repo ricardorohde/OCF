@@ -2,50 +2,61 @@
 /*************************
   Coppermine Photo Gallery
   ************************
-  Copyright (c) 2003-2008 Dev Team
-  v1.1 originally written by Gregory DEMAR
+  Copyright (c) 2003-2016 Coppermine Dev Team
+  v1.0 originally written by Gregory Demar
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License version 3
   as published by the Free Software Foundation.
-  
+
   ********************************************
-  Coppermine version: 1.4.18
-  $HeadURL: https://coppermine.svn.sourceforge.net/svnroot/coppermine/trunk/cpg1.4.x/mode.php $
-  $Revision: 4380 $
-  $Author: gaugau $
-  $Date: 2008-04-12 12:00:19 +0200 (Sa, 12 Apr 2008) $
+  Coppermine version: 1.5.42
+  $HeadURL: https://svn.code.sf.net/p/coppermine/code/trunk/cpg1.5.x/mode.php $
+  $Revision: 8846 $
 **********************************************/
-
-/**
-* Coppermine Photo Gallery 1.3.0 mode.php
-*
-* Someone please add a description
-*
-* @copyright 2002,2003 Gregory DEMAR, Coppermine Dev Team
-* @license http://www.gnu.org/licenses/gpl.html GNU General Public License V3
-* @package Coppermine
-* @version $Id: mode.php 4380 2008-04-12 10:00:19Z gaugau $
-*/
-
 
 define('IN_COPPERMINE', true);
 define('MODE_PHP', true);
 
 require('include/init.inc.php');
 
-if (!USER_IS_ADMIN) cpg_die(ERROR, $lang_errors['access_denied'], __FILE__, __LINE__);
+if ($superCage->get->getAlpha('what') == 'news') {
 
-if (!isset($_GET['admin_mode']) || !isset($_GET['referer'])) cpg_die(CRITICAL_ERROR, $lang_errors['param_missing'], __FILE__, __LINE__);
+    if (!GALLERY_ADMIN_MODE) {
+        cpg_die(ERROR, $lang_errors['access_denied'], __FILE__, __LINE__);
+    }
 
-$admin_mode = (int)$_GET['admin_mode'] ? 1 : 0;
-$referer = $_GET['referer'] ? $_GET['referer'] : 'index.php';
-$USER['am'] = $admin_mode;
-if (!$admin_mode) $referer = 'index.php';
+    if ($CONFIG['display_coppermine_news'] == 0) {
+        $value = 1;
+        $message = $lang_mode_php['news_show'];
+    } else {
+        $value = 0;
+        $message = $lang_mode_php['news_hide'];
+    }
 
-pageheader($lang_info, "<META http-equiv=\"refresh\" content=\"1;url=$referer\">");
-msg_box($lang_info, $lang_mode_php[$admin_mode], $lang_continue, $referer);
-pagefooter();
-ob_end_flush();
+    cpg_config_set('display_coppermine_news', $value);
+
+    cpgRedirectPage($CPG_REFERER, $lang_common['information'], $message, 3);
+
+} else {
+
+    if (!USER_IS_ADMIN) {
+        cpg_die(ERROR, $lang_errors['access_denied'], __FILE__, __LINE__);
+    }
+
+    if (!$superCage->get->keyExists('admin_mode') || !$CPG_REFERER) {
+        cpg_die(CRITICAL_ERROR, $lang_errors['param_missing'], __FILE__, __LINE__);
+    }
+
+    $admin_mode = $superCage->get->getInt('admin_mode')? 1 : 0;
+
+    $USER['am'] = $admin_mode;
+
+    if (!$admin_mode) {
+        $CPG_REFERER = 'index.php';
+    }
+
+    cpgRedirectPage($CPG_REFERER, $lang_common['information'], $lang_mode_php[$admin_mode], 3);
+}
 
 ?>

@@ -46,7 +46,7 @@
 		<tr> <td><b>Mensagem </td> </tr> 
 
 		<tr><td>
-		    <textarea tabindex="5" maxlength="1024" name="mensagem" rows=10 cols=50> </textarea>
+		    <textarea style="width:100%" tabindex="5" maxlength="1024" name="mensagem" rows=10 cols=50> </textarea>
 	    </td> </tr>
 
   	    <tr> <td colspan=10>

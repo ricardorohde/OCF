@@ -134,8 +134,44 @@ class Usuario_CPG
 	function setUserProfile6($var)		{	 $this->UserProfile6 = $var;	}
 	function setUserActKey($var)		{	 $this->UserActKey = $var;	}
 	
+function validaUser() //Se o usuário já está cadastrado pelo forum assume esse ID
+{
+
+	if ($this->Existe == 'N') {	 
+		   $sql = sprintf("select
+  			       			user_id
+			   from cpg14x_users
+               where upper(user_name) = '%s' \n",strtoupper($this->getUserName()));
+
+		    $this->db_cpg->Query($sql);
+
+		    if ( $this->db_cpg->NumRows() == 0) { // Verifica se já está cadastrado pelo e-mail
+		   $sql = sprintf("select
+  			       			user_id
+			   from cpg14x_users
+		       where lower(user_email) = '%s' \n",strtolower($this->getUserEmail()));
+
+				    $this->db_cpg->Query($sql);
+		    		if ( $this->db_cpg->NumRows() == 0) {
+						$this->Existe = 'N';
+		    		}
+					else {
+						    $this->Existe = 'S';
+							$this->db_cpg->Next();
+							$this->UserID = $this->db_cpg->getValue('user_id');
+						}
+		 	}
+		    else {
+				    $this->Existe = 'S';
+					$this->db_cpg->Next();
+					$this->UserID	    = $this->db_cpg->getValue('user_id');
+				}
+   	}
+}
 	
 function Grava() { //Grava as informações da reuniao
+
+	$this->ValidaUser();
 
            if ($this->Existe == 'N')
 		       $this->Inclui();

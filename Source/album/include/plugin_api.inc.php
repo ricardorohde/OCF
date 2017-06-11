@@ -2,19 +2,17 @@
 /*************************
   Coppermine Photo Gallery
   ************************
-  Copyright (c) 2003-2008 Dev Team
-  v1.1 originally written by Gregory DEMAR
+  Copyright (c) 2003-2016 Coppermine Dev Team
+  v1.0 originally written by Gregory Demar
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License version 3
   as published by the Free Software Foundation.
-  
+
   ********************************************
-  Coppermine version: 1.4.18
-  $HeadURL: https://coppermine.svn.sourceforge.net/svnroot/coppermine/trunk/cpg1.4.x/include/plugin_api.inc.php $
-  $Revision: 4380 $
-  $Author: gaugau $
-  $Date: 2008-04-12 12:00:19 +0200 (Sa, 12 Apr 2008) $
+  Coppermine version: 1.5.42
+  $HeadURL: https://svn.code.sf.net/p/coppermine/code/trunk/cpg1.5.x/include/plugin_api.inc.php $
+  $Revision: 8846 $
 **********************************************/
 
 global $thisplugin;                     // Stores the current plugin being processed
@@ -26,7 +24,7 @@ define('CPG_EXEC_ALL','all');           // Define CPG_EXEC_ALL
 define('CPG_EXEC_FIRST', 'first');      // Define CPG_EXEC_FIRST
 define('CPG_EXEC_NEW', 'new');          // Define CPG_EXEC_NEW
 
-if (!defined('IN_COPPERMINE')) { die('Not in Coppermine...');}
+if (!defined('IN_COPPERMINE')) die('Not in Coppermine...');
 
 // Store the table name in CONFIG
 $CONFIG['TABLE_PLUGINS']                = $CONFIG['TABLE_PREFIX'].'plugins';
@@ -50,7 +48,7 @@ class CPGPluginAPI {
         global $CONFIG,$thisplugin,$USER_DATA,$CPG_PLUGINS,$lang_plugin_api;
 
         // Get the installed plugins from the database and sort them by execution priority
-        $sql = 'select * from '.$CONFIG['TABLE_PLUGINS'].' order by priority asc;';
+        $sql = "SELECT * FROM {$CONFIG['TABLE_PLUGINS']} ORDER BY priority";
         $result = cpg_db_query($sql);
 
         // Exit if no plugins are installed
@@ -62,7 +60,7 @@ class CPGPluginAPI {
         register_shutdown_function('cpg_action_page_end');
 
         // Register plugin_sleep action for shutdown
-        register_shutdown_function(array('CPGPluginAPI','sleep'));
+        register_shutdown_function('pluginapi_sleep_wrapper');
 
         // Used as a failsafe to keep plugins in order
         $index = 0;
@@ -89,7 +87,7 @@ class CPGPluginAPI {
 
 
                 if ($CONFIG['log_mode']) {
-                    log_write("Couldn't wake plugin '".$thisplugin->name."' at ".date("F j, Y, g:i a"),CPG_GLOBAL_LOG);
+                    log_write("Couldn't wake plugin '" . $thisplugin->name, CPG_GLOBAL_LOG);
                 }
 
                 $thisplugin->filters = array();
@@ -122,9 +120,8 @@ class CPGPluginAPI {
 
         // If the plugin doesn't exist in the array get its information from the database
         if (!isset($installed_array[$plugin_folder])) {
-            $sql = 'select plugin_id from '.$CONFIG['TABLE_PLUGINS'].' where '.
-                   'path="'.$plugin_folder.'";';
 
+            $sql = "SELECT plugin_id FROM {$CONFIG['TABLE_PLUGINS']} WHERE path = '$plugin_folder'";
             $result = cpg_db_query($sql);
 
             // If the plugin isn't in the database store a false value in the array
@@ -159,6 +156,9 @@ class CPGPluginAPI {
 
     function& filter( $key, $value, $execute_scope = CPG_EXEC_ALL ) {
         global $CPG_PLUGINS,$CONFIG,$USER_DATA,$thisplugin;
+
+        global $hook_name;
+        $hook_name = $key;
 
         if(is_numeric($execute_scope)) {
 
@@ -244,6 +244,9 @@ class CPGPluginAPI {
 
     function& action( $key, $value, $execute_scope = CPG_EXEC_ALL ) {
         global $CPG_PLUGINS,$CONFIG,$USER_DATA,$thisplugin;
+
+        global $hook_name;
+        $hook_name = $key;
 
         if(is_numeric($execute_scope)) {
 
@@ -373,11 +376,11 @@ class CPGPluginAPI {
             if (!CPGPluginAPI::action('plugin_sleep',true,$thisplugin->plugin_id)) {
 
                 if ($CONFIG['log_mode']) {
-                    log_write("Couldn't put plugin '".$thisplugin->name."' to sleep at ".date("F j, Y, g:i a"),CPG_GLOBAL_LOG);
+                    log_write("Couldn't put plugin '".$thisplugin->name."' to sleep", CPG_GLOBAL_LOG);
                 }
 
                 // Couldn't put plugin to sleep...Die!
-                sprintf($lang_plugin_api['error_sleep'],$thisplugin->name);
+                sprintf($lang_plugin_api['error_sleep'].'<br />',$thisplugin->name);
             }
         }
     }
@@ -393,7 +396,7 @@ class CPGPluginAPI {
      **/
 
     function install($path) {
-        global $CONFIG,$thisplugin,$CPG_PLUGINS,$lang_plugin_api;
+        global $CONFIG,$thisplugin,$CPG_PLUGINS,$lang_plugin_api,$lang_plugin_php;
 
         // If this plugin is already installed return true
         if (CPGPluginAPI::installed($path)) {
@@ -407,7 +410,7 @@ class CPGPluginAPI {
         }
 
         // Get the lowest priority level (highest number) from the database
-        $sql = 'select priority from '.$CONFIG['TABLE_PLUGINS'].' order by priority desc limit 1;';
+        $sql = "SELECT priority FROM {$CONFIG['TABLE_PLUGINS']} ORDER BY priority DESC LIMIT 1";
         $result = cpg_db_query($sql);
 
         $data = mysql_fetch_assoc($result);
@@ -441,16 +444,11 @@ class CPGPluginAPI {
 
         // If $installed is boolean then plugin was installed; Return true
         if (is_bool($installed) && $installed) {
-            $sql = 'insert into '.$CONFIG['TABLE_PLUGINS'].' '.
-                   '(name, path,priority) '.
-                   ' values '.
-                   '("'.addslashes($name).'",'.
-                   '"'.addslashes($path).'",'.
-                   $priority.');';
+            $sql = "INSERT INTO {$CONFIG['TABLE_PLUGINS']} (name, path, priority) VALUES ('" . addslashes($name) . "', '" . addslashes($path) . "', $priority)";
             $result = cpg_db_query($sql);
 
             if ($CONFIG['log_mode']) {
-                log_write("Plugin '".$name."' installed at ".date("F j, Y, g:i a"),CPG_GLOBAL_LOG);
+                log_write("Plugin '".$name."' installed", CPG_GLOBAL_LOG);
             }
 
             return $installed;
@@ -478,7 +476,7 @@ class CPGPluginAPI {
      **/
 
     function uninstall($plugin_id) {
-        global $CONFIG,$USER_DATA,$CPG_PLUGINS,$thisplugin,$lang_plugin_api;
+        global $CONFIG,$USER_DATA,$CPG_PLUGINS,$thisplugin,$lang_plugin_api,$name;
 
         if (!isset($CPG_PLUGINS[$plugin_id])) {
             return true;
@@ -491,22 +489,21 @@ class CPGPluginAPI {
         $priority = $thisplugin->priority;
 
         // If plugin has an uninstall action, execute it
-        $uninstalled = CPGPluginAPI::action('plugin_uninstall',true,$plugin_id);
+        $uninstalled = CPGPluginAPI::action('plugin_uninstall', true, $plugin_id);
 
         if (is_bool($uninstalled) && $uninstalled) {
 
-            $sql = 'delete from '.$CONFIG['TABLE_PLUGINS'].' '.
-                   'where plugin_id='.$plugin_id.';';
+            $sql = "DELETE FROM {$CONFIG['TABLE_PLUGINS']} WHERE plugin_id = $plugin_id";
             $result = cpg_db_query($sql);
 
             // Shift the plugins up
-            $sql = 'update '.$CONFIG['TABLE_PLUGINS'].' set priority=priority-1 where priority>'.$priority.';';
+            $sql = "UPDATE {$CONFIG['TABLE_PLUGINS']} SET priority = priority - 1 WHERE priority > $priority";
             $result = cpg_db_query($sql);
 
             unset($CPG_PLUGINS[$plugin_id]);
 
             if ($CONFIG['log_mode']) {
-                log_write("Plugin '".$name."' uninstalled at ".date("F j, Y, g:i a"),CPG_GLOBAL_LOG);
+                log_write("Plugin '".$thisplugin->name."' uninstalled", CPG_GLOBAL_LOG);
             }
 
             return true;
@@ -631,10 +628,13 @@ class CPGPlugin {
 function& cpg_get_scope( $plugin_id = null ) {
     global $CPG_PLUGINS,$thisplugin;
 
+    // Create the super cage
+    $superCage = Inspekt::makeSuperCage();
+
     if (!is_null($plugin_id)) {
         return $CPG_PLUGINS[$plugin_id];
     } else {
-        $plugin_id = (int) $_GET['scope'];
+        $plugin_id = $superCage->get->getInt('scope');
         $thisplugin =& $CPG_PLUGINS[$plugin_id];
         return $CPG_PLUGINS[$plugin_id];
     }
@@ -690,4 +690,9 @@ function& cpg_get_dir_list($folder) {
     natcasesort($dirs);
     return $dirs;
 }
+
+function pluginapi_sleep_wrapper() {
+    CPGPluginAPI::sleep();
+}
+
 ?>

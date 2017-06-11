@@ -23,7 +23,6 @@ font-size:12px;
 color: #3f6445;
 	}
 input {
-border:0px;
 overflow:hidden;
 color: #3f6445;
 	}
@@ -35,7 +34,7 @@ color: #3f6445;
 
 .Principal
 {
-width:1005px;
+width:1003px;
 border:solid 1px #a0b0b0;
 background:#fff;
 color:#3f6445;	
@@ -101,17 +100,19 @@ background-color:white;
 text-align:center;
 width:150px;
 }
-.painel.corpo
+.painel .corpo
 {
-	border-style:solid;
-	border-width:1px;
-	border-color:#c4e8ca;
+	border:0;
 	background-color:#ffffff;
 	text-align:left;
-	float:top left;
+	float: left;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	width:149px;
+        margin-bottom:10px;
+        
 }
 
-.painel.TitPainel {
+.painel .TitPainel {
 background: #ffffff url(imagens/middle.gif) top left repeat-x;
 vertical-align:middle;
 font-size:12px;
@@ -132,7 +133,10 @@ width:9px;
 float:left;
 height:25px;
 background-position:top left;
-background: #ffffff url(imagens/leftcorner.gif) top left no-repeat;
+background: #f5f7f5 url(imagens/leftcorner.gif) top left no-repeat;
+
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
 .painel .RightCorner
 {
@@ -140,7 +144,7 @@ height:25px;
 width:9px;
 float:left;
 background-position:top right;
-background: #ffffff url(imagens/rightcorner.gif) top left no-repeat;
+background: #f5f7f5 url(imagens/rightcorner.gif) top left no-repeat;
 margin:0px;
 border:0;
 padding:0;
@@ -177,14 +181,17 @@ padding:0;
 }
 .LinkPainel {
 text-align:left;
-margin:0;
-padding:0;
+margin-left: 10px;
 border:0;
-vertical-align:bottom;
+padding:0;
+text-align:center;
+color: white;
+height:25px;
 line-height:25px;
+float:left;
 font-weight:bold;
-font-size:12px;
 }
+
 .PainelCentral {
 font-size:12px;
 padding: 0px;
@@ -196,7 +203,8 @@ float:left;
 border:0;
 vertical-align:top;
 }
-.PainelCentral.TitBox {
+
+.PainelCentral .TitBox {
 background: #ffffff url(imagens/middle.gif) top left repeat-x;
 vertical-align:middle;
 font-size:13px;
@@ -209,7 +217,8 @@ height:25px;
 line-height:25px;
 float:left;
 }
-.PainelCentral.Leftpainel
+
+.PainelCentral .Leftpainel
 {
 width:9px;
 float:left;
@@ -217,7 +226,7 @@ height:25px;
 background-position:top left;
 background: #ffffff url(imagens/leftcorner.gif) top left no-repeat;
 }
-.PainelCentral.Rightpainel
+.PainelCentral .Rightpainel
 {
 height:25px;
 width:9px;
@@ -235,7 +244,7 @@ border:0px;
 vertical-align:top;
 font-size:12px;
 }
-.PainelCentral_table td{
+.PainelCentral_table tr{
 padding: 0px;
 border:0;
 border-bottom:1px dotted #c4e8ca;
@@ -250,8 +259,12 @@ background: #ffffff url(imagens/linha.jpg) top left repeat-x;
 margin:0px;
 border:0;
 padding:0;
-width:684px;
-height:100%;
+width:685px;
+height:3px;
+float:left;
+
+
+
 }
 .Caixa150 {
 background-color:def3e3;
@@ -372,14 +385,14 @@ border:none;
 
 .DataTitulo {
 color: white;
-font: 13px;
+font-size: 13px;
 border:0;
 padding:0;
 margin:0;
 text-align:right;
 position:absolute;
 float:left;
-top:210px;
+top:212px;
 width:240px;
 left:760px;
 }
@@ -398,11 +411,10 @@ position:relative;
 
 .InfoUser {
 color: white;
-font-weight:bold;
-font: 12px;
+font-size: 13px;
 border:0;
 padding:0;
-margin:0;
+margin:2 0 0 0;
 float:left;
 text-align:left;
 position:absolute;
@@ -434,7 +446,6 @@ text-align:left;
 position:absolute;
 left:470px;
 top:0px;
-width:500px;
 vertical-align:middle;
 }
 	
@@ -450,7 +461,8 @@ text-decoration:underline;
 .padrao {
 font-family: Arial, Verdana, Tahoma;
 color: #3f6445;
-width:1005px;
+width:1003px;
+margin:auto;
 height:100%;
 }
 .padrao a {
@@ -666,25 +678,23 @@ list-style:none;
 margin:0; 
 border:0;
 padding:0;
-spacing:0;
-float:left;
-width: 600px; 
 height: 25px; 
 left:223px;
 top:207px; 
 position: absolute;
 line-height:25px;
 }
-#menu li{position:relative; float:left;}
-#menu li a span { height: 25px;  width: 100%; position: relative; top: 0; left: 0; cursor: pointer; display:block; color:#fff;}
-#menu li a:hover span{background-color: #91c499 ; filter:alpha(opacity=70);opacity:.7; width:100%;}
-#menu li.mn_item1 a { width: 60px; left:0px; position:relative; padding-left:6px;}
-#menu li.mn_item2 a { width: 75px; left:0px; position:relative; padding-left:12px;}
-#menu li.mn_item3 a { width: 92px; left:0px; position:relative; padding-left:13px;}
-#menu li.mn_item4 a { width: 59px; left:0px; position:relative; padding-left:12px;}
-#menu li.mn_item5 a { width: 65px; left:0px; position:relative; padding-left:12px;}
-#menu li.mn_item6 a { width: 110px; left:0px; position:relative; padding-left:12px;}
-#menu li.mn_item7 a { width: 77px; left:0px; position:relative; padding-left:12px;}
+#menu li {position:relative;float: left;}
+#menu li a span { height: 25px; cursor: pointer; display:block; color:#fff;}
+#menu li a:hover span{background-color: #91c499 ; filter:alpha(opacity=70);opacity:.7;width:100%;}
+#menu li.mn_item1  { width: 57px; padding-left:5px;}
+#menu li.mn_item2  { width: 70px; padding-left:7px;}
+#menu li.mn_item3  { width: 84px; padding-left:7px;}
+#menu li.mn_item4  { width: 52px; padding-left:7px;}
+#menu li.mn_item5  { width: 57px; padding-left:7px;}
+#menu li.mn_item6  { width: 104px; padding-left:7px;}
+#menu li.mn_item7  { width: 70px; padding-left:7px;}
+
 #menu li ul, #menu li ul li ul{
 position:absolute; 
 top:25px; 
@@ -695,7 +705,7 @@ display:none;
 border:1px solid #085515;
 width: 180px;
 }
-#menu li ul li {border:0;display: block; text-decoration:none;}
+#menu li ul li {border:0;display: block; text-decoration:none;text-align:left;width:100%;}
 
 #menu li:hover ul, #menu li.hover ul{
    position: absolute;

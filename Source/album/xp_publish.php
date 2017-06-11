@@ -2,19 +2,17 @@
 /*************************
   Coppermine Photo Gallery
   ************************
-  Copyright (c) 2003-2008 Dev Team
-  v1.1 originally written by Gregory DEMAR
+  Copyright (c) 2003-2016 Coppermine Dev Team
+  v1.0 originally written by Gregory Demar
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License version 3
   as published by the Free Software Foundation.
-  
+
   ********************************************
-  Coppermine version: 1.4.18
-  $HeadURL: https://coppermine.svn.sourceforge.net/svnroot/coppermine/trunk/cpg1.4.x/xp_publish.php $
-  $Revision: 4380 $
-  $Author: gaugau $
-  $Date: 2008-04-12 12:00:19 +0200 (Sa, 12 Apr 2008) $
+  Coppermine version: 1.5.42
+  $HeadURL: https://svn.code.sf.net/p/coppermine/code/trunk/cpg1.5.x/xp_publish.php $
+  $Revision: 8846 $
 **********************************************/
 
 // ------------------------------------------------------------------------- //
@@ -23,8 +21,6 @@
 // http://www.zonageek.com/code/misc/wizards/                                //
 // ------------------------------------------------------------------------- //
 // Other information can be found on Microsoft web site                      //
-// http://www.microsoft.com/whdc/hwdev/tech/WIA/imaging/webwizard.mspx       //
-// http://msdn.microsoft.com/library/default.asp?url=/library/en-us/shellcc/platform/shell/programmersguide/shell_basics/shell_basics_extending/publishing_wizard/pubwiz_intro.asp
 // ------------------------------------------------------------------------- //
 // Original implementation comes from Gallery                                //
 // http://gallery.menalto.com                                                //
@@ -46,14 +42,18 @@ define('ALBMGR_PHP', true);
 require('include/init.inc.php');
 require('include/picmgmt.inc.php');
 
+if ($CONFIG['enable_menu_icons'] == 2) {
+	$icon_array['xp'] = '<img src="./images/os/winxp.png" border="0" width="16" height="16" alt="" class="icon" />';
+}
+
 // Set the log file path.
 define('LOGFILE', 'xp_publish.log');
 // ------------------------------------------------------------------------- //
 
 // HTML template for the login screen
 $template_login = <<<EOT
-        <p><b>{ENTER_LOGIN_PSWD}</b></p>
-        <form method="post" id="login" action="{POST_ACTION}">
+        <p><strong>{ENTER_LOGIN_PSWD}</strong></p>
+        <form method="post" name="cpgform" id="login" action="{POST_ACTION}">
             <table border="0" cellpadding="0" cellspasing="0">
                 <tr>
                         <td>{USERNAME}:&nbsp;</td>
@@ -70,7 +70,7 @@ EOT;
 // HTML template for a successful login
 $template_login_success = <<< EOT
         <p>{WELCOME}</p>
-        <form method="post" id="dummy" action="{POST_ACTION}">
+        <form method="post" name="cpgform2" id="dummy" action="{POST_ACTION}">
                 <input type="hidden" name="dummy_val" value="1" />
         </form>
 <script language="javascript" type="text/javascript">
@@ -80,7 +80,7 @@ EOT;
 // HTML template for an unsuccessful login
 $template_login_failure = <<< EOT
         <p>{ERROR}</p>
-        <form method="post" id="dummy" action="{POST_ACTION}">
+        <form method="post" name="cpgform2" id="dummy" action="{POST_ACTION}">
                 <input type="hidden" name="dummy_val" value="1" />
         </form>
 EOT;
@@ -95,9 +95,9 @@ $template_select_album = <<<EOT
    <table border="0" cellpadding="0" cellspasing="0">
 <!-- BEGIN existing_albums -->
         <tr>
-                <td colspan="2"><b>{UPLOAD}</b></td>
+                <td colspan="2"><strong>{UPLOAD}</strong></td>
         </tr>
-        <form id="selform">
+        <form name="cpgform3" id="selform">
     <tr>
                 <td>{ALBUM}: &nbsp;</td>
                 <td><select id="album" name="album">{SELECT_ALBUM}</select></td>
@@ -108,9 +108,9 @@ $template_select_album = <<<EOT
         </tr>
 <!-- END existing_albums -->
 <!-- BEGIN create_album -->
-        <form method="post" id="createAlb" action="{POST_ACTION}">
+        <form method="post" name="createAlb" id="createAlb" action="{POST_ACTION}">
         <tr>
-                <td colspan="2"><b>{CREATE_NEW}</b></td>
+                <td colspan="2"><strong>{CREATE_NEW}</strong></td>
         </tr>
     <tr>
                 <td>{ALBUM}: &nbsp;</td>
@@ -131,7 +131,7 @@ EOT;
 $template_create_album = <<<EOT
         <p>{NEW_ALB_CREATED}</p>
         <p>{CONTINUE}</p>
-        <form id="selform">
+        <form name="selform" id="selform">
                 <input type="hidden" id="album" name="album" value ="{ALBUM_ID}" />
         </form>
 
@@ -168,25 +168,10 @@ function javascript_string($str)
     return $str;
 }
 
-// Retrieve the category list
-function get_subcat_data($parent, $ident = '')
-{
-    global $CONFIG, $CAT_LIST;
-
-    $result = cpg_db_query("SELECT cid, name, description FROM {$CONFIG['TABLE_CATEGORIES']} WHERE parent = '$parent' AND cid != 1 ORDER BY pos");
-    if (mysql_num_rows($result) > 0) {
-        $rowset = cpg_db_fetch_rowset($result);
-        foreach ($rowset as $subcat) {
-            $CAT_LIST[] = array($subcat['cid'], $ident . $subcat['name']);
-            get_subcat_data($subcat['cid'], $ident . '&nbsp;&nbsp;&nbsp;');
-        }
-    }
-}
-
 // Return the HTML code for the album list select box
 function html_album_list(&$alb_count)
 {
-    global $CONFIG;
+    global $CONFIG, $LINEBREAK;
 
     if (USER_IS_ADMIN) {
         $public_albums = cpg_db_query("SELECT aid, title FROM {$CONFIG['TABLE_ALBUMS']} WHERE category < " . FIRST_USER_CAT . " ORDER BY title");
@@ -212,12 +197,12 @@ function html_album_list(&$alb_count)
 
     $alb_count = count($public_albums_list) + count($user_albums_list);
 
-    $html = "\n";
+    $html = $LINEBREAK;
     foreach($user_albums_list as $album) {
-        $html .= '                        <option value="' . $album['aid'] . '">* ' . $album['title'] . "</option>\n";
+        $html .= '                        <option value="' . $album['aid'] . '">* ' . $album['title'] . '</option>' . $LINEBREAK;
     }
     foreach($public_albums_list as $album) {
-        $html .= '                        <option value="' . $album['aid'] . '">' . $album['title'] . "</option>\n";
+        $html .= '                        <option value="' . $album['aid'] . '">' . $album['title'] . '</option>' . $LINEBREAK;
     }
 
     return $html;
@@ -232,11 +217,11 @@ function html_cat_list()
     if (USER_CAN_CREATE_ALBUMS) $CAT_LIST[] = array(FIRST_USER_CAT + USER_ID, $lang_albmgr_php['my_gallery']);
     $CAT_LIST[] = array(0, $lang_albmgr_php['no_category']);
 
-    get_subcat_data(0, '');
+    get_cat_data();
 
-    $html = "\n";
+    $html = $LINEBREAK;
     foreach($CAT_LIST as $category) {
-        $html .= '                        <option value="' . $category[0] . '">' . $category[1] . "</option>\n";
+        $html .= '                        <option value="' . $category[0] . '">' . $category[1] . '</option>' . $LINEBREAK;
     }
 
     return $html;
@@ -245,93 +230,149 @@ function html_cat_list()
 // Display information on how to use/install the wizard client
 function display_instructions()
 {
-    //global $PHP_SELF;
-    global $lang_xp_publish_required, $lang_xp_publish_client, $lang_xp_publish_select, $lang_xp_publish_testing, $lang_xp_publish_notes, $lang_xp_publish_flood, $lang_xp_publish_php;
-    global $CONFIG, $lang_charset;
-    ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title>Coppermine Photo Gallery - XP Publish README</title>
-<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $CONFIG['charset'] == 'language file' ? $lang_charset : $CONFIG['charset']; ?>" />
-<style type="text/css">
-<!--
-body {
-        font-family : Verdana, Arial, Helvetica, sans-serif;
-        font-size: 12px;
-        background : #F7F7F7 ;
-        color : Black;
-        margin: 30px;
-        line-height: 1.5;
+    global $lang_xp_publish_required, $lang_xp_publish_client, $lang_xp_publish_select, $lang_xp_publish_testing, $lang_xp_publish_notes, $lang_xp_publish_flood, $lang_xp_publish_php, $icon_array;
+    global $CONFIG, $lang_charset, $lang_common, $lang_errors, $CPG_PHP_SELF;
+
+    $publish_help = '&nbsp;'.cpg_display_help('f=uploading_xp-publisher.htm&amp;as=xp&amp;ae=xp_end', '600', '600');
+    //$requirements_help = '&nbsp;'.cpg_display_help('f=uploading_xp-publisher.htm&amp;as=xp&amp;ae=xp_end', '600', '600');
+    $install_help = '&nbsp;'.cpg_display_help('f=uploading_xp-publisher.htm&amp;as=xp_publish_setup&amp;ae=xp_publish_setup_end', '450', '400');
+    $usage_help = '&nbsp;'.cpg_display_help('f=uploading_xp-publisher.htm&amp;as=xp_publish_upload&amp;ae=xp_publish_upload_end', '600', '450');
+    $ok_icon = cpg_fetch_icon('ok', 0);
+    $stop_icon = cpg_fetch_icon('stop', 0);
+    $warning_icon = cpg_fetch_icon('warning', 0);
+    pageheader($CONFIG['gallery_name'] . ' &bull; ' . $lang_xp_publish_php['title']);
+    starttable('100%' , $icon_array['xp'] . $lang_xp_publish_php['client_header'] . $publish_help, 1);
+    print <<< EOT
+    <tr>
+        <td class="tableh2">
+            <h2>{$lang_xp_publish_php['requirements']}</h2>
+        </td>
+    </tr>
+    <tr>
+        <td class="tableb">
+            <ul>
+                <li>
+                    {$lang_xp_publish_php['windows_xp']}<br />
+                    <div id="xp_vista" style="display:none">{$ok_icon}{$lang_common['ok']} - {$lang_xp_publish_php['windows_xp']}</div>
+                    <div id="other_os" style="display:none">{$stop_icon}{$lang_xp_publish_php['no_windows_xp']}</div>
+                    <div id="no_os_detection" style="display:block">{$warning_icon}{$lang_xp_publish_php['no_os_detect']}</div>
+                </li>
+                <li>
+                    {$lang_xp_publish_php['requirement_ie']}<br />
+                    <div id="ie" style="display:none">{$ok_icon}{$lang_common['ok']} - {$lang_xp_publish_php['requirement_ie']}</div>
+                    <div id="other_browser" style="display:none">{$stop_icon}{$lang_xp_publish_php['no_ie']}</div>
+                    <div id="no_browser_detection" style="display:block">{$warning_icon}{$lang_xp_publish_php['no_browser_detect']}</div>
+                </li>
+EOT;
+    if (GALLERY_ADMIN_MODE) {
+        print <<< EOT
+                <li>{$lang_xp_publish_php['requirement_http_upload']}</li>
+EOT;
+        if ($CONFIG['gallery_name'] == '') {
+            print '<li>'.$stop_icon.$lang_xp_publish_php['no_gallery_name'].'</li>';
+        }
+        if ($CONFIG['gallery_description'] == '') {
+            print '<li>'.$stop_icon.$lang_xp_publish_php['no_gallery_description'].'</li>';
+        }
+    }
+    if (!USER_CAN_UPLOAD_PICTURES && !USER_CAN_CREATE_ALBUMS) {
+        print <<< EOT
+                <li>{$lang_xp_publish_php['requirement_permissions']}</li>
+EOT;
+    }
+    if (!USER_ID) {
+        print <<< EOT
+                <li>{$lang_xp_publish_php['requirement_login']}</li>
+EOT;
+    }
+    print <<< EOT
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td class="tableh2">
+            <h2>{$lang_xp_publish_php['howto_install']}{$install_help}</h2>
+        </td>
+    </tr>
+    <tr>
+        <td class="tableb">
+            <ul>
+                <li>
+EOT;
+    printf($lang_xp_publish_php['install_right_click'],'<a href="'.$CPG_PHP_SELF.'?cmd=send_reg">'.cpg_fetch_icon('download',0), '</a>');
+    print <<< EOT
+                </li>
+                <li>{$lang_xp_publish_php['install_save']}</li>
+                <li>{$lang_xp_publish_php['install_execute']}</li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td class="tableh2">
+            <h2>{$lang_xp_publish_php['usage']}{$usage_help}</h2>
+        </td>
+    </tr>
+    <tr>
+        <td class="tableb">
+            <ul>
+                <li>{$lang_xp_publish_php['select_files']}</li>
+                <li>{$lang_xp_publish_php['display_tasks']}</li>
+                <li>{$lang_xp_publish_php['publish_on_the_web']}</li>
+                <li>{$lang_xp_publish_php['confirm_selection']}, {$lang_xp_publish_php['next']}</li>
+                <li>{$lang_xp_publish_php['select_service']}</li>
+                <li>{$lang_xp_publish_php['enter_login']}</li>
+                <li>{$lang_xp_publish_php['select_album']}, {$lang_xp_publish_php['next']}</li>
+                <li>{$lang_xp_publish_php['upload_starts']}</li>
+                <li>{$lang_xp_publish_php['upload_completed']}</li>
+            </ul>
+        </td>
+    </tr>
+EOT;
+    endtable();
+    print <<< EOT
+<script type="text/javascript">
+function os_browser_detection() {
+  // browser detection.
+  // Usually, browser detection is buggy and should not be used. However, the sidebar works only in mainstream browsers anyway and requires JavaScript, so we can be pretty sure that the user has it enabled if this is supposed to work in the first place.
+   var detection_success = 0;
+   if (navigator.userAgent.indexOf('Firefox') != -1 || navigator.userAgent.indexOf('Netscape') != -1 || navigator.userAgent.indexOf('Konqueror') != -1 || navigator.userAgent.indexOf('Gecko') != -1) {
+       document.getElementById('ie').style.display = 'none';
+       document.getElementById('other_browser').style.display = 'block';
+       document.getElementById('no_browser_detection').style.display = 'none';
+       detection_success = 1;
+   }
+   if (navigator.userAgent.indexOf('Opera') != -1) {
+       document.getElementById('ie').style.display = 'none';
+       document.getElementById('other_browser').style.display = 'block';
+       document.getElementById('detecting').style.display = 'none';
+       detection_success = 1;
+   }
+   if (navigator.userAgent.indexOf('MSIE') != -1) {
+       document.getElementById('ie').style.display = 'block';
+       document.getElementById('other_browser').style.display = 'none';
+       document.getElementById('no_browser_detection').style.display = 'none';
+       detection_success = 1;
+   }
+   if (navigator.userAgent.indexOf('Windows NT 6.1') != -1 || navigator.userAgent.indexOf('Windows NT 6.0') != -1 || navigator.userAgent.indexOf('Windows NT 5.2') != -1 || navigator.userAgent.indexOf('Windows NT 5.1') != -1) {
+       document.getElementById('xp_vista').style.display = 'block';
+       document.getElementById('other_os').style.display = 'none';
+       document.getElementById('no_os_detection').style.display = 'none';
+       detection_success = 1;
+   }
+   if (navigator.userAgent.indexOf('Windows NT 5.0') != -1 || navigator.userAgent.indexOf('Windows NT 4.0') != -1 || navigator.userAgent.indexOf('Windows 9') != -1 || navigator.userAgent.indexOf('Windows CE') != -1 || navigator.userAgent.indexOf('Mac') != -1 || navigator.userAgent.indexOf('Linux') != -1) {
+       document.getElementById('xp_vista').style.display = 'none';
+       document.getElementById('other_os').style.display = 'block';
+       document.getElementById('no_os_detection').style.display = 'none';
+       detection_success = 1;
+   }
 }
 
-td {
-        font-size: 12px;
-}
 
-h1{
-        font-weight: bold;
-        font-size: 22px;
-        font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
-        text-decoration: none;
-        line-height : 120%;
-        color : #000000;
-}
+self.onload = os_browser_detection();
+</script>
+EOT;
+    pagefooter();
 
-h2 {
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 18px;
-        color: #0E72A4;
-        text-decoration: underline;
-        margin-top: 20px;
-        margin-bottom: 10px;
-}
-
-h3 {
-        font-weight: bold;
-        font-family: Verdana, Arial, Helvetica, sans-serif;
-        font-size: 12px;
-        text-decoration: underline;
-}
-
-p {
-        font-family : Verdana, Arial, Helvetica, sans-serif;
-        font-size: 12px;
-        margin: 10px 10px 0px 0px;
-}
-
-ul {
-        margin-left: 5px;
-        margin-right: 0px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        padding: 0px;
-        list-style-type: square;
-}
-
-li {
-        margin-left: 10px;
-        margin-top: 6px;
-        margin-bottom: 6px;
-        padding: 0px;
-        list-style-position: outside;
-}
--->
-</style>
-<!-- $Id: xp_publish.php 4380 2008-04-12 10:00:19Z gaugau $ -->
-</head>
-
-<body>
-<?php echo $lang_xp_publish_client ?> Sebastian Delmont <a href="http://www.zonageek.com/code/misc/wizards/">Creating your own XP Publishing Wizard</a>.</p>
-
-<?php echo $lang_xp_publish_required ?> <a href="<?php echo $_SERVER['PHP_SELF'] ?>?cmd=send_reg"><?php echo $lang_xp_publish_php['link'] ?></a>. <?php echo $lang_xp_publish_select,
-$lang_xp_publish_testing,
-$lang_xp_publish_notes; ?>
-  <a href="<?php echo dirname($_SERVER['PHP_SELF']) . '/' . LOGFILE ?>"><?php echo LOGFILE ?></a>
-<?php echo $lang_xp_publish_flood ?>
-</body>
-</html>
-<?php
 }
 
 // Output page header
@@ -340,18 +381,23 @@ function output_header()
     global $CONFIG;
     global $lang_charset, $lang_text_dir, $lang_xp_publish_php;
 
-    ?>
+    if ($CONFIG['charset'] == 'language file') {
+        $language = $lang_charset;
+    } else {
+        $language = $CONFIG['charset'];
+    }
+    print <<< EOT
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html dir="ltr">
 <head>
-<title><?php echo $lang_xp_publish_php['title'] ?></title>
-<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $CONFIG['charset'] == 'language file' ? $lang_charset : $CONFIG['charset'];
-    ?>" />
+<title>{$lang_xp_publish_php['title']}</title>
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Content-Type" content="text/html; charset={$language}" />
 <style type="text/css">
 <!--
 body {
         font-family : Verdana, Arial, Helvetica, sans-serif;
-        font-size: 12px;
+        font-size: 11px;
         background : #FFFFFF ;
         color : Black;
         margin: 20px;
@@ -366,30 +412,28 @@ td {
 
 h1{
         font-weight: bold;
-        font-size: 22px;
-        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
         text-decoration: none;
         line-height : 120%;
         color : #0E72A4;
 }
 
 h2 {
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 18px;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 14px;
         color: #0E72A4;
-        text-decoration: underline;
 }
 
 h3 {
         font-weight: bold;
         font-family: Verdana, Arial, Helvetica, sans-serif;
         font-size: 12px;
-        text-decoration: underline;
 }
 
 p {
         font-family : Verdana, Arial, Helvetica, sans-serif;
-        font-size: 12px;
+        font-size: 11px;
         margin: 10px 10px 0px 0px;
 }
 
@@ -421,20 +465,27 @@ input {
 -->
 </style>
 </head>
-
 <body>
-<h1><?php echo $lang_xp_publish_php['title'] ?></h1>
-<p></p>
-<?php
+EOT;
+    print '<h1><a href="'.$CONFIG['site_url'].'">'. $CONFIG['gallery_name'] .'</a>';
+    if ($CONFIG['gallery_description'] != '') {
+        print ' &bull; ' . $CONFIG['gallery_description'];
+    }
+    print '</h1>';
+    print '<h2>'. $lang_xp_publish_php['title'] . '</h2>';
 }
 
 // Output page footer
 function output_footer()
 {
     global $WIZARD_BUTTONS, $ONBACK_SCRIPT, $ONNEXT_SCRIPT;
-    global $CONFIG; //$PHP_SELF,
+    global $CONFIG, $CPG_PHP_SELF;
 
-    ?>
+    $site_url = trim($CONFIG['site_url'], '/') . '/';
+    $gallery_name_javascript = javascript_string($CONFIG['gallery_name']);
+    $gallery_description_javascript = javascript_string($CONFIG['gallery_description']);
+
+    print <<< EOT
 
 <div id="content"></div>
 
@@ -461,7 +512,7 @@ function startUpload() {
 
         for (i = 0; i < files.length; i++) {
                 var postTag = xml.createNode(1, 'post', '');
-                postTag.setAttribute('href', '<?php echo trim($CONFIG['site_url'], '/') . '/' . $_SERVER['PHP_SELF'] . '?cmd=add_picture'?>&album=' + selform.album.value);
+                postTag.setAttribute('href', '{$site_url}{$CPG_PHP_SELF}?cmd=add_picture&album=' + selform.album.value);
                 postTag.setAttribute('name', 'userpicture');
 
                 var dataTag = xml.createNode(1, 'formdata', '');
@@ -473,9 +524,9 @@ function startUpload() {
         }
 
         var uploadTag = xml.createNode(1, 'uploadinfo', '');
-        uploadTag.setAttribute('friendlyname', '<?php echo javascript_string($CONFIG['gallery_name'])?>');
+        uploadTag.setAttribute('friendlyname', '{$gallery_name_javascript}');
         var htmluiTag = xml.createNode(1, 'htmlui', '');
-        htmluiTag.text = '<?php echo trim($CONFIG['site_url'], '/') . '/'?>';
+        htmluiTag.text = '{$site_url}';
         uploadTag.appendChild(htmluiTag);
 
         xml.documentElement.appendChild(uploadTag);
@@ -487,48 +538,54 @@ function startUpload() {
 }
 
 function OnBack() {
-        <?php echo $ONBACK_SCRIPT;
-    ?>
+        {$ONBACK_SCRIPT}
         window.external.SetWizardButtons(false,true,false);
 }
 
 function OnNext() {
-        <?php echo $ONNEXT_SCRIPT;
-    ?>
+        {$ONNEXT_SCRIPT}
 }
 
 function OnCancel() {
 }
 
 function window.onload() {
-        window.external.SetHeaderText('<?php echo javascript_string($CONFIG['gallery_name'])?>','<?php echo javascript_string($CONFIG['gallery_description'])?>');
-        window.external.SetWizardButtons(<?php echo $WIZARD_BUTTONS;
-    ?>);
+        window.external.SetHeaderText('{$gallery_name_javascript}','{$gallery_description_javascript}');
+        window.external.SetWizardButtons({$WIZARD_BUTTONS});
 }
 </script>
 </body>
 </html>
-<?php
+EOT;
 }
 
 // Send the file needed to register the service under Windows XP
 function send_reg_file()
 {
-    global $CONFIG; //, $PHP_SELF;
+    global $CONFIG, $CPG_PHP_SELF, $LINEBREAK; //, $PHP_SELF;
+  $superCage = Inspekt::makeSuperCage();
 
     header("Content-Type: application/octet-stream");
     $time_stamp = time();
-        header("Content-Disposition: attachment; filename=cpg_".$time_stamp.".reg");
+    header("Content-Disposition: attachment; filename=cpg_".$time_stamp.".reg");
+    // Come up with gallery name and description in iso8859-1 and utf-8
+    if ($CONFIG['charset'] == 'utf-8') {
+    } else {
+    }
+    $name_iso = '';
+    $description_iso = '';
+    $name_utf = '';
+    $description_utf = '';
 
     $lines[] = 'Windows Registry Editor Version 5.00';
-    //$lines[] = '[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\PublishingWizard\PublishingWizard\Providers\CopperminePhotoGallery]';
-        $lines[] = '[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\PublishingWizard\PublishingWizard\Providers\\'. $CONFIG['gallery_name'] .']';
+    $lines[] = '[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\PublishingWizard\PublishingWizard\Providers\\'. utf8_decode($CONFIG['gallery_name']) .']';
     $lines[] = '"displayname"="' . $CONFIG['gallery_name'] . '"';
     $lines[] = '"description"="' . $CONFIG['gallery_description'] . '"';
-    $lines[] = '"href"="' . trim($CONFIG['site_url'], '/') . '/' . $_SERVER['PHP_SELF'] . '?cmd=publish"';
-    $lines[] = '"icon"="' . "http://" . $_SERVER['HTTP_HOST'] . '/favicon.ico"';
-    print join("\r\n", $lines);
-    print "\r\n";
+    $lines[] = '"href"="' . trim($CONFIG['site_url'], '/') . '/' . $CPG_PHP_SELF . '?cmd=publish"';
+    $lines[] = '"icon"="' . trim($CONFIG['site_url'], '/') . '/' . 'favicon.ico"';
+    $lines[] = '[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\PublishingWizard\InternetPhotoprinting\providers\\' . utf8_decode($CONFIG['gallery_name'] .']');
+    print join($LINEBREAK, $lines);
+    print $LINEBREAK;
     exit;
 }
 
@@ -539,7 +596,7 @@ function form_login()
     global $ONNEXT_SCRIPT, $ONBACK_SCRIPT, $WIZARD_BUTTONS;
     global $template_login;
     global $lang_login_php, $lang_xp_publish_php, $cpg_udb;
-	global $CONFIG;
+    global $CONFIG, $CPG_PHP_SELF;
 
 
     if (!method_exists($cpg_udb,'login')) {
@@ -550,7 +607,7 @@ function form_login()
         return;
     }
 
-    $params = array('{POST_ACTION}' => trim($CONFIG['site_url'], '/') . '/' . $_SERVER['PHP_SELF'] . '?cmd=publish',
+    $params = array('{POST_ACTION}' => trim($CONFIG['site_url'], '/') . '/' . $CPG_PHP_SELF . '?cmd=publish',
         '{ENTER_LOGIN_PSWD}' => $lang_login_php['enter_login_pswd'],
         '{USERNAME}' => $lang_login_php['username'],
         '{PASSWORD}' => $lang_login_php['password'],
@@ -566,25 +623,28 @@ function form_login()
 // Process login information
 function process_login()
 {
-    global $CONFIG, $USER; //$PHP_SELF,
+    global $CONFIG, $USER, $CPG_PHP_SELF;
     global $ONNEXT_SCRIPT, $ONBACK_SCRIPT, $WIZARD_BUTTONS;
     global $template_login_success, $template_login_failure,$template_login;
     global $lang_login_php, $cpg_udb;
 
+    $superCage = Inspekt::makeSuperCage();
+
     $tt = 'worked';
 
-    if ( $USER_DATA = $cpg_udb->login(addslashes($_POST['username']), addslashes($_POST['password'])) ) {
+    if ($USER_DATA = $cpg_udb->login($superCage->post->getEscaped('username'), $superCage->post->getEscaped('password'))) {
+
         $USER['am'] = 1;
         user_save_profile();
 
         $params = array('{WELCOME}' => sprintf($lang_login_php['welcome'], USER_NAME),
-            '{POST_ACTION}' => trim($CONFIG['site_url'], '/') . '/' . $_SERVER['PHP_SELF'] . '?cmd=publish',
+            '{POST_ACTION}' => trim($CONFIG['site_url'], '/') . '/' . $CPG_PHP_SELF . '?cmd=publish',
             );
 
         echo template_eval($template_login_success, $params);
     } else {
         $params = array('{ERROR}' => $lang_login_php['err_login'],
-            '{POST_ACTION}' => trim($CONFIG['site_url'], '/') . '/' . $_SERVER['PHP_SELF'] . '?cmd=publish',
+            '{POST_ACTION}' => trim($CONFIG['site_url'], '/') . '/' . $CPG_PHP_SELF . '?cmd=publish',
             );
 
 
@@ -599,10 +659,10 @@ function process_login()
 // Display the form that allows to choose/create the destination album
 function form_publish()
 {
-    global $CONFIG, $CAT_LIST; //, $PHP_SELF;
+    global $CONFIG, $CAT_LIST, $CPG_PHP_SELF;
     global $ONNEXT_SCRIPT, $ONBACK_SCRIPT, $WIZARD_BUTTONS;
     global $template_select_album;
-    global $lang_xp_publish_php;
+    global $lang_xp_publish_php, $lang_common;
 
     $alb_count = 0;
     $html_album_list = html_album_list($alb_count);
@@ -627,10 +687,10 @@ function form_publish()
 
         $params = array('{WELCOME}' => sprintf($lang_xp_publish_php['welcome'], USER_NAME),
             '{CREATE_NEW}' => $lang_xp_publish_php['create_new'],
-            '{ALBUM}' => $lang_xp_publish_php['album'],
+            '{ALBUM}' => $lang_common['album'],
             '{CATEGORY}' => $lang_xp_publish_php['category'],
             '{SELECT_CATEGORY}' => $html_cat_list,
-            '{POST_ACTION}' => trim($CONFIG['site_url'], '/') . '/' . $_SERVER['PHP_SELF'] . '?cmd=create_album',
+            '{POST_ACTION}' => trim($CONFIG['site_url'], '/') . '/' . $CPG_PHP_SELF . '?cmd=create_album',
             );
 
         echo template_eval($template_select_album, $params);
@@ -645,12 +705,12 @@ function form_publish()
 
         $params = array('{WELCOME}' => sprintf($lang_xp_publish_php['welcome'], USER_NAME),
             '{UPLOAD}' => $lang_xp_publish_php['upload'],
-            '{ALBUM}' => $lang_xp_publish_php['album'],
+            '{ALBUM}' => $lang_common['album'],
             '{SELECT_ALBUM}' => $html_album_list,
             '{CATEGORY}' => $lang_xp_publish_php['category'],
             '{SELECT_CATEGORY}' => $html_cat_list,
             '{CREATE_NEW}' => $lang_xp_publish_php['create_new'],
-            '{POST_ACTION}' => trim($CONFIG['site_url'], '/') . '/' . $_SERVER['PHP_SELF'] . '?cmd=create_album',
+            '{POST_ACTION}' => trim($CONFIG['site_url'], '/') . '/' . $CPG_PHP_SELF . '?cmd=create_album',
             );
 
         echo template_eval($template_select_album, $params);
@@ -669,21 +729,31 @@ function create_album()
     global $template_create_album;
     global $lang_errors, $lang_xp_publish_php;
 
-    if (!(USER_CAN_CREATE_ALBUMS || USER_IS_ADMIN)) simple_die(ERROR, $lang_errors['perm_denied'], __FILE__, __LINE__);
+    $superCage = Inspekt::makeSuperCage();
+
+    if (!(USER_CAN_CREATE_ALBUMS || USER_IS_ADMIN)) {
+        simple_die(ERROR, $lang_errors['perm_denied'], __FILE__, __LINE__);
+    }
 
     if (USER_IS_ADMIN) {
-        $category = (int)$_POST['cat'];
+        $category = $superCage->post->getInt('cat');
     } else {
         $category = FIRST_USER_CAT + USER_ID;
     }
 
-    $query = "INSERT INTO {$CONFIG['TABLE_ALBUMS']} (category, title, uploads, pos) VALUES ('$category', '" . addslashes($_POST['new_alb_name']) . "', 'NO',  '0')";
+    $user_id = USER_ID;
+
+    $query = "INSERT INTO {$CONFIG['TABLE_ALBUMS']} (category, title, uploads, pos, description, owner) VALUES ('$category', '" . $superCage->post->getEscaped('new_alb_name') . "', 'NO',  '0', '', $user_id)";
     cpg_db_query($query);
 
-    $params = array('{NEW_ALB_CREATED}' => sprintf($lang_xp_publish_php['new_alb_created'], $_POST['new_alb_name']),
+    $new_alb_name = $superCage->post->getMatched('new_alb_name', '/^[0-9A-Za-z\/_]+$/');
+    $new_alb_name = $new_alb_name[1];
+
+    $params = array(
+        '{NEW_ALB_CREATED}' => sprintf($lang_xp_publish_php['new_alb_created'], $new_alb_name),
         '{CONTINUE}' => $lang_xp_publish_php['continue'],
-        '{ALBUM_ID}' => mysql_insert_id(),
-        );
+        '{ALBUM_ID}' => mysql_insert_id($CONFIG['LINK_ID']),
+    );
 
     echo template_eval($template_create_album, $params);
 
@@ -697,12 +767,14 @@ function process_picture()
 {
     global $CONFIG, $IMG_TYPES;
     global $lang_db_input_php, $lang_errors;
+    $superCage = Inspekt::makeSuperCage();
 
     @unlink(LOGFILE);
 
     if (!USER_ID || !USER_CAN_UPLOAD_PICTURES) simple_die(ERROR, $lang_errors['perm_denied'], __FILE__, __LINE__);
 
-    $album = (int)$_GET['album'];
+    //$album = (int)$_GET['album'];
+    $album = $superCage->get->getInt('album');
     $title = '';
     $caption = '';
     $keywords = '';
@@ -741,9 +813,10 @@ function process_picture()
 
 
     // Test if the filename of the temporary uploaded picture is empty
-    if ($_FILES['userpicture']['tmp_name'] == '') simple_die(ERROR, $lang_db_input_php['no_pic_uploaded'], __FILE__, __LINE__);
+//  if ($_FILES['userpicture']['tmp_name'] == '') simple_die(ERROR, $lang_db_input_php['no_pic_uploaded'], __FILE__, __LINE__);
+  if ($superCage->files->getRaw('/userpicture/tmp_name') == '') simple_die(ERROR, $lang_db_input_php['no_pic_uploaded'], __FILE__, __LINE__);
     // Create destination directory for pictures
-    if (USER_ID && !defined('SILLY_SAFE_MODE')) {
+    if (USER_ID && $CONFIG['silly_safe_mode'] != 1) {
         if (USER_IS_ADMIN && ($category != (USER_ID + FIRST_USER_CAT))) {
             $filepath = 'wpw-' . date("Ymd");
         } else {
@@ -754,7 +827,7 @@ function process_picture()
             mkdir($dest_dir, octdec($CONFIG['default_dir_mode']));
             if (!is_dir($dest_dir)) simple_die(CRITICAL_ERROR, sprintf($lang_db_input_php['err_mkdir'], $dest_dir), __FILE__, __LINE__, true);
             chmod($dest_dir, octdec($CONFIG['default_dir_mode']));
-            $fp = fopen($dest_dir . '/index.html', 'w');
+            $fp = fopen($dest_dir . '/index.php', 'w');
             fwrite($fp, ' ');
             fclose($fp);
         }
@@ -769,9 +842,15 @@ function process_picture()
 
     $matches = array();
 
-    if (get_magic_quotes_gpc()) $_FILES['userpicture']['name'] = stripslashes($_FILES['userpicture']['name']);
+    //if (get_magic_quotes_gpc()) $_FILES['userpicture']['name'] = stripslashes($_FILES['userpicture']['name']);
+    //using getRaw as it will be sanitized in the code below in the preg_match. {SaWey}
+     $filename = $superCage->files->getRaw('/userpicture/name');
+     if (get_magic_quotes_gpc()){
+        $filename = stripslashes($filename);
+     }
     // Replace forbidden chars with underscores
-    $picture_name = replace_forbidden($_FILES['userpicture']['name']);
+    //$picture_name = replace_forbidden($_FILES['userpicture']['name']);
+    $picture_name = replace_forbidden($filename);
     // Check that the file uploaded has a valid extension
     if (!preg_match("/(.+)\.(.*?)\Z/", $picture_name, $matches)) {
         $matches[1] = 'invalid_fname';
@@ -790,7 +869,7 @@ function process_picture()
     }
     $uploaded_pic = $dest_dir . $picture_name;
     // Move the picture into its final location
-    if (!move_uploaded_file($_FILES['userpicture']['tmp_name'], $uploaded_pic))
+    if (!move_uploaded_file($superCage->files->getRaw('/userpicture/tmp_name'), $uploaded_pic))
         simple_die(CRITICAL_ERROR, sprintf($lang_db_input_php['err_move'], $picture_name, $dest_dir), __FILE__, __LINE__, true);
     // Change file permission
     chmod($uploaded_pic, octdec($CONFIG['default_file_mode']));
@@ -804,7 +883,7 @@ function process_picture()
         // Get picture information
         $imginfo = getimagesize($uploaded_pic);
 
-        // getimagesize does not recognize the file as a picture
+        // cpg_getimagesize does not recognize the file as a picture
         if ($imginfo == null) {
             @unlink($uploaded_pic);
             simple_die(ERROR, $lang_db_input_php['err_invalid_img'], __FILE__, __LINE__, true);
@@ -836,9 +915,9 @@ function process_picture()
     // Create thumbnail and internediate image and add the image into the DB
     $result = add_picture($album, $filepath, $picture_name, $position, $title, $caption, $keywords, $user1, $user2, $user3, $user4, $category);
 
-    if (!$result) {
+    if ($result !== true) {
         @unlink($uploaded_pic);
-        simple_die(CRITICAL_ERROR, sprintf($lang_db_input_php['err_insert_pic'], $uploaded_pic) . '<br /><br />' . $ERROR, __FILE__, __LINE__, true);
+        simple_die(CRITICAL_ERROR, (isset($result['error'])) ? $result['error'] : sprintf($lang_db_input_php['err_insert_pic'], $uploaded_pic) . '<br /><br />' . $ERROR, __FILE__, __LINE__, true);
     } else {
         echo ("SUCCESS");
         exit;
@@ -851,10 +930,18 @@ if (USER_IS_ADMIN && !GALLERY_ADMIN_MODE) {
     user_save_profile();
 }
 
-$cmd = empty($_GET['cmd']) ? '' : $_GET['cmd'];
+//$cmd = empty($_GET['cmd']) ? '' : $_GET['cmd'];
+if ($superCage->get->keyExists('cmd')){
+  //no need to do a sanitization here, as this var is only used in the switch statement,
+  //and it has a default operation if no match is found. {SaWey}
+  $cmd = $superCage->get->getRaw('cmd');
+} else{
+  $cmd = '';
+}
 
 if (!USER_ID && $cmd && $cmd != 'send_reg') $cmd = 'login';
-if (!empty($_POST['username'])) $cmd = 'process_login';
+//if (!empty($_POST['username'])) $cmd = 'process_login';
+if ($superCage->post->keyExists('username')) $cmd = 'process_login';
 
 switch ($cmd) {
     case 'login' :

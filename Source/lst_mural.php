@@ -4,7 +4,7 @@
 <div class="LeftPainel"></div>
 <div class="TitBox">.:: Mural do Sócio ::.</div>
 <div class="RightPainel"></div>
-<div class="LinkPainel"><a href="frm_cadmural.php">Deixe seu recado...</a></div>
+<div class="LinkPainel"><a href="frm_cadmural.php">  Deixe seu recado...</a></div>
 <div class="BarraTit"></div>
 <div class="Caixa220">
 <table class="PainelCentral_table" width="100%" cellpadding="0" cellspacing="0" height="100%" >
@@ -27,9 +27,9 @@
       while ($row = mysql_fetch_assoc($result)) {
               $usr = new Usuario($row['userid']); 
              
-              $ln = sprintf('<td style="width:105px;">(%s %s)</td><td><b>%s </b></td><td>%s</td>'
+              $ln = sprintf('<td style="width:100px;font-size:10px;">(%s %s)</td><td style="width:100px;"><b>%s </b></td><td>%s</td>'
              		,date("d/m/Y",strtotime($row['datahora'])),date("H:i",strtotime($row['datahora'])),$usr->getLinkUsuario(),$row['mensagem']);      	
-             echo ("<tr>".$ln."</tr>\n");       	
+             echo ('<tr style="vertical-align:top;">'.$ln."</tr>\n");       	
       }
 
 	mysql_free_result($result);

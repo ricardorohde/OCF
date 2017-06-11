@@ -25,7 +25,7 @@ function Conecta() {
 			mysql_select_db("clubedoopala",$this->Link) 
 	 				or die('\nErro Selecionando DB teste: ' . mysql_error($this->Link)); 
 			}
-    elseif ($_SERVER['HTTP_HOST'] == 'localhost') {
+    elseif ($_SERVER['HTTP_HOST'] == 'ocf.localhost') {
 			$this->Link = mysql_connect('localhost', 'root', 'racnela')
 				or die('Erro BD_Conecta: ' ."<br>". mysql_error($this->Link)); 
 			mysql_select_db("opalaclubefran01",$this->Link)
@@ -41,7 +41,7 @@ function Conecta() {
 	}
 	else
 	{
-			$this->Link = mysql_connect('mysql.opalaclubefranca.com.br', 'opalaclubefran01', 'racnela')
+			$this->Link = mysql_connect('localhost', 'opalaclubefran01', 'racnela')
 				or die('Erro BD_Conecta: ' ."<br>". mysql_error($this->Link)); 
 			mysql_select_db("opalaclubefran01",$this->Link)
 	 				or die('\nErro Selecionando DB prod: ' . mysql_error($this->Link)); 
@@ -62,8 +62,8 @@ function Conecta() {
 }
 	function getValue($ColName) { //Retorna o valor de uma coluna
 
-		return mb_convert_encoding($this->Row[$ColName], "ISO-8859-1", "UTF-8");
-//		Return $this->Row[$ColName];
+//		return mb_convert_encoding($this->Row[$ColName], "ISO-8859-1", "UTF-8");
+		Return $this->Row[$ColName];
 	}
 }
 ?>

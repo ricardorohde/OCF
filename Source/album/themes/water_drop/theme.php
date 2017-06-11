@@ -2,25 +2,22 @@
 /*************************
   Coppermine Photo Gallery
   ************************
-  Copyright (c) 2003-2008 Dev Team
-  v1.1 originally written by Gregory DEMAR
+  Copyright (c) 2003-2016 Coppermine Dev Team
+  v1.0 originally written by Gregory Demar
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License version 3
   as published by the Free Software Foundation.
-  
+
   ********************************************
-  Coppermine version: 1.4.18
-  $HeadURL: https://coppermine.svn.sourceforge.net/svnroot/coppermine/trunk/cpg1.4.x/themes/water_drop/theme.php $
-  $Revision: 4380 $
-  $Author: gaugau $
-  $Date: 2008-04-12 12:00:19 +0200 (Sa, 12 Apr 2008) $
+  Coppermine version: 1.5.42
+  $HeadURL: https://svn.code.sf.net/p/coppermine/code/trunk/cpg1.5.x/themes/water_drop/theme.php $
+  $Revision: 8846 $
 **********************************************/
 
-define('THEME_IS_XHTML10_TRANSITIONAL',1); // Remove this if you edit this template until
-                                           // you have validated it. See docs/theme.htm.
+define('THEME_HAS_PROGRESS_GRAPHICS', 1);
 
 // HTML template for template sys_menu spacer
-$template_sys_menu_spacer ='<img src="themes/water_drop/images/orange_carret.gif" width="8" height="8" border="0" alt="" />';
+$template_sys_menu_spacer = '<img src="themes/water_drop/images/orange_carret.gif" width="8" height="8" border="0" alt="" />';
 
 ?>

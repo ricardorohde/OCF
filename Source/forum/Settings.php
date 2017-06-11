@@ -36,7 +36,7 @@ $webmaster_email = 'admin@opalaclubefranca.com.br';		# Email address to send ema
 $cookiename = 'SMFCookie103';		# Name of the cookie to set for authentication.
 
 ########## Database Info ##########
-$db_server = 'mysql.opalaclubefranca.com.br';
+$db_server = 'localhost';
 $db_name = 'opalaclubefran01';
 $db_user = 'opalaclubefran01';
 $db_passwd = 'racnela';
@@ -46,12 +46,12 @@ $db_error_send = 1;
 
 ########## Directories/Files ##########
 # Note: These directories do not have to be changed unless you move things.
-$boarddir = '/home/opalaclubefranca/www/forum';		# The absolute path to the forum's folder. (not just '.'!)
-$sourcedir = '/home/opalaclubefranca/www/forum/Sources';		# Path to the Sources directory.
+$boarddir = '/www/ocfnew/forum';		# The absolute path to the forum's folder. (not just '.'!)
+$sourcedir = '/www/ocfnew/forum/Sources';		# Path to the Sources directory.
 
 ########## Error-Catching ##########
 # Note: You shouldn't touch these settings.
-$db_last_error = 1339991790;
+$db_last_error = 1488854140;
 
 # Make sure the paths are correct... at least try to fix them.
 if (!file_exists($boarddir) && file_exists(dirname(__FILE__) . '/agreement.txt'))

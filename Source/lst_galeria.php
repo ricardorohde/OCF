@@ -1,47 +1,55 @@
 <?php include("sessao.php"); ?>
 <div class="PainelCentral">
-<div class="LeftPainel"> </div>
+<div class="LeftPainel"></div>
 <div class="TitBox">.:: Galeria de Fotos ::.</div>
 <div class="RightPainel"></div>
-<div class="LinkPainel"><a href="./album" target="_blank">Acesse nossa galeria...</a></div>
-<span class="BarraTit"></span>
-<div class="Caixa180" >
-  <table id="thumbnail" width="100%" cellpadding="0" cellspacing="0" height="100%">
+<div class="LinkPainel"><a href="./album" target="_blank">Publique suas fotos</a> </div>
+<div class="BarraTit"></div>
+<div class="Caixa220">
+<table class="PainelCentral_table" width="100%" cellpadding="0" cellspacing="0" height="100%" >
 <?php
-	require_once($_SESSION['DOCROOT']."/classes/class.bdcpg.php");
+	require_once($_SESSION['DOCROOT']."/classes/class.bd2.php");
 
-    $db = new BDCPG();
+    $db = new BD2("opalaclubefran02");
+$sql = sprintf('select pid,usr.user_name owner_name,concat("./album/albums/",filepath,"thumb_",filename) foto '.
+ 					"from cpg14x_pictures pic, ".
+ 					"cpg14x_users usr ".
+ 					"where usr.user_id = pic.owner_id ".
+					"order by rand() limit 12");
+    $db->Query($sql);
+    echo ('<tr style="margin-top:10px;border:0;">');
+ 	$db->Next(); 
+	echo(sprintf('<td style="padding:5px;"><a target="_blank" href="album/displayimage.php?album=random&cat=0&pos=-%d"> <img src="%s" border="0" /> </a></td>',$db->getValue('pid'),$db->getValue('foto')));
+ 	$db->Next(); 
+	echo(sprintf('<td style="padding:5px;"><a target="_blank" href="album/displayimage.php?album=random&cat=0&pos=-%d"> <img src="%s" border="0" /> </a></td>',$db->getValue('pid'),$db->getValue('foto')));
+ 	$db->Next(); 
+	echo(sprintf('<td style="padding:5px;"><a target="_blank" href="album/displayimage.php?album=random&cat=0&pos=-%d"> <img src="%s" border="0" /> </a></td>',$db->getValue('pid'),$db->getValue('foto')));
+ 	$db->Next(); 
+	echo(sprintf('<td style="padding:5px;"><a target="_blank" href="album/displayimage.php?album=random&cat=0&pos=-%d"> <img src="%s" border="0" /> </a></td>',$db->getValue('pid'),$db->getValue('foto')));
+        $db->Next();
+        echo(sprintf('<td style="padding:5px;"><a target="_blank" href="album/displayimage.php?album=random&cat=0&pos=-%d"> <img src="%s" border="0" /> </a></td>',$db->getValue('pid'),$db->getValue('foto')));
+        $db->Next();
+        echo(sprintf('<td style="padding:5px;"><a target="_blank" href="album/displayimage.php?album=random&cat=0&pos=-%d"> <img src="%s" border="0" /> </a></td>',$db->getValue('pid'),$db->getValue('foto')));
 
-	$sql = sprintf('select pid,owner_name,concat("./album/albums/",filepath,"thumb_",filename) foto from cpg14x_pictures order by rand() limit 10
-');
-	$db->Query($sql);
-    echo ('<tr>');
- 	$db->Next(); 
-	echo(sprintf('<td width=100px><a target="_blank" href="album/displayimage.php?album=random&cat=0&pos=-%d"> <img src="%s" border="0" /> </a><br/>%s</td>',$db->getValue('pid'),$db->getValue('foto'),$db->getValue('owner_name')));
- 	$db->Next(); 
-	echo(sprintf('<td width=100px><a target="_blank" href="album/displayimage.php?album=random&cat=0&pos=-%d"> <img src="%s" border="0" /> </a><br/>%s</td>',$db->getValue('pid'),$db->getValue('foto'),$db->getValue('owner_name')));
- 	$db->Next(); 
-	echo(sprintf('<td width=100px><a target="_blank" href="album/displayimage.php?album=random&cat=0&pos=-%d"> <img src="%s" border="0" /> </a><br/>%s</td>',$db->getValue('pid'),$db->getValue('foto'),$db->getValue('owner_name')));
- 	$db->Next(); 
-	echo(sprintf('<td width=100px><a target="_blank" href="album/displayimage.php?album=random&cat=0&pos=-%d"> <img src="%s" border="0" /> </a><br/>%s</td>',$db->getValue('pid'),$db->getValue('foto'),$db->getValue('owner_name')));
- 	$db->Next(); 
-	echo(sprintf('<td width=100px><a target="_blank" href="album/displayimage.php?album=random&cat=0&pos=-%d"> <img src="%s" border="0" /> </a><br/>%s</td>',$db->getValue('pid'),$db->getValue('foto'),$db->getValue('owner_name')));
-	echo("</tr>\n");
 
-    echo ('<tr>');
+    echo("</tr>");
+    echo('<tr style="margin-top:10px;border:0;">');
+
  	$db->Next(); 
-	echo(sprintf('<td width=100px><a target="_blank" href="album/displayimage.php?album=random&cat=0&pos=-%d"> <img src="%s" border="0" /> </a><br/>%s</td>',$db->getValue('pid'),$db->getValue('foto'),$db->getValue('owner_name')));
+	echo(sprintf('<td style="padding:5px;"><a target="_blank" href="album/displayimage.php?album=random&cat=0&pos=-%d"> <img src="%s" border="0" /> </a></td>',$db->getValue('pid'),$db->getValue('foto')));
  	$db->Next(); 
-	echo(sprintf('<td width=100px><a target="_blank" href="album/displayimage.php?album=random&cat=0&pos=-%d"> <img src="%s" border="0" /> </a><br/>%s</td>',$db->getValue('pid'),$db->getValue('foto'),$db->getValue('owner_name')));
+	echo(sprintf('<td style="padding:5px;"><a target="_blank" href="album/displayimage.php?album=random&cat=0&pos=-%d"> <img src="%s" border="0" /> </a></td>',$db->getValue('pid'),$db->getValue('foto')));
  	$db->Next(); 
-	echo(sprintf('<td width=100px><a target="_blank" href="album/displayimage.php?album=random&cat=0&pos=-%d"> <img src="%s" border="0" /> </a><br/>%s</td>',$db->getValue('pid'),$db->getValue('foto'),$db->getValue('owner_name')));
+	echo(sprintf('<td style="padding:5px;"><a target="_blank" href="album/displayimage.php?album=random&cat=0&pos=-%d"> <img src="%s" border="0" /> </a></td>',$db->getValue('pid'),$db->getValue('foto')));
  	$db->Next(); 
-	echo(sprintf('<td width=100px><a target="_blank" href="album/displayimage.php?album=random&cat=0&pos=-%d"> <img src="%s" border="0" /> </a><br/>%s</td>',$db->getValue('pid'),$db->getValue('foto'),$db->getValue('owner_name')));
- 	$db->Next(); 
-	echo(sprintf('<td width=100px><a target="_blank" href="album/displayimage.php?album=random&cat=0&pos=-%d"> <img src="%s" border="0" /> </a><br/>%s</td>',$db->getValue('pid'),$db->getValue('foto'),$db->getValue('owner_name')));
-	echo("</tr>\n");
+	echo(sprintf('<td style="padding:5px;"><a target="_blank" href="album/displayimage.php?album=random&cat=0&pos=-%d"> <img src="%s" border="0" /> </a></td>',$db->getValue('pid'),$db->getValue('foto')));
+        $db->Next();
+        echo(sprintf('<td style="padding:5px;"><a target="_blank" href="album/displayimage.php?album=random&cat=0&pos=-%d"> <img src="%s" border="0" /> </a></td>',$db->getValue('pid'),$db->getValue('foto')));
+        $db->Next();
+        echo(sprintf('<td style="padding:5px;"><a target="_blank" href="album/displayimage.php?album=random&cat=0&pos=-%d"> <img src="%s" border="0" /> </a></td>',$db->getValue('pid'),$db->getValue('foto')));
+    echo("</tr>");
 
 ?>
-  <tr> <td colspan=6> <a href="./album" target="_blank">Clique aqui e publique as fotos do seu opala em nossa galeria</a> </td></tr>	
   </table>
-</div></div>
+</div>
+</div>

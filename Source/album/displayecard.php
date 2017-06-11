@@ -2,67 +2,124 @@
 /*************************
   Coppermine Photo Gallery
   ************************
-  Copyright (c) 2003-2008 Dev Team
-  v1.1 originally written by Gregory DEMAR
+  Copyright (c) 2003-2016 Coppermine Dev Team
+  v1.0 originally written by Gregory Demar
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License version 3
   as published by the Free Software Foundation.
 
   ********************************************
-  Coppermine version: 1.4.18
-  $HeadURL: https://coppermine.svn.sourceforge.net/svnroot/coppermine/trunk/cpg1.4.x/displayecard.php $
-  $Revision: 4380 $
-  $Author: gaugau $
-  $Date: 2008-04-12 12:00:19 +0200 (Sa, 12 Apr 2008) $
+  Coppermine version: 1.5.42
+  $HeadURL: https://svn.code.sf.net/p/coppermine/code/trunk/cpg1.5.x/displayecard.php $
+  $Revision: 8846 $
 **********************************************/
 
 define('IN_COPPERMINE', true);
-define('DISPLAYECARD_PHP', true);
+define('DB_ECARD_PHP', true);
+define('ECARDS_PHP', true);
+define('SMILIES_PHP', true);
 
 require('include/init.inc.php');
 require('include/smilies.inc.php');
 
-if (!isset($_GET['data'])) cpg_die(CRITICAL_ERROR, $lang_errors['param_missing'], __FILE__, __LINE__);
+if (!$superCage->get->keyExists('data')) {
+    cpg_die(CRITICAL_ERROR, $lang_errors['param_missing'], __FILE__, __LINE__);
+}
 
-$data = array();
-$data = @unserialize(@base64_decode($_GET['data']));
+/**
+ * Clean up GPC and other Globals here
+ */
+$tmpData['data'] = @unserialize(@base64_decode($superCage->get->getRaw('data')));
+
+if (!is_array($tmpData['data'])) {
+    $CLEAN['data'] = mysql_real_escape_string($tmpData['data']);
+} else {
+    // Remove HTML tags as we can't trust what we receive
+    foreach ($tmpData['data'] as $key => $value) {
+        $CLEAN['data'][$key] = $value;
+        if ($key == 'pid') {
+            $CLEAN['data'][$key] = (int) $CLEAN['data'][$key];
+        } else {
+            $CLEAN['data'][$key] = htmlspecialchars($CLEAN['data'][$key]);
+        }
+    }
+}
 
 // attempt to obtain full link from db if ecard logging enabled and min 12 chars of data is provided and only 1 match
-if ((!is_array($data)) && $CONFIG['log_ecards'] && (strlen($_GET['data']) > 12)) {
-        $result = cpg_db_query("SELECT link FROM {$CONFIG['TABLE_ECARDS']} WHERE link LIKE '{$_GET['data']}%'");
-        if (mysql_num_rows($result) === 1) {
-                $row = mysql_fetch_assoc($result);
-                $data = @unserialize(@base64_decode($row['link']));
-        }
+if ((!is_array($CLEAN['data'])) && $CONFIG['log_ecards'] && (strlen($CLEAN['data']) > 12)) {
+
+    $result = cpg_db_query("SELECT link FROM {$CONFIG['TABLE_ECARDS']} WHERE link LIKE '{$CLEAN['data']}%'");
+
+    if (mysql_num_rows($result) === 1) {
+        $row = mysql_fetch_assoc($result);
+        $CLEAN['data']= @unserialize(@base64_decode($row['link']));
+    }
+
+    mysql_free_result($result);
 }
 
-if (is_array($data)) {
+if (is_array($CLEAN['data'])) {
 
-// Remove HTML tags as we can't trust what we receive
-foreach($data as $key => $value) $data[$key] = strtr($value, $HTML_SUBST);
-// Load template parameters
-$params = array('{LANG_DIR}' => $lang_text_dir,
-    '{TITLE}' => sprintf($lang_ecard_php['ecard_title'], $data['sn']),
-    '{CHARSET}' => $CONFIG['charset'] == 'language file' ? $lang_charset : $CONFIG['charset'],
-    '{VIEW_ECARD_TGT}' => '',
-    '{VIEW_ECARD_LNK}' => '',
-    '{PIC_URL}' => $data['p'],
-    '{URL_PREFIX}' => '',
-    '{GREETINGS}' => $data['g'],
-    '{MESSAGE}' => bb_decode(process_smilies($data['m'])),
-    '{SENDER_EMAIL}' => $data['se'],
-    '{SENDER_NAME}' => $data['sn'],
-    '{VIEW_MORE_TGT}' => $CONFIG['ecards_more_pic_target'],
-    '{VIEW_MORE_LNK}' => $lang_ecard_php['view_more_pics'],
-    '{PID}' => $data['pid'],
-    '{PIC_TITLE}' => $data['pt'],
-	'{PIC_CAPTION}' => $data['pc'],
+    // Remove HTML tags as we can't trust what we receive
+    //foreach($CLEAN['data'] as $key => $value) $CLEAN['data'][$key] = html_entity_decode(strtr($value, $HTML_SUBST));
+
+    // get the dimensions
+    $result = cpg_db_query("SELECT pwidth, pheight FROM {$CONFIG['TABLE_PICTURES']} WHERE pid = '{$CLEAN['data']['pid']}'");
+
+    if (!mysql_num_rows($result)) {
+        cpg_die(ERROR, $lang_errors['non_exist_ap'], __FILE__, __LINE__);
+    }
+
+    $row = mysql_fetch_assoc($result);
+    mysql_free_result($result);
+
+    if ($row['pwidth'] != 0 && $row['pheight'] != 0) {
+        $image_size = compute_img_size($row['pwidth'], $row['pheight'], $CONFIG['picture_width'], 'normal');
+        $dimensions = $image_size['geom'];
+    } else {
+        $dimensions = '';
+    }
+
+    if (is_flash($CLEAN['data']['p'])) {
+
+        $pic_markup = <<<EOT
+        <object id="SWFlash" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" type="application/x-shockwave-flash" {$dimensions}>
+            <param name="autostart" value="true" />
+            <param name="src" value="{$CLEAN['data']['p']}" />
+        </object>
+EOT;
+
+    } else {
+        $pic_markup = '<img src="'.$CLEAN['data']['p'].'" '.$dimensions.' alt="" vspace="8" border="0" class="image" />';
+    }
+
+    // Load template parameters
+    $params = array(
+        '{LANG_DIR}'       => $lang_text_dir,
+        '{TITLE}'          => sprintf($lang_ecard_php['ecard_title'], $CLEAN['data']['sn']),
+        '{CHARSET}'        => $CONFIG['charset'] == 'language file' ? $lang_charset : $CONFIG['charset'],
+        '{VIEW_ECARD_TGT}' => '',
+        '{VIEW_ECARD_LNK}' => '',
+        '{PIC_URL}'        => $CLEAN['data']['p'],
+        '{URL_PREFIX}'     => '',
+        '{GREETINGS}'      => $CLEAN['data']['g'],
+        '{MESSAGE}'        => bb_decode(process_smilies($CLEAN['data']['m'])),
+        '{SENDER_EMAIL}'   => $CLEAN['data']['se'],
+        '{SENDER_NAME}'    => $CLEAN['data']['sn'],
+        '{VIEW_MORE_TGT}'  => $CONFIG['ecards_more_pic_target'],
+        '{VIEW_MORE_LNK}'  => $lang_ecard_php['view_more_pics'],
+        '{PID}'            => $CLEAN['data']['pid'],
+        '{PIC_TITLE}'      => $CLEAN['data']['pt'],
+        '{PIC_CAPTION}'    => bb_decode($CLEAN['data']['pc']),
+        '{PIC_MARKUP}'     => $pic_markup,
     );
-// Parse template
-echo template_eval($template_ecard, $params);
+
+    // Parse template
+    echo template_eval($template_ecard, $params);
 
 } else {
-        cpg_die(CRITICAL_ERROR, $lang_displayecard_php['invalid_data'], __FILE__, __LINE__);
+    cpg_die(CRITICAL_ERROR, $lang_db_ecard_php['invalid_data'], __FILE__, __LINE__);
 }
+
 ?>

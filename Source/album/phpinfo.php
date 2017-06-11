@@ -2,19 +2,17 @@
 /*************************
   Coppermine Photo Gallery
   ************************
-  Copyright (c) 2003-2008 Dev Team
-  v1.1 originally written by Gregory DEMAR
+  Copyright (c) 2003-2016 Coppermine Dev Team
+  v1.0 originally written by Gregory Demar
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License version 3
   as published by the Free Software Foundation.
-  
+
   ********************************************
-  Coppermine version: 1.4.18
-  $HeadURL: https://coppermine.svn.sourceforge.net/svnroot/coppermine/trunk/cpg1.4.x/phpinfo.php $
-  $Revision: 4380 $
-  $Author: gaugau $
-  $Date: 2008-04-12 12:00:19 +0200 (Sa, 12 Apr 2008) $
+  Coppermine version: 1.5.42
+  $HeadURL: https://svn.code.sf.net/p/coppermine/code/trunk/cpg1.5.x/phpinfo.php $
+  $Revision: 8846 $
 **********************************************/
 
 error_reporting (E_ALL ^ E_NOTICE);
@@ -24,24 +22,30 @@ require('include/init.inc.php');
 
 $CONFIG['debug_mode']=0;
 
-if (!GALLERY_ADMIN_MODE) cpg_die(ERROR, $lang_errors['access_denied']);
+if (!GALLERY_ADMIN_MODE) {
+    cpg_die(ERROR, $lang_errors['access_denied']);
+}
 
 pageheader($lang_cpg_debug_output['phpinfo']);
 
 ob_start();
 phpinfo();
-$string = ob_get_contents();
-$string = strchr($string, '</style>');
-$string = str_replace('</style>','',$string);
-$string = str_replace('class="p"','',$string);
-$string = str_replace('class="e"','class="tableb"',$string);
-$string = str_replace('class="v"','class="tablef"',$string);
-$string = str_replace('class="h"','class="tableh2"',$string);
-$string = str_replace('class="center"','',$string);
-ob_end_clean();
+preg_match('#<body>(.*)</body>#s', ob_get_clean(), $matches);
+$string = $matches[1];
 
-print '<div align="left" style="overflow:hidden;width:800px;text-align:left;">';
-starttable('100%', $lang_phpinfo_php['php_info'], 1);
+$string = str_replace(' class="p"','',$string);
+$string = str_replace(' class="e"','',$string);
+$string = str_replace(' class="v"','',$string);
+$string = str_replace(' class="h"',' class="tableh2"',$string);
+$string = str_replace(' class="center"','',$string);
+$string = str_replace(' width="600"','',$string);
+$string = str_replace(' cellpadding="3"','',$string);
+$string = str_replace('<table border="0"','<table',$string);
+$string = str_replace('<table>','<table border="0" cellspacing="0" cellpadding="0" class="cpg_zebra" style="table-layout:fixed;width:100%">',$string);
+$string = str_replace('<td>','<td style="text-align:left;vertical-align:top">',$string);
+
+print '<div align="left" style="overflow:hidden;width:100%;text-align:left;">';
+starttable('100%', cpg_fetch_icon('phpinfo', 2) . $lang_phpinfo_php['php_info'], 1);
 print '<tr><td class="tableb">';
 print $lang_phpinfo_php['explanation'];
 print '<br />';
@@ -50,12 +54,9 @@ print '</td></tr>';
 endtable();
 print '<br />';
 
-
 print $string;
-print "</div>\n";
-
+print '</div>' . $LINEBREAK;
 
 pagefooter();
-ob_end_flush();
 
 ?>

@@ -2,44 +2,48 @@
 /*************************
   Coppermine Photo Gallery
   ************************
-  Copyright (c) 2003-2008 Dev Team
-  v1.1 originally written by Gregory DEMAR
+  Copyright (c) 2003-2016 Coppermine Dev Team
+  v1.0 originally written by Gregory Demar
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License version 3
   as published by the Free Software Foundation.
-  
+
   ********************************************
-  Coppermine version: 1.4.18
-  $HeadURL: https://coppermine.svn.sourceforge.net/svnroot/coppermine/trunk/cpg1.4.x/albmgr.php $
-  $Revision: 4380 $
-  $Author: gaugau $
-  $Date: 2008-04-12 12:00:19 +0200 (Sa, 12 Apr 2008) $
+  Coppermine version: 1.5.42
+  $HeadURL: https://svn.code.sf.net/p/coppermine/code/trunk/cpg1.5.x/albmgr.php $
+  $Revision: 8846 $
 **********************************************/
 
-/**
-* Coppermine Photo Gallery 1.4.14 albmgr.php
-*
-* This file is the which allows creation of new Albumbs and editing the names of albums,
-* this is not the file which allows you to set album properties,
-* also see documentation for this file's {@relativelink ../_albmgr.php.php Free Standing Code}
-*
-* @copyright  2002-2007 Gregory DEMAR, Coppermine Dev Team
-* @license http://www.gnu.org/licenses/gpl.html GNU General Public License V3
-* @package Coppermine
-* @version $Id: albmgr.php 4380 2008-04-12 10:00:19Z gaugau $
-*/
+// TODO: title tags contain hardcoded English instead of lang vars.
 
-/**
-* @ignore
-*/
 define('IN_COPPERMINE', true);
-
 define('ALBMGR_PHP', true);
-
 require('include/init.inc.php');
 
-if (!(GALLERY_ADMIN_MODE || USER_ADMIN_MODE)) cpg_die(ERROR, $lang_errors['access_denied'], __FILE__, __LINE__);
+set_js_var('lang_edit', $lang_common['edit']);
+js_include('js/jquery.sort.js');
+js_include('js/albmgr.js');
+
+if (!(GALLERY_ADMIN_MODE || USER_ADMIN_MODE)) {
+    cpg_die(ERROR, $lang_errors['access_denied'], __FILE__, __LINE__);
+}
+
+$icon_array = array();
+$icon_array['ok']         = cpg_fetch_icon('ok', 1);
+$icon_array['cancel']     = cpg_fetch_icon('cancel', 1);
+$icon_array['up']         = cpg_fetch_icon('up', 0);
+$icon_array['upup']       = cpg_fetch_icon('upup', 0);
+$icon_array['down']       = cpg_fetch_icon('down', 0);
+$icon_array['downdown']   = cpg_fetch_icon('downdown', 0);
+$icon_array['new']        = cpg_fetch_icon('add', 1);
+$icon_array['delete']     = cpg_fetch_icon('delete', 0);
+$icon_array['edit']       = cpg_fetch_icon('edit', 1);
+$icon_array['modifyalb']  = cpg_fetch_icon('modifyalb', 1);
+$icon_array['edit_files'] = cpg_fetch_icon('edit', 1);
+$icon_array['thumbnail']  = cpg_fetch_icon('thumbnails', 1);
+$icon_array['blank']      = cpg_fetch_icon('blank', 1);
+
 
 /**
  * alb_get_subcat_data()
@@ -49,392 +53,243 @@ if (!(GALLERY_ADMIN_MODE || USER_ADMIN_MODE)) cpg_die(ERROR, $lang_errors['acces
  **/
 function alb_get_subcat_data($parent, $ident = '')
 {
-    global $CONFIG, $CAT_LIST;
+    global $CONFIG, $CAT_LIST, $USER_DATA;
+
+    // select cats where the users can change the albums
+    foreach ($USER_DATA['groups'] as $group) {
+        $groups .= "group_id = '$group' OR ";
+    }
+    $groups .= "0";
 
     $result = cpg_db_query("SELECT cid, name, description FROM {$CONFIG['TABLE_CATEGORIES']} WHERE parent = '$parent' AND cid != 1 ORDER BY pos");
+
     if (mysql_num_rows($result) > 0) {
         $rowset = cpg_db_fetch_rowset($result);
         foreach ($rowset as $subcat) {
-            $CAT_LIST[] = array($subcat['cid'], $ident . $subcat['name']);
+            if (!GALLERY_ADMIN_MODE) {
+                $check_group = cpg_db_query("SELECT group_id FROM {$CONFIG['TABLE_CATMAP']} WHERE ($groups) AND cid = ".$subcat['cid']);
+                $check_group_rowset = cpg_db_fetch_rowset($check_group);
+                if ($check_group_rowset) {
+                    $CAT_LIST[] = array($subcat['cid'], $ident . $subcat['name']);
+                }
+            } else {
+                $CAT_LIST[] = array($subcat['cid'], $ident . $subcat['name']);
+            }
             alb_get_subcat_data($subcat['cid'], $ident . '&nbsp;&nbsp;&nbsp;');
         }
     }
 }
 
-pageheader($lang_albmgr_php['alb_mrg']);
 
-?>
+list($timestamp, $form_token) = getFormToken();
 
-<script language="javascript" type="text/javascript">
-<!--
-    function CheckAlbumForm(frm)
-    {
-        var select_len = frm.to.length;
-        var album = new Object();
-        var changed = false;
+// Set the message variables for the javascript file
+// confirm album modifications
+set_js_var('confirm_modifs', $lang_albmgr_php['confirm_modifs']);
+// confirm album delete
+set_js_var("confirm_delete", $lang_albmgr_php['confirm_delete1'] . "\n" . $lang_albmgr_php['confirm_delete2']);
+// alert when try to delete album without an album selected
+set_js_var('dontDelete', $lang_albmgr_php['select_first']);
+// confirm category change when there are unsaved changes
+set_js_var('category_change', $lang_albmgr_php['category_change']);
+// confirm page change when there are unsaved changes
+set_js_var('page_change', $lang_albmgr_php['page_change']);
+// title for upload image
+set_js_var('upload_file', $lang_main_menu['upload_pic_lnk']);
+// form token & timestamp
+set_js_var('form_token', $form_token);
+set_js_var('timestamp', $timestamp);
 
-        for (i=0; i<select_len; i++) {
-            album = new parseSelectValue(frm.to, i);
-
-            if (album.action != '0') {
-                if (album.album_nm == '') {
-                    alert('<?php echo $lang_albmgr_php['alb_need_name'] ?>');
-                    frm.to.options[i].selected = true;
-                    return false;
-                }
-                changed = true;
-            }
-        }
-
-        if (frm.delete_album.value.len !=0)
-            changed = true;
-
-        if (changed) {
-            if (confirm('<?php echo $lang_albmgr_php['confirm_modifs'] ?>')) {
-                for (i=0; i<select_len; i++) {
-                    album = new parseSelectValue(frm.to, i);
-                    if (album.action != '0') {
-                        frm.to.options[i].selected = true;
-                    }
-                }
-                return true;
-            }
-            else
-                return false;
-        }
-        else {
-            alert('<?php echo $lang_albmgr_php['no_change'] ?>');
-            return false;
+// get the category value
+if ($superCage->get->keyExists('cat')) {
+    $cat = $superCage->get->getInt('cat');
+} else {
+    $cat = 0;
+}
+if ($cat == 1) {
+    $cat = 0;
+}
+if (!GALLERY_ADMIN_MODE && USER_ADMIN_MODE) {
+    if ($cat == 0) {
+        if (USER_CAN_CREATE_PRIVATE_ALBUMS) {
+            $cat = USER_ID + FIRST_USER_CAT;
+        } else {
+            // user is only allowed to create public albums - get first category the user is allowed to create albums in
+            $result = cpg_db_query("SELECT cm.cid FROM {$CONFIG['TABLE_CATMAP']} AS cm INNER JOIN {$CONFIG['TABLE_CATEGORIES']} AS c ON cm.cid = c.cid WHERE cm.group_id in (" .  implode(",", $USER_DATA['groups']). ") ORDER BY pos LIMIT 1");
+            $cat = mysql_result($result, 0);
+            mysql_free_result($result);
         }
     }
+    // only list the albums owned by the user
+    $user_id = USER_ID;
+}
+// set the cat value
+set_js_var('category', $cat);
 
-    function page_init()
-    {
-        document.album_menu.delete_album.value = "";
-    }
--->
-</script>
+pageheader($lang_albmgr_php['title']);
+    echo <<< EOT
+        <form name="album_menu" id="cpg_form_album" method="post" action="delete.php?what=albmgr">
+            <input type="hidden" name="form_token" value="{$form_token}" />
+            <input type="hidden" name="timestamp" value="{$timestamp}" />
 
-<script language="javascript" type="text/javascript">
-<!--
-    var selectedOptIndex;
+EOT;
 
-    function Album_Select(selectedIndex)
-    {
-        selectedOptIndex = selectedIndex;
-
-        for (i=0; i<document.album_menu.to.length; i++) {
-            document.album_menu.to.options[i].selected = false;
-        }
-        document.album_menu.to.options[selectedIndex].selected = true;
-
-        var album = new Object();
-        album = new parseSelectValue(document.album_menu.to, selectedIndex);
-
-        album.deleteFrm();
-        album.changeFrm();
-    }
-
-    function Moveup_Option()
-    {
-        var to = document.album_menu.to;
-        var pos = selectedOptIndex;
-        if (pos == 0) {
-            return;
-        }
-
-        swap_option(to, pos, pos-1);
-        selected_option(to, pos-1);
-    }
-
-    function Movedown_Option()
-    {
-        var to = document.album_menu.to;
-        var pos = selectedOptIndex;
-        if (pos == to.length-1) {
-            return;
-        }
-
-        swap_option(to, pos, pos+1);
-        selected_option(to, pos+1);
-    }
-
-    function Album_Create()
-    {
-        var prev_album;
-        var to_pos, album_type, album_sort;
-        var to = document.album_menu.to;
-
-        if (to.selectedIndex == -1)
-            to_pos = to.length;
-        else
-            to_pos = to.selectedIndex;
-
-        if (to_pos > 0) {
-            prev_album = new parseSelectValue(to, to_pos-1);
-            album_sort = Number(prev_album.album_sort)+1;
-        }
-        else {
-            album_sort = 1;
-        }
-        move_list (to, to_pos);
-        make_option("<?php echo $lang_albmgr_php['new_album'] ?>", make_value('0', "<?php echo $lang_albmgr_php['new_album'] ?>", album_sort, '1'), to, to_pos);
-
-        selected_option(to, to_pos);
-    }
-
-    function Album_Delete()
-    {
-        var album = new Object();
-        var to = document.album_menu.to;
-        album = new parseSelectValue(to, selectedOptIndex);
-
-        var msg = '<?php echo $lang_albmgr_php['confirm_delete1'] ?>';
-
-        if (album.action == '1') {
-            if (confirm(msg)) {
-                to.options[selectedOptIndex] = null;
-                document.album_menu.album_nm.value='';
-            }
-            else {
-                return;
-            }
-        }
-        else {
-            msg = msg + '<?php echo $lang_albmgr_php['confirm_delete2'] ?>';
-
-            if (confirm(msg)) {
-                var album = new Object();
-                album =  new parseSelectValue(to, selectedOptIndex);
-                to.options[selectedOptIndex] = null;
-                document.album_menu.album_nm.value='';
-
-                document.album_menu.delete_album.value = document.album_menu.delete_album.value + album.album_no + ',';
-            }
-            else {
-                return;
-            }
-        }
-    }
-
-    function Album_NameChange(change_name)
-    {
-
-                try {
-                    var album = new Object();
-                    var to = document.album_menu.to;
-                    var value;
-                    var text;
-
-                    album = new parseSelectValue(to, selectedOptIndex);
-                    if (album.action == '1')
-                        action = '1';
-                    else
-                        action = '2';
-
-                    text = change_name.substring(0, 80);
-                    value = make_value(album.album_no, change_name, album.album_sort, action);
-                    make_option(text, value, to, selectedOptIndex);
-                }
-                catch(e) {
-                        alert("<?php echo $lang_albmgr_php['select_first'] ?>");
-                }
-        }
-
-    function make_option(text, value, target, index)
-    {
-        target[index] = new Option(text, value);
-    }
-
-    function move_list(target, pos)
-    {
-        var album = new Object();
-        var listlen = target.length;
-
-        for (j=listlen-1; j>pos-1; j--) {
-            album = new parseSelectValue(target, j)
-            if (album.action == '1') {
-                value = make_value(album.album_no, album.album_nm, Number(album.album_sort)+1, '1');
-            }
-            else {
-                value = make_value(album.album_no, album.album_nm, Number(album.album_sort)+1, '2');
-            }
-            text  = target.options[j].text;
-
-            make_option(text, value, target, j+1);
-        }
-    }
-
-    function _private_update_frm_element(name)
-    {
-        var frm = document.album_menu;
-        frm.album_nm.value = name;
-    }
-
-    function _private_change()
-    {
-        _private_update_frm_element(this.album_nm);
-    }
-
-    function _private_delete()
-    {
-        _private_update_frm_element('');
-    }
-
-    function parseSelectValue(select, selectedIndex)
-    {
-        var temp_nm
-        var option_value = select.options[selectedIndex].value;
-
-        this.album_no = option_value.substring(option_value.indexOf('album_no=') + 9, option_value.indexOf(','));
-        option_value = option_value.substring(option_value.indexOf(',') + 1);
-
-        temp_nm = option_value.substring(option_value.indexOf('album_nm=') + 9, option_value.indexOf('album_sort=')-1);
-        this.album_nm = temp_nm.substring(1, temp_nm.length-1);
-        option_value = option_value.substring(option_value.indexOf('album_sort='));
-
-        this.album_sort = option_value.substring(option_value.indexOf('album_sort=') + 11 ,option_value.indexOf(','));
-        option_value = option_value.substring(option_value.indexOf(',') + 1);
-
-        this.action = option_value.substring(option_value.indexOf('action=') + 7);
-
-        this.changeFrm = _private_change;
-        this.deleteFrm = _private_delete;
-
-        return this;
-    }
-
-    function selected_option(target, pos)
-    {
-        target.options[pos].selected = true;
-        Album_Select(pos);
-    }
-
-    function swap_option(target, swap_a, swap_b)
-    {
-        var album_a = new Object();
-        var album_b = new Object();
-
-        album_a = new parseSelectValue(target, swap_a);
-        album_b = new parseSelectValue(target, swap_b);
-
-        if (album_a.action == '0') album_a.action = '2';
-        if (album_b.action == '0') album_b.action = '2';
-
-        var temp_option = new Option(target.options[swap_a].text, make_value(album_a.album_no, album_a.album_nm,album_b.album_sort,album_a.action));
-        target[swap_a] = new Option(target.options[swap_b].text, make_value(album_b.album_no, album_b.album_nm,album_a.album_sort,album_b.action));
-        target[swap_b] = temp_option;
-    }
-
-    function make_value(album_no, album_nm, album_sort, action)
-    {
-        return "album_no=" + album_no + ",album_nm='" + album_nm + "',album_sort=" + album_sort + ",action=" + action;
-    }
--->
-</script>
-
-<?php starttable("100%", $lang_albmgr_php['alb_mrg'].'&nbsp;'.cpg_display_help('f=index.htm&as=albmgr&ae=albmgr_end&top=1', '600', '400'), 1);
-?>
-<tr>
-<?php
-$cat = isset($_GET['cat']) ? (int)($_GET['cat']) : 0;
-if ($cat == 1) $cat = 0;
+starttable('100%', cpg_fetch_icon('alb_mgr', 2).$lang_albmgr_php['title'].'&nbsp;'.cpg_display_help('f=albums.htm&amp;as=albmgr&amp;ae=albmgr_end&amp;top=1', '600', '400'), 1, '');
+    echo <<< EOT
+        <tr class="noscript">
+            <td class="tableh2">
+                <noscript>
+                    {$lang_common['javascript_needed']}
+                </noscript>
+            </td>
+        </tr>
+    <tr>
+        <td>
+EOT;
 
 if (GALLERY_ADMIN_MODE) {
     $result = cpg_db_query("SELECT aid, title FROM {$CONFIG['TABLE_ALBUMS']} WHERE category = $cat ORDER BY pos ASC");
 } elseif (USER_ADMIN_MODE) {
-    $result = cpg_db_query("SELECT aid, title FROM {$CONFIG['TABLE_ALBUMS']} WHERE category = " . (USER_ID + FIRST_USER_CAT) . " ORDER BY pos ASC");
-} else cpg_die(ERROR, $lang_errors['perm_denied'], __FILE__, __LINE__);
+    // $cat and $user_id set above
+    $result = cpg_db_query("SELECT aid, title FROM {$CONFIG['TABLE_ALBUMS']} WHERE category = $cat AND owner = $user_id ORDER BY pos ASC");
+} else {
+    cpg_die(ERROR, $lang_errors['perm_denied'], __FILE__, __LINE__);
+}
+
 $rowset = cpg_db_fetch_rowset($result);
 $i = 100;
 $sort_order = '';
-if (count ($rowset) > 0) foreach ($rowset as $album) {
-    $sort_order .= $album['aid'] . '@' . ($i++) . ',';
+
+if (count($rowset) > 0) {
+    foreach ($rowset as $album) {
+        $sort_order .= $album['aid'] . '@' . ($i++) . ',';
+    }
 }
 
-?>
-        <form name="album_menu" method="post" action="delete.php?what=albmgr" onSubmit="return CheckAlbumForm(this);">
-        <input type="hidden" name="delete_album" value="" />
-        <input type="hidden" name="sort_order" value="<?php echo $sort_order ?>" />
-        <td class="tableb" valign="top" align="center">
-                <br />
-                <table width="300" border="0" cellspacing="0" cellpadding="0">
-<?php
-if (GALLERY_ADMIN_MODE) {
+if (GALLERY_ADMIN_MODE || USER_ADMIN_MODE) {
     $CAT_LIST = array();
-    $CAT_LIST[] = array(FIRST_USER_CAT + USER_ID, $lang_albmgr_php['my_gallery']);
-    $CAT_LIST[] = array(0, $lang_albmgr_php['no_category']);
+    if (USER_CAN_CREATE_PRIVATE_ALBUMS) {
+        $CAT_LIST[] = array(FIRST_USER_CAT + USER_ID, $lang_albmgr_php['my_gallery']);
+    }
+    //only add 'no category' when user is admin
+    if (GALLERY_ADMIN_MODE) {
+        $CAT_LIST[] = array(0, $lang_albmgr_php['no_category']);
+    }
     alb_get_subcat_data(0, '');
 
-    echo <<<EOT
+    echo <<< EOT
+            <table cellspacing="0" cellpadding="0" border="0" width="100%">
                 <tr>
-                        <td>
-                                <b>{$lang_albmgr_php['select_category']}</b>
-                                <select onChange="if(this.options[this.selectedIndex].value) window.location.href='{$_SERVER['PHP_SELF']}?cat='+this.options[this.selectedIndex].value;"  name="cat" class="listbox">
+                    <td class="tableh2">
+                        <strong>{$lang_albmgr_php['select_category']}</strong>
+                        &nbsp;
+                        <select name="cat" class="listbox">
+
 EOT;
-    foreach($CAT_LIST as $category) {
-        echo '                                <option value="' . $category[0] . '"' . ($cat == $category[0] ? ' selected': '') . ">" . $category[1] . "</option>\n";
+    foreach ($CAT_LIST as $category) {
+        echo '          <option value="' . $category[0] . '"' . ($cat == $category[0] ? ' selected="selected"': '') . ">" . $category[1] . '</option>' . $LINEBREAK;
     }
-    echo <<<EOT
-                                </select>
-                                <br /><br />
-                        </td>
+    echo <<< EOT
+                        </select>
+                        <input type="hidden" id="sort_order" name="sort_order" value="{$sort_order}" />
+                        <input type="hidden" id="album_order" name="album_order" value="" />
+                        <input type="hidden" name="category" value="{$cat}" />
+                    </td>
                 </tr>
+            </table>
 
 EOT;
 }
 
-?>
-                <tr>
-                        <td>
-                                <select id="to" name="to[]" size="<?php echo min(max(count ($rowset) + 3, 15), 40) ?>" multiple onChange="Album_Select(this.selectedIndex);" class="listbox" style="width: 300px">
-<?php
-$i = 100;
-$lb = '';
-if (count ($rowset) > 0) foreach ($rowset as $album) {
-    $lb .= '                                        <option value="album_no=' . $album['aid'] . ',album_nm=\'' . $album['title'] . '\',album_sort=' . ($i++) . ',action=0">' . stripslashes($album['title']) . "</option>\n";
-}
-echo $lb;
+    echo <<< EOT
+        </td>
+    </tr>
+    <tr>
+        <td class="tableb">
+            <div id="sort">
+EOT;
 
-?>
-                                </select>
-                        </td>
+if (count($rowset) > 0) {
+
+    echo '              <table id="album_sort" cellspacing="0" cellpadding="0" border="0">';
+
+    foreach ($rowset as $album) {
+        $title = stripslashes($album['title']);
+        echo <<< EOT
+                <tr id="sort-{$album['aid']}">
+                    <td class="dragHandle"></td>
+                    <td class="album_text" width="96%"><span class="albumName">{$title}</span>&nbsp;<a href="upload.php?album={$album['aid']}"><img src="images/icons/upload.png" title="{$lang_main_menu['upload_pic_lnk']}" /></a><span class="editAlbum">{$icon_array['edit']}{$lang_common['edit']}</span></td>
                 </tr>
-                <tr>
-                        <td>
-                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                                        <td><a href="javascript:Moveup_Option();"><img src="images/move_up.gif" width="26" height="21" border="0" alt="" /></a><a href="javascript:Movedown_Option();"><img src="images/move_down.gif" width="26" height="21" border="0" alt="" /></a>
-                                        </td>
-                                        <td align="center" style="background-color: #D4D0C8; width: 80px; height: 21px; border-top: 1px solid White; border-left: 1px solid White; border-right: 1px solid #808080; border-bottom: 1px solid #808080;"><a href="javascript:Album_Delete();" style="color: Black; font-weight: bold;"><?php echo $lang_albmgr_php['delete'] ?></a>
-                                        </td>
-                                        <td align="center" style="width: 1px;"><img src="images/spacer.gif" width="1" alt=""><br />
-                                        </td>
-                                        <td align="center" style="background-color: #D4D0C8; width: 80px; height: 21px; border-top: 1px solid White; border-left: 1px solid White; border-right: 1px solid #808080; border-bottom: 1px solid #808080;"><a href="javascript:Album_Create();" style="color: Black; font-weight: bold;"><?php echo $lang_albmgr_php['new'] ?></a>
-                                        </td>
-                                </tr>
-                                </table>
-                        </td>
-                </tr>
-                <tr>
-                        <td><br />
-                                <input type="text" name="album_nm" size="27" maxlength="80" class="textinput" style="width: 300px;" onChange="Album_NameChange(this.value);" onKeyUp="Album_NameChange(this.value);" />
-                                <br />
-                                <br />
-                        </td>
-                </tr>
-        </table>
+EOT;
+    }
+
+    echo '          </table>';
+}
+
+    echo <<< EOT
+            </div>
         </td>
-</tr>
-<tr>
-        <td colspan="2" align="center" class="tablef">
-        <input type="submit" class="button" value="<?php echo $lang_albmgr_php['apply_modifs'] ?>" />
+    </tr>
+    <tr>
+        <td>
+            <table class="tableb album_operate" cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                    <td id="control">
+
+EOT;
+// Only show move-buttons when admin or in user's private category.
+// Sorting is also prevented in delete.php when user doesn't have the rights.
+if (GALLERY_ADMIN_MODE || ($cat == USER_ID + FIRST_USER_CAT)) {
+
+    if (defined('THEME_HAS_PROGRESS_GRAPHICS')) {
+        $prefix = $THEME_DIR;
+    } else {
+        $prefix = '';
+    }
+
+    echo <<< EOT
+                        <button type="button" id="upup_click" name="upup_click" class="button" value="{$lang_common['move_top']}" disabled="disabled" title="{$lang_common['move_top']}">{$icon_array['upup']}</button>
+                        <button type="button" id="up_click" name="up_click" class="button" value="{$lang_common['move_up']}" disabled="disabled" title="{$lang_common['move_up']}">{$icon_array['up']}</button>
+                        <button type="button" id="down_click" name="down_click" class="button" value="{$lang_common['move_down']}" disabled="disabled" title="{$lang_common['move_down']}">{$icon_array['down']}</button>
+                        <button type="button" id="downdown_click" name="downdown_click" class="button" value="{$lang_common['move_bottom']}" disabled="disabled" title="{$lang_common['move_bottom']}">{$icon_array['downdown']}</button>
+EOT;
+
+}
+    //we still need to show buttons to add/edit albums
+    echo <<< EOT
+                        <button type="button" id="delete_album" name="delete_album" class="button" value="{$lang_albmgr_php['delete_album']}" disabled="disabled" title="{$lang_albmgr_php['delete_album']}">{$icon_array['delete']}</button>
+                        &nbsp;&nbsp;&nbsp;
+                        <button type="button" id="modify_album" name="modify_album" class="button" value="{$lang_common['album_properties']}" disabled="disabled">{$icon_array['modifyalb']}{$lang_common['album_properties']}</button>
+                        <button type="button" id="editfiles_album" name="editfiles_album" class="button" value="{$lang_common['edit_files']}" disabled="disabled">{$icon_array['edit_files']}{$lang_common['edit_files']}</button>
+                        <button type="button" id="thumbnail_album" name="thumbnail_album" class="button" value="{$lang_common['thumbnail_view']}" disabled="disabled">{$icon_array['thumbnail']}{$lang_common['thumbnail_view']}</button>
+                        &nbsp;&nbsp;&nbsp;
+                        <button type="button" id="add_new_album" name="add_new_album" class="button" value="{$lang_albmgr_php['new_album']}">{$icon_array['new']}{$lang_albmgr_php['new_album']}</button>
+                        <img id="loading" class="icon" src="{$prefix}images/loader.gif" style="margin-left: 10px; display: none;" alt="" />
+                        <input type="text" id="add-name" name="add-name" size="27" maxlength="255" class="textinput" value="" onkeypress="return Sort.disableEnterKey(event)" style="display: none;" />
+                        <button type="submit" id="addEvent" class="button" name="addEvent" value="{$lang_common['ok']}" style="display: none;">{$icon_array['ok']}{$lang_common['ok']}</button>
+                        <button type="button" id="cancelEvent" name="cancelEvent" class="button add_cancel close" value="{$lang_albmgr_php['cancel']}" style="display: none;">{$icon_array['cancel']}{$lang_albmgr_php['cancel']}</button>
+                        <input type="text" id="edit-name" name="edit-name" size="27" maxlength="255" class="textinput" value="" onkeypress="return Sort.disableEnterKey(event)" style="display: none;" />
+                        <button type="submit" id="updateEvent" class="button" name="updateEvent" value="{$lang_common['ok']}" style="display: none;">{$icon_array['ok']}{$lang_common['ok']}</button>
+                        <button type="button" id="updateCancel" name="updateCancel" class="button album_cancel close" value="{$lang_albmgr_php['cancel']}" style="display: none;">{$icon_array['cancel']}{$lang_albmgr_php['cancel']}</button>
+                    </td>
+                </tr>
+            </table>
         </td>
-        </form>
-</tr>
-<?php
+    </tr>
+
+    <tr>
+        <td class="tableb">
+            <button type="submit" class="button" name="apply" id="apply" value="{$lang_common['apply_changes']}" style="display:none;">{$icon_array['ok']}{$lang_common['apply_changes']}</button>
+            <div id="submit_reminder" class="cpg_message_warning" style="display: none;">
+                {$lang_albmgr_php['submit_reminder']}
+            </div>
+        </td>
+    </tr>
+
+EOT;
+
 endtable();
+echo '</form>';
 pagefooter();
-ob_end_flush();
 
 ?>

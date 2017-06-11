@@ -2,23 +2,25 @@
 /*************************
   Coppermine Photo Gallery
   ************************
-  Copyright (c) 2003-2008 Dev Team
-  v1.1 originally written by Gregory DEMAR
+  Copyright (c) 2003-2016 Coppermine Dev Team
+  v1.0 originally written by Gregory Demar
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License version 3
   as published by the Free Software Foundation.
-  
+
   ********************************************
-  Coppermine version: 1.4.18
-  $HeadURL: https://coppermine.svn.sourceforge.net/svnroot/coppermine/trunk/cpg1.4.x/include/debugger.inc.php $
-  $Revision: 4380 $
-  $Author: gaugau $
-  $Date: 2008-04-12 12:00:19 +0200 (Sa, 12 Apr 2008) $
+  Coppermine version: 1.5.42
+  $HeadURL: https://svn.code.sf.net/p/coppermine/code/trunk/cpg1.5.x/include/debugger.inc.php $
+  $Revision: 8846 $
 **********************************************/
 
 if (!defined('E_STRICT')) {
     define('E_STRICT', 2048); // PHP 5
+}
+
+if (!defined('E_DEPRECATED')) {
+    define('E_DEPRECATED', 8192); // PHP 5.3
 }
 
 class cpg_debugger {
@@ -94,7 +96,8 @@ class cpg_debugger {
             E_USER_ERROR      => 'CPG Error',
             E_USER_WARNING    => 'CPG Warning',
             E_USER_NOTICE     => 'CPG Notice',
-            E_STRICT          => 'Runtime Notice'
+            E_STRICT          => 'Runtime Notice',
+            E_DEPRECATED      => 'Deprecated',
         );
         // NOTE: E_ERROR, E_PARSE, E_CORE_ERROR, E_CORE_WARNING, E_COMPILE_ERROR and E_COMPILE_WARNING
         // error levels will be handled as per the error_reporting settings.
@@ -102,7 +105,7 @@ class cpg_debugger {
             if (USER_IS_ADMIN) {
                 $errmsg = $errortype[$errno]." $filename line $linenum: ".$errmsg;
             } else {
-                $errmsg = "A error occured while processing this page.<br />Please report the following error to the owner of this website.<br /><br /><b>$errmsg</b>";
+                $errmsg = "A error occured while processing this page.<br />Please report the following error to the owner of this website.<br /><br /><strong>$errmsg</strong>";
             }
             cpg_die(CRITICAL_ERROR, $errmsg, $filename, $linenum);
         }
@@ -123,8 +126,8 @@ function cpg_error_handler($errno, $errmsg, $filename, $linenum, $vars='') {
     global $cpgdebugger;
     $cpgdebugger->handler($errno, $errmsg, $filename, $linenum, $vars);
 }
-define('CAN_MOD_INI', !ereg('ini_set', ini_get('disable_functions')));
+define('CAN_MOD_INI', strpos(ini_get('disable_functions'), 'ini_set') === FALSE);
 
 error_reporting(E_ALL);
-$cpgdebugger =& new cpg_debugger();
+$cpgdebugger = new cpg_debugger();
 $cpgdebugger->start();

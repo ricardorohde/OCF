@@ -2,19 +2,17 @@
 /*************************
   Coppermine Photo Gallery
   ************************
-  Copyright (c) 2003-2008 Dev Team
-  v1.1 originally written by Gregory DEMAR
+  Copyright (c) 2003-2016 Coppermine Dev Team
+  v1.0 originally written by Gregory Demar
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License version 3
   as published by the Free Software Foundation.
-  
+
   ********************************************
-  Coppermine version: 1.4.18
-  $HeadURL: https://coppermine.svn.sourceforge.net/svnroot/coppermine/trunk/cpg1.4.x/getlang.php $
-  $Revision: 4380 $
-  $Author: gaugau $
-  $Date: 2008-04-12 12:00:19 +0200 (Sa, 12 Apr 2008) $
+  Coppermine version: 1.5.42
+  $HeadURL: https://svn.code.sf.net/p/coppermine/code/trunk/cpg1.5.x/getlang.php $
+  $Revision: 8846 $
 **********************************************/
 
 define('IN_COPPERMINE', true);
@@ -34,9 +32,11 @@ while ($file = readdir($dir)) {
 closedir($dir);
 asort($lang_files);
 
-if (isset($_GET['get'])) {
-    $file_index = (int)$_GET['get'];
-    if ((isset($lang_files[$file_index]))) {
+/*if (isset($_GET['get'])) {
+    $file_index = (int)$_GET['get'];*/
+if ($superCage->get->keyExists('get')) {
+    $file_index = $superCage->get->getInt('get');
+    if (isset($lang_files[$file_index])) {
         header("Content-type: application/php");
         header("Content-Disposition: attachment; filename={$lang_files[$file_index]}");
         fpassthru(fopen(LANG_DIR . '/' . $lang_files[$file_index], 'r'));
@@ -46,17 +46,17 @@ if (isset($_GET['get'])) {
 
 pageheader('Language files');
 starttable('100%', 'Language files');
-foreach($lang_files as $index => $file) {
+$folder_icon = cpg_fetch_icon('folder', 0);
+foreach ($lang_files as $index => $file) {
     echo <<<EOT
                 <tr>
                         <td class="tableb">
-                                <img src="images/folder.gif" alt="">&nbsp;<a href="{$_SERVER['PHP_SELF']}?get=$index">$file</a>
+                                {$folder_icon}&nbsp;<a href="{$CPG_PHP_SELF}?get=$index">$file</a>
                         </td>
                 </tr>
 EOT;
 }
 endtable();
 pagefooter();
-ob_end_flush();
 
 ?>

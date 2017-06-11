@@ -68,12 +68,12 @@ class box extends  rss{
       // Funcao que gera uma caixa formatada
       $itens = $this->itens ;
       $output = " ";      
-      for($i = 0; $i < 14 /*sizeof($itens)*/; $i++) {
+      for($i = 0; $i < sizeof($itens); $i++) {
          $link = $itens[$i]["#"]["link"][0]["#"] ;
          $data = date("d/m/y H:i",strtotime($itens[$i]["#"]["pubDate"][0]["#"]));
 //         $titulo = $itens[$i]["#"]["title"][0]["#"] ;         
          $titulo = $itens[$i]["#"]["title"][0]["#"];
-         $output .= "<tr><td><a target='_blank' href='$link'>($data) - $titulo</a></td></tr>";
+         $output .= "<tr><td><i><a target='_blank' href='$link'>($data) - $titulo</a></i></td></tr>";
       }
       $this->output = $output ;
       return $this->output ;

@@ -36,7 +36,7 @@ $webmaster_email = 'admin@opalaclubefranca.com.br';		# Email address to send ema
 $cookiename = 'SMFCookie103';		# Name of the cookie to set for authentication.
 
 ########## Database Info ##########
-$db_server = 'mysql04.kinghost.net';
+$db_server = 'mysql.opalaclubefranca.com.br';
 $db_name = 'opalaclubefran01';
 $db_user = 'opalaclubefran01';
 $db_passwd = 'racnela';
@@ -51,7 +51,7 @@ $sourcedir = '/home/opalaclubefranca/www/forum/Sources';		# Path to the Sources 
 
 ########## Error-Catching ##########
 # Note: You shouldn't touch these settings.
-$db_last_error = 1275478271;
+$db_last_error = 1410674112;
 
 # Make sure the paths are correct... at least try to fix them.
 if (!file_exists($boarddir) && file_exists(dirname(__FILE__) . '/agreement.txt'))

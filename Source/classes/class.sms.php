@@ -205,7 +205,7 @@ class SMS
     foreach($Reuniao as $r) {
           $rn = new Reuniao($r['id']);
           $this->setMensagemF(str_replace('#dtreuniao#',date('d/m/Y',$rn->getData()),$this->getMensagemF()));
-	 	  $this->setMensagemF(str_replace('#localproximareuniao#',substr($rn->getLocal(),0,21),$this->getMensagemF()));
+	 	  $this->setMensagemF(str_replace('#localproximareuniao#',substr($rn->getLocal(),0,30),$this->getMensagemF()));
 	      $this->setMensagemF(str_replace('#hrr#',date('H:i',$rn->getHora()),$this->getMensagemF()));
     }
  }
@@ -305,12 +305,12 @@ function StatusSMSServer() {
 		$errno=0;
 		$errstr="";
 
-		$smsfp = @fsockopen('franca.sytes.net', 80, $errno, $errstr, 15);
+		$smsfp = @fsockopen("franca.sytes.net", 3306, $errno, $errstr, 30);
 		if (!$smsfp) {
 		    return false;
 		} else {
-		    fclose($smsfp);
-		    return true;
+				fclose($smsfp);
+				return true;
 			}
 }
 
@@ -333,8 +333,9 @@ function WakeSMSServer() {
 }
 function DesligaSMSServer() {
 
-	$url =  "http://franca.sytes.net/desliga.php?senha=".md5('racnelaocf');
-
+	$url =  "http://franca.sytes.net/agendadesliga.php";
+//	$url =  "http://franca.sytes.net/desliga.php?senha=".md5('racnelaocf');
+//	echo $url;
     $ch = curl_init(); 
     curl_setopt($ch, CURLOPT_URL, $url); 
     curl_setopt($ch, CURLOPT_HEADER, TRUE); 
@@ -342,8 +343,9 @@ function DesligaSMSServer() {
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE); 
     $head = curl_exec($ch); 
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE); 
+//    echo $head.$httpCode;
     curl_close($ch);
     return;
-}
+ }
 }
 ?>

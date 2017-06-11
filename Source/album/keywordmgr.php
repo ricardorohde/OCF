@@ -2,174 +2,263 @@
 /*************************
   Coppermine Photo Gallery
   ************************
-  Copyright (c) 2003-2008 Dev Team
-  v1.1 originally written by Gregory DEMAR
+  Copyright (c) 2003-2016 Coppermine Dev Team
+  v1.0 originally written by Gregory Demar
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License version 3
   as published by the Free Software Foundation.
-  
+
   ********************************************
-  Coppermine version: 1.4.18
-  $HeadURL: https://coppermine.svn.sourceforge.net/svnroot/coppermine/trunk/cpg1.4.x/keywordmgr.php $
-  $Revision: 4380 $
-  $Author: gaugau $
-  $Date: 2008-04-12 12:00:19 +0200 (Sa, 12 Apr 2008) $
+  Coppermine version: 1.5.42
+  $HeadURL: https://svn.code.sf.net/p/coppermine/code/trunk/cpg1.5.x/keywordmgr.php $
+  $Revision: 8846 $
 **********************************************/
 
 define('IN_COPPERMINE', true);
 define('KEYWORDMGR_PHP', true);
 define('SEARCH_PHP', true);
+
 require('include/init.inc.php');
+
 //Die if not admin_mode
-if (!GALLERY_ADMIN_MODE) cpg_die(ERROR, $lang_errors['access_denied'], __FILE__, __LINE__);
+if (!GALLERY_ADMIN_MODE) {
+    cpg_die(ERROR, $lang_errors['access_denied'], __FILE__, __LINE__);
+}
+
+$icon_array['ok'] = cpg_fetch_icon('ok', 1);
+list($timestamp, $form_token) = getFormToken();
 
 pageheader($lang_keywordmgr_php['title']);
 
-starttable("100%", $lang_keywordmgr_php['title'], 3);
-echo <<<EOT
-      <tr>
-          <td class="tablef"><b>{$lang_keywordmgr_php['edit']}</b></td>
-          <td class="tablef"><b>{$lang_keywordmgr_php['delete']}</b></td>
-          <td class="tablef"><b>{$lang_keywordmgr_php['search']}</b></td>
-      </tr>
+echo '<form name="keywordForm" id="cpgform" action="keywordmgr.php?page=changeword" method="post">';
 
+starttable("100%", cpg_fetch_icon('keyword_mgr', 2) . $lang_keywordmgr_php['title'], 3);
+
+echo <<<EOT
+    <tr>
+        <td class="tablef"><strong>{$lang_common['edit']}</strong></td>
+        <td class="tablef"><strong>{$lang_common['delete']}</strong></td>
+        <td class="tablef"><strong>{$lang_keywordmgr_php['search']}</strong></td>
+    </tr>
 EOT;
 
-switch($_REQUEST['page']) {
+$page = '';  // initialize
 
-default :
+if ($superCage->get->keyExists('page')) {
+    $page = $superCage->get->getAlpha('page');
+} elseif ($superCage->post->keyExists('page')) {
+    $page = $superCage->post->getAlpha('page');
+}
+
+$keysep = $CONFIG['keyword_separator'];
+
+switch ($page) {
+
+default:
 case 'display':
 
-$result = cpg_db_query("select keywords from {$CONFIG['TABLE_PICTURES']}");
-if (!mysql_num_rows($result)) cpg_die(ERROR, $lang_errors['non_exist_ap']);
-  // Find unique keywords
-   $total_array = array();
+    $result = cpg_db_query("SELECT keywords FROM {$CONFIG['TABLE_PICTURES']}");
 
-   while (list($keywords) = mysql_fetch_row($result)) {
-       $array = explode(' ',$keywords);
+    if (!mysql_num_rows($result)) {
+        cpg_die(ERROR, $lang_errors['non_exist_ap']);
+    }
 
-       foreach($array as $word)
-       {
-         if ($word == '.' || $word == '' || $word == ' ' ) continue;
-         $orig_word = $word;
-         $single_word = addslashes($word);
-         $lowercase_word = utf_strtolower($single_word);
-         $lowercase_word = addslashes($lowercase_word);
-         $word = <<<EOT
-         <td class="tableb">
-         <input type="radio" class="radio" name="keywordEdit" value="$lowercase_word" onClick="document.keywordForm.newword.value='$single_word'" id="$lowercase_word" />
-         <label for="$lowercase_word" class="clickable_option">
-         <img src="images/edit.gif" width="16" height="16" border="0" alt="" title="{$lang_keywordmgr_php['edit']} &quot;$orig_word&quot;" /> &quot;<i>$orig_word</i>&quot;
-         </label>
-         </td>
+    $edit_icon   = cpg_fetch_icon('edit', 2);
+    $delete_icon = cpg_fetch_icon('delete', 2);
+    $search_icon = cpg_fetch_icon('search', 2);
+
+    // Find unique keywords
+    $total_array = array();
+    $lowercase_word_array = array();
+
+    $i = 0;
+
+    while (list($keywords) = mysql_fetch_row($result)) {
+
+        $array = explode($keysep, html_entity_decode($keywords));
+
+        foreach ($array as $word) {
+
+            if ($word == '.' || $word == '' || $word == ' ' || $word == $keysep ) {
+                continue;
+            }
+
+            $word_escaped    = htmlspecialchars($word);
+            $word_param      = urlencode($word);
+            $word_label      = addslashes($word_escaped);
+            $lowercase_word  = addslashes(utf_strtolower($word_escaped));
+            $confirm_delete  = sprintf($lang_keywordmgr_php['confirm_delete'], '&quot;' . $word_label . '&quot;');
+            $title           = sprintf($lang_keywordmgr_php['keyword_del'], '&quot;' . $word_escaped . '&quot;');
+            $search_link     = sprintf($lang_keywordmgr_php['keyword_test_search'], '&quot;' . $word_escaped . '&quot;');
+
+            $word = <<<EOT
+
+    <tr>
+        <td class="tableb">
+            <input type="radio" class="radio" name="keywordEdit" value="$lowercase_word" onclick="document.keywordForm.newword.value='$word_label'" id="keyword{$i}" />
+            <label for="keyword{$i}" class="clickable_option" title="{$lang_common['edit']} &quot;{$word_escaped}&quot;">
+                 $edit_icon $word_escaped
+            </label>
+        </td>
+        <td class="tableb">
+            <a href="keywordmgr.php?page=delete&amp;remove=$word_param&amp;form_token={$form_token}&amp;timestamp={$timestamp}" onclick="return confirm('$confirm_delete')" title="$title">
+                $delete_icon $word_escaped
+            </a>
+        </td>
+        <td class="tableb">
+            <a href="thumbnails.php?album=search&amp;keywords=on&amp;search=$word_param" target="_blank">
+                $search_icon $search_link
+            </a>
+        </td>
+    </tr>
 EOT;
-         $word .= '<td class="tableb"><a href="keywordmgr.php?page=delete&amp;remov='.$single_word.'" onclick="return confirm(\''.sprintf($lang_keywordmgr_php['confirm_delete'], '&quot;'.$single_word.'&quot;').'\')">';
-         $word .= '<img src="images/delete.gif" width="16" height="16" border="0" alt="" title="'.sprintf($lang_keywordmgr_php['keyword_del'],'&quot;'.$orig_word.'&quot;').'" /> '.$orig_word;
-         $word .= <<<EOT
-         </a></td>
-         <td class="tableb"><a href="thumbnails.php?album=search&amp;search=$orig_word" target="_blank">
+            if (!in_array($lowercase_word, $lowercase_word_array)) {
+                $total_array[] = $word;
+                $lowercase_word_array[] = $lowercase_word;
+            }
+
+            $i++;
+        }
+    }
+
+    sort($total_array);
+
+    echo implode("\n", $total_array);
+
+    unset($total_array);
+
+    echo <<< EOT
+
+    <tr>
+        <td colspan="5" class="tablef" align="center">
+            <input type="text" name="newword" />
+            <button type="submit" class="button" name="keyword_submit" value="{$lang_keywordmgr_php['change_keyword']}">{$icon_array['ok']}{$lang_keywordmgr_php['change_keyword']}</button>
+        </td>
+    </tr>
+
 EOT;
 
-         $word .= sprintf($lang_keywordmgr_php['keyword_test_search'], '&quot;<i>'.$orig_word.'</i>&quot;');
-         $word .= '</a></td>';
-
-           if (!in_array($word,$total_array)) $total_array[] = $word;
-       }
-   }
-
-   sort($total_array);
-
-   $output = implode("</tr>\n<tr>", $total_array);
-
-   echo <<<EOT
-<form name="keywordForm" action="keywordmgr.php?page=changeword" method="post">
-$output
-<tr><td colspan="5" class="tablef" align="center">
-   <input type="text" name="newword" />
-   <input type="submit" value="{$lang_keywordmgr_php['change_keyword']}" />
-</td></tr>
-</form>
-EOT;
-
-
-
-break;
-
+    break;
 
 case 'changeword':
+    //Check if the form token is valid
+    if(!checkFormToken()){
+        cpg_die(ERROR, $lang_errors['invalid_form_token'], __FILE__, __LINE__);
+    }
+    if ($superCage->get->keyExists('keywordEdit')) {
+        $request_keywordEdit = $superCage->get->getEscaped('keywordEdit');
+    } elseif ($superCage->post->keyExists('keywordEdit')) {
+        $request_keywordEdit = $superCage->post->getEscaped('keywordEdit');
+    }
 
-   if ($_REQUEST['keywordEdit'] && $_REQUEST['newword'])
-   {
-       $keywordEdit = addslashes($_REQUEST['keywordEdit']);
+    if ($superCage->get->keyExists('newword')) {
+        $request_newword = $superCage->get->getEscaped('newword');
+    } elseif ($superCage->post->keyExists('newword')) {
+        $request_newword = $superCage->post->getEscaped('newword');
+    }
 
-       $query = "SELECT `pid`,`keywords` FROM {$CONFIG['TABLE_PICTURES']} WHERE CONCAT(' ',`keywords`,' ') LIKE '% {$keywordEdit} %'";
-       $result = cpg_db_query($query) or die(mysql_error());
+    if ($request_keywordEdit && $request_newword) {
 
-       while (list($id,$keywords) = mysql_fetch_row($result))
-       {
-           $array_new = array();
-           $array_old = explode(" ", addslashes(trim($keywords)));
+        $keywordEdit = $request_keywordEdit;
 
-           foreach($array_old as $word)
-           {
-               // convert old to new if its the same word
-               if (utf_strtolower($word) == $keywordEdit) $word = addslashes($_REQUEST['newword']);
+        $query = "SELECT pid, keywords FROM {$CONFIG['TABLE_PICTURES']} WHERE CONCAT('$keysep', `keywords`, '$keysep') LIKE '%{$keysep}{$keywordEdit}{$keysep}%'";
 
-               // rebuild array to reprocess it
-               $array_new[] = $word;
-           }
+        $result = cpg_db_query($query);
 
-           $keywords = implode(" ", $array_new);
-           $newquerys[] = "UPDATE {$CONFIG['TABLE_PICTURES']} SET `keywords` = '$keywords' WHERE `pid` = '$id'";
-       }
-   }
-   $newquerys[] = "UPDATE {$CONFIG['TABLE_PICTURES']} SET `keywords` = TRIM(REPLACE(`keywords`,'  ',' '))";
+        while (list($id, $keywords) = mysql_fetch_row($result)) {
 
-   foreach ($newquerys as $query) { $result = cpg_db_query($query) or die($query."<br />".mysql_error()); }
+            $array_new = array();
 
-   header("Location: keywordmgr.php?page=display");
+            $array_old = explode($keysep, trim(html_entity_decode($keywords)));
 
-break;
+            foreach ($array_old as $word) {
+
+                // convert old to new if it's the same word
+                if (utf_strtolower(Inspekt::getEscaped($word)) == utf_strtolower($keywordEdit)) {
+                    $word = html_entity_decode($request_newword);
+                } elseif (utf_strtolower(addslashes(Inspekt::getEscaped($word))) == utf_strtolower($keywordEdit)) { // needed to detect previously added keywords with spare slashes
+                    $word = html_entity_decode($request_newword);
+                }
+
+                // rebuild array to reprocess it
+                $array_new[] = Inspekt::getEscaped(trim($word));
+            }
+
+            $keywords = implode($keysep, $array_new);
+
+            $newquerys[] = "UPDATE {$CONFIG['TABLE_PICTURES']} SET keywords = '$keywords' WHERE pid = $id";
+        }
+    }
+
+    $newquerys[] = "UPDATE {$CONFIG['TABLE_PICTURES']} SET keywords = TRIM(REPLACE(keywords, '{$keysep}{$keysep}', '{$keysep}'))";
+    $newquerys[] = "UPDATE {$CONFIG['TABLE_PICTURES']} SET keywords = '' WHERE keywords = '{$keysep}'";
+
+    foreach ($newquerys as $query) {
+        $result = cpg_db_query($query);
+    }
+
+    header("Location: keywordmgr.php?page=display");
+
+    break;
 
 case 'delete':
+    //Check if the form token is valid
+    if(!checkFormToken()){
+        cpg_die(ERROR, $lang_errors['invalid_form_token'], __FILE__, __LINE__);
+    }
+    if ($superCage->get->keyExists('remove')) {
+        $remove = $superCage->get->getEscaped('remove');
+    } elseif ($superCage->post->keyExists('remove')) {
+        $remove = $superCage->post->getEscaped('remove');
+    }
 
-       $keywordEdit = addslashes($_REQUEST['remov']);
+    $query = "SELECT pid, keywords FROM {$CONFIG['TABLE_PICTURES']} WHERE CONCAT('$keysep', keywords, '$keysep') LIKE '%{$keysep}{$remove}{$keysep}%'";
 
-       $query = "SELECT `pid`,`keywords` FROM {$CONFIG['TABLE_PICTURES']} WHERE CONCAT(' ',`keywords`,' ') LIKE '% {$keywordEdit} %'";
-       $result = cpg_db_query($query) or die(mysql_error());
+    $result = cpg_db_query($query);
 
-       while (list($id,$keywords) = mysql_fetch_row($result))
-       {
-           $array_new = array();
-           $array_old = explode(" ", addslashes(trim($keywords)));
+    while (list($id, $keywords) = mysql_fetch_row($result)) {
 
-           foreach($array_old as $word)
-           {
-               // convert old to new if its the same word
-               if (utf_strtolower($word) == $keywordEdit) $word = '';
+        $array_new = array();
+        $array_old = explode($keysep, trim(html_entity_decode($keywords)));
 
-               // rebuild array to reprocess it
-               $array_new[] = $word;
-           }
+        foreach ($array_old as $word) {
 
-           $keywords = implode(" ", $array_new);
-           $newquerys[] = "UPDATE {$CONFIG['TABLE_PICTURES']} SET `keywords` = '$keywords' WHERE `pid` = '$id'";
-       }
+            // convert old to new if it's the same word
+            if (utf_strtolower(Inspekt::getEscaped($word)) == utf_strtolower($remove)) {
+                $word = '';
+            }
 
-   $newquerys[] = "UPDATE {$CONFIG['TABLE_PICTURES']} SET `keywords` = TRIM(REPLACE(`keywords`,'  ',' '))";
+            // rebuild array to reprocess it
+            $array_new[] = Inspekt::getEscaped(trim($word));
+        }
 
-   foreach ($newquerys as $query) { $result = cpg_db_query($query) or die($query."<br />".mysql_error()); }
+        $keywords = implode($keysep, $array_new);
 
-   header("Location: ?page=display");
+        $newquerys[] = "UPDATE {$CONFIG['TABLE_PICTURES']} SET keywords = '$keywords' WHERE pid = $id";
+    }
 
-break;
+    $newquerys[] = "UPDATE {$CONFIG['TABLE_PICTURES']} SET keywords = TRIM(REPLACE(keywords, '{$keysep}{$keysep}', '{$keysep}'))";
+    $newquerys[] = "UPDATE {$CONFIG['TABLE_PICTURES']} SET keywords = '' WHERE keywords = '{$keysep}'";
 
+    foreach ($newquerys as $query) {
+        $result = cpg_db_query($query);
+    }
+
+    header("Location: keywordmgr.php?page=display");
+
+    break;
 }
+
 endtable();
+
+echo "<input type=\"hidden\" name=\"form_token\" value=\"{$form_token}\" />
+<input type=\"hidden\" name=\"timestamp\" value=\"{$timestamp}\" /></form>";
+
 if ($CONFIG['clickable_keyword_search'] != 0) {
     include('include/keyword.inc.php');
 }
+
 pagefooter();
-ob_end_flush();
+
 ?>

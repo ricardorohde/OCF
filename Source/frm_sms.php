@@ -35,7 +35,7 @@ if (isset($_POST['enviar'])) {
 </select> 
 <input type="checkbox" value="S" tabindex="2" name="associados">Associados</input>
 <input type="checkbox" value="S" tabindex="3" name="naoassociados">Não Associados</input>
-<br/><br/>Enviar somente p/ o Número (DDD+Numero)(Ex.1681234567): <input size="20" tabindex="5" name="numero">
+<br/><br/>Enviar somente p/ o Número (DDD+Numero)(Ex.1681234567): <input size="20" tabindex="5" name="numero" style="border:1px;border-color:#c4e8ca;border-style:solid;">
 </div>
 <br/><br/><br/>
 <div>

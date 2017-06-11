@@ -49,7 +49,8 @@ class Usuario
 	var $RecMail          = "";
 	var $Aprovado         = "N";
 	var $DataAprovacao    = "00/00/0000";
-
+	var $Existe           = "N";
+	
     /**#@-*/
     
 
@@ -60,70 +61,73 @@ class Usuario
      */
  function Usuario($userid) {
    
-   $db_user = new BD();
-   
-   $sql = sprintf("select
-			   username,
-			   nome,
-			   endereco,
-			   numero,
-			   cidade,
-			   estado,
-			   cep,
-			   ddd,
-			   fone,
-			   dddcel,
-			   celular,
-			   email,
-			   datanasc,
-			   nivel,
-			   dtcadastro,
-			   flpublica,
-			   flconfirma,
-			   possuiopala,
-			   descricao,
-			   anopala,
-			   recmail,
-			   aprovado,
-			   dtaprovacao
-			   from
-               cad_usuario
-               where userid = %d",$userid);
-
-    $db_user->Query($sql);
-	
-    $db_user->Next();
-
-    $this->Username         = $db_user->getValue('username');
-    $this->Nome             = $db_user->getValue('nome');
-    $this->Endereco         = $db_user->getValue('endereco');
-    $this->Numero           = $db_user->getValue('numero');
-    $this->Cidade           = $db_user->getValue('cidade');
-    $this->Estado           = $db_user->getValue('estado');
-    $this->Cep              = $db_user->getValue('cep');
-    $this->DDD              = $db_user->getValue('ddd');
-    $this->Fone             = $db_user->getValue('fone');
-    $this->DDDCel           = $db_user->getValue('dddcel');
-    $this->Celular          = $db_user->getValue('celular');
-    $this->EMail            = $db_user->getValue('email');
-    $this->DataNasc         = $db_user->getValue('datanasc');
-	$this->Nivel	 		= $db_user->getValue('nivel');
-	$this->Userid	        = $userid;
-	$this->Publica		    = $db_user->getValue('flpublica');
-	$this->Confirma	        = $db_user->getValue('flconfirma');
-	$this->DtCadastro       = date("d/m/Y",strtotime($db_user->getValue('dtcadastro')));
-	$this->HrCadastro       = date("H:i:s",strtotime($db_user->getValue('dtcadastro')));
-	$this->PossuiOpala      = $db_user->getValue('possuiopala');
-	$this->Descricao        = $db_user->getValue('descricao');
-	$this->AnoOpala         = $db_user->getValue('anopala');
-	$this->RecMail          = $db_user->getValue('recmail');
-	$this->Aprovado         = $db_user->getValue('aprovado');
-	$this->DataAprovacao    = $db_user->getValue('dtaprovacao');
-
-    $db_user->Close();
-
+  if ($userid == 0) {
+  		$this->Existe = "N";
+  }	
+  else {
+		   $db_user = new BD();
+		   
+		   $sql = sprintf("select
+					   username,
+					   nome,
+					   endereco,
+					   numero,
+					   cidade,
+					   estado,
+					   cep,
+					   ddd,
+					   fone,
+					   dddcel,
+					   celular,
+					   email,
+					   datanasc,
+					   nivel,
+					   dtcadastro,
+					   flpublica,
+					   flconfirma,
+					   possuiopala,
+					   descricao,
+					   anopala,
+					   recmail,
+					   aprovado,
+					   dtaprovacao
+					   from
+		               cad_usuario
+		               where userid = %d",$userid);
+		
+		    $db_user->Query($sql);
+			
+		    $db_user->Next();
+		
+		    $this->Username         = $db_user->getValue('username');
+		    $this->Nome             = $db_user->getValue('nome');
+		    $this->Endereco         = $db_user->getValue('endereco');
+		    $this->Numero           = $db_user->getValue('numero');
+		    $this->Cidade           = $db_user->getValue('cidade');
+		    $this->Estado           = $db_user->getValue('estado');
+		    $this->Cep              = $db_user->getValue('cep');
+		    $this->DDD              = $db_user->getValue('ddd');
+		    $this->Fone             = $db_user->getValue('fone');
+		    $this->DDDCel           = $db_user->getValue('dddcel');
+		    $this->Celular          = $db_user->getValue('celular');
+		    $this->EMail            = $db_user->getValue('email');
+		    $this->DataNasc         = $db_user->getValue('datanasc');
+			$this->Nivel	 		= $db_user->getValue('nivel');
+			$this->Userid	        = $userid;
+			$this->Publica		    = $db_user->getValue('flpublica');
+			$this->Confirma	        = $db_user->getValue('flconfirma');
+			$this->DtCadastro       = date("d/m/Y",strtotime($db_user->getValue('dtcadastro')));
+			$this->HrCadastro       = date("H:i:s",strtotime($db_user->getValue('dtcadastro')));
+			$this->PossuiOpala      = $db_user->getValue('possuiopala');
+			$this->Descricao        = $db_user->getValue('descricao');
+			$this->AnoOpala         = $db_user->getValue('anopala');
+			$this->RecMail          = $db_user->getValue('recmail');
+			$this->Aprovado         = $db_user->getValue('aprovado');
+			$this->DataAprovacao    = $db_user->getValue('dtaprovacao');
+		
+		    $db_user->Close();
+  		}
     }
-
 	function getUsername() 		{	return $this->Username;		}
 	function getSenha() 		{	return $this->Senha;		}
 	function getNome() 			{	return ucwords(strtolower($this->Nome));			}
@@ -385,12 +389,43 @@ class Usuario
 		geoip_close($gi);
 
 		}
+function Login($pUsername, $pPassword, $pMsgLoginError) {
+
+   $Status_login = false;
+   $pMsgLoginError = "";
+   
+   $db_user = new BD();
+   
+   $sql = sprintf("select username,senha,userid from cad_usuario where upper(username) = '%s'",strtoupper($pUsername));
+   $db_user->Query($sql);
+
+	if ($db_user->NumRows() == 0) {
+		$Status_login = false;
+		$pMsgLoginError = "Usuário não encontrado";
+	}
+    else {
+			$db_user->Next();
+			if ($db_user->getValue('senha') == trim(md5($pPassword))) {
+				$Status_login = true;
+				$pMsgLoginError = "";
+				$this->Usuario($db_user->getValue('userid'));
+                $this->LogUsuario($this->getUserid(),'FORM','SIM');				
+			}
+			else {
+					$Status_login = false;
+					$pMsgLoginError = "Senha incorreta";
+			}
+    }
+
+	$db_user->Close();   
+
+	return $Status_login;
 }
+}	
 function RetornaEstado($pais,$regiao) {
         require_once($_SERVER['DOCUMENT_ROOT']."/geoipregionvars.php");
 
      	return $GEOIP_REGION_NAME[$pais][$regiao];
 
 	}
-
 ?>

@@ -19,11 +19,11 @@ class Reuniao
     // Variáveis Públicas
     /////////////////////////////////////////////////
 
-    private $ID               = 0;
-    private $Data             = "0000/00/00";
-    private $Hora             = "00:00";
-    private $Local            = " ";
-    private $Existe           = "N";
+    var $ID               = 0;
+    var $Data             = "";
+    var $Hora             = "";
+    var $Local            = "";
+    var $Existe           = "N";
     /**#@-*/
     
 

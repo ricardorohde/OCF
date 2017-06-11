@@ -2,19 +2,17 @@
 /*************************
   Coppermine Photo Gallery
   ************************
-  Copyright (c) 2003-2008 Dev Team
-  v1.1 originally written by Gregory DEMAR
+  Copyright (c) 2003-2016 Coppermine Dev Team
+  v1.0 originally written by Gregory Demar
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License version 3
   as published by the Free Software Foundation.
-  
+
   ********************************************
-  Coppermine version: 1.4.18
-  $HeadURL: https://coppermine.svn.sourceforge.net/svnroot/coppermine/trunk/cpg1.4.x/include/sql_parse.php $
-  $Revision: 4380 $
-  $Author: gaugau $
-  $Date: 2008-04-12 12:00:19 +0200 (Sa, 12 Apr 2008) $
+  Coppermine version: 1.5.42
+  $HeadURL: https://svn.code.sf.net/p/coppermine/code/trunk/cpg1.5.x/include/sql_parse.php $
+  $Revision: 8846 $
 **********************************************/
 
 /**
@@ -24,14 +22,14 @@
  *      copyright            : (C) 2001 The phpBB Group
  *      email                : support@phpbb.com
  *
- *      $Id: sql_parse.php 4380 2008-04-12 10:00:19Z gaugau $
+ *      $Id: sql_parse.php 8846 2016-05-11 12:41:17Z eenemeenemuu $
  */
 
 /**
  * This program is free software; you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License version 3
  *    as published by the Free Software Foundation.
- *    
+ *
  */
 
 /**
@@ -85,7 +83,7 @@ function remove_remarks($sql)
 
     for ($i = 0; $i < $linecount; $i++) {
         if (($i != ($linecount - 1)) || (strlen($lines[$i]) > 0)) {
-            if ($lines[$i][0] != "#") {
+            if (isset($lines[$i][0]) && $lines[$i][0] != "#") {
                 $output .= $lines[$i] . "\n";
             } else {
                 $output .= "\n";

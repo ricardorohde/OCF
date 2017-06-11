@@ -14,7 +14,11 @@
        echo ('	<META HTTP-EQUIV="refresh" CONTENT="600">');
 ?>
   <title>Opala Clube Franca - Seja um opaleiro de coração, participe desse clube</title>
-	<link rel="stylesheet" type="text/css" media="screen" href="estilos.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="estilos.css" />
+  <link rel="icon" type="image/gif" href="/imagens/escudinho.gif" />
+
+  <script type="text/javascript" src="jquery.js"></script>
+
 <script>
 // Javascript originally by Patrick Griffiths and Dan Webb.
 // http://htmldog.com/articles/suckerfish/dropdowns/
@@ -40,4 +44,4 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
   <tr>
     <td bgcolor="f5f7f5" valign="top" align="center" width="170px"> <!-- barra esquerda -->
 	 <?php include("esquerda.php"); ?> </td>
-    <td valign="top" width="684px"> <!-- barra central -->
+    <td valign="top" width="684px" bgcolor="ffffff"> <!-- barra central -->

@@ -2,46 +2,47 @@
 /*************************
   Coppermine Photo Gallery
   ************************
-  Copyright (c) 2003-2008 Dev Team
-  v1.1 originally written by Gregory DEMAR
+  Copyright (c) 2003-2016 Coppermine Dev Team
+  v1.0 originally written by Gregory Demar
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License version 3
   as published by the Free Software Foundation.
 
   ********************************************
-  Coppermine version: 1.4.18
-  $HeadURL: https://coppermine.svn.sourceforge.net/svnroot/coppermine/trunk/cpg1.4.x/plugins/sample/configuration.php $
-  $Revision: 4380 $
-  $Author: gaugau $
-  $Date: 2008-04-12 12:00:19 +0200 (Sa, 12 Apr 2008) $
+  Coppermine version: 1.5.42
+  $HeadURL: https://svn.code.sf.net/p/coppermine/code/trunk/cpg1.5.x/plugins/sample/configuration.php $
+  $Revision: 8846 $
 **********************************************/
 
-$name='Sample Plugin';
-$description='This is a sample plugin.';
-$author='Coppermine Development Team';
-$version='1.1';
+if (!defined('IN_COPPERMINE')) die('Not in Coppermine...');
+
+$name = $lang_plugin_php['sample_config_name'];
+$description = $lang_plugin_php['sample_config_description'] . '&nbsp;' . cpg_display_help('f=plugins.htm&amp;as=plugin_bundled_sample&amp;ae=plugin_bundled_sample_end', '400', '200');
+$author = 'Coppermine Development Team';
+$version = '1.6';
+$plugin_cpg_version = array('min' => '1.5');
 /*
- * $extra_info is displayed with the title of a plugin that is NOT installed and
- * can be used to present extra information.  In this case I show a complex
+ * $extra_info is displayed with the title of a plugin that IS installed and
+ * can be used to present extra information.  In this case we show a complex
  * example that forms a button the user can click.
  */
 $extra_info = <<<EOT
     <table border="0" cellspacing="0" cellpadding="0">
     <tr>
-        <td class="admin_menu"><a target="_blank" href="docs/index.htm#plugin" title="Plugin Documentation">Documentation</a></td>
+        <td class="admin_menu"><a href="docs/en/plugins.htm" title="{$lang_plugin_php['sample_plugin_documentation']}">{$lang_plugin_php['sample_plugin_documentation']}</a></td>
     </tr>
     </table>
 EOT;
 /*
- * $install_info is displayed with the title of a plugin that IS installed and
- * can be used to present extra information. In this case I show a complex
+ * $install_info is displayed with the title of a plugin that is NOT installed and
+ * can be used to present extra information. In this case we show a complex
  * example that forms a button the user can click.
  */
 $install_info=<<<EOT
     <table border="0" cellspacing="0" cellpadding="0">
     <tr>
-        <td class="admin_menu"><a target="_blank" href="http://coppermine-gallery.net/forum/index.php?board=53.0" title="Plugin Support">Support</a></td>
+        <td class="admin_menu"><a href="http://coppermine-gallery.net/forum/index.php?board=97.0" title="{$lang_plugin_php['sample_plugin_support']}">{$lang_plugin_php['sample_plugin_support']}</a></td>
     </tr>
     </table>
 EOT;

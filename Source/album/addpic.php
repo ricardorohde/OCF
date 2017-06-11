@@ -2,73 +2,69 @@
 /*************************
   Coppermine Photo Gallery
   ************************
-  Copyright (c) 2003-2008 Dev Team
-  v1.1 originally written by Gregory DEMAR
+  Copyright (c) 2003-2016 Coppermine Dev Team
+  v1.0 originally written by Gregory Demar
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License version 3
   as published by the Free Software Foundation.
-  
+
   ********************************************
-  Coppermine version: 1.4.18
-  $HeadURL: https://coppermine.svn.sourceforge.net/svnroot/coppermine/trunk/cpg1.4.x/addpic.php $
-  $Revision: 4380 $
-  $Author: gaugau $
-  $Date: 2008-04-12 12:00:19 +0200 (Sa, 12 Apr 2008) $
+  Coppermine version: 1.5.42
+  $HeadURL: https://svn.code.sf.net/p/coppermine/code/trunk/cpg1.5.x/addpic.php $
+  $Revision: 8846 $
 **********************************************/
 
-/**
-* Coppermine Photo Gallery addpic.php
-*
-* This file file gets called in the img src when you do batch add, there is nothing
-* much to look here the grunt work is done by the function add_picture
-*
-* @copyright 2002,2007 Gregory DEMAR, Coppermine Dev Team
-* @license http://www.gnu.org/licenses/gpl.html GNU General Public License V3
-* @package Coppermine
-* @version $Id: addpic.php 4380 2008-04-12 10:00:19Z gaugau $
-*/
-
-/**
-* @ignore
-*/
 define('IN_COPPERMINE', true);
 
 define('ADDPIC_PHP', true);
+define('DB_INPUT_PHP', true);
 
 require('include/init.inc.php');
 require('include/picmgmt.inc.php');
 
-if (!GALLERY_ADMIN_MODE) die('Access denied');
+if (!GALLERY_ADMIN_MODE) {
+    die('Access denied');
+}
 
-$aid = (int)$_GET['aid'];
-$pic_file = base64_decode($_GET['pic_file']);
-$dir_name = dirname($pic_file) . '/';
+$aid = $superCage->get->getInt('aid');
+
+/**
+ * TODO: $_GET['pic_file'] cannot be cleaned sensibly with current methods available. Refactor.
+ */
+$matches   = $superCage->get->getMatched('pic_file', '/^[0-9A-Za-z=\+\/]+$/');
+$pic_file  = base64_decode($matches[0]);
+$dir_name  = dirname($pic_file) . '/';
 $file_name = basename($pic_file);
 
-# Create the holder $picture_name by translating the file name.
-# Translate any forbidden character into an underscore.
+// Replace the windows directory separator with /
+$dir_name = str_replace('\\\\', '/', $dir_name);
+$dir_name = str_replace('\\', '/', $dir_name);
+
+// Create the holder $picture_name by translating the file name.
+// Translate any forbidden character into an underscore.
+$source    = './' . $CONFIG['fullpath'] . $dir_name . $file_name;
+$file_name = CPGPluginAPI::filter('upload_file_name', $file_name);
 $sane_name = replace_forbidden($file_name);
-$source = './'.$CONFIG['fullpath'].$dir_name.$file_name;
+
 rename($source, './' . $CONFIG['fullpath'] . $dir_name . $sane_name);
+
 $sql = "SELECT pid FROM {$CONFIG['TABLE_PICTURES']} WHERE filepath='" . addslashes($dir_name) . "' AND filename='" . addslashes($file_name) . "' LIMIT 1";
+
 $result = cpg_db_query($sql);
 
 if (mysql_num_rows($result)) {
-    $file_name = 'images/up_dup.gif';
-} elseif (add_picture($aid, $dir_name, $sane_name)) {
-    $file_name = 'images/up_ok.gif';
+    $status = 'DUPE';
+} elseif (($result = add_picture($aid, $dir_name, $sane_name)) === true) {
+    $status = 'OK';
 } else {
-    $file_name = 'images/up_pb.gif';
-    echo $ERROR;
+    $status = $result['error'];
 }
 
 if (ob_get_length()) {
-    ob_end_flush();
-    exit;
+    ob_end_clean();
 }
 
-header('Content-type: image/gif');
-echo fread(fopen($file_name, 'rb'), filesize($file_name));
-ob_end_flush()
+echo $status;
+
 ?>

@@ -1,301 +1,148 @@
 ##  ********************************************
 ##  Coppermine Photo Gallery
 ##  ************************
-##  Copyright (c) 2003-2008 Dev Team
-##  v1.1 originally written by Gregory DEMAR
+##  Copyright (c) 2003-2016 Coppermine Dev Team
+##  v1.0 originally written by Gregory Demar
 ##
 ##  This program is free software; you can redistribute it and/or modify
 ##  it under the terms of the GNU General Public License version 3
 ##  as published by the Free Software Foundation.
 ##
 ##  ********************************************
-##  Coppermine version: 1.4.18
-##  $HeadURL: https://coppermine.svn.sourceforge.net/svnroot/coppermine/trunk/cpg1.4.x/sql/update.sql $
-##  $Revision: 4380 $
-##  $Author: gaugau $
-##  $Date: 2008-04-12 12:00:19 +0200 (Sa, 12 Apr 2008) $
+##  Coppermine version: 1.5.42
+##  $HeadURL: https://svn.code.sf.net/p/coppermine/code/trunk/cpg1.5.x/sql/update.sql $
+##  $Revision: 8846 $
 ##  ********************************************
 
 
 #
-# Table structure for table `CPG_sessions`
+# Table structure for table `CPG_categorymap`
 #
 
-CREATE TABLE IF NOT EXISTS CPG_sessions (
-  session_id varchar(40) NOT NULL default '',
+CREATE TABLE IF NOT EXISTS `CPG_categorymap` (
+  cid int(11) NOT NULL,
+  group_id int(11) NOT NULL,
+  PRIMARY KEY  (cid,group_id)
+) COMMENT='Holds the categories where groups can create albums';
+
+# Create temporary table to store messages carried over from one page to the other
+CREATE TABLE CPG_temp_messages (
+  message_id varchar(80) NOT NULL default '',
   user_id int(11) default '0',
   time int(11) default NULL,
-  remember int(1) default '0',
-  PRIMARY KEY (session_id)
-) TYPE=MyISAM COMMENT='Used to store sessions';
+  message text NOT NULL,
+  PRIMARY KEY (message_id)
+) COMMENT='Used to store messages from one page to the other';
+# --------------------------------------------------------
+
+ALTER TABLE CPG_filetypes DROP INDEX `EXTENSION`, ADD PRIMARY KEY ( `extension` );
+ALTER TABLE CPG_filetypes ADD `player` VARCHAR( 5 ) ;
+ALTER TABLE CPG_filetypes CHANGE `mime` `mime` CHAR(254) default NULL;
 
 
-
-#
-# Table structure for table `CPG_filetypes`
-#
-
-CREATE TABLE IF NOT EXISTS CPG_filetypes (
-  extension char(7) NOT NULL default '',
-  mime char(30) default NULL,
-  content char(15) default NULL,
-  KEY extension (extension)
-) TYPE=MyISAM COMMENT='Used to store the file extensions';
-
-ALTER TABLE `CPG_filetypes` DROP INDEX `EXTENSION`, ADD PRIMARY KEY ( `extension` );
-ALTER TABLE `CPG_filetypes` ADD `player` VARCHAR( 5 ) ;
-
-INSERT INTO CPG_filetypes VALUES ('jpg', 'image/jpg', 'image', '');
-INSERT INTO CPG_filetypes VALUES ('jpeg', 'image/jpeg', 'image', '');
-INSERT INTO CPG_filetypes VALUES ('jpe', 'image/jpe', 'image', '');
-INSERT INTO CPG_filetypes VALUES ('gif', 'image/gif', 'image', '');
-INSERT INTO CPG_filetypes VALUES ('png', 'image/png', 'image', '');
-INSERT INTO CPG_filetypes VALUES ('psd', 'image/psd', 'image', '');
-INSERT INTO CPG_filetypes VALUES ('bmp', 'image/bmp', 'image', '');
-INSERT INTO CPG_filetypes VALUES ('jpc', 'image/jpc', 'image', '');
-INSERT INTO CPG_filetypes VALUES ('jp2', 'image/jp2', 'image', '');
-INSERT INTO CPG_filetypes VALUES ('jpx', 'image/jpx', 'image', '');
-INSERT INTO CPG_filetypes VALUES ('jb2', 'image/jb2', 'image', '');
-INSERT INTO CPG_filetypes VALUES ('swc', 'image/swc', 'image', '');
-INSERT INTO CPG_filetypes VALUES ('iff', 'image/iff', 'image', '');
-UPDATE CPG_config SET value='ALL' WHERE name='allowed_img_types';
-
-INSERT INTO CPG_filetypes VALUES ('asf', 'video/x-ms-asf', 'movie', 'WMP');
-INSERT INTO CPG_filetypes VALUES ('asx', 'video/x-ms-asx', 'movie', 'WMP');
-INSERT INTO CPG_filetypes VALUES ('mpg', 'video/mpeg', 'movie', 'WMP');
-INSERT INTO CPG_filetypes VALUES ('mpeg', 'video/mpeg', 'movie', 'WMP');
-INSERT INTO CPG_filetypes VALUES ('wmv', 'video/x-ms-wmv', 'movie', 'WMP');
-INSERT INTO CPG_filetypes VALUES ('swf', 'application/x-shockwave-flash', 'movie', 'SWF');
-INSERT INTO CPG_filetypes VALUES ('avi', 'video/avi', 'movie', 'WMP');
-INSERT INTO CPG_filetypes VALUES ('mov', 'video/quicktime', 'movie', 'QT');
-INSERT INTO CPG_config VALUES ('allowed_mov_types', 'ALL');
-
-INSERT INTO CPG_filetypes VALUES ('mp3', 'audio/mpeg3', 'audio', 'WMP');
-INSERT INTO CPG_filetypes VALUES ('midi', 'audio/midi', 'audio', 'WMP');
-INSERT INTO CPG_filetypes VALUES ('mid', 'audio/midi', 'audio', 'WMP');
-INSERT INTO CPG_filetypes VALUES ('wma', 'audio/x-ms-wma', 'audio', 'WMP');
-INSERT INTO CPG_filetypes VALUES ('wav', 'audio/wav', 'audio', 'WMP');
-INSERT INTO CPG_filetypes VALUES ('ogg', 'audio/ogg', 'audio', '');
-INSERT INTO CPG_config VALUES ('allowed_snd_types', 'ALL');
-
-INSERT INTO CPG_filetypes VALUES ('ram', 'audio/x-pn-realaudio', 'document', 'RMP');
-INSERT INTO CPG_filetypes VALUES ('ra', 'audio/x-realaudio', 'document', 'RMP');
-INSERT INTO CPG_filetypes VALUES ('rm', 'audio/x-realmedia', 'document', 'RMP');
-INSERT INTO CPG_filetypes VALUES ('tiff', 'image/tiff', 'document', '');
-INSERT INTO CPG_filetypes VALUES ('tif', 'image/tif', 'document', '');
-INSERT INTO CPG_filetypes VALUES ('doc', 'application/msword', 'document', '');
-INSERT INTO CPG_filetypes VALUES ('txt', 'text/plain', 'document', '');
-INSERT INTO CPG_filetypes VALUES ('rtf', 'text/richtext', 'document', '');
-INSERT INTO CPG_filetypes VALUES ('pdf', 'application/pdf', 'document', '');
-INSERT INTO CPG_filetypes VALUES ('xls', 'application/excel', 'document', '');
-INSERT INTO CPG_filetypes VALUES ('pps', 'application/powerpoint', 'document', '');
-INSERT INTO CPG_filetypes VALUES ('ppt', 'application/powerpoint', 'document', '');
-INSERT INTO CPG_filetypes VALUES ('zip', 'application/zip', 'document', '');
-INSERT INTO CPG_filetypes VALUES ('rar', 'application/rar', 'document', '');
-INSERT INTO CPG_filetypes VALUES ('gz', 'application/gz', 'document', '');
-INSERT INTO CPG_filetypes VALUES ('mdb', 'application/msaccess', 'document', '');
-INSERT INTO CPG_config VALUES ('allowed_doc_types', 'ALL');
+INSERT INTO CPG_filetypes VALUES ('001', 'application/001', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('7z', 'application/7z', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('arj', 'application/arj', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('bz2', 'application/bz2', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('cab', 'application/cab', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('lzh', 'application/lzh', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('rpm', 'application/rpm', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('tar', 'application/tar', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('z', 'application/z', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('odb', 'application/vnd.oasis.opendocument.database', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('odt', 'application/vnd.oasis.opendocument.text', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('ods', 'application/vnd.oasis.opendocument.spreadsheet', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('odp', 'application/vnd.oasis.opendocument.presentation', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('odg', 'application/vnd.oasis.opendocument.graphics', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('odc', 'application/vnd.oasis.opendocument.chart', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('odf', 'application/vnd.oasis.opendocument.formula', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('odi', 'application/vnd.oasis.opendocument.image', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('odm', 'application/vnd.oasis.opendocument.text-master', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('ott', 'application/vnd.oasis.opendocument.text-template', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('ots', 'application/vnd.oasis.opendocument.spreadsheet-template', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('otp', 'application/vnd.oasis.opendocument.presentation-template', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('otg', 'application/vnd.oasis.opendocument.graphics-template', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('otc', 'application/vnd.oasis.opendocument.chart-template', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('otf', 'application/vnd.oasis.opendocument.formula-template', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('oti', 'application/vnd.oasis.opendocument.image-template', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('oth', 'application/vnd.oasis.opendocument.text-web', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('sxw', 'application/vnd.sun.xml.writer', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('stw', 'application/vnd.sun.xml.writer.template', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('sxc', 'application/vnd.sun.xml.calc', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('stc', 'application/vnd.sun.xml.calc.template', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('sxd', 'application/vnd.sun.xml.draw', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('std', 'application/vnd.sun.xml.draw.template', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('sxi', 'application/vnd.sun.xml.impress', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('sti', 'application/vnd.sun.xml.impress.template', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('sxg', 'application/vnd.sun.xml.writer.global', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('sxm', 'application/vnd.sun.xml.math', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('docx', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('docm', 'application/vnd.ms-word.document.macroEnabled.12', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('dotx', 'application/vnd.openxmlformats-officedocument.wordprocessingml.template', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('dotm', 'application/vnd.ms-word.template.macroEnabled.12', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('xlsx', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('xlsm', 'application/vnd.ms-excel.sheet.macroEnabled.12', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('xltx', 'application/vnd.openxmlformats-officedocument.spreadsheetml.template', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('xltm', 'application/vnd.ms-excel.template.macroEnabled.12', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('xlsb', 'application/vnd.ms-excel.sheet.binary.macroEnabled.12', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('xlam', 'application/vnd.ms-excel.addin.macroEnabled.12', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('pptx', 'application/vnd.openxmlformats-officedocument.presentationml.presentation', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('pptm', 'application/vnd.ms-powerpoint.presentation.macroEnabled.12', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('ppsx', 'application/vnd.openxmlformats-officedocument.presentationml.slideshow', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('ppsm', 'application/vnd.ms-powerpoint.slideshow.macroEnabled.12', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('potx', 'application/vnd.openxmlformats-officedocument.presentationml.template', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('potm', 'application/vnd.ms-powerpoint.template.macroEnabled.12', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('ppam', 'application/vnd.ms-powerpoint.addin.macroEnabled.12', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('sldx', 'application/vnd.openxmlformats-officedocument.presentationml.slide', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('sldm', 'application/vnd.ms-powerpoint.slide.macroEnabled.12', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('thmx', 'application/vnd.ms-officetheme', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('onetoc', 'application/onenote', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('onetoc2', 'application/onenote', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('onetmp', 'application/onenote', 'document', '');
+INSERT INTO CPG_filetypes VALUES ('onepkg', 'application/onenote', 'document', '');
 
 
-#
-# Add default media player for movie/audio files
-#
-UPDATE CPG_filetypes SET player='WMP' WHERE extension IN ('asf','asx','mpg','mpeg','wmv','avi','mp3','midi','mid','wma','wav');
-UPDATE CPG_filetypes SET player='QT' WHERE extension IN ('mov');
-UPDATE CPG_filetypes SET player='RMP' WHERE extension IN ('ra','ram','rm');
-UPDATE CPG_filetypes SET player='SWF' WHERE extension IN ('swc','swf');
+INSERT INTO CPG_config VALUES ('global_registration_pw','');
 
+#movie download link -> to picinfo
+INSERT INTO CPG_config VALUES ('picinfo_movie_download_link', '1');
 
-#
-# Modify structure for table `CPG_comments`
-#
+#site token to use in forms
+INSERT INTO CPG_config VALUES ('site_token', MD5(RAND()));
+INSERT INTO CPG_config VALUES ('form_token_lifetime', '900');
 
-ALTER TABLE CPG_comments add msg_raw_ip tinytext;
-ALTER TABLE CPG_comments add msg_hdr_ip tinytext;
-ALTER TABLE CPG_pictures add pic_raw_ip tinytext;
-ALTER TABLE CPG_pictures add pic_hdr_ip tinytext;
+INSERT INTO CPG_config VALUES ('rating_stars_amount', '5');
+INSERT INTO CPG_config VALUES ('old_style_rating', '0');
 
-INSERT INTO CPG_config VALUES ('thumb_use', 'any');
-INSERT INTO CPG_config VALUES ('show_private', '0');
-INSERT INTO CPG_config VALUES ('first_level', '1');
-INSERT INTO CPG_config VALUES ('display_film_strip', '1');
-INSERT INTO CPG_config VALUES ('display_film_strip_filename', '0');
-INSERT INTO CPG_config VALUES ('max_film_strip_items', '5');
-INSERT INTO CPG_config VALUES ('read_iptc_data', '0');
-INSERT INTO CPG_config VALUES ('display_uploader', '0');
-# INSERT INTO CPG_config VALUES ('display_admin_uploader','0');
-INSERT INTO CPG_config VALUES ('display_filename','0');
+###### watermark ########
+INSERT INTO CPG_config VALUES ('enable_watermark', '0');
+INSERT INTO CPG_config VALUES ('where_put_watermark', 'southeast');
+INSERT INTO CPG_config VALUES ('watermark_file', 'images/watermark.png');
+INSERT INTO CPG_config VALUES ('which_files_to_watermark', 'both');
+INSERT INTO CPG_config VALUES ('orig_pfx', 'orig_');
+INSERT INTO CPG_config VALUES ('watermark_transparency', '40');
+INSERT INTO CPG_config VALUES ('reduce_watermark', '0');
+INSERT INTO CPG_config VALUES ('watermark_transparency_featherx', '0');
+INSERT INTO CPG_config VALUES ('watermark_transparency_feathery', '0');
+INSERT INTO CPG_config VALUES ('enable_thumb_watermark', '1');
+#########################
 
-#gtroll wil implement
-#INSERT INTO CPG_config VALUES ('picinfo_display_filename', '1');
-#INSERT INTO CPG_config VALUES ('picinfo_display_album_name', '1');
-#INSERT INTO CPG_config VALUES ('picinfo_display_file_size', '1');
-#INSERT INTO CPG_config VALUES ('picinfo_display_dimensions', '1');
-#INSERT INTO CPG_config VALUES ('picinfo_display_count_displayed', '1');
-#INSERT INTO CPG_config VALUES ('picinfo_display_URL', '1');
-#INSERT INTO CPG_config VALUES ('picinfo_display_URL_bookmark', '1');
-#INSERT INTO CPG_config VALUES ('picinfo_display_favorites', '1');
-
-INSERT INTO CPG_config VALUES ('reg_notify_admin_email', '0');
-INSERT INTO CPG_config VALUES ('disable_comment_flood_protect', '0');
-INSERT INTO CPG_config VALUES ('upl_notify_admin_email', '0');
-
-INSERT INTO CPG_config VALUES ('language_list', '0');
-INSERT INTO CPG_config VALUES ('language_flags', '0');
-INSERT INTO CPG_config VALUES ('theme_list', '0');
-INSERT INTO CPG_config VALUES ('language_reset', '1');
-INSERT INTO CPG_config VALUES ('theme_reset', '1');
-INSERT INTO CPG_config VALUES ('offline', '0');
-INSERT INTO CPG_config VALUES ('vanity_block','1');
-
-INSERT INTO CPG_config VALUES ('allow_memberlist', '0');
-INSERT INTO CPG_config VALUES ('display_faq', '0');
-INSERT INTO CPG_config VALUES ('views_in_thumbview', '1');
-INSERT INTO CPG_config VALUES ('show_bbcode_help', '1');
-INSERT INTO CPG_config VALUES ('log_ecards', '0');
-INSERT INTO CPG_config VALUES ('email_comment_notification', '0');
-INSERT INTO CPG_config VALUES ('enable_zipdownload', '1');
-INSERT INTO CPG_config VALUES ('debug_notice', '0');
-INSERT INTO CPG_config VALUES ('slideshow_interval', '5000');
-
-INSERT INTO CPG_config VALUES ('log_mode', '0');
-
-INSERT INTO CPG_config VALUES ('media_autostart', '1');
-
-INSERT INTO CPG_config VALUES ('enable_encrypted_passwords','0');
-
-# Modify structure for category thumb
-ALTER TABLE `CPG_categories` ADD `thumb` INT NOT NULL AFTER `parent` ;
+###### thumb sharpening and cropping ########
+INSERT INTO CPG_config VALUES ('enable_unsharp', '0');
+INSERT INTO CPG_config VALUES ('unsharp_amount', '120');
+INSERT INTO CPG_config VALUES ('unsharp_radius', '0.5');
+INSERT INTO CPG_config VALUES ('unsharp_threshold', '3');
+INSERT INTO CPG_config VALUES ('thumb_height', '140');
+#########################
 
 # Modify structure for multi album pictures
-ALTER TABLE `CPG_albums` ADD `keyword` VARCHAR( 50 ) NOT NULL ;
+ALTER TABLE `CPG_albums` ADD `owner` int(11)  NOT NULL DEFAULT '1' AFTER `category`;
 
 
-#
-# Table structure for table `CPG_banned`
-#
-
-CREATE TABLE CPG_banned (
-        ban_id int(11) NOT NULL auto_increment,
-        user_id int(11) DEFAULT NULL,
-        ip_addr tinytext,
-        expiry datetime DEFAULT NULL,
-        PRIMARY KEY  (ban_id)
-) TYPE=MyISAM;
-
-#
-# Table structure for table `CPG_exif`
-#
-CREATE TABLE CPG_exif (
-  `filename` varchar(255) NOT NULL default '',
-  `exifData` text NOT NULL,
-  UNIQUE KEY `filename` (`filename`)
-) TYPE=MyISAM;
-
-#
-# Table structure for table `CPG_ecards`
-#
-
-CREATE TABLE CPG_ecards (
-  eid int(11) NOT NULL auto_increment,
-  sender_name varchar(50) NOT NULL default '',
-  sender_email text NOT NULL,
-  recipient_name varchar(50) NOT NULL default '',
-  recipient_email text NOT NULL,
-  link text NOT NULL,
-  date tinytext NOT NULL,
-  sender_ip tinytext NOT NULL,
-  PRIMARY KEY  (eid)
-) TYPE=MyISAM COMMENT='Used to log ecards';
-
-#
-# Modify structure for table 'CPG_usergroups' - Upload form control - Hyperion
-#
-
-ALTER TABLE `CPG_usergroups` ADD `upload_form_config` TINYINT(4) DEFAULT '3' NOT NULL;
-ALTER TABLE `CPG_usergroups` ADD `custom_user_upload` TINYINT(4) DEFAULT '0' NOT NULL;
-ALTER TABLE `CPG_usergroups` ADD `num_file_upload` TINYINT(4) DEFAULT '5' NOT NULL;
-ALTER TABLE `CPG_usergroups` ADD `num_URI_upload` TINYINT(4) DEFAULT '3' NOT NULL;
+UPDATE `CPG_config` SET value='$/\\\\:*?&quot;&#039;&lt;&gt;|` &amp;#@' WHERE name='forbiden_fname_char';
 
 
-
-#
-# Table structure for table `CPG_temp_data` - Temporary data for file uploads - Hyperion
-#
-
-CREATE TABLE IF NOT EXISTS `CPG_temp_data` (
-`unique_ID` CHAR( 8 ) NOT NULL ,
-`encoded_string` BLOB NOT NULL ,
-`timestamp` INT( 11 ) UNSIGNED NOT NULL ,
-PRIMARY KEY ( `unique_ID` )
-) TYPE = MYISAM COMMENT = 'Holds temporary file data for multiple file uploads';
-
-#
-# Close security hole and re-point default theme in 1.3 - Jack
-#
-
-UPDATE `CPG_config` SET value='classic' WHERE (name='theme' AND value='default');
-DELETE FROM `CPG_filetypes` WHERE mime='text/html';
-
-UPDATE `CPG_config` SET value='$/\\\\:*?&quot;\'&lt;&gt;|` &amp;' WHERE name='forbiden_fname_char';
-
-#
-# Finally remove all user_lang references - Jack
-#
-
-ALTER TABLE `CPG_users` CHANGE user_lang user_group_list varchar(255) NOT NULL default '';
-
-#
-# Fix usermgr timing out with 1k+ users -Omni
-#
-ALTER TABLE CPG_pictures DROP INDEX `owner_id`;
-ALTER TABLE CPG_pictures DROP INDEX `owner_id_2`;
-ALTER TABLE CPG_pictures ADD INDEX owner_id( `owner_id` );
-
-
-#
-# Allows user gallery icons
-#
-ALTER TABLE CPG_pictures ADD `galleryicon` INT UNSIGNED DEFAULT '0' NOT NULL AFTER `approved`;
-
-#
-# Record the last hit IP
-#
-
-ALTER TABLE `CPG_pictures` ADD `lasthit_ip` TINYTEXT ;
-
-#
-# Table structure for table `CPG_favpics`
-#
-
-CREATE TABLE `CPG_favpics` (
-`user_id` INT( 11 ) NOT NULL ,
-`user_favpics` TEXT NOT NULL ,
-PRIMARY KEY ( `user_id` )
-) COMMENT = 'Stores the server side favourites';
-
-
-#
-# Table structure for table `CPG_dict`
-#
-
-CREATE TABLE CPG_dict (
-  keyId bigint(20) NOT NULL auto_increment,
-  keyword varchar(60) NOT NULL default '',
-  PRIMARY KEY  (keyId)
-) TYPE=MyISAM  COMMENT = 'Holds the keyword dictionary';
-
-#
-# Add config profile rows
-#
-
-ALTER TABLE `CPG_users` CHANGE `user_location`  `user_profile1` VARCHAR(255);
-ALTER TABLE `CPG_users` CHANGE `user_interests` `user_profile2` VARCHAR(255);
-ALTER TABLE `CPG_users` CHANGE `user_website` `user_profile3` VARCHAR(255);
-ALTER TABLE `CPG_users` CHANGE `user_occupation` `user_profile4` VARCHAR(255);
-
-ALTER TABLE `CPG_users` ADD `user_profile5` varchar(255) default '' NOT NULL;
-ALTER TABLE `CPG_users` ADD `user_profile6` varchar(255) default '' NOT NULL;
+ALTER TABLE `CPG_users` ADD `user_language` varchar(40) default '' NOT NULL;
 
 #
 # Enlarge password field for MD5/SHA1 hash
@@ -303,175 +150,406 @@ ALTER TABLE `CPG_users` ADD `user_profile6` varchar(255) default '' NOT NULL;
 
 ALTER TABLE `CPG_users` CHANGE `user_password` `user_password` VARCHAR( 40 ) NOT NULL default '';
 
+INSERT INTO CPG_config VALUES ('login_method', 'username');
 
+ALTER TABLE `CPG_hit_stats` ADD `uid` INT(11) NOT NULL default '0' ;
 
-INSERT INTO CPG_config VALUES ('user_profile1_name', 'Location');
-INSERT INTO CPG_config VALUES ('user_profile2_name', 'Interests');
-INSERT INTO CPG_config VALUES ('user_profile3_name', 'Website');
-INSERT INTO CPG_config VALUES ('user_profile4_name', 'Occupation');
-INSERT INTO CPG_config VALUES ('user_profile5_name', '');
-INSERT INTO CPG_config VALUES ('user_profile6_name', 'Biography');
+INSERT INTO CPG_config VALUES ('allow_unlogged_access', '3');
 
+# Remove features that are no longer supported
+DELETE FROM CPG_config WHERE `name` = 'vanity_block';
+DELETE FROM CPG_config WHERE `name` = 'display_faq';
+DELETE FROM CPG_config WHERE `name` = 'ban_private_ip';
+DELETE FROM CPG_config WHERE `name` = 'language_fallback';
+DELETE FROM CPG_config WHERE `name` = 'language_list';
+DELETE FROM CPG_config WHERE `name` = 'language_flags';
+DELETE FROM CPG_config WHERE `name` = 'language_reset';
+DELETE FROM CPG_config WHERE `name` = 'theme_list';
+DELETE FROM CPG_config WHERE `name` = 'theme_reset';
+DELETE FROM CPG_config WHERE `name` = 'display_social_bookmarks';
 
-INSERT INTO CPG_config VALUES ('language_fallback', '0');
-
-INSERT INTO CPG_config VALUES ('time_offset', '0');
-
-ALTER TABLE `CPG_users` CHANGE `user_profile6` `user_profile6` TEXT NOT NULL;
-
-ALTER TABLE `CPG_albums` ADD `alb_password` varchar(32) default '';
-
-INSERT INTO CPG_config VALUES ('ban_private_ip', '0');
-
-INSERT INTO CPG_config VALUES ('smtp_host', '');
-INSERT INTO CPG_config VALUES ('smtp_username', '');
-INSERT INTO CPG_config VALUES ('smtp_password', '');
-
-INSERT INTO CPG_config VALUES ('enable_plugins', '1');
-
-CREATE TABLE CPG_plugins (
-  plugin_id int(10) unsigned NOT NULL auto_increment,
-  name varchar(64) NOT NULL default '',
-  path varchar(128) NOT NULL default '',
-  priority int(10) unsigned NOT NULL default '0',
-  PRIMARY KEY  (plugin_id),
-  UNIQUE KEY name (name),
-  UNIQUE KEY path (path)
-) TYPE=MyISAM COMMENT='Stores the plugins';
-
-INSERT INTO CPG_config VALUES ('enable_help', '2');
-
-INSERT INTO CPG_config VALUES ('allow_email_change', '0');
-INSERT INTO CPG_config VALUES ('show_which_exif', '|0|0|0|0|0|0|0|0|1|0|1|1|0|0|0|0|0|0|0|0|0|0|0|1|0|0|0|1|0|0|0|1|1|0|0|0|0|1|0|0|0|1|0|0|1|1|0|0|0|0|0|1|0|1|1');
-# INSERT INTO CPG_config VALUES ('alb_desc_thumb', '1');
-DELETE FROM CPG_config WHERE `name` = 'alb_desc_thumb';
-# Has not been implemented and went into the release in error.
-
-ALTER TABLE `CPG_albums` ADD `alb_password_hint` TEXT ;
-
-INSERT INTO CPG_config VALUES ('categories_alpha_sort', '0');
-ALTER TABLE `CPG_banned` ADD `brute_force` TINYINT( 5 ) DEFAULT '0' NOT NULL ;
-INSERT INTO CPG_config VALUES ('login_threshold', '5');
-INSERT INTO CPG_config VALUES ('login_expiry', '10');
-INSERT INTO CPG_config VALUES ('clickable_keyword_search', '1');
-INSERT INTO CPG_config VALUES ('link_pic_count', '0');
-ALTER TABLE CPG_pictures ADD position INT(11) DEFAULT '0' NOT NULL;
-
-INSERT INTO CPG_config VALUES ('auto_resize', '0');
-
-#
-# Table structure for table `CPG_bridge`
-#
-
-CREATE TABLE CPG_bridge (
-  name varchar(40) NOT NULL default '0',
-  value varchar(255) NOT NULL default '',
-  UNIQUE KEY name (name)
-) TYPE=MyISAM;
-
-#
-# Data for table `CPG_bridge`
-# Used for bridging by user interface
-#
-
-INSERT INTO CPG_bridge VALUES ('short_name', '');
-INSERT INTO CPG_bridge VALUES ('license_number', '');
-INSERT INTO CPG_bridge VALUES ('db_database_name', '');
-INSERT INTO CPG_bridge VALUES ('db_hostname', '');
-INSERT INTO CPG_bridge VALUES ('db_username', '');
-INSERT INTO CPG_bridge VALUES ('db_password', '');
-INSERT INTO CPG_bridge VALUES ('full_forum_url', '');
-INSERT INTO CPG_bridge VALUES ('relative_path_of_forum_from_webroot', '');
-INSERT INTO CPG_bridge VALUES ('relative_path_to_config_file', '');
-INSERT INTO CPG_bridge VALUES ('logout_flag', '');
-INSERT INTO CPG_bridge VALUES ('use_post_based_groups', '');
-INSERT INTO CPG_bridge VALUES ('cookie_prefix', '');
-INSERT INTO CPG_bridge VALUES ('table_prefix', '');
-INSERT INTO CPG_bridge VALUES ('user_table', '');
-INSERT INTO CPG_bridge VALUES ('session_table', '');
-INSERT INTO CPG_bridge VALUES ('group_table', '');
-INSERT INTO CPG_bridge VALUES ('group_relation_table', '');
-INSERT INTO CPG_bridge VALUES ('group_mapping_table', '');
-INSERT INTO CPG_bridge VALUES ('use_standard_groups', '1');
-INSERT INTO CPG_bridge VALUES ('validating_group', '');
-INSERT INTO CPG_bridge VALUES ('guest_group', '');
-INSERT INTO CPG_bridge VALUES ('member_group', '');
-INSERT INTO CPG_bridge VALUES ('admin_group', '');
-INSERT INTO CPG_bridge VALUES ('banned_group', '');
-INSERT INTO CPG_bridge VALUES ('global_moderators_group', '');
-INSERT INTO CPG_bridge VALUES ('recovery_logon_failures', '0');
-INSERT INTO CPG_bridge VALUES ('recovery_logon_timestamp', '');
-
-
-INSERT INTO CPG_config VALUES ('bridge_enable', '0');
-
-#
-# Table structure for table 'CPG_vote_stats'
-#
-CREATE TABLE CPG_vote_stats (
-  `sid` int(11) NOT NULL auto_increment,
-  `pid` varchar(100) NOT NULL default '',
-  `rating` smallint(6) NOT NULL default '0',
-  `ip` varchar(20) NOT NULL default '',
-  `sdate` bigint(20) NOT NULL default '0',
-  `referer` text NOT NULL,
-  `browser` varchar(255) NOT NULL default '',
-  `os` varchar(50) NOT NULL default '',
-  PRIMARY KEY  (`sid`)
-);
-
-INSERT INTO CPG_config VALUES ('vote_details', '0');
-
-CREATE TABLE CPG_hit_stats (
-  `sid` int(11) NOT NULL auto_increment,
-  `pid` varchar(100) NOT NULL default '',
-  `ip` varchar(20) NOT NULL default '',
-  `search_phrase` varchar(255) NOT NULL default '',
-  `sdate` bigint(20) NOT NULL default '0',
-  `referer` text NOT NULL,
-  `browser` varchar(255) NOT NULL default '',
-  `os` varchar(50) NOT NULL default '',
-  PRIMARY KEY  (`sid`)
-);
-
-INSERT INTO CPG_config VALUES ('hit_details', '0');
-
-INSERT INTO CPG_config VALUES ('browse_batch_add', '1');
-
-INSERT INTO CPG_config VALUES ('custom_header_path', '');
-INSERT INTO CPG_config VALUES ('custom_footer_path', '');
-
-INSERT INTO CPG_config VALUES ('comments_sort_descending', '0');
-
-INSERT INTO CPG_config VALUES ('report_post', '0');
-
-INSERT INTO CPG_config VALUES ('users_can_edit_pics', '0');
-
-INSERT INTO CPG_config VALUES ('allow_unlogged_access', '1');
-
-INSERT INTO CPG_config VALUES ('home_target', 'index.php');
-
-DELETE FROM CPG_config WHERE `name` = 'comment_email_notification';
-DELETE FROM CPG_config WHERE `name` = 'hide_admin_uploader';
-
-
-INSERT INTO CPG_config VALUES ('custom_lnk_name', '');
-INSERT INTO CPG_config VALUES ('custom_lnk_url', '');
-INSERT INTO CPG_config VALUES ('comments_anon_pfx', 'Guest_');
-
-DELETE FROM CPG_config WHERE `name` = 'admin_activate';
-INSERT INTO CPG_config VALUES ('admin_activation', '0');
-ALTER TABLE CPG_pictures CHANGE `mtime` `mtime` DATETIME;
-
-DELETE FROM CPG_exif;
-
-#
-# Remove support for random keying that has been abandoned.
-#
-DELETE FROM CPG_config WHERE `name` = 'randpos_interval';
-ALTER TABLE CPG_pictures DROP INDEX `randpos`;
-ALTER TABLE CPG_pictures DROP `randpos`;
 
 # MySQL 5 compat fixes
-ALTER TABLE `CPG_pictures` CHANGE `mtime` `mtime` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00';
+
 ALTER TABLE `CPG_albums` CHANGE `description` `description` TEXT NOT NULL;
+
+# Add display of rating on thumbnails page
+INSERT INTO CPG_config VALUES ('display_thumbnail_rating', '0');
+
+# Display disclaimer on user registration
+INSERT INTO CPG_config VALUES ('user_registration_disclaimer', '1');
+
+INSERT INTO CPG_config VALUES ('thumbnail_to_fullsize', '0');
+INSERT INTO CPG_config VALUES ('fullsize_padding_x', '5');
+INSERT INTO CPG_config VALUES ('fullsize_padding_y', '3');
+
+# Config approval
+ALTER TABLE CPG_comments add approval enum('YES','NO') NOT NULL default 'YES';
+ALTER TABLE CPG_comments add spam enum('YES','NO') NOT NULL default 'NO';
+INSERT INTO CPG_config VALUES ('comment_approval', '0');
+INSERT INTO CPG_config VALUES ('display_comment_approval_only', '0');
+INSERT INTO CPG_config VALUES ('comment_placeholder', '1');
+INSERT INTO CPG_config VALUES ('comment_user_edit', '1');
+INSERT INTO CPG_config VALUES ('comment_captcha', '1');
+
+# Safe mode
+INSERT INTO CPG_config VALUES ('silly_safe_mode', '0');
+
+# Registration Captcha
+INSERT INTO CPG_config VALUES ('registration_captcha', '0');
+
+# Flash in ecards
+INSERT INTO CPG_config VALUES ('ecard_flash', '0');
+
+# Create user album in personal gallery on registration
+INSERT INTO CPG_config VALUES ('personal_album_on_registration', '0');
+
+# Count hits in slideshow
+INSERT INTO CPG_config VALUES ('slideshow_hits', '1');
+
+# Shorten Browser entries in hit stats and vote stats
+UPDATE CPG_hit_stats SET `browser` = 'IE6' WHERE `browser` ='Microsoft Internet Explorer 6.0';
+UPDATE CPG_hit_stats SET `browser` = 'IE5.5' WHERE `browser` ='Microsoft Internet Explorer 5.5';
+UPDATE CPG_hit_stats SET `browser` = 'IE6' WHERE `browser` ='MSIE 6.0';
+UPDATE CPG_hit_stats SET `browser` = 'IE5.5' WHERE `browser` ='IE5.5';
+UPDATE CPG_hit_stats SET `browser` = 'IE3' WHERE `browser` ='MSIE 3.0';
+UPDATE CPG_hit_stats SET `browser` = 'IE4' WHERE `browser` ='MSIE 4.0';
+UPDATE CPG_hit_stats SET `browser` = 'IE5.0' WHERE `browser` ='MSIE 5.0';
+UPDATE CPG_hit_stats SET `browser` = 'IE7' WHERE `browser` ='MSIE 7.0';
+UPDATE CPG_vote_stats SET `browser` = 'IE6' WHERE `browser` ='Microsoft Internet Explorer 6.0';
+UPDATE CPG_vote_stats SET `browser` = 'IE5.5' WHERE `browser` ='Microsoft Internet Explorer 5.5';
+UPDATE CPG_vote_stats SET `browser` = 'IE6' WHERE `browser` ='MSIE 6.0';
+UPDATE CPG_vote_stats SET `browser` = 'IE5.5' WHERE `browser` ='IE5.5';
+UPDATE CPG_vote_stats SET `browser` = 'IE3' WHERE `browser` ='MSIE 3.0';
+UPDATE CPG_vote_stats SET `browser` = 'IE4' WHERE `browser` ='MSIE 4.0';
+UPDATE CPG_vote_stats SET `browser` = 'IE5.0' WHERE `browser` ='MSIE 5.0';
+UPDATE CPG_vote_stats SET `browser` = 'IE7' WHERE `browser` ='MSIE 7.0';
+
+
+# Add album moderator entry
+ALTER TABLE `CPG_albums` ADD `moderator_group` INT NOT NULL default 0;
+ALTER TABLE `CPG_albums` ADD INDEX `moderator_group` ( `moderator_group` );
+
+# Add album hits field
+ALTER TABLE `CPG_albums` ADD `alb_hits` INT( 10 ) NOT NULL default 0;
+
+# Display transparent overlay on images
+INSERT INTO CPG_config VALUES ('transparent_overlay', '0');
+
+
+# Ask guests to log in to post comments
+INSERT INTO CPG_config VALUES ('comment_promote_registration', '0');
+
+# Add uid column to vote stats
+ALTER TABLE `CPG_vote_stats` ADD `uid` INT(11) NOT NULL default '0';
+
+# Allow users to delete their own user account
+INSERT INTO CPG_config VALUES ('allow_user_account_delete', '0');
+
+ALTER TABLE CPG_temp_messages CHANGE `message_id` `message_id` VARCHAR(80) NOT NULL;
+
+
+# Display statistics on index page
+INSERT INTO CPG_config VALUES ('display_stats_on_index', '1');
+
+
+# Enable "browse by date" meta album
+INSERT INTO CPG_config VALUES ('browse_by_date', '0');
+
+# Allow users to move their albums from/to categories
+INSERT INTO CPG_config VALUES ('allow_user_move_album', '0');
+
+# Allow users to edit pics after admin closed category
+INSERT INTO CPG_config VALUES ('allow_user_edit_after_cat_close', '0');
+
+# Display redirection pages
+INSERT INTO CPG_config VALUES ('display_redirection_page', '0');
+
+# Display thumbnail previews on batch-add pages
+INSERT INTO CPG_config VALUES ('display_thumbs_batch_add', '1');
+
+# The ALL setting for filetypes is not a good idea - replace it!
+UPDATE CPG_config SET `value` = 'jpeg/jpg/png/gif' WHERE `name` = 'allowed_img_types' AND `value` = 'ALL';
+UPDATE CPG_config SET `value` = 'asf/asx/mpg/mpeg/wmv/swf/avi/mov' WHERE `name` = 'allowed_mov_types' AND `value` = 'ALL';
+UPDATE CPG_config SET `value` = 'mp3/midi/mid/wma/wav/ogg' WHERE `name` = 'allowed_snd_types' AND `value` = 'ALL';
+UPDATE CPG_config SET `value` = 'doc/txt/rtf/pdf/xls/pps/ppt/zip/gz/mdb' WHERE `name` = 'allowed_doc_types' AND `value` = 'ALL';
+
+# Display the news section from coppermine-gallery.net
+INSERT INTO CPG_config VALUES ('display_coppermine_news', '1');
+
+# Contact form settings
+INSERT INTO CPG_config VALUES ('contact_form_guest_enable', '0');
+INSERT INTO CPG_config VALUES ('contact_form_guest_name_field', '2');
+INSERT INTO CPG_config VALUES ('contact_form_guest_email_field', '2');
+INSERT INTO CPG_config VALUES ('contact_form_registered_enable', '0');
+INSERT INTO CPG_config VALUES ('contact_form_subject_content', 'Coppermine gallery contact form');
+INSERT INTO CPG_config VALUES ('contact_form_subject_field', '0');
+INSERT INTO CPG_config VALUES ('contact_form_sender_email', '1');
+
+# Sidebar settings
+INSERT INTO CPG_config VALUES ('display_sidebar_user', '0');
+INSERT INTO CPG_config VALUES ('display_sidebar_guest', '0');
+
+# Allow non-admin users to assign album keywords
+INSERT INTO CPG_config VALUES ('allow_user_album_keyword', '1');
+
+INSERT INTO CPG_config VALUES ('count_file_hits', '1');
+INSERT INTO CPG_config VALUES ('count_album_hits', '1');
+
+# Category system
+ALTER TABLE CPG_categories ADD `lft` mediumint( 8 ) unsigned NOT NULL default '0';
+ALTER TABLE CPG_categories ADD `rgt` mediumint( 8 ) unsigned NOT NULL default '0';
+ALTER TABLE CPG_categories ADD `depth` mediumint( 8 ) unsigned NOT NULL default '0';
+ALTER TABLE CPG_categories ADD INDEX `depth_cid` ( `depth` , `cid` );
+ALTER TABLE CPG_categories ADD INDEX `lft_depth` ( `lft` , `depth` );
+
+# Add menu icon option
+INSERT INTO CPG_config VALUES ('enable_menu_icons', '0');
+
+CREATE TABLE IF NOT EXISTS CPG_languages (
+  lang_id  varchar(40) NOT NULL default '',
+  english_name varchar(70) default NULL,
+  native_name varchar(70) default NULL,
+  custom_name varchar(70) default NULL,
+  flag varchar(15) default NULL,
+  abbr varchar(15) NOT NULL default '',
+  available enum('YES','NO') NOT NULL default 'NO',
+  enabled enum('YES','NO') NOT NULL default 'NO',
+  complete enum('YES','NO') NOT NULL default 'NO',
+  PRIMARY KEY (lang_id)
+) COMMENT='Contains the language file definitions';
+
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('albanian', 'Albanian','Albanian','al', 'al', 'NO', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('arabic', 'Arabic','&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;','sa','ar', 'YES', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('armenian', 'Armenian','','','', 'NO', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('azerbaijani', 'Azerbaijani','','az','', 'NO', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('basque', 'Basque','Euskera','basque','', 'NO', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('bosnian', 'Bosnian','Bosanski','ba','', 'NO', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('brazilian_portuguese', 'Portuguese (Brazilian)','Portugu&ecirc;s Brasileiro','br','', 'YES', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('bulgarian', 'Bulgarian','&#1041;&#1098;&#1083;&#1075;&#1072;&#1088;&#1089;&#1082;&#1080;','bg','', 'YES', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('byelorussian', 'Byelorussian','','by','', 'NO', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('catalan', 'Catalan','Catal&agrave;','catalonia','', 'YES', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('chinese_big5', 'Chinese traditional','&#20013;&#25991; - &#32321;&#39636;','tw','cn', 'NO', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('chinese_gb', 'Chinese simplified','&#20013;&#25991; - &#31616;&#20307;','cn','cn', 'YES', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('croatian', 'Croatian','Hrvatski','hr','', 'NO', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('czech', 'Czech','&#x010C;esky','cz','cz', 'YES', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('danish', 'Danish','Dansk','dk','dk', 'YES', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('dutch', 'Dutch','Nederlands','nl','nl', 'YES', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('english', 'English (US)', 'English (US)', 'us','en', 'YES', 'YES');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('english_gb', 'English (British)','English (British)','gb','en', 'YES', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('estonian', 'Estonian','Eesti','ee','ee', 'YES', 'YES');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('filipino', 'Filipino Tagalog','','ph','', 'NO', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('finnish', 'Finnish','Suomea','fi','', 'YES', 'YES');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('french', 'French','Fran&ccedil;ais','fr','fr', 'YES', 'YES');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('galician', 'Galician','Galego','galician','', 'NO', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('georgian', 'Georgian','&#4325;&#4304;&#4320;&#4311;&#4323;&#4314;&#4312;','ge','', 'NO', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('german', 'German (informal)', 'Deutsch (Du)', 'de','de', 'YES', 'YES');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('german_formal', 'German (formal)','Deutsch (Sie)','de','de', 'YES', 'YES');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('greek', 'Greek','&#917;&#955;&#955;&#951;&#957;&#953;&#954;&#940;','gr','gr', 'YES', 'YES');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('hebrew', 'Hebrew','&#1506;&#1489;&#1512;&#1497;&#1514;','il','', 'NO', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('hindi', 'Hindi','&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;','in','', 'NO', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('hungarian', 'Hungarian','Magyarul','hu','', 'YES', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('icelandic', 'Icelandic','','is','', 'YES', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('indonesian', 'Indonesian','Bahasa Indonesia','id','', 'NO', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('italian', 'Italian','Italiano','it','it', 'YES', 'YES');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('japanese', 'Japanese','&#26085;&#26412;&#35486;','jp','jp', 'YES', 'YES');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('kazakh', 'Kazakh','','kz','', 'NO', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('korean', 'Korean','&#54620;&#44397;&#50612;','kr','', 'NO', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('kurdish', 'Kurdish','&#1603;&#1608;&#1585;&#1583;&#1740;','kurdish','', 'NO', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('kyrgyz', 'Kyrgyz','','kg','', 'NO', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('laothian', 'Laothian ','','la','', 'NO', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('latvian', 'Latvian','Latvian','lv','', 'NO', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('lithuanian', 'Lithuanian','Letzeburgisch','lu','', 'NO', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('luxembourgish', 'Luxembourgish','Lietuvi&#0353;kai','lu','', 'YES', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('macedonian', 'Macedonian','&#1052;&#1072;&#1082;&#1077;&#1076;&#1086;&#1085;&#1089;&#1082;&#1080;','mk','', 'NO', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('malay', 'Malay','Bahasa Melayu','my','', 'NO', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('maltese', 'Maltese','','mt','', 'NO', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('mongolian', 'Mongolian','','mn','', 'NO', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('nepali', 'Nepali','','np','', 'NO', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('norwegian', 'Norwegian','Norsk','no','no', 'YES', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('persian', 'Persian','&#1601;&#1575;&#1585;&#1587;&#1740;','ir','', 'YES', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('polish', 'Polish','Polski','pl','pl', 'YES', 'YES');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('portuguese', 'Portuguese (Portugal)','Portugu&ecirc;s','pt','', 'YES', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('romanian', 'Romanian','Rom&acirc;n&atilde;','ro','', 'NO', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('russian', 'Russian','&#1056;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081;','ru','ru', 'YES', 'YES');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('serbian', 'Serbian','Srpski','rs','', 'YES', 'YES');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('slovak', 'Slovak','Slovensky','sk','', 'YES', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('slovenian', 'Slovenian','Slovensko','si','', 'YES', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('spanish', 'Spanish','Espa&ntilde;ol','es','es', 'YES', 'YES');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('spanish_mx', 'Mexican Spanish','Espa&ntilde;ol mexicano','mx','mx', 'YES', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('swedish', 'Swedish','Svenska','se','', 'YES', 'YES');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('thai', 'Thai','&#3652;&#3607;&#3618;','th','', 'NO', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('turkish', 'Turkish','T&uuml;rk&ccedil;e','tr','', 'YES', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('tigrinya', 'Tigrinya','','er','', 'NO', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('twi', 'Twi','','gh','', 'NO', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('uighur', 'Uighur','Uighur','uighur','', 'NO', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('ukrainian', 'Ukrainian','&#1059;&#1082;&#1088;&#1072;&#1111;&#1085;&#1089;&#1100;&#1082;&#1072;','ua','', 'YES', 'YES');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('uzbek', 'Uzbek','','uz','', 'NO', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('vietnamese', 'Vietnamese','Tieng Viet','vn','', 'NO', 'NO');
+INSERT INTO CPG_languages (lang_id, english_name, native_name, flag, abbr, available, complete) VALUES ('welsh', 'Welsh','Cymraeg','wales','', 'NO', 'NO');
+
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='arabic';
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='brazilian_portuguese';
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='bulgarian';
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='catalan';
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='chinese_gb';
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='czech';
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='danish';
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='dutch';
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='english';
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='english_gb';
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='estonian';
+UPDATE CPG_languages SET `complete` = 'YES' WHERE `lang_id`='estonian';
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='finnish';
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='french';
+UPDATE CPG_languages SET `complete` = 'YES' WHERE `lang_id`='french';
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='german';
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='german_formal';
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='greek';
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='hungarian';
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='icelandic';
+UPDATE CPG_languages SET `complete` = 'NO' WHERE `lang_id`='icelandic';
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='italian';
+UPDATE CPG_languages SET `complete` = 'YES' WHERE `lang_id`='italian';
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='japanese';
+UPDATE CPG_languages SET `complete` = 'YES' WHERE `lang_id`='japanese';
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='luxembourgish';
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='norwegian';
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='persian';
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='polish';
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='portuguese';
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='russian';
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='serbian';
+UPDATE CPG_languages SET `complete` = 'YES' WHERE `lang_id`='serbian';
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='slovak';
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='slovenian';
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='spanish';
+UPDATE CPG_languages SET `complete` = 'YES' WHERE `lang_id`='spanish';
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='spanish_mx';
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='swedish';
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='turkish';
+UPDATE CPG_languages SET `available` = 'YES' WHERE `lang_id`='ukrainian';
+UPDATE CPG_languages SET `complete` = 'YES' WHERE `lang_id`='ukrainian';
+
+INSERT INTO CPG_config VALUES ('display_xp_publish_link', '0');
+
+# Modify banned table to allow ban by email and username
+ALTER TABLE `CPG_banned` ADD email varchar(255) NOT NULL default '' AFTER `user_id`;
+ALTER TABLE `CPG_banned` ADD user_name varchar(255) NOT NULL default '' AFTER `user_id`;
+
+# Add auto-purging of expired bans
+INSERT INTO CPG_config VALUES ('purge_expired_bans', '1');
+
+# Add Akismet support
+INSERT INTO CPG_config VALUES ('comment_akismet_enable', '0');
+INSERT INTO CPG_config VALUES ('comment_akismet_api_key', '');
+INSERT INTO CPG_config VALUES ('comment_akismet_counter', '0');
+INSERT INTO CPG_config VALUES ('comment_akismet_group', '0');
+
+# Remove the group "Banned", as it never was used anyway
+DELETE FROM CPG_usergroups WHERE `group_name` = 'Banned';
+
+INSERT INTO CPG_config VALUES ('language_autodetect', '1');
+
+INSERT INTO CPG_config VALUES ('upload_mechanism', 'swfupload');
+INSERT INTO CPG_config VALUES ('allow_user_upload_choice', '1');
+
+ALTER TABLE CPG_usergroups ADD access_level tinyint(4) NOT NULL default '3';
+ALTER TABLE CPG_usergroups ALTER access_level SET DEFAULT '3';
+
+INSERT INTO CPG_config VALUES ('tabs_dropdown', '1');
+
+ALTER TABLE CPG_dict ADD UNIQUE KEY `keyword` (keyword);
+
+INSERT INTO CPG_config VALUES('keyword_separator', ' ');
+
+# Remove the display filename in film strip config value
+DELETE FROM CPG_config WHERE `name` = 'display_film_strip_filename';
+
+# Add the column "abbreviation" for the language folder names within the docs folder
+ALTER TABLE `CPG_languages` ADD `abbr` varchar(15) default '' NOT NULL AFTER `flag`;
+
+# Add option for comments per page
+INSERT INTO CPG_config VALUES ('comments_per_page', '20');
+
+# Add option for batch add process limit
+INSERT INTO CPG_config VALUES ('batch_proc_limit', '2');
+
+UPDATE CPG_languages SET `abbr` = 'en' WHERE `lang_id`='english';
+UPDATE CPG_languages SET `abbr` = 'de' WHERE `lang_id`='german';
+UPDATE CPG_languages SET `abbr` = 'fr' WHERE `lang_id`='french';
+
+TRUNCATE TABLE CPG_exif;
+ALTER TABLE CPG_exif CHANGE `filename` `pid` int(11) NOT NULL;
+ALTER TABLE CPG_exif DROP INDEX `filename`, ADD PRIMARY KEY ( `pid` );
+
+ALTER TABLE CPG_sessions CHANGE `session_id` `session_id` char(32);
+
+DROP TABLE CPG_temp_data;
+
+ALTER TABLE `CPG_usergroups` DROP `upload_form_config`, DROP `custom_user_upload`, DROP `num_file_upload`, DROP `num_URI_upload`;
+
+ALTER TABLE `CPG_pictures` DROP INDEX `pic_aid`, ADD INDEX `pic_aid` ( `aid` , `pid` );
+
+INSERT INTO CPG_config VALUES ('display_reset_boxes_in_config', '0');
+
+# Add performance metering records
+INSERT INTO CPG_config VALUES ('performance_timestamp', '0');
+INSERT INTO CPG_config VALUES ('performance_page_generation_time', '0');
+INSERT INTO CPG_config VALUES ('performance_page_query_time', '0');
+INSERT INTO CPG_config VALUES ('performance_page_query_count', '0');
+
+INSERT INTO CPG_config VALUES ('rate_own_files', '0');
+
+ALTER TABLE `CPG_pictures` DROP `owner_name`;
+
+INSERT INTO CPG_config VALUES ('count_admin_hits', '0');
+
+UPDATE CPG_filetypes SET player = 'HTMLA' WHERE extension = 'ogg' AND player = '';
+INSERT INTO CPG_filetypes VALUES ('oga', 'audio/ogg', 'audio', 'HTMLA');
+INSERT INTO CPG_filetypes VALUES ('ogv', 'video/ogg', 'movie', 'HTMLV');
+
+INSERT INTO CPG_config VALUES ('picture_use', 'thumb');
+
+ALTER TABLE CPG_comments ADD INDEX author_id (author_id);
+ALTER TABLE CPG_users ADD INDEX user_group (user_group);
+
+UPDATE CPG_albums SET owner = category - 10000 WHERE category > 10000;
+
+# Fulltext index is no longer used when searching
+ALTER TABLE CPG_pictures DROP INDEX `search`;
+
+ALTER TABLE CPG_pictures ADD `guest_token` VARCHAR(32) DEFAULT '';
+
+INSERT INTO CPG_config VALUES ('session_cleanup', '0');
+INSERT INTO CPG_config VALUES ('guest_token_cleanup', '0');
+
+INSERT INTO CPG_config VALUES ('allow_guests_enter_file_details', '0');
+
+# The following line has to be removed when the moderator group feature will be re-enabled!
+UPDATE CPG_albums SET moderator_group = 0;
+
+ALTER TABLE CPG_users ADD user_email_valid enum('YES','') NOT NULL default '';
+
+INSERT INTO CPG_usergroups VALUES (3, 'Anonymous', 0, 0, 1, 0, 0, 0, 0, 1, 1, 3);
+
+UPDATE CPG_users SET user_actkey = '' WHERE user_active = 'YES';
+
+INSERT INTO CPG_config VALUES ('cookies_need_consent', '0');
+INSERT INTO CPG_config VALUES ('album_sort_order', 'pa');
+
+UPDATE CPG_languages SET `flag` = 'lu' WHERE `lang_id`='luxembourgish';
+INSERT INTO CPG_config VALUES ('custom_sortorder_thumbs', '1');
+INSERT INTO CPG_config VALUES ('link_last_upload', '0');
+INSERT INTO CPG_config VALUES ('editpics_ignore_newer_than', '0');
+INSERT INTO CPG_config VALUES ('upload_create_album_directory', '0');
+
+ALTER TABLE CPG_comments CHANGE `msg_date` `msg_date` datetime NOT NULL default '1000-01-01 00:00:00';
+ALTER TABLE CPG_pictures CHANGE `mtime` `mtime` datetime NOT NULL default '1000-01-01 00:00:00';
+ALTER TABLE CPG_users CHANGE `user_lastvisit` `user_lastvisit` datetime NOT NULL default '1000-01-01 00:00:00';
+ALTER TABLE CPG_users CHANGE `user_regdate` `user_regdate` datetime NOT NULL default '1000-01-01 00:00:00';
+
+INSERT INTO CPG_config VALUES ('batch_add_hide_existing_files', '0');
+INSERT INTO CPG_config VALUES ('only_empty_albums', '0');
+INSERT INTO CPG_config VALUES ('user_manager_hide_file_stats', '0');
+INSERT INTO CPG_config VALUES ('album_uploads_default', 'NO');

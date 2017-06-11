@@ -2,19 +2,17 @@
 /*************************
   Coppermine Photo Gallery
   ************************
-  Copyright (c) 2003-2008 Dev Team
-  v1.1 originally written by Gregory DEMAR
+  Copyright (c) 2003-2016 Coppermine Dev Team
+  v1.0 originally written by Gregory Demar
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License version 3
   as published by the Free Software Foundation.
-  
+
   ********************************************
-  Coppermine version: 1.4.18
-  $HeadURL: https://coppermine.svn.sourceforge.net/svnroot/coppermine/trunk/cpg1.4.x/modifyalb.php $
-  $Revision: 4380 $
-  $Author: gaugau $
-  $Date: 2008-04-12 12:00:19 +0200 (Sa, 12 Apr 2008) $
+  Coppermine version: 1.5.42
+  $HeadURL: https://svn.code.sf.net/p/coppermine/code/trunk/cpg1.5.x/modifyalb.php $
+  $Revision: 8846 $
 **********************************************/
 
 define('IN_COPPERMINE', true);
@@ -22,9 +20,16 @@ define('MODIFYALB_PHP', true);
 
 include("include/init.inc.php");
 
-if (!(GALLERY_ADMIN_MODE || USER_ADMIN_MODE)) {
+if ($superCage->get->keyExists('album')) {
+    $CLEAN['album'] = $superCage->get->getInt('album');
+} else {
+    $CLEAN['album'] = 0;
+}
+
+if (!(GALLERY_ADMIN_MODE || (USER_ADMIN_MODE && user_is_allowed(false)))) {
     cpg_die(ERROR, $lang_errors['access_denied'], __FILE__, __LINE__);
 }
+
 // Type 0 => input
 // 1 => yes/no
 // 2 => Category
@@ -33,75 +38,128 @@ if (!(GALLERY_ADMIN_MODE || USER_ADMIN_MODE)) {
 // 5 => Album visibility
 
 // add footnote
-$notice1 = ' *';
-$help_can_upload = '&nbsp;'.cpg_display_help('f=index.htm&amp;as=album_prop_visitor_start&amp;ae=album_prop_visitor_end&amp;top=1', '400', '200');
-$help_album_keywords = '&nbsp;'.cpg_display_help('f=index.htm&amp;as=album_prop_keyword_start&amp;ae=album_prop_keyword_end&amp;top=1', '400', '200');
-$help_album_password = '&nbsp;'.cpg_display_help('f=index.htm&amp;as=album_prop_password_start&amp;ae=album_prop_password_end&amp;top=1', '500', '250');
+$notice1 = ' <a href="#notice1" class="">*</a>';
+$help = array();
+$help['table'] = '&nbsp;'.cpg_display_help('f=albums.htm&amp;as=album_prop&amp;ae=album_prop_end&amp;top=1', '600', '400');
+$help['related_tasks'] = '&nbsp;'.cpg_display_help('f=albums.htm&amp;as=album_prop_controls_related_tasks&amp;ae=album_prop_controls_related_tasks_end', '500', '250');
+$help['choose_album'] = '&nbsp;'.cpg_display_help('f=albums.htm&amp;as=album_prop_controls_album_dropdown&amp;ae=album_prop_controls_album_dropdown_end', '500', '250');
+$help['album_title'] = '&nbsp;'.cpg_display_help('f=albums.htm&amp;as=album_prop_controls_album_title&amp;ae=album_prop_controls_album_title_end', '500', '250');
+$help['album_category'] = '&nbsp;'.cpg_display_help('f=albums.htm&amp;as=album_prop_controls_album_category&amp;ae=album_prop_controls_album_category_end', '500', '250');
+$help['album_keywords'] = '&nbsp;'.cpg_display_help('f=albums.htm&amp;as=album_prop_controls_album_keyword&amp;ae=album_prop_controls_album_keyword_end', '500', '250');
+$help['album_thumbnail'] = '&nbsp;'.cpg_display_help('f=albums.htm&amp;as=album_prop_controls_album_thumbnail&amp;ae=album_prop_controls_album_thumbnail_end', '500', '250');
+$help['album_can_be_viewed_by'] = '&nbsp;'.cpg_display_help('f=albums.htm&amp;as=album_prop_controls_album_can_be_viewed_by&amp;ae=album_prop_controls_album_can_be_viewed_by_end', '500', '250');
+$help['album_password'] = '&nbsp;'.cpg_display_help('f=albums.htm&amp;as=album_prop_controls_password_protection&amp;ae=album_prop_controls_password_protection_end&amp', '500', '250');
+$help['can_upload'] = '&nbsp;'.cpg_display_help('f=albums.htm&amp;as=album_prop_controls_visitor_upload&amp;ae=album_prop_controls_visitor_upload_end&amp', '400', '200');
+$help['can_post_comments'] = '&nbsp;'.cpg_display_help('f=albums.htm&amp;as=album_prop_controls_can_post_comment&amp;ae=album_prop_controls_can_post_comment_end&amp', '400', '200');
+$help['can_rate'] = '&nbsp;'.cpg_display_help('f=albums.htm&amp;as=album_prop_controls_can_rate_files&amp;ae=album_prop_controls_can_rate_files_end&amp', '400', '200');
+$help['can_moderate'] = '&nbsp;'.cpg_display_help('f=albums.htm&amp;as=album_prop_controls_album_moderation&amp;ae=album_prop_controls_album_moderation_end&amp', '400', '200');
+
+// Define the icons
+$icon_array = array(
+    'album_properties'   => cpg_fetch_icon('modifyalb', 2),
+    'thumbnail'          => cpg_fetch_icon('thumbnails', 1),
+    'album_thumbnail'    => cpg_fetch_icon('thumbnails', 2),
+    'password'           => cpg_fetch_icon('key_enter', 2),
+    'album'              => cpg_fetch_icon('alb_mgr', 2),
+    'upload'             => cpg_fetch_icon('upload', 2),
+    'move'               => cpg_fetch_icon('move', 1),
+    'title'              => cpg_fetch_icon('title', 2),
+    'view'               => cpg_fetch_icon('groups_mgr', 2),
+    'description'        => cpg_fetch_icon('text_left', 2),
+    'keyword'            => cpg_fetch_icon('keyword_mgr', 2),
+    'views'              => cpg_fetch_icon('stats', 2),
+    'ok'                 => cpg_fetch_icon('ok', 1),
+    'category'           => cpg_fetch_icon('category', 1),
+    'album_category'     => cpg_fetch_icon('category', 2),
+    'file'               => cpg_fetch_icon('file', 2),
+    'comment'            => cpg_fetch_icon('comment', 2),
+    'rate'               => cpg_fetch_icon('top_rated', 2),
+    'blank'              => cpg_fetch_icon('blank', 2),
+    'edit_files'         => cpg_fetch_icon('edit', 1),
+    'stop'               => cpg_fetch_icon('stop', 0, '', '', 'png', 1),  // Only get the image path and not the embedding <img>-tag
+);
 
 $captionLabel = $lang_modifyalb_php['alb_desc'];
-if ($CONFIG['show_bbcode_help']) {$captionLabel .= '&nbsp;'. cpg_display_help('f=index.html&amp;base=64&amp;h='.urlencode(base64_encode(serialize($lang_bbcode_help_title))).'&amp;t='.urlencode(base64_encode(serialize($lang_bbcode_help))),470,245);}
-$data = array($lang_modifyalb_php['general_settings'],
-    array($lang_modifyalb_php['alb_title'], 'title', 0),
-    array($lang_modifyalb_php['alb_cat'], 'category', 2),
-    array($captionLabel, 'description', 3),
-    array($lang_modifyalb_php['alb_keyword'].$help_album_keywords, 'keyword', 0),
-    array($lang_modifyalb_php['alb_thumb'], 'thumb', 4), $lang_modifyalb_php['alb_perm'],
-    array($lang_modifyalb_php['can_view'], 'visibility', 5),
-    array($lang_modifyalb_php['alb_password'].$help_album_password, 'alb_password', 6),
-    array($lang_modifyalb_php['alb_password_hint'].$help_album_password, 'alb_password_hint', 7),
-    array($lang_modifyalb_php['can_upload'].$notice1.$help_can_upload, 'uploads', 1),
-    array($lang_modifyalb_php['can_post_comments'].$notice1, 'comments', 1),
-    array($lang_modifyalb_php['can_rate'].$notice1, 'votes', 1),
-    );
 
-function get_subcat_data($parent, $ident = '')
-{
-    global $CONFIG, $CAT_LIST;
-
-    $result = cpg_db_query("SELECT cid, name, description FROM {$CONFIG['TABLE_CATEGORIES']} WHERE parent = '$parent' AND cid != 1 ORDER BY pos");
-    if (mysql_num_rows($result) > 0) {
-        $rowset = cpg_db_fetch_rowset($result);
-        foreach ($rowset as $subcat) {
-            $CAT_LIST[] = array($subcat['cid'], $ident . $subcat['name']);
-            get_subcat_data($subcat['cid'], $ident . '&nbsp;&nbsp;&nbsp;');
-        }
-    }
+if ($CONFIG['show_bbcode_help']) {
+    $captionLabel .= '&nbsp;'. cpg_display_help('f=empty.htm&amp;h=lang_bbcode_help_title&amp;t=lang_bbcode_help', 470, 245);
 }
+
+$data = array($lang_modifyalb_php['general_settings'],
+    array($icon_array['title'].$lang_modifyalb_php['alb_title'].$help['album_title'], 'title', 0),
+    array($icon_array['album_category'].$lang_modifyalb_php['alb_cat'].$help['album_category'], 'category', 2),
+    array($icon_array['description'].$captionLabel, 'description', 3),
+    array($icon_array['keyword'].$lang_modifyalb_php['alb_keyword'].$help['album_keywords'], 'keyword', 0),
+    array($lang_modifyalb_php['alb_thumb'], 'thumb', 4),
+    $lang_modifyalb_php['alb_perm'],
+    array($icon_array['view'].$lang_modifyalb_php['can_view'].$help['album_can_be_viewed_by'], 'visibility', 5),
+    array($icon_array['password'].$lang_modifyalb_php['password_protect'].$help['album_password'], 'password_protect', 9),
+    array($icon_array['blank'].$lang_modifyalb_php['alb_password'], 'alb_password', 6),
+    array($icon_array['blank'].$lang_modifyalb_php['alb_password_hint'], 'alb_password_hint', 7),
+    array($icon_array['upload'].$lang_modifyalb_php['can_upload'].$notice1.$help['can_upload'], 'uploads', 1),
+    array($icon_array['comment'].$lang_modifyalb_php['can_post_comments'].$notice1.$help['can_post_comments'], 'comments', 1),
+    array($icon_array['rate'].$lang_modifyalb_php['can_rate'].$notice1.$help['can_rate'], 'votes', 1),
+);
+
+/* TODO: re-enable and test feature when it's clear how it should work (see http://forum.coppermine-gallery.net/index.php/topic,64408.0.html)
+if (GALLERY_ADMIN_MODE) {
+    $data[] = array($lang_modifyalb_php['can_moderate'].$help['can_moderate'], 'moderator_group', 8);
+}
+*/
 
 function form_label($text)
 {
-    echo <<<EOT
-        <tr>
-                <td class="tableh2" colspan="2">
-                        <b>$text</b>
-                </td>
-        </tr>
+    echo <<< EOT
+    <tr>
+        <td class="tableh2" colspan="2">
+            <strong>$text</strong>
+        </td>
+    </tr>
 
 EOT;
 }
 
 function form_input($text, $name)
 {
-    global $ALBUM_DATA;
+    global $ALBUM_DATA, $CONFIG;
 
     $value = $ALBUM_DATA[$name];
+    $disabled = '';
 
-    echo <<<EOT
-        <tr>
-            <td width="40%" class="tableb">
-                        $text
+    if ($name == 'keyword' && !GALLERY_ADMIN_MODE && $CONFIG['allow_user_album_keyword'] != 1) {
+        $disabled = ' disabled="disabled" style="background-color:InactiveCaptionText;color:GrayText"';
+    }
+
+    switch ($name) {
+        case 'title':
+            $maxlength = ' maxlength="255"';
+            break;
+
+        case 'keyword':
+            $maxlength = ' maxlength="50"';
+            break;
+
+        default:
+            $maxlength = '';
+            break;
+    }
+
+    echo <<< EOT
+    <tr>
+        <td width="40%">
+            $text
         </td>
-        <td width="60%" class="tableb" valign="top">
-                <input type="text" style="width: 100%" name="$name" value="$value" class="textinput" />
-                </td>
-        </tr>
+        <td width="60%" valign="top">
+            <input type="text" style="width: 98%" name="$name" value="$value" class="textinput"{$maxlength}{$disabled} />
+        </td>
+    </tr>
 
 EOT;
 }
 
 function form_yes_no($text, $name)
 {
-    global $ALBUM_DATA, $lang_yes, $lang_no;
+    global $ALBUM_DATA, $lang_common;
 
     if ($name == 'uploads' && USER_ADMIN_MODE) {
         echo "        <input type=\"hidden\" name=\"$name\" value=\"{$ALBUM_DATA['uploads']}\" />";
@@ -112,59 +170,84 @@ function form_yes_no($text, $name)
     $yes_selected = $value == 'YES' ? 'checked="checked"' : '';
     $no_selected = $value == 'NO' ? 'checked="checked"' : '';
 
-    echo <<<EOT
-        <tr>
-            <td class="tableb">
-                        $text
+    echo <<< EOT
+    <tr>
+        <td>
+            $text
         </td>
-        <td class="tableb" valign="top">
-                        <input type="radio" id="{$name}1" name="$name" value="YES" $yes_selected /><label for="{$name}1" class="clickable_option">$lang_yes</label>
-                        &nbsp;&nbsp;
-                        <input type="radio" id="{$name}0" name="$name" value="NO" $no_selected /><label for="{$name}0" class="clickable_option">$lang_no</label>
-                </td>
-        </tr>
+        <td valign="top">
+            <input type="radio" id="{$name}1" name="$name" value="YES" $yes_selected />
+            <label for="{$name}1" class="clickable_option">{$lang_common['yes']}</label>
+            &nbsp;&nbsp;
+            <input type="radio" id="{$name}0" name="$name" value="NO" $no_selected />
+            <label for="{$name}0" class="clickable_option">{$lang_common['no']}</label>
+        </td>
+    </tr>
 
 EOT;
 }
 
 function form_category($text, $name)
 {
-    global $ALBUM_DATA, $CAT_LIST, $USER_DATA, $lang_modifyalb_php;
+    global $ALBUM_DATA, $CAT_LIST, $USER_DATA, $lang_modifyalb_php, $CONFIG, $icon_array, $LINEBREAK;
 
-    if (!GALLERY_ADMIN_MODE || $ALBUM_DATA['category'] > FIRST_USER_CAT) {
-        echo <<<EOT
-        <tr>
-            <td class="tableb">
-                        $text
+    //check if users are allowed to move their albums
+    if (!GALLERY_ADMIN_MODE && $CONFIG['allow_user_move_album'] == 0) {
+
+        //get category name
+        $cat_name = $lang_modifyalb_php['user_gal'];
+
+        if ($ALBUM_DATA['category'] != (FIRST_USER_CAT + USER_ID)) {
+            $result = cpg_db_query("SELECT name FROM {$CONFIG['TABLE_CATEGORIES']} WHERE cid = '" . $ALBUM_DATA['category'] . "' LIMIT 1");
+            $cat_name = cpg_db_fetch_row($result);
+            mysql_free_result($result);
+            $cat_name = $cat_name['name'];
+        }
+
+        echo <<< EOT
+    <tr>
+        <td>
+            $text
         </td>
-        <td class="tableb" valign="top">
-                        <i>{$lang_modifyalb_php['user_gal']}</i>
-                        <input type="hidden" name="$name" value="{$ALBUM_DATA['category']}" />
-                </td>
+        <td valign="top">
+            <em>{$cat_name}</em>
+            <input type="hidden" name="$name" value="{$ALBUM_DATA['category']}" />
+        </td>
+    </tr>
 
 EOT;
         return;
     }
 
     $CAT_LIST = array();
-    $CAT_LIST[] = array(0, $lang_modifyalb_php['no_cat']);
-    get_subcat_data(0, '');
 
-    echo <<<EOT
-        <tr>
-            <td class="tableb">
-                        $text
-        </td>
-        <td class="tableb" valign="top">
-                        <select name="$name" class="listbox">
-EOT;
-    foreach($CAT_LIST as $category) {
-        echo '                                <option value="' . $category[0] . '"' . ($ALBUM_DATA['category'] == $category[0] ? ' selected': '') . ">" . $category[1] . "</option>\n";
+    //only add 'no category' when user is admin
+    if (GALLERY_ADMIN_MODE) {
+        $CAT_LIST[] = array(0, $lang_modifyalb_php['no_cat']);
     }
-    echo <<<EOT
-                        </select>
-                </td>
-        </tr>
+
+    //add user catergory
+    $CAT_LIST[] = array((FIRST_USER_CAT + USER_ID), $lang_modifyalb_php['my_gal']);
+
+    get_cat_data();
+
+    echo <<< EOT
+    <tr>
+        <td>
+            $text
+        </td>
+        <td valign="top">
+            {$icon_array['move']}<select name="$name" class="listbox">
+EOT;
+
+    foreach ($CAT_LIST as $category) {
+        echo '                <option value="' . $category[0] . '"' . ($ALBUM_DATA['category'] == $category[0] ? ' selected="selected"': '') . ($category[0] == USER_GAL_CAT ? ' disabled="disabled"' : '') . ">" . $category[1] . '</option>' . $LINEBREAK;
+    }
+
+    echo <<< EOT
+            </select>
+        </td>
+    </tr>
 
 EOT;
 }
@@ -175,242 +258,320 @@ function form_textarea($text, $name)
 
     $value = $ALBUM_DATA[$name];
 
-    echo <<<EOT
-        <tr>
-                <td class="tableb" valign="top">
-                        $text
-                </td>
-                <td class="tableb" valign="top">
-                        <textarea name="$name" rows="5" cols="40" wrap="virtual" class="textinput" style="width: 100%;">{$ALBUM_DATA['description']}</textarea>
-                </td>
-        </tr>
+    echo <<< EOT
+    <tr>
+        <td valign="top">
+            $text
+        </td>
+        <td valign="top">
+            <textarea name="$name" rows="5" cols="40" class="textinput" style="width: 98%;">{$ALBUM_DATA['description']}</textarea>
+        </td>
+    </tr>
+
 EOT;
 }
 
 function form_alb_thumb($text, $name)
 {
-    global $CONFIG, $ALBUM_DATA, $album, $lang_modifyalb_php,$USER_DATA;
+    global $CONFIG, $ALBUM_DATA, $CLEAN, $lang_modifyalb_php, $USER_DATA, $LINEBREAK, $help, $icon_array;
 
-    $cpg_nopic_data = cpg_get_system_thumb('nopic.jpg',$USER_DATA['user_id']);
+    $cpg_nopic_data = cpg_get_system_thumb('nopic.jpg', $USER_DATA['user_id']);
 
-    $results = cpg_db_query("SELECT pid, filepath, filename, url_prefix FROM {$CONFIG['TABLE_PICTURES']} WHERE aid='$album' AND approved='YES' ORDER BY filename");
+    $keyword = '';
+
+    if ($ALBUM_DATA['keyword']) {
+        $keyword = "OR (keywords LIKE '%{$ALBUM_DATA['keyword']}%')";
+    }
+
+    $query = "SELECT pid, filepath, filename, url_prefix FROM {$CONFIG['TABLE_PICTURES']} WHERE approved = 'YES' AND (aid = '{$CLEAN['album']}' $keyword ) ORDER BY filename";
+
+    $results = cpg_db_query($query);
+
     if (mysql_num_rows($results) == 0) {
-        echo <<<EOT
-        <tr>
-                <td class="tableb" valign="top">
-                        $text
-                </td>
-                <td class="tableb" valign="top">
-                        <i>{$lang_modifyalb_php['alb_empty']}</i>
-                        <input type="hidden" name="$name" value="0" />
-                </td>
-        </tr>
+
+        echo <<< EOT
+    <tr>
+        <td valign="top">
+            {$text}
+        </td>
+        <td valign="top">
+            <em>{$lang_modifyalb_php['alb_empty']}</em>
+            <input type="hidden" name="$name" value="0" />
+        </td>
+    </tr>
 
 EOT;
         return;
     }
 
-    $initial_thumb_url = $cpg_nopic_data['thumb']; //'images/nopic.jpg';
+    $thumbs = array(
+        0 => $cpg_nopic_data['thumb'],
+    );
 
-    echo <<<EOT
-<script language="JavaScript" type="text/JavaScript">
-<!--
-var Pic = new Array()
+    $img_list = array(
+        0 => $lang_modifyalb_php['last_uploaded'],
+        -1 => $lang_modifyalb_php['random_image'],
+    );
 
-Pic[0] = '$initial_thumb_url'
+    while ($picture = mysql_fetch_assoc($results)) {
 
-EOT;
-
-    $img_list = array(0 => $lang_modifyalb_php['last_uploaded']);
-    while ($picture = mysql_fetch_array($results)) {
         $thumb_url = get_pic_url($picture, 'thumb');
-        echo "Pic[{$picture['pid']}] = '" . $thumb_url . "'\n";
-        if ($picture['pid'] == $ALBUM_DATA[$name]) $initial_thumb_url = $thumb_url;
+
+        $thumbs[$picture['pid']] = $thumb_url;
+
+        if ($picture['pid'] == $ALBUM_DATA[$name]) {
+            $thumbs[0] = $thumb_url;
+        }
+
         $img_list[$picture['pid']] = htmlspecialchars($picture['filename']);
-    } // while
-    echo <<<EOT
-
-function ChangeThumb(index)
-{
-        document.images.Thumb.src = Pic[index]
-}
-
-var checkobj
-
-function agreesubmit(el){
-    checkobj=el
-    if (document.all||document.getElementById){
-        for (i=0;i<checkobj.form.length;i++){  //hunt down submit button
-            var tempobj=checkobj.form.elements[i]
-            if(tempobj.type.toLowerCase()=="submit")
-                tempobj.disabled=!checkobj.checked
-        }
     }
-}
 
-function defaultagree(el){
-    if (!document.all&&!document.getElementById){
-        if (window.checkobj&&checkobj.checked)
-            return true
-        else{
-            alert("{$lang_modifyalb_php['reset_views_confirm']}")
-            return false
-        }
-    }
-}
+    mysql_free_result($results);
 
--->
-</script>
+    $thumbs_json = json_encode($thumbs);
 
-EOT;
     $thumb_cell_height = $CONFIG['thumb_width'] + 17;
-    echo <<<EOT
-        <tr>
-                <td class="tableb" valign="top">
-                        $text
-                </td>
-                <td class="tableb" align="center">
-                        <table cellspacing="0" cellpadding="5" border="0">
-                                <tr>
-                                        <td width="$thumb_cell_height" height="$thumb_cell_height" align="center"><img src="$initial_thumb_url" name='Thumb' class='image' /><br /></td>
-                                </tr>
-                        </table>
-                        <select name="$name" class="listbox" onChange="if(this.options[this.selectedIndex].value) ChangeThumb(this.options[this.selectedIndex].value);" onKeyUp="if(this.options[this.selectedIndex].value) ChangeThumb(this.options[this.selectedIndex].value);">
+
+    echo <<< EOT
+    <tr>
+        <td valign="top">
+            {$icon_array['album_thumbnail']}{$text}{$help['album_thumbnail']}
+        </td>
+        <td align="left">
+            <img src="{$thumbs[0]}" name="Thumb" class="image" alt="$text" />
+            <br />
 
 EOT;
-    foreach($img_list as $pid => $pic_name) {
-        echo '                                <option value="' . $pid . '"' . ($pid == $ALBUM_DATA[$name] ? ' selected':'') . '>' . $pic_name . "</option>\n";
+
+    echo <<< EOT
+            <script language="JavaScript" type="text/JavaScript">
+                var Pic = $thumbs_json;
+            </script>
+
+EOT;
+
+    echo <<< EOT
+            <select name="$name" class="listbox" onchange="if(this.options[this.selectedIndex].value) ChangeThumb(this.options[this.selectedIndex].value);" onkeyup="if(this.options[this.selectedIndex].value) ChangeThumb(this.options[this.selectedIndex].value);">
+
+EOT;
+    foreach ($img_list as $pid => $pic_name) {
+        echo '                <option value="' . $pid . '"' . ($pid == $ALBUM_DATA[$name] ? ' selected="selected"' : '') . '>' . $pic_name . '</option>' . $LINEBREAK;
     }
-    echo <<<EOT
-                        </select>
-                </td>
-        </tr>
+
+    echo <<< EOT
+            </select>
+        </td>
+    </tr>
+
+EOT;
+}
+
+function form_password_protect($text, $name)
+{
+    global $ALBUM_DATA;
+
+    if (!empty($ALBUM_DATA['alb_password'])) {
+        $checked = ' checked="checked"';
+    } else {
+        $checked = '';
+    }
+
+    echo <<< EOT
+    <tr>
+        <td width="40%">
+            $text
+        </td>
+        <td width="60%" valign="top">
+            <input id="$name" type="checkbox" name="$name" value="yes"$checked />
+        </td>
+    </tr>
 
 EOT;
 }
 
 function form_password($text, $name)
 {
-  global $ALBUM_DATA;
-  $value = $ALBUM_DATA[$name];
+    global $ALBUM_DATA;
 
-  echo <<<EOT
-        <tr>
-          <td width="40%" class="tableb">
-              $text
-          </td>
-          <td width="60%" class="tableb" valign="top">
-            <input type="password" name="$name" value="$value" class="textinput" maxlength="32" size="34" />
-          </td>
-        </tr>
+    $value = $ALBUM_DATA[$name];
+
+    echo <<<EOT
+    <tr>
+        <td width="40%">
+            $text
+        </td>
+        <td width="60%" valign="top">
+            <input type="password" name="$name" class="textinput" size="34" />
+        </td>
+    </tr>
+
 EOT;
 }
 
 function form_password_hint($text, $name)
 {
-  global $ALBUM_DATA;
-  $value = $ALBUM_DATA[$name];
+    global $ALBUM_DATA;
 
-  echo <<<EOT
-        <tr>
-          <td width="40%" class="tableb">
-              $text
-          </td>
-          <td width="60%" class="tableb" valign="top">
-            <input type="text" name="$name" value="$value" class="textinput" maxlength="32" size="34" />
-          </td>
-        </tr>
+    $value = $ALBUM_DATA[$name];
+
+    echo <<< EOT
+    <tr>
+        <td width="40%">
+            $text
+        </td>
+        <td width="60%" valign="top">
+            <input type="text" name="$name" value="$value" class="textinput" size="34" />
+        </td>
+    </tr>
+
 EOT;
 }
 
 function form_visibility($text, $name)
 {
-    global $CONFIG, $USER_DATA, $ALBUM_DATA, $lang_modifyalb_php, $cpg_udb;
+    global $CONFIG, $USER_DATA, $ALBUM_DATA, $lang_modifyalb_php, $cpg_udb, $LINEBREAK;
 
     if (!$CONFIG['allow_private_albums']) {
-        echo '        <input type="hidden" name="' . $name . '" value="0" />' . "\n";
+        echo '        <input type="hidden" name="' . $name . '" value="0" />' . $LINEBREAK;
         return;
     }
 
     if (GALLERY_ADMIN_MODE) {
-        $options = array(0 => $lang_modifyalb_php['public_alb'], FIRST_USER_CAT + USER_ID => $lang_modifyalb_php['me_only']);
+
+        $options = array(
+            0 => $lang_modifyalb_php['public_alb'],
+            FIRST_USER_CAT + USER_ID => $lang_modifyalb_php['me_only'],
+        );
+
         if ($ALBUM_DATA['category'] > FIRST_USER_CAT) {
-            //if (defined('UDB_INTEGRATION')) {
-                $owner_name = $cpg_udb->get_user_name($ALBUM_DATA['category'] - FIRST_USER_CAT);
-            /*} else {
-                $result = cpg_db_query("SELECT user_name FROM {$CONFIG['TABLE_USERS']} WHERE user_id='" . ($ALBUM_DATA['category'] - FIRST_USER_CAT) . "'");
-                if (mysql_num_rows($result)) {
-                    $user = mysql_fetch_array($result);
-                    $owner_name = $user['user_name'];
-                }*/
-            //}
+
+            $owner_name = $cpg_udb->get_user_name($ALBUM_DATA['category'] - FIRST_USER_CAT);
+
             $options[$ALBUM_DATA['category']] = sprintf($lang_modifyalb_php['owner_only'], $owner_name);
         }
-        $result = cpg_db_query("SELECT group_id, group_name FROM {$CONFIG['TABLE_USERGROUPS']} WHERE 1");
-        while ($group = mysql_fetch_array($result)) {
-            $options[$group['group_id']] = sprintf($lang_modifyalb_php['groupp_only'], $group['group_name']);
-        } // while
+
+        $result = cpg_db_query("SELECT group_id, group_name FROM {$CONFIG['TABLE_USERGROUPS']}");
+
+        while ($group = mysql_fetch_assoc($result)) {
+            $options[$group['group_id']] = sprintf($lang_modifyalb_php['group_only'], $group['group_name']);
+        }
+
+        mysql_free_result($result);
+
     } else {
-        $options = array(0 => $lang_modifyalb_php['public_alb'],
+
+        $options = array(
+            0 => $lang_modifyalb_php['public_alb'],
             FIRST_USER_CAT + USER_ID => $lang_modifyalb_php['me_only'],
-            );
+        );
+
         $result = cpg_db_query("SELECT group_id, group_name FROM {$CONFIG['TABLE_USERGROUPS']} WHERE group_id IN " . USER_GROUP_SET);
-        while ($group = mysql_fetch_array($result)) {
-            $options[$group['group_id']] = sprintf($lang_modifyalb_php['groupp_only'], $group['group_name']);
-        } // while
+
+        while ($group = mysql_fetch_assoc($result)) {
+            $options[$group['group_id']] = sprintf($lang_modifyalb_php['group_only'], $group['group_name']);
+        }
+
+        mysql_free_result($result);
     }
-    echo <<<EOT
-        <tr>
-                <td class="tableb">
-                        $text
-                </td>
-                <td class="tableb" valign="top">
-                        <select name="$name" class="listbox">
+
+    echo <<< EOT
+    <tr>
+        <td>
+            $text
+        </td>
+        <td valign="top">
+            <select name="$name" class="listbox">
 
 EOT;
+
     foreach ($options as $value => $caption) {
-        echo '                                <option value ="' . $value . '"' . ($ALBUM_DATA['visibility'] == $value ? ' selected': '') . '>' . $caption . "</option>\n";
+        echo '                <option value="' . $value . '"' . ($ALBUM_DATA['visibility'] == $value ? ' selected="selected"' : '') . '>' . $caption . '</option>' . $LINEBREAK;
     }
-    echo <<<EOT
-                        </select>
-                </td>
-        </tr>
+
+    echo <<< EOT
+            </select>
+        </td>
+    </tr>
+
+EOT;
+}
+
+function form_moderator($text, $name)
+{
+    global $CONFIG, $ALBUM_DATA, $lang_modifyalb_php, $LINEBREAK;
+
+    $options = array(
+        0 => $lang_modifyalb_php['admins_only'],
+    );
+
+    $result = cpg_db_query("SELECT group_id, group_name FROM {$CONFIG['TABLE_USERGROUPS']} WHERE group_id > 1");
+
+    while ($group = mysql_fetch_assoc($result)) {
+        $options[$group['group_id']] = sprintf($lang_modifyalb_php['group_only'], $group['group_name']);
+    }
+
+    mysql_free_result($result);
+
+    echo <<< EOT
+    <tr>
+        <td>
+            $text
+        </td>
+        <td valign="top">
+            <select name="$name" class="listbox">
+
+EOT;
+
+    foreach ($options as $value => $caption) {
+        echo '                <option value="' . $value . '"' . ($ALBUM_DATA['moderator_group'] == $value ? ' selected="selected"' : '') . '>' . $caption . '</option>' . $LINEBREAK;
+    }
+
+    echo <<< EOT
+            </select>
+        </td>
+    </tr>
 
 EOT;
 }
 
 function create_form(&$data)
 {
-    foreach($data as $element) {
-        if ((is_array($element))) {
+    foreach ($data as $element) {
+        if (is_array($element)) {
             switch ($element[2]) {
-                case 0 :
-                    form_input($element[0], $element[1]);
-                    break;
-                case 1 :
-                    form_yes_no($element[0], $element[1]);
-                    break;
-                case 2 :
-                    form_category($element[0], $element[1]);
-                    break;
-                case 3 :
-                    form_textarea($element[0], $element[1]);
-                    break;
-                case 4 :
-                    form_alb_thumb($element[0], $element[1]);
-                    break;
-                case 5 :
-                    form_visibility($element[0], $element[1]);
-                    break;
-                case 6:
-                    form_password($element[0],$element[1]);
-                    break;
-                case 7:
-                    form_password_hint($element[0],$element[1]);
-                    break;
-                default:
-                    cpg_die(CRITICAL_ERROR, 'Invalid action for form creation', __FILE__, __LINE__);
-            } // switch
+            case 0:
+                form_input($element[0], $element[1]);
+                break;
+            case 1:
+                form_yes_no($element[0], $element[1]);
+                break;
+            case 2:
+                form_category($element[0], $element[1]);
+                break;
+            case 3:
+                form_textarea($element[0], $element[1]);
+                break;
+            case 4:
+                form_alb_thumb($element[0], $element[1]);
+                break;
+            case 5:
+                form_visibility($element[0], $element[1]);
+                break;
+            case 6:
+                form_password($element[0], $element[1]);
+                break;
+            case 7:
+                form_password_hint($element[0], $element[1]);
+                break;
+            case 8:
+                form_moderator($element[0], $element[1]);
+                break;
+            case 9:
+                form_password_protect($element[0], $element[1]);
+                break;
+            default:
+                cpg_die(CRITICAL_ERROR, 'Invalid action for form creation', __FILE__, __LINE__);
+            }
         } else {
             form_label($element);
         }
@@ -419,189 +580,346 @@ function create_form(&$data)
 
 function alb_list_box()
 {
-    global $CONFIG, $album, $cpg_udb; //, $PHP_SELF;
+    global $CONFIG, $CLEAN, $cpg_udb, $CPG_PHP_SELF, $lang_modifyalb_php, $LINEBREAK;
+
+    $rowset = array();
 
     if (GALLERY_ADMIN_MODE) {
-        $result = cpg_db_query("SELECT aid, title FROM {$CONFIG['TABLE_ALBUMS']} WHERE category < '" . FIRST_USER_CAT . "' ORDER BY title");
-        $rowset = cpg_db_fetch_rowset($result);
+
+        $result = cpg_db_query("SELECT a.aid, a.title, c.name FROM {$CONFIG['TABLE_ALBUMS']} AS a INNER JOIN {$CONFIG['TABLE_CATEGORIES']} AS c ON a.category = c.cid WHERE a.category < '" . FIRST_USER_CAT . "'");
+
+        while ($row = mysql_fetch_assoc($result)) {
+            // Add to multi-dim array for later sorting
+            $rowset[] = array(
+                'cat'   => $row['name'],
+                'aid'   => $row['aid'],
+                'title' => $row['title'],
+            );
+        }
+
         mysql_free_result($result);
 
-        //if (defined('UDB_INTEGRATION')) {
-            $sql = $cpg_udb->get_admin_album_list();
-        /*} else {
-            $sql = "SELECT aid, CONCAT('(', user_name, ') ', title) AS title " . "FROM {$CONFIG['TABLE_ALBUMS']} AS a " . "INNER JOIN {$CONFIG['TABLE_USERS']} AS u ON category = (" . FIRST_USER_CAT . " + user_id) " . "ORDER BY title";
-        }*/
-        $result = cpg_db_query($sql);
-        while ($row = mysql_fetch_array($result)) $rowset[] = $row;
+        //now we need to select the albums without a category
+        $result = cpg_db_query("SELECT aid, title FROM {$CONFIG['TABLE_ALBUMS']} WHERE category = 0");
+
+        while ($row = mysql_fetch_assoc($result)) {
+            // Add to multi-dim array for later sorting
+            $rowset[] = array(
+                'cat'   => $lang_modifyalb_php['no_cat'],
+                'aid'   => $row['aid'],
+                'title' => $row['title'],
+            );
+        }
+
         mysql_free_result($result);
+
+        $sql = $cpg_udb->get_admin_album_list();
+
+        $result = cpg_db_query($sql);
+
+        while ($row = mysql_fetch_assoc($result)) {
+            // Add to multi-dim array for later sorting
+            $rowset[] = array(
+                'cat'   => $lang_modifyalb_php['user_gal'],
+                'aid'   => $row['aid'],
+                'title' => $row['title'],
+            );
+        }
+
+        mysql_free_result($result);
+
     } else {
-        $result = cpg_db_query("SELECT aid, title FROM {$CONFIG['TABLE_ALBUMS']} WHERE category = '" . (FIRST_USER_CAT + USER_ID) . "' ORDER BY title");
-        $rowset = cpg_db_fetch_rowset($result);
+        //Only list the albums owned by the user
+
+        //get albums in "my albums"
+        $result = cpg_db_query("SELECT aid, title FROM {$CONFIG['TABLE_ALBUMS']} WHERE category = ".(USER_ID + FIRST_USER_CAT)." AND owner = ".USER_ID);
+
+        while ($row = mysql_fetch_assoc($result)) {
+            // Add to multi-dim array for later sorting
+            $rowset[] = array(
+                'cat'   => $lang_modifyalb_php['my_gal'],
+                'aid'   => $row['aid'],
+                'title' => $row['title'],
+            );
+        }
+
+        mysql_free_result($result);
+
+        //get public albums
+        $result = cpg_db_query("SELECT a.aid, a.title, c.name FROM {$CONFIG['TABLE_ALBUMS']} AS a INNER JOIN {$CONFIG['TABLE_CATEGORIES']} AS c ON a.category = c.cid WHERE a.owner = ".USER_ID);
+
+        while ($row = mysql_fetch_assoc($result)) {
+            // Add to multi-dim array for later sorting
+            $rowset[] = array(
+                'cat'   => $row['name'],
+                'aid'   => $row['aid'],
+                'title' => $row['title'],
+            );
+        }
+
+        mysql_free_result($result);
+
+        //now we need to select the albums without a category
+        $result = cpg_db_query("SELECT aid, title FROM {$CONFIG['TABLE_ALBUMS']} WHERE category = 0 AND owner = ".USER_ID);
+
+        while ($row = mysql_fetch_assoc($result)) {
+            // Add to multi-dim array for later sorting
+            $rowset[] = array(
+                'cat'   => $lang_modifyalb_php['no_cat'],
+                'aid'   => $row['aid'],
+                'title' => $row['title'],
+            );
+        }
+
         mysql_free_result($result);
     }
 
+    // Sort by category and album title
+    $rowset = array_csort($rowset, 'cat', 'title');
+
     if (count($rowset)) {
-        $lb = "<select name=\"album_listbox\" class=\"listbox\" onChange=\"if(this.options[this.selectedIndex].value) window.location.href='{$_SERVER['PHP_SELF']}?album='+this.options[this.selectedIndex].value;\">\n";
-        foreach ($rowset as $row) {
-            $selected = ($row['aid'] == $album) ? "SELECTED" : "";
-            $lb .= "        <option value=\"" . $row['aid'] . "\" $selected>" . $row['title'] . "</option>\n";
+
+         // Create the nicely sorted and formatted drop down list
+        $alb_cat = '';
+        $select = "<select name=\"album_listbox\" class=\"listbox\" onchange=\"if(this.options[this.selectedIndex].value) window.location.href='{$CPG_PHP_SELF}?album='+this.options[this.selectedIndex].value;\">" . $LINEBREAK;
+
+        foreach ($rowset as $val) {
+            if ($val['cat'] != $alb_cat) {
+                if ($alb_cat) {
+                    $select .= '</optgroup>' . $LINEBREAK;
+                }
+                $select .= '<optgroup label="' . $val['cat'] . '">' . $LINEBREAK;
+                $alb_cat = $val['cat'];
+            }
+            $select .= '<option value="' . $val['aid'] . '"' . ($val['aid'] == $CLEAN['album'] ? ' selected="selected"' : '') . '>   ' . $val['title'] . '</option>' . $LINEBREAK;
         }
-        $lb .= "</select>\n";
-        return $lb;
+
+        if ($alb_cat) {
+            $select .= '</optgroup>' . $LINEBREAK;
+        }
+
+        $select .= '</select>' . $LINEBREAK;
+
+        return $select;
     }
 }
 
-if (!isset($_GET['album'])) {
+if (!$CLEAN['album']) {
+
     if (GALLERY_ADMIN_MODE) {
         $results = cpg_db_query("SELECT * FROM {$CONFIG['TABLE_ALBUMS']} WHERE 1 LIMIT 1");
     } else {
-        $results = cpg_db_query("SELECT * FROM {$CONFIG['TABLE_ALBUMS']} WHERE category = " . (FIRST_USER_CAT + USER_ID) . " LIMIT 1");
+        $results = cpg_db_query("SELECT * FROM {$CONFIG['TABLE_ALBUMS']} WHERE category = " . (FIRST_USER_CAT + USER_ID) . " OR owner = '" . USER_ID . "' LIMIT 1");
     }
-    if (mysql_num_rows($results) == 0) cpg_die(ERROR, $lang_modifyalb_php['err_no_alb_to_modify'], __FILE__, __LINE__);
-    $ALBUM_DATA = mysql_fetch_array($results);
-    $album = $ALBUM_DATA['aid'];
+
+    if (mysql_num_rows($results) == 0) {
+        cpg_die(ERROR, $lang_modifyalb_php['err_no_alb_to_modify'], __FILE__, __LINE__);
+    }
+
+    $ALBUM_DATA = mysql_fetch_assoc($results);
+
+    $CLEAN['album'] = $ALBUM_DATA['aid'];
+
 } else {
-    $album = (int)$_GET['album'];
-    $results = cpg_db_query("SELECT * FROM {$CONFIG['TABLE_ALBUMS']} WHERE aid='$album'");
-    if (!mysql_num_rows($results)) cpg_die(CRITICAL_ERROR, $lang_errors['non_exist_ap'], __FILE__, __LINE__);
-    $ALBUM_DATA = mysql_fetch_array($results);
+
+    $results = cpg_db_query("SELECT * FROM {$CONFIG['TABLE_ALBUMS']} WHERE aid='{$CLEAN['album']}'");
+
+    if (!mysql_num_rows($results)) {
+        cpg_die(CRITICAL_ERROR, $lang_errors['non_exist_ap'], __FILE__, __LINE__);
+    }
+
+    $ALBUM_DATA = mysql_fetch_assoc($results);
 }
 
 $cat = $ALBUM_DATA['category'];
 $actual_cat = $cat;
 
-if (!GALLERY_ADMIN_MODE && $ALBUM_DATA['category'] != FIRST_USER_CAT + USER_ID) {
-    cpg_die(ERROR, $lang_errors['perm_denied'], __FILE__, __LINE__);
-}
-
-
 //////////// main code start ///////////////////
+
+js_include('js/modifyalb.js');
+
+set_js_var('reset_views_confirm', $lang_modifyalb_php['reset_views_confirm']);
+set_js_var('cursor_stop', $icon_array['stop']);
 
 pageheader(sprintf($lang_modifyalb_php['upd_alb_n'], $ALBUM_DATA['title']));
 
 $album_lb = alb_list_box();
-$help = '&nbsp;'.cpg_display_help('f=index.htm&amp;as=album_prop&amp;ae=album_prop_end&amp;top=1', '600', '400');
-starttable("100%",$lang_modifyalb_php['update'].$help, 2);
-echo <<<EOT
-        <tr>
-            <td class="tableh2" align="center">
-                <a href="editpics.php?album=$album" class="admin_menu">{$lang_modifyalb_php['edit_files']}</a>
-                &nbsp;&nbsp;-&nbsp;&nbsp;
-                <a href="index.php?cat={$ALBUM_DATA['category']}" class="admin_menu">{$lang_modifyalb_php['parent_category']}</a>
-                &nbsp;&nbsp;-&nbsp;&nbsp;
-                <a href="thumbnails.php?album=$album" class="admin_menu">{$lang_modifyalb_php['thumbnail_view']}</a>
-            </td>
-            <td class="tableh2" align="right">
+
+
+
+echo <<< EOT
+    <form method="post" name="modifyalbum" action="db_input.php">
+    <input type="hidden" name="event" value="album_update" />
+    <input type="hidden" name="aid" value="{$CLEAN['album']}" />
+EOT;
+
+starttable("100%", cpg_fetch_icon('modifyalb', 1) . $lang_common['album_properties'] . ' - ' . $lang_modifyalb_php['update'].$help['table'], 2, 'cpg_zebra');
+
+echo <<< EOT
+    <tr>
+        <td class="tableh2">
+            <strong>{$lang_modifyalb_php['related_tasks']}</strong>{$help['related_tasks']}
+        </td>
+        <td class="tableh2" align="center">
+            <a href="editpics.php?album={$CLEAN['album']}" class="admin_menu">{$icon_array['edit_files']}{$lang_modifyalb_php['edit_files']}</a>
+            &nbsp;&nbsp;-&nbsp;&nbsp;
+            <a href="index.php?cat={$ALBUM_DATA['category']}" class="admin_menu">{$icon_array['category']}{$lang_modifyalb_php['parent_category']}</a>
+            &nbsp;&nbsp;-&nbsp;&nbsp;
+            <a href="thumbnails.php?album={$CLEAN['album']}" class="admin_menu">{$icon_array['thumbnail']}{$lang_modifyalb_php['thumbnail_view']}</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            {$icon_array['album']}{$lang_modifyalb_php['choose_album']}{$help['choose_album']}
+        </td>
+        <td align="left">
             $album_lb
-            </td>
-        </tr>
-        <form method="post" name="modifyalbum" action="db_input.php">
-        <input type="hidden" name="event" value="album_update" />
-        <input type="hidden" name="aid" value="$album" />
+        </td>
+    </tr>
 
 EOT;
 
 create_form($data);
 
-echo <<<EOT
-<tr>
+echo <<< EOT
+    <tr>
         <td colspan="2" align="left" class="tablef">
+            <a name="notice1"></a>
 EOT;
+
 if (GALLERY_ADMIN_MODE) {
-printf($lang_modifyalb_php['notice1'],'<a href="groupmgr.php">','</a>');
+    printf($lang_modifyalb_php['notice1'], '<a href="groupmgr.php">', '</a>');
+} else {
+    printf($lang_modifyalb_php['notice1'], '', '');
 }
-else {
-printf($lang_modifyalb_php['notice1'],'','');
-}
-echo <<<EOT
+list($timestamp, $form_token) = getFormToken();
+echo <<< EOT
         </td>
-</tr>
-<tr>
+    </tr>
+    <tr>
         <td colspan="2" align="center" class="tablef">
-        <input type="submit" class="button" value="{$lang_modifyalb_php['update']}" />
+            <button type="submit" class="button" name="update_album" value="{$lang_modifyalb_php['update']}">{$icon_array['ok']}{$lang_modifyalb_php['update']}</button>
+            <input type="hidden" name="form_token" value="{$form_token}" />
+            <input type="hidden" name="timestamp" value="{$timestamp}" />
         </td>
-        </form>
-</tr>
+    </tr>
+
 EOT;
 
 endtable();
+echo '</form>';
 
 if (GALLERY_ADMIN_MODE) {
+
     // get the album stats
-    $result = cpg_db_query("SELECT SUM(hits) FROM {$CONFIG['TABLE_PICTURES']} WHERE aid='$album'");
+    $result = cpg_db_query("SELECT SUM(hits) FROM {$CONFIG['TABLE_PICTURES']} WHERE aid='{$CLEAN['album']}'");
     $nbEnr = mysql_fetch_array($result);
     $hits = $nbEnr[0];
-    if (!$hits) { $hits = 0; }
-    mysql_free_result($result);
-    $result = cpg_db_query("SELECT SUM(votes) FROM {$CONFIG['TABLE_PICTURES']} WHERE aid='$album' AND votes > 0");
-    $nbEnr = mysql_fetch_array($result);
-    $votes = $nbEnr[0];
-    if (!$votes) { $votes = 0; }
-    mysql_free_result($result);
-    $result = cpg_db_query("SELECT COUNT(*) FROM {$CONFIG['TABLE_PICTURES']} WHERE aid='$album'");
-    $nbEnr = mysql_fetch_array($result);
-    $files = $nbEnr[0];
-    if (!$files) { $files = 0; }
+
+    if (!$hits) {
+        $hits = 0;
+    }
+
     mysql_free_result($result);
 
-    echo <<<EOT
+    $result = cpg_db_query("SELECT SUM(votes) FROM {$CONFIG['TABLE_PICTURES']} WHERE aid='{$CLEAN['album']}' AND votes > 0");
+    $nbEnr = mysql_fetch_array($result);
+    $votes = $nbEnr[0];
+
+    if (!$votes) {
+        $votes = 0;
+    }
+
+    mysql_free_result($result);
+
+    $result = cpg_db_query("SELECT COUNT(*) FROM {$CONFIG['TABLE_PICTURES']} WHERE aid='{$CLEAN['album']}'");
+    $nbEnr = mysql_fetch_array($result);
+    $files = $nbEnr[0];
+
+    if (!$files) {
+        $files = 0;
+    }
+
+    mysql_free_result($result);
+
+    $result = cpg_db_query("SELECT COUNT(*) FROM {$CONFIG['TABLE_COMMENTS']} AS c INNER JOIN {$CONFIG['TABLE_PICTURES']} AS p ON p.pid = c.pid WHERE aid='{$CLEAN['album']}'");
+    $nbEnr = mysql_fetch_array($result);
+    $comments = $nbEnr[0];
+
+    if (!$comments) {
+        $comments = 0;
+    }
+
+    mysql_free_result($result);
+
+    echo <<< EOT
     <br />
-    <form action="db_input.php" method="post" name="reset_views_form" onSubmit="return defaultagree(this)">
+    <form action="db_input.php" method="post" name="reset_views_form" onsubmit="return defaultagree(this)">
     <input type="hidden" name="event" value="album_reset" />
-    <input type="hidden" name="aid" value="$album" />
+    <input type="hidden" name="aid" value="{$CLEAN['album']}" />
 EOT;
-// set up the translation strings
-$translation_reset_views = sprintf($lang_modifyalb_php['reset_views'], '&quot;'.$ALBUM_DATA['title'].'&quot;');
-$translation_reset_rating = sprintf($lang_modifyalb_php['reset_rating'], '&quot;'.$ALBUM_DATA['title'].'&quot;');
-$translation_delete_comments = sprintf($lang_modifyalb_php['delete_comments'], '&quot;'.$ALBUM_DATA['title'].'&quot;');
-$translation_delete_files = sprintf($lang_modifyalb_php['delete_files'], '<span style="color:red;font-weight:bold">', '</span>', '&quot;'.$ALBUM_DATA['title'].'&quot;');
-    starttable('100%',$lang_modifyalb_php['reset_album'], 2);
-    echo <<<EOT
+
+    // set up the translation strings
+    $translation_reset_views     = sprintf($lang_modifyalb_php['reset_views'], '&quot;'.$ALBUM_DATA['title'].'&quot;');
+    $translation_reset_rating    = sprintf($lang_modifyalb_php['reset_rating'], '&quot;'.$ALBUM_DATA['title'].'&quot;');
+    $translation_delete_comments = sprintf($lang_modifyalb_php['delete_comments'], '&quot;'.$ALBUM_DATA['title'].'&quot;');
+    $translation_delete_files    = sprintf($lang_modifyalb_php['delete_files'], '<span style="color:red;font-weight:bold">', '</span>', '&quot;'.$ALBUM_DATA['title'].'&quot;');
+
+    starttable('100%', cpg_fetch_icon('modifyalb', 1) . $lang_common['album_properties'] . ' - ' . $lang_modifyalb_php['reset_album'], 2);
+
+    echo <<< EOT
     <tr>
             <td align="left" class="tableb">
-                <b>$hits</b> {$lang_modifyalb_php['views']}
+                {$icon_array['views']} <strong>$hits</strong> {$lang_modifyalb_php['views']}
             </td>
             <td align="left" class="tableb">
-                <input type="Checkbox" name="reset_views" id="reset_views" value="1" class="checkbox" /><label for="reset_views" class="clickable_option">$translation_reset_views</label>
+                <input type="checkbox" name="reset_views" id="reset_views" value="1" class="checkbox" />
+                <label for="reset_views" class="clickable_option">$translation_reset_views</label>
+            </td>
+    </tr>
+    <tr>
+            <td align="left" class="tableb tableb_alternate">
+                {$icon_array['rate']} <strong>$votes</strong> {$lang_modifyalb_php['votes']}
+            </td>
+            <td align="left" class="tableb tableb_alternate">
+                <input type="checkbox" name="reset_rating" id="reset_rating" value="1" class="checkbox" />
+                <label for="reset_rating" class="clickable_option">$translation_reset_rating</label>
             </td>
     </tr>
     <tr>
             <td align="left" class="tableb">
-                <b>$votes</b> {$lang_modifyalb_php['votes']}
+                {$icon_array['comment']} <strong>$comments</strong> {$lang_modifyalb_php['comments']}
             </td>
             <td align="left" class="tableb">
-                <input type="Checkbox" name="reset_rating" id="reset_rating" value="1" class="checkbox" /><label for="reset_rating" class="clickable_option">$translation_reset_rating</label>
-            </td>
-    </tr>
-    <!--not implemented yet
-    <tr>
-            <td align="left" class="tableb">
-                <b>$comments</b> {$lang_modifyalb_php['comments']}
-            </td>
-            <td align="left" class="tableb">
-                <input type="Checkbox" name="delete_comments" id="delete_comments" value="1" class="checkbox" /><label for="delete_comments" class="clickable_option">$translation_delete_comments</label>
+                <input type="checkbox" name="delete_comments" id="delete_comments" value="1" class="checkbox" />
+                <label for="delete_comments" class="clickable_option">$translation_delete_comments</label>
             </td>
     </tr>
-    -->
     <tr>
-            <td align="left" class="tableb">
-                <b>$files</b> {$lang_modifyalb_php['files']}
+            <td align="left" class="tableb tableb_alternate">
+                {$icon_array['file']} <strong>$files</strong> {$lang_modifyalb_php['files']}
             </td>
-            <td align="left" class="tableb">
-                <input type="Checkbox" name="delete_files" id="delete_files" value="1" class="checkbox" /><label for="delete_files" class="clickable_option">$translation_delete_files</label>
+            <td align="left" class="tableb tableb_alternate">
+                <input type="checkbox" name="delete_files" id="delete_files" value="1" class="checkbox" />
+                <label for="delete_files" class="clickable_option">$translation_delete_files</label>
             </td>
     </tr>
     <tr>
             <td class="tablef" colspan="2" align="center" valign="bottom">
-                <input type="submit" class="button" value="{$lang_modifyalb_php['submit_reset']}" disabled="disabled" />
-                <input name="agreecheck" type="checkbox" onClick="agreesubmit(this)" />{$lang_modifyalb_php['reset_views_confirm']}
+                <button type="submit" class="button cursor_stop" name="reset_submit" value="{$lang_modifyalb_php['submit_reset']}" disabled="disabled" style="cursor:url({$icon_array['stop']}),text;">{$icon_array['ok']}{$lang_modifyalb_php['submit_reset']}</button>
+                <input name="agreecheck" id="agreecheck" type="checkbox" onclick="agreesubmit(this)" /><label for="agreecheck" class="clickable_option">{$lang_modifyalb_php['reset_views_confirm']}</label>
             </td>
     </tr>
+
 EOT;
     endtable();
-    print "</form>\n";
-}
+    echo <<< EOT
+        <input type="hidden" name="form_token" value="{$form_token}" />
+        <input type="hidden" name="timestamp" value="{$timestamp}" />
+    </form>
 
+EOT;
+}
 pagefooter();
-ob_end_flush();
+
 ?>

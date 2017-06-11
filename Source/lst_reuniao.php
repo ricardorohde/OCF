@@ -13,7 +13,7 @@
 
 		$r = new Reuniao(0);
 		$r->setData(date("Y/m/d",time() + $dt));
-		$r->setLocal("Posto Mario Roberto");
+		$r->setLocal("Chic 10 Av.Alonso y Alonso");
 		$r->setHora("15:30");
 		$r->Grava();
 	}
@@ -37,7 +37,7 @@
 
     foreach($lst as $e) {
          $enq = new Reuniao($e['id']);
-          echo("<center><h5>".$dw[date('w',$enq->getData())]."</h5></center>");
+          echo("<center><h3>".$dw[date('w',$enq->getData())]."</h3></center>");
 		  echo("<center> »".date('d/m/Y',$enq->getData())." - ".date('H:i',$enq->getHora())."hs".chr(171)."</center>");
 		  echo("<br>");
 		  echo("<b>Local: </b>".$enq->getLocal());

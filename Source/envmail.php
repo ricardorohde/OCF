@@ -14,16 +14,16 @@ function envmail($email,$subject,$msg,$from,$fromname = "Opala Clube Franca") {
 
 	$mail->From     = $from;
 	$mail->FromName = $fromname;
-// 	$mail->Hostname = "smtp.gmail.com";
-//	$mail->Host     = "smtp.gmail.com";
+ 	$mail->Hostname = "smtp.gmail.com";
+	$mail->Host     = "smtp.gmail.com";
 	$mail->SMTPSecure = "ssl";
- 	$mail->Hostname = "smtp.opalaclubefranca.com.br";
-	$mail->Host     = "smtp.opalaclubefranca.com.br";
+// 	$mail->Hostname = 'smtp.opalaclubefranca.com.br';
+//      $mail->Host     = 'smtp.opalaclubefranca.com.br';
 //    $mail->SMTPDebug = 2;
  	$mail->Username = "admin@opalaclubefranca.com.br";
 	$mail->Password = "racnela";
 	$mail->SMTPAuth = true;
-	$mail->Port = 465;
+	$mail->Port = '465';
 	$mail->Timeout = 120;
 
     $body  = $msg;

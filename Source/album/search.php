@@ -2,19 +2,17 @@
 /*************************
   Coppermine Photo Gallery
   ************************
-  Copyright (c) 2003-2008 Dev Team
-  v1.1 originally written by Gregory DEMAR
+  Copyright (c) 2003-2016 Coppermine Dev Team
+  v1.0 originally written by Gregory Demar
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License version 3
   as published by the Free Software Foundation.
-  
+
   ********************************************
-  Coppermine version: 1.4.18
-  $HeadURL: https://coppermine.svn.sourceforge.net/svnroot/coppermine/trunk/cpg1.4.x/search.php $
-  $Revision: 4380 $
-  $Author: gaugau $
-  $Date: 2008-04-12 12:00:19 +0200 (Sa, 12 Apr 2008) $
+  Coppermine version: 1.5.42
+  $HeadURL: https://svn.code.sf.net/p/coppermine/code/trunk/cpg1.5.x/search.php $
+  $Revision: 8846 $
 **********************************************/
 
 define('IN_COPPERMINE', true);
@@ -23,18 +21,21 @@ define('SEARCH_PHP', true);
 require('include/init.inc.php');
 
 if (!USER_ID && $CONFIG['allow_unlogged_access'] == 0) {
-    $redirect = $redirect . "login.php";
+    $redirect = 'login.php';
     header("Location: $redirect");
     exit();
 }
 
-pageheader($lang_search_php['title']);
-echo <<< EOT
+$icon_array['search'] = cpg_fetch_icon('search', 2);
 
-<form method="post" action="thumbnails.php" name="searchcpg">
+pageheader($lang_search_php['title']);
+$text = '';
+$text .= <<< EOT
+
+<form method="get" action="thumbnails.php" name="searchcpg" id="cpgform3">
 EOT;
 
-starttable('60%', $lang_search_php['title']);
+$text .= starttable('100%', $icon_array['search'] . $lang_search_php['title'], 1, '', true);
 
 $ip = GALLERY_ADMIN_MODE ? '
         <tr>
@@ -49,21 +50,40 @@ $ip = GALLERY_ADMIN_MODE ? '
 
 $customs = '';
 
-$result = cpg_db_query("SELECT * FROM {$CONFIG['TABLE_CONFIG']} WHERE name LIKE 'user_field%_name' AND value <> '' ORDER BY name ASC");
+if ($cpg_udb->can_join_tables) {
+    $owner_name = <<<EOT
+        <tr>
+                <td><input type="checkbox" name="owner_name" id="owner_name" class="checkbox" /><label for="owner_name" class="clickable_option">{$lang_common['owner_name']}</label></td>
+                <td>&nbsp;</td>
+        </tr>
+EOT;
+} else {
+    $owner_name = '';
+}
 
-while ($row = mysql_fetch_assoc($result)){
-        $name = str_replace(array('_field', '_name'), '', $row['name']);
-        $customs .= <<< EOT
-                <tr>
-                        <td><input type="checkbox" name="$name" id="$name" class="checkbox" /><label for="$name" class="clickable_option">{$row['value']}</label></td>
-                </tr>
+foreach (range(1, 4) as $i) {
+
+    $value = $CONFIG["user_field{$i}_name"];
+
+    if (!$value) {
+        continue;
+    }
+
+    $customs .= <<< EOT
+                                        <tr>
+                                                <td>
+                                                    <input type="checkbox" name="user$i" id="user$i" class="checkbox" /><label for="user$i" class="clickable_option">$value</label>
+                                                </td>
+                                        </tr>
+
 EOT;
 }
-echo <<< EOT
+
+$text .= <<< EOT
         <tr>
-            <td class="tableb" align="center" >
+            <td class="tableb" align="center">
                 <input type="text" style="width: 80%" name="search" maxlength="255" value="" class="textinput" />
-                <input type="submit" value="{$lang_search_php['submit_search']}" class="button" />
+                <button type="submit" class="button" name="submit" id="submit" value="{$lang_search_php['submit_search']}">{$icon_array['search']}{$lang_search_php['submit_search']}</button>
                 <input type="hidden" name="album" value="search" />
             </td>
         </tr>
@@ -71,43 +91,63 @@ echo <<< EOT
                         <td class="tableb">
                                 <table align="center" width="60%">
                                         <tr>
-                                                <td>{$lang_search_php['fields']}:</td>
-                                                <td align="center">{$lang_search_php['age']}:</td>
+                                                <td class="tableh2">{$lang_search_php['imgfields']}:</td>
+                                                <td align="center" class="tableh2">{$lang_search_php['age']}:</td>
                                         </tr>
                                         <tr>
-                                                <td><input type="checkbox" name="title" id="title" class="checkbox" checked="checked" /><label for="title" class="clickable_option">{$lang_adv_opts['title']}</label></td>
+                                                <td><input type="checkbox" name="title" id="title" class="checkbox" checked="checked" /><label for="title" class="clickable_option">{$lang_common['title']}</label></td>
                                                 <td align="right">{$lang_search_php['newer_than']} <input type="text" name="newer_than" size="3" maxlength="4" class="textinput" /> {$lang_search_php['days']}</td>
                                         </tr>
                                         <tr>
-                                                <td><input type="checkbox" name="caption" id="caption" class="checkbox" checked="checked" /><label for="caption" class="clickable_option">{$lang_adv_opts['caption']}</label></td>
+                                                <td><input type="checkbox" name="caption" id="caption" class="checkbox" checked="checked" /><label for="caption" class="clickable_option">{$lang_common['caption']}</label></td>
                                                 <td align="right">{$lang_search_php['older_than']} <input type="text" name="older_than" size="3" maxlength="4" class="textinput" /> {$lang_search_php['days']}</td>
                                         </tr>
                                         <tr>
-                                                <td><input type="checkbox" name="keywords" id="keywords" class="checkbox" checked="checked" /><label for="keywords" class="clickable_option">{$lang_adv_opts['keywords']}</label></td>
+                                                <td><input type="checkbox" name="keywords" id="keywords" class="checkbox" checked="checked" /><label for="keywords" class="clickable_option">{$lang_common['keywords']}</label></td>
                                                 <td>&nbsp;</td>
 
                                         </tr>
                                         <tr>
-                                                <td><input type="checkbox" name="owner_name" id="owner_name" class="checkbox" /><label for="owner_name" class="clickable_option">{$lang_adv_opts['owner_name']}</label></td>
-                                                <td align="right"><select name="type" class="listbox">
-                                                        <option value="AND" selected="selected">{$lang_search_php['all_words']}</option>
-                                                        <option value="OR">{$lang_search_php['any_words']}</option></select>
+                                                <td><input type="checkbox" name="filename" id="filename" class="checkbox" /><label for="filename" class="clickable_option">{$lang_common['filename']}</label></td>
+                                                <td align="right">
+                                                                    <select name="type" class="listbox">
+                                                                        <option value="AND" selected="selected">{$lang_search_php['all_words']}</option>
+                                                                        <option value="OR">{$lang_search_php['any_words']}</option>
+                                                                        <option value="regex">{$lang_search_php['regex']}</option>
+                                                                    </select>
                                                 </td>
                                         </tr>
+$owner_name
+$customs
+$ip
                                         <tr>
-                                                <td><input type="checkbox" name="filename" id="filename" class="checkbox" /><label for="filename" class="clickable_option">{$lang_adv_opts['filename']}</label></td>
+                                                <td>&nbsp;</td>
                                                 <td>&nbsp;</td>
                                         </tr>
-                                                $customs
-                                                $ip
+
+                                        <tr>
+                                                <td class="tableh2">{$lang_search_php['albcatfields']}:</td>
+                                                <td class="tableh2">&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                                <td><input type="checkbox" name="album_title" id="album_title" class="checkbox" /><label for="album_title" class="clickable_option">{$lang_search_php['album_title']}</label></td>
+                                                <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                                <td><input type="checkbox" name="category_title" id="category_title" class="checkbox" /><label for="category_title" class="clickable_option">{$lang_search_php['category_title']}</label></td>
+                                                <td>&nbsp;</td>
+                                        </tr>
                                 </table>
                         </td>
                 </tr>
 EOT;
 
 
-endtable();
-echo '</form>';
+$text .= endtable(true);
+$text .= '</form>';
+
+$text = CPGPluginAPI::filter('search_form', $text);
+echo $text;
 
 if ($CONFIG['clickable_keyword_search'] != 0) {
     include('include/keyword.inc.php');
@@ -122,5 +162,5 @@ echo <<< EOT
 EOT;
 
 pagefooter();
-ob_end_flush();
+
 ?>

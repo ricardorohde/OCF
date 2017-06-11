@@ -2,66 +2,86 @@
 /*************************
   Coppermine Photo Gallery
   ************************
-  Copyright (c) 2003-2008 Dev Team
-  v1.1 originally written by Gregory DEMAR
+  Copyright (c) 2003-2016 Coppermine Dev Team
+  v1.0 originally written by Gregory Demar
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License version 3
   as published by the Free Software Foundation.
 
   ********************************************
-  Coppermine version: 1.4.18
-  $HeadURL: https://coppermine.svn.sourceforge.net/svnroot/coppermine/trunk/cpg1.4.x/forgot_passwd.php $
-  $Revision: 4380 $
-  $Author: gaugau $
-  $Date: 2008-04-12 12:00:19 +0200 (Sa, 12 Apr 2008) $
+  Coppermine version: 1.5.42
+  $HeadURL: https://svn.code.sf.net/p/coppermine/code/trunk/cpg1.5.x/forgot_passwd.php $
+  $Revision: 8846 $
 **********************************************/
 
 define('IN_COPPERMINE', true);
 define('FORGOT_PASSWD_PHP', true);
-global $CONFIG;
-
 
 require('include/init.inc.php');
 include_once('include/mailer.inc.php');
 
-if (USER_ID) cpg_die(ERROR, $lang_forgot_passwd_php['err_already_logged_in'], __FILE__, __LINE__);
+if (USER_ID) {
+    cpg_die(ERROR, $lang_forgot_passwd_php['err_already_logged_in'], __FILE__, __LINE__);
+}
 
 $lookup_failed = '';
 
-if (!empty($_POST['email'])) {
-    $emailaddress = addslashes($_POST['email']);
+/**
+ * Clean up GPC and other Globals here
+ */
+if ($superCage->post->keyExists('email') && $superCage->post->testEmail('email')) {
+    $CLEAN['email'] = $superCage->post->testEmail('email');
+}
 
-    $sql = "SELECT user_id, user_group,user_active,user_name, user_password, user_email  FROM {$CONFIG['TABLE_USERS']} WHERE user_email = '$emailaddress' AND user_active = 'YES'";
+if ($superCage->get->keyExists('key')) {
+    $CLEAN['key'] = $superCage->get->getEscaped('key');
+}
+
+if ($superCage->get->keyExists('id')) {
+    $CLEAN['id'] = $superCage->get->getEscaped('id');
+}
+
+//END CLEANUP
+
+if (isset($CLEAN['email'])) {
+    //$CLEAN['email'] = addslashes($_POST['email']);
+
+    $sql = "SELECT user_id, user_group, user_active, user_name, user_password, user_email FROM {$CONFIG['TABLE_USERS']} WHERE user_email = '{$CLEAN['email']}' AND user_active = 'YES'";
 
     $results = cpg_db_query($sql);
-    if (mysql_num_rows($results))
-        { // something has been found start
-        $USER_DATA = mysql_fetch_array($results);
+
+    if (mysql_num_rows($results)) { // something has been found start
+
+        $USER_DATA = mysql_fetch_assoc($results);
+
         // check if we have an admin account (with empty email address)
         if ($USER_DATA['user_email'] == '') {
-          // the password is empty. Is the current user the gallery admin?
-          if ($USER_DATA['user_group'] == 1) {
-            $USER_DATA['user_email'] = $CONFIG['gallery_admin_email'];
-          } else {
-            cpg_die(CRITICAL_ERROR, $lang_forgot_passwd_php['failed_sending_email'], __FILE__, __LINE__); //not the gallery admin account
-          }
+
+            // the password is empty. Is the current user the gallery admin?
+            if ($USER_DATA['user_group'] == 1) {
+                $USER_DATA['user_email'] = $CONFIG['gallery_admin_email'];
+            } else {
+                cpg_die(CRITICAL_ERROR, $lang_forgot_passwd_php['failed_sending_email'], __FILE__, __LINE__); //not the gallery admin account
+            }
         }
 
         $randkey = $cpg_udb->generateId();
 
         // Session life = 1hour - session life (5 minutes)
-        $session_life = time()-(CPG_MINUTE*55);
+        $session_life = time() - (CPG_MINUTE * 55);
 
-        $sql =  'insert into '.$cpg_udb->sessionstable.' (session_id, user_id, time, remember) values ';
-        $sql .= '("'.md5($randkey.$USER_DATA['user_id']).'", 0, "'.$session_life.'", 0);';
+        $sql = "INSERT INTO {$cpg_udb->sessionstable} (session_id, user_id, time, remember) VALUES ('" . md5($randkey . $USER_DATA['user_id']) . "', 0, $session_life, 0)";
 
         cpg_db_query($sql);
 
+        $template_vars = array(
+            '{VERIFY_LINK}' => $CONFIG['ecards_more_pic_target'].(substr($CONFIG["ecards_more_pic_target"], -1) == '/' ? '' : '/') .'forgot_passwd.php?key='.$randkey.'&id='.$USER_DATA['user_id'],
+            '{SITE_NAME}' => $CONFIG['gallery_name'],
+        );
 
         // send the email
-        if (!cpg_mail($USER_DATA['user_email'], sprintf($lang_forgot_passwd_php['account_verify_subject'], $CONFIG['gallery_name']), sprintf($lang_forgot_passwd_php['account_verify_body'],
-            $CONFIG['ecards_more_pic_target'].(substr($CONFIG["ecards_more_pic_target"], -1) == '/' ? '' : '/') .'forgot_passwd.php?key='.$randkey.'&id='.$USER_DATA['user_id']))){
+        if (!cpg_mail($USER_DATA['user_email'], sprintf($lang_forgot_passwd_php['account_verify_subject'], $CONFIG['gallery_name']), nl2br(strtr($lang_forgot_passwd_php['account_verify_email'], $template_vars)))) {
 
             cpg_die(CRITICAL_ERROR, $lang_forgot_passwd_php['failed_sending_email'], __FILE__, __LINE__);
         }
@@ -69,7 +89,7 @@ if (!empty($_POST['email'])) {
         // output the message
         pageheader($lang_forgot_passwd_php['forgot_passwd'], "<META http-equiv=\"refresh\" content=\"3;url=index.php\">");
         $referer = 'index.php';
-        msg_box($lang_forgot_passwd_php['forgot_passwd'], sprintf($lang_forgot_passwd_php['verify_email_sent'], $USER_DATA['user_email']), $lang_continue, $referer);
+        msg_box($lang_forgot_passwd_php['forgot_passwd'], sprintf($lang_forgot_passwd_php['verify_email_sent'], $USER_DATA['user_email']), $lang_common['continue'], $referer);
         $USER_DATA['user_password'] = '***********';
         pagefooter();
         exit;
@@ -84,12 +104,11 @@ if (!empty($_POST['email'])) {
 
 EOT;
     }
-} elseif (isset($_GET['key']) && isset($_GET['id'])) {
+} elseif (isset($CLEAN['key']) && isset($CLEAN['id'])) {
+    /*$randkey = addslashes($_GET['key']);
+    $user_id = addslashes($_GET['id']);*/
 
-    $randkey = addslashes($_GET['key']);
-    $user_id = addslashes($_GET['id']);
-
-    $sql = "select null from {$cpg_udb->sessionstable} where session_id = md5('{$randkey}{$user_id}');";
+    $sql = "SELECT null FROM {$cpg_udb->sessionstable} WHERE session_id = '" . md5($CLEAN['key'] . $CLEAN['id']) . "'";
 
     $result = cpg_db_query($sql);
 
@@ -99,7 +118,7 @@ EOT;
 
     mysql_free_result($result);
 
-    $sql = "select {$cpg_udb->field['username']}, {$cpg_udb->field['email']} from {$cpg_udb->usertable} where {$cpg_udb->field['user_id']}='$user_id';";
+    $sql = "SELECT {$cpg_udb->field['username']}, {$cpg_udb->field['email']} FROM {$cpg_udb->usertable} WHERE {$cpg_udb->field['user_id']} = {$CLEAN['id']}";
 
     $result = cpg_db_query($sql);
 
@@ -113,33 +132,31 @@ EOT;
     // Reset Password
     $new_password = $cpg_udb->make_password();
 
-    if ($CONFIG['enable_encrypted_passwords']) {
-        $password = md5($new_password);
-    } else {
-        $password = $new_password;
-    }
+    $password = md5($new_password);
 
-    $sql =  "update {$cpg_udb->usertable} set ";
-    $sql .= "{$cpg_udb->field['password']}='$password' ";
-    $sql .= "where {$cpg_udb->field['email']}='{$row['user_email']}'";
+    $sql =  "UPDATE {$cpg_udb->usertable} SET {$cpg_udb->field['password']} = '$password' WHERE {$cpg_udb->field['email']} = '{$row['user_email']}'";
     cpg_db_query($sql);
 
+    $template_vars = array(
+        '{USER_NAME}' => $row['user_name'],
+        '{PASSWORD}'  => $new_password,
+        '{SITE_LINK}' => $CONFIG['ecards_more_pic_target'].(substr($CONFIG["ecards_more_pic_target"], -1) == '/' ? '' : '/') .'login.php',
+        '{SITE_NAME}' => $CONFIG['gallery_name'],
+    );
     // send the password
     if (!cpg_mail($row['user_email'],
-        sprintf($lang_forgot_passwd_php['passwd_reset_subject'], $CONFIG['gallery_name']),
-        sprintf($lang_forgot_passwd_php['passwd_reset_body'], $row['user_name'], $new_password,
-        $CONFIG['ecards_more_pic_target'].(substr($CONFIG["ecards_more_pic_target"], -1) == '/' ? '' : '/') .'login.php'))){
+        sprintf($lang_forgot_passwd_php['passwd_reset_subject'], $CONFIG['gallery_name']), nl2br(strtr($lang_forgot_passwd_php['reset_email'], $template_vars)))) {
 
         cpg_die(CRITICAL_ERROR, $lang_forgot_passwd_php['failed_sending_email'], __FILE__, __LINE__);
     }
 
-    $sql = "delete from {$cpg_udb->sessionstable} where session_id=md5('{$randkey}{$user_id}');";
+    $sql = "DELETE FROM {$cpg_udb->sessionstable} WHERE session_id = '" . md5($CLEAN['key'] . $CLEAN['id']) . "'";
     cpg_db_query($sql);
 
     // output the message
     pageheader($lang_forgot_passwd_php['forgot_passwd'], "<META http-equiv=\"refresh\" content=\"3;url=login.php\">");
     $referer = 'login.php';
-    msg_box($lang_forgot_passwd_php['forgot_passwd'], sprintf($lang_forgot_passwd_php['email_sent'], $row['user_email']), $lang_continue, $referer);
+    msg_box($lang_forgot_passwd_php['forgot_passwd'], sprintf($lang_forgot_passwd_php['email_sent'], $row['user_email']), $lang_common['continue'], $referer);
     $USER_DATA['user_password'] = '***********';
     pagefooter();
     exit;
@@ -147,22 +164,30 @@ EOT;
 
 pageheader($lang_forgot_passwd_php['forgot_passwd']);
 
-echo '<form action="forgot_passwd.php" method="post" name="passwordreminder">';
-starttable('-1', $lang_forgot_passwd_php['forgot_passwd'], 2);
+echo '<form action="forgot_passwd.php" method="post" name="passwordreminder" id="cpgform">';
+
+$email_icon = cpg_fetch_icon('mail', 2);
+$ok_icon    = cpg_fetch_icon('ok', 2);
+
+starttable('-1', cpg_fetch_icon('key_enter', 2) . $lang_forgot_passwd_php['forgot_passwd'], 2);
+
 echo <<< EOT
             $lookup_failed
                  <tr>
-                        <td class="tableb" width="40%">{$lang_forgot_passwd_php['enter_email']}</td>
+                        <td class="tableb" width="40%">{$email_icon}{$lang_forgot_passwd_php['enter_email']}</td>
                         <td class="tableb" width="60%"><input type="text" class="textinput" name="email" style="width: 100%" /></td>
 
                   </tr>
                   <tr>
-                        <td colspan="2" align="center" class="tablef"><script language="javascript" type="text/javascript">
-                        <!--
-                        document.passwordreminder.email.focus();
-                        -->
-                        </script>
-                                                <input name="submitted" type="submit" class="button" value="{$lang_forgot_passwd_php['submit']}" /></td>
+                        <td colspan="2" align="center" class="tablef">
+                            <script language="javascript" type="text/javascript">
+                            <!--
+                            document.passwordreminder.email.focus();
+                            -->
+                            </script>
+                            <!--<input name="submitted" type="submit" class="button" value="{$lang_forgot_passwd_php['submit']}" />-->
+                            <button type="submit" class="button" name="submitted" value="{$lang_common['ok']}"  tabindex="4">{$ok_icon}{$lang_common['ok']}</button>
+                        </td>
                   </tr>
 
 EOT;
@@ -170,6 +195,5 @@ endtable();
 echo '</form>';
 
 pagefooter();
-ob_end_flush();
 
 ?>

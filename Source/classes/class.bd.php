@@ -17,57 +17,27 @@ function BD () { //Construtor da classe
      $this->Conecta();
 
 }
-
-/*
-function BD ($bdlink) { //Construtor da classe
-
-     $this->Conecta();
-     
-     mysql_select_db($bdlink,$this->Link)
- 		or die('\nErro Selecionando DB prod: ' . mysql_error($this->Link)); 
-
-}
-*/
-
 /*
 
 */
 function Conecta() {
-
-
+	
     if ($_SERVER['HTTP_HOST'] == 'clubedoopala.sytes.net') {
 			$this->Link = mysql_connect('localhost', 'bolao', 'bolao')
 				or die('Erro BD_Conecta: ' ."<br>". mysql_error($this->Link)); 
 			mysql_select_db("clubedoopala",$this->Link) 
 	 				or die('\nErro Selecionando DB teste: ' . mysql_error($this->Link)); 
 			}
-    elseif ($_SERVER['HTTP_HOST'] == 'localhost') {
-			$this->Link = mysql_connect('localhost', 'root', 'racnela')
-				or die('Erro BD_Conecta: ' ."<br>". mysql_error($this->Link)); 
-			mysql_select_db("opalaclubefran",$this->Link)
-	 				or die('\nErro Selecionando DB prod: ' . mysql_error($this->Link)); 
-//		    echo ('Banco localhost');
-	}
 	else
 	{
-			$this->Link = mysql_connect('mysql.opalaclubefranca.com.br', 'opalaclubefran', 'racnela')
+			$this->Link = mysql_connect('localhost', 'opalaclubefran', 'racnela')
 				or die('Erro BD_Conecta: ' ."<br>". mysql_error($this->Link)); 
 			mysql_select_db("opalaclubefran",$this->Link)
 	 				or die('\nErro Selecionando DB prod: ' . mysql_error($this->Link)); 
 		}
 
-
-/*  ini_set('default_charset','utf-8');
-  mysql_set_charset('utf-8'); 
- mysql_query("SET NAMES 'utf-8'");*/
-//mysql_query('SET character_set_connection=latin1');
-//mysql_query('SET character_set_client=latin1');
-//mysql_query('SET character_set_results=latin1');
-//define("SET CHARACTER SET latin1");
-//define("SET COLLATION_CONNECTION='utf8_general_ci'");
-
- // ini_set('default_charset','latin1');
-//  ini_set('COLLATION_CONNECTION','ISO-8859-1');
+//	define("SET CHARACTER SET ascii");
+//	define("SET COLLATION_CONNECTION='ascii_general_ci'");
 
 }
 /*
@@ -136,7 +106,7 @@ function Exec ($strsql) {
 
 */
 	function getValue($ColName) { //Retorna o valor de uma coluna
-//		return mb_convert_encoding($this->Row[$ColName], "ISO-8859-1", "UTF-8");
+
 		return $this->Row[$ColName];
 
 	}

@@ -2,1582 +2,1881 @@
 /*************************
   Coppermine Photo Gallery
   ************************
-  Copyright (c) 2003-2008 Dev Team
-  v1.1 originally written by Gregory DEMAR
+  Copyright (c) 2003-2016 Coppermine Dev Team
+  v1.0 originally written by Gregory Demar
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License version 3
   as published by the Free Software Foundation.
-  
+
   ********************************************
-  Coppermine version: 1.4.18
-  $Source: /cvsroot/coppermine/stable/lang/english.php,v $
-  $Revision: 4380 $
-  $Author: gaugau $
-  $Date: 2008-04-12 12:00:19 +0200 (Sa, 12 Apr 2008) $
+  Coppermine version: 1.5.38
+  $HeadURL: https://svn.code.sf.net/p/coppermine/code/trunk/cpg1.5.x/lang/finnish.php $
+  $Revision: 8836 $
 **********************************************/
 
-if (!defined('IN_COPPERMINE')) { die('Not in Coppermine...');}
+if (!defined('IN_COPPERMINE')) die('Not in Coppermine...');
 
 // info about translators and translated language
+$lang_translation_info['lang_name_english'] = 'Finnish';
+$lang_translation_info['lang_name_native'] = 'Suomi';
+$lang_translation_info['lang_country_code'] = 'fi';
+$lang_translation_info['trans_name'] = 'papukaija';
+$lang_translation_info['trans_email'] = '';
+$lang_translation_info['trans_website'] = 'http://forum.coppermine-gallery.net/index.php?action=profile;u=56739';
+$lang_translation_info['trans_date'] = '2009-09-12';
 
-$lang_translation_info = array(
-  'lang_name_english' => 'Finnish', //cpg1.4
-  'lang_name_native' => 'Suomi', //cpg1.4
-  'lang_country_code' => 'fi', //cpg1.4
-  'trans_name'=> 'Kati and Paavo N', // slightly modified for my own needs, a few minor translation errors corrected
-  'trans_email' => 'kati@tiuhti.net', // 'paavo.nikkila@gmail.com',
-  'trans_website' => 'http://kati.tiuhti.net/',
-  'trans_date' => '2008-03-28',
-);
 
 $lang_charset = 'utf-8';
 $lang_text_dir = 'ltr'; // ('ltr' for left to right, 'rtl' for right to left)
 
-// shortcuts for Byte, Kilo, Mega
-$lang_byte_units = array('tavua', 'KB', 'MB');
+// shortcuts for Bytes, Kibibytes, Mebibytes, Gibibytes
+$lang_byte_units = array('tavua', 'kt', 'Mt', 'Gt');
+$lang_decimal_separator = array('.', ',');  //cpg1.5 // symbol used to separate thousands from hundreds and rounded number from  decimal place
 
 // Day of weeks and months
 $lang_day_of_week = array('su', 'ma', 'ti', 'ke', 'to', 'pe', 'la');
 $lang_month = array('tammikuu', 'helmikuu', 'maaliskuu', 'huhtikuu', 'toukokuu', 'kesäkuu', 'heinäkuu', 'elokuu', 'syyskuu', 'lokakuu', 'marraskuu', 'joulukuu');
 
-// Some common strings
-$lang_yes = 'Kyllä';
-$lang_no  = 'Ei';
-$lang_back = 'TAKAISIN';
-$lang_continue = 'JATKA';
-$lang_info = 'Info';
-$lang_error = 'Virhe';
-$lang_check_uncheck_all = 'check/uncheck all'; //cpg1.4
-
 // The various date formats
 // See http://www.php.net/manual/en/function.strftime.php to define the variable below
-$album_date_fmt =    '%d.%m.%Y';
-$lastcom_date_fmt =  '%d.%m.%y klo %H:%M';
-$lastup_date_fmt = '%d.%m.%Y';
-$register_date_fmt = '%d.%m.%Y';
-$lasthit_date_fmt = '%d.%m.%Y klo %H:%M';
-$comment_date_fmt =  '%d.%m.%Y klo %H:%M';
-$log_date_fmt = '%d.%m.%Y klo %H:%M'; //cpg1.4
+$lang_date['album'] = '%d.%m.%Y';
+$lang_date['lastcom'] = '%d.%m.%y klo %H:%M';
+$lang_date['lastup'] = '%d.%m.%Y';
+$lang_date['register'] = '%d.%m.%Y';
+$lang_date['lasthit'] = '%d.%m.%Y klo %H:%M';
+$lang_date['comment'] = '%d.%m.%Y klo %H:%M';
+$lang_date['log'] = '%d.%m.%Y klo %H:%M';
+$lang_date['scientific'] = '%d-%m-%Y klo %H:%M:%S';
 
 // For the word censor
 $lang_bad_words = array('*fuck*', 'asshole', 'assramer', 'bitch*', 'c0ck', 'clits', 'Cock', 'cum', 'cunt*', 'dago', 'daygo', 'dego', 'dick*', 'dildo', 'fanculo', 'feces', 'foreskin', 'Fu\(*', 'fuk*', 'honkey', 'hore', 'injun', 'kike', 'lesbo', 'masturbat*', 'motherfucker', 'nazis', 'nigger*', 'nutsack', 'penis', 'phuck', 'poop', 'pussy', 'scrotum', 'slut', 'titties', 'titty', 'twaty', 'wank*', 'whore', 'wop*', 'vittu', 'saatana', 'huora', 'runkku', 'nekru', 'neekeri', 'pillu');
 
-$lang_meta_album_names = array(
-  'random' => 'Satunnaiset kuvat',
-  'lastup' => 'Uusimmat kuvat',
-  'lastalb'=> 'Viimeksi päivitetyt albumit',
-  'lastcom' => 'Uusimmat kommentit',
-  'topn' => 'Katsotuimmat',
-  'toprated' => 'Suosituimmat',
-  'lasthits' => 'Viimeksi katsotut',
-  'search' => 'Hakutulokset',
-  'favpics'=> 'Suosikit',  //cpg1.4
-);
+$lang_meta_album_names['random'] = 'Satunnaiset tiedostot';
+$lang_meta_album_names['lastup'] = 'Uusimmat tiedostot';
+$lang_meta_album_names['lastalb'] = 'Viimeksi päivitetyt albumit';
+$lang_meta_album_names['lastcom'] = 'Uusimmat kommentit';
+$lang_meta_album_names['topn'] = 'Katsotuimmat';
+$lang_meta_album_names['toprated'] = 'Suosituimmat';
+$lang_meta_album_names['lasthits'] = 'Viimeksi katsotut';
+$lang_meta_album_names['search'] = 'Haun tulokset';
+$lang_meta_album_names['album_search'] = 'Albumihaun tulokset';
+$lang_meta_album_names['category_search'] = 'Kategoriahaun tulokset';
+$lang_meta_album_names['favpics'] = 'Suosikit';
+$lang_meta_album_names['datebrowse'] = 'Selaa päivän mukaan'; //cpg1.5
 
-$lang_errors = array(
-  'access_denied' => 'Ei oikeuksia tälle sivulle.',
-  'perm_denied' => 'Ei oikeuksia kyseisen toiminnon suorittamiseen.',
-  'param_missing' => 'Scriptiä kutsuttu ilman vaadittavia parametrejä.',
-  'non_exist_ap' => 'Valittua albumia/kuvaa ei löydy!',
-  'quota_exceeded' => 'Levytilasi on täynnä<br /><br />Sinulla on levytilaa [quota]K ja kuvasi vievät tällä hetkellä [space]K. Tämän kuvan lisääminen ylittäisi levytilan.',
-  'gd_file_type_err' => 'Kun käytät GD -kirjastoa sallitut tiedostomuodot ovat JPEG ja PNG.',
-  'invalid_image' => 'Kuvasi on korruptoitunut eikä sitä voida käsitellä GD -kirjastolla.',
-  'resize_failed' => 'Pienennettyjä kuvia ei voitu tehdä.',
-  'no_img_to_display' => 'Ei näytettäviä kuvia.',
-  'non_exist_cat' => 'Valittua kategoriaa ei löydy.',
-  'orphan_cat' => 'Kategorian yläkategoriaa ei löydy. Aja kategoriamanageri selvittääksesi ongelma!',
-  'directory_ro' => 'Kirjoitusoikeudet puuttuvat hakemistoon \'%s\'. Tiedostoja ei voitu poistaa.',
-  'non_exist_comment' => 'Valittua kommenttia ei löydy.',
-  'pic_in_invalid_album' => 'Kuvaa ei ole albumissa (%s)!?',
-  'banned' => 'Sinut on bannattu sivustolta.',
-  'not_with_udb' => 'This function is disabled in Coppermine because it is integrated with forum software. Either what you are trying to do is not supported in this configuration, or the function should be handled by the forum software.',
-  'offline_title' => 'Offline',
-  'offline_text' => 'Kalleria on poissa käytöstä. Tarkista myöhemmin uudelleen.',
-  'ecards_empty' => 'Tällä hetkellä ei ole e-kortteja.',
-  'action_failed' => 'Toiminto epäonnistui.',
-  'no_zip' => 'ZIP -tiedostojen käsittelyyn vaadittava kirjasto puuttuu. Ota yhteyttä ylläpitäjään!',
-  'zip_type' => 'Sinulla ei ole oikeuksia lähettää ZIP -tiedostoja.',
-  'database_query' => 'Tietokantakyselyn käsittely epäonnistui.', //cpg1.4
-  'non_exist_comment' => 'Kommenttia ei löydy.', //cpg1.4
-);
+$lang_errors['access_denied'] = 'Ei oikeuksia tälle sivulle.';
+$lang_errors['invalid_form_token'] = 'Kelvollista lomaketunnusta ei löydetty.'; //cpg1.5
+$lang_errors['perm_denied'] = 'Ei oikeuksia kyseisen toiminnon suorittamiseen.';
+$lang_errors['param_missing'] = 'Skriptiä kutsuttu ilman vaadittavia parametrejä.';
+$lang_errors['non_exist_ap'] = 'Valittua albumia/kuvaa ei löydy!';
+$lang_errors['quota_exceeded'] = 'Sallittu levytila ylitetty.'; //cpg1.5
+$lang_errors['quota_exceeded_details'] = 'Sinulla on levytilaa [quota]k, tiedostosi käyttävät tällä hetkellä [space]k, jolloin tiedoston lisääminen ylittäisi sinulle sallitun levytilan.'; //cpg1.5
+$lang_errors['gd_file_type_err'] = 'Kun käytät GD -kirjastoa, sallitut tiedostomuodot ovat JPEG ja PNG.';
+$lang_errors['invalid_image'] = 'Kuvasi on korruptoitunut tai sitä ei voi käsitellä GD -kirjastolla.';
+$lang_errors['resize_failed'] = 'Pienoiskuvaa tai pienennettyjä kuvia ei voitu luoda.';
+$lang_errors['no_img_to_display'] = 'Ei näytettäviä kuvia.';
+$lang_errors['non_exist_cat'] = 'Valittua kategoriaa ei löydy.';
+$lang_errors['directory_ro'] = 'Kirjoitusoikeudet puuttuvat hakemistoon \'%s\'. Tiedostoja ei voitu poistaa.';
+$lang_errors['pic_in_invalid_album'] = 'Tiedosto ei ole albumissa (%s)!?';
+$lang_errors['banned'] = 'Pääsysi sivustolle on toistaiseksi evätty.';
+$lang_errors['offline_title'] = 'Offline';
+$lang_errors['offline_text'] = 'Galleria on poissa käytöstä. Tarkista myöhemmin uudelleen.';
+$lang_errors['ecards_empty'] = 'Tällä hetkellä ei ole e-kortteja.';
+$lang_errors['database_query'] = 'Tietokantakyselyn käsittely epäonnistui.';
+$lang_errors['non_exist_comment'] = 'Valittua kommenttia ei löydy.';
+$lang_errors['captcha_error'] = 'Vahvistuskoodi ei täsmää.'; // cpg1.5
+$lang_errors['login_needed'] = 'Sinun tulee %srekisteröityä%s tai %skirjautua sisään%s päästäksesi tälle sivulle.'; // cpg1.5
+$lang_errors['error'] = 'Virhe'; // cpg1.5
+$lang_errors['critical_error'] = 'Kriittinen virhe'; // cpg1.5
+$lang_errors['access_thumbnail_only'] = 'Sinulla on oikeus nähdä ainoastaan pienoiskuvia.'; // cpg1.5
+$lang_errors['access_intermediate_only'] = 'Sinulla ei ole oikeutta nähdä täysikokoisia kuvia.'; // cpg1.5
+$lang_errors['access_none'] = 'Sinulla ei ole oikeutta nähdä ainuttakaan kuvaa.'; // cpg1.5
+$lang_errors['register_globals_title'] = 'Register Globals päällä!';// cpg1.5
+$lang_errors['register_globals_warning'] = 'PHP asetus "register_globals" on päällä palvelimellasi, mikä on huono idea heikomman tietoturvan vuoksi. On erittäin suositeltavaa ottaa se pois päältä.'; //cpg1.5
 
-$lang_bbcode_help_title = 'bbcode-ohje'; //cpg1.4
-$lang_bbcode_help = 'Voit lisätä klikattavia linkkejä ja muotoiluja tähän kenttään käyttämällä bbcode tageja: <li>[b]Lihavoitu[/b] =&gt; <b>Lihavoitu</b></li><li>[i]Kursivoitu[/i] =&gt; <i>Kursivoitu</i></li><li>[url=http://esimerkki.fi/]URL -teksti[/url] =&gt; <a href="http://esimerkki.fi">URL -teksti</a></li><li>[email]etunimi.sukunimi@esimerkki.fi[/email] =&gt; <a href="mailto:etunimi.sukunimi@esimerkki.fi">user@domain.com</a></li><li>[color=red]punaista tekstiä[/color] =&gt; <span style="color:red">punaista tekstiä</span></li><li>[img]http://coppermine-gallery.net/demo/cpg14x/images/red.gif[/img] => <img src="../images/red.gif" border="0" alt="" /></li>'; //cpg1.4
+$lang_bbcode_help_title = 'BBCode ohje';
+$lang_bbcode_help = 'Voit lisätä klikattavia linkkejä ja muotoiluja tähän kenttään käyttämällä bbcode tageja: <li>[b]lihavoitu[/b] =&gt; <b>lihavoitu</b></li><li>[i]kursivoitu[/i] =&gt; <i>kursivoitu</i></li><li>[url=http://esimerkki.fi/]URL -teksti[/url] =&gt; <a href="http://esimerkki.fi">URL -teksti</a></li><li>[email]etunimi.sukunimi@esimerkki.fi[/email] =&gt; <a href="mailto:etunimi.sukunimi@esimerkki.fi">user@domain.com</a></li><li>[color=red]punaista tekstiä[/color] =&gt; <span style="color:red">punaista tekstiä</span></li><li>[img]http://coppermine-gallery.net/demo/cpg14x/images/red.gif[/img] => <img src="docs/images/browser.png" border="0" alt="" /></li>';
+
+$lang_common['yes'] = 'Kyllä'; // cpg1.5
+$lang_common['no'] = 'Ei'; // cpg1.5
+$lang_common['back'] = 'Takaisin'; // cpg1.5
+$lang_common['continue'] = 'Jatka'; // cpg1.5
+$lang_common['information'] = 'Info'; // cpg1.5
+$lang_common['error'] = 'Virhe'; // cpg1.5
+$lang_common['check_uncheck_all'] = 'valitse kaikki/poista valinta kaikista'; // cpg1.5
+$lang_common['confirm'] = 'Vahvistus'; // cpg1.5
+$lang_common['captcha_help_title'] = 'Visuaalinen vahvistus'; // cpg1.5
+$lang_common['captcha_help'] = 'Roskapostin välttämiseksi sinun tulee vahvistaa, että olet ihminen etkä botti, joka syöttää tekstiä.<br />Kirjainkoolla ei ole väliä; voit käyttää pieniä kirjaimia.'; // cpg1.5
+$lang_common['title'] = 'Otsikko'; // cpg1.5
+$lang_common['caption'] = 'Kuvateksti'; // cpg1.5
+$lang_common['keywords'] = 'Avainsanat'; // cpg1.5
+$lang_common['keywords_insert1'] = 'Avainsanat (erottajana on %s)'; // cpg1.5
+$lang_common['keywords_insert2'] = 'Lisää listasta'; // cpg1.5
+$lang_common['keyword_separator'] = 'Avainsanojen erotin'; //cpg1.5
+$lang_common['keyword_separators'] = array(' '=>'välilyönti', ','=>'pilkku', ';'=>'puolipiste'); // cpg1.5
+$lang_common['owner_name'] = 'Käyttäjä'; // cpg1.5
+$lang_common['filename'] = 'Tiedostonimi'; // cpg1.5
+$lang_common['filesize'] = 'Tiedostokoko'; // cpg1.5
+$lang_common['album'] = 'Albumi'; // cpg1.5
+$lang_common['file'] = 'Tiedosto'; // cpg1.5
+$lang_common['date'] = 'Päiväys'; // cpg1.5
+$lang_common['help'] = 'Ohje'; // cpg1.5
+$lang_common['close'] = 'Sulje'; // cpg1.5
+$lang_common['go'] = 'lähetä'; // cpg1.5
+$lang_common['javascript_needed'] = 'Tämä sivu tarvitsee JavaScript- tuen. Ota JavaScript -tuki päälle selaimessasi.'; // cpg1.5
+$lang_common['move_up'] = 'Siirrä ylemmäksi'; // cpg1.5
+$lang_common['move_down'] = 'Siirrä alemmaksi'; // cpg1.5
+$lang_common['move_top'] = 'Siirrä ylös'; // cpg1.5
+$lang_common['move_bottom'] = 'Siirrä alas'; // cpg1.5
+$lang_common['delete'] = 'Poista'; // cpg1.5
+$lang_common['edit'] = 'Muokkaa'; // cpg1.5
+$lang_common['username_if_blank'] = 'Tuntematon käyttäjätunnus'; // cpg1.5
+$lang_common['albums_no_category'] = 'Albumit ilman kategoriaa'; // cpg1.5
+$lang_common['personal_albums'] = '* Omat albumit'; // cpg1.5
+$lang_common['select_album'] = 'Valitse albumi'; // cpg1.5
+$lang_common['ok'] = 'OK'; // cpg1.5
+$lang_common['status'] = 'Tila'; // cpg1.5
+$lang_common['apply_changes'] = 'Toteuta muutokset'; // cpg1.5
+$lang_common['done'] = 'Valmis'; // cpg1.5
+$lang_common['album_properties'] = 'Albumin asetukset'; // cpg1.5
+$lang_common['parent_category'] = 'Ylempi kategoria'; // cpg1.5
+$lang_common['edit_files'] = 'Muokkaa tiedostoja'; // cpg1.5
+$lang_common['thumbnail_view'] = 'Pienoiskuvanäkymä'; // cpg1.5
+$lang_common['album_manager'] = 'Albumien hallinta'; // cpg1.5
+$lang_common['more'] = 'lisää'; // cpg1.5
 
 // ------------------------------------------------------------------------- //
 // File theme.php
 // ------------------------------------------------------------------------- //
 
-$lang_main_menu = array(
-  'home_title' => 'Etusivulle',
-  'home_lnk' => 'Etusivu',
-  'alb_list_title' => 'Albumilistaan',
-  'alb_list_lnk' => 'Albumilista',
-  'my_gal_title' => 'Omaan galleriaan',
-  'my_gal_lnk' => 'Oma galleria',
-  'my_prof_title' => 'Omaan profiiliin', //cpg1.4
-  'my_prof_lnk' => 'Oma profiili',
-  'adm_mode_title' => 'Vaihda ylläpitotilaan',
-  'adm_mode_lnk' => 'Ylläpito',
-  'usr_mode_title' => 'Vaihda käyttäjätilaan',
-  'usr_mode_lnk' => 'Käyttäjätila',
-  'upload_pic_title' => 'Lisää kuva albumiin',
-  'upload_pic_lnk' => 'Lisää kuva',
-  'register_title' => 'Luo uusi tili',
-  'register_lnk' => 'Rekisteröidy',
-  'login_title' => 'Kirjaudu sisään', //cpg1.4
-  'login_lnk' => 'Kirjaudu',
-  'logout_title' => 'Kirjaudu ulos', //cpg1.4
-  'logout_lnk' => 'Kirjaudu ulos',
-  'lastup_title' => 'Näytä viimeksi lisätyt kuvat', //cpg1.4
-  'lastup_lnk' => 'Uusimmat kuvat',
-  'lastcom_title' => 'Näytä viimeksi lisätyt kommentit', //cpg1.4
-  'lastcom_lnk' => 'Uusimmat kommentit',
-  'topn_title' => 'Näytä katsotuimmat kuvat', //cpg1.4
-  'topn_lnk' => 'Katsotuimmat',
-  'toprated_title' => 'Näytä suosituimmat kuvat', //cpg1.4
-  'toprated_lnk' => 'Suosituimmat',
-  'search_title' => 'Hae gallerioista', //cpg1.4
-  'search_lnk' => 'Haku',
-  'fav_title' => 'Omiin suosikkeihin', //cpg1.4
-  'fav_lnk' => 'Omat suosikit',
-  'memberlist_title' => 'Näytä käyttäjälista',
-  'memberlist_lnk' => 'Käyttäjälista',
-  'faq_title' => 'Kysytyimmät kysymykset &quot;Coppermine&quot; galleriasta',
-  'faq_lnk' => 'FAQ',
-);
+$lang_main_menu['home_title'] = 'Etusivulle';
+$lang_main_menu['home_lnk'] = 'Etusivu';
+$lang_main_menu['alb_list_title'] = 'Albumilistaan';
+$lang_main_menu['alb_list_lnk'] = 'Albumilista';
+$lang_main_menu['my_gal_title'] = 'Omaan galleriaan';
+$lang_main_menu['my_gal_lnk'] = 'Oma galleria';
+$lang_main_menu['my_prof_title'] = 'Omaan profiiliin';
+$lang_main_menu['my_prof_lnk'] = 'Oma profiili';
+$lang_main_menu['adm_mode_title'] = 'Ota käyttöön ylläpitotyökalut'; // cpg1.5
+$lang_main_menu['adm_mode_lnk'] = 'Näytä ylläpitotyökalut'; // cpg1.5
+$lang_main_menu['usr_mode_title'] = 'Poista käytöstä ylläpitotyökalut'; // cpg1.5
+$lang_main_menu['usr_mode_lnk'] = 'Piilota ylläpitotyökalut'; // cpg1.5
+$lang_main_menu['upload_pic_title'] = 'Lisää kuva albumiin';
+$lang_main_menu['upload_pic_lnk'] = 'Lisää tiedosto';
+$lang_main_menu['register_title'] = 'Luo uusi tili';
+$lang_main_menu['register_lnk'] = 'Rekisteröidy';
+$lang_main_menu['login_title'] = 'Kirjaudu sisään';
+$lang_main_menu['login_lnk'] = 'Kirjaudu';
+$lang_main_menu['logout_title'] = 'Kirjaudu ulos';
+$lang_main_menu['logout_lnk'] = 'Kirjaudu ulos';
+$lang_main_menu['lastup_title'] = 'Näytä uusimmat lisäykset';
+$lang_main_menu['lastup_lnk'] = 'Uusimmat lisäykset';
+$lang_main_menu['lastcom_title'] = 'Näytä uusimmat kommentit';
+$lang_main_menu['lastcom_lnk'] = 'Uusimmat kommentit';
+$lang_main_menu['topn_title'] = 'Näytä katsotuimmat kohteet';
+$lang_main_menu['topn_lnk'] = 'Katsotuimmat';
+$lang_main_menu['toprated_title'] = 'Näytä suosituimmat kohteet';
+$lang_main_menu['toprated_lnk'] = 'Suosituimmat';
+$lang_main_menu['search_title'] = 'Hae galleriasta';
+$lang_main_menu['search_lnk'] = 'Haku';
+$lang_main_menu['fav_title'] = 'Omiin suosikkeihin';
+$lang_main_menu['fav_lnk'] = 'Omat suosikit';
+$lang_main_menu['memberlist_title'] = 'Näytä käyttäjälista';
+$lang_main_menu['memberlist_lnk'] = 'Käyttäjälista';
+$lang_main_menu['browse_by_date_lnk'] = 'Selaa lisäyspäivän mukaan'; // cpg1.5
+$lang_main_menu['browse_by_date_title'] = 'Selaa lisäyspäivän mukaan'; // cpg1.5
+$lang_main_menu['contact_title'] = 'Ota yhteyttä %s:n avulla'; // cpg1.5
+$lang_main_menu['contact_lnk'] = 'Ota yhteyttä'; // cpg1.5
+$lang_main_menu['sidebar_title'] = 'Lisää sivupalkki selaimeesi'; // cpg1.5
+$lang_main_menu['sidebar_lnk'] = 'Sivupalkki'; // cpg1.5
 
-$lang_gallery_admin_menu = array(
-  'upl_app_title' => 'Tarkistettavat tiedostot', //cpg1.4
-  'upl_app_lnk' => 'Tarkistettavat',
-  'admin_title' => 'Asetuksiin', //cpg1.4
-  'admin_lnk' => 'Asetukset', //cpg1.4
-  'albums_title' => 'Albumiasetukset', //cpg1.4
-  'albums_lnk' => 'Albumit',
-  'categories_title' => 'Kategoria-asetuksiin', //cpg1.4
-  'categories_lnk' => 'Kategoriat',
-  'users_title' => 'Käyttäjähallintaan', //cpg1.4
-  'users_lnk' => 'Käyttäjät',
-  'groups_title' => 'Ryhmien hallintaan', //cpg1.4
-  'groups_lnk' => 'Ryhmät',
-  'comments_title' => 'Tarkista kaikki kommentit', //cpg1.4
-  'comments_lnk' => 'Tarkista kommentit',
-  'searchnew_title' => 'Lisää kerralla tiedostoja suoraan palvelimelta', //cpg1.4
-  'searchnew_lnk' => 'Tiedostojen lisäys',
-  'util_title' => 'Ylläpitotyökaluihin', //cpg1.4
-  'util_lnk' => 'Ylläpitotyökalut',
-  'key_title' => 'Hakusanaluetteloon', //cpg1.4
-  'key_lnk' => 'Hakusanaluettelo', //cpg1.4
-  'ban_title' => 'Bannattujen käyttäjien lista', //cpg1.4
-  'ban_lnk' => 'Bannatut',
-  'db_ecard_title' => 'Tarkista e-kortit', //cpg1.4
-  'db_ecard_lnk' => 'Näytä e-kortit',
-  'pictures_title' => 'Järjestä kuvani', //cpg1.4
-  'pictures_lnk' => 'Järjestä kuvani', //cpg1.4
-  'documentation_lnk' => 'Ohjeet', //cpg1.4
-  'documentation_title' => 'Coppermine-ohjekirja', //cpg1.4
-);
+$lang_gallery_admin_menu['upl_app_title'] = 'Tarkistettavat tiedostot';
+$lang_gallery_admin_menu['upl_app_lnk'] = 'Tarkistettavat';
+$lang_gallery_admin_menu['admin_title'] = 'Asetuksiin';
+$lang_gallery_admin_menu['admin_lnk'] = 'Asetukset';
+$lang_gallery_admin_menu['albums_title'] = 'Albumiasetukset';
+$lang_gallery_admin_menu['albums_lnk'] = 'Albumit';
+$lang_gallery_admin_menu['categories_title'] = 'Kategorioiden asetuksiin';
+$lang_gallery_admin_menu['categories_lnk'] = 'Kategoriat';
+$lang_gallery_admin_menu['users_title'] = 'Käyttäjähallintaan';
+$lang_gallery_admin_menu['users_lnk'] = 'Käyttäjät';
+$lang_gallery_admin_menu['groups_title'] = 'Ryhmien hallintaan';
+$lang_gallery_admin_menu['groups_lnk'] = 'Ryhmät';
+$lang_gallery_admin_menu['comments_title'] = 'Tarkista kaikki kommentit';
+$lang_gallery_admin_menu['comments_lnk'] = 'Tarkista kommentit';
+$lang_gallery_admin_menu['searchnew_title'] = 'Lisää kerralla tiedostoja suoraan palvelimelta';
+$lang_gallery_admin_menu['searchnew_lnk'] = 'Tiedostojen lisäys';
+$lang_gallery_admin_menu['util_title'] = 'Ylläpitotyökaluihin';
+$lang_gallery_admin_menu['util_lnk'] = 'Ylläpitotyökalut';
+$lang_gallery_admin_menu['key_lnk'] = 'Avainsanojen luettelo';
+$lang_gallery_admin_menu['ban_title'] = 'Bannattujen käyttäjien lista';
+$lang_gallery_admin_menu['ban_lnk'] = 'Bannatut';
+$lang_gallery_admin_menu['db_ecard_title'] = 'Tarkista e-kortit';
+$lang_gallery_admin_menu['db_ecard_lnk'] = 'Näytä e-kortit';
+$lang_gallery_admin_menu['pictures_title'] = 'Järjestä kuvani';
+$lang_gallery_admin_menu['pictures_lnk'] = 'Järjestä kuvani';
+$lang_gallery_admin_menu['documentation_lnk'] = 'Ohjeet';
+$lang_gallery_admin_menu['documentation_title'] = 'Coppermine-ohjekirja';
+$lang_gallery_admin_menu['phpinfo_lnk'] = 'phpinfo'; // cpg1.5
+$lang_gallery_admin_menu['phpinfo_title'] = 'Sisältää teknistä tietoa palvelimestasi. Sinua saatetaan pyytää antamaan tietoa siitä, kun pyydät tukea.'; // cpg1.5
+$lang_gallery_admin_menu['update_database_lnk'] = 'Päivitä tietokanta'; // cpg1.5
+$lang_gallery_admin_menu['update_database_title'] = 'Päivitä tietokantasi, jos olet korvannut Coppermine -tiedostoja, lisännyt muutoksen tai päivittänyt vanhemmasta Coppermine asennuksesta. Tämä lisää tarvittavat taulut tai arvot Coppermine tietokantaasi.'; // cpg1.5
+$lang_gallery_admin_menu['view_log_files_lnk'] = 'Näytä lokitiedotot'; // cpg1.5
+$lang_gallery_admin_menu['view_log_files_title'] = 'Coppermine voi pitää kirjaa monista käyttäjien toimista. Voit selata kyseistä lokia, jos olet ottanut käyttöön lokituksen Copperminen asetuksista.'; // cpg1.5
+$lang_gallery_admin_menu['check_versions_lnk'] = 'Tarkista versiot'; // cpg1.5
+$lang_gallery_admin_menu['check_versions_title'] = 'Tarkista tiedostojen versiot tietääksesi, että olet korvannut kaikki tiedostot päivityksen jälkeen tai jos Copperminen lähdetiedostoja on päivitetty julkaisun jälkeen.'; // cpg1.5
+$lang_gallery_admin_menu['bridgemgr_lnk'] = 'Integroinnin hallinta'; // cpg1.5
+$lang_gallery_admin_menu['bridgemgr_title'] = 'Ota käyttöön tai poista käytöstä Copperminen integrointi toisen ohjelman kanssa (kuten foorumisi).'; // cpg1.5
+$lang_gallery_admin_menu['pluginmgr_lnk'] = 'Lisäosien hallinta'; // cpg1.5
+$lang_gallery_admin_menu['pluginmgr_title'] = 'Lisäosien hallinta'; // cpg1.5
+$lang_gallery_admin_menu['overall_stats_lnk'] = 'Yleiset tilastot'; // cpg1.5
+$lang_gallery_admin_menu['overall_stats_title'] = 'Näytä tilastoja vierailijan selaimesta ja käyttöjärjestelmästä (jos tarvittavat asetukset ovat päällä).'; // cpg1.5
+$lang_gallery_admin_menu['keywordmgr_lnk'] = 'Avainsanojen hallinta'; // cpg1.5
+$lang_gallery_admin_menu['keywordmgr_title'] = 'Hallitse avainsanoja (jos tarvittava asetus on päällä).'; // cpg1.5
+$lang_gallery_admin_menu['exifmgr_lnk'] = 'EXIF-tietojen hallinta'; // cpg1.5
+$lang_gallery_admin_menu['exifmgr_title'] = 'Hallise EXIF-tietojen näyttämistä (jos tarvittava asetus on päällä).'; // cpg1.5
+$lang_gallery_admin_menu['shownews_lnk'] = 'Näytä uutiset'; // cpg1.5
+$lang_gallery_admin_menu['shownews_title'] = 'Näytä uutisia coppermine-gallery.net:istä'; // cpg1.5
 
-$lang_user_admin_menu = array(
-  'albmgr_title' => 'Luo albumeita', //cpg1.4
-  'albmgr_lnk' => 'Luo albumeita',
-  'modifyalb_title' => 'Muokkaa albumeitani',  //cpg1.4
-  'modifyalb_lnk' => 'Muokkaa albumeitani',
-  'my_prof_title' => 'Henkilökohtainen profiili', //cpg1.4
-  'my_prof_lnk' => 'Oma profiili',
-);
+$lang_user_admin_menu['albmgr_title'] = 'Luo ja järjestele albumeita';
+$lang_user_admin_menu['albmgr_lnk'] = 'Luo ja järjestele albumeita';
+$lang_user_admin_menu['modifyalb_title'] = 'Muokkaa albumeitani';
+$lang_user_admin_menu['modifyalb_lnk'] = 'Muokkaa albumeitani';
+$lang_user_admin_menu['my_prof_title'] = 'Oma profiili';
+$lang_user_admin_menu['my_prof_lnk'] = 'Oma profiili';
 
-$lang_cat_list = array(
-  'category' => 'Kategoria',
-  'albums' => 'Albumit',
-  'pictures' => 'Kuvat',
-);
+$lang_cat_list['category'] = 'Kategoria';
+$lang_cat_list['albums'] = 'Albumit';
+$lang_cat_list['pictures'] = 'Tiedostot';
 
-$lang_album_list = array(
-  'album_on_page' => '%d albumia %d sivulla',
-);
+$lang_album_list['album_on_page'] = '%d albumia %d sivulla';
 
-$lang_thumb_view = array(
-  'date' => 'PÄIVÄMÄÄRÄ',
-  //Sort by filename and title
-  'name' => 'NIMI',
-  'title' => 'OTSIKKO',
-  'sort_da' => 'Järjestä päivämäärän mukaan nousevasti',
-  'sort_dd' => 'Järjestä päivämäärän mukaan laskevasti',
-  'sort_na' => 'Järjestä nimen mukaan nousevasti',
-  'sort_nd' => 'Järjestä nimen mukaan laskevasti',
-  'sort_ta' => 'Järjestä otsikon mukaan nousevasti',
-  'sort_td' => 'Järjestä otsikon mukaan laskevasti',
-  'position' => 'SIJAINTI', //cpg1.4
-  'sort_pa' => 'Järjestä sijainnin mukaan nousevasti', //cpg1.4
-  'sort_pd' => 'Järjestä sijainnin mukaan laskevasti', //cpg1.4
-  'download_zip' => 'Lataa ZIP -tiedostona',
-  'pic_on_page' => '%d kuvaa %d sivulla',
-  'user_on_page' => '%d käyttäjää %d sivulla',
-  'enter_alb_pass' => 'Anna albumin salasana', //cpg1.4
-  'invalid_pass' => 'Väärä salasana', //cpg1.4
-  'pass' => 'Salasana', //cpg1.4
-  'submit' => 'Lähetä', //cpg1.4
-);
+$lang_thumb_view['date'] = 'Päivämäärä';
+ //Sort by filename and title
+$lang_thumb_view['name'] = 'Tiedostonimi';
+$lang_thumb_view['sort_da'] = 'Järjestä päivämäärän mukaan nousevasti';
+$lang_thumb_view['sort_dd'] = 'Järjestä päivämäärän mukaan laskevasti';
+$lang_thumb_view['sort_na'] = 'Järjestä nimen mukaan nousevasti';
+$lang_thumb_view['sort_nd'] = 'Järjestä nimen mukaan laskevasti';
+$lang_thumb_view['sort_ta'] = 'Järjestä otsikon mukaan nousevasti';
+$lang_thumb_view['sort_td'] = 'Järjestä otsikon mukaan laskevasti';
+$lang_thumb_view['position'] = 'Sijainti';
+$lang_thumb_view['sort_pa'] = 'Järjestä sijainnin mukaan nousevasti';
+$lang_thumb_view['sort_pd'] = 'Järjestä sijainnin mukaan laskevasti';
+$lang_thumb_view['download_zip'] = 'Lataa ZIP -tiedostona';
+$lang_thumb_view['pic_on_page'] = '%d tiedostoa %d sivulla';
+$lang_thumb_view['user_on_page'] = '%d käyttäjää %d sivulla';
+$lang_thumb_view['enter_alb_pass'] = 'Anna albumin salasana';
+$lang_thumb_view['invalid_pass'] = 'Väärä salasana';
+$lang_thumb_view['pass'] = 'Salasana';
+$lang_thumb_view['submit'] = 'Lähetä';
+$lang_thumb_view['zipdownload_copyright'] = 'Noudata tekijänoikeuksia - käytä lataamiasi tiedostoja vain siten miten gallerian omistaja on tarkoittanut.'; // cpg1.5
+$lang_thumb_view['zipdownload_username'] = 'Tämä arkisto sisältää pakatut tiedostot %s:n suosikeista.'; // cpg1.5
 
-$lang_img_nav_bar = array(
-  'thumb_title' => 'Takaisin thumbnail-sivulle',
-  'pic_info_title' => 'Näytä/piilota kuvan tiedot',
-  'slideshow_title' => 'Kuvaesitys',
-  'ecard_title' => 'Lähetä tämä kuva e-korttina',
-  'ecard_disabled' => 'E-kortit ovat pois päältä.',
-  'ecard_disabled_msg' => 'Sinulla ei ole oikeuksia lähettää e-kortteja.', //js-alert
-  'prev_title' => 'Näytä edellinen kuva',
-  'next_title' => 'Näytä seuraava kuva',
-  'pic_pos' => 'KUVA %s/%s',
-  'report_title' => 'Ilmoita tämä kuva ylläpitäjälle', //cpg1.4
-  'go_album_end' => 'Loppuun', //cpg1.4
-  'go_album_start' => 'Alkuun', //cpg1.4
-  'go_back_x_items' => 'Takaisin %s kuvaa', //cpg1.4
-  'go_forward_x_items' => 'Eteenpäin %s kuvaa', //cpg1.4
-);
+$lang_img_nav_bar['thumb_title'] = 'Takaisin pienoiskuvasivulle';
+$lang_img_nav_bar['pic_info_title'] = 'Näytä/piilota tiedoston tiedot';
+$lang_img_nav_bar['slideshow_title'] = 'Diaesitys';
+$lang_img_nav_bar['ecard_title'] = 'Lähetä tämä kuva e-korttina';
+$lang_img_nav_bar['ecard_disabled'] = 'E-kortit ovat pois päältä';
+$lang_img_nav_bar['ecard_disabled_msg'] = 'Sinulla ei ole oikeuksia lähettää e-kortteja.'; // js-alert
+$lang_img_nav_bar['prev_title'] = 'Näytä edellinen tiedosto';
+$lang_img_nav_bar['next_title'] = 'Näytä seuraava tiedosto';
+$lang_img_nav_bar['pic_pos'] = 'TIEDOSTO %s/%s';
+$lang_img_nav_bar['report_title'] = 'Ilmoita tämä kuva ylläpitäjälle';
+$lang_img_nav_bar['go_album_end'] = 'Loppuun';
+$lang_img_nav_bar['go_album_start'] = 'Alkuun';
 
-$lang_rate_pic = array(
-  'rate_this_pic' => 'Äänestä tätä kuvaa ',
-  'no_votes' => '(Ei vielä ääniä)',
-  'rating' => '(Arvo: %s / 5 ja %s ääntä)',
-  'rubbish' => 'Roskaa',
-  'poor' => 'Tylsää',
-  'fair' => 'Keskinkertainen',
-  'good' => 'Hyvä',
-  'excellent' => 'Erinomainen',
-  'great' => 'Loistava',
-);
-
-// ------------------------------------------------------------------------- //
-// File include/exif.inc.php
-// ------------------------------------------------------------------------- //
-
-// void
+$lang_rate_pic['rate_this_pic'] = 'Äänestä tätä kuvaa ';
+$lang_rate_pic['no_votes'] = '(ei vielä ääniä)';
+$lang_rate_pic['rating'] = '(äänet: %s/%s %s äänellä)';
+$lang_rate_pic['rubbish'] = 'Roskaa';
+$lang_rate_pic['poor'] = 'Tylsää';
+$lang_rate_pic['fair'] = 'Keskinkertainen';
+$lang_rate_pic['good'] = 'Hyvä';
+$lang_rate_pic['excellent'] = 'Erinomainen';
+$lang_rate_pic['great'] = 'Loistava';
+$lang_rate_pic['js_warning'] = 'Javascript -tuen pitää olla päällä äänestämistä varten'; // cpg1.5
+$lang_rate_pic['already_voted'] = 'Olet jo äänestänyt tätä kuvaa.'; // cpg1.5
+$lang_rate_pic['forbidden'] = 'Et voi äänestää omia kuviasi.'; // cpg1.5
+$lang_rate_pic['rollover_to_rate'] = 'Äänestä liikuttamalla hiirtä'; // cpg1.5
 
 // ------------------------------------------------------------------------- //
 // File include/functions.inc.php
 // ------------------------------------------------------------------------- //
 
-$lang_cpg_die = array(
-  INFORMATION => $lang_info,
-  ERROR => $lang_error,
-  CRITICAL_ERROR => 'Kriittinen virhe',
-  'file' => 'Tiedosto: ',
-  'line' => 'Rivi: ',
-);
+$lang_cpg_die['file'] = 'Tiedosto: ';
+$lang_cpg_die['line'] = 'Rivi: ';
 
-$lang_display_thumbnails = array(
-  'filename' => 'Tiedostonimi=', //cpg1.4
-  'filesize' => 'Tiedostokoko=', //cpg1.4
-  'dimensions' => 'Tarkkuus=', //cpg1.4
-  'date_added' => 'Lisätty=', //cpg1.4
-);
+$lang_display_thumbnails['dimensions'] = 'Koko=';
+$lang_display_thumbnails['date_added'] = 'Lisätty=';
 
-$lang_get_pic_data = array(
-  'n_comments' => '%s kommenttia',
-  'n_views' => '%s katselua',
-  'n_votes' => '(%s ääntä)',
-);
+$lang_get_pic_data['n_comments'] = '%s kommenttia';
+$lang_get_pic_data['n_views'] = '%s katselua';
+$lang_get_pic_data['n_votes'] = '(%s ääntä)';
 
-$lang_cpg_debug_output = array(
-  'debug_info' => 'Debuginfo',
-  'select_all' => 'Valitse kaikki',
-  'copy_and_paste_instructions' => 'Jos aiot pyytää apua copperminen tukipalvelussa, kopioi ja liitä tämä debug-teksti viestiisi pyydettäessä. Liitä mukaan myös mahdollinen virheilmoitus. Muista korvata mahdolliset salasanat ***:llä ennen lähettämistä. <br />Huomaa: Tämä on vain tiedoksi, eikä tarkoita, että galleriassa olisi virhe.', //cpg1.4
-  'phpinfo' => 'Näytä php-info',
-  'notices' => 'Huomautukset', //cpg1.4
-);
+$lang_cpg_debug_output['debug_info'] = 'Debug -info';
+$lang_cpg_debug_output['debug_output'] = 'Debug -tuloste'; // cpg1.5
+$lang_cpg_debug_output['select_all'] = 'Valitse kaikki';
+$lang_cpg_debug_output['copy_and_paste_instructions'] = 'Jos pyydät apua Copperminen tukifoorumilla, leikka ja liimaa tämä debug -tuloste viestiisi sitä pyydettäessä mahdollisten virhesanomien kanssa. Lähetä debug -tuloste tukifoorumiin vain ja ainoastaan, jos joku sitä todellakin pyytää. Muista korvata mahdolliset salasanat tulosteesta "***":llä ennen lähettämistä.'; // cpg1.5
+$lang_cpg_debug_output['debug_output_explain'] = 'Huomautus: Tämä on vain tiedoksi, eikä se tarkoita, että galleriassa olisi ongelmia.'; // cpg1.5
+$lang_cpg_debug_output['phpinfo'] = 'Näytä phpinfo';
+$lang_cpg_debug_output['notices'] = 'Huomautukset';
+$lang_cpg_debug_output['notices_help_admin'] = 'Huomautukset näytetään tällä sivulla, koska sinä (gallerian ylläpitäjänä) olet ne tarkoituksella ottanut päälle Copperminen asetuksista. Ne eivät välttämättä tarkoita, että jokin olisi vialla galleriassasi. Ne ovat tarkoitettu edistyneille kehittäjille virheiden seurantaan. Jos huomautukset häiritsevät sinua ja/tai et ymmärrä mitä ne tarkoittavat, poista kyseinen ominaisuus pois päältä asetuksista.'; // cpg1.5
+$lang_cpg_debug_output['notices_help_non_admin'] = 'Ylläpitäjä on tarkoituksella laittanut huomautukset päälle. Tämä ei merkitse sitä, että jokin olisi vialla selaimessasi. Sinun ei tarvitse huomioida niitä.'; // cpg1.5
+$lang_cpg_debug_output['show_hide'] = 'näytä / piilota'; // cpg1.5
 
-$lang_language_selection = array(
-  'reset_language' => 'Oletuskieli',
-  'choose_language' => 'Valitse kieli',
-);
+$lang_language_selection['reset_language'] = 'Oletuskieli';
+$lang_language_selection['choose_language'] = 'Valitse kieli';
 
-$lang_theme_selection = array(
-  'reset_theme' => 'Oletusteema',
-  'choose_theme' => 'Valitse teema',
-);
+$lang_theme_selection['reset_theme'] = 'Oletusteema';
+$lang_theme_selection['choose_theme'] = 'Valitse teema';
 
-$lang_version_alert = array(
-  'version_alert' => 'Versiota ei tueta!', //cpg1.4
-  'security_alert' => 'Turvahälytys!', //cpg1.4.3
-  'relocate_exists' => 'Poista <a href="http://coppermine-gallery.net/forum/index.php?topic=24217.0" target=_blank>relocate_server.php</a> tiedosto sivustoltasi!',
-  'no_stable_version' => 'Sinulla on ajossa Coppermine %s (%s), joka on tarkoitettu vain kokeneille käyttäjille - tälle versiolle ei ole tukea eikä takuuta. Käytä sitä omalla vastuullasi tai päivitä alaspäin viimeisimpään vakaaseen versioon, jos tarvitset tukea!', //cpg1.4
-  'gallery_offline' => 'Galleria ei ole tällä hetkellä julkinen, vaan se näkyy vain sinulle ylläpitäjänä. Älä unohda laittaa galleriaa takaisin julkiseksi, kun olet saanut ylläpitotoimet valmiiksi.', //cpg1.4
-);
+$lang_version_alert['version_alert'] = 'Tukematon versio!';
+$lang_version_alert['no_stable_version'] = 'Sinulla on käytössä Coppermine %s (%s), joka on tarkoitettu vain kokeneille käyttäjille - tälle versiolle ei ole tukea eikä takuuta. Käytä sitä omalla vastuullasi tai päivitä alaspäin viimeisimpään vakaaseen versioon, jos tarvitset tukea!';
+$lang_version_alert['gallery_offline'] = 'Galleria ei ole tällä hetkellä julkinen, vaan se näkyy vain sinulle ylläpitäjänä. Älä unohda laittaa galleriaa takaisin julkiseksi, kun olet saanut ylläpitotoimet valmiiksi.';
+$lang_version_alert['coppermine_news'] = 'Uutiset coppermine-gallery.net:istä'; // cpg1.5
+$lang_version_alert['no_iframe'] = 'Selaimesi ei tue sisäisiä kehyksiä'; // cpg1.5
+$lang_version_alert['hide'] = 'piilota'; // cpg1.5
 
-$lang_create_tabs = array(
-  'previous' => 'edellinen', //cpg1.4
-  'next' => 'seuraava', //cpg1.4
-);
+$lang_create_tabs['previous'] = 'Edellinen'; // cpg1.5
+$lang_create_tabs['next'] = 'Seuraava'; // cpg1.5
+$lang_create_tabs['jump_to_page'] = 'Siirry seuraavalle sivulle'; // cpg1.5
+
+$lang_get_remote_file_by_url['no_data_returned'] = 'Dataa ei saatu haettua käyttäen %s:ia'; // cpg1.5
+$lang_get_remote_file_by_url['curl'] = 'CURL'; // cpg1.5
+$lang_get_remote_file_by_url['fsockopen'] = 'Socket-yhteys (FSOCKOPEN)'; // cpg1.5
+$lang_get_remote_file_by_url['fopen'] = 'fopen'; // cpg1.5
+$lang_get_remote_file_by_url['curl_not_available'] = 'Curl ei ole saatavilla palvelimellasi'; // cpg1.5
+$lang_get_remote_file_by_url['error_number'] = 'Virhenumero: %s'; // cpg1.5
+$lang_get_remote_file_by_url['error_message'] = 'Virhesanoma: %s'; // cpg1.5
 
 // ------------------------------------------------------------------------- //
-// File include/init.inc.php
+// File include/mailer.inc.php
 // ------------------------------------------------------------------------- //
-
-// void
-
-// ------------------------------------------------------------------------- //
-// File keyword.inc.php                                                      //
-// ------------------------------------------------------------------------- //
-
-// void
-
-// ------------------------------------------------------------------------- //
-// File include/picmgmt.inc.php
-// ------------------------------------------------------------------------- //
-
-// void
+$lang_mailer['provide_address'] = 'Anna vähintään yksi ';
+$lang_mailer['mailer_not_supported'] = ' lähettäjä ei ole tuettu.';
+$lang_mailer['execute'] = 'Ei voitu suorittaa: ';
+$lang_mailer['instantiate'] = 'Mail -funktiota ei voitu suorittaa.';
+$lang_mailer['authenticate'] = 'SMTP -virhe: Ei voitu tunnistautua.';
+$lang_mailer['from_failed'] = 'Seuraava lähettäjän osoite epäonnistui: ';
+$lang_mailer['recipients_failed'] = 'SMTP -virhe: Seuraava ';
+$lang_mailer['data_not_accepted'] = 'SMTP -virhe: Dataa ei hyväksytty.';
+$lang_mailer['connect_host'] = 'SMTP -virhe: SMTP -isäntään ei voitu ottaa yhteyttä.';
+$lang_mailer['file_access'] = 'Tiedostoa ei voitu avata: ';
+$lang_mailer['file_open'] = 'Tiedostovirhe: Tiedostoa ei voitu avata: ';
+$lang_mailer['encoding'] = 'Tuntematon merkistökoodaus: ';
+$lang_mailer['signing'] = 'Sisäänkirjausvirhe ';
 
 // ------------------------------------------------------------------------- //
 // File include/plugin_api.inc.php
 // ------------------------------------------------------------------------- //
-$lang_plugin_api = array(
-  'error_wakeup' => "Pluginia '%s' ei voitu ottaa käyttöön", //cpg1.4
-  'error_install' => "Pluginia '%s' ei voitu asentaa", //cpg1.4
-  'error_uninstall' => "Pluginia ei saatu poistettua '%s'", //cpg1.4
-  'error_sleep' => "Pluginia '%s' ei saatu poistettua <br />", //cpg1.4
-);
+$lang_plugin_api['error_install'] = 'Lisäosaa \'%s\' ei voitu asentaa';
+$lang_plugin_api['error_uninstall'] = 'Lisäosaa \'%s\' ei saatu poistettua';
+$lang_plugin_api['error_sleep'] = 'Lisäosaa \'%s\' ei saatu otettua pois käytöstä'; // cpg1.5
 
 // ------------------------------------------------------------------------- //
 // File include/smilies.inc.php
 // ------------------------------------------------------------------------- //
-
-if (defined('SMILIES_PHP')) $lang_smilies_inc_php = array(
-    'Exclamation' => 'Huuto',
-  	'Question' => 'Kysymys',
-  	'Very Happy' => 'Erittäin iloinen',
-  	'Smile' => 'Hymy',
-  	'Sad' => 'Suru',
-  	'Surprised' => 'Yllättynyt',
-  	'Shocked' => 'Järkyttynyt',
-  	'Confused' => 'Häkeltynyt',
-  	'Cool' => 'Cool',
-  	'Laughing' => 'Nauru',
-  	'Mad' => 'Hullu',
-  	'Razz' => 'Razz',
-  	'Embarassed' => 'Nolo',
-  	'Crying or Very sad' => 'Itku',
-  	'Evil or Very Mad' => 'Ilkimys tai hullu',
-  	'Twisted Evil' => 'Kieroutunut ilkimys',
-  	'Rolling Eyes' => 'Pyörivät silmät',
-  	'Wink' => 'Vink',
-  	'Idea' => 'Idea',
-  	'Arrow' => 'Nuoli',
-  	'Neutral' => 'Neutraali',
-	'Mr. Green' => 'Mr. Vihreä',
-);
-
-// ------------------------------------------------------------------------- //
-// File addpic.php
-// ------------------------------------------------------------------------- //
-
-// void
-
-// ------------------------------------------------------------------------- //
-// File mode.php //cpg1.4
-// ------------------------------------------------------------------------- //
-
-if (defined('MODE_PHP')) $lang_mode_php = array(
-  0 => 'Poistutaan ylläpitotilasta...',
-  1 => 'Siirrytään ylläpitotilaan...',
-);
+if (defined('SMILIES_PHP')) {
+$lang_smilies_inc_php['Exclamation'] = 'Huuto';
+$lang_smilies_inc_php['Question'] = 'Kysymys';
+$lang_smilies_inc_php['Very Happy'] = 'Erittäin iloinen';
+$lang_smilies_inc_php['Smile'] = 'Hymy';
+$lang_smilies_inc_php['Sad'] = 'Suru';
+$lang_smilies_inc_php['Surprised'] = 'Yllättynyt';
+$lang_smilies_inc_php['Shocked'] = 'Järkyttynyt';
+$lang_smilies_inc_php['Confused'] = 'Häkeltynyt';
+$lang_smilies_inc_php['Cool'] = 'Cool';
+$lang_smilies_inc_php['Laughing'] = 'Nauru';
+$lang_smilies_inc_php['Mad'] = 'Hullu';
+$lang_smilies_inc_php['Razz'] = 'Häiritsevä';
+$lang_smilies_inc_php['Embarrassed'] = 'Nolo';  // cpg1.5
+$lang_smilies_inc_php['Crying or Very sad'] = 'Itku';
+$lang_smilies_inc_php['Evil or Very Mad'] = 'Ilkimys tai hullu';
+$lang_smilies_inc_php['Twisted Evil'] = 'Kieroutunut ilkimys';
+$lang_smilies_inc_php['Rolling Eyes'] = 'Pyörivät silmät';
+$lang_smilies_inc_php['Wink'] = 'Vink';
+$lang_smilies_inc_php['Idea'] = 'Idea';
+$lang_smilies_inc_php['Arrow'] = 'Nuoli';
+$lang_smilies_inc_php['Neutral'] = 'Neutraali';
+$lang_smilies_inc_php['Mr. Green'] = 'Mr. Vihreä';
+};
 
 // ------------------------------------------------------------------------- //
 // File albmgr.php
 // ------------------------------------------------------------------------- //
-
-if (defined('ALBMGR_PHP')) $lang_albmgr_php = array(
-  'alb_need_name' => 'Albumi tarvitsee nimen!', //js-alert
-  'confirm_modifs' => 'Haluatko varmasti tehdä nämä muutokset?', //js-alert
-  'no_change' => 'Et tehnyt yhtään muutosta!', //js-alert
-  'new_album' => 'Uusi albumi',
-  'confirm_delete1' => 'Haluatko varmasti poistaa tämän albumin?', //js-alert
-  'confirm_delete2' => '\nKaikki kuvat ja kommentit poistetaan!', //js-alert
-  'select_first' => 'Valitse ensin albumi', //js-alert
-  'alb_mrg' => 'Albumihallinta',
-  'my_gallery' => '* Oma galleria *',
-  'no_category' => '* Ei kategoriaa *',
-  'delete' => 'Poista',
-  'new' => 'Uusi',
-  'apply_modifs' => 'Hyväksy muutokset',
-  'select_category' => 'Valitse kategoria',
-);
+if (defined('ALBMGR_PHP')) {
+$lang_albmgr_php['title'] = 'Albumien  hallinta'; // cpg1.5
+$lang_albmgr_php['alb_need_name'] = 'Albumit tarvitsevat nimen!'; // js-alert
+$lang_albmgr_php['confirm_modifs'] = 'Haluatko varmasti tehdä nämä muutokset?'; // js-alert
+$lang_albmgr_php['no_change'] = 'Et tehnyt yhtään muutosta!'; // js-alert
+$lang_albmgr_php['new_album'] = 'Uusi albumi';
+$lang_albmgr_php['delete_album'] = 'Poista albumi'; // cpg1.5
+$lang_albmgr_php['confirm_delete1'] = 'Haluatko varmasti poistaa tämän albumin?'; // js-alert
+$lang_albmgr_php['confirm_delete2'] = 'Kaikki albumissa olevat tiedostot ja kommentit poistetaan!'; // js-alert
+$lang_albmgr_php['select_first'] = 'Valitse ensin albumi'; // js-alert
+$lang_albmgr_php['my_gallery'] = '* Oma galleria *';
+$lang_albmgr_php['no_category'] = '* Ei kategoriaa *';
+$lang_albmgr_php['select_category'] = 'Valitse kategoria';
+$lang_albmgr_php['category_change'] = 'Jos vaihdat kategoriaa, menetät tekemäsi muutokset!'; // cpg1.5
+$lang_albmgr_php['page_change'] = 'Jos avaat tämän linkin, niin tekemäsi muutokset menetetään!'; // cpg1.5
+$lang_albmgr_php['cancel'] = 'Peruuta'; // cpg1.5
+$lang_albmgr_php['submit_reminder'] = 'Muutokset eivät tallennu ennen kuin valitset &quot;Toteuta muutokset&quot;.'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
 // File banning.php
 // ------------------------------------------------------------------------- //
 
-if (defined('BANNING_PHP')) $lang_banning_php = array(
-  'title' => 'Bannaa käyttäjiä', //cpg1.4
-  'user_name' => 'Käyttäjänimi', //cpg1.4
-  'ip_address' => 'IP-osoite', //cpg1.4
-  'expiry' => 'Mihin asti (tyhjä on lopullinen)', //cpg1.4
-  'edit_ban' => 'Tallenna muutokset', //cpg1.4
-  'delete_ban' => 'Poista', //cpg1.4
-  'add_new' => 'Lisää uusi banni', //cpg1.4
-  'add_ban' => 'Lisää', //cpg1.4
-  'error_user' => 'Käyttäjää ei löydy', //cpg1.4
-  'error_specify' => 'Anna joko käyttäjänimi tai IP-osoite', //cpg1.4
-  'error_ban_id' => 'Väärä bannaus-ID!', //cpg1.4
-  'error_admin_ban' => 'Et voi bannata itseäsi!', //cpg1.4
-  'error_server_ban' => 'Meinasit bannata oman palvelimesi? Tsk tsk, ei semmoista saa tehdä...', //cpg1.4
-  'error_ip_forbidden' => 'Et voi bannata tätä IP-osoitetta - se ei ole reititettävä (yksityinen)!<br />Jos haluat sallia yksityisten IP-osoitteiden bannauksen, sinun on muutettava <a href="admin.php">asetuksia</a> (tässä on järkeä vain, jos Coppermine on lähiverkossa).', //cpg1.4
-  'lookup_ip' => 'Tarkista IP-osoite', //cpg1.4
-  'submit' => 'Lähetä', //cpg1.4
-  'select_date' => 'valitse päivämäärä', //cpg1.4
-);
+if (defined('BANNING_PHP')) {
+$lang_banning_php['title'] = 'Bannaa käyttäjiä';
+$lang_banning_php['user_name'] = 'Käyttätunnus';
+$lang_banning_php['user_account'] = 'Käyttäjän tili';
+$lang_banning_php['email_address'] = 'Sähköpostiosoite'; // cpg1.5
+$lang_banning_php['ip_address'] = 'IP -osoite';
+$lang_banning_php['expires'] = 'Vanhenee'; // cpg1.5
+$lang_banning_php['expiry_date'] = 'Vanhenemis aika'; // cpg1.5
+$lang_banning_php['expired'] = 'Vanhentunut'; // cpg1.5
+$lang_banning_php['edit_ban'] = 'Tallenna muutokset';
+$lang_banning_php['add_new'] = 'Lisää uusi banni';
+$lang_banning_php['add_ban'] = 'Lisää';
+$lang_banning_php['error_user'] = 'Käyttäjää ei löydy';
+$lang_banning_php['error_specify'] = 'Anna joko käyttäjänimi tai IP-osoite';
+$lang_banning_php['error_ban_id'] = 'Virheellinen bannaus-ID!';
+$lang_banning_php['error_admin_ban'] = 'Et voi bannata itseäsi!';
+$lang_banning_php['error_server_ban'] = 'Meinasit bannata oman palvelimesi? Ei semmoista saa tehdä...';
+$lang_banning_php['skipping'] = 'Ohitetaan tämä komento.'; // cpg1.5
+$lang_banning_php['lookup_ip'] = 'Tarkista IP-osoite';
+$lang_banning_php['select_date'] = 'valitse päivämäärä';
+$lang_banning_php['delete_comments'] = 'Poista kommentit'; // cpg1.5
+$lang_banning_php['current'] = 'nykyinen'; // cpg1.5
+$lang_banning_php['all'] = 'kaikki'; // cpg1.5
+$lang_banning_php['none'] = 'ei mitään'; // cpg1.5
+$lang_banning_php['view'] = 'näytä'; // cpg1.5
+$lang_banning_php['ban_id'] = 'Bannaus-ID'; // cpg1.5
+$lang_banning_php['existing_bans'] = 'Nykyiset bannaukset'; // cpg1.5
+$lang_banning_php['no_banning_when_bridged'] = 'Galleriasi on integroitu toiseen sovellukseen. Käytä integroidun sovelluksen bannien hallintaa Copperminen oman bannihallinnan sijasta. Copperminen omalla bannihallinnalla ei ole vaikutusta integrointitilassa.'; // cpg1.5
+$lang_banning_php['records_on_page'] = '%d osumaa %d sivulla'; // cpg1.5
+$lang_banning_php['ascending'] = 'nouseva'; // cpg1.5
+$lang_banning_php['descending'] = 'laskeva'; // cpg1.5
+$lang_banning_php['sort_by'] = 'Järjestä'; // cpg1.5
+$lang_banning_php['sorted_by'] = 'järjestetty'; // cpg1.5
+$lang_banning_php['ban_record_x_updated'] = 'Bannimerkintä %s on päivitetty'; // cpg1.5
+$lang_banning_php['ban_record_x_deleted'] = 'Bannimerkintä %s on poistettu'; // cpg1.5
+$lang_banning_php['new_ban_record_created'] = 'Uusi bannimerkintä on luotu'; // cpg1.5
+$lang_banning_php['ban_record_x_already_exists'] = 'Bannimerkintä on jo olemassa %s:lle!'; // cpg1.5
+$lang_banning_php['comment_deleted'] = '%s -kommentti, jonka kirjoitti %s on poistettu'; // cpg1.5
+$lang_banning_php['comments_deleted'] = '%s kommmentit, jotka kirjoitti %s ovat poistettu'; // cpg1.5
+$lang_banning_php['email_field_invalid'] = 'Syötä kelvollinen sähköpostiosoite'; // cpg1.5
+$lang_banning_php['ip_address_field_invalid'] = 'Syötä kelvollinen IP -osoite (x.x.x.x)'; // cpg1.5
+$lang_banning_php['expiry_field_invalid'] = 'Syötä kelvollinen vanhenemisaika (VVVV-KK-PP)'; // cpg1.5
+$lang_banning_php['form_not_submit'] = 'Lomaketta ei lähetetty - siinä on virheitä, jotka pitää korjata ensin!'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
-// File bridgemgr.php //cpg1.4
+// File bridgemgr.php
 // ------------------------------------------------------------------------- //
-
-if (defined('BRIDGEMGR_PHP')) $lang_bridgemgr_php = array(
-  'title' => 'Yhteysohjelma (Bridge Wizard)',
-  'warning' => 'Varoitus: Kun käytät tätä ohjelmaa, huomaa, että arkaluontoista dataa lähetetään käyttäen html-lomakkeita. Aja tämä vain omalla PC:lläsi (ei julkisella koneella kuten nettikahvilassa). Muista tyhjentää tämän jälkeen selaimesi välimuisti, jotteivat muut pääse käsiksi tietoon!',
-  'back' => 'takaisin',
-  'next' => 'seuraava',
-  'start_wizard' => 'Aloita yhteysohjelma',
-  'finish' => 'Lopeta',
-  'hide_unused_fields' => 'piilota käyttämättömät lomakekentät (suositeltu)',
-  'clear_unused_db_fields' => 'poista käyttämättömät tietokantatallenteet (suositeltu)',
-  'custom_bridge_file' => 'oman siltasi tiedostonimi (jos siltatiedostosi nimi on <i>tiedostoni.inc.php</i>, laita <i>tiedostoni</i> tähän kenttään)',
-  'no_action_needed' => 'Ei tarvittavia toimenpiteitä tässä vaiheessa. Klikkaa \'seuraava\' jatkaaksesi.',
-  'reset_to_default' => 'Resetoi oletusarvoon',
-  'choose_bbs_app' => 'valitse applikaatio, johon coppermine yhdistetään',
-  'support_url' => 'Täältä löytyy tukitietoa applikaatiolle',
-  'settings_path' => 'BBS applikaatiosi käyttämät polut',
-  'database_connection' => 'tietokantayhteys',
-  'database_tables' => 'tietokantataulut',
-  'bbs_groups' => 'BBS -ryhmät',
-  'license_number' => 'Lisenssinumero',
-  'license_number_explanation' => 'Anna lisenssinumerosi (jos tarvitaan)',
-  'db_database_name' => 'Tietokannan nimi',
-  'db_database_name_explanation' => 'Anna BBS:n käyttämän tietokannan nimi',
-  'db_hostname' => 'Tietokantapalvelin',
-  'db_hostname_explanation' => 'Tietokantapalvelimen, jossa mySQL -tietokantasi sijaitsee, nimi, yleensä &quot;localhost&quot;',
-  'db_username' => 'Tietokannan käyttäjätili',
-  'db_username_explanation' => 'mySQL -käyttäjätili, jota käytetään BBS:ään yhdistämiseen',
-  'db_password' => 'Tietokannan salasana',
-  'db_password_explanation' => 'MySQL -käyttäjätilin salasana',
-  'full_forum_url' => 'Forumin URL',
-  'full_forum_url_explanation' => 'BBS -applikaatiosi koko URL (anna myös http:// -osuus, esim. http://www.domain.tld/foorumi)',
-  'relative_path_of_forum_from_webroot' => 'Foorumin polku palvelimella',
-  'relative_path_of_forum_from_webroot_explanation' => 'BBS-applikaatiosi polku juurihakemistosta, (esim. jos BBS:si sijaitsee osoitteessa http://www.domain.tld/foorumi/, anna &quot;/foorumi/&quot; tähän kenttään)',
-  'relative_path_to_config_file' => 'BBS-configtiedoston polku palvelimella',
-  'relative_path_to_config_file_explanation' => 'BBS:n polku Copperminen hakemistossa (esim. &quot;../foorumi/&quot;, jos BBS sijaitsee osoitteessa http://www.domain.tld/foorumi/ ja Coppermine osoitteessa http://www.domain.tld/gallery/)',
-  'cookie_prefix' => 'Evästeen prefix',
-  'cookie_prefix_explanation' => 'Tämä on BBS:si evästeen nimi',
-  'table_prefix' => 'taulukon prefix',
-  'table_prefix_explanation' => 'Tämän täytyy olla sama kuin BBS:si prefix, kun asensit sen.',
-  'user_table' => 'Käyttäjätaulu',
-  'user_table_explanation' => '(yleensä oletusarvo on ok, paitsi jos BBS:si asennus ei ole standardi)',
-  'session_table' => 'Sessiotaulu',
-  'session_table_explanation' => '(yleensä oletusarvo on ok, paitsi jos BBS:si asennus ei ole standardi)',
-  'group_table' => 'Ryhmätaulu',
-  'group_table_explanation' => '(yleensä oletusarvo on ok, paitsi jos BBS:si asennus ei ole standardi)',
-  'group_relation_table' => 'Suhteellinen ryhmätaulu',
-  'group_relation_table_explanation' => '(yleensä oletusarvo on ok, paitsi jos BBS:si asennus ei ole standardi)',
-  'group_mapping_table' => 'Ryhmän mappaustaulu',
-  'group_mapping_table_explanation' => '(yleensä oletusarvo on ok, paitsi jos BBS:si asennus ei ole standardi)',
-  'use_standard_groups' => 'Käytä standardeja BBS-käyttäjäryhmiä',
-  'use_standard_groups_explanation' => 'Käytä standardeja (valmiita) käyttäjäryhmiä (suositeltu). Tämä tyhjentää kaikki itse luodut käyttäjäryhmät. Ota tämä vaihtoehto pois käytöstä vain, jos TODELLA tiedät, mitä olet tekemässä!',
-  'validating_group' => 'Validoiva ryhmä',
-  'validating_group_explanation' => 'BBS:n ryhmän ID, jossa validoinnin tarvitsevat käyttäjätilit sijaitsevat (yleensä oletusasetus on ok, paitsi jos BBS -asennuksesi ei ole standardi)',
-  'guest_group' => 'Vierasryhmä',
-  'guest_group_explanation' => 'BBS:n ryhmän ID, jossa vieraat (anonyymit käyttäjät) sijaitsevat (oletusasetus on yleensä ok, muuta vain, jos tiedät, mitä teet)',
-  'member_group' => 'Jäsenryhmä',
-  'member_group_explanation' => 'BBS:n ryhmän ID, jokka &quot;tavallisten&quot; käyttäjien tilit sijaitsevat (oletusasetus on yleensä ok, muuta vain, jos tiedät, mitä teet)',
-  'admin_group' => 'Ylläpitoryhmä',
-  'admin_group_explanation' => 'BBS:n ryhmän ID, jolla ylläpitäjät sijaitsevat (oletusasetus on yleensä ok, muuta vain, jos tiedät, mitä teet)',
-  'banned_group' => 'Bannattujen ryhmä',
-  'banned_group_explanation' => 'BBS:n ryhmän ID, jossa bannatut käyttäjät sijaitsevat (oletusasetus on yleensä ok, muuta vain, jos tiedät, mitä teet)',
-  'global_moderators_group' => 'Globaali moderaattorien ryhmä',
-  'global_moderators_group_explanation' => 'BBS:n ryhmän ID, jossa globaalit moderaattori sijaitsevat (oletusasetus on yleensä ok, muuta vain, jos tiedät, mitä teet)',
-  'special_settings' => 'BBS-kohtaiset asetukset',
-  'logout_flag' => 'phpBB-versio (uloskirjautumislippu, logout flag)',
-  'logout_flag_explanation' => 'Mikä on BBS -versiosi (tämä asetus määrittelee, miten uloskirjautumiset hoidetaan)',
-  'use_post_based_groups' => 'Käytä post-pohjaisia ryhmiä?',
-  'logout_flag_yes' => '2.0.5 tai suurempi',
-  'logout_flag_no' => '2.0.4 tai alempi',
-  'use_post_based_groups_explanation' => 'Otetaanko huomioon BBS-ryhmät, jotka on määritelty postien määrän mukaan (mahdollistaa hienojakoisen oikeuksien hallinnan) vai vain oletusryhmät (helpottaa ylläpitoa, suositeltava). Voit vaihtaa tätä asetusta myöhemminkin.',
-  'use_post_based_groups_yes' => 'kyllä',
-  'use_post_based_groups_no' => 'ei',
-  'error_title' => 'Sinun on korjattava nämä virheet, ennen kuin voit jatkaa. Palaa edelliseen näkymään.',
-  'error_specify_bbs' => 'Sinun on määriteltävä, mihin applikaatioon haluat yhdistää Copperminen asennuksen.',
-  'error_no_blank_name' => 'Et voi jättää tyhjäksi yhteystiedoston nimeä.',
-  'error_no_special_chars' => 'Yhteystiedoston nimessä ei saa olla muita erikoismerkkejä kuin alaviiva (_) ja väliviiva (-)!',
-  'error_bridge_file_not_exist' => 'Yhteystiedostoa ei löydy palvelimelta. Tarkista, onko se varmasti lisätty sinne.',
-  'finalize' => 'laita päälle/pois päältä BBS -integrointi',
-  'finalize_explanation' => 'Tähän asti määrittelemäsi asetukset on kirjoitettu tietokantaan, mutta BBS-integrointia ei ole laitettu päälle. Voit kääntää integroinnin päälle/pois milloin tahansa myöhemminkin. Varmista, että muistat Copperminen ylläpitotunnuksen ja salasanan. Voit tarvita niitä myöhemmin tehdessäsi muutoksia. Jos jokin menee vikaan, mene kohteeseen %s ja käännä BBS-integrointi pois päältä käyttäen alkuperäistä BBS-yhdistämätöntä ylläpitotunnusta. (yleensä se, joka on luotu Copperminea asennettaessa.).',
-  'your_bridge_settings' => 'Yhteysasetuksesi',
-  'title_enable' => 'Käännä integrointi päälle kohteeseen %s',
-  'bridge_enable_yes' => 'käännä päälle',
-  'bridge_enable_no' => 'käännä pois päältä',
-  'error_must_not_be_empty' => 'ei saa olla tyhjä',
-  'error_either_be' => 'täytyy olla joko %s tai %s',
-  'error_folder_not_exist' => 'Hakemistoa %s ei löydy. Korjaa %s:lle antamasi arvo',
-  'error_cookie_not_readible' => 'Coppermine ei voi lukea %s nimistä evästettä. Korjaa %s:lle antamasi arvo, tai mene BBS -ylläpitopaneeliisi ja varmista, että eväste on Copperminen luettavissa.',
-  'error_mandatory_field_empty' => 'Et voi jättää kenttää %s tyhjäksi - täytä tarvittava arvo.',
-  'error_no_trailing_slash' => 'Kentän %s lopussa ei saa olla kauttaviivaa.',
-  'error_trailing_slash' => 'Kentän %s lopussa pitää olla kauttaviiva.',
-  'error_db_connect' => 'MySQL -tietokantaan ei voitu yhdistää antamillasi tiedoilla. MySQL sanoi näin:',
-  'error_db_name' => 'Vaikka Coppermine pystyi yhdistämään, se ei löytänyt tietokantaa %s. Varmista, että %s on määritelty oikein. MySQL sanoi näin:',
-  'error_prefix_and_table' => '%s ja ',
-  'error_db_table' => 'Taulua %s ei löytynyt. Varmista, että %s on määritelty oikein.',
-  'recovery_title' => 'Yhteysohjelma (Bridge Manager): hätäpalautus',
-  'recovery_explanation' => 'Jos tulit ylläpitämään Coppermine-gallerian BBS -integrointia, sinun on ensin kirjauduttava sisään ylläpitotunnuksilla. Jos et pysty kirjautumaan, koska yhteys ei toimi, voit poistaa BBS-integroinnin käytöstä tällä sivulla. Et kirjaudu sisään antamalla tunnuksesi ja salasanasi, vaan se pelkästään ottaa BBS-integroinnin pois käytöstä. Tarkista dokumentaatiosta tarkemmin.',
-  'username' => 'Käyttäjätunnus',
-  'password' => 'Salasana',
-  'disable_submit' => 'lähetä',
-  'recovery_success_title' => 'Authorisointi onnistui',
-  'recovery_success_content' => 'Poistit BBS-yhteyden käytöstä. Coppermine-asennus toimii nyt itsenäisesti.',
-  'recovery_success_advice_login' => 'Kirjaudu yllpitotunnuksilla muuttaaksesi yhteysasetuksia tai ottaaksesi BBS-integroinnin taas käyttöön.',
-  'goto_login' => 'Kirjautumissivulle',
-  'goto_bridgemgr' => 'Yhteyshallintaan',
-  'recovery_failure_title' => 'Authorisointi epäonnistui',
-  'recovery_failure_content' => 'Annoit väärän tunnisteen. Sinun on annettava itsenäisen Copperminen ylläpitotilin tiedot. (yleensä ne tunnukset, jotka luotiin alunperin Copperminea asennettaessa).',
-  'try_again' => 'yritä uudelleen',
-  'recovery_wait_title' => 'Odotusaika ei vielä kulunut',
-  'recovery_wait_content' => 'Tietoturvasyistä tämä scripti ei hyväksy vääriä kirjautumisyrityksiä pienin väliajoin. Sinun on odotettava hetki ja yritettävä sitten uudelleen.',
-  'wait' => 'odota',
-  'create_redir_file' => 'Luo uudelleenohjaustiedosto (suositeltava)',
-  'create_redir_file_explanation' => 'Uudelleenohjataksesi käyttäjät takaisin Coppermineen sen jälkeen kun he ovat kirjautuneet BBS:ääsi, tarvitset uudelleenohjaustiedoston BBs-hakemistoosi. Kun tämä valinta on päällä, yhteyshallinta yrittää luoda tiedoston tai antaa sinulle valmiin koodin, jonka voit kopioida ja liittää luodaksesi tiedoston itse.',
-  'browse' => 'selaa',
-);
+if (defined('BRIDGEMGR_PHP')) {
+$lang_bridgemgr_php['title'] = 'Integrointivelho';
+$lang_bridgemgr_php['back'] = 'takaisin';
+$lang_bridgemgr_php['next'] = 'seuraava';
+$lang_bridgemgr_php['start_wizard'] = 'Aloita integrointi';
+$lang_bridgemgr_php['finish'] = 'Valmis';
+$lang_bridgemgr_php['no_action_needed'] = 'Ei tarvittavia toimenpiteitä tässä vaiheessa. Klikkaa \'seuraava\' jatkaaksesi.';
+$lang_bridgemgr_php['reset_to_default'] = 'Palauta oletusarvoon';
+$lang_bridgemgr_php['choose_bbs_app'] = 'valitse sovellus, johon Coppermine yhdistetään';
+$lang_bridgemgr_php['support_url'] = 'Täältä löytyy tukitietoa sovellukselle';
+$lang_bridgemgr_php['settings_path'] = 'Integroitavan sovelluksen käyttämät polut';
+$lang_bridgemgr_php['full_forum_url'] = 'Integroitavan sovelluksen URL';
+$lang_bridgemgr_php['relative_path_of_forum_from_webroot'] = 'Integrointi sovelluksen absoluuttinen polku';
+$lang_bridgemgr_php['relative_path_to_config_file'] = 'Integrointi sovelluksen asetustiedoston relatiivinen polku';
+$lang_bridgemgr_php['cookie_prefix'] = 'Evästeen etuliite';
+$lang_bridgemgr_php['special_settings'] = 'Integroidun ohjelman sovellus kohtaiset asetukset';
+$lang_bridgemgr_php['use_post_based_groups'] = 'Käytä sovellus kohtaisia ryhmiä?';
+$lang_bridgemgr_php['use_post_based_groups_yes'] = 'kyllä';
+$lang_bridgemgr_php['use_post_based_groups_no'] = 'ei';
+$lang_bridgemgr_php['error_title'] = 'Sinun on korjattava nämä virheet, ennen kuin voit jatkaa. Palaa edelliseen näkymään.';
+$lang_bridgemgr_php['error_specify_bbs'] = 'Sinun on määriteltävä, mihin sovellukseen haluat yhdistää Copperminen asennuksen.';
+$lang_bridgemgr_php['finalize'] = 'laita integrointi päälle/pois päältä';
+$lang_bridgemgr_php['finalize_explanation'] = 'Tähän asti määrittelemäsi asetukset on kirjoitettu tietokantaan, mutta integrointia ei ole laitettu päälle. Voit kääntää integroinnin päälle/pois milloin tahansa myöhemminkin. Varmista, että muistat Copperminen ylläpitotunnuksen ja salasanan. Voit tarvita niitä myöhemmin tehdessäsi muutoksia. Jos jokin menee vikaan, mene kohteeseen %s ja käännä integrointi pois päältä käyttäen alkuperäistä yhdistämätöntä ylläpitotunnusta (yleensä se, joka on luotu Copperminea asennettaessa).';
+$lang_bridgemgr_php['your_bridge_settings'] = 'Integrointiasetuksesi';
+$lang_bridgemgr_php['title_enable'] = 'Käännä integrointi päälle kohteeseen %s';
+$lang_bridgemgr_php['bridge_enable_yes'] = 'käännä päälle';
+$lang_bridgemgr_php['bridge_enable_no'] = 'käännä pois päältä';
+$lang_bridgemgr_php['error_must_not_be_empty'] = 'ei saa olla tyhjä';
+$lang_bridgemgr_php['error_either_be'] = 'täytyy olla joko %s tai %s';
+$lang_bridgemgr_php['error_folder_not_exist'] = 'Hakemistoa %s ei löydy. Korjaa %s:lle antamasi arvo';
+$lang_bridgemgr_php['error_cookie_not_readible'] = 'Coppermine ei voi lukea %s nimistä evästettä. Korjaa %s:lle antamasi arvo, tai mene ylläpitopaneeliisi ja varmista, että eväste on Copperminen luettavissa.';
+$lang_bridgemgr_php['error_mandatory_field_empty'] = 'Et voi jättää kenttää %s tyhjäksi - täytä tarvittava arvo.';
+$lang_bridgemgr_php['error_no_trailing_slash'] = 'Kentän %s lopussa ei saa olla kauttaviivaa.';
+$lang_bridgemgr_php['error_trailing_slash'] = 'Kentän %s lopussa pitää olla kauttaviiva.';
+$lang_bridgemgr_php['error_prefix_and_table'] = '%s ja ';
+$lang_bridgemgr_php['recovery_title'] = 'Integrontiohjelma: hätäpalautus';
+$lang_bridgemgr_php['recovery_explanation'] = 'Jos tulit ylläpitämään Coppermine -gallerian integrointia, sinun on ensin kirjauduttava sisään ylläpitotunnuksilla. Jos et pysty kirjautumaan, koska yhteys ei toimi, voit poistaa integroinnin käytöstä tällä sivulla. Sinua ei kirjata sisään antamallasi tunnuksellasi ja salasanallasi, vaan toiminto ottaa pelkästään integroinnin pois käytöstä. Tarkista dokumentaatiosta tarkemmin.';
+$lang_bridgemgr_php['username'] = 'Käyttätunnus';
+$lang_bridgemgr_php['password'] = 'Salasana';
+$lang_bridgemgr_php['disable_submit'] = 'lähetä';
+$lang_bridgemgr_php['recovery_success_title'] = 'Tunnistautuminen onnistui';
+$lang_bridgemgr_php['recovery_success_content'] = 'Poistit onnistuneesti integroinnin käytöstä. Coppermine-asennus toimii nyt itsenäisesti.';
+$lang_bridgemgr_php['recovery_success_advice_login'] = 'Kirjaudu sisään ylläpitotunnuksillasi muuttaaksesi yhteysasetuksia tai ottaaksesi integroinnin jälleen käyttöön.';
+$lang_bridgemgr_php['goto_login'] = 'Kirjautumissivulle';
+$lang_bridgemgr_php['goto_bridgemgr'] = 'Integroinnin hallintaan';
+$lang_bridgemgr_php['recovery_failure_title'] = 'Tunnistautuminen epäonnistui';
+$lang_bridgemgr_php['recovery_failure_content'] = 'Annoit väärän tunnisteen. Sinun on annettava itsenäisen Copperminen ylläpitotilin tiedot (yleensä ne tunnukset, jotka luotiin alunperin Copperminea asennettaessa).';
+$lang_bridgemgr_php['try_again'] = 'yritä uudelleen';
+$lang_bridgemgr_php['recovery_wait_title'] = 'Odotusaika ei ole vielä kulunut';
+$lang_bridgemgr_php['recovery_wait_content'] = 'Tietoturvasyistä tämä scripti ei hyväksy vääriä kirjautumisyrityksiä pienin väliajoin. Sinun on odotettava hetki ja yritettävä sitten uudelleen.';
+$lang_bridgemgr_php['wait'] = 'odota';
+$lang_bridgemgr_php['browse'] = 'selaa';
+}
 
 // ------------------------------------------------------------------------- //
-// File calendar.php //cpg1.4
+// File calendar.php
 // ------------------------------------------------------------------------- //
-
-if (defined('CALENDAR_PHP')) $lang_calendar_php = array(
-  'title' => 'Kalenteri', //cpg1.4
-  'close' => 'Sulje', //cpg1.4
-  'clear_date' => 'Poista päivämäärä', //cpg1.4
-);
+if (defined('CALENDAR_PHP')) {
+$lang_calendar_php['title'] = 'Kalenteri';
+$lang_calendar_php['clear_date'] = 'poista päivämäärä';
+$lang_calendar_php['files'] = 'tiedostoa'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
 // File catmgr.php
 // ------------------------------------------------------------------------- //
-
-if (defined('CATMGR_PHP')) $lang_catmgr_php = array(
-  'miss_param' => 'Toimintoon \'%s\' tarvittavat parametrit puuttuvat!',
-  'unknown_cat' => 'Valittua kategoriaa ei ole tietokannassa',
-  'usergal_cat_ro' => 'Käyttäjägallerioiden kategoriaa ei voida poistaa!',
-  'manage_cat' => 'Hallitse kategorioita',
-  'confirm_delete' => 'Haluatko varmasti POISTAA tämän kategorian', //js-alert
-  'category' => 'Kategoria',
-  'operations' => 'Toiminnot',
-  'move_into' => 'Siirrä kohteeseen',
-  'update_create' => 'Päivitä/Luo kategoria',
-  'parent_cat' => 'Yläkategoria',
-  'cat_title' => 'Kategorian otsikko',
-  'cat_thumb' => 'Kategorian thumbnaili',
-  'cat_desc' => 'Kategorian kuvaus',
-  'categories_alpha_sort' => 'Järjestä kategoriat aakkosten mukaan (oman järjestyksen sijaan)', //cpg1.4
-  'save_cfg' => 'Tallenna', //cpg1.4
-);
+if (defined('CATMGR_PHP')) {
+$lang_catmgr_php['miss_param'] = 'Toimintoon \'%s\' tarvittavat parametrit puuttuvat!';
+$lang_catmgr_php['unknown_cat'] = 'Valittua kategoriaa ei ole tietokannassa';
+$lang_catmgr_php['usergal_cat_ro'] = 'Käyttäjägallerioiden kategoriaa ei voida poistaa!';
+$lang_catmgr_php['manage_cat'] = 'Hallitse kategorioita';
+$lang_catmgr_php['confirm_delete'] = 'Haluatko varmasti POISTAA tämän kategorian'; // js-alert
+$lang_catmgr_php['category'] = 'Kategoriat'; // cpg1.5
+$lang_catmgr_php['operations'] = 'Toiminnot';
+$lang_catmgr_php['move_into'] = 'Siirrä kohteeseen';
+$lang_catmgr_php['update_create'] = 'Päivitä/luo kategoria';
+$lang_catmgr_php['parent_cat'] = 'Yläkategoria';
+$lang_catmgr_php['cat_title'] = 'Kategorian otsikko';
+$lang_catmgr_php['cat_thumb'] = 'Kategorian pienoiskuva';
+$lang_catmgr_php['cat_desc'] = 'Kategorian kuvaus';
+$lang_catmgr_php['categories_alpha_sort'] = 'Järjestä kategoriat aakkosten mukaan (oman järjestyksen sijaan)';
+$lang_catmgr_php['save_cfg'] = 'Tallenna asetukset';
+$lang_catmgr_php['no_category'] = '* Ei kategoriaa *'; // cpg1.5
+$lang_catmgr_php['group_create_alb'] = 'Ryhmä(t), jo(i)lla oikeus luoda albumi tähän kategoriaan'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
-// File admin.php //cpg1.4
+// File contact.php
 // ------------------------------------------------------------------------- //
+if (defined('CONTACT_PHP')) {
+$lang_contact_php['title'] = 'Ota yhteyttä'; // cpg1.5
+$lang_contact_php['your_name'] = 'Nimesi'; // cpg1.5
+$lang_contact_php['your_email'] = 'Säkhköpostiosoitteesi'; // cpg1.5
+$lang_contact_php['subject'] = 'Aihe'; // cpg1.5
+$lang_contact_php['your_message'] = 'Viestisi'; // cpg1.5
+$lang_contact_php['name_field_mandatory'] = 'Ole hyvä ja anna nimesi'; // cpg1.5 // js-alert
+$lang_contact_php['name_field_invalid'] = 'Ole hyvä ja anna oikea nimesi'; // cpg1.5 // js-alert
+$lang_contact_php['email_field_mandatory'] = 'Ole hyvä ja anna sähköpostiosoitteesi'; // cpg1.5 // js-alert
+$lang_contact_php['email_field_invalid'] = 'Ole hyvä ja anna kelvollinen sähköpostiosoite'; // cpg1.5 // js-alert
+$lang_contact_php['subject_field_mandatory'] = 'Ole hyvä ja anna kunnollinen aihe'; // cpg1.5 // js-alert
+$lang_contact_php['message_field_mandatory'] = 'Ole hyvä ja kirjoita viestisi'; // cpg1.5 // js-alert
+$lang_contact_php['confirmation'] = 'Vahvistus'; // cpg1.5
+$lang_contact_php['email_headline'] = 'Tämä sähköposti on lähetetty %s käyttäen yhteyslomaketta, joka sijaitsee %s:ssa käyttäen IP -osoitetta %s'; // cpg1.5
+$lang_contact_php['registered_user'] = 'rekisteröitynyt käyttäjä'; // cpg1.5
+$lang_contact_php['guest'] = 'vieras'; // cpg1.5
+$lang_contact_php['unknown'] = 'tuntematon'; // cpg1.5
+$lang_contact_php['user_info'] = '%s -niminen %s seuraavalla sähköpostiosoitteella %s sanoi:'; // cpg1.5
+$lang_contact_php['failed_sending_email'] = 'Sähköpostin lähetys epäonnistui. Kokeile myöhemmin uudelleen.'; // cpg1.5
+$lang_contact_php['email_sent'] = 'Sähköpostisi lähetettiin.'; // cpg1.5
+}
 
-if (defined('ADMIN_PHP')) $lang_admin_php = array(
-  'title' => 'Asetukset', //cpg1.4
-  'manage_exif' => 'Hallitse exif-tiedon näyttämistä', //cpg1.4
-  'manage_plugins' => 'Hallitse plugineita', //cpg1.4
-  'manage_keyword' => 'Hallitse hakusanoja', //cpg1.4
-  'restore_cfg' => 'Palauta oletusasetukset',
-  'save_cfg' => 'Tallenna uudet asetukset',
-  'notes' => 'Huomaa',
-  'info' => 'Info',
-  'upd_success' => 'Copperminen asetukset päivitetty',
-  'restore_success' => 'Copperminen oletusasetukset palautettu',
-  'name_a' => 'Nimen mukaan nousevasti',
-  'name_d' => 'Nimen mukaan laskevasti',
-  'title_a' => 'Otsikon mukaan nousevasti',
-  'title_d' => 'Otsikon mukaan laskevasti',
-  'date_a' => 'Päivämäärän mukaan nousevasti',
-  'date_d' => 'Päivämäärän mukaan laskevasti',
-  'pos_a' => 'Sijainnin mukaan nousevasti', //cpg1.4
-  'pos_d' => 'Sijainnin mukaan laskevasti', //cpg1.4
-  'th_any' => 'Pisin sivu',
-  'th_ht' => 'Korkeus',
-  'th_wd' => 'Leveys',
-  'label' => 'nimi',
-  'item' => 'kuva',
-  'debug_everyone' => 'Kaikki',
-  'debug_admin' => 'Vain ylläpito',
-  'no_logs'=> 'Pois päältä', //cpg1.4
-  'log_normal'=> 'Normaali', //cpg1.4
-  'log_all' => 'Kaikki', //cpg1.4
-  'view_logs' => 'Näytä lokit', //cpg1.4
-  'click_expand' => 'klikkaa osion nimeä laajentaaksesi näkymän', //cpg1.4
-  'expand_all' => 'Laajenna kaikki', //cpg1.4
-  'notice1' => '(*) Näitä asetuksia ei pitäisi muuttaa, jos sinulla on jo kuvia tietokannassasi.', //cpg1.4 - (relocated)
-  'notice2' => '(**) Kun muutat tätä asetusta, se vaikuttaa vain uusiin tiedostoihin. Ei kannata muuttaa asetusta, jos sinulla on jo kuvia tietokannassa. Voit kuitenkin muokata kaikki vanhatkin kuvat vastaamaan tätä asetusta &quot;<a href="util.php">ylläpitotyökalujen</a> avulla (muuta kuvien koko)&quot;.', //cpg1.4 - (relocated)
-  'notice3' => '(***) Kaikki lokit kirjoitetaan englanniksi.', //cpg1.4 - (relocated)
-  'bbs_disabled' => 'Tämä on pois päältä, jos käytät bb-integrointia.', //cpg1.4
-  'auto_resize_everyone' => 'Kaikki', //cpg1.4
-  'auto_resize_user' => 'Vain käyttäjä', //cpg1.4
-  'ascending' => 'nousevasti', //cpg1.4
-  'descending' => 'laskevasti', //cpg1.4
-);
-
-if (defined('ADMIN_PHP')) $lang_admin_data = array(
-  'Yleiset asetukset',
-  array('Gallerian nimi', 'gallery_name', 0, 'f=index.htm&amp;as=admin_general_name&amp;ae=admin_general_name_end'), //cpg1.4
-  array('Gallerian kuvaus', 'gallery_description', 0, 'f=index.htm&amp;as=admin_general_description&amp;ae=admin_general_description_end'), //cpg1.4
-  array('Gallerian ylläpitäjän sähköpostiosoite', 'gallery_admin_email', 0, 'f=index.htm&amp;as=admin_general_email&amp;ae=admin_general_email_end'), //cpg1.4
-  array('Gallerian URL (ei \'index.php\':ta tai vastaavaa loppuun)', 'ecards_more_pic_target', 0, 'f=index.htm&amp;as=admin_general_coppermine-url&amp;ae=admin_general_coppermine-url_end'), //cpg1.4
-  array('Kotisivusi URL', 'home_target', 0, 'f=index.htm&amp;as=admin_general_home-url&amp;ae=admin_general_home-url_end'), //cpg1.4
-  array('Salli suosikkien lataus zip-tiedostona', 'enable_zipdownload', 1, 'f=index.htm&amp;as=admin_general_zip-download&amp;ae=admin_general_zip-download_end'), //cpg1.4
-  array('Aikavyöhyke suhteessa GMT:hen (nykyinen aika: ' . localised_date(-1, $comment_date_fmt) . ')','time_offset',0, 'f=index.htm&amp;as=admin_general_time-offset&amp;ae=admin_general_time-offset_end&amp;top=1'), //cpg1.4
-  array('Kryptatut salasanat (ei voida kumota)','enable_encrypted_passwords',1, 'f=index.htm&amp;as=admin_general_encrypt_password_start&amp;ae=admin_general_encrypt_password_end&amp;top=1'), // cpg 1.4
-  array('Ohje-kuvakkeet (vain englanniksi)','enable_help',9, 'f=index.htm&amp;as=admin_general_help&amp;ae=admin_general_help_end'), //cpg1.4
-  array('Klikattavat hakusanat hakusivulla','clickable_keyword_search',14, 'f=index.htm&amp;as=admin_general_keywords_start&amp;ae=admin_general_keywords_end'), //cpg1.4
-  array('Pluginit', 'enable_plugins', 12, 'f=index.htm&amp;as=admin_general_enable-plugins&amp;ae=admin_general_enable-plugins_end'),  //cpg1.4
-  array('Salli ei-reititettävien (yksityisten) IP-osoitteiden bannaaminen', 'ban_private_ip', 1,  'f=index.htm&amp;as=admin_general_private-ip&amp;ae=admin_general_private-ip_end'), //cpg1.4
-  array('Selattava tiedostojenlisäyskäyttöliittymä', 'browse_batch_add', 1, 'f=index.htm&amp;as=admin_general_browsable_batch_add&amp;ae=admin_general_browsable_batch_add_end'), //cpg1.4
-
-  'Kieli- ja merkistöasetukset',
-  array('Kieli', 'lang', 5, 'f=index.htm&amp;as=admin_language_language&amp;ae=admin_language_language_end'), //cpg1.4
-  array('Näytä lause englanniksi, jos käännöstä ei ole?', 'language_fallback', 1, 'f=index.htm&amp;as=admin_language_fallback&amp;ae=admin_language_fallback_end'), //cpg1.4
-  array('Merkistö', 'charset', 4, 'f=index.htm&amp;as=admin_language_charset&amp;ae=admin_language_charset_end'), //cpg1.4
-  array('Näytä kielilista', 'language_list', 1, 'f=index.htm&amp;as=admin_language_list&amp;ae=admin_language_list_end'), //cpg1.4
-  array('Näytä kieliliput', 'language_flags', 8, 'f=index.htm&amp;as=admin_language_flags&amp;ae=admin_language_flags_end&amp;top=1'), //cpg1.4
-  array('Näytä &quot;resetointi&quot; kielivalinnoissa', 'language_reset', 1, 'f=index.htm&amp;as=admin_language_reset&amp;ae=admin_language_reset_end&amp;top=1'), //cpg1.4
-  //array('Näytä edellinen/seuraava täbätyissä sivuissa', 'previous_next_tab', 1), //cpg1.4
-
-  'Teeman asetukset',
-  array('Teema', 'theme', 6, 'f=index.htm&amp;as=admin_theme_theme&amp;ae=admin_theme_theme_end'), //cpg1.4
-  array('Näytä teemalista', 'theme_list', 1, 'f=index.htm&amp;as=admin_theme_theme_list&amp;ae=admin_theme_theme_list_end'), //cpg1.4
-  array('Näytä &quot;resetointi&quot; teemavalinnoissa', 'theme_reset', 1, 'f=index.htm&amp;as=admin_theme_theme_reset&amp;ae=admin_theme_theme_reset_end'), //cpg1.4
-  array('Näytä FAQ', 'display_faq', 1, 'f=index.htm&amp;as=admin_theme_faq&amp;ae=admin_theme_faq_end'), //cpg1.4
-  array('Oman menulinkin nimi', 'custom_lnk_name', 0,'f=index.htm&amp;as=admin_theme_custom_lnk_name&amp;ae=admin_theme_custom_lnk_name_end'), //cpg1.4
-  array('Oman menulinkin URL', 'custom_lnk_url', 0,'f=index.htm&amp;as=admin_language_custom_lnk_url&amp;ae=admin_language_custom_lnk_url_end'), //cpg1.4
-  array('Näytä bbcode-ohje', 'show_bbcode_help', 1, 'f=index.htm&amp;as=admin_theme_bbcode&amp;ae=admin_theme_bbcode_end&amp;top=1'), //cpg1.4
-  array('Näytä XHTML- ja CSS-yhteensopivuuslaatikot','vanity_block',1, 'f=index.htm&amp;as=vanity_block&amp;ae=vanity_block_end'), //cpg1.4
-  array('Polku omaan headeriin', 'custom_header_path', 0, 'f=index.htm&amp;as=admin_theme_include_path_start&amp;ae=admin_theme_include_path_end'), //cpg1.4
-  array('Polku omaan footteriin', 'custom_footer_path', 0, 'f=index.htm&amp;as=admin_theme_include_path_start&amp;ae=admin_theme_include_path_end'), //cpg1.4
-
-  'Albumien näyttäminen',
-  array('Päätaulukon leveys (pikseleinä tai %)', 'main_table_width', 0, 'f=index.htm&amp;as=admin_album_table-width&amp;ae=admin_album_table-width_end'), //cpg1.4
-  array('Kategoriatasojen määrä näytöllä', 'subcat_level', 0, 'f=index.htm&amp;as=admin_album_category-levels&amp;ae=admin_album_category-levels_end'), //cpg1.4
-  array('Albumien määrä näytöllä', 'albums_per_page', 0, 'f=index.htm&amp;as=admin_album_number&amp;ae=admin_album_number_end'), //cpg1.4
-  array('Sarakkeiden määrä albumilistassa', 'album_list_cols', 0, 'f=index.htm&amp;as=admin_album_columns&amp;ae=admin_album_columns_end'), //cpg1.4
-  array('Thumbnailien koko pikseleinä', 'alb_list_thumb_size', 0, 'f=index.htm&amp;as=admin_album_thumbnail-size&amp;ae=admin_album_thumbnail-size_end'), //cpg1.4
-  array('Etusivun sisältö', 'main_page_layout', 0, 'f=index.htm&amp;as=admin_album_list_content&amp;ae=admin_album_list_content_end'), //cpg1.4
-  array('Näytä ensimmäisen tason albumithumbnailit kategorioissa','first_level',1, 'f=index.htm&amp;as=admin_album_first-level_thumbs&amp;ae=admin_album_first-level_thumbs_end'), //cpg1.4
-  array('Järjestä kategoriat aakkosten mukaan (oman järjestyksen sijaan)','categories_alpha_sort',1, 'f=index.htm&amp;as=admin_album_list_alphasort_start&amp;ae=admin_album_list_alphasort_end'), //cpg1.4
-  array('Näytä linkitettyjen tiedostojen määrä','link_pic_count',1, 'f=index.htm&amp;as=admin_album_linked_files_start&amp;ae=admin_album_linked_files_end'), //cpg1.4
-
-  'Thumbnailien näyttäminen',
-  array('Sarakkeiden määrä thumbnail-sivulla', 'thumbcols', 0, 'f=index.htm&amp;as=admin_thumbnail_columns&amp;ae=admin_thumbnail_columns_end'), //cpg1.4
-  array('Rivien määrä thumbnail-sivulla', 'thumbrows', 0, 'f=index.htm&amp;as=admin_thumbnail_rows&amp;ae=admin_thumbnail_rows_end'), //cpg1.4
-  array('Tabien enimmäismäärä', 'max_tabs', 10, 'f=index.htm&amp;as=admin_thumbnail_tabs&amp;ae=admin_thumbnail_tabs_end'), //cpg1.4
-  array('Näytä tiedoston otsake (otsikon lisäksi) thumbnailin alla', 'caption_in_thumbview', 1, 'f=index.htm&amp;as=admin_thumbnail_display_caption&amp;ae=admin_thumbnail_display_caption_end'), //cpg1.4
-  array('Näytä näyttökertojen määrä thumbnailin alla', 'views_in_thumbview', 1, 'f=index.htm&amp;as=admin_thumbnail_display_views&amp;ae=admin_thumbnail_display_views_end'), //cpg1.4
-  array('Näytä kommenttien määrä thumbnailin alla', 'display_comment_count', 1, 'f=index.htm&amp;as=admin_thumbnail_display_comments&amp;ae=admin_thumbnail_display_comments_end'), //cpg1.4
-  array('Näytä kuvan lisääjän nimi thumbnailin alla', 'display_uploader', 1, 'f=index.htm&amp;as=admin_thumbnail_display_uploader&amp;ae=admin_thumbnail_display_uploader_end'), //cpg1.4
-  //array('Näytä ylläpitäjälisääjän nimi thumbnailin alla', 'display_admin_uploader', 1, 'f=index.htm&amp;as=admin_thumbnail_display_admin_uploader&amp;ae=admin_thumbnail_display_admin_uploader_end'), //cpg1.4
-  array('Näytä tiedostonimi thumbnailin alla', 'display_filename', 1, 'f=index.htm&amp;as=admin_thumbnail_display_filename&amp;ae=admin_thumbnail_display_filename_end'), //cpg1.4
-  //array('Näytä albumin kuvaus', 'alb_desc_thumb', 1, 'f=index.htm&amp;as=admin_thumbnail_display_description&amp;ae=admin_thumbnail_display_description_end'), //cpg1.4
-  array('Tiedostojen oletusjärjestys', 'default_sort_order', 3, 'f=index.htm&amp;as=admin_thumbnail_default_sortorder&amp;ae=admin_thumbnail_default_sortorder_end'), //cpg1.4
-  array('Äänien vähimmäismäärä, jotta pääsee \'suosituimmat\' -listalle', 'min_votes_for_rating', 0, 'f=index.htm&amp;as=admin_thumbnail_minimum_votes&amp;ae=admin_thumbnail_minimum_votes_end'), //cpg1.4
-
-  'Kuvien näyttäminen', //cpg1.4
-  array('Kuvataulukon leveys (pikseleinä or %)', 'picture_table_width', 0, 'f=index.htm&amp;as=admin_image_comment_table-width&amp;ae=admin_image_comment_table-width_end'), //cpg1.4
-  array('Tiedostotieto näkyvissä oletuksena', 'display_pic_info', 1, 'f=index.htm&amp;as=admin_image_comment_info_visible&amp;ae=admin_image_comment_info_visible_end'), //cpg1.4
-  array('Kuvan kuvauksen enimmäispituus', 'max_img_desc_length', 0, 'f=index.htm&amp;as=admin_image_comment_descr_length&amp;ae=admin_image_comment_descr_length_end'), //cpg1.4
-  array('Kirjainten enimmäismäärä sanassa', 'max_com_wlength', 0, 'f=index.htm&amp;as=admin_image_comment_chars_per_word&amp;ae=admin_image_comment_chars_per_word_end'), //cpg1.4
-  array('Näytä filmi (edelliset ja seuraavat kuvat)', 'display_film_strip', 1, 'f=index.htm&amp;as=admin_image_comment_filmstrip_toggle&amp;ae=admin_image_comment_filmstrip_toggle_end'), //cpg1.4
-  array('Näytä tiedostonimi filmithumbnailin alla', 'display_film_strip_filename', 1, 'f=index.htm&amp;as=admin_image_comment_display_film_strip_filename&amp;ae=admin_image_comment_display_film_strip_filename_end'), //cpg1.4
-  array('Kuvien määrä filmissä', 'max_film_strip_items', 0, 'f=index.htm&amp;as=admin_image_comment_filmstrip_number&amp;ae=admin_image_comment_filmstrip_number_end'), //cpg1.4
-  array('Kuvaesityksen aikaväli millisekunteina (1 sekunti = 1000 millisekuntia)', 'slideshow_interval', 0, 'f=index.htm&amp;as=admin_image_comment_slideshow_interval&amp;ae=admin_image_comment_slideshow_interval_end'), //cpg1.4
-
-  'Kommenttiasetukset', //cpg1.4
-  array('Suodata rumat sanat kommenteissa', 'filter_bad_words', 1, 'f=index.htm&amp;as=admin_image_comment_bad_words&amp;ae=admin_image_comment_bad_words_end'), //cpg1.4
-  array('Salli hymiöt kommenteissa', 'enable_smilies', 1, 'f=index.htm&amp;as=admin_image_comment_smilies&amp;ae=admin_image_comment_smilies_end'), //cpg1.4
-  array('Salli usea peräkkäinen kommentti samalle kuvalle samalta käyttäjältä (ota floodaussuoja pois käytöstä)', 'disable_comment_flood_protect', 1, 'f=index.htm&amp;as=admin_image_comment_flood&amp;ae=admin_image_comment_flood_end'), //cpg1.4
-  array('Rivien enimmäismäärä kommentissa', 'max_com_lines', 0, 'f=index.htm&amp;as=admin_image_comment_lines&amp;ae=admin_image_comment_lines_end'), //cpg1.4
-  array('Kommentin enimmäispituus', 'max_com_size', 0, 'f=index.htm&amp;as=admin_image_comment_length&amp;ae=admin_image_comment_length_end'), //cpg1.4
-  array('Ilmoita ylläpitäjälle kommentista sähköpostitse', 'email_comment_notification', 1, 'f=index.htm&amp;as=admin_image_comment_admin_notify&amp;ae=admin_image_comment_admin_notify_end'), //cpg1.4
-  array('Kommenttien järjestys', 'comments_sort_descending', 17, 'f=index.htm&amp;as=admin_comment_sort_start&amp;ae=admin_comment_sort_end'), //cpg1.4
-  array('Etuliite anonyymeille kommentoijille', 'comments_anon_pfx', 0, 'f=index.htm&amp;as=comments_anon_pfx&amp;ae=comments_anon_pfx_end'), //cpg1.4
-
-  'Tiedosto- ja thumbnail-asetukset',
-  array('JPEG -tiedostojen laatu', 'jpeg_qual', 0, 'f=index.htm&amp;as=admin_picture_thumbnail_jpeg_quality&amp;ae=admin_picture_thumbnail_jpeg_quality_end'), //cpg1.4
-  array('Thumbnailin enimmäiskoko (pisin sivu)<a href="#notice2" class="clickable_option">**</a>', 'thumb_width', 0, 'f=index.htm&amp;as=admin_picture_thumbnail_max-dimension&amp;ae=admin_picture_thumbnail_max-dimension_end'), //cpg1.4
-  array('Käytä thumbnailin leveyttä, korkeutta tai pisintä sivua <a href="#notice2" class="clickable_option">**</a>', 'thumb_use', 7, 'f=index.htm&amp;as=admin_picture_thumbnail_use-dimension&amp;ae=admin_picture_thumbnail_use-dimension_end'), //cpg1.4
-  array('Luo keskikokoiset kuvat','make_intermediate',1, 'f=index.htm&amp;as=admin_picture_thumbnail_intermediate_toggle&amp;ae=admin_picture_thumbnail_intermediate_toggle_end'), //cpg1.4
-  array('Enimmäisleveys tai korkeus keskikokoiselle kuvalle/videolle <a href="#notice2" class="clickable_option">**</a>', 'picture_width', 0, 'f=index.htm&amp;as=admin_picture_thumbnail_intermediate_dimension&amp;ae=admin_picture_thumbnail_intermediate_dimension_end'), //cpg1.4
-  array('Lisättävien tiedostojen enimmäiskoko (KB)', 'max_upl_size', 0, 'f=index.htm&amp;as=admin_picture_thumbnail_max_upload_size&amp;ae=admin_picture_thumbnail_max_upload_size_end'), //cpg1.4
-  array('Lisättävien kuvien/videoiden enimmäisleveys tai korkeus (pikseleinä)', 'max_upl_width_height', 0, 'f=index.htm&amp;as=admin_picture_thumbnail_max_upload_dimension&amp;ae=admin_picture_thumbnail_max_upload_dimension_end'), //cpg1.4
-  array('Pienennä kuvia automaattisesti, jos ne ovat liian suuria', 'auto_resize', 16, 'f=index.htm&amp;as=admin_picture_thumbnail_auto-resize&amp;ae=admin_picture_thumbnail_auto-resize_end'), //cpg1.4
-
-  'Tiedosto- ja thumbnail-lisäasetukset',
-  array('Albumit voivat olla yksityisiä (Huomaa, että jos vaihdat tämän asetuksesta \'kyllä\' asetukseen \'ei\', kaikki nykyisin yksityiset albumit muuttuvat julkisiksi)', 'allow_private_albums', 1, 'f=index.htm&amp;as=admin_picture_thumb_advanced_private_toggle&amp;ae=admin_picture_thumb_advanced_private_toggle_end'), //cpg1.4
-  array('Näytä yksityisen albumin ikoni kirjautumattomille käyttäjille','show_private',1, 'f=index.htm&amp;as=admin_picture_thumb_advanced_private_icon_show&amp;ae=admin_picture_thumb_advanced_private_icon_show_end'), //cpg1.4
-  array('Kielletyt merkit tiedostonimissä', 'forbiden_fname_char',0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_filename_forbidden_chars&amp;ae=admin_picture_thumb_advanced_filename_forbidden_chars_end'), //cpg1.4
-  //array('Hyväksytyt tiedostopäätteet lisättäville kuville', 'allowed_file_extensions',0, 'f=index.htm&amp;as=&amp;ae=_end'), //cpg1.4
-  array('Hyväksytyt kuvatyypit', 'allowed_img_types',0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_pic_extensions&amp;ae=admin_picture_thumb_advanced_pic_extensions_end'), //cpg1.4
-  array('Hyväksytyt videotyypit', 'allowed_mov_types',0, 'f=index.htm&amp;as=admin_thumbs_advanced_movie&amp;ae=admin_thumbs_advanced_movie_end'), //cpg1.4
-  array('Videon automaattinen käynnistys', 'media_autostart',1, 'f=index.htm&amp;as=admin_movie_autoplay&amp;ae=admin_movie_autoplay_end'), //cpg1.4
-  array('Hyväksytyt äänitiedostot', 'allowed_snd_types',0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_audio_extensions&amp;ae=admin_picture_thumb_advanced_audio_extensions_end'), //cpg1.4
-  array('Hyväksytyt dokumenttityypit', 'allowed_doc_types',0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_doc_extensions&amp;ae=admin_picture_thumb_advanced_doc_extensions_end'), //cpg1.4
-  array('Kuvien koon muuttamisen menetelmä','thumb_method',2, 'f=index.htm&amp;as=admin_picture_thumb_advanced_resize_method&amp;ae=admin_picture_thumb_advanced_resize_method_end'), //cpg1.4
-  array('ImageMagickin \'convert\' -toiminnon polku (esim. /usr/bin/X11/)', 'impath', 0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_im_path&amp;ae=admin_picture_thumb_advanced_im_path_end'), //cpg1.4
-  //array('Hyväksytyt kuvatyypit (vain ImageMagickille)', 'allowed_img_types',0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_allowed_imagetypes&amp;ae=admin_picture_thumb_advanced_allowed_imagetypes_end'), //cpg1.4
-  array('Komentorivivalinnat ImageMagickille', 'im_options', 0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_im_commandline&amp;ae=admin_picture_thumb_advanced_im_commandline_end'), //cpg1.4
-  array('Lue JPEG-kuvien EXIF-tieto', 'read_exif_data', 13, 'f=index.htm&amp;as=admin_picture_thumb_advanced_exif&amp;ae=admin_picture_thumb_advanced_exif_end'), //cpg1.4
-  array('Lue JPEG-kuvien IPTC-tieto', 'read_iptc_data', 1, 'f=index.htm&amp;as=admin_picture_thumb_advanced_iptc&amp;ae=admin_picture_thumb_advanced_iptc_end'), //cpg1.4
-  array('Albumihakemisto <a href="#notice1" class="clickable_option">*</a>', 'fullpath', 0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_albums_dir&amp;ae=admin_picture_thumb_advanced_albums_dir_end'), //cpg1.4
-  array('Käyttäjien tiedostojen hakemisto <a href="#notice1" class="clickable_option">*</a>', 'userpics', 0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_userpics_dir&amp;ae=admin_picture_thumb_advanced_userpics_dir_end'), //cpg1.4
-  array('Etuliite keskikokoisille kuville <a href="#notice1" class="clickable_option">*</a>', 'normal_pfx', 0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_intermediate_prefix&amp;ae=admin_picture_thumb_advanced_intermediate_prefix_end'), //cpg1.4
-  array('Etuliite thumbnaileille <a href="#notice1" class="clickable_option">*</a>', 'thumb_pfx', 0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_thumbs_prefix&amp;ae=admin_picture_thumb_advanced_thumbs_prefix_end'), //cpg1.4
-  array('Hakemistojen oletusoikeudet', 'default_dir_mode', 0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_chmod_folder&amp;ae=admin_picture_thumb_advanced_chmod_folder_end'), //cpg1.4
-  array('Tiedostojen oletusoikeudet', 'default_file_mode', 0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_chmod_files&amp;ae=admin_picture_thumb_advanced_chmod_files_end'), //cpg1.4
-
-  'Käyttäjäasetukset',
-  array('Salli käyttäjärekisteröinnit', 'allow_user_registration', 1, 'f=index.htm&amp;as=admin_allow_registration&amp;ae=admin_allow_registration_end'), //cpg1.4
-  array('Salli kirjautumattomat käyttäjät (vieraat tai anonyymit)', 'allow_unlogged_access', 1, 'f=index.htm&amp;as=admin_allow_unlogged_access&amp;ae=admin_allow_unlogged_access_end'), //cpg1.4
-  array('Käyttäjärekisteröinnit vaativat sähköpostivarmistuksen', 'reg_requires_valid_email', 1, 'f=index.htm&amp;as=admin_registration_verify&amp;ae=admin_registration_verify_end'), //cpg1.4
-  array('Ilmoita rekisteröinneistä ylläpidolle sähköpostitse', 'reg_notify_admin_email', 1, 'f=index.htm&amp;as=admin_registration_notify&amp;ae=admin_registration_notify_end'), //cpg1.4
-  array('Ylläpidon aktivointi rekisteröinneille', 'admin_activation', 1, 'f=index.htm&amp;as=admin_activation&amp;ae=admin_activation_end'),  //cpg1.4
-  array('Salli kahdelle käyttäjälle sama sähköpostiosoite', 'allow_duplicate_emails_addr', 1, 'f=index.htm&amp;as=admin_allow_duplicate_emails_addr&amp;ae=admin_allow_duplicate_emails_addr_end'), //cpg1.4
-  array('Ilmoita ylläpidolle lisätyistä kuvista, jotka vaativat hyväksynnän', 'upl_notify_admin_email', 1, 'f=index.htm&amp;as=admin_approval_notify&amp;ae=admin_approval_notify_end'), //cpg1.4
-  array('Salli käyttäjälistan näkeminen kirjautuneille käyttäjille', 'allow_memberlist', 1, 'f=index.htm&amp;as=admin_user_memberlist&amp;ae=admin_user_memberlist_end'), //cpg1.4
-  array('Salli käyttäjien vaihtaa sähköpostiosoitteita profiileissaan', 'allow_email_change', 1, 'f=index.htm&amp;as=admin_user_allow_email_change&amp;ae=admin_user_allow_email_change_end'), //cpg1.4
-  array('Salli käyttäjien hallita lisäämiään kuvia julkisissa gallerioissa', 'users_can_edit_pics', 1, 'f=index.htm&amp;as=admin_user_editpics_public_start&amp;ae=admin_user_editpics_public_end'), //cpg1.4
-  array('Väärien kirjautumisyritysten enimmäismäärä ennen väliaikaista bannia (välttääksesi brute force -hyökkäykset)', 'login_threshold', 0, 'f=index.htm&amp;as=admin_user_login_start&amp;ae=admin_user_login_end'), //cpg1.4
-  array('Väliaikaisen (väärien kirjautumisten vuoksi) bannin kesto ', 'login_expiry', 0, 'f=index.htm&amp;as=admin_user_login_start&amp;ae=admin_user_login_end'), //cpg1.4
-  array('Ylläpidolle ilmoittaminen', 'report_post', 1, 'f=index.htm&amp;as=admin_user_enable_report&amp;ae=admin_user_enable_report_end'),  //cpg1.4
-
-// custom profile fields,  //cpg1.4
-  'Omat käyttäjäprofiilin kentät (jätä tyhjiksi, jossei tarvita).
-  Käytä profiilia 6 pitkille teksteille, kuten elämänkerroille', //cpg1.4
-  array('Profiilin 1 nimi', 'user_profile1_name', 0, 'f=index.htm&amp;as=admin_custom&amp;ae=admin_custom_end'), //cpg1.4
-  array('Profiilin 2 nimi', 'user_profile2_name', 0), //cpg1.4
-  array('Profiilin 3 nimi', 'user_profile3_name', 0), //cpg1.4
-  array('Profiilin 4 nimi', 'user_profile4_name', 0), //cpg1.4
-  array('Profiilin 5 nimi', 'user_profile5_name', 0), //cpg1.4
-  array('Profiilin 6 nimi', 'user_profile6_name', 0), //cpg1.4
-
-  'Omat kuvatietokentät (jätä tyhjäksi, jossei tarvita)',
-  array('Kentän 1 nimi', 'user_field1_name', 0, 'f=index.htm&amp;as=admin_custom_image&amp;ae=admin_custom_image_end'), //cpg1.4
-  array('Kentän 2 nimi', 'user_field2_name', 0),
-  array('Kentän 3 nimi', 'user_field3_name', 0),
-  array('Kentän 4 nimi', 'user_field4_name', 0),
-
-  'Evästeet',
-  array('Evästeen nimi', 'cookie_name', 0, 'f=index.htm&amp;as=admin_cookie_name&amp;ae=admin_cookie_name_end'), //cpg1.4
-  array('Evästeen polku', 'cookie_path', 0, 'f=index.htm&amp;as=admin_cookie_path&amp;ae=admin_cookie_path_end'), //cpg1.4
-
-  'Sähköpostiasetukset  (yleensä mitään ei tarvitse muuttaa; jätä kaikki tyhjiksi, ellet ole varma)', //cpg1.4
-  array('SMTP-palvelin (jos kenttä on tyhjä, käytetään sendmailia)', 'smtp_host', 0, 'f=index.htm&amp;as=admin_email&amp;ae=admin_email_end'), //cpg1.4
-  array('SMTP-käyttäjätunnus', 'smtp_username', 0), //cpg1.4
-  array('SMTP-salasana', 'smtp_password', 0), //cpg1.4
-
-  'Lokin kerääminen ja tilastot', //cpg1.4
-  array('Lokitustila <a href="#notice3" class="clickable_option">***</a>', 'log_mode', 11, 'f=index.htm&amp;as=admin_logging_log_mode&amp;ae=admin_logging_log_mode_end'), //cpg1.4
-  array('Lokita e-kortit', 'log_ecards', 1, 'f=index.htm&amp;as=admin_general_log_ecards&amp;ae=admin_general_log_ecards_end'), //cpg1.4
-  array('Kerää yksityiskohtaista äänestystilastoa','vote_details',1, 'f=index.htm&amp;as=admin_logging_votedetails&amp;ae=admin_logging_votedetails_end'), //cpg1.4
-  array('Kerää yksityiskohtaista näyttökertatilastoa','hit_details',1, 'f=index.htm&amp;as=admin_logging_hitdetails&amp;ae=admin_logging_hitdetails_end'), //cpg1.4
-
-  'Ylläpitoasetukset', //cpg1.4
-  array('Debuggaus-tila', 'debug_mode', 9, 'f=index.htm&amp;as=debug_mode&amp;ae=debug_mode_end'), //cpg1.4
-  array('Näytä ilmoitukset debuggaustilassa', 'debug_notice', 1, 'f=index.htm&amp;as=admin_misc_debug_notices&amp;ae=admin_misc_debug_notices_end'), //cpg1.4
-  array('Galleria ei ole julkinen (-> offline)', 'offline', 1, 'f=index.htm&amp;as=admin_general_offline&amp;ae=admin_general_offline_end'), //cpg1.4
-);
+// ------------------------------------------------------------------------- //
+// File admin.php
+// ------------------------------------------------------------------------- //
+if (defined('ADMIN_PHP')) {
+$lang_admin_php['title'] = 'Gallerian asetukset';
+$lang_admin_php['general_settings'] = 'Yleiset asetukset'; // cpg1.5
+$lang_admin_php['language_charset_settings'] = 'Kieli &amp; Merkistö asetukset'; // cpg1.5
+$lang_admin_php['themes_settings'] = 'Teeman asetukset'; // cpg1.5
+$lang_admin_php['album_list_view'] = 'Albumilistaus näkymä'; // cpg1.5
+$lang_admin_php['thumbnail_view'] = 'Pienoiskuvanäkymä'; // cpg1.5
+$lang_admin_php['image_view'] = 'Kuvanäkymä'; // cpg1.5
+$lang_admin_php['comment_settings'] = 'Kommenttien asetukset'; // cpg1.5
+$lang_admin_php['thumbnail_settings'] = 'Pienoiskuvien asetukset'; // cpg1.5
+$lang_admin_php['file_settings'] = 'Tiedostoasetukset'; // cpg1.5
+$lang_admin_php['image_watermarking'] = 'Kuvan vesileimaus'; // cpg1.5
+$lang_admin_php['registration'] = 'Rekisteröinti'; // cpg1.5
+$lang_admin_php['user_settings'] = 'Käyttäjäasetukset'; // cpg1.5
+$lang_admin_php['custom_fields_user_profile'] = 'Oma kenttä käyttäjä profiilille (jätä tyhjäksi jos ei käytetä). Käytä profiilia 6 pidemmille kirjoituksille, kuten biografialle'; // cpg1.5
+$lang_admin_php['custom_fields_image_description'] = 'Oma kenttä kuvan kuvausta varten (jätä tyhjäksi jos ei käytetä)'; // cpg1.5
+$lang_admin_php['cookie_settings'] = 'Evästeiden asetukset'; // cpg1.5
+$lang_admin_php['email_settings'] = 'Sähköpostiasetukset  (yleensä mitään ei tarvitse muuttaa; jätä kaikki tyhjäksi, ellet ole varma)'; // cpg1.5
+$lang_admin_php['logging_stats'] = 'Loki ja tilastot'; // cpg1.5
+$lang_admin_php['maintenance_settings'] = 'Ylläpitoasetukset'; // cpg1.5
+$lang_admin_php['manage_exif'] = 'Hallitse EXIF -tietojen näyttämistä';
+$lang_admin_php['manage_plugins'] = 'Hallitse lisäosia';
+$lang_admin_php['manage_keyword'] = 'Hallitse avainsanoja';
+$lang_admin_php['restore_cfg'] = 'Palauta oletusasetukset';
+$lang_admin_php['restore_cfg_confirm'] = 'Haluatko varmasti palauttaa kaikki asetukset oletusasetuksiin? Toimintia e voi peruuttaa!'; // cpg1.5 // js-alert
+$lang_admin_php['save_cfg'] = 'Tallenna uudet asetukset';
+$lang_admin_php['notes'] = 'Merkinnät';
+$lang_admin_php['info'] = 'Tietoa';
+$lang_admin_php['upd_success'] = 'Copperminen asetukset päivitetty';
+$lang_admin_php['restore_success'] = 'Copperminen oletusasetukset palautettu';
+$lang_admin_php['name_a'] = 'Nimen mukaan nousevasti';
+$lang_admin_php['name_d'] = 'Nimen mukaan nousevasti laskevasti';
+$lang_admin_php['title_a'] = 'Otsikon mukaan nousevasti';
+$lang_admin_php['title_d'] = 'Otsikon mukaan laskevasti';
+$lang_admin_php['date_a'] = 'Päivämäärän mukaan nousevasti';
+$lang_admin_php['date_d'] = 'Päivämäärän mukaan laskevasti';
+$lang_admin_php['pos_a'] = 'Sijainnin mukaan nousevasti';
+$lang_admin_php['pos_d'] = 'Sijainnin mukaan laskevasti';
+$lang_admin_php['th_any'] = 'Pisin sivu';
+$lang_admin_php['th_ht'] = 'Korkeus';
+$lang_admin_php['th_wd'] = 'Leveys';
+$lang_admin_php['th_ex'] = 'Tarkka'; // cpg1.5
+$lang_admin_php['debug_everyone'] = 'Kaikki';
+$lang_admin_php['debug_admin'] = 'Vain ylläpito';
+$lang_admin_php['no_logs'] = 'Pois päältä';
+$lang_admin_php['log_normal'] = 'Normaali';
+$lang_admin_php['log_all'] = 'Kaikki';
+$lang_admin_php['view_logs'] = 'Näytä lokit';
+$lang_admin_php['click_expand'] = 'klikkaa osion nimeä laajentaaksesi näkymän';
+$lang_admin_php['click_collapse'] = 'klikka laatikon nimeä romahduttaaksesi sen'; // cpg1.5
+$lang_admin_php['expand_all'] = 'Laajenna kaikki';
+$lang_admin_php['toggle_all'] = 'Kutista kaikki'; // cpg1.5
+$lang_admin_php['notice1'] = '(*) Näitä asetuksia ei pitäisi muuttaa, jos sinulla on jo tiedostoja tietokannassasi.';
+$lang_admin_php['notice2'] = '(**) Kun muutat tätä asetusta, se vaikuttaa vain uusiin tiedostoihin. Asetusta ei kannata muuttaa, jos sinulla on jo tiedostoja tietokannassa. Voit kuitenkin muokata kaikki vanhatkin tiedostot vastaamaan tätä asetusta &quot;<a href="util.php">ylläpitotyökalujen</a> avulla (muuta kuvien koko)&quot;.';
+$lang_admin_php['notice3'] = '(***) Kaikki lokit kirjoitetaan englanniksi.';
+$lang_admin_php['bbs_disabled'] = 'Tämä on pois päältä, jos käytät integrointia.';
+$lang_admin_php['auto_resize_everyone'] = 'Kaikki';
+$lang_admin_php['auto_resize_user'] = 'Vain käyttäjä';
+$lang_admin_php['ascending'] = 'nousevasti';
+$lang_admin_php['descending'] = 'laskevasti';
+$lang_admin_php['collapse_all'] = 'Romahduta kaikki'; // cpg1.5
+$lang_admin_php['separate_page'] = 'erillisellä sivulla'; // cpg1.5
+$lang_admin_php['inline'] = 'sisäinen'; // cpg1.5
+$lang_admin_php['guests_only'] = 'Vain vierailijat'; // cpg1.5
+$lang_admin_php['wm_bottomright'] = 'Ala oikea'; // cpg1.5
+$lang_admin_php['wm_bottomleft'] = 'Ala vasen'; // cpg1.5
+$lang_admin_php['wm_topleft'] = 'Ylä vasen'; // cpg1.5
+$lang_admin_php['wm_topright'] = 'Ylä oikea'; // cpg1.5
+$lang_admin_php['wm_center'] = 'Keskelle'; // cpg1.5
+$lang_admin_php['wm_both'] = 'Molemmat'; // cpg1.5
+$lang_admin_php['wm_original'] = 'Alkuperäinen'; // cpg1.5
+$lang_admin_php['wm_resized'] = 'Käsitelty'; // cpg1.5
+$lang_admin_php['gallery_name'] = 'Gallerian nimi'; // cpg1.5
+$lang_admin_php['gallery_description'] = 'Gallerian kuvaus'; // cpg1.5
+$lang_admin_php['gallery_admin_email'] = 'Gallerian ylläpitäjän sähköpostiosoite'; // cpg1.5
+$lang_admin_php['ecards_more_pic_target'] = 'Coppermine-gallerian kansion URL'; // cpg1.5
+$lang_admin_php['ecards_more_pic_target_detail'] = '(kauttaviivan kanssa, ei \'index.php\'tä tai vastaavaa loppuun)'; // cpg1.5
+$lang_admin_php['home_target'] = 'Kotisivusi URL'; // cpg1.5
+$lang_admin_php['enable_zipdownload'] = 'Salli suosikkien lataus zip-tiedostona'; // cpg1.5
+$lang_admin_php['enable_zipdownload_no_textfile'] = 'vain suosikit'; // cpg1.5
+$lang_admin_php['enable_zipdownload_additional_textfile'] = 'suosikit ja lueminut -tiedosto'; // cpg1.5
+$lang_admin_php['time_offset'] = 'Aikavyöhyke suhteessa GMT:hen'; // cpg1.5
+$lang_admin_php['time_offset_detail'] = '(nykyinen aika: %s)'; // cpg1.5
+$lang_admin_php['enable_help'] = 'Ohje kuvakkeet'; // cpg1.5
+$lang_admin_php['enable_help_description'] = 'ohje osittain saatavilla vain englanniksi'; // cpg1.5
+$lang_admin_php['clickable_keyword_search'] = 'Klikattavat avainsanat hakusivulla'; // cpg1.5
+$lang_admin_php['keyword_separator'] = 'Avainsanojen erotin'; // cpg1.5
+$lang_admin_php['keyword_convert'] = 'Vaihda avainsanojen erotinta'; // cpg1.5
+$lang_admin_php['enable_plugins'] = 'Lisäosat'; // cpg1.5
+$lang_admin_php['purge_expired_bans'] = 'Poista automaattisesti vanhentuneet bannit'; // cpg1.5
+$lang_admin_php['browse_batch_add'] = 'Selattava tiedostojen lisäyskäyttöliittymä'; // cpg1.5
+$lang_admin_php['batch_proc_limit'] = 'Käsittele samanaikaisesti tiedostojen lisäyskäyttöliittymässä'; // cpg1.5
+$lang_admin_php['display_thumbs_batch_add'] = 'Näytä esikatselukuva tiedostojen lisäyskäyttöliittymässä'; // cpg1.5
+$lang_admin_php['lang'] = 'Oletuskieli'; // cpg1.5
+$lang_admin_php['language_autodetect'] = 'Tunnista kieli automaattisesti'; // cpg1.5
+$lang_admin_php['charset'] = 'Merkistökoodaus'; // cpg1.5
+  // 'previous_next_tab'] = 'Näytä edellinen/seuraava sivuilla, joissa on välilehdet'; // cpg1.5
+$lang_admin_php['theme'] = 'Teema'; // cpg1.5
+$lang_admin_php['custom_lnk_name'] = 'Oman valikkolinkin nimi'; // cpg1.5
+$lang_admin_php['custom_lnk_url'] = 'Oman valikkolinkin URL'; // cpg1.5
+$lang_admin_php['enable_menu_icons'] = 'Näytä menujen kuvakkeet'; // cpg1.5
+$lang_admin_php['show_bbcode_help'] = 'Näytä BBCode -ohje'; // cpg1.5
+$lang_admin_php['vanity_block'] = 'Näytä XHTML- ja CSS-yhteensopivuuslaatikot'; // cpg1.5
+$lang_admin_php['highlight_multiple'] = 'Käytä [Ctrl] -näppäintä valitaksesi useampia rivejä'; // cpg1.5
+$lang_admin_php['custom_header_path'] = 'Polku omaan yläosaan'; // cpg1.5
+$lang_admin_php['custom_footer_path'] = 'Polku omaan ala-osaan'; // cpg1.5
+$lang_admin_php['browse_by_date'] = 'Ota käyttöön päivämäärän mukaan selaaminen'; // cpg1.5
+$lang_admin_php['display_redirection_page'] = 'Näytä uudelleenohjaussivut'; // cpg1.5
+$lang_admin_php['display_xp_publish_link'] = 'Mainosta XP Publisherin käyttöä näyttämällä siihen linkki tiedostojen lähetyssivulla'; // cpg1.5
+$lang_admin_php['main_table_width'] = 'Päätaulukon leveys'; // cpg1.5
+$lang_admin_php['pixels_or_percent'] = 'pikseleinä tai %'; // cpg1.5
+$lang_admin_php['subcat_level'] = 'Kategorien määrä'; // cpg1.5
+$lang_admin_php['albums_per_page'] = 'Albumien määrä näytöllä'; // cpg1.5
+$lang_admin_php['album_list_cols'] = 'Sarakkeiden määrä albumilistassa'; // cpg1.5
+$lang_admin_php['alb_list_thumb_size'] = 'Pienoiskuvien koko pikseleinä'; // cpg1.5
+$lang_admin_php['main_page_layout'] = 'Etusivun sisältö'; // cpg1.5
+$lang_admin_php['first_level'] = 'Näytä ensimmäisen tason albumien pienoiskuvat kategorioissa'; // cpg1.5
+$lang_admin_php['categories_alpha_sort'] = 'Järjestä kategoriat aakkosten mukaan'; // cpg1.5
+$lang_admin_php['categories_alpha_sort_details'] = '(oman järjestyksen sijaan)'; // cpg1.5
+$lang_admin_php['link_pic_count'] = 'Näytä linkitettyjen tiedostojen määrä'; // cpg1.5
+$lang_admin_php['thumbcols'] = 'Sarakkeiden määrä pienoiskuvasivulla'; // cpg1.5
+$lang_admin_php['thumbrows'] = 'Rivien määrä pienoiskuvasivulla'; // cpg1.5
+$lang_admin_php['max_tabs'] = 'Välilehtien enimmäismäärä'; // cpg1.5
+$lang_admin_php['tabs_dropdown'] = 'Näytä lista kaikista sivuista välilehtien vieressä'; // cpg1.5
+$lang_admin_php['caption_in_thumbview'] = 'Näytä tiedoston otsake (otsikon lisäksi) pienoiskuvan alla'; // cpg1.5
+$lang_admin_php['views_in_thumbview'] = 'Näytä näyttökertojen määrä pienoiskuvan alla'; // cpg1.5
+$lang_admin_php['display_comment_count'] = 'Näytä kommenttien määrä pienoiskuvan alla'; // cpg1.5
+$lang_admin_php['display_uploader'] = 'Näytä tiedoston lisääjän nimi pienoiskuvan alla'; // cpg1.5
+  // 'display_admin_uploader'] = 'Näytä ylläpitäjälisääjän nimi pienoiskuvan alla'; // cpg1.5
+$lang_admin_php['display_filename'] = 'Näytä tiedostonimi pienoiskuvan alla'; // cpg1.5
+$lang_admin_php['display_thumbnail_rating'] = 'Näytä tiedoston äänet pienoiskuvan alla'; // cpg1.5
+$lang_admin_php['alb_desc_thumb'] = 'Näytä albumin kuvaus'; // cpg1.5
+$lang_admin_php['thumbnail_to_fullsize'] = 'Siirry suoraan pienoiskuvasta täysikokoiseen kuvaan'; // cpg1.5
+$lang_admin_php['default_sort_order'] = 'Tiedostojen oletusjärjestys'; // cpg1.5
+$lang_admin_php['min_votes_for_rating'] = 'Äänien vähimmäismäärä, jotta tiedosto pääsee \'suosituimmat\' -listalle'; // cpg1.5
+$lang_admin_php['picture_table_width'] = 'Taulukon leveys näytettävälle tiedostolle'; // cpg1.5
+$lang_admin_php['display_pic_info'] = 'Tiedostotieto näkyvissä oletuksena'; // cpg1.5
+$lang_admin_php['picinfo_movie_download_link'] = 'Näytä latauslinkki videoille tiedostotieto näkymässä'; // cpg1.5
+$lang_admin_php['max_img_desc_length'] = 'Kuvan kuvauksen enimmäispituus'; // cpg1.5
+$lang_admin_php['max_com_wlength'] = 'Kirjainten enimmäismäärä sanassa'; // cpg1.5
+$lang_admin_php['display_film_strip'] = 'Näytä filmi (edelliset ja seuraavat kuvat)'; // cpg1.5
+$lang_admin_php['max_film_strip_items'] = 'Kohteiden määrä filmissä'; // cpg1.5
+$lang_admin_php['slideshow_interval'] = 'Diaesityksen aikaväli'; // cpg1.5
+$lang_admin_php['milliseconds'] = 'millisekunteina'; // cpg1.5
+$lang_admin_php['slideshow_interval_detail'] = '1 sekunti = 1000 millisekuntia'; // cpg1.5
+$lang_admin_php['slideshow_hits'] = 'Laske kohteiden katselumäärät diaesityksessä'; // cpg1.5
+$lang_admin_php['ecard_flash'] = 'Salli Flash e-korteissa'; // cpg1.5
+$lang_admin_php['not_recommended'] = 'ei suositeltu'; // cpg1.5
+$lang_admin_php['recommended'] = 'suositus'; // cpg1.5
+$lang_admin_php['transparent_overlay'] = 'Lisää läpinäkyvä kerros kuviin niiden varastamisen ehkäisemiseksi'; // cpg1.5
+$lang_admin_php['old_style_rating'] = 'Käytä vanhaa äänestyssysteemiä'; // cpg1.5
+$lang_admin_php['old_style_rating_extra'] = 'Tämä poistaa valinnan \'Käytetttävien tähtien määrä äänestyksessä\' pois käytöstä'; // cpg1.5
+$lang_admin_php['rating_stars_amount'] = 'Käytetttävien tähtien määrä äänestyksessä'; // cpg1.5
+$lang_admin_php['rate_own_files'] = 'Käyttäjät voivat äänestää omia tiedostoja'; // cpg1.5
+$lang_admin_php['filter_bad_words'] = 'Suodata rumat sanat kommenteissa'; // cpg1.5
+$lang_admin_php['enable_smilies'] = 'Salli hymiöt kommenteissa'; // cpg1.5
+$lang_admin_php['disable_comment_flood_protect'] = 'Salli usea peräkkäinen kommentti samalle kuvalle samalta käyttäjältä'; // cpg1.5
+$lang_admin_php['disable_comment_flood_protect_details'] = '(ota floodaussuoja pois käytöstä)'; // cpg1.5
+$lang_admin_php['max_com_lines'] = 'Rivien enimmäismäärä kommentissa'; // cpg1.5
+$lang_admin_php['max_com_size'] = 'Kommentin enimmäispituus'; // cpg1.5
+$lang_admin_php['email_comment_notification'] = 'Ilmoita ylläpitäjälle kommentista sähköpostitse'; // cpg1.5
+$lang_admin_php['comments_sort_descending'] = 'Kommenttien järjestys'; // cpg1.5
+$lang_admin_php['comments_per_page'] = 'Kommenttien määrä sivulla'; // cpg1.5
+$lang_admin_php['comments_anon_pfx'] = 'Etuliite anonyymeille kommentoijille'; // cpg1.5
+$lang_admin_php['comment_approval'] = 'Kommentit vaativat hyväksynnän'; // cpg1.5
+$lang_admin_php['display_comment_approval_only'] = 'Näytä hyväsyntää tarvitsevat kommentit ainoastaan &quot;Tarkista kommentit&quot; sivulla'; // cpg1.5
+$lang_admin_php['comment_placeholder'] = 'Näytä käyttäjälle huomautus ylläpitäjän hyväksyntää vaativista kommenteista'; // cpg1.5
+$lang_admin_php['comment_user_edit'] = 'Salli käyttäjien muokata kommenttejaan'; // cpg1.5
+$lang_admin_php['comment_captcha'] = 'Käytä captchaa (visuaalista vahvistusta) kommentteja lisättäessä'; // cpg1.5
+$lang_admin_php['comment_akismet_enable'] = 'Akismetin asetukset'; // cpg1.5
+$lang_admin_php['comment_akismet_enable_description'] = 'Mitä pitäisi tehdä, jos Akismet hylkää kommentin roskapostiksi?'; // cpg1.5
+$lang_admin_php['comment_akismet_applicable_only'] = 'Asetus on voimassa vain jos Akismet on otettu käyttöön antamalla kelvollinen API -avain.'; // cpg1.5
+$lang_admin_php['comment_akismet_enable_approval'] = 'Hyväksy Akismetin hylkäämät kommentit, mutta merkkaa ne hyväksymättömiksi'; // cpg1.5
+$lang_admin_php['comment_akismet_drop_tell'] = 'Poista hylätyt kommentit ja kerro käyttäjälle, että se hylättiin'; // cpg1.5
+$lang_admin_php['comment_akismet_drop_lie'] = 'Poista hylätyt kommentit ja kerro käyttäjälle (roskapostittajalle), että se hyväksyttiin'; // cpg1.5
+$lang_admin_php['comment_akismet_api_key'] = 'Akismetin API -avain'; // cpg1.5
+$lang_admin_php['comment_akismet_api_key_description'] = 'Jätä tyhjäksi poistaaksesi Akismetin käytöstä'; // cpg1.5
+$lang_admin_php['comment_akismet_group'] = 'Käytä Akismet:iä kommenteille, jotka kirjoitti'; // cpg1.5
+$lang_admin_php['comment_promote_registration'] = 'Pyydä vierasta kirjautumaan sisään lähettääkseen kommentteja'; // cpg1.5
+$lang_admin_php['thumb_width'] = 'Pienoiskuvan enimmäiskoko (leveys, jos käytät "Tarkka" -valintaa asetuksessa "Käytä kokoa")'; // cpg1.5
+$lang_admin_php['thumb_use'] = 'Käytä kokoa'; // cpg1.5
+$lang_admin_php['thumb_use_detail'] = '(pienoiskuvan leveyttä, korkeutta tai pisintä sivua)'; // cpg1.5
+$lang_admin_php['thumb_height'] = 'Pienoiskuvan korkeus'; // cpg1.5
+$lang_admin_php['thumb_height_detail'] = '(käytetään vain jos asetus &quot;tarkka&quot; on käytössä&quot;Käytä kokoa&quot;:ssa)'; // cpg1.5
+$lang_admin_php['movie_audio_document'] = 'video, ääni, dokumentti'; // cpg1.5
+$lang_admin_php['thumb_pfx'] = 'Etuliite pienoiskuville'; // cpg1.5
+$lang_admin_php['enable_unsharp'] = 'Pienoiskuvan terävöitys: ota käyttöön epäterävä (unsharp) maski'; // cpg1.5
+$lang_admin_php['unsharp_amount'] = 'Pienoiskuvan terävöityksen määrä'; // cpg1.5
+$lang_admin_php['unsharp_radius'] = 'Pienoiskuvan terävöityksen säde'; // cpg1.5
+$lang_admin_php['unsharp_threshold'] = 'Pienoiskuvan terävöityksen kynnys'; // cpg1.5
+$lang_admin_php['jpeg_qual'] = 'JPEG -tiedostojen laatu'; // cpg1.5
+$lang_admin_php['make_intermediate'] = 'Luo keskikokoiset kuvat'; // cpg1.5
+$lang_admin_php['picture_use'] = 'Käytä koka'; // cpg1.5
+$lang_admin_php['picture_use_detail'] = '(leveys, korkeus tai pisin sivu keskikokoisille kuville)'; // cpg1.5
+$lang_admin_php['picture_use_thumb'] = 'Kuin pienoiskuva'; // cpg1.5
+$lang_admin_php['picture_width'] = 'Enimmäisleveys tai -korkeus keskikokoiselle kuvalle'; // cpg1.5
+$lang_admin_php['max_upl_size'] = 'Lisättävien tiedostojen enimmäiskoko'; // cpg1.5
+$lang_admin_php['kilobytes'] = 'kt'; // cpg1.5
+$lang_admin_php['pixels'] = 'pikseliä'; // cpg1.5
+$lang_admin_php['max_upl_width_height'] = 'Lisättävien kuvien enimmäisleveys tai -korkeus'; // cpg1.5
+$lang_admin_php['auto_resize'] = 'Pienennä kuvia automaattisesti, jos ne ovat liian suuria'; // cpg1.5
+$lang_admin_php['fullsize_padding_x'] = 'Leveyssuuntainen täyte täysikokoisille kuville'; // cpg1.5
+$lang_admin_php['fullsize_padding_y'] = 'Vaakasuuntainen täyte täysikokoisille kuville'; // cpg1.5
+$lang_admin_php['allow_private_albums'] = 'Albumit voivat olla yksityisiä'; // cpg1.5
+$lang_admin_php['allow_private_albums_note'] = '(Huomaa, että jos vaihdat tämän asetuksesta \'kyllä\' asetukseen \'ei\', kaikki nykyisin yksityiset albumit muuttuvat julkisiksi)'; // cpg1.5
+$lang_admin_php['show_private'] = 'Näytä yksityisen albumin ikoni kirjautumattomille käyttäjille'; // cpg1.5
+$lang_admin_php['forbiden_fname_char'] = 'Kielletyt merkit tiedostonimissä'; // cpg1.5
+$lang_admin_php['silly_safe_mode'] = 'Ota &quot;silly safe mode&quot; käyttöön'; // cpg1.5
+$lang_admin_php['allowed_img_types'] = 'Hyväksytyt kuvatyypit'; // cpg1.5
+$lang_admin_php['allowed_mov_types'] = 'Hyväksytyt videotyypit'; // cpg1.5
+$lang_admin_php['media_autostart'] = 'Videon automaattinen käynnistys'; // cpg1.5
+$lang_admin_php['allowed_snd_types'] = 'Hyväksytyt äänitiedostot'; // cpg1.5
+$lang_admin_php['allowed_doc_types'] = 'Hyväksytyt dokumenttityypit'; // cpg1.5
+$lang_admin_php['thumb_method'] = 'Kuvien koon muuttamisen menetelmä'; // cpg1.5
+$lang_admin_php['impath'] = 'ImageMagickin \'convert\' -toiminnon polku'; // cpg1.5
+$lang_admin_php['impath_example'] = '(esim. /usr/bin/)'; // cpg1.5
+$lang_admin_php['im_options'] = 'Komentorivivalinnat ImageMagickille'; // cpg1.5
+$lang_admin_php['read_exif_data'] = 'Lue JPEG -kuvien EXIF-tieto'; // cpg1.5
+$lang_admin_php['read_iptc_data'] = 'Lue JPEG -kuvien IPTC-tieto'; // cpg1.5
+$lang_admin_php['fullpath'] = 'Albumihakemisto'; // cpg1.5
+$lang_admin_php['userpics'] = 'Käyttäjien tiedostojen hakemisto'; // cpg1.5
+$lang_admin_php['normal_pfx'] = 'Etuliite keskikokoisille kuville'; // cpg1.5
+$lang_admin_php['default_dir_mode'] = 'Hakemistojen oletusoikeudet'; // cpg1.5
+$lang_admin_php['default_file_mode'] = 'Tiedostojen oletusoikeudet'; // cpg1.5
+$lang_admin_php['enable_watermark'] = 'Vesileimaa kuvat'; // cpg1.5
+$lang_admin_php['enable_thumb_watermark'] = 'Vesileimaa omat pienoiskuvat'; // cpg1.5
+$lang_admin_php['where_put_watermark'] = 'Mihin vesileima asetetaan'; // cpg1.5
+$lang_admin_php['which_files_to_watermark'] = 'Mitkä tiedostot vesileimataan'; // cpg1.5
+$lang_admin_php['watermark_file'] = 'Mitä tiedostoa käytetään vesileimana'; // cpg1.5
+$lang_admin_php['watermark_transparency'] = 'Koko kuvan läpinäkyvyys'; // cpg1.5
+$lang_admin_php['zero_2_hundred'] = '0-100'; // cpg1.5
+$lang_admin_php['reduce_watermark'] = 'Pienennä vesileimaa, jos kuvan leveys on pienempi kuin annettu arvo. Antamasi arvo toimii referenssiarvona (100%). Vesileiman koon muuttaminen tapahtuu lineaarisesti (aseta 0:ksi ottaaksesi toiminnon pois päältä)'; // cpg1.5
+$lang_admin_php['watermark_transparency_featherx'] = 'Aseta läpinäkyvä väri x'; // cpg1.5
+$lang_admin_php['watermark_transparency_feathery'] = 'Aseta läpinäkyvä väri y'; // cpg1.5
+$lang_admin_php['gd2_only'] = 'vain GD2'; // cpg1.5
+$lang_admin_php['allow_user_registration'] = 'Salli käyttäjärekisteröinnit'; // cpg1.5
+$lang_admin_php['global_registration_pw'] = 'Globaali salasana rekisteröinnille'; // cpg1.5
+$lang_admin_php['user_registration_disclaimer'] = 'Näytä vastuuvapauslauseke rekisteröinnissä'; // cpg1.5
+$lang_admin_php['registration_captcha'] = 'Näytä captcha (visuaalinen vahvistus) rekisteröitymissivulla'; // cpg1.5
+$lang_admin_php['reg_requires_valid_email'] = 'Käyttäjärekisteröinnit vaativat sähköpostivarmistuksen'; // cpg1.5
+$lang_admin_php['reg_notify_admin_email'] = 'Ilmoita rekisteröinneistä ylläpidolle sähköpostitse'; // cpg1.5
+$lang_admin_php['admin_activation'] = 'Ylläpidon aktivointi rekisteröinneille'; // cpg1.5
+$lang_admin_php['personal_album_on_registration'] = 'Luo rekisteröitymisessä käyttäjälle oma henkilökohtainen albumi'; // cpg1.5
+$lang_admin_php['allow_unlogged_access'] = 'Salli kirjautumattomat käyttäjät (vieraat tai anonyymit)'; // cpg1.5
+$lang_admin_php['thumbnail_intermediate_full'] = 'pienoiskuva, keskikokoinen kuva ja täysikokoinen kuva'; // cpg1.5
+$lang_admin_php['thumbnail_intermediate'] = 'pienoiskuva ja  keskikokoinen kuva'; // cpg1.5
+$lang_admin_php['thumbnail_only'] = 'vain pienoiskuva'; // cpg1.5
+$lang_admin_php['upload_mechanism'] = 'Ensisijainen tiedostojen lähetystapa'; // cpg1.5
+$lang_admin_php['upload_swf'] = 'edistynyt - useita tiedostoja kerralla, Flash-pohjainen (suositeltu)'; // cpg1.5
+$lang_admin_php['upload_single'] = 'yksinkertainen - yksi tiedosto kerralla'; // cpg1.5
+$lang_admin_php['allow_user_upload_choice'] = 'Salli käyttäjän valita tiedostojen lähetystapa'; // cpg1.5
+$lang_admin_php['allow_duplicate_emails_addr'] = 'Salli kahdelle käyttäjälle sama sähköpostiosoite'; // cpg1.5
+$lang_admin_php['upl_notify_admin_email'] = 'Ilmoita ylläpidolle lisätyistä tiedostoista, jotka vaativat hyväksynnän'; // cpg1.5
+$lang_admin_php['allow_memberlist'] = 'Salli käyttäjälistan näkyminen kirjautuneille käyttäjille'; // cpg1.5
+$lang_admin_php['allow_email_change'] = 'Salli käyttäjien vaihtaa sähköpostiosoitteensa profiileistaan'; // cpg1.5
+$lang_admin_php['allow_user_account_delete'] = 'Salli käyttäjän poistaa oma profiilinsa'; // cpg1.5
+$lang_admin_php['users_can_edit_pics'] = 'Salli käyttäjien hallita lisäämiään kuvia julkisissa gallerioissa'; // cpg1.5
+$lang_admin_php['allow_user_move_album'] = 'Salli käyttäjien siirtä albumeitaan sallittuun/sallitusta kategoriaan/kategoriasta'; // cpg1.5
+$lang_admin_php['allow_user_album_keyword'] = 'Salli käyttäjien valita albumille avainsanoja'; // cpg1.5
+$lang_admin_php['allow_user_edit_after_cat_close'] = 'Salli käyttäjien muokata albumeitaan, kun se on lukitussa kategoriassa'; // cpg1.5
+$lang_admin_php['login_method_username'] = 'Käyttäjätunnus'; // cpg1.5
+$lang_admin_php['login_method_email'] = 'Sähköpostiosoite'; // cpg1.5
+$lang_admin_php['login_method_both'] = 'Molemmat'; // cpg1.5
+$lang_admin_php['login_method'] = 'Miten haluat käyttäjien kirjautuvan sisään'; // cpg1.5
+$lang_admin_php['login_threshold'] = 'Väärien kirjautumisyritysten enimmäismäärä ennen väliaikaista bannia'; // cpg1.5
+$lang_admin_php['login_threshold_detail'] = '(välttääksesi brute force -hyökkäykset)'; // cpg1.5
+$lang_admin_php['login_expiry'] = 'Väliaikaisen bannin kesto'; // cpg1.5
+$lang_admin_php['minutes'] = 'minuuttia'; // cpg1.5
+$lang_admin_php['report_post'] = 'Ylläpidolle ilmoittaminen'; // cpg1.5
+$lang_admin_php['user_profile1_name'] = 'Profiilin 1 nimi'; // cpg1.5
+$lang_admin_php['user_profile2_name'] = 'Profiilin 2 nimi'; // cpg1.5
+$lang_admin_php['user_profile3_name'] = 'Profiilin 3 nimi'; // cpg1.5
+$lang_admin_php['user_profile4_name'] = 'Profiilin 4 nimi'; // cpg1.5
+$lang_admin_php['user_profile5_name'] = 'Profiilin 5 nimi'; // cpg1.5
+$lang_admin_php['user_profile6_name'] = 'Profiilin 6 nimi'; // cpg1.5
+$lang_admin_php['user_field1_name'] = 'Kentän 1 nimi'; // cpg1.5
+$lang_admin_php['user_field2_name'] = 'Kentän 2 nimi'; // cpg1.5
+$lang_admin_php['user_field3_name'] = 'Kentän 3 nimi'; // cpg1.5
+$lang_admin_php['user_field4_name'] = 'Kentän 4 nimi'; // cpg1.5
+$lang_admin_php['cookie_name'] = 'Evästeen nimi'; // cpg1.5
+$lang_admin_php['cookie_path'] = 'Evästeen polku'; // cpg1.5
+$lang_admin_php['smtp_host'] = 'SMTP-palvelin (jos kenttä on tyhjä, käytetään sendmailia)'; // cpg1.5
+$lang_admin_php['smtp_username'] = 'SMTP -käyttäjätunnus'; // cpg1.5
+$lang_admin_php['smtp_password'] = 'SMTP -salasana'; // cpg1.5
+$lang_admin_php['log_mode'] = 'Lokitustila'; // cpg1.5
+$lang_admin_php['log_mode_details'] = 'Kaikki lokit kirjoitetaan englanniksi.'; // cpg1.5
+$lang_admin_php['log_ecards'] = 'Lokita e-kortit'; // cpg1.5
+$lang_admin_php['log_ecards_detail'] = 'Huomaa: lokitus saattaa olla lain säätelemä. Käyttäjää pitäisi informoida rekisteröitymisessä, että e-kortit lokitetaan. Lisäksi on suositeltavaa tarjota erillinen sivu, jossa on tietosuojalausunto.'; // cpg1.5
+$lang_admin_php['vote_details'] = 'Kerää yksityiskohtaista äänestystilastoa'; // cpg1.5
+$lang_admin_php['hit_details'] = 'Kerää yksityiskohtaista näyttökertatilastoa'; // cpg1.5
+$lang_admin_php['display_stats_on_index'] = 'Näytä tilastoja etusivulla'; // cpg1.5
+$lang_admin_php['count_file_hits'] = 'Laske tiedostojen näyttökerrat'; // cpg1.5
+$lang_admin_php['count_album_hits'] = 'Laske albumien näyttökerrat'; // cpg1.5
+$lang_admin_php['count_admin_hits'] = 'Laske ylläpitäjän tuottamat tiedostojen näyttökerrat'; // cpg1.5
+$lang_admin_php['debug_mode'] = 'Ota debuggaus -tila päälle'; // cpg1.5
+$lang_admin_php['debug_notice'] = 'Näytä ilmoitukset debuggaustilassa'; // cpg1.5
+$lang_admin_php['offline'] = 'Galleria on offline -tilassa'; // cpg1.5
+$lang_admin_php['display_coppermine_news'] = 'Näytä uutisia coppermine-gallery.net:istä'; // cpg1.5
+$lang_admin_php['display_coppermine_detail'] = 'näytetään vain ylläpitäjille'; // cpg1.5
+$lang_admin_php['config_setting_invalid'] = 'Antamasi arvo &laquo;%s&raquo;:lle on epäkelvollinen, ole hyvä ja tarkista se.'; // cpg1.5
+$lang_admin_php['config_setting_ok'] = 'Asetuksesi &laquo;%s&raquo;:lle on tallennettu.'; // cpg1.5
+$lang_admin_php['contact_form_settings'] = 'Yhteydenottolomakkeen asetukset'; // cpg1.5
+$lang_admin_php['contact_form_guest_enable'] = 'Näytä yhteydenottolomake anonyymeille käytäjille (vierailijat)'; // cpg1.5
+$lang_admin_php['contact_form_registered_enable'] = 'Näytä yhteydenottolomake rekisteröityneille käytäjille'; // cpg1.5
+$lang_admin_php['with_captcha'] = 'captchan kanssa'; // cpg1.5
+$lang_admin_php['without_captcha'] = 'ilman captchaa'; // cpg1.5
+$lang_admin_php['optional'] = 'vapaaehtoinen'; // cpg1.5
+$lang_admin_php['mandatory'] = 'pakollinen'; // cpg1.5
+$lang_admin_php['contact_form_guest_name_field'] = 'Näytä lähettäjän nimikenttä vierailijoille'; // cpg1.5
+$lang_admin_php['contact_form_guest_email_field'] = 'Näytä lähettäjän sähköpostiosoitekenttä vierailijoille'; // cpg1.5
+$lang_admin_php['contact_form_subject_field'] = 'Näytä aihekenttä'; // cpg1.5
+$lang_admin_php['contact_form_subject_content'] = 'Aihekenttä yhteydenottolomakkeen lähettämille sähköposteille'; // cpg1.5
+$lang_admin_php['contact_form_sender_email'] = 'Käytä lähettäjän sähköpostiosoitetta &quot;lähettäjä&quot; (From) -osoitteena'; // cpg1.5
+$lang_admin_php['allow_no_link'] = 'salli, mutta älä näytä linkkiä'; // cpg1.5
+$lang_admin_php['allow_show_link'] = 'salli ja mainosta sitä näyttämällä linkki'; // cpg1.5
+$lang_admin_php['display_sidebar_user'] = 'Sivupalkki rekisteröityneille käyttäjille'; // cpg1.5
+$lang_admin_php['display_sidebar_guest'] = 'Sivupalkki vierailijoille'; // cpg1.5
+$lang_admin_php['do_not_change'] = 'Älä muuta tätä, ellet TODELLAKIN tiedä mitä olet tekemässä!'; // cpg1.5
+$lang_admin_php['reset_to_default'] = 'Palauta oletuksiin'; // cpg1.5
+$lang_admin_php['no_change_needed'] = 'Muutosta ei tarvita, asetus on jo asetettu oletukseen'; // cpg1.5
+$lang_admin_php['enabled'] = 'päällä'; // cpg1.5
+$lang_admin_php['disabled'] = 'pois päältä'; // cpg1.5
+$lang_admin_php['none'] = 'ei mitään'; // cpg1.5
+$lang_admin_php['warning_change'] = 'Tämä asetus vaikuttaa vain uusiin tiedostoihin, joten os suositeltavaa olla vaihtamatta tätä asetusta jos olet jo lisännyt tiedostoja galleriaan. Voit kuitenkin toteuttaa muutokset nykyisiin tiedostoihin käyttämällä "ylläpitäjän työkaluja" ylläpitovalikosta.'; // cpg1.5
+$lang_admin_php['warning_exist'] = 'Näitä asetuksia ei tulisi muuttaa, jos sinulla on jo tiedostoja tietokannassasi.'; // cpg1.5
+$lang_admin_php['warning_dont_submit'] = 'Jos et ole varma asetuksen seurauksista, älä lähetä tätä lomaketta vaan selaa ensin dokumentaatiota.'; // cpg1.5 // js-alert
+$lang_admin_php['menu_only'] = 'vain valikko'; // cpg1.5
+$lang_admin_php['everywhere'] = 'kaikkialla'; // cpg1.5
+$lang_admin_php['manage_languages'] = 'Hallitse kieliä'; // cpg1.5
+$lang_admin_php['form_token_lifetime'] = 'Lomakkeen elinaika'; // cpg1.5
+$lang_admin_php['seconds'] = 'sekuntia'; // cpg1.5
+$lang_admin_php['display_reset_boxes_in_config'] = 'Näytä palautuslaatikot asetuksissa'; // cpg1.5
+$lang_admin_php['upd_not_needed'] = 'Päivitystä ei tarvita.'; // cpg 1.5
+}
 
 
 // ------------------------------------------------------------------------- //
 // File db_ecard.php
 // ------------------------------------------------------------------------- //
-
-if (defined('DB_ECARD_PHP')) $lang_db_ecard_php = array(
-  'title' => 'Sent ecards',
-  'ecard_sender' => 'Sender',
-  'ecard_recipient' => 'Recipient',
-  'ecard_date' => 'Date',
-  'ecard_display' => 'Display ecard',
-  'ecard_name' => 'Name',
-  'ecard_email' => 'Email',
-  'ecard_ip' => 'IP #',
-  'ecard_ascending' => 'nouseva',
-  'ecard_descending' => 'laskeva',
-  'ecard_sorted' => 'Sorted',
-  'ecard_by_date' => 'by date',
-  'ecard_by_sender_name' => 'by sender\'s name',
-  'ecard_by_sender_email' => 'by sender\'s email',
-  'ecard_by_sender_ip' => 'by sender\'s IP address',
-  'ecard_by_recipient_name' => 'by recipient\'s name',
-  'ecard_by_recipient_email' => 'by recipient\'s email',
-  'ecard_number' => 'displaying record %s to %s of %s',
-  'ecard_goto_page' => 'go to page',
-  'ecard_records_per_page' => 'Records per page',
-  'check_all' => 'Check All',
-  'uncheck_all' => 'Uncheck All',
-  'ecards_delete_selected' => 'Delete selected ecards',
-  'ecards_delete_confirm' => 'Are you sure you want to delete the records? Tick the checkbox!',
-  'ecards_delete_sure' => 'I\'m sure',
-);
-
+if (defined('DB_ECARD_PHP')) {
+$lang_db_ecard_php['title'] = 'Lähetetyt e-korit';
+$lang_db_ecard_php['ecard_sender'] = 'Lähettäjä';
+$lang_db_ecard_php['ecard_recipient'] = 'Vastaanottaja';
+$lang_db_ecard_php['ecard_date'] = 'Päiväys';
+$lang_db_ecard_php['ecard_display'] = 'Näytä e-kortti';
+$lang_db_ecard_php['ecard_name'] = 'Nimi';
+$lang_db_ecard_php['ecard_email'] = 'Sähköpostiosoite';
+$lang_db_ecard_php['ecard_ip'] = 'IP';
+$lang_db_ecard_php['ecard_ascending'] = 'nouseva';
+$lang_db_ecard_php['ecard_descending'] = 'laskeva';
+$lang_db_ecard_php['ecard_sorted'] = 'Järjestetty';
+$lang_db_ecard_php['ecard_by_date'] = 'päivämäärän mukaan';
+$lang_db_ecard_php['ecard_by_sender_name'] = 'lähettäjän nimen mukaan';
+$lang_db_ecard_php['ecard_by_sender_email'] = 'lähettäjän sähköpostiosoitteen mukaan';
+$lang_db_ecard_php['ecard_by_sender_ip'] = 'lähettäjän IP -osoitteen mukaan';
+$lang_db_ecard_php['ecard_by_recipient_name'] = 'vastaanottajan nimen mukaan';
+$lang_db_ecard_php['ecard_by_recipient_email'] = 'vastaanottajan sähköpostiosoitteen mukaan';
+$lang_db_ecard_php['ecard_number'] = 'Näytetään kortit %s - %s kaikista %s:sta';
+$lang_db_ecard_php['ecard_goto_page'] = 'mene sivulle';
+$lang_db_ecard_php['ecard_records_per_page'] = 'Korttia sivulla';
+$lang_db_ecard_php['check_all'] = 'Valitse kaikki';
+$lang_db_ecard_php['uncheck_all'] = 'Poista valinta kaikista';
+$lang_db_ecard_php['ecards_delete_selected'] = 'Poista valitut e-korit';
+$lang_db_ecard_php['ecards_delete_confirm'] = 'Haluatko varmasti poistaa valitut kortit? Valitse laatikko!';
+$lang_db_ecard_php['ecards_delete_sure'] = 'Olen varma';
+$lang_db_ecard_php['invalid_data'] = 'E-kortin data on korruptoitunut sähköpostissa. Tarkista, että linkki on täydellinen.';
+}
 
 // ------------------------------------------------------------------------- //
 // File db_input.php
 // ------------------------------------------------------------------------- //
-
-if (defined('DB_INPUT_PHP')) $lang_db_input_php = array(
-  'empty_name_or_com' => 'Kirjoita nimesi ja kommenttisi',
-  'com_added' => 'Kommenttisi on lisätty',
-  'alb_need_title' => 'Albumin otsikko puuttuu!',
-  'no_udp_needed' => 'Mitään ei päivitetty.',
-  'alb_updated' => 'Albumi päivitettiin.',
-  'unknown_album' => 'Valittua albumia ei löydy tai sinulla ei ole oikeuksia siihen.',
-  'no_pic_uploaded' => 'Kuvaa ei lisätty!<br /><br />Jos todella valitsit lisättävän kuvan pyydä ylläpitäjää tarkistamaan palvelimen asetukset...',
-  'err_mkdir' => 'Hakemiston %s luonti epäonnistui!',
-  'dest_dir_ro' => 'Lähdehakemistoon %s ei voitu kirjoittaa!',
-  'err_move' => 'Ei voida siirtää kohdetta %s kohteeseen %s!',
-  'err_fsize_too_large' => 'Kuva, jota yritit lisätä, on liian suuri. (Suurin sallittu koko on %s x %s.)', //obsolete since cpg1.3 - consider removal in cpg1.4 once upload.php has been overhauled
-  'err_imgsize_too_large' => 'Kuva, jota yritit lisätä, on liian suuri. (Suurin sallittu koko on %s KB.)', //obsolete since cpg1.3 - consider removal in cpg1.4 once upload.php has been overhauled
-  'err_invalid_img' => 'Tiedostoa ei tunnistettu kuvaksi.',
-  'allowed_img_types' => 'Voit lisätä vain %s kuvia.',
-  'err_insert_pic' => 'Tiedostoa \'%s\' ei voitu lisätä albumiin.',
-  'upload_success' => 'Kuvasi lisättiin onnistuneesti.<br /><br />Se tulee näkyviin, kun ylläpitäjä hyväksyy sen.',
-  'notify_admin_email_subject' => '%s - Kuva lisätty',
-  'notify_admin_email_body' => '%s lisäsi kuvan, joka tarvitsee hyväksyntäsi. Käy %s',
-  'info' => 'Info',
-  'com_added' => 'Kommentti lisätty',
-  'alb_updated' => 'Albumi päivitetty',
-  'err_comment_empty' => 'Kommenttisi on tyhjä!',
-  'err_invalid_fext' => 'Vain seuraavat tiedostopäätteet ovat sallittuja: <br /><br />%s.',
-  'no_flood' => 'Viimeinen kommentti tälle kuvalle on sinun.<br /><br />Muuta sitä, jos haluat tehdä lisäyksiä.',
-  'redirect_msg' => 'Sinut siirretään.<br /><br /><br />Klikkaa \'JATKA\' jos sivu ei päivity automaattisesti.',
-  'upl_success' => 'Kuvasi lisättiin.',
-  'email_comment_subject' => 'Kommentti lähetetty kuvagalleriaan',
-  'email_comment_body' => 'Joku lisäsi galleriaasi kommentin. Katso se täällä',
-  'album_not_selected' => 'Albumia ei ole valittu', //cpg1.4
-  'com_author_error' => 'Tämä käyttäjätunnus on rekisteröity. Kirjaudu sisään tai valitse toinen nimi.', //cpg1.4
-);
+if (defined('DB_INPUT_PHP')) {
+$lang_db_input_php['empty_name_or_com'] = 'Kirjoita nimesi ja kommenttisi';
+$lang_db_input_php['com_added'] = 'Kommenttisi on lisätty'; // cpg1.5
+$lang_db_input_php['alb_need_title'] = 'Albumin otsikko puuttuu!';
+$lang_db_input_php['no_udp_needed'] = 'Mitään ei päivitetty.';
+$lang_db_input_php['alb_updated'] = 'Albumi on päivitetty';
+$lang_db_input_php['unknown_album'] = 'Valittua albumia ei löydy tai sinulla ei ole oikeuksia siihen.';
+$lang_db_input_php['no_pic_uploaded'] = 'Tiedostoa ei lisätty!<br /><br />Jos todella valitsit lisättävän tiedoston pyydä ylläpitäjää tarkistamaan palvelimen asetukset...';
+$lang_db_input_php['err_mkdir'] = 'Hakemiston %s luonti epäonnistui!';
+$lang_db_input_php['dest_dir_ro'] = 'Kohdehakemistoon %s ei voitu kirjoittaa!';
+$lang_db_input_php['err_move'] = 'Ei voida siirtää kohdetta %s kohteeseen %s!';
+$lang_db_input_php['err_fsize_too_large'] = 'Tiedosto, jota yritit lisätä, on liian suuri. (Suurin sallittu koko on %s x %s)!';
+$lang_db_input_php['err_imgsize_too_large'] = 'Tiedosto, jota yritit lisätä, on liian suuri. (Suurin sallittu koko on %s kt)!';
+$lang_db_input_php['err_invalid_img'] = 'Tiedostoa ei tunnistettu kuvaksi!';
+$lang_db_input_php['allowed_img_types'] = 'Voit lisätä vain %s kuvaa.';
+$lang_db_input_php['err_insert_pic'] = 'Tiedostoa \'%s\' ei voitu lisätä albumiin ';
+$lang_db_input_php['upload_success'] = 'Tiedostosi lisättiin onnistuneesti.<br /><br />Se tulee näkyviin, kun ylläpitäjä hyväksyy sen.';
+$lang_db_input_php['notify_admin_email_subject'] = '%s - lisäsi tiedoston';
+$lang_db_input_php['notify_admin_email_body'] = '%s lisäsi kuvan, joka tarvitsee hyväksyntäsi. Käy osoitteessa %s';
+$lang_db_input_php['info'] = 'Info';
+$lang_db_input_php['com_updated'] = 'Kommentti muokattu';  // cpg1.5
+$lang_db_input_php['alb_updated'] = 'Albumi päivitetty';
+$lang_db_input_php['err_comment_empty'] = 'Kommenttisi on tyhjä!';
+$lang_db_input_php['err_invalid_fext'] = 'Vain seuraavat tiedostopäätteet ovat sallittuja:'; // js-alert
+$lang_db_input_php['no_flood'] = 'Viimeinen kommentti tälle kuvalle on sinun.<br /><br />Muuta sitä, jos haluat tehdä lisäyksiä.';
+$lang_db_input_php['redirect_msg'] = 'Sinut uudelleenohjataan.<br /><br /><br />Klikkaa \'JATKA\' jos sivu ei päivity automaattisesti.';
+$lang_db_input_php['upl_success'] = 'Tiedostosi lisättiin onnistuneesti';
+$lang_db_input_php['email_comment_subject'] = 'Coppermine-galleriaan on lisätty kommentti';
+$lang_db_input_php['email_comment_body'] = 'Joku lisäsi galleriaasi kommentin. Katso se täältä';
+$lang_db_input_php['album_not_selected'] = 'Albumia ei valittu';
+$lang_db_input_php['com_author_error'] = 'Tämä käyttäjätunnus on jo rekisteröity. Kirjaudu sisään tai valitse toinen nimi.';
+}
 
 // ------------------------------------------------------------------------- //
 // File delete.php
 // ------------------------------------------------------------------------- //
-
-if (defined('DELETE_PHP')) $lang_delete_php = array(
-  'caption' => 'kuvateksti',
-  'fs_pic' => 'täysikokoinen kuva',
-  'del_success' => 'poistettu onnistuneesti',
-  'ns_pic' => 'normaalikokoinen kuva',
-  'err_del' => 'ei voida poistaa',
-  'thumb_pic' => 'thumbnaili',
-  'comment' => 'kommentti',
-  'im_in_alb' => 'kuva albumissa',
-  'alb_del_success' => 'Albumi &laquo;%s&raquo; poistettu', //cpg1.4
-  'alb_mgr' => 'Albumin hallinta',
-  'err_invalid_data' => 'Virheellistä tietoa saatu \'%s\'',
-  'create_alb' => 'Luodaan albumi \'%s\'',
-  'update_alb' => 'Päivitetään albumia \'%s\' otsikolla \'%s\' ja indeksillä \'%s\'',
-  'del_pic' => 'Poista kuva',
-  'del_alb' => 'Poista albumi',
-  'del_user' => 'Poista käyttäjä',
-  'err_unknown_user' => 'Valittua käyttäjää ei löydy!',
-  'err_empty_groups' => 'Ryhmätaulukkoa ei löydy tai se on tyhjä!', //cpg1.4
-  'comment_deleted' => 'Kommentti poistettiin',
-  'npic' => 'Kuva', //cpg1.4
-  'pic_mgr' => 'Kuvan hallinta', //cpg1.4
-  'update_pic' => 'Päivitetään kuvaa \'%s\' tiedostonimellä \'%s\' ja indeksillä \'%s\'', //cpg1.4
-  'username' => 'Käyttäjänimi', //cpg1.4
-  'anonymized_comments' => '%s kommentti(a) anonymisoitu', //cpg1.4
-  'anonymized_uploads' => '%s julkista lisäystä anonymisoitu', //cpg1.4
-  'deleted_comments' => '%s kommentti(a) poistettu', //cpg1.4
-  'deleted_uploads' => '%s julkista lisäystä poistettu', //cpg1.4
-  'user_deleted' => 'käyttäjä %s poistettu', //cpg1.4
-  'activate_user' => 'Aktivoi käyttäjä', //cpg1.4
-  'user_already_active' => 'Tili on jo aktiivinen', //cpg1.4
-  'activated' => 'Aktivoitu', //cpg1.4
-  'deactivate_user' => 'Epäaktivoi käyttäjä', //cpg1.4
-  'user_already_inactive' => 'Tili on jo epäaktiivinen', //cpg1.4
-  'deactivated' => 'Epäaktivoitu', //cpg1.4
-  'reset_password' => 'Resetoi salasana(t)', //cpg1.4
-  'password_reset' => 'Salasana resetoitu: %s', //cpg1.4
-  'change_group' => 'Vaihda pääryhmä', //cpg1.4
-  'change_group_to_group' => 'Vaihdetaan ryhmästä %s ryhmään %s', //cpg1.4
-  'add_group' => 'Lisää toissijainen ryhmä', //cpg1.4
-  'add_group_to_group' => 'Lisätään käyttäjä %s ryhmään %s. Hän on nyt jäsen pääryhmässä %s ja toissijaisissa ryhmissä %s .', //cpg1.4
-  'status' => 'Status', //cpg1.4
-);
-
-// ------------------------------------------------------------------------- //
-// File displayecard.php
-// ------------------------------------------------------------------------- //
-
-if (defined('DISPLAYECARD_PHP')) {
-
-$lang_displayecard_php = array(
-  'invalid_data' => 'The data for the ecard you are trying to access has been corrupted by your mail client. Check the link is complete.', //cpg1.4
-);
+if (defined('DELETE_PHP')) {
+$lang_delete_php['orig_pic'] = 'alkuperäinen kuva'; // cpg1.5
+$lang_delete_php['fs_pic'] = 'täysikokoinen kuva';
+$lang_delete_php['del_success'] = 'poistettiin onnistuneesti';
+$lang_delete_php['ns_pic'] = 'normaalikokoinen kuva';
+$lang_delete_php['err_del'] = 'ei voida poistaa';
+$lang_delete_php['thumb_pic'] = 'pienoiskuva';
+$lang_delete_php['comment'] = 'kommentti';
+$lang_delete_php['im_in_alb'] = 'kuva albumissa';
+$lang_delete_php['alb_del_success'] = 'Albumi &laquo;%s&raquo; poistettu';
+$lang_delete_php['alb_mgr'] = 'Albumien hallinta';
+$lang_delete_php['err_invalid_data'] = 'Saatiin virheellistä dataa kohteesta \'%s\'';
+$lang_delete_php['create_alb'] = 'Luodaan albumi \'%s\'';
+$lang_delete_php['update_alb'] = 'Päivitetään albumia \'%s\' otsikolla \'%s\' ja indeksillä \'%s\'';
+$lang_delete_php['del_pic'] = 'Poista tiedosto';
+$lang_delete_php['del_alb'] = 'Poista albumi';
+$lang_delete_php['del_user'] = 'Poista käyttäjä';
+$lang_delete_php['err_unknown_user'] = 'Valittua käyttäjää ei löydy!';
+$lang_delete_php['err_empty_groups'] = 'Ryhmätaulukkoa ei löydy tai se on tyhjä!';
+$lang_delete_php['comment_deleted'] = 'Kommentti poistettiin onnistuneesti';
+$lang_delete_php['npic'] = 'Kuva';
+$lang_delete_php['pic_mgr'] = 'Kuvan hallinta';
+$lang_delete_php['update_pic'] = 'Päivitetään kuvaa \'%s\' tiedostonimellä \'%s\' ja indeksillä \'%s\'';
+$lang_delete_php['username'] = 'Käyttäjätunnus';
+$lang_delete_php['anonymized_comments'] = '%s kommentti(a) anonymisoitu';
+$lang_delete_php['anonymized_uploads'] = '%s julkista lisäystä anonymisoitu';
+$lang_delete_php['deleted_comments'] = '%s kommentti(a) poistettu';
+$lang_delete_php['deleted_uploads'] = '%s julkista lisäystä poistettu';
+$lang_delete_php['user_deleted'] = 'käyttäjä %s poistettu';
+$lang_delete_php['activate_user'] = 'Aktivoi käyttäjä';
+$lang_delete_php['user_already_active'] = 'Tili on jo aktiivinen';
+$lang_delete_php['activated'] = 'Aktivoitu';
+$lang_delete_php['deactivate_user'] = 'Epäaktivoi käyttäjä';
+$lang_delete_php['user_already_inactive'] = 'Tili on jo epäaktiivinen';
+$lang_delete_php['deactivated'] = 'Epäaktivoitu';
+$lang_delete_php['reset_password'] = 'Palauta salasana(t)';
+$lang_delete_php['password_reset'] = 'Salasana palautettu %s:ksi';
+$lang_delete_php['change_group'] = 'Vaihda ensisijaistaryhmä';
+$lang_delete_php['change_group_to_group'] = 'Vaihdetaan ryhmästä %s ryhmään %s';
+$lang_delete_php['add_group'] = 'Lisää toissijainen ryhmä';
+$lang_delete_php['add_group_to_group'] = 'Lisätään käyttäjä %s ryhmään %s. Hän on nyt jäsen ensijaisessa ryhmässä %s ja toissijaisissa ryhmissä %s.';
+$lang_delete_php['status'] = 'Tila';
+$lang_delete_php['updating_album'] = 'Päivitetään albumia ';
+$lang_delete_php['moved_picture_to_position'] = 'Siirrettiin kuva %s sijaintiin %s'; // cpg1.5
 }
 
 // ------------------------------------------------------------------------- //
 // File displayimage.php
 // ------------------------------------------------------------------------- //
-
 if (defined('DISPLAYIMAGE_PHP')){
+$lang_display_image_php['confirm_del'] = 'Haluatko varmasti POISTAA tämän kuvan?\\nKommentit poistetaan samalla.'; // js-alert
+$lang_display_image_php['del_pic'] = 'Poista tämä tiedosto';
+$lang_display_image_php['size'] = '%s x %s pikseliä';
+$lang_display_image_php['views'] = '%s kertaa';
+$lang_display_image_php['slideshow'] = 'Diaesitys';
+$lang_display_image_php['stop_slideshow'] = 'Pysäytä diaesitys';
+$lang_display_image_php['view_fs'] = 'Klikkaa kuvaa nähdäksesi se täysikokoisena';
+$lang_display_image_php['edit_pic'] = 'Muuta tiedoston tietoja';
+$lang_display_image_php['crop_pic'] = 'Leikkaa ja käännä';
+$lang_display_image_php['set_player'] = 'Vaihda soitin';
 
-$lang_display_image_php = array(
-  'confirm_del' => 'Haluatko varmasti POISTAA tämän kuvan? \\nKommentit poistetaan samalla.', //js-alert
-  'del_pic' => 'POISTA TÄMÄ KUVA',
-  'size' => '%s x %s pikseliä',
-  'views' => '%s kertaa',
-  'slideshow' => 'Kuvaesitys',
-  'stop_slideshow' => 'PYSÄYTÄ KUVAESITYS',
-  'view_fs' => 'Klikkaa kuvaa nähdäksesi se täysikokoisena',
-  'edit_pic' => 'Muuta kuvan tietoja', //cpg1.4
-  'crop_pic' => 'Leikkaa ja käännä',
-  'set_player' => 'Vaihda soitin',
-);
+$lang_picinfo['title'] = 'Tiedoston tiedot';
+$lang_picinfo['Album name'] = 'Albumin nimi';
+$lang_picinfo['Rating'] = 'Arvo (%s ääntä)';
+$lang_picinfo['Date Added'] = 'Lisätty galleriaan';
+$lang_picinfo['Dimensions'] = 'Tarkkuus';
+$lang_picinfo['Displayed'] = 'Katseltu';
+$lang_picinfo['URL'] = 'URL';
+$lang_picinfo['Make'] = 'Valmistaja';
+$lang_picinfo['Model'] = 'Malli';
+$lang_picinfo['DateTime'] = 'Aika';
+$lang_picinfo['ISOSpeedRatings'] = 'ISO';
+$lang_picinfo['MaxApertureValue'] = 'Suurin aukon koko';
+$lang_picinfo['FocalLength'] = 'Polttoväli';
+$lang_picinfo['Comment'] = 'Kommentti';
+$lang_picinfo['addFav'] = 'Lisää suosikkeihin';
+$lang_picinfo['addFavPhrase'] = 'Suosikit';
+$lang_picinfo['remFav'] = 'Poista suosikeista';
+$lang_picinfo['iptcTitle'] = 'IPTC -otsikko';
+$lang_picinfo['iptcCopyright'] = 'IPTC -tekijänoikeudet';
+$lang_picinfo['iptcKeywords'] = 'IPTC -avainsanat';
+$lang_picinfo['iptcCategory'] = 'IPTC -kategoria';
+$lang_picinfo['iptcSubCategories'] = 'IPTC -alakategoriat';
+$lang_picinfo['ColorSpace'] = 'Väritila';
+$lang_picinfo['ExposureProgram'] = 'Valotusohjelma';
+$lang_picinfo['Flash'] = 'Salama';
+$lang_picinfo['MeteringMode'] = 'Meterointitila';
+$lang_picinfo['ExposureTime'] = 'Valotusaika';
+$lang_picinfo['ExposureBiasValue'] = 'Valotus bias';
+$lang_picinfo['ImageDescription'] = 'Kuvan kuvaus';
+$lang_picinfo['Orientation'] = 'Orientaatio';
+$lang_picinfo['xResolution'] = 'X -resoluutio';
+$lang_picinfo['yResolution'] = 'Y -resoluutio';
+$lang_picinfo['ResolutionUnit'] = 'resoluution yksikkö';
+$lang_picinfo['Software'] = 'Ohjelma';
+$lang_picinfo['YCbCrPositioning'] = 'YCbCr-asemointi';
+$lang_picinfo['ExifOffset'] = 'EXIF -poikkeama';
+$lang_picinfo['IFD1Offset'] = 'IFD1 -poikkeama';
+$lang_picinfo['FNumber'] = 'Aukon koko';
+$lang_picinfo['ExifVersion'] = 'Exif -versio';
+$lang_picinfo['DateTimeOriginal'] = 'Alkuperäinen päivämäärä ja aika';
+$lang_picinfo['DateTimedigitized'] = 'Digitalisoinnin päivämäärä ja aika';
+$lang_picinfo['ComponentsConfiguration'] = 'Komponenttien konfiguraatio';
+$lang_picinfo['CompressedBitsPerPixel'] = 'Pakatut bitit per pikseli';
+$lang_picinfo['LightSource'] = 'Valonlähde';
+$lang_picinfo['ISOSetting'] = 'ISO -asetus';
+$lang_picinfo['ColorMode'] = 'Väritila';
+$lang_picinfo['Quality'] = 'Laatu';
+$lang_picinfo['ImageSharpening'] = 'Kuvan terävöinti';
+$lang_picinfo['FocusMode'] = 'Tarkennustila';
+$lang_picinfo['FlashSetting'] = 'Salama-asetus';
+$lang_picinfo['ISOSelection'] = 'ISO -valinta';
+$lang_picinfo['ImageAdjustment'] = 'Kuvan säätö';
+$lang_picinfo['Adapter'] = 'Adapteri';
+$lang_picinfo['ManualFocusDistance'] = 'Manuaalinen tarkennusetäisyys';
+$lang_picinfo['DigitalZoom'] = 'Digitalinen zoom';
+$lang_picinfo['AFFocusPosition'] = 'AF -kohdistuspaikka';
+$lang_picinfo['Saturation'] = 'Kylläisyys';
+$lang_picinfo['NoiseReduction'] = 'Kohinan poisto';
+$lang_picinfo['FlashPixVersion'] = 'FlashPixin versio';
+$lang_picinfo['ExifImageWidth'] = 'Exif -kuvaleveys';
+$lang_picinfo['ExifImageHeight'] = 'Exif -kuvakorkeus';
+$lang_picinfo['ExifInteroperabilityOffset'] = 'Exif -yhteensopivuuden poikkeama';
+$lang_picinfo['FileSource'] = 'Tiedostolähde';
+$lang_picinfo['SceneType'] = 'Maisematyyppi';
+$lang_picinfo['CustomerRender'] = 'Asiakasrenderöijä';
+$lang_picinfo['ExposureMode'] = 'Valotustila';
+$lang_picinfo['WhiteBalance'] = 'Valkotasapaino';
+$lang_picinfo['DigitalZoomRatio'] = 'Digitaalinen zoomiarvo';
+$lang_picinfo['SceneCaptureMode'] = 'Skenen kaappaustila';
+$lang_picinfo['GainControl'] = 'Gain -hallinta';
+$lang_picinfo['Contrast'] = 'Kontrasti';
+$lang_picinfo['Sharpness'] = 'Terävyys';
+$lang_picinfo['ManageExifDisplay'] = 'Hallitse Exif -tietojen näyttämistä';
+$lang_picinfo['success'] = 'Tiedot päivitetty onnistuneesti.';
+$lang_picinfo['show_details'] = 'Näytä tiedot'; // cpg1.5
+$lang_picinfo['hide_details'] = 'Piilota tiedot'; // cpg1.5
+$lang_picinfo['download_URL'] = 'Suora linkki';
+$lang_picinfo['movie_player'] = 'Soita tiedosto tietokoneesi sovelluksessa';
 
-$lang_picinfo = array(
-  'title' =>'Kuvan tiedot',
-  'Filename' => 'Tiedostonimi',
-  'Album name' => 'Albumin nimi',
-  'Rating' => 'Arvo (%s ääntä)',
-  'Keywords' => 'Hakusanat',
-  'File Size' => 'Tiedostokoko',
-  'Date Added' => 'Lisätty galleriaan', //cpg1.4
-  'Dimensions' => 'Tarkkuus',
-  'Displayed' => 'Katseltu',
-  'URL' => 'URL', //cpg1.4
-  'Make' => 'Make', //cpg1.4
-  'Model' => 'Malli', //cpg1.4
-  'DateTime' => 'Aika', //cpg1.4
-  'ISOSpeedRatings'=>'ISO', //cpg1.4
-  'MaxApertureValue' => 'Suurin aukonkoko', //cpg1.4
-  'FocalLength' => 'Polttoväli', //cpg1.4
-  'Comment' => 'Kommentti',
-  'addFav'=>'Lisää suosikkeihin',
-  'addFavPhrase'=>'Suosikit',
-  'remFav'=>'Poista suosikeista',
-  'iptcTitle'=>'IPTC-otsikko',
-  'iptcCopyright'=>'IPTC-tekijänoikeudet',
-  'iptcKeywords'=>'IPTC-hakusanat',
-  'iptcCategory'=>'IPTC-kategoria',
-  'iptcSubCategories'=>'IPTC-alakategoriat',
-  'ColorSpace' => 'Väritila', //cpg1.4
-  'ExposureProgram' => 'Valotusohjelma', //cpg1.4
-  'Flash' => 'Salama', //cpg1.4
-  'MeteringMode' => 'Meterointitila', //cpg1.4
-  'ExposureTime' => 'Valotusaika', //cpg1.4
-  'ExposureBiasValue' => 'Valotus bias', //cpg1.4
-  'ImageDescription' => ' Kuvan kuvaus', //cpg1.4
-  'Orientation' => 'Orientaatio', //cpg1.4
-  'xResolution' => 'X-resoluutio', //cpg1.4
-  'yResolution' => 'Y-resoluutio', //cpg1.4
-  'ResolutionUnit' => 'Resoluutioyksikkö', //cpg1.4
-  'Software' => 'Ohjelma', //cpg1.4
-  'YCbCrPositioning' => 'YCbCrPositioning', //cpg1.4
-  'ExifOffset' => 'Exif Offset', //cpg1.4
-  'IFD1Offset' => 'IFD1 Offset', //cpg1.4
-  'FNumber' => 'Aukon koko', //cpg1.4
-  'ExifVersion' => 'Exif-version', //cpg1.4
-  'DateTimeOriginal' => 'Alkuperäinen päivämäärä + aika', //cpg1.4
-  'DateTimedigitized' => 'Digitalisoinnin päivämäärä + aika', //cpg1.4
-  'ComponentsConfiguration' => 'Komponenttien konfiguraatio', //cpg1.4
-  'CompressedBitsPerPixel' => 'Pakatut bitit per pikseli', //cpg1.4
-  'LightSource' => 'Valonlähde', //cpg1.4
-  'ISOSetting' => 'ISO-asetus', //cpg1.4
-  'ColorMode' => 'Väritila', //cpg1.4
-  'Quality' => 'Laatu', //cpg1.4
-  'ImageSharpening' => 'Kuvan terävöinti', //cpg1.4
-  'FocusMode' => 'Tarkennustila', //cpg1.4
-  'FlashSetting' => 'Salama-asetus', //cpg1.4
-  'ISOSelection' => 'ISO-valinta', //cpg1.4
-  'ImageAdjustment' => 'Kuvan säätö', //cpg1.4
-  'Adapter' => 'Adapteri', //cpg1.4
-  'ManualFocusDistance' => 'Manuaalinen tarkennusetäisyys', //cpg1.4
-  'DigitalZoom' => 'Digitalinen zoomi', //cpg1.4
-  'AFFocusPosition' => 'AF-kohdistuspaikka', //cpg1.4
-  'Saturation' => 'Kylläisyys', //cpg1.4
-  'NoiseReduction' => 'Kohinan poisto', //cpg1.4
-  'FlashPixVersion' => 'Salama Pix-versio', //cpg1.4
-  'ExifImageWidth' => 'Exif-kuvaleveys', //cpg1.4
-  'ExifImageHeight' => 'Exif-kuvakorkeus', //cpg1.4
-  'ExifInteroperabilityOffset' => 'Exif-yhteensopivuus offset', //cpg1.4
-  'FileSource' => 'Tiedostolähde', //cpg1.4
-  'SceneType' => 'Maisematyyppi', //cpg1.4
-  'CustomerRender' => 'Asiakasrenderöijä', //cpg1.4
-  'ExposureMode' => 'Valotustila', //cpg1.4
-  'WhiteBalance' => 'Valkotasapaino', //cpg1.4
-  'DigitalZoomRatio' => 'Digitaalinen zoomiarvo', //cpg1.4
-  'SceneCaptureMode' => 'Skenen kaappaustila', //cpg1.4
-  'GainControl' => 'Gain-hallinta', //cpg1.4
-  'Contrast' => 'Kontrasti', //cpg1.4
-  'Sharpness' => 'Tarkkuus', //cpg1.4
-  'ManageExifDisplay' => 'Hallitse Exifin näyttöä', //cpg1.4
-  'submit' => 'Lähetä', //cpg1.4
-  'success' => 'Tiedot päivitettiin.', //cpg1.4
-  'details' => 'Lisätiedot', //cpg1.4
-);
+$lang_display_comments['comment_x_to_y_of_z'] = '%d - %d %d:n joukosta'; // cpg1.5
+$lang_display_comments['page'] = 'Sivu'; // cpg1.5
+$lang_display_comments['edit_title'] = 'Muokkaa tätä kommenttia';
+$lang_display_comments['delete_title'] = 'Poista tämä kommentti'; // cpg1.5
+$lang_display_comments['confirm_delete'] = 'Haluatko varmasti poistaa tämän kommentin?'; // js-alert
+$lang_display_comments['add_your_comment'] = 'Lisää kommenttisi';
+$lang_display_comments['name'] = 'Nimi';
+$lang_display_comments['comment'] = 'Kommentti';
+$lang_display_comments['your_name'] = 'Vierailija';
+$lang_display_comments['report_comment_title'] = 'Ilmoita tämä kommentti ylläpidolle';
+$lang_display_comments['pending_approval'] = 'Kommentti näytetään ylläpidon hyväksynnän jälkeen'; // cpg1.5
+$lang_display_comments['unapproved_comment'] = 'Hyväksymätän kommentti'; // cpg1.5
+$lang_display_comments['pending_approval_message'] = 'Joku on kirjoittanut tähän kommentin. Se tulee näkyviin, kun ylläpitäjä hyväksyy sen.'; // cpg1.5
+$lang_display_comments['approve'] = 'Hyväksy kommentti'; // cpg1.5
+$lang_display_comments['disapprove'] = 'Merkkaa kommentti hylätyksi'; // cpg1.5
+$lang_display_comments['log_in_to_comment'] = 'Anonyymejä kommentteja ei sallita. %sKirjaudu sisään%s kirjoittaaksesi kommenttisi.'; // cpg1.5 // do not translate the %s placeholders - they will be used as wrappers for the link (<a>)
+$lang_display_comments['default_username_message'] = 'Ole hyvä ja anna nimesi kommenttia varten'; // cpg1.5
+$lang_display_comments['comment_rejected'] = 'Kommenttisi hylättiin'; // cpg1.5
 
-$lang_display_comments = array(
-  'OK' => 'OK',
-  'edit_title' => 'Muuta tätä kommenttia',
-  'confirm_delete' => 'Haluatko varmasti poistaa tämän kommentin?', //js-alert
-  'add_your_comment' => 'Lisää kommentti',
-  'name'=>'Nimi',
-  'comment'=>'Kommentti',
-  'your_name' => 'Vieras',
-  'report_comment_title' => 'Ilmoita tämä kommentti ylläpidolle', //cpg1.4
-);
-
-$lang_fullsize_popup = array(
-  'click_to_close' => 'Klikkaa kuvaa sulkeaksi ikkunan.',
-);
-
+$lang_fullsize_popup['click_to_close'] = 'Klikkaa kuvaa sulkeaksi ikkunan';
+$lang_fullsize_popup['close_window'] = 'sulje ikkuna'; // cpg1.5
 }
 
 // ------------------------------------------------------------------------- //
 // File ecard.php
 // ------------------------------------------------------------------------- //
 
-if (defined('ECARDS_PHP') || defined('DISPLAYECARD_PHP')) $lang_ecard_php =array(
-  'title' => 'Lähetä e-kortti',
-  'invalid_email' => '<font color="red"><b>Varoitus</b></font>: virheellinen sähköpostiosoite:', //cpg1.4
-  'ecard_title' => 'E-kortti sinulle lähettäjältä %s',
-  'error_not_image' => 'Vain kuvia voidaan lähettää e-kortteina.',
-  'view_ecard' => 'Vaihtoehtoinen linkki, jos e-kortti ei näy', //cpg1.4
-  'view_ecard_plaintext' => 'Nähdäksesi e-kortin, kopioi ja liitä tämä osoite selaimeesi:', //cpg1.4
-  'view_more_pics' => 'Katso lisää kuvia!', //cpg1.4
-  'send_success' => 'E-korttisi lähetettiin',
-  'send_failed' => 'Valitettavasti palvelin ei voinut lähettää e-korttiasi...',
-  'from' => 'Lähettäjä',
-  'your_name' => 'Nimesi',
-  'your_email' => 'Sähköpostiosoitteesi',
-  'to' => 'Vastaanottaja',
-  'rcpt_name' => 'Vastaanottajan nimi',
-  'rcpt_email' => 'Vastaanottajan sähköpostiosoite',
-  'greetings' => 'Otsikko', //cpg1.4
-  'message' => 'Viesti', //cpg1.4
-  'ecards_footer' => 'Lähettänyt %s IP-osoitteesta %s ajankohtana %s (Gallerian aika)', //cpg1.4
-  'preview' => 'Esikatsele e-kortti', //cpg1.4
-  'preview_button' => 'Esikatsele', //cpg1.4
-  'submit_button' => 'Lähetä e-kortti', //cpg1.4
-  'preview_view_ecard' => 'Tämä on vaihtoehtoinen linkki e-korttiin, kun se on valmis. Tämä ei toimi esikatselussa.', //cpg1.4
-);
+if (defined('ECARDS_PHP')) {
+$lang_ecard_php['title'] = 'Lähetä e-kortti';
+$lang_ecard_php['invalid_email'] = 'Varoitus: virheellinen sähköpostiosoite:'; // cpg1.5
+$lang_ecard_php['ecard_title'] = 'E-kortti sinulle lähettäjältä %s';
+$lang_ecard_php['error_not_image'] = 'Vain kuvia voidaan lähettää e-korttina.'; // cpg1.5
+$lang_ecard_php['error_not_image_flash'] = 'Vain kuvia ja Flash -tiedostoja voidaan lähettää e-korttina.'; // cpg1.5
+$lang_ecard_php['view_ecard'] = 'Vaihtoehtoinen linkki, jos e-kortti ei näy';
+$lang_ecard_php['view_ecard_plaintext'] = 'Nähdäksesi e-kortin, kopioi ja liitä tämä osoite selaimeesi:';
+$lang_ecard_php['view_more_pics'] = 'Katso lisää kuvia!';
+$lang_ecard_php['send_success'] = 'E-korttisi lähetettiin';
+$lang_ecard_php['send_failed'] = 'Valitettavasti palvelin ei voinut lähettää e-korttiasi...';
+$lang_ecard_php['from'] = 'Lähettäjä';
+$lang_ecard_php['your_name'] = 'Nimesi';
+$lang_ecard_php['your_email'] = 'Sähköpostiosoitteesi';
+$lang_ecard_php['to'] = 'Vastaanottaja';
+$lang_ecard_php['rcpt_name'] = 'Vastaanottajan nimi';
+$lang_ecard_php['rcpt_email'] = 'Vastaanottajan sähköpostiosoite';
+$lang_ecard_php['greetings'] = 'Otsikko';
+$lang_ecard_php['message'] = 'Viesti';
+$lang_ecard_php['ecards_footer'] = 'Lähettänyt %s IP-osoitteesta %s ajankohtana %s (gallerian aika)';
+$lang_ecard_php['preview'] = 'Esikatsele e-kortti';
+$lang_ecard_php['preview_button'] = 'Esikatsele';
+$lang_ecard_php['submit_button'] = 'Lähetä e-kortti';
+$lang_ecard_php['preview_view_ecard'] = 'Tämä on vaihtoehtoinen linkki e-korttiin, kun se on valmis. Tämä ei toimi esikatselussa.';
+}
 
 // ------------------------------------------------------------------------- //
-// File report_file.php //cpg1.4
+// File report_file.php
 // ------------------------------------------------------------------------- //
 
-if (defined('REPORT_FILE_PHP') || defined('DISPLAYREPORT_PHP')) $lang_report_php =array(
-  'title' => 'Ilmoita ylläpitäjälle', //cpg1.4
-  'invalid_email' => '<b>Varoitus</b>: virheellinen sähköpostiosoite!', //cpg1.4
-  'report_subject' => 'Ilmoitus käyttäjältä %s galleriasta %s', //cpg1.4
-  'view_report' => 'Vaihtoehtoinen linkki ilmoitukseen, jos se ei näy kunnolla', //cpg1.4
-  'view_report_plaintext' => 'Katsoaksesi ilmoituksen, kopioi ja liitä tämä osoite selaimeesi:', //cpg1.4
-  'view_more_pics' => 'Galleria', //cpg1.4
-  'send_success' => 'Ilmoituksesi lähetettiin', //cpg1.4
-  'send_failed' => 'Valitettavasti palvelin ei voinut lähettää ilmoitustasi...', //cpg1.4
-  'from' => 'Lähettäjä', //cpg1.4
-  'your_name' => 'Nimesi', //cpg1.4
-  'your_email' => 'Sähköpostiosoitteesi', //cpg1.4
-  'to' => 'Vastaanottaja', //cpg1.4
-  'administrator' => 'Ylläpitäjä/Moderaattori', //cpg1.4
-  'subject' => 'Aihe', //cpg1.4
-  'comment_field_name' => 'Ilmoitus kommentista käyttäjältä "%s"', //cpg1.4
-  'reason' => 'Syy', //cpg1.4
-  'message' => 'Viesti', //cpg1.4
-  'report_footer' => 'Lähettänyt %s IP-osoitteesta %s ajankohtana %s (Gallerian aika)', //cpg1.4
-  'obscene' => 'obscene', //cpg1.4
-  'offensive' => 'hyökkäävä', //cpg1.4
-  'misplaced' => 'ei liity aiheeseen/väärässä paikassa', //cpg1.4
-  'missing' => 'hukassa', //cpg1.4
-  'issue' => 'virhe/ei näy', //cpg1.4
-  'other' => 'muu', //cpg1.4
-  'refers_to' => 'Tiedostoilmoitus liittyy aiheeseen ', //cpg1.4
-  'reasons_list_heading' => 'syy(t) ilmoitukseen:', //cpg1.4
-  'no_reason_given' => 'ei annettua syytä', //cpg1.4
-  'go_comment' => 'Mene kommenttiin', //cpg1.4
-  'view_comment' => 'Näytä koko ilmoitus kommentin kera', //cpg1.4
-  'type_file' => 'tiedosto', //cpg1.4
-  'type_comment' => 'kommentti', //cpg1.4
-);
+if (defined('REPORT_FILE_PHP')) {
+$lang_report_php['title'] = 'Ilmoita ylläpitäjälle';
+$lang_report_php['invalid_email'] = '<strong>Varoitus</strong> : virheellinen sähköpostiosoite!';
+$lang_report_php['report_subject'] = 'Ilmoitus käyttäjältä %s galleriasta %s';
+$lang_report_php['view_report'] = 'Vaihtoehtoinen linkki ilmoitukseen, jos se ei näy kunnolla';
+$lang_report_php['view_report_plaintext'] = 'Katsoaksesi ilmoituksen, kopioi ja liitä tämä osoite selaimeesi:';
+$lang_report_php['view_more_pics'] = 'Galleria';
+$lang_report_php['send_success'] = 'Ilmoituksesi lähetettiin';
+$lang_report_php['send_failed'] = 'Valitettavasti palvelin ei voinut lähettää ilmoitustasi...';
+$lang_report_php['from'] = 'Lähettäjä';
+$lang_report_php['your_name'] = 'Nimesi';
+$lang_report_php['your_email'] = 'Sähköpostiosoitteesi';
+$lang_report_php['to'] = 'Vastaanottaja';
+$lang_report_php['administrator'] = 'Ylläpitäjä/Moderaattori';
+$lang_report_php['subject'] = 'Aihe';
+$lang_report_php['comment_field_name'] = 'Ilmoitus kommentista käyttäjältä "%s"';
+$lang_report_php['reason'] = 'Syy';
+$lang_report_php['message'] = 'Viesti';
+$lang_report_php['report_footer'] = 'Lähettänyt %s IP-osoitteesta %s ajankohtana %s (gallerian aika)';
+$lang_report_php['obscene'] = 'hävytön';
+$lang_report_php['offensive'] = 'hyökkäävä';
+$lang_report_php['misplaced'] = 'ei liity aiheeseen/väärässä paikassa';
+$lang_report_php['missing'] = 'puuttuva';
+$lang_report_php['issue'] = 'virhe/ei näy';
+$lang_report_php['other'] = 'muu';
+$lang_report_php['refers_to'] = 'Tiedostoilmoitus liittyy aiheeseen';
+$lang_report_php['reasons_list_heading'] = 'syy(t) ilmoitukseen:';
+$lang_report_php['no_reason_given'] = 'syytä ei annettua';
+$lang_report_php['go_comment'] = 'Mene kommenttiin';
+$lang_report_php['view_comment'] = 'Näytä koko ilmoitus kommentin kera';
+$lang_report_php['type_file'] = 'tiedosto';
+$lang_report_php['type_comment'] = 'kommentti';
+$lang_report_php['invalid_data'] = 'Ilmoituksen data on korruptoitunut sähköpostissa. Tarkista, että linkki on täydellinen.';
+}
 
 // ------------------------------------------------------------------------- //
 // File editpics.php
 // ------------------------------------------------------------------------- //
 
-if (defined('EDITPICS_PHP')) $lang_editpics_php = array(
-  'pic_info' => 'Kuvan tiedot',
-  'album' => 'Albumi',
-  'title' => 'Otsikko',
-  'filename' => 'Tiedostonimi', //cpg1.4
-  'desc' => 'Kuvaus',
-  'keywords' => 'Hakusanat',
-  'new_keyword' => 'Uusi hakusana', //cpg1.4
-  'new_keywords' => 'Uusia hakusanoja löydetty', //cpg1.4
-  'existing_keyword' => 'Olemassaoleva hakusana', //cpg1.4
-  'pic_info_str' => '%s &times; %s - %s KB - %s katselukertaa - %s ääntä',
-  'approve' => 'Hyväksy tiedosto',
-  'postpone_app' => 'Lykkää hyväksyntää',
-  'del_pic' => 'Poista kuva',
-  'del_all' => 'Poista KAIKKI kuvat', //cpg1.4
-  'read_exif' => 'Lue EXIF -info uudelleen',
-  'reset_view_count' => 'Resetoi laskuri',
-  'reset_all_view_count' => 'Resetoi KAIKKI laskurit', //cpg1.4
-  'reset_votes' => 'Resetoi äänet',
-  'reset_all_votes' => 'Resetoi KAIKKI äänet', //cpg1.4
-  'del_comm' => 'Poista kommentit',
-  'del_all_comm' => 'Poista KAIKKI kommentit', //cpg1.4
-  'upl_approval' => 'Uuden kuvan hyväksyntä', //cpg1.4
-  'edit_pics' => 'Muuta kuvia',
-  'see_next' => 'Katso seuraavia tiedostoja',
-  'see_prev' => 'Katso edellisiä tiedostoja',
-  'n_pic' => '%s kuvaa',
-  'n_of_pic_to_disp' => 'Näytettävien kuvien määrä',
-  'apply' => 'Hyväksy muutokset',
-  'crop_title' => 'Kuvaeditori',
-  'preview' => 'Esikatselu',
-  'save' => 'Tallenna kuva',
-  'save_thumb' =>'Tallenna thumbnailiksi',
-  'gallery_icon' => 'Tee tästä ikoni', //cpg1.4
-  'sel_on_img' =>'Valittu alue täytyy olla kokonaan kuvan alueella!', //js-alert
-  'album_properties' =>'Albumin asetukset', //cpg1.4
-  'parent_category' =>'Yläkategoria', //cpg1.4
-  'thumbnail_view' =>'Thumbnailnäkymä', //cpg1.4
-  'select_unselect' =>'Valitse kaikki', //cpg1.4
-  'file_exists' => "Kohdetiedosto '%s' on jo olemassa.", //cpg1.4
-  'rename_failed' => "Tiedoston '%s' nimeäminen tiedostoksi '%s' epäonnistui.", //cpg1.4
-  'src_file_missing' => "Lähdetiedosto '%s' puuttuu.", // cpg 1.4
-  'mime_conv' => "Tiedostoa '%s' ei voitu konvertoida tiedostoksi '%s'",//cpg1.4
-  'forb_ext' => 'Kielletty tiedostopääte.',//cpg1.4
-);
-
-// ------------------------------------------------------------------------- //
-// File faq.php
-// ------------------------------------------------------------------------- //
-
-if (defined('FAQ_PHP')) $lang_faq_php = array(
-  'faq' => 'Usein kysytyt kysymykset',
-  'toc' => 'Sisällys',
-  'question' => 'Kysymys: ',
-  'answer' => 'Vastaus: ',
-);
-
-if (defined('FAQ_PHP')) $lang_faq_data = array(
-  'Yleinen FAQ',
-  array('Miksi täytyy rekisteröityä?', 'Ylläpito voi vaatia rekisteröinnin. Rekisteröinti antaa käyttäjälle lisätoiminnallisuuksia, kuten kuvien lisäämisen, suosikkilistan, kuvien äänestysmahdollisuuden, kommentoinnin jne.', 'allow_user_registration', '1'),
-  array('Miten rekisteröidyn?', 'Mene &quot;rekisteröitymissivulle&quot; ja täytä vaaditut kentät lomakkeeseen (ja vapaaehtoiset, jos haluat).<br />Jos ylläpito on asettanut sähköpostiaktivoinnin, saat sähköpostin, jossa on ohjeet. Jäsenyytesi on aktivoitava ennen kui voit kirjautua.', 'allow_user_registration', '1'), //cpg1.4
-  array('Miten kirjaudun sisään?', 'Mene&quot;kirjautumissivulle&quot;, annan nimimerkkisi ja salasanasi ja klikkaa päälle &quot;Muista minut&quot;, niin pääset kirjautumaan sivustolle ja pysyt kirjautuneena myöhemminkin.<br /><b>TÄRKEÄÄ: Evästeet täytyy olla sallittu, jotta kirjautuminen toimii. Evästettä ei saa poistaa, jotta &quot;Muista minut&quot; -toiminto toimii.</b>', 'offline', 0),
-  array('Miksi en voi kirjautua?', 'Rekisteröidyitkö ja klikkasit linkkiä sähköpostissa, joka sinulle tuli? Linkki aktivoi tilisi. Muissa kirjautumisongelmissa ota yhteyttä sivuston ylläpitoon.', 'offline', 0),
-  array('Entä jos unohdin salasanani?', 'Jos sivustolla on &quot;Unohditko salasanasi&quot; -linkki, voit käyttää sitä. Muutoin ota yhteyttä ylläpitoon.', 'offline', 0),
-  //array('Entä jos vaihdoin sähköpostiosoitettani?', 'Kirjaudu sisään ja vaihda osoitteesi &quot;Oma profiili&quot; -sivulla.', 'offline', 0),
-  array('Miten tallennan kuvan &quot;suosikkeihin&quot;?', 'Klikkaa kuvaa ja &quot;kuvan tiedot&quot; -linkkiä (<img src="images/info.gif" width="16" height="16" border="0" alt="Kuvan tiedot" />); selaa kuvan tietoja ja klikkaa &quot;Lisää suosikkeihin&quot;.<br />Ylläpito on voinut asettaa &quot;kuvan tiedot&quot; näkyviin oletuksena.<br />TÄRKEÄÄ: Evästeet täytyy olla sallittu, että evästettä saa poistaa, jotta tämä toiminto toimisi.', 'offline', 0),
-  array('Miten arvosten kuvaa?', 'Klikkaa thumbnailia ja klikkaa haluamaasi äänestä -nappia kuvan alla.', 'offline', 0),
-  array('Miten annan kuvalle kommentteja?', 'Klikkaa thumbnailia ja selaa sivun loppuun, jossa voit antaa kommentin.', 'offline', 0),
-  array('Miten lisään kuvan?', 'Sinulla täytyy olla oikeus kuvien lisäämiseen(ei tule oletuksena). Mene &quot;Lisää kuva&quot; -sivulle. Klikkaa &quot;Browse,&quot; löytääksesi lisättävän kuvan koneeltasi ja klikkaa &quot;avaa.&quot; Lisää otsikko ja kuvaus. Klikkaa  &quot;Lähetä&quot;.<br /><br />Vaihtoehtoisesti, jos sinulla on <b>Windows XP</b>, voit lisätä useita kuvia kerralla omaan yksityiseen albumiisi XP-julkaisuohjelmalla.<br />Saadaksesi ohjeita tästä, klikkaa <a href="xp_publish.php">tätä.</a>', 'allow_private_albums', 1), //cpg1.4
-  array('Mihin lisään kuvan?', 'Voit lisätä kuvasi johonkin omaan albumiisi &quot;Oma Galleria&quot; -sivulla. Ylläpito saattaa sallia kuvien lisäämisen myös joihinkin päägallerioista.', 'allow_private_albums', 0),
-  array('Millaisia ja minkä kokoisia tiedostoja voin lisätä?', 'Koko ja tyyppi (jpg, png, etc.) riippuu ylläpidon asettamista asetuksista.', 'offline', 0),
-  array('Miten luon, uudelleen nimeän tai poistan albumeita &quot;Omaan galleriaan&quot;?', 'Sinun pitäisi jo olla &quot;ylläpitotilassa&quot;<br />Mene sivulle &quot;Luo/järjestä albumeita&quot; ja klikkaa &quot;Uusi&quot;. Vaihda nimi &quot;Uusi albumi&quot; mieleiseksesi.<br />Voit myös uudelleennimetä muita albumeitasi.<br />Klikkaa &quot;Hyväksy muutokset&quot;.', 'allow_private_albums', 0),
-  array('Kuinka voin rajoittaa käyttäjien pääsyä albumiini?', 'Sinun pitäisi jo olla &quot;Ylläpitäjätilassa&quot;<br />Mene &quot;Muokkaa albumeitani&quot;. Valitse muokattava albumi kohdassa &quot;Päivitä albumi&quot;.<br />Täällä voit muuttaa nimeä, kuvausta, thumbnailkuvaa, rajoittaa katselu-, kommentointi- ja äänestysoikeuksia.<br />Klikkaa &quot;Päivitä albumi&quot;.', 'allow_private_albums', 0),
-  array('Miten voin nähdä muiden käyttäjien galleriat?', 'Mene &quot;albumilistaan&quot; ja valitse &quot;Käyttäjien galleriat&quot;.', 'allow_private_albums', 0),
-  array('Mitä ovat evästeet?', 'Evästeet ovat tekstitietoa, joka lähetetään websivulta ja tallennetaan tietokoneellesi.<br />Evästeet yleensä sallivat käyttäjän lähteä ja palata sivustolle ilman, että käyttäjän tarvitsee kirjautua uudelleen tai tehdä muita toimintoja.', 'offline', 0),
-  array('Mistä saan tämän ohjelman omalle sivustolleni?', 'Coppermine on ilmainen multimediagalleria, jota jaetaan GNU GPL:n alla. Se on täynnä ominaisuuksia ja se on toteutettu monille eri alustoille.  Käy <a href="http://coppermine.sf.net/">Copperminen kotisivulla</a>, jolta saa tietoa ja voit ladata ohjelman.', 'offline', 0),
-
-  'Sivustolla liikkuminen',
-  array('Mikä on &quot;Albumilista&quot;?', 'Tämä näyttää koko kategorian sisältämät albumit. Jos et kategoriassa, näytetään kaikki gallerian kategoriat. Thumbnailit voivat olla linkkejä kategorioihin.', 'offline', 0),
-  array('Mikä on &quot;Oma galleria&quot;?', 'Tämän ominaisuuden avulla käyttäjät voivat luoda omia gallerioitaan ja lisätä, poistaa tai muokata albumeita. He voivat myös lisätä kuvia albumeihinsa.', 'allow_private_albums', 1), //cpg1.4
-  array('Mitä eroa on &quot;ylläpitotilalla&quot; ja &quot;käyttäjätilalla&quot;?', 'Ylläpitotilassa käyttäjä voi muokata gallerioitaan (ja muuta, jos ylläpito sallii).', 'allow_private_albums', 0),
-  array('Mikä on &quot;Lisää kuva&quot;?', 'Tämän toiminnon avulla käyttäjä voi lisätä tiedoston (ylläpito määrää koon ja tyypin) galleriaan.', 'allow_private_albums', 0),
-  array('Mikä on &quot;Uusimmat kuvat&quot;?', 'Tämä näyttää käyttäjien viimeksi lisäämät kuvat sivustolle.', 'offline', 0),
-  array('Mikä on &quot;Uusimmat kommentit&quot;?', 'Tämä näyttää käyttäjien viimeksi annetut kommentit ja ja kommentoidut tiedostot.', 'offline', 0),
-  array('Mikä on &quot;Katsotuimmat&quot;?', 'Tämä näyttää eniten kaikkien käyttäjien (myös rekisteröitymättömien) katsellut kuvat.', 'offline', 0),
-  array('Mikä on &quot;Suosituimmat&quot;?', 'Tämä näyttää parhaiksi äänestetyt kuvat ja niiden keskimääräiset arvostelut. (esim. viisi käyttäjää antavat kaikki <img src="images/rating3.gif" width="65" height="14" border="0" alt="" />: tiedoston keskimääräinen arvostus on <img src="images/rating3.gif" width="65" height="14" border="0" alt="" /> ;Viisi käyttäjää antavat arvion 1 - 5 (1,2,3,4,5), jolloin keskiarvo on <img src="images/rating3.gif" width="65" height="14" border="0" alt="" /> .)<br />Arviot menevät parhaasta <img src="images/rating5.gif" width="65" height="14" border="0" alt="best" /> huonoimpaan <img src="images/rating0.gif" width="65" height="14" border="0" alt="worst" />.', 'offline', 0),
-  array('Mikä on &quot;Omat suosikit&quot;?', 'Tämän toiminnon avulla käyttäjä voi tallentaa koneelleen evästeen, johon on listattu omat suosikkikuvat.', 'offline', 0),
-);
-
+if (defined('EDITPICS_PHP')) {
+$lang_editpics_php['pic_info'] = 'Tiedoston tiedot';
+$lang_editpics_php['desc'] = 'Kuvaus';
+$lang_editpics_php['approval'] = 'Hyväksyntä'; //cpg 1.5
+$lang_editpics_php['approved'] = 'Hyväksytty'; // cpg 1.5
+$lang_editpics_php['unapproved'] = 'Hylätty'; // cpg 1.5
+$lang_editpics_php['new_keyword'] = 'Uusi avainsana';
+$lang_editpics_php['new_keywords'] = 'Uusia avainsanoja löydetty';
+$lang_editpics_php['existing_keyword'] = 'Olemassaoleva avainsana';
+$lang_editpics_php['pic_info_str'] = '%sx%s - %s kt - %s katselukertaa - %s ääntä';
+$lang_editpics_php['approve'] = 'Hyväksy tiedosto';
+$lang_editpics_php['postpone_app'] = 'Lykkää hyväksyntää';
+$lang_editpics_php['del_pic'] = 'Poista tiedosto';
+$lang_editpics_php['del_all'] = 'Poista KAIKKI tiedostot';
+$lang_editpics_php['read_exif'] = 'Lue EXIF -info uudelleen';
+$lang_editpics_php['reset_view_count'] = 'Nollaa katselulaskuri';
+$lang_editpics_php['reset_all_view_count'] = 'Nollaa KAIKKI laskurit';
+$lang_editpics_php['reset_votes'] = 'Nollaa äänet';
+$lang_editpics_php['reset_all_votes'] = 'Nollaa KAIKKI äänet';
+$lang_editpics_php['del_comm'] = 'Poista kommentit';
+$lang_editpics_php['del_all_comm'] = 'Nollaa KAIKKI kommentit';
+$lang_editpics_php['upl_approval'] = 'Uuden tiedoston hyväksyntä';
+$lang_editpics_php['edit_pics'] = 'Muokkaa tiedostoja';
+$lang_editpics_php['edit_pic'] = 'Muokkaa tiedostoa'; // cpg 1.5
+$lang_editpics_php['see_next'] = 'Katso seuraavia tiedostoja';
+$lang_editpics_php['see_prev'] = 'Katso edellisiä tiedostoja';
+$lang_editpics_php['n_pic'] = '%s tiedostoa';
+$lang_editpics_php['n_of_pic_to_disp'] = 'Näytettävien tiedostojen määrä';
+$lang_editpics_php['crop_title'] = 'Kuvamuokkain';
+$lang_editpics_php['preview'] = 'Esikatselu';
+$lang_editpics_php['save'] = 'Tallenna kuva';
+$lang_editpics_php['save_thumb'] = 'Tallenna pienoiskuvaksi';
+$lang_editpics_php['gallery_icon'] = 'Tee tästä ikoni';
+$lang_editpics_php['sel_on_img'] = 'Valinnan täytyy olla kokonaan kuvan sisällä!'; // js-alert
+$lang_editpics_php['album_properties'] = 'Albumin asetukset';
+$lang_editpics_php['parent_category'] = 'Yläkategoria';
+$lang_editpics_php['thumbnail_view'] = 'Pienoiskuvanäkymä';
+$lang_editpics_php['select_unselect'] = 'valitse kaikki/poista valinta kaikista';
+$lang_editpics_php['file_exists'] = 'Kohdetiedosto \'%s\' on jo olemassa.';
+$lang_editpics_php['rename_failed'] = 'Tiedoston \'%s\' uudelleennimeäminen tiedostoksi \'%s\' epäonnistui.';
+$lang_editpics_php['src_file_missing'] = 'Lähdetiedosto \'%s\' on jo olemassa.';
+$lang_editpics_php['mime_conv'] = 'Tiedostoa \'%s\' ei voitu konvertoida tiedostoksi \'%s\'';
+$lang_editpics_php['forb_ext'] = 'Kielletty tiedostopääte.';
+$lang_editpics_php['error_editor_class'] = 'Muokkain ei tue käyttämääsi kuvankäsittely tapaa.'; // cpg 1.5
+$lang_editpics_php['error_document_size'] = 'Dokumentillä ei ole leveyttä tai korkeutta'; // cpg 1.5  // js-alert
+$lang_editpics_php['success_picture'] = 'Kuva tallennettiin onnistuneesti - voit nyt %ssulkea%s tämän ikkunan'; // cpg1.5 // do not translate "%s" here
+$lang_editpics_php['success_thumb'] = 'Pienoiskuva tallennettiin onnistuneesti - voit nyt %ssulkea%s tämän ikkunan'; // cpg1.5 // do not translate "%s" here
+$lang_editpics_php['rotate'] = 'Kierrä'; // cpg 1.5
+$lang_editpics_php['mirror'] = 'Peilaa'; // cpg 1.5
+$lang_editpics_php['scale'] = 'Skaalaa'; // cpg 1.5
+$lang_editpics_php['new_width'] = 'Uusi leveys'; // cpg 1.5
+$lang_editpics_php['new_height'] = 'Uusi korkeus'; // cpg 1.5
+$lang_editpics_php['enable_clipping'] = 'Ota leikkaus käyttöön, toteuta rajataksesi'; // cpg 1.5
+$lang_editpics_php['jpeg_quality'] = 'JPEG ulostulon laatu'; // cpg 1.5
+$lang_editpics_php['or'] = 'TAI'; // cpg 1.5
+$lang_editpics_php['approve_pic'] = 'Hyväksy tiedosto'; // cpg 1.5
+$lang_editpics_php['approve_all'] = 'Hyväksy KAIKKI tiedostot '; // cpg 1.5
+$lang_editpics_php['error_empty'] = 'Albumi on tyhjä'; // cpg1.5
+$lang_editpics_php['error_approval_empty'] = 'Ei enään hyväksyttäviä kuvia'; // cpg1.5
+$lang_editpics_php['error_linked_only'] = 'Albumi sisältää vain linkitettyjä tiedostoja, joita et voi muokata tässä'; // cpg1.5
+$lang_editpics_php['note_approve_public'] = 'Julkiseen albumiin siirretyt tiedostot vaativat ylläpitäjän hyväksynnän.'; // cpg1.5
+$lang_editpics_php['note_approve_private'] = 'Omaan albumiin siirretyt tiedostot vaativat ylläpitäjän hyväksynnän.' ; // cpg1.5
+$lang_editpics_php['note_edit_control'] = 'Julkiseen albumiin siirrettyjä tiedostoja ei voi muokata.'; // cpg1.5
+$lang_editpics_php['confirm_move'] = 'Haluatko varmasti siirtää tämän tiedoston?'; // cpg1.5 //js-alert
+$lang_editpics_php['success_changes'] = 'Muutokset tallennettiin onnistuneesti'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
 // File forgot_passwd.php
 // ------------------------------------------------------------------------- //
 
-if (defined('FORGOT_PASSWD_PHP')) $lang_forgot_passwd_php = array(
-  'forgot_passwd' => 'Salasanamuistutus',
-  'err_already_logged_in' => 'Olet jo kirjautunut!',
-  'enter_email' => 'Anna sähköpostiosoitteesi', //cpg1.4
-  'submit' => 'Lähetä',
-  'illegal_session' => 'Salasanamuistutus on vanhentunut tai virheellinen.', //cpg1.4
-  'failed_sending_email' => 'Salasanamuistutussähköpostia ei voitu lähettää!',
-  'email_sent' => 'Sinulle lähetettiin osoitteeseen %s sähköposti, jossa on käyttäjätunnuksesi ja uusi salasanasi', //cpg1.4
-  'verify_email_sent' => 'Sähköposti lähetettiin osoitteeseen %s. Tarkista sähköpostisi ja toimi ohjeiden mukaan.', //cpg1.4
-  'err_unk_user' => 'Valittua käyttäjää ei löydy!',
-  'account_verify_subject' => '%s - Uusi salasanapyyntö', //cpg1.4
-  'account_verify_body' => 'Pyysit uutta salasanaa. Jos haluat sen, klikkaa linkkiä:
+if (defined('FORGOT_PASSWD_PHP')) {
+$lang_forgot_passwd_php['forgot_passwd'] = 'Salasanamuistutus';
+$lang_forgot_passwd_php['err_already_logged_in'] = 'Olet jo kirjautunut!';
+$lang_forgot_passwd_php['enter_email'] = 'Anna sähköpostiosoitteesi';
+$lang_forgot_passwd_php['submit'] = 'Lähetä';
+$lang_forgot_passwd_php['illegal_session'] = 'Salasanamuistutus on vanhentunut tai virheellinen.';
+$lang_forgot_passwd_php['failed_sending_email'] = 'Salasanamuistutussähköpostia ei voitu lähettää!';
+$lang_forgot_passwd_php['email_sent'] = 'Sinulle lähetettiin osoitteeseen %s sähköposti, jossa on käyttäjätunnuksesi ja uusi salasanasi';
+$lang_forgot_passwd_php['verify_email_sent'] = 'Sähköposti lähetettiin osoitteeseen %s. Tarkista sähköpostisi ja toimi ohjeiden mukaan.';
+$lang_forgot_passwd_php['err_unk_user'] = 'Valittua käyttäjää ei löydy!';
+$lang_forgot_passwd_php['account_verify_subject'] = '%s - Uusi salasanapyyntö';
+$lang_forgot_passwd_php['passwd_reset_subject'] = '%s - Uusi salasanasi';
+$lang_forgot_passwd_php['account_verify_email'] = <<< EOT
+Hei
 
-%s', //cpg1.4
-  'passwd_reset_subject' => '%s - Uusi salasanasi', //cpg1.4
-  'passwd_reset_body' => 'Tässä on pyytämäsi uusi salasana:
-Nimimerkki: %s
-Salasana: %s
-Klikkaa %s kirjautuaksesi sisään.', //cpg1.4
-);
+Olet pyytänyt uutta salasanaa. Jos haluat jatkaa saadaksesi sen, klikkaa linkkiä:
 
-// ------------------------------------------------------------------------- //
-// File groupmgr.php
-// ------------------------------------------------------------------------- //
-
-if (defined('GROUPMGR_PHP')) $lang_groupmgr_php = array(
-  'group_name' => 'Ryhmä', //cpg1.4
-  'permissions' => 'Oikeudet', //cpg1.4
-  'public_albums' => 'Julkinen albumiin lisääminen', //cpg1.4
-  'personal_gallery' => 'Oma galleria', //cpg1.4
-  'upload_method' => 'Lähetystapa', //cpg1.4
-  'disk_quota' => 'Levytila', //cpg1.4
-  'rating' => 'Äänestys', //cpg1.4
-  'ecards' => 'E-kortit', //cpg1.4
-  'comments' => 'Kommentit', //cpg1.4
-  'allowed' => 'Sallittu', //cpg1.4
-  'approval' => 'Hyväksyntä', //cpg1.4
-  'boxes_number' => 'Kenttien määrä', //cpg1.4
-  'variable' => 'muuttuva', //cpg1.4
-  'fixed' => 'määrätty', //cpg1.4
-  'apply' => 'Hyväksy muutokset',
-  'create_new_group' => 'Luo uusi ryhmä',
-  'del_groups' => 'Poista valitut ryhmät',
-  'confirm_del' => 'Varoitus, kun poistat ryhmän, siihen kuuluvat käyttäjät siirretään \'Rekisteröityneet\' -ryhmään!\n\nHaluatko jatkaa?', //js-alert
-  'title' => 'Hallitse käyttäjäryhmiä',
-  'num_file_upload' => 'Tiedostonlisäyskenttiä', //cpg1.4
-  'num_URI_upload' => 'URI -lisäyskenttiä', //cpg1.4
-  'reset_to_default' => 'Ota käyttöön oletusnimi (%s) - suositeltava!', //cpg1.4
-  'error_group_empty' => 'Ryhmätaulu on tyhjä!<br /><br />Oletusryhmät luotu, päivitä tämä sivu', //cpg1.4
-  'explain_greyed_out_title' => 'Miksi tämä rivi on harmaana?', //cpg1.4
-  'explain_guests_greyed_out_text' => 'Tämän ryhmän asetuksia ei voida muuttaa koska valitsit asetuksen &quot; Salli kirjautumattomat käyttäjät (vieraat tai anomyynit)&quot; vaihtoehdoksi &quot;Ei&quot; asetukset -sivulla. Kaikki vieraat (ryhmän %s jäsenet) eivät voi tehdä muuta kuin kirjautua. Tämän vuoksi ryhmäasetukset eivät vaikuta heihin.', //cpg1.4
-  'explain_banned_greyed_out_text' => 'Et voi muuttaa ryhmän oikeuksia, koska sen jäsenille ei sallita muutenkaan mitään.', //cpg1.4
-  'group_assigned_album' => 'ryhmän albumit', //cpg1.4
-);
-
-// ------------------------------------------------------------------------- //
-// File index.php
-// ------------------------------------------------------------------------- //
-
-if (defined('INDEX_PHP')){
-
-$lang_index_php = array(
-  'welcome' => 'Tervetuloa',
-);
-
-$lang_album_admin_menu = array(
-  'confirm_delete' => 'Haluatko varmasti poistaa tämän albumin? \\nKaikki kuvat ja kommentit poistetaan samalla.', //js-alert
-  'delete' => 'POISTA',
-  'modify' => 'OMINAISUUDET',
-  'edit_pics' => 'MUOKKAA KUVIA',
-);
-
-$lang_list_categories = array(
-  'home' => 'Etusivu',
-  'stat1' => '<b>[pictures]</b> kuvaa <b>[albums]</b> albumissa, <b>[cat]</b> kategoriaa ja <b>[comments]</b> kommenttia. Kuvia katseltu <b>[views]</b> kertaa.',
-  'stat2' => '<b>[pictures]</b> kuvaa <b>[albums]</b> albumissa. Katseltu <b>[views]</b> kertaa.',
-  'xx_s_gallery' => '%s Galleria',
-  'stat3' => '<b>[pictures]</b> kuvaa <b>[albums]</b> albumissa, <b>[comments]</b> kommenttia. Katseltu <b>[views]</b> kertaa.',
-);
-
-$lang_list_users = array(
-  'user_list' => 'Käyttäjälista',
-  'no_user_gal' => 'Käyttäjägallerioita ei ole',
-  'n_albums' => '%s albumi(a)',
-  'n_pics' => '%s kuva(a)',
-);
-
-$lang_list_albums = array(
-  'n_pictures' => '%s kuvaa',
-  'last_added' => ', viimeisin lisätty %s',
-  'n_link_pictures' => '%s linkitettyä kuvaa', //cpg1.4
-  'total_pictures' => '%s kuvaa yhteensä', //cpg1.4
-);
-
-}
-
-// ------------------------------------------------------------------------- //
-// File keywordmgr.php //cpg1.4
-// ------------------------------------------------------------------------- //
-
-if (defined('KEYWORDMGR_PHP')) $lang_keywordmgr_php = array(
-  'title' => 'Hallinnoi hakusanoja', //cpg1.4
-  'edit' => 'muokkaa', //cpg1.4
-  'delete' => 'poista', //cpg1.4
-  'search' => 'hae', //cpg1.4
-  'keyword_test_search' => 'hae %s uudessa ikkunassa', //cpg1.4
-  'keyword_del' => 'poista hakusana %s', //cpg1.4
-  'confirm_delete' => 'Oletko varma, että haluat poistaa hakusanan %s koko galleriasta?', //cpg1.4  // js-alert
-  'change_keyword' => 'muuta hakusana', //cpg1.4
-);
-
-// ------------------------------------------------------------------------- //
-// File login.php
-// ------------------------------------------------------------------------- //
-
-if (defined('LOGIN_PHP')) $lang_login_php = array(
-  'login' => 'Kirjaudu sisään',
-  'enter_login_pswd' => 'Anna nimimerkki ja salasana kirjautuaksesi',
-  'username' => 'Nimimerkki',
-  'password' => 'Salasana',
-  'remember_me' => 'Muista minut',
-  'welcome' => 'Tervetuloa %s!',
-  'err_login' => '*** Virhe kirjautuessa. Yritä uudelleen ***',
-  'err_already_logged_in' => 'Olet jo kirjautunut!',
-  'forgot_password_link' => 'Unohdin salasanani',
-  'cookie_warning' => 'Varoitus! Selaimesi ei hyväksy evästeitä.', //cpg1.4
-);
-
-// ------------------------------------------------------------------------- //
-// File logout.php
-// ------------------------------------------------------------------------- //
-
-if (defined('LOGOUT_PHP')) $lang_logout_php = array(
-  'logout' => 'Kirjaudu ulos',
-  'bye' => 'Hei hei %s...',
-  'err_not_loged_in' => 'Et ole kirjautunut!',
-);
-
-// ------------------------------------------------------------------------- //
-// File minibrowser.php  //cpg1.4
-// ------------------------------------------------------------------------- //
-
-if (defined('MINIBROWSER_PHP')) $lang_minibrowser_php = array(
-  'close' => 'Sulje', //cpg1.4
-  'submit' => 'OK', //cpg1.4
-  'up' => 'Yksi taso ylös', //cpg1.4
-  'current_path' => 'Nykyinen polku', //cpg1.4
-  'select_directory' => 'Valitse hakemisto', //cpg1.4
-  'click_to_close' => 'Klikkaa kuvaa sulkeaksesi tämän ikkunan.',
-);
-
-// ------------------------------------------------------------------------- //
-// File modifyalb.php
-// ------------------------------------------------------------------------- //
-
-if (defined('MODIFYALB_PHP')) $lang_modifyalb_php = array(
-  'upd_alb_n' => 'Päivitä albumi %s',
-  'general_settings' => 'Yleiset asetukset',
-  'alb_title' => 'Albumin otsikko',
-  'alb_cat' => 'Albumin kategoria',
-  'alb_desc' => 'Albumin kuvaus',
-  'alb_keyword' => 'Albumin hakusanat', //cpg1.4
-  'alb_thumb' => 'Albumin thumbnail',
-  'alb_perm' => 'Oikeudet albumiin',
-  'can_view' => 'Albumia voivat katsella',
-  'can_upload' => 'Vieraat voivat lisätä kuvia',
-  'can_post_comments' => 'Vieraat voivat kommentoida',
-  'can_rate' => 'Vieraat voivat äänestää',
-  'user_gal' => 'Käyttäjägalleria',
-  'no_cat' => '* Ei kategoriaa *',
-  'alb_empty' => 'Albumi on tyhjä',
-  'last_uploaded' => 'Viimeisin lisätty',
-  'public_alb' => 'Kaikki (julkinen albumi)',
-  'me_only' => 'Vain minä',
-  'owner_only' => 'Vain albumin omistaja (%s)',
-  'groupp_only' => 'Ryhmän \'%s\' jäsenet',
-  'err_no_alb_to_modify' => 'Tietokannassa ei ole muokattavia albumeita.',
-  'update' => 'Päivitä albumi',
-  'reset_album' => 'Resetoi albumi', //cpg1.4
-  'reset_views' => 'Resetoi näyttökertalaskuri &quot;0&quot;:ksi albumissa %s', //cpg1.4
-  'reset_rating' => 'Resetoi kaikki äänet albumissa %s', //cpg1.4
-  'delete_comments' => 'Poista kaikki kommentit albumissa %s', //cpg1.4
-  'delete_files' => 'Poista %slopullisesti%s kaikki kuvat albumissa %s', //cpg1.4
-  'views' => 'näyttökertaa', //cpg1.4
-  'votes' => 'ääntä', //cpg1.4
-  'comments' => 'kommenttia', //cpg1.4
-  'files' => 'kuvaa', //cpg1.4
-  'submit_reset' => 'lähetä muutokset', //cpg1.4
-  'reset_views_confirm' => 'Olen varma', //cpg1.4
-  'notice1' => '(*) riippuen %sryhmä%sasetuksista',  //cpg1.4 //(do not translate %s!)
-  'alb_password' => 'Albumin salasana', //cpg1.4
-  'alb_password_hint' => 'Albumin salasanavihje', //cpg1.4
-  'edit_files' =>'Muokkaa tiedostoja', //cpg1.4
-  'parent_category' =>'Yläkategoria', //cpg1.4
-  'thumbnail_view' =>'Thumbnailnäkymä', //cpg1.4
-);
-
-// ------------------------------------------------------------------------- //
-// File phpinfo.php
-// ------------------------------------------------------------------------- //
-
-if (defined('PHPINFO_PHP')) $lang_phpinfo_php = array(
-  'php_info' => 'PHP-info',
-  'explanation' => 'Tämä teksti on PHP-funktion <a href="http://www.php.net/phpinfo">phpinfo()</a> luoma ja näytetään Copperminessa.',
-  'no_link' => 'PHP-infon näyttäminen julkisesti voi olla tietoturvariski. Sen vuoksi tämä sivu on näkyvissä vain, jos olet kirjautunut sisään. Et voi antaa tämän sivun linkkiä muille, sillä heillä ei ole oikeuksia nähdä tätä sivua.',
-);
-
-// ------------------------------------------------------------------------- //
-// File picmgr.php //cpg1.4
-// ------------------------------------------------------------------------- //
-if (defined('PICMGR_PHP')) $lang_picmgr_php = array(
-  'pic_mgr' => 'Kuvan hallinta', //cpg1.4
-  'select_album' => 'Valitse albumi', //cpg1.4
-  'delete' => 'Poista', //cpg1.4
-  'confirm_delete1' => 'Oletko varma, että haluat poistaa tämän kuvan?', //cpg1.4
-  'confirm_delete2' => '\nKuva poistetaan lopullisesti.', //cpg1.4
-  'apply_modifs' => 'Hyväksy muutokset', //cpg1.4
-  'confirm_modifs' => 'Varmista muutokset', //cpg1.4
-  'pic_need_name' => 'Kuvalla täytyy olla nimi!', //cpg1.4
-  'no_change' => 'Et tehnyt muutoksia.', //cpg1.4
-  'no_album' => '* Ei albumia *', //cpg1.4
-  'explanation_header' => 'Järjestys otetaan huomioon vain, jos ', //cpg1.4
-  'explanation1' => 'ylläpito on asettanut asetuksiin kohtaan "Kuvien oletusjärjestys" arvoksi "Sijainti laskevasti" tai "Sijainti nousevasti" (Tämä on oletusasetus kaikille käyttäjille, mikäli he eivät olet tehneet yksittäisiä albumeita koskevia muutoksia.)', //cpg1.4
-  'explanation2' => 'käyttäjä on valinnut "Sijainti laskevasti" tai "Sijainti nousevasti" thumbnail-sivulla (käyttäjäkohtainen asetus)', //cpg1.4
-);
+<a href="{VERIFY_LINK}">{VERIFY_LINK}</a>
 
 
-// ------------------------------------------------------------------------- //
-// File pluginmgr.php //cpg1.4
-// ------------------------------------------------------------------------- //
-
-if (defined('PLUGINMGR_PHP')){
-
-$lang_pluginmgr_php = array(
-  'confirm_uninstall' => 'Oletko varma, että haluat ottaa tämän laajennuksen POIS KÄYTÖSTÄ?', //cpg1.4
-  'confirm_delete' => 'Oletko varma, että haluat POISTAA tämän laajennuksen?', //cpg1.4
-  'pmgr' => 'Laajennusten hallinta', //cpg1.4
-  'name' => 'Nimi', //cpg1.4
-  'author' => 'Tekijä', //cpg1.4
-  'desc' => 'Kuvaus', //cpg1.4
-  'vers' => 'v', //cpg1.4
-  'i_plugins' => 'Asennetut laajennukset', //cpg1.4
-  'n_plugins' => 'Laajennukset, joita ei olla asennettu', //cpg1.4
-  'none_installed' => 'Ei asennettuja', //cpg1.4
-  'operation' => 'Toiminto', //cpg1.4
-  'not_plugin_package' => 'Ladattu tiedosto ei ole laajennuspaketti.', //cpg1.4
-  'copy_error' => 'Tapahtui virhe kopioidessa pakettia laajennushakemistoon.', //cpg1.4
-  'upload' => 'Lisää', //cpg1.4
-  'configure_plugin' => 'Konfiguroi laajennusta', //cpg1.4
-  'cleanup_plugin' => 'Poista laajennus', //cpg1.4
-);
-}
-
-// ------------------------------------------------------------------------- //
-// File ratepic.php
-// ------------------------------------------------------------------------- //
-
-if (defined('RATEPIC_PHP')) $lang_rate_pic_php = array(
-  'already_rated' => 'Olet jo antanut äänesi tälle kuvalle.',
-  'rate_ok' => 'Äänesi on kirjattu.',
-  'forbidden' => 'Et voi äänestää omia kuviasi.',
-);
-
-// ------------------------------------------------------------------------- //
-// File register.php & profile.php
-// ------------------------------------------------------------------------- //
-
-if (defined('REGISTER_PHP') || defined('PROFILE_PHP')) {
-
-$lang_register_disclamer = <<<EOT
-Sivuston {SITE_NAME} ylläpito poistaa kaiken sopimattoman materiaalin sivustolta niin nopeasti kuin mahdollista, mutta ei ole mahdollista tarkistaa aina jokaista lisäystä. Ymmärrät siis, että sivuston viestit ja kuvat ovat käyttäjien mielipiteitä ja näkemyksiä, eikä ylläpitoa voida asettaa niistä vastuuseen.<br />
-<br />
-Sinulla ei oletuksena ole oikeutta lisätä kuvia galleriaan vaan sinun on pyydettävä sitä <a href="">ylläpidolta</a>. Ainakin ensimmäiset kuvasi ylläpito tarkistaa ennen julkaisemista. Lähetä siis mieluummin paras kuvasi kuin kymmenen huonompaa. Liitä kuviin ainakin yhtyeen/tapahtuman ja kuvaajan nimi, kuvausaika ja -paikka. <br />
-<br />
-Tekijänoikeusrikkomusten ehkäisemiseksi voit julkaista vain itse ottamiasi kuvia. Mikäli havaitset sivustolla sopimatonta tai <a href="http://www.finlex.fi/fi/laki/ajantasa/1961/19610404?search%5Btype%5D=pika&search%5Bpika%5D=tekij%C3%A4noikeuslaki"><b>tekijänoikeuttasi</b></a> rikkovaa materiaalia, ilmoita siitä välittömästi ylläpidolle. <br />
-<br />
-Hyväksymällä tämän sopimuksen sitoudut olemaan lähettämättä laitonta, sopimatonta tai toisten tekijänoikeuksia rikkovaa materiaalia. Hyväksyt, että ylläpidolla ja moderaattoreilla on oikeus poistaa tai muuttaa mitä tahansa materiaalia miten parhaaksi näkevät. Käyttäjänä hyväksyt, että lähettämäsi tieto tallennetaan tietokantaan. Tietoa ei lähetetä kolmansille osapuolille ilman lupaasi, mutta ylläpito ei ole vastuussa mahdollisista tietomurroista.
-{SITE_NAME} on ei-kaupallinen sivusto ja ylläpito ei vastaa tietojen säilymisestä, kuvien varmuuskopioinnista eikä palvelun toimivuudesta.
-<br /><br />
-Tämä sivusto käyttää evästeitä tallentaakseen tietoa koneellesi. Evästeiden tarkoitus on ainoastaan helpottaa sivuston käyttöä. Sähköpostiosoitetta käytetään vain rekisteröintitietojen varmistamiseen.<br />
-<br />
-
-<br />
-Klikkaamalla 'Hyväksyn' hyväksyt nämä ehdot.
-EOT;
-
-$lang_register_php = array(
-  'page_title' => 'Rekisteröinti',
-  'term_cond' => 'Käyttösopimus',
-  'i_agree' => 'Hyväksyn',
-  'submit' => 'Lähetä rekisteröinti',
-  'err_user_exists' => 'Nimimerkki on jo käytössä. Valitse jokin toinen.',
-  'err_password_mismatch' => 'Salasanat eivät täsmää. Kirjoita ne uudelleen.',
-  'err_uname_short' => 'Nimimerkin on oltava vähintään 2 merkkiä pitkä.',
-  'err_password_short' => 'Salasanan on oltava vähintään 2 merkkiä pitkä.',
-  'err_uname_pass_diff' => 'Nimimerkin ja salasanan on oltava eri.',
-  'err_invalid_email' => 'Sähköpostiosoite on virhellinen.',
-  'err_duplicate_email' => 'Joku on jo rekisteröitynyt samalla sähköpostiosoitteella.',
-  'enter_info' => 'Anna rekisteröintitiedot.',
-  'required_info' => 'Pakolliset tiedot',
-  'optional_info' => 'Vapaaehtoiset tiedot',
-  'username' => 'Nimimerkki',
-  'password' => 'Salasana',
-  'password_again' => 'Salasana uudelleen',
-  'email' => 'Sähköpostiosoite',
-  'location' => 'Sijainti',
-  'interests' => 'Kiinnostukset',
-  'website' => 'Kotisivu',
-  'occupation' => 'Ammatti',
-  'error' => 'VIRHE',
-  'confirm_email_subject' => '%s - Rekisteröintivarmistus',
-  'information' => 'Information',
-  'failed_sending_email' => 'Rekisteröinnin varmistavaa sähköpostia ei voitu lähettää!',
-  'thank_you' => 'Kiitos rekisteröitymisestä.<br /><br />Tilisi täytyy vielä aktivoida. Valitsemaasi sähköpostiosoitteeseen on lähetty ohjeet käyttäjätilisi aktivointiin.',
-  'acct_created' => 'Käyttäjätilisi on nyt luotu. Voit kirjautua sisään käyttämällä tunnustasi sekä salasanaasi',
-  'acct_active' => 'Käyttäjätilisi on nyt aktivoitu. Voit kirjautua sisään käyttämällä tunnustasi sekä salasanaasi',
-  'acct_already_act' => 'Tilisi on jo aktiivinen!', //cpg1.4
-  'acct_act_failed' => 'Tiliäsi ei voida aktivoida!',
-  'err_unk_user' => 'Valittua käyttäjää ei löydy!',
-  'x_s_profile' => 'Asetukset käyttäjälle %s',
-  'group' => 'Ryhmä',
-  'reg_date' => 'Liittynyt',
-  'disk_usage' => 'Käytetty levytila',
-  'change_pass' => 'Vaihda salasana',
-  'current_pass' => 'Nykyinen salasana',
-  'new_pass' => 'Uusi salasana',
-  'new_pass_again' => 'Uusi salasana uudelleen',
-  'err_curr_pass' => 'Nykyinen salasana on väärin',
-  'apply_modif' => 'Hyväksy muutokset',
-  'change_pass' => 'Vaihda salasana',
-  'update_success' => 'Profiilisi on päivitetty',
-  'pass_chg_success' => 'Salasanasi on vaihdettu',
-  'pass_chg_error' => 'Salasanaasi ei vaihdettu',
-  'notify_admin_email_subject' => '%s - Rekisteröinti-ilmoitus',
-  'last_uploads' => 'Viimeisin lisätty tiedosto.<br />Klikkaa nähdäksesi kaikki lisäykset käyttäjältä', //cpg1.4
-  'last_comments' => 'Viimeisin kommentti.<br />Klikkaa nähdäksesi kaikki kommentit käyttäjältä', //cpg1.4
-  'notify_admin_email_body' => 'Uusi käyttäjä nimeltä "%s" rekisteröityi galleriaasi',
-  'pic_count' => 'Lisätyt kuvat', //cpg1.4
-  'notify_admin_request_email_subject' => '%s - Rekisteröinti-ilmoitus', //cpg1.4
-  'thank_you_admin_activation' => 'Kiitos.<br /><br />Tilisi aktivointipyyntö lähetettiin ylläpidolle. Saat sähköpostin, jos pyyntö hyväksytään.', //cpg1.4
-  'acct_active_admin_activation' => 'Tili on nyt aktiivinen ja käyttäjälle lähetettiin sähköposti.', //cpg1.4
-  'notify_user_email_subject' => '%s - Aktivointi-ilmoitus', //cpg1.4
-);
-
-$lang_register_confirm_email = <<<EOT
-Kiitos rekisteröitymisestä keikkakuvat.net - sivustolle.
-
-Aktivoidaksesi tilisi käyttäjätunnuksella "{USER_NAME}", klikkaa alla olevaa linkkiä tai kopioi ja liitä se selaimeesi.
-
-<a href="{ACT_LINK}">{ACT_LINK}</a>
-
-Terveisin,
+Terveisin
 
 Sivuston {SITE_NAME} ylläpito
 
 EOT;
 
-$lang_register_approve_email = <<<EOT
-Uusi käyttäjä nimeltä "{USER_NAME}" rekisteröityi galleriaasi.
+$lang_forgot_passwd_php['reset_email'] = <<< EOT
+Hei
 
+Tässä on pyytämäsi uusi salasana:
+
+Käyttäjätunnus: {USER_NAME}
+Salasana:  {PASSWORD}
+
+Siirry osoitteeseen <a href="{SITE_LINK}">{SITE_LINK}</a> kirjautuaksesi sisään.
+
+
+Terveisin
+
+Sivuston {SITE_NAME} ylläpito
+
+EOT;
+}
+
+// ------------------------------------------------------------------------- //
+// File groupmgr.php
+// ------------------------------------------------------------------------- //
+if (defined('GROUPMGR_PHP')) {
+$lang_groupmgr_php['group_manager'] = 'Ryhmien hallinta'; // cpg1.5.x
+$lang_groupmgr_php['group_name'] = 'Ryhmä';
+$lang_groupmgr_php['permissions'] = 'Oikeudet';
+$lang_groupmgr_php['public_albums'] = 'Julkisiin albumeihin lisääminen';
+$lang_groupmgr_php['personal_gallery'] = 'Oma galleria';
+$lang_groupmgr_php['disk_quota'] = 'Levytila';
+$lang_groupmgr_php['rating'] = 'Äänestys';
+$lang_groupmgr_php['ecards'] = 'E-kortit';
+$lang_groupmgr_php['comments'] = 'Kommentit';
+$lang_groupmgr_php['allowed'] = 'Sallittu';
+$lang_groupmgr_php['approval'] = 'Hyväksyntä';
+$lang_groupmgr_php['create_new_group'] = 'Luo uusi ryhmä';
+$lang_groupmgr_php['del_groups'] = 'Poista valitut ryhmät';
+$lang_groupmgr_php['confirm_del'] = 'Varoitus, kun poistat ryhmän, siihen kuuluvat käyttäjät siirretään \'Rekisteröityneet\' -ryhmään!\n\nHaluatko jatkaa?'; // js-alert
+$lang_groupmgr_php['title'] = 'Hallitse käyttäjäryhmiä';
+$lang_groupmgr_php['reset_to_default'] = 'Ota käyttöön oletusnimi (%s) - suositeltava!';
+$lang_groupmgr_php['error_group_empty'] = 'Ryhmätaulu on tyhjä!<br /><br />Oletusryhmät luotu, päivitä tämä sivu';
+$lang_groupmgr_php['explain_greyed_out_title'] = 'Miksi tämä rivi on harmaana?';
+$lang_groupmgr_php['explain_guests_greyed_out_text'] = 'Tämän ryhmän asetuksia ei voida muuttaa koska valitsit asetuksen &quot; Salli kirjautumattomat käyttäjät (vieraat tai anomyynit)&quot; vaihtoehdoksi &quot;Ei&quot; asetukset -sivulla. Kaikki vieraat (ryhmän %s jäsenet) eivät voi tehdä muuta kuin kirjautua. Tämän vuoksi ryhmäasetukset eivät vaikuta heihin.';
+$lang_groupmgr_php['group_assigned_album'] = 'ryhmän albumi(t)';
+$lang_groupmgr_php['access_level'] = 'Pääsyoikeus'; // cpg1.5
+$lang_groupmgr_php['thumbnail_intermediate_full'] = 'pienoiskuva, keskikokoinen kuva ja täysikokoinen kuva'; // cpg1.5
+$lang_groupmgr_php['thumbnail_intermediate'] = 'pienoiskuva ja keskikokoinen kuva'; // cpg1.5
+$lang_groupmgr_php['thumbnail_only'] = 'vain pienoiskuva'; // cpg1.5
+$lang_groupmgr_php['none'] = 'ei mitään'; // cpg1.5
+}
+
+// ------------------------------------------------------------------------- //
+// File index.php
+// ------------------------------------------------------------------------- //
+if (defined('INDEX_PHP')){
+$lang_index_php['welcome'] = 'Tervetuloa!';
+
+$lang_album_admin_menu['confirm_delete'] = 'Haluatko varmasti POISTAA tämän albumin? \\nKaikki kuvat ja kommentit poistetaan samalla.'; // js-alert
+$lang_album_admin_menu['delete'] = 'Poista';
+$lang_album_admin_menu['modify'] = 'Ominaisuudet';
+$lang_album_admin_menu['edit_pics'] = 'Muokkaa tiedostoja';
+$lang_album_admin_menu['cat_locked'] = 'Tämän albumin muokkaus on estetty'; // cpg1.5.x
+
+$lang_list_categories['home'] = 'Etusivu';
+$lang_list_categories['stat1'] = '[pictures] kuvaa [albums] albumissa, [cat] kategoriaa ja [comments] kommenttia. Kuvia katseltu [views] kertaa.'; // do not translate the stuff in square brackets
+$lang_list_categories['stat2'] = '[pictures] kuvaa [albums] albumissa. Katseltu [views] kertaa.'; // do not translate the stuff in square brackets
+$lang_list_categories['xx_s_gallery'] = '%s:n galleria';
+$lang_list_categories['stat3'] = '[pictures] kuvaa [albums] albumissa, [comments] kommenttia. Katseltu [views] kertaa.'; // do not translate the stuff in square brackets
+
+$lang_list_users['user_list'] = 'Käyttäjälista';
+$lang_list_users['no_user_gal'] = 'Käyttäjägallerioita ei ole';
+$lang_list_users['n_albums'] = '%s albumi(a)';
+$lang_list_users['n_pics'] = '%s tiedosto(a)';
+
+$lang_list_albums['n_pictures'] = '%s tiedostoa';
+$lang_list_albums['last_added'] = ', viimeisin lisätty %s';
+$lang_list_albums['n_link_pictures'] = '%s linkitettyä tiedostoa';
+$lang_list_albums['total_pictures'] = '%s tiedostoa yhteensä';
+$lang_list_albums['alb_hits'] = 'Albumia katseltua %s kertaa'; // cpg1.5
+$lang_list_albums['from_category'] = ' - kategoriasta '; // cpg1.5
+}
+
+// ------------------------------------------------------------------------- //
+// File install.php
+// ------------------------------------------------------------------------- //
+
+if (defined('INSTALL_PHP')) {
+$lang_install['already_succ'] = 'Asentaja on jo ajettu kerran ja on nyt lukittu.';
+$lang_install['already_succ_explain'] = 'Jos haluat käyttää asentajaa toisen kerran, sinun tulee poistaa tiedosto \'include/config.inc.php\', joka luotiin Copperminen asennushakemistoon. Voit poistaa tiedoston FTP -ohjelmalla.';
+$lang_install['cant_read_tmp_conf'] = 'Asentaja ei voinut lukea väliaikaista asetustiedostoa %s.';
+$lang_install['cant_write_tmp_conf'] = 'Asentaja ei voinut kirjoittaa väliaikaiseen asetustiedostoon %s.';
+$lang_install['review_permissions'] = 'Tarkista hakemistojen oikeudet';
+$lang_install['change_lang'] = 'Vaihda kieltä';
+$lang_install['check_path'] = 'Tarkista polku';
+$lang_install['continue'] = 'Seuraava vaihe';
+$lang_install['conv_said'] = 'Muunnosohjelma sanoi:';
+$lang_install['license_info'] = 'Coppermine on kuva/multimedia galleriapaketti, joka on julkaistu GNU GPL v3 lisenssillä. Asentamalla hyväksyt Copperminen lisenssin:';
+$lang_install['cpg_info_frames'] = 'Selaimesi ei näyttäisi tukevan sisäisiä kehyksiä. Voit lukea lisenssin Copperminen dokumentaatiosta, joka tuli paketin mukana.';
+$lang_install['license'] = 'Copperminen lisenssin hyväksyntä';
+$lang_install['create_table'] = 'Luodaan taulua \'%s\'.';
+$lang_install['db_populating'] = 'Yritetään lisätä dataa tietokantaan.';
+$lang_install['db_alr_populated'] = 'Vaadittu data on jo tietokannassa.';
+$lang_install['dir_ok'] = 'Löydetty hakemisto';
+$lang_install['directory'] = 'Hakemisto';
+$lang_install['email'] = 'Sähköpostiosoite';
+$lang_install['email_no_match'] = 'Sähköpostiosoitteet eivät täsmää tai ovat virheellisiä.';
+$lang_install['email_verif'] = 'Tarkista sähköpostiosoite';
+$lang_install['err_cpgnuke'] = '<h1>VIRHE</h1>Näyttäisi siltä, että yrittäisit asentaa Copperminen perusversiota Nuke-portaalisi.<br />Tätä versiota voidaan käyttää vain yksinään!<br />Jotkin palvelinkonfiguraatiot saattavat näyttää tämän varoituksen vaikka sinulla ei olisi aennettuna Nuke portaalia - tässä tapauksessa voit <a href="%s?continue_anyway=1">jatkaa</a> huoletta asennusta. Jos käytät Nuke portaalia, niin saatat olla kiinnostunut <a href=\"http://www.cpgnuke.com/\">CpgNuke:sta</a> tai käyttää yhtä (tukemattomista)<a href=\"http://sourceforge.net/project/showfiles.php?group_id=89658&amp;package_id=95984\">Copperminen porttauksista</a> - älä jatka!';
+$lang_install['error'] = 'VIRHE';
+$lang_install['error_need_corr'] = 'Seuraavat virheet havaittiin ja ne pitää korjata ennen kuin voit jatkaa:';
+$lang_install['finish'] = 'Viimeistele asennus';
+$lang_install['gd_note'] = '<strong>Tärkeää :</strong> vanhemmat versiot GD grafikkakirjastosta tukevat vain JPEG - ja PNG-kuvia. Tässä tapauksessa skripti ei voi luoda pienoiskuvia GIF kuville.';
+$lang_install['go_to_main'] = 'Etusivulle';
+$lang_install['im_no_convert_ex'] = 'Asentaja löysi ImageMagick \'konvertointi\' ohjelman \'%s\':sta, mutta skripti ei voinut ajaa sitä.<br /><br />Harkitse GD:n käyttämistä ImageMagick:in sijaan.';
+$lang_install['im_not_found'] = 'Asentaja yritti etsiä ImageMagick:ia, mutta se ei voinut todeta ImageMagick:in olemassa oloa tai asentaja kohtasi virheen. <br />Coppermine voi käyttää <a href="http://www.imagemagick.org/">ImageMagick</a> \'konvertointi\' ohjelmaa luomaan pienoiskuvan. ImageMagick:in luomien kuvien laatu on parempi kuin GD1:n, mutta vastaavia kuin GD2:n.<br /><br />Jos ImageMagick on asennettu järjestelmääsi ja jos haluat käyttää sitä, <br />sinun tulee antaa alle täydellinen polku \'konvertointi\' ohjelmalle. <br />Windows:issa polku näyttää seuraavalta: \'c:/ImageMagick/\', eikä siinä saa olla välilyöntejä, Unix:issa se näyttää tältä: \'/usr/bin/\'.<br /><br />Jos et tiedä onko sinulla ImageMagick:ia vai ei, jätä tämä kenttä tyhjäksi - asentaja yrittää silloin automaattisesti käytää GD2:ta oletuksena (joka on useimmilla käyttäjillä). <br />Voit vaihtaa tämän myöhemmin (Copperminen asetuksista), joten älä ole huolissasi, jos et tiedä mitä tähän tulisi syöttää - jätä se tyhjäksi.';
+$lang_install['im_packages'] = 'Palvelimesi tukee seuraavia kuvaohjelmia';
+$lang_install['im_path'] = 'ImageMagick:in polku:';
+$lang_install['im_path_space'] = 'ImageMagick:in polku (\'%s\') sisältää vähintään yhden välilyönnin. Tämä tuottaa ongelmia skriptille.<br /><br />Sinun pitää siirtää ImageMagick toiseen hakemistoon.';
+$lang_install['installation'] = 'asennus';
+$lang_install['installer_locked'] = 'Asentaja on lukittu';
+$lang_install['installer_selected'] = 'Asentaja valitsi:';
+$lang_install['inv_im_path'] = 'Asentaja ei löydä hakemistoa \'%s\', jonka annoit ImageMagick:ille tai sinulla ei ole oikeuksia käyttää sitä. Tarkista hakemiston nimen oikeinkirjoitus ja että sinulla on pääsyoikeudet annettuun hakemistoon.';
+$lang_install['lets_go'] = 'Aloita!';
+$lang_install['mysql_create_btn'] = 'Luo';
+$lang_install['mysql_create_db'] = 'Luo uusi MySQL-tietokanta';
+$lang_install['mysql_db_name'] = 'MySQL-tietokannan nimi';
+$lang_install['mysql_error'] = 'MySQL-virhe: ';
+$lang_install['mysql_host'] = 'MySQL-palvelin<br />(localhost on usein OK)';
+$lang_install['mysql_username'] = 'MySQL:n käyttäjätunnus'; // cpg1.5
+$lang_install['mysql_password'] = 'MySQL:n salasana'; // cpg1.5
+$lang_install['mysql_no_create_db'] = 'MySQL-tietokantaa ei voitu luoda.';
+$lang_install['mysql_no_sel_dbs'] = 'Saatavilla olevia MySQL-tietokantoja ei voitu hakea';
+$lang_install['mysql_succ'] = 'Yhteys muodostettu onnistuneesti tietokantaan';
+$lang_install['mysql_tbl_pref'] = 'MySQL-taulun etuliite';
+$lang_install['mysql_test_connection'] = 'Testaa yhtys';
+$lang_install['mysql_wrong_db'] = 'MySQL ei löytänyt tietokantaa \'%s\', tarkista antamasi arvo';
+$lang_install['n_a'] = 'Ei käytössä';
+$lang_install['no_admin_email'] = 'Ole hyvä ja anna ylläpitäjän sähköpostiosoite';
+$lang_install['no_admin_password'] = 'Ole hyvä ja anna ylläpitäjän salasana';
+$lang_install['no_admin_username'] = 'Ole hyvä ja anna ylläpitäjän käyttäjätunnus';
+$lang_install['no_dir'] = 'Hakemistoa ei ole';
+$lang_install['no_gd'] = 'PHP asennuksessa ei näyttäisi olevan \'GD\' -grafiikkakirjastoa etkä ole ilmoittanut, että haluat käyttää ImageMagick:ia. Coppermine konfiguroitiin käyttämään GD2:sta, koska automaattinen GD:n tunnistus epäonnistuu joskus. Skriptin pitäisi toimia, jos GD on asennettuna järjestelmääsi, muusssa tapauksessa sinun tarvitsee asentaa ImageMagick.';
+$lang_install['no_mysql_conn'] = 'MySQL-yhteyden luonti epäonnistui, ole hyvä ja tarkista antamasi MySQL-tiedot';
+$lang_install['no_mysql_support'] = 'PHP:n MySQL-tukea ei ole otettu käyttöön.';
+$lang_install['no_thumb_method'] = 'Sinun tarvitsee valita kuvan käsittelijäohjelma (GD/IM)';
+$lang_install['nok'] = 'Virheellinen';
+$lang_install['not_here_yet'] = 'Täällä ei ole vielä mitään, klikkaa %stästä%s palataksesi takaisin.';
+$lang_install['ok'] = 'OK';
+$lang_install['on_q'] = 'kyselyssä';
+$lang_install['or'] = 'tai';
+$lang_install['pass_err'] = 'Salasanat eivät täsmää, käytit kiellettyjä merkkejä tai et antanut toista.';
+$lang_install['password'] = 'Salasana';
+$lang_install['password_verif'] = 'Tarkista salasana';
+$lang_install['perm_error'] = '\'%s\':n oikeudet ovat asetettu %s:ksi, aseta ne seuraaviksi';
+$lang_install['perm_ok'] = 'Tiettyjen hakemistojen oikeudet ovat tarkistettu ja ne näyttäisi olevan oikein. <br />Voit jatkaa seuraavaan vaiheeseen.';
+$lang_install['perm_not_ok'] = 'Joidenkin hakemistojen oikeudet eivät ole asetettu oikein.<br />Ole hyvä vaihda "Virheellinen" merkkattujen hakemistojen oikeudet.'; // cpg1.5
+$lang_install['please_go_back'] = 'Ole hyvä ja %sklikkaa tästä%s palataksesi takaisin ja korjataksesi tämän ongelman ennen kuin jatkat.';
+$lang_install['populate_db'] = 'Luo tietokanta';
+$lang_install['ready_to_roll'] = '<a href="index.php">Coppermine</a> on nyt konfiguroitu ja on valmis käytettäväksi.<br /><br /><a href="login.php">Kirjaudu sisään</a> käyttäen antammiasi tietoja ylläpitäjän tilillesi.';
+$lang_install['sect_create_adm'] = 'Tämä osa tarvitsee tietoa luodaksesi sinulle Copperminen ylläpitäjän tilin. Käytä vain alphanumeerisia merkkejä. Syötä tiedot huolella!';
+$lang_install['sect_mysql_info'] = 'Tämä osa tarvitsee tietoa käyttääksesi MySQL-tietokantaasi.<br />Jos et tiedä niitä, ota yhteyttä palveluntarjoajasi tukeen.';
+$lang_install['sect_mysql_sel_db'] = 'Tässä voit valita Copperminen kanssa käytettävän tietokannan.<br />Jos MySQL-tililläsi on riittävät oikeudet, voit luoda uuden tietokannan asentajan avulla tai voit käyttää olemassa olevia tietokantoja. Jos et pidä kummastakaan vaihtoehdosta, sinun pitää ensin luoda tietokanta Copperminen asentajan ulkopuolella ja palata sitten tähän takaisin valiten juuri luomasi tietokanta listasta. Voit myös vaihtaa taulun etuliitteen (älä kuitenkaan käytä pistettä), mutta alkuperäisen etuliitteen säilyttäminen on suositeltavaa.';
+$lang_install['select_lang'] = 'Valitse oletuskieli: ';
+$lang_install['sql_file_not_found'] = 'Tiedostoa \'%s\' ei löytynyt. Tarkista, että olet lähettänyt kaikki Copperminen tiedostot palvelimellesi.';
+$lang_install['status'] = 'Tila';
+$lang_install['subdir_called'] = 'Alahakemiston \'%s\' pitäisi normaalisti olla olemassa kansiossa, johon purit Copperminen.<br />Asentaja ei löydä kyseistä hakemistoa. Tarkista, että lähetit kaikki Copperminen tiedostot palvelimellesi.';
+$lang_install['title_admin'] = 'Luo Copperminen ylläpitäjä';
+$lang_install['title_dir_check'] = 'Tarkistetaan hakemistojen oikeuksia';
+$lang_install['title_file_check'] = 'Tarkistetaan asennustiedostoja';
+$lang_install['title_finished'] = 'Asennus valmis';
+$lang_install['title_imp'] = 'Kuvankäsittelijän valinta';
+$lang_install['title_imp_test'] = 'Testataan kuvankäsittelijää';
+$lang_install['title_mysql_db_sel'] = 'MySQL-tietokannan valinta';
+$lang_install['title_mysql_pop'] = 'Luodaan tietokannan rakennetta';
+$lang_install['title_mysql_user'] = 'MySQL-käyttäjän todennus';
+$lang_install['title_welcome'] = 'Tervetuloa Copperminen asennukseen';
+$lang_install['tmp_conf_error'] = 'Väliaikaisen asetustiedoston kirjoitus epäonnnistui, varmista, että \'include\' -hakemisto on skriptille kirjoitettava.';
+$lang_install['tmp_conf_ser_err'] = 'Asennuksessa tapahtui vakava virhe, kokeile sivun uudelleen lataamista tai aloita alusta poistamalla \'include/config.tmp\' -tiedoston.';
+$lang_install['try_again'] = 'Yritä uudestaan!';
+$lang_install['unable_write_config'] = 'Asetustiedostoa ei voitu kirjoittaa';
+$lang_install['user_err'] = 'Ylläpitäjän käyttäjätunnuksesa voi olla vain alphanumeerisia merkkejä ja se ei voi olla tyhjä.';
+$lang_install['username'] = 'Käyttäjätunnus';
+$lang_install['your_admin_account'] = 'Ylläpitäjän tilisi';
+$lang_install['no_cookie'] = 'Selaimesi ei hyväksynyt evästettämme. On suositeltavaa sallia evästeet.';
+$lang_install['no_javascript'] = 'Selaimesi Javascript -tuki näyttäisi olevan pois päältä - on erittäin suositeltavaa ottaa se käyttöön.';
+$lang_install['register_globals_detected'] = 'Näyttäisi siltä, että PHP:si asetuksissa \'register_globals\' on otettu käyttöönenabled - sinun tulisi ottaa se pois käytöstä turvallisuus syistä.';
+$lang_install['more'] = 'lisää';
+$lang_install['version_undetected'] = 'Asentaja ei pystynyt selvittämään %s.n versiota. Tarkista, että se on vähintään %s.';
+$lang_install['version_incompatible'] = 'Asentaja löysi palvelimeltasi epäyhteensopivan version (%s) %s:sta.<br />Tarkista, ett£ä käytät yhteensopivaa versiota (%s tai uudempi) ennen kuin jatkat!';
+$lang_install['read_gif'] = '.gif tiedoston lukeminen/kirjoittaminen';
+$lang_install['read_png'] = '.png tiedoston lukeminen/kirjoittaminen';
+$lang_install['read_jpg'] = '.jpg tiedoston lukeminen/kirjoittaminen';
+$lang_install['write_error'] = 'Luotua kuvaa ei voitu kirjoittaa  levylle';
+$lang_install['read_error'] = 'Lähdekuvaa ei voitu lukea';
+$lang_install['combine_error'] = 'Lähdekuvia ei voitu yhdistää';
+$lang_install['text_error'] = 'Lähdekuvaan ei voitu lisätä tekstiä';
+$lang_install['scale_error'] = 'Lähdekuvaa ei voitu skaalata';
+$lang_install['pixels'] = 'pikseliä';
+$lang_install['combine'] = 'Kahden kuvan yhdistäminen';
+$lang_install['text'] = 'Tekstin lisääminen kuvaan';
+$lang_install['scale'] = 'Kuvan skaalaus';
+$lang_install['generated_image'] = 'Luotu kuva';
+$lang_install['reference_image'] = 'Referenssikuva';
+$lang_install['imp_test_error'] = 'Yhdessä tai useammassa testissä tapahtui virhe, ole hyvä ja tarkista, että valitsit oikean kuvankäsittelijän ja että se on konfiguroitu oikein!';
+$lang_install['writable'] = 'Kirjoitettavissa';
+$lang_install['not_writable'] = 'Ei ole kirjoitettavissa';
+$lang_install['not_exist'] = 'Ei ole olemassa';
+$lang_install['old_install'] = 'Tämä on uusi asennusvelho. Klikkaa %stästä%s käyttääksesi vanhaa asentajaa.'; //cpg1.5
+
+}
+
+// ------------------------------------------------------------------------- //
+// File keywordmgr.php
+// ------------------------------------------------------------------------- //
+if (defined('KEYWORDMGR_PHP')) {
+$lang_keywordmgr_php['title'] = 'Hallitse avainsanoja';
+$lang_keywordmgr_php['search'] = 'Hae';
+$lang_keywordmgr_php['keyword_test_search'] = 'Hae %s uudessa ikkunassa';
+$lang_keywordmgr_php['keyword_del'] = 'Poista avainsana %s';
+$lang_keywordmgr_php['confirm_delete'] = 'Haluatko varmasti poistaa avainsanan %s koko galleriasta?'; // js-alert
+$lang_keywordmgr_php['change_keyword'] = 'Muuta avainsanaa';
+}
+
+// ------------------------------------------------------------------------- //
+// File langmgr.php
+// ------------------------------------------------------------------------- //
+if (defined('LANGMGR_PHP')) {
+$lang_langmgr_php['title'] = 'Kielien hallinta';
+$lang_langmgr_php['english_language_name'] = 'englanti';
+$lang_langmgr_php['native_language_name'] = 'Natiivi';
+$lang_langmgr_php['custom_language_name'] = 'Oma';
+$lang_langmgr_php['language_name'] = 'Kielen nimi';
+$lang_langmgr_php['language_file'] = 'Kielen tiedosto';
+$lang_langmgr_php['flag'] = 'Lippu';
+$lang_langmgr_php['file_available'] = 'Saatavilla';
+$lang_langmgr_php['enabled'] = 'Käytössä';
+$lang_langmgr_php['complete'] = 'Täydellinen';
+$lang_langmgr_php['default'] = 'Oletus';
+$lang_langmgr_php['missing'] = 'puuttuva';
+$lang_langmgr_php['broken'] = 'näyttäisi olevan rikki tai saavuttamattomissa';
+$lang_langmgr_php['exists_in_db_and_file'] = 'on olemassa tietokannassa ja tiedostona';
+$lang_langmgr_php['exists_as_file_only'] = 'on olemassa vain tiedostona';
+$lang_langmgr_php['pick_a_flag'] = 'Valitse yksi';
+$lang_langmgr_php['replace_x_with_y'] = 'Korvaa %s %s:lla';
+$lang_langmgr_php['tanslator_information'] = 'Tietoa kääntäjästä';
+$lang_langmgr_php['cpg_version'] = 'Copperminen versio';
+$lang_langmgr_php['hide_details'] = 'Piilota tiedot';
+$lang_langmgr_php['show_details'] = 'Näytä tiedot';
+$lang_langmgr_php['loading'] = 'Ladataan';
+$lang_langmgr_php['english_missing'] = 'Englannin kielen tiedosto puuttuu, vaikka sitä ei tulisi koskaan poistaa. Sinun tarvitsee palauttaa tiedosto heti palvelimelle.';
+$lang_langmgr_php['enable_at_least_one'] = 'Sinun tarvitsee ottaa vähintään yksi kieli käyttöön, jotta galleria toimisi.';
+$lang_langmgr_php['enable_default'] = 'Valitsit oletuskieleksi kielen, jota ei ole otettu käyttöön. Valitse toinen oletuskieli tai ota valitsemasi kieli käyttöön!';
+$lang_langmgr_php['available_default'] = 'Valitsit oletuskieleksi kielen, jota ei ole edes saatavilla. Valitse toinen oletuskieli!';
+$lang_langmgr_php['version_does_not_match'] = 'Tiedoston versio ei täsmää Copperminen kanssa. Käytä sitä varoen ja testaa se huolella!';
+$lang_langmgr_php['no_version'] = 'Versioinformaatiota ei voitu hakea. Se johtuu todennäköisesti siitä, että kielitiedosto ei toimi ollenkaan tai se ei ole kielitiedosto.';
+$lang_langmgr_php['filesize'] = 'Tiedostokoko %s on epäuskottava';
+$lang_langmgr_php['content_missing'] = 'Tiedosto ei näyttäisi sisältävän tarvittavaa dataaa,joten se ei ole todennäköisesti kelvollinen.';
+$lang_langmgr_php['status'] = 'Tila';
+$lang_langmgr_php['default_language'] = 'Oletuskieleksi asetettiin %s';
+}
+
+// ------------------------------------------------------------------------- //
+// File login.php
+// ------------------------------------------------------------------------- //
+if (defined('LOGIN_PHP')) {
+$lang_login_php['login'] = 'Kirjaudu sisään';
+$lang_login_php['enter_login_pswd'] = 'Syötä käyttäjätunnuksesi ja salasanasi kirjautuaksesi';
+$lang_login_php['username'] = 'Käyttäjätunnus';
+$lang_login_php['email'] = 'Sähköpostiosoite'; // cpg1.5
+$lang_login_php['both'] = 'Käyttäjätunnus tai sähköpostiosoite'; // cpg1.5
+$lang_login_php['password'] = 'Salasana';
+$lang_login_php['remember_me'] = 'Muista minut';
+$lang_login_php['welcome'] = 'Tervetuloa %s ...';
+$lang_login_php['err_login'] = 'Virhe kirjautuessa. Yritä uudelleen.';
+$lang_login_php['err_already_logged_in'] = 'Olet jo kirjautunut sisään!';
+$lang_login_php['forgot_password_link'] = 'Unohdin salasanani';
+$lang_login_php['cookie_warning'] = 'Varoitus! Selaimesi ei hyväksy evästeitä';
+$lang_login_php['send_activation_link'] = 'Etkö saanut aktivointilinkkiäsi?';
+$lang_login_php['force_login'] = 'Sinun on kirjauduttava sisään nähdäksesi tämän sivun sisältö'; // cpg1.5
+$lang_login_php['force_login_title'] = 'Kirjaudu sisään jatkaaksesi'; // cpg1.5
+}
+
+// ------------------------------------------------------------------------- //
+// File logout.php
+// ------------------------------------------------------------------------- //
+
+if (defined('LOGOUT_PHP')) {
+$lang_logout_php['logout'] = 'Kirjaudu ulos';
+$lang_logout_php['bye'] = 'Hei hei %s ...';
+$lang_logout_php['err_not_logged_in'] = 'Et ole kirjautunut sisään!';  // cpg1.5
+}
+
+// ------------------------------------------------------------------------- //
+// File minibrowser.php
+// ------------------------------------------------------------------------- //
+if (defined('MINIBROWSER_PHP')) {
+$lang_minibrowser_php['up'] = 'yksi taso ylös';
+$lang_minibrowser_php['current_path'] = 'nykyinen polku';
+$lang_minibrowser_php['select_directory'] = 'valitse hakemisto';
+$lang_minibrowser_php['click_to_close'] = 'Klikkaa kuvaa sulkeaksesi tämän ikkunan';
+$lang_minibrowser_php['folder'] = 'Kansio'; // cpg1.5
+}
+
+// ------------------------------------------------------------------------- //
+// File mode.php
+// ------------------------------------------------------------------------- //
+if (defined('MODE_PHP')) {
+$lang_mode_php[0] = 'Otetaan ylläpitotyökalujen näyttäminen pois päältä...'; // cpg1.5
+$lang_mode_php[1] = 'Otetaan ylläpitotyökalujen näyttäminen päälle...'; // cpg1.5
+$lang_mode_php['news_hide'] = 'Piilotetaan uutisia...'; // cpg1.5
+$lang_mode_php['news_show'] = 'Näytetään uutisia...'; // cpg1.5
+}
+
+// ------------------------------------------------------------------------- //
+// File modifyalb.php
+// ------------------------------------------------------------------------- //
+if (defined('MODIFYALB_PHP')) {
+$lang_modifyalb_php['upd_alb_n'] = 'Päivitä albumi %s';
+$lang_modifyalb_php['related_tasks'] = 'Samankaltaiset tehtävät'; // cpg1.5
+$lang_modifyalb_php['choose_album'] = 'Valitse albumi'; // cpg1.5
+$lang_modifyalb_php['general_settings'] = 'Yleiset asetukset';
+$lang_modifyalb_php['alb_title'] = 'Albumin otsikko';
+$lang_modifyalb_php['alb_cat'] = 'Albumin kategoria';
+$lang_modifyalb_php['alb_desc'] = 'Albumin kuvaus';
+$lang_modifyalb_php['alb_keyword'] = 'Albumin avainsanat';
+$lang_modifyalb_php['alb_thumb'] = 'Albumin pienoiskuva';
+$lang_modifyalb_php['alb_perm'] = 'Oikeudet albumiin';
+$lang_modifyalb_php['can_view'] = 'Albumia voivat katsella';
+$lang_modifyalb_php['can_upload'] = 'Vieraat voivat lisätä tiedostoja';
+$lang_modifyalb_php['can_post_comments'] = 'Vieraat voivat lisätä kommentteja';
+$lang_modifyalb_php['can_rate'] = 'Vieraat voivat äänestää';
+$lang_modifyalb_php['user_gal'] = 'Käyttäjägalleria';
+$lang_modifyalb_php['my_gal'] = '* Oma galleriani *'; // cpg 1.5
+$lang_modifyalb_php['no_cat'] = '* Ei kategoriaa *';
+$lang_modifyalb_php['alb_empty'] = 'Albumi on tyhjä';
+$lang_modifyalb_php['last_uploaded'] = 'Viimeisin lisätty';
+$lang_modifyalb_php['public_alb'] = 'Kaikki (julkinen albumi)';
+$lang_modifyalb_php['me_only'] = 'Vain minä';
+$lang_modifyalb_php['owner_only'] = 'Vain albumin omistaja (%s)';
+$lang_modifyalb_php['group_only'] = 'Ryhmän \'%s\' jäsenet';
+$lang_modifyalb_php['err_no_alb_to_modify'] = 'Tietokannassa ei ole muokattavia albumeita.';
+$lang_modifyalb_php['update'] = 'Päivitä albumi';
+$lang_modifyalb_php['reset_album'] = 'Resetoi albumi';
+$lang_modifyalb_php['reset_views'] = 'Resetoi näyttökertalaskuri &quot;0&quot;:ksi albumissa %s';
+$lang_modifyalb_php['reset_rating'] = 'Nollaa kaikki äänet albumista %s';
+$lang_modifyalb_php['delete_comments'] = 'Poista kaikki kommentit albumista %s';
+$lang_modifyalb_php['delete_files'] = 'Poista %slopullisesti%s kaikki kuvat albumista %s';
+$lang_modifyalb_php['views'] = 'näyttökertaa';
+$lang_modifyalb_php['votes'] = 'ääntä';
+$lang_modifyalb_php['comments'] = 'kommenttia';
+$lang_modifyalb_php['files'] = 'tiedostoa';
+$lang_modifyalb_php['submit_reset'] = 'lähetä muutokset';
+$lang_modifyalb_php['reset_views_confirm'] = 'Olen varma';
+$lang_modifyalb_php['notice1'] = '(*) riippuen %sryhmä%s asetuksista';  // do not translate the %s placeholders
+$lang_modifyalb_php['can_moderate'] = 'Albumia voi moderoida'; // cpg 1.5
+$lang_modifyalb_php['admins_only'] = 'Vain ylläpitäjät'; // cpg 1.5
+$lang_modifyalb_php['alb_password'] = 'Albumin salasana (uusi salasana)';
+$lang_modifyalb_php['alb_password_hint'] = 'Albumin salasanavihje';
+$lang_modifyalb_php['edit_files'] = 'Muokkaa tiedostoja';
+$lang_modifyalb_php['parent_category'] = 'Yläkategoria';
+$lang_modifyalb_php['thumbnail_view'] = 'Pienoiskuvanäkymä';
+$lang_modifyalb_php['random_image'] = 'Satunnainen kuva'; // cpg 1.5
+$lang_modifyalb_php['password_protect'] = 'Salasanasuojaa tämä albumi (rastita tehdäksesi niin)'; //cpg1.5
+}
+
+// ------------------------------------------------------------------------- //
+// File phpinfo.php
+// ------------------------------------------------------------------------- //
+if (defined('PHPINFO_PHP')) {
+$lang_phpinfo_php['php_info'] = 'PHP-info';
+$lang_phpinfo_php['explanation'] = 'Tämä teksti on PHP-funktion <a href="http://www.php.net/phpinfo">phpinfo()</a> luoma ja näytetään Copperminessa.';
+$lang_phpinfo_php['no_link'] = 'PHP-infon näyttäminen julkisesti voi olla tietoturvariski. Sen vuoksi tämä sivu on näkyvissä vain, jos olet kirjautunut sisään. Et voi antaa tämän sivun linkkiä muille, sillä heillä ei ole oikeuksia nähdä tätä sivua.';
+}
+
+// ------------------------------------------------------------------------- //
+// File picmgr.php
+// ------------------------------------------------------------------------- //
+if (defined('PICMGR_PHP')) {
+$lang_picmgr_php['pic_mgr'] = 'Kuvan hallinta';
+$lang_picmgr_php['confirm_modifs'] = 'Haluatko todellakin tehdä nämä muutokset?'; // cpg1.5 // js-alert
+$lang_picmgr_php['no_change'] = 'Et tehnyt muutoksia!';
+$lang_picmgr_php['no_album'] = '* Ei albumia *';
+$lang_picmgr_php['explanation_header'] = 'Järjestys otetaan huomioon vain, jos';
+$lang_picmgr_php['explanation1'] = 'ylläpito on asettanut asetuksiin kohtaan "Kuvien oletusjärjestys" arvoksi "Sijainti laskevasti" tai "Sijainti nousevasti". (Tämä on oletusasetus kaikille käyttäjille, mikäli he eivät olet tehneet yksittäisiä albumeita koskevia muutoksia).';
+$lang_picmgr_php['explanation2'] = 'käyttäjä on valinnut "Sijainti laskevasti" tai "Sijainti nousevasti" pienoiskuvasivulla (käyttäjäkohtainen asetus).';
+$lang_picmgr_php['change_album'] = 'Jos vaihdat albumia, tekemäsi muutokset menetetään!'; // cpg1.5 // js-alert
+$lang_picmgr_php['submit_reminder'] = 'Järjestysasetuksia ei tallenneta ennen kuin klikkaat &quot;Toteuta muutokset&quot;.'; // cpg1.5
+}
+
+
+// ------------------------------------------------------------------------- //
+// File pluginmgr.php
+// ------------------------------------------------------------------------- //
+if (defined('PLUGINMGR_PHP')){
+$lang_pluginmgr_php['confirm_uninstall'] = 'Haluatko varmasti POISTAA tämän lisäosan?';
+$lang_pluginmgr_php['confirm_remove'] = 'HUOMAA: Lisäosien API on otetettu pois päältä. Haluatko MANUAALISESTI POISTAA tämän lisäosan, ohittaen mahdolliset siivouskysymykset?'; // cpg1.5
+$lang_pluginmgr_php['confirm_delete'] = 'Halautko varmasti POISTAA tämän lisäosan?';
+$lang_pluginmgr_php['pmgr'] = 'Lisäosien hallinta';
+$lang_pluginmgr_php['explanation'] = 'Asenna / poista / hallitse lisäosia tämän sivun avulla.'; // cpg1.5
+$lang_pluginmgr_php['plugin_enabled'] = 'Ota lisäosien API käyttöön'; // cpg1.5
+$lang_pluginmgr_php['name'] = 'Nimi';
+$lang_pluginmgr_php['author'] = 'Tekijä';
+$lang_pluginmgr_php['desc'] = 'Kuvaus';
+$lang_pluginmgr_php['vers'] = 'v';
+$lang_pluginmgr_php['i_plugins'] = 'Asennetut lisäosat';
+$lang_pluginmgr_php['n_plugins'] = 'Asentamattomat lisäosat';
+$lang_pluginmgr_php['none_installed'] = 'Ei asennettuja';
+$lang_pluginmgr_php['operation'] = 'Toiminto';
+$lang_pluginmgr_php['not_plugin_package'] = 'Ladattu tiedosto ei ole lisäosapaketti.';
+$lang_pluginmgr_php['copy_error'] = 'Tapahtui virhe kopioidessa pakettia lisäosahakemistoon.';
+$lang_pluginmgr_php['upload'] = 'Lisää';
+$lang_pluginmgr_php['configure_plugin'] = 'Konfiguroi lisäosa';
+$lang_pluginmgr_php['cleanup_plugin'] = 'Poista lisäosa';
+$lang_pluginmgr_php['extra'] = 'Extra'; // cpg1.5
+$lang_pluginmgr_php['install_info'] = 'Asennustiedot'; // cpg1.5
+$lang_pluginmgr_php['plugin_disabled_note'] = 'Toiminto ei ole sallittu, koska lisäosien API ei ole käytössä.'; // cpg1.5
+$lang_pluginmgr_php['install'] = 'asenna'; // cpg1.5
+$lang_pluginmgr_php['uninstall'] = 'poista'; // cpg1.5
+$lang_pluginmgr_php['minimum_requirements_not_met'] = 'Vähimmäisvaatimuksia ei ole saavutettu'; // cpg1.5
+$lang_pluginmgr_php['confirm_version'] = 'Tämän lisäosan versiovaatimuksia ei voitu selvittää. Tämä tarkoittta usein sitä, että lisäosaa ei ole suunniteltu Copperminen versiollesi ja että se saattaa sekoittaa galleriasi. Jatketaanko joka tapauksessa (ei suositeltua)?'; // cpg1.5 // js-alert
+}
+
+// ------------------------------------------------------------------------- //
+// File ratepic.php
+// ------------------------------------------------------------------------- //
+if (defined('RATEPIC_PHP')) {
+$lang_rate_pic_php['already_rated'] = 'Olet jo antanut äänesi tälle kuvalle';
+$lang_rate_pic_php['rate_ok'] = 'Äänesi on kirjattu';
+$lang_rate_pic_php['forbidden'] = 'Et voi äänestää omia kuviasi.';
+}
+
+// ------------------------------------------------------------------------- //
+// File register.php & profile.php
+// ------------------------------------------------------------------------- //
+if (defined('REGISTER_PHP') || defined('PROFILE_PHP')) {
+$lang_register_php['disclamer'] = <<< EOT
+Vaikka sivuston {SITE_NAME} ylläpito yrittää poistaa kaiken sopimattoman materiaalin sivustolta niin nopeasti kuin mahdollista, sen on mahdotonta tarkistaa jokaista lisäystä. Ymmärrät siis, että sivuston viestit ja kuvat ovat käyttäjien mielipiteitä ja näkemyksiä (lukuunottamatta ylläpidon lisäyksiä), eikä ylläpitoa voida asettaa niistä vastuuseen.<br />
+<br />
+Sitoudut olemaan lähettämättä mitään loukkaavaa, säädytöntä, mautonta, herjaavaa, vihamielistä, uhkaavaa, seksuaalisesti suuntautunutta tai mitään muuta materiaalia, joka voisi loukata voimassa olevia lakeja. Hyväksyt, että ylläpidolla ja moderaattoreilla on oikeus poistaa tai muuttaa mitä tahansa materiaalia miten sen parhaaksi näkevät. Käyttäjänä hyväksyt, että lähettämäsi tieto tallennetaan tietokantaan. Tietoa ei lähetetä kolmansille osapuolille ilman lupaasi, mutta ylläpito ei ole vastuussa mahdollisista tietomurroista.<br />
+<br />
+Tämä sivusto käyttää evästeitä tallentaakseen tietoa koneellesi. Evästeiden tarkoitus on ainoastaan helpottaa sivuston käyttöä. Sähköpostiosoitetta käytetään vain rekisteröintitietojen varmistamiseen ja salasanan lähetykseen.<br />
+<br />
+Klikkaamalla 'Hyväksyn' hyväksyt nämä ehdot.
+EOT;
+$lang_register_php['page_title'] = 'Rekisteröinti';
+$lang_register_php['term_cond'] = 'Käyttösopimus';
+$lang_register_php['i_agree'] = 'Hyväksyn';
+$lang_register_php['submit'] = 'Lähetä rekisteröinti';
+$lang_register_php['err_user_exists'] = 'Nimimerkki on jo käytössä. Valitse jokin toinen.';
+$lang_register_php['err_global_pw'] = 'Virheellinen rekisteröitymisen globaali salasana'; // cpg1.5
+$lang_register_php['err_global_pass_same'] = 'Salasanasi tulisi olla eri kuin globaali salasana'; // cpg1.5
+$lang_register_php['err_duplicate_email'] = 'Joku on jo rekisteröitynyt samalla sähköpostiosoitteella';
+$lang_register_php['err_disclaimer'] = 'Sinun tulee hyväksyä käyttöehtosopimus'; // cpg1.5
+$lang_register_php['enter_info'] = 'Syötä rekisteröintitiedot';
+$lang_register_php['required_info'] = 'Pakolliset tiedot';
+$lang_register_php['optional_info'] = 'Vapaaehtoiset tiedot';
+$lang_register_php['username'] = 'Käyttäjätunnus';
+$lang_register_php['password'] = 'Salasana';
+$lang_register_php['password_again'] = 'Salasana uudelleen';
+$lang_register_php['global_registration_pw'] = 'Globaali rekisteröitymisen salasana'; // cpg1.5
+$lang_register_php['email'] = 'Sähköpostiosoite';
+$lang_register_php['location'] = 'Sijainti';
+$lang_register_php['interests'] = 'Kiinnostukset';
+$lang_register_php['website'] = 'Kotisivu';
+$lang_register_php['occupation'] = 'Ammatti';
+$lang_register_php['error'] = 'VIRHE';
+$lang_register_php['confirm_email_subject'] = '%s - Rekisteröintivarmistus';
+$lang_register_php['information'] = 'Info';
+$lang_register_php['failed_sending_email'] = 'Rekisteröinnin varmistavaa sähköpostia ei voitu lähettää!';
+$lang_register_php['thank_you'] = 'Kiitos rekisteröitymisestä.<br /><br />Valitsemaasi sähköpostiosoitteeseen on lähetty ohjeet käyttäjätilisi aktivointiin.';
+$lang_register_php['acct_created'] = 'Käyttäjätilisi on nyt luotu. Voit kirjautua sisään käyttämällä tunnustasi sekä salasanaasi';
+$lang_register_php['acct_active'] = 'Käyttäjätilisi on nyt aktivoitu. Voit kirjautua sisään käyttämällä tunnustasi sekä salasanaasi';
+$lang_register_php['acct_already_act'] = 'Tilisi on jo aktiivinen!';
+$lang_register_php['acct_act_failed'] = 'Tiliäsi ei voida aktivoida!';
+$lang_register_php['err_unk_user'] = 'Valittua käyttäjää ei löydy!';
+$lang_register_php['x_s_profile'] = 'Asetukset käyttäjälle %s';
+$lang_register_php['group'] = 'Ryhmä';
+$lang_register_php['reg_date'] = 'Liittynyt';
+$lang_register_php['disk_usage'] = 'Käytetty levytila';
+$lang_register_php['change_pass'] = 'Vaihda salasana';
+$lang_register_php['current_pass'] = 'Nykyinen salasana';
+$lang_register_php['new_pass'] = 'Uusi salasana';
+$lang_register_php['new_pass_again'] = 'Uusi salasana uudelleen';
+$lang_register_php['err_curr_pass'] = 'Nykyinen salasana on väärin';
+$lang_register_php['change_pass'] = 'Vaihda salasana';
+$lang_register_php['update_success'] = 'Profiilisi on päivitetty';
+$lang_register_php['pass_chg_success'] = 'Salasanasi on vaihdettu';
+$lang_register_php['pass_chg_error'] = 'Salasanaasi ei vaihdettu';
+$lang_register_php['notify_admin_email_subject'] = '%s  - Rekisteröinti-ilmoitus';
+$lang_register_php['last_uploads'] = 'Viimeisin lisätty  tiedosto'; // cpg1.5
+$lang_register_php['last_uploads_detail'] = 'Klikkaa nähdäksesi kaikki käytäjän %s lisäykset'; // cpg1.5
+$lang_register_php['last_comments'] = 'Viimeisin kommentti'; // cpg1.5
+$lang_register_php['you'] = 'sinä'; // cpg1.5
+$lang_register_php['last_comments_detail'] = 'Klikkaa nähdäksesi kaikki käytäjän %s kommentit'; // cpg1.5
+$lang_register_php['notify_admin_email_body'] = 'Uusi käyttäjä nimeltä "%s" rekisteröityi galleriaasi';
+$lang_register_php['pic_count'] = 'Lisätyt tiedostot';
+$lang_register_php['notify_admin_request_email_subject'] = ' Rekisteröintipyyntö';
+$lang_register_php['thank_you_admin_activation'] = 'Kiitos.<br /><br />Tilisi aktivointipyyntö lähetettiin ylläpidolle. Saat sähköpostin, jos pyyntö hyväksytään.';
+$lang_register_php['acct_active_admin_activation'] = 'Tili on nyt aktiivinen ja käyttäjälle lähetettiin sähköposti.';
+$lang_register_php['notify_user_email_subject'] = '%s Aktivointi-ilmoitus';
+$lang_register_php['delete_my_account'] = 'Poista käyttäjätilini'; // cpg1.5
+$lang_register_php['warning_delete'] = 'Varoitus: käyttäjätilisi poistamista ei voida peruuttaa. Julkisiin albumeihin %lähettämiäsi tiedostoja%s ja %skommenttejasi%s ei poisteta kun poistat käyttäjätilisi! Kuiten, omaan galleriaasi lähettämäsi tiedostot poistetaan.'; // cpg1.5 // The %s-placeholders mustn't be removed, they will later be replaced by the wrappers for the links
+$lang_register_php['i_am_sure'] = 'Halun varmasti poistaa käyttäjätilini'; // cpg1.5
+$lang_register_php['really_delete'] = 'Halatko varmasti poistaa käyttäjätilisi?'; // cpg1.5 // js-alert
+$lang_register_php['edit_xs_profile'] = 'Muokkaa %s:n profiilia'; // cpg1.5
+$lang_register_php['edit_my_profile'] = 'Muokkaa profiiliani'; // cpg1.5
+$lang_register_php['none'] = 'ei mikään'; // cpg1.5
+$lang_register_php['user_name_banned'] = 'Valitsemasi käyttäjätunnus ei ole sallittu tai se on bannattu. Valitse toinen käyttäjätunnus.'; // cpg1.5
+$lang_register_php['email_address_banned'] = 'Sinut on bannattu galleriasta. Sinulla ei ole oikeutta rekisteröityä uudelleen. Mene muualle!'; // cpg1.5
+$lang_register_php['email_warning1'] = 'Säkhöpostiosoite -kenttä ei voi olla tyhjä!'; // cpg1.5
+$lang_register_php['email_warning2'] = 'Antamasi säkhöpostiosoite ei ole kelvollinen. Tarkista!'; // cpg1.5
+$lang_register_php['username_warning1'] = 'Käyttäjätunnus -kenttä ei voi olla tyhjä!'; // cpg1.5
+$lang_register_php['username_warning2'] = 'Käyttäjätunnuksessa pitää olla vähintään kaksi merkkiä!'; // cpg1.5
+$lang_register_php['password_warning1'] = 'Salasanassa pitää olla vähintään kaksi merkkiä!'; // cpg1.5
+$lang_register_php['password_warning2'] = 'Käyttäjätunnus ja ja salasana eivät voiolla samoja!'; // cpg1.5
+$lang_register_php['password_verification_warning1'] = 'Salasanat eivät täsmää, ole hyvä ja syötä ne uudelleen!'; // cpg1.5
+$lang_register_php['form_not_submit'] = 'Lomaketta ei lähetetty - korjaa ensin siinä ilmenneet virheet!'; // cpg1.5
+$lang_register_php['banned'] = 'Bannattu'; // cpg1.5
+
+$lang_register_php['confirm_email'] = <<< EOT
+Hei
+
+Kiitos rekisteröitymisestä {SITE_NAME} - sivustolle.
+
+Aktivoidaksesi tilisi käyttäjätunnuksella "{USER_NAME}", klikkaa alla olevaa linkkiä tai kopioi ja liitä se selaimeesi.
+<a href="{ACT_LINK}">{ACT_LINK}</a>
+
+Terveisin
+
+Sivuston {SITE_NAME} ylläpito
+
+EOT;
+
+$lang_register_approve_email = <<< EOT
+Uusi käyttäjä nimeltä "{USER_NAME}" rekisteröityi galleriaasi.
 Aktivoidaksesi tilin, klikkaa alla olevaa linkkiä tai kopioi ja liitä se selaimeesi.
 
 <a href="{ACT_LINK}">{ACT_LINK}</a>
 
 EOT;
 
-$lang_register_activated_email = <<<EOT
-Tilisi on hyväksytty ja aktivoitu.
+$lang_register_php['activated_email'] = <<< EOT
+Tilisi on nyt hyväksytty ja aktivoitu.
 
-Voit nyt kirjautua sisään osoitteessa <a href="{SITE_LINK}">{SITE_LINK}</a> käyttäen tunnusta "{USER_NAME}"
+Voit nyt kirjautua sisään osoitteessa <a href="{SITE_LINK}">{SITE_LINK}</a> käyttäen käyttäjätunnusta "{USER_NAME}"
 
 
-Terveisin,
+Terveisin
 
 Sivuston {SITE_NAME} ylläpito
 
@@ -1587,528 +1886,713 @@ EOT;
 // ------------------------------------------------------------------------- //
 // File reviewcom.php
 // ------------------------------------------------------------------------- //
+if (defined('REVIEWCOM_PHP')) {
+$lang_reviewcom_php['title'] = 'Näytä kommentit';
+$lang_reviewcom_php['no_comment'] = 'Ei kommentteja';
+$lang_reviewcom_php['n_comm_del'] = '%s kommenttia poistettu';
+$lang_reviewcom_php['n_comm_disp'] = 'Näytettävien kommenttien määrä';
+$lang_reviewcom_php['see_prev'] = 'Edellinen';
+$lang_reviewcom_php['see_next'] = 'Seuraava';
+$lang_reviewcom_php['del_comm'] = 'Poista valitut kommentit';
+$lang_reviewcom_php['user_name'] = 'Nimi';
+$lang_reviewcom_php['date'] = 'Päivämäärä';
+$lang_reviewcom_php['comment'] = 'Kommentti';
+$lang_reviewcom_php['file'] = 'Tiedosto';
+$lang_reviewcom_php['name_a'] = 'Nimimerkin mukaan nousevasti';
+$lang_reviewcom_php['name_d'] = 'Nimimerkin mukaan laskevasti';
+$lang_reviewcom_php['date_a'] = 'Päivämäärän mukaan nousevasti';
+$lang_reviewcom_php['date_d'] = 'Päivämäärän mukaan laskevasti';
+$lang_reviewcom_php['comment_a'] = 'Kommentin mukaan nousevasti';
+$lang_reviewcom_php['comment_d'] = 'Kommentin mukaan laskevasti';
+$lang_reviewcom_php['file_a'] = 'Tiedoston mukaan nousevasti';
+$lang_reviewcom_php['file_d'] = 'Tiedoston mukaan laskevasti';
+$lang_reviewcom_php['approval_a'] = 'Hyväksyttävien mukaan nousevasti'; // cpg1.5
+$lang_reviewcom_php['approval_d'] = 'Hyväksyttävien mukaan laskevasti'; // cpg1.5
+$lang_reviewcom_php['ip_a'] = 'IP-osoiteen mukaan nousevasti'; // cpg1.5
+$lang_reviewcom_php['ip_d'] = 'IP-osoiteen mukaan laskevasti'; // cpg1.5
+$lang_reviewcom_php['akismet_a'] = 'Akismetin luokitus (hyväksytyt kommentit lopussa)'; // cpg1.5
+$lang_reviewcom_php['akismet_d'] = 'Akismetin luokitus (hyväksytyt kommentit alussa)'; // cpg1.5
+$lang_reviewcom_php['n_comm_appr'] = '%s hyväksyttyä kommenttia'; // cpg1.5
+$lang_reviewcom_php['n_comm_unappr'] = '%s hylättyä kommenttia'; // cpg1.5
+$lang_reviewcom_php['configuration_changed'] = 'Hyväsyttävien kommenttien asetuksia muutettu'; // cpg1.5
+$lang_reviewcom_php['only_approval'] = 'näytä vain hyväksyntää vaativat kommentit'; // cpg1.5
+$lang_reviewcom_php['approval'] = 'Hyväksytyt'; // cpg1.5
+$lang_reviewcom_php['save_changes'] = 'Tallenna muutokset'; // cpg1.5
+$lang_reviewcom_php['n_confirm_delete'] = 'Haluatko varmasti poistaa valitut kommentit?'; // cpg1.5
+$lang_reviewcom_php['with_selected'] = 'Valittujen kanssa'; // cpg1.5
+$lang_reviewcom_php['delete'] = 'poista'; // cpg1.5
+$lang_reviewcom_php['approve'] = 'hyväksy'; // cpg1.5
+$lang_reviewcom_php['disapprove'] = 'merkkaa hylätyksi'; // cpg1.5
+$lang_reviewcom_php['do_nothing'] = 'älä tee mitään'; // cpg1.5
+$lang_reviewcom_php['comment_approved'] = 'Kommentti hyväksytty'; // cpg1.5
+$lang_reviewcom_php['comment_unapproved'] = 'Kommentti merkattu hylätyksi'; // cpg1.5
+$lang_reviewcom_php['ban_and_delete'] = 'Bannaa käyttäjä ja poista kommentit'; // cpg1.5
+$lang_reviewcom_php['akismet_status'] = 'Akismet ilmoitti'; // cpg1.5
+$lang_reviewcom_php['is_spam'] = 'on roskapostia'; // cpg1.5
+$lang_reviewcom_php['is_not_spam'] = 'ei ole roskapostia'; // cpg1.5
+$lang_reviewcom_php['akismet'] = 'Akismet'; // cpg1.5
+$lang_reviewcom_php['akismet_count'] = 'Akismet on löytänyt tähän menneessä %s roskapostia'; // cpg1.5
+$lang_reviewcom_php['akismet_test_result'] = 'Testin tulokset Akismetin API-avaimellesi %s'; // cpg1.5
+$lang_reviewcom_php['invalid'] = 'epäkelpo'; // cpg1.5
+$lang_reviewcom_php['missing_gallery_url'] = 'Sinun tarvitsee antaa gallerian osoite Copperminen asetuksiin'; // cpg1.5
+$lang_reviewcom_php['unable_to_connect'] = 'akismet.com:iin ei voitu ottaa yhteyttä'; // cpg1.5
+$lang_reviewcom_php['not_found'] = 'Kohde-URLia ei löydetty. Ehkä sivuston akismet.com rakenne on muuttunut.'; // cpg1.5
+$lang_reviewcom_php['unknown_error'] = 'Tuntematon virhe'; // cpg1.5
+$lang_reviewcom_php['error_message'] = 'Palautettu virhesanoma oli'; // cpg1.5
+$lang_reviewcom_php['ip_address'] = 'IP-osoite'; // cpg1.5
+}
 
-if (defined('REVIEWCOM_PHP')) $lang_reviewcom_php = array(
-  'title' => 'Näytä kommentit',
-  'no_comment' => 'Ei kommentteja',
-  'n_comm_del' => '%s kommenttia poistettu',
-  'n_comm_disp' => 'Montako kommenttia näytetään',
-  'see_prev' => 'Edellinen',
-  'see_next' => 'Seuraava',
-  'del_comm' => 'Poista valitut kommentit',
-  'user_name' => 'Nimi', //cpg1.4
-  'date' => 'Päivämäärä', //cpg1.4
-  'comment' => 'Kommentti', //cpg1.4
-  'file' => 'Tiedosto', //cpg1.4
-  'name_a' => 'Nimimerkin mukaan nousevasti', //cpg1.4
-  'name_d' => 'Nimimerkin mukaan laskevasti', //cpg1.4
-  'date_a' => 'Päivämäärän mukaan nousevasti', //cpg1.4
-  'date_d' => 'Päivämäärän mukaan laskevasti', //cpg1.4
-  'comment_a' => 'Kommentin mukaan nousevasti', //cpg1.4
-  'comment_d' => 'Kommentin mukaan laskevasti', //cpg1.4
-  'file_a' => 'Tiedoston mukaan nousevasti', //cpg1.4
-  'file_d' => 'Tiedoston mukaan laskevasti', //cpg1.4
-);
+// ------------------------------------------------------------------------- //
+// File sidebar.php
+// ------------------------------------------------------------------------- //
+if (defined('SIDEBAR_PHP')) {
+$lang_sidebar_php['sidebar'] = 'Sivupalkki'; // cpg1.5
+$lang_sidebar_php['install'] = 'asenna'; // cpg1.5
+$lang_sidebar_php['install_explain'] = 'Tarjoamme älykkäiden informaatiohankintakeinojen lisäksi suosituimmille selaimille eri käyttöjärjestelmissä sivupalkkeja, joiden avulla sivustolle pääsy on helppoa. Tästä löydät asennus -ja poistotietoja tuetuille selaimille.'; // cpg1.5
+$lang_sidebar_php['os_browser_detect'] = 'Tunnistetaan käyttöjärjestelmäsi ja selaimesi'; // cpg1.5
+$lang_sidebar_php['os_browser_detect_explain'] = 'Käyttöjärjestelmääsi ja selaintasi ollaan tunnistamassa - odata hetki. Jos automaattinen tunnistus pettää, voit %näyttää%s kaikki mahdolliset asennusvalinnat manuaalisesti.'; // cpg1.5
+$lang_sidebar_php['mozilla'] = 'Mozilla, Firefox, Netscape 6+ tai Konqueror 3.2+'; // cpg1.5
+$lang_sidebar_php['mozilla_explain'] = 'Jos käytät Mozilla 0.9.4:aa tai uudempaa, voit %lisätä sivupalkkimme kokoelmaasi%s. Voit poistaa sivupalkin käyttämällä "Muokkaa sivupalkki" -dialogia Mozillassa.'; // cpg1.5
+$lang_sidebar_php['ie_mac'] = 'Internet Explorer 5 ja uudemmat Mac OS:ssä'; // cpg1.5
+$lang_sidebar_php['ie_mac_explain'] = 'Jos käytät Internet Explorer 5:ttä tai uudempaa MacOS:ssä, %savaa sivupalkki sivumme%s uudessa ikkunassa. Avaa uudesta ikkunasta "Sivun pitäjä" -välilehti ikkunan vasemmasta reunasta. Klikkaa "Lisää". Jos haluat käyttää sitä myös myöhemmin, klikkaa "Suosikit" ja valitse "Lisää sivun pitäjän suosikkeihin".'; // cpg1.5
+$lang_sidebar_php['ie_win'] = 'Internet Explorer 5 ja uudemmat Windows:issa'; // cpg1.5
+$lang_sidebar_php['ie_win_explain'] = 'Jos käytät Internet Explorer 5:ttä tai uudempaa Windows:issa, voit lisätä navigointi ponnahdusikkunan Linkit -työpalkkiisi tai voit lisätä sen suosikkeihisi ja klikkaamalla sitä näet sivupalkkimme vakituisen hakupalkin sijasta klikkaamalla oikealla hiirellä %stästä%s ja valitsemalla aukeavasta valikosta "Lisää suosikkeihin". Tämä linkki ei asenna sivupalkkiamme oletushakupalkiksesi, joten järjestelmäsi pysyy muuttumattomana.'; // cpg1.5
+$lang_sidebar_php['ie7_win'] = 'Internet Explorer 7 Windows:issa (XP/Vista)'; // cpg1.5
+$lang_sidebar_php['ie7_win_explain'] = 'jos käytät Internet Explorer 7:aa Windows:issa, voit lisätä navigointi ponnahdusikkunan Linkit -työpalkkiisi tai voit lisätä sen suosikkeihisi ja klikkaamalla sitä näet sivupalkkimme ponnahdusikkunana klikkaamalla oikealla hiirellä %stästä%s ja valitsemalla aukeavasta valikosta "Lisää suosikkeihin". Aikaisemmissa IE:n versioissa oli mahdollista lisätä itse sivupalkki, mutta IE7:ssa tämä ei ole mahdollista ilman hankalaa rekisterin muokkaamista käsin. On suositeltavaa käyttää toista selainta jos haluat käyttää varsinaista sivupalkkia.'; // cpg1.5
+$lang_sidebar_php['opera'] = 'Opera 6 ja uudemmat'; // cpg1.5
+$lang_sidebar_php['opera_explain'] = 'Jos käytät Opera:a, voit %sklikata tätä linkkiä lisätäksesi sivupalkkimme kokoelmaasi%s. Valitse sen jälkeen "Näytä paneelissa". voit poistaa sivupalkin klikkaamalla hiiren oikella napilla sen välilehteä ja valitsemalla "Poista" auenneesta valikosta.'; // cpg1.5
+$lang_sidebar_php['additional_options'] = 'Lisäasetukset'; // cpg1.5
+$lang_sidebar_php['additional_options_explain'] = 'Jos sinulla on jokin muu kuin yllämainituista selaimista, klikkaa %tästä%s nähdäksesi kaikki mahdolliset sivupalkkivaihtoehdot.'; // cpg1.5
+$lang_sidebar_php['cannot_add_sidebar'] = 'Sivupalkkia ei voida lisätä! Selaimesi ei tue tätä tapaa!'; // cpg1.5 // js-alert
+$lang_sidebar_php['search'] = 'Hae'; // cpg1.5
+$lang_sidebar_php['reload'] = 'Lataa uudelleen'; // cpg1.5
+}
 
 
 // ------------------------------------------------------------------------- //
 // File search.php                                                           //
 // ------------------------------------------------------------------------- //
-
-
 if (defined('SEARCH_PHP')){
-
-$lang_search_php = array(
-  'title' => 'Hae kuvakokoelmasta', //cpg1.4
-  'submit_search' => 'Hae', //cpg1.4
-  'keyword_list_title' => 'Hakusanalista', //cpg1.4
-  'keyword_msg' => 'Lista ei ole täydellinen. Se ei sisällä sanoja kuvien otsikoista tai kuvauksista. Kokeile hakua kokotekstistä.',  //cpg1.4
-  'edit_keywords' => 'Muokkaa hakusanoja', //cpg1.4
-  'search in' => 'Hae:', //cpg1.4
-  'ip_address' => 'IP-osoite', //cpg1.4
-  'fields' => 'Hae', //cpg1.4
-  'age' => 'Kuvan ikä', //cpg1.4
-  'newer_than' => 'Uudempi kuin', //cpg1.4
-  'older_than' => 'Vanhempi kuin', //cpg1.4
-  'days' => 'päivää', //cpg1.4
-  'all_words' => 'Hae kaikki hakusanat (AND)', //cpg1.4
-  'any_words' => 'Hae jokin hakusana (OR)', //cpg1.4
-);
-
-$lang_adv_opts = array(
-  'title' => 'Otsikko', //cpg1.4
-  'caption' => 'Kuvateksti', //cpg1.4
-  'keywords' => 'Hakusanat', //cpg1.4
-  'owner_name' => 'Käyttäjä', //cpg1.4
-  'filename' => 'Tiedostonimi', //cpg1.4
-);
-
+$lang_search_php['title'] = 'Hae';
+$lang_search_php['submit_search'] = 'Hae';
+$lang_search_php['keyword_list_title'] = 'Avainsanalista';
+$lang_search_php['keyword_msg'] = 'Lista ei ole täydellinen. Se ei sisällä sanoja tiedostojen otsikoista tai kuvauksista. Kokeile hakua koko tekstistä.';
+$lang_search_php['edit_keywords'] = 'Muokkaa avainsanoja';
+$lang_search_php['search in'] = 'Hae:';
+$lang_search_php['ip_address'] = 'IP-osoite';
+$lang_search_php['imgfields'] = 'Hae tiedostoja';
+$lang_search_php['albcatfields'] = 'Hae albumeita ja kategorioita';
+$lang_search_php['age'] = 'Ikä';
+$lang_search_php['newer_than'] = 'Uudempi kuin';
+$lang_search_php['older_than'] = 'Vanhempi kuin';
+$lang_search_php['days'] = 'päivää';
+$lang_search_php['all_words'] = 'Hae kaikki hakusanat (JA)';
+$lang_search_php['any_words'] = 'Hae jokin hakusana (TAI)';
+$lang_search_php['regex'] = 'Hae käyttäen säännöllistä lauseketta';
+$lang_search_php['album_title'] = 'Albumin otsikot';
+$lang_search_php['category_title'] = 'Kategorian otsikot';
 }
 
 // ------------------------------------------------------------------------- //
 // File searchnew.php
 // ------------------------------------------------------------------------- //
-
-if (defined('SEARCHNEW_PHP')) $lang_search_new_php = array(
-  'page_title' => 'Hae uusia kuvia',
-  'select_dir' => 'Valitse hakemisto',
-  'select_dir_msg' => 'Voit lisätä FTP:llä suoraan palvelimelle lisätyt kuvat galleriaan.<br /><br />Valitse hakemisto, johon laitoit kuvat.', //cpg1.4
-  'no_pic_to_add' => 'Ei ole lisättäviä kuvia',
-  'need_one_album' => 'Tarvitset vähintään yhden albumin voidaksesi käyttää tätä toimintoa',
-  'warning' => 'Varoitus',
-  'change_perm' => 'Scripti ei voi kirjoittaa tähän hakemistoon. Muuta oikeudet 755:ksi tai 777:ksi ennen kuin yrität lisätä kuvat!',
-  'target_album' => '<b>Laita kuvat hakemistosta &quot;</b>%s<b>&quot; albumiin </b>%s',
-  'folder' => 'Hakemisto',
-  'image' => 'Kuva',
-  'album' => 'Albumi',
-  'result' => 'Tulos',
-  'dir_ro' => 'Ei kirjoitettavissa. ',
-  'dir_cant_read' => 'Ei luettavissa. ',
-  'insert' => 'Lisätään uusia kuvia galleriaan',
-  'list_new_pic' => 'Lista uusista kuvista',
-  'insert_selected' => 'Lisää valitut kuvat',
-  'no_pic_found' => 'Uusia kuvia ei löytynyt',
-  'be_patient' => 'Odota hetki. Kuvien käsittely vie aikaa.',
-  'no_album' => 'Ei valittua albumia',
-  'result_icon' => 'Klikkaa saadaksesi lisätietoa tai uudelleen ladataksesi',  //cpg1.4
-  'notes' =>  '<ul>'.
-				'<li><b>OK</b> : tarkoittaa, että kuva lisätty onnistuneesti'.
-				'<li><b>DP</b> : tarkoittaa, että kuva on jo aiemmin lisätty'.
-				'<li><b>PB</b> : tarkoittaa, ettei kuvaa voitu lisätä, tarkista asetukset ja oikeudet'.
-				'<li>Jos OK, DP, PB \'merkit\' eivät ilmesty klikkaa rikkinäistä kuvaa nähdäksesi PHP: virheilmoituksen'.
-				'<li>Jos selaimesi menee timeouttiin, lataa sivu uudestaan'.
-				'</ul>',
-  'select_album' => 'Valitse albumi',
-  'check_all' => 'Valitse kaikki',
-  'uncheck_all' => 'Merkitse kaikki valitsemattomiksi',
-  'no_folders' => 'Kansiossa "albums" ei ole vielä yhtään hakemistoa. Luo ainakin yksi hakemisto hakemiston "albums" alle ja lähetä kuvasi siihen FTP:llä. Älä laita kuviasi kansioon "userpics" tai "edit", sillä ne on varattu HTTP-lähetystä ja ohjelman omaa tarvetta varten.', //cpg1.4
-   'albums_no_category' => 'Albumilla ei ole kategoriaa', //cpg1.4 // album pulldown mod, added by frogfoot
-  'personal_albums' => '* Henkilökohtaiset albumit', //cpg1.4 // album pulldown mod, added by frogfoot
-  'browse_batch_add' => 'Selattava käyttöliittymä (Suositeltava)', //cpg1.4
-  'edit_pics' => 'Muokkaa kuvia', //cpg1.4
-  'edit_properties' => 'Albumin asetukset', //cpg1.4
-  'view_thumbs' => 'Thumbnail-näkymä', //cpg1.4
-);
-
-// ------------------------------------------------------------------------- //
-// File stat_details.php //cpg1.4
-// ------------------------------------------------------------------------- //
-
-if (defined('STAT_DETAILS_PHP')) $lang_stat_details_php = array(
-  'show_hide' => 'Näytä/piilota tämä sarake', //cpg1.4
-  'vote' => 'Äänitiedot', //cpg1.4
-  'hits' => 'Katselukertatiedot', //cpg1.4
-  'stats' => 'Äänestystilastot', //cpg1.4
-  'sdate' => 'Päivämäärä', //cpg1.4
-  'rating' => 'Arvo', //cpg1.4
-  'search_phrase' => 'Hakulause', //cpg1.4
-  'referer' => 'Sivu, jolta tultiin', //cpg1.4
-  'browser' => 'Selain', //cpg1.4
-  'os' => 'Käyttöjärjestelmä', //cpg1.4
-  'ip' => 'IP', //cpg1.4
-  'sort_by_xxx' => 'Järjestä %s', //cpg1.4
-  'ascending' => 'nousevasti', //cpg1.4
-  'descending' => 'laskevasti', //cpg1.4
-  'internal' => 'sisäinen', //cpg1.4
-  'close' => 'sulje', //cpg1.4
-  'hide_internal_referers' => 'Piilota sivut, joilta tultiin, jos ne ovat tämän sivuston sivuja', //cpg1.4
-  'date_display' => 'Päivämäärän näyttäminen', //cpg1.4
-  'submit' => 'Lähetä / päivitä', //cpg1.4
-);
+if (defined('SEARCHNEW_PHP')) {
+$lang_search_new_php['page_title'] = 'Hae uusia tiedostoja';
+$lang_search_new_php['select_dir'] = 'Valitse hakemisto';
+$lang_search_new_php['select_dir_msg'] = 'Voit lisätä FTP:llä suoraan palvelimelle lisätyt tiedostot galleriaan.<br /><br />Valitse hakemisto, johon laitoit tiedostosi.';
+$lang_search_new_php['no_pic_to_add'] = 'Ei lisättäviä tiedostoja';
+$lang_search_new_php['need_one_album'] = 'Tarvitset vähintään yhden albumin käyttääksesi tätä toimintoa';
+$lang_search_new_php['warning'] = 'Varoitus';
+$lang_search_new_php['change_perm'] = 'Skripti ei voi kirjoittaa tähän hakemistoon. Muuta oikeudet 755:ksi tai 777:ksi ennen kuin yrität lisätä tiedostoja!';
+$lang_search_new_php['target_album'] = '<b>Lisää tiedostot hakemistosta &quot;</b>%s<b>&quot; albumiin </b>%s';
+$lang_search_new_php['folder'] = 'Hakemisto';
+$lang_search_new_php['image'] = 'tiedosto';
+$lang_search_new_php['result'] = 'Tulos';
+$lang_search_new_php['dir_ro'] = 'Ei kirjoitettavissa. ';
+$lang_search_new_php['dir_cant_read'] = 'Ei luettavissa. ';
+$lang_search_new_php['insert'] = 'Lisätään uusia tiedostoja galleriaan';
+$lang_search_new_php['list_new_pic'] = 'Lista uusista tiedostoista';
+$lang_search_new_php['insert_selected'] = 'Lisää valitut tiedostot';
+$lang_search_new_php['no_pic_found'] = 'Uusia tiedostoja ei löytynyt';
+$lang_search_new_php['be_patient'] = 'Odota hetki. Tiedostojen käsittely vie aikaa';
+$lang_search_new_php['no_album'] = 'Ei valittua albumia';
+$lang_search_new_php['result_icon'] = 'Klikkaa saadaksesi lisätietoa tai uudelleen ladataksesi';
+$lang_search_new_php['notes'] = <<< EOT
+    <ul>
+        <li>%s: tiedosto on lisätty onnistuneesti</li>
+        <li>%s: tiedosto on jo lisätty aiemmin</li>
+        <li>%s: tiedostoa voitu lisätä, tarkista asetukset ja oikeudet</li>
+        <li>%s: valitse ensin albumi, johon lisätään</li>
+        <li>%s: tiedosto on rikki tai saavuttamattomissa</li>
+        <li>%s: tuntematon tiedostotyyppi</li>
+        <li>%s: tiedosto on GIF -kuva</li>
+        <li>Jos kuvakkeet eivät ilmesty, klikkaa rikkinäistä kuvaa nähdäksesi PHP:n virheilmoituksen</li>
+        <li>Jos selaimesi menee aikakatkaisuun, lataa sivu uudestaan</li>
+    </ul>
+EOT;
+// Translator note: Do not translate the %s placeholders - they are being replaced with icons
+$lang_search_new_php['check_all'] = 'Valitse kaikki';
+$lang_search_new_php['uncheck_all'] = 'Poista valinta kaikista';
+$lang_search_new_php['no_folders'] = 'Kansiossa "albums" ei ole vielä yhtään hakemistoa. Luo ainakin yksi hakemisto hakemiston "albums" alle ja lähetä kuvasi siihen FTP:llä. Älä laita kuviasi kansioon "userpics" tai "edit", sillä ne on varattu HTTP-lähetystä ja ohjelman omaa tarvetta varten.';
+$lang_search_new_php['browse_batch_add'] = 'Selattava käyttöliittymä'; // cpg1.5
+$lang_search_new_php['display_thumbs_batch_add'] = 'Näytä pienoiskuvien esikatselukuvat'; // cpg1.5
+$lang_search_new_php['edit_pics'] = 'Muokkaa tiedostoja';
+$lang_search_new_php['edit_properties'] = 'Albumin asetukset';
+$lang_search_new_php['view_thumbs'] = 'Pienoiskuvanäkymä';
+$lang_search_new_php['add_more_folder'] = 'Hae lisää tiedostoja hakemistosta %s'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
-// File thumbnails.php
+//File send_activation.php
+// ------------------------------------------------------------------------- //
+if (defined('SEND_ACTIVATION_PHP')) {
+$lang_send_activation_php['err_already_logged_in'] = 'Olet jo kirjautunut sisään!'; // cpg1.5
+$lang_send_activation_php['activation_not_required'] = 'Tämä websivusto ei vaadi aktivoitia sähköpostitse'; // cpg1.5
+$lang_send_activation_php['err_unk_user'] = 'Valittua käyttätunnusta ei ole olemassa!'; // cpg1.5
+$lang_send_activation_php['resend_act_link'] = 'Lähetä aktivointilinkki uudelleen'; // cpg1.5
+$lang_send_activation_php['enter_email'] = 'Syötä sähköpostiosoitteesi'; // cpg1.5
+$lang_send_activation_php['submit'] = 'Lähetä'; // cpg1.5
+$lang_send_activation_php['failed_sending_email'] = 'Aktivointilinkin sisältävän sähköpostin lähetttäminen epäonnistui'; // cpg1.5
+$lang_send_activation_php['activation_email_sent'] = 'Aktivointilinkin sisältävä sähköposti lähetettiin %s:lle. Tarkista sähköpostisi jatkaaksesi.'; // cpg1.5
+}
+
+// ------------------------------------------------------------------------- //
+// File stat_details.php
 // ------------------------------------------------------------------------- //
 
-// Void
+if (defined('STAT_DETAILS_PHP')) {
+$lang_stat_details_php['show_hide'] = 'näytä/piilota tämä sarake';
+$lang_stat_details_php['title'] = 'Tilastojen yksityiskohdat'; // cpg1.5
+$lang_stat_details_php['vote'] = 'Äänitiedot';
+$lang_stat_details_php['hits'] = 'Katselukertatiedot';
+$lang_stat_details_php['stats'] = 'Äänestystilastot';
+$lang_stat_details_php['users'] = 'Käyttäjätilastot';
+$lang_stat_details_php['sdate'] = 'Päivämäärä';
+$lang_stat_details_php['rating'] = 'Arvo';
+$lang_stat_details_php['search_phrase'] = 'Hakulause';
+$lang_stat_details_php['referer'] = 'Sivu, jolta tultiin';
+$lang_stat_details_php['browser'] = 'Selain';
+$lang_stat_details_php['os'] = 'Käyttöjärjestelmä';
+$lang_stat_details_php['ip'] = 'IP';
+$lang_stat_details_php['uid'] = 'Käyttäjä'; // cpg1.5
+$lang_stat_details_php['sort_by_xxx'] = 'Järjestä %s';
+$lang_stat_details_php['ascending'] = 'nousevasti';
+$lang_stat_details_php['descending'] = 'laskevasti';
+$lang_stat_details_php['internal'] = 'sisäinen';
+$lang_stat_details_php['close'] = 'sulje';
+$lang_stat_details_php['hide_internal_referers'] = 'Piilota sivut, joilta tultiin, jos ne ovat tämän sivuston sivuja';
+$lang_stat_details_php['date_display'] = 'Päivämäärän näyttäminen';
+$lang_stat_details_php['records_per_page'] = 'osumaa per sivu';
+$lang_stat_details_php['submit'] = 'lähetä / päivitä';
+$lang_stat_details_php['overall_stats'] = 'Yleiset tilastot'; // cpg1.5
+$lang_stat_details_php['stats_by_os'] = 'Tilastot käyttöjärjestelmän mukaan'; // cpg1.5
+$lang_stat_details_php['number_of_hits'] = 'Katselukertojen määrä'; // cpg1.5
+$lang_stat_details_php['total'] = 'Yhteensä'; // cpg1.5
+$lang_stat_details_php['stats_by_browser'] = 'Tilastot selaimen mukaan'; // cpg1.5
+$lang_stat_details_php['overall_stats_config'] = 'Yleisten tilastojen asetukset'; // cpg1.5
+$lang_stat_details_php['hit_details']  = 'Pidä yksytyiskohtaisia katselukertatilastoja'; // cpg1.5
+$lang_stat_details_php['hit_details_explanation'] = 'Pidä yksytyiskohtaisia katselukertatilastoja'; // cpg1.5
+$lang_stat_details_php['vote_details'] = 'Pidä yksytyiskohtaisia äänestystilastoja'; // cpg1.5
+$lang_stat_details_php['vote_details_explanation'] = 'Pidä yksytyiskohtaisia äänestystilastoja'; // cpg1.5
+$lang_stat_details_php['empty_hits_table'] = 'Tyhjennä kaikki katselukertatilastot'; // cpg1.5
+$lang_stat_details_php['empty_hits_table_confirm'] = 'Haluatko varmasti poistaa KAIKKI katselukertatilastot KOKO galleriasta? Toimintoa ei voi peruuttaa!'; // cpg1.5 // js-alert
+$lang_stat_details_php['empty_votes_table'] = 'Tyhjennä kaikki äänestystilastot'; // cpg1.5
+$lang_stat_details_php['empty_votes_table_confirm'] = 'Haluatko varmasti poistaa KAIKKI äänestystilastot KOKO galleriasta? Toimintoa ei voi peruuttaa!'; // cpg1.5 // js-alert
+$lang_stat_details_php['submit'] = 'Lähetä'; // cpg1.5
+$lang_stat_details_php['upd_success'] = 'Copperminen asetukset päivitetty'; // cpg1.5
+$lang_stat_details_php['votes'] = 'ääniä'; // cpg1.5
+$lang_stat_details_php['reset_votes_individual'] = 'Nollaa valitut äänet'; // cpg1.5
+$lang_stat_details_php['reset_votes_individual_confirm'] = 'Haluatko varmasti poistaa valitut äänet? Toimintoa ei voi peruuttaa!'; // cpg1.5
+$lang_stat_details_php['back_to_intermediate'] = 'Takaisin keskikokoisten tiedostojen näkymään'; // cpg1.5
+$lang_stat_details_php['records_on_page'] = '%s osumaa %s:lla sivulla'; // cpg1.5
+$lang_stat_details_php['guest'] = 'Vieras'; // cpg1.5
+$lang_stat_details_php['not_implemented'] = 'ominaisuutta ei tueta vielä'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
 // File upload.php
 // ------------------------------------------------------------------------- //
 
-if (defined('UPLOAD_PHP')) $lang_upload_php = array(
-  'title' => 'Lisää kuva',
-  'custom_title' => 'Personoitu kyselylomake',
-  'cust_instr_1' => 'Voit valita haluamasi määrän kuvienlisäyskenttiä. Et voi kuitenkaan valita enempää kuin alla listatut rajoitukset.',
-  'cust_instr_2' => 'Kenttä Määrä Pyynnöt',
-  'cust_instr_3' => 'Kuvan lisäyskenttiä: %s',
-  'cust_instr_4' => 'URI/URL -lisäyskenttiä: %s',
-  'cust_instr_5' => 'URI/URL -lisäyskenttiä:',
-  'cust_instr_6' => 'Tiedoston lisäyskenttiä:',
-  'cust_instr_7' => 'Valitse jokaisen kenttätyypin määrä. Klikkaa sitten \'Jatka\'. ',
-  'reg_instr_1' => 'Laiton toiminto lomakkeen luonnissa.',
-  'reg_instr_2' => 'Lisää kuvasi alla oleviin kenttiin. Kuvien koko ei saa ylittää %s KB / kpl. Jos lisäät zip-tiedostoja \'Tiedoston lähetys\' ja \'URI/URL -lähetys\' -toiminnoilla, ne pysyvät pakattuina.',
-  'reg_instr_3' => 'Jos haluat zip -tiedostosi purettavan, sinun on käytettävä \'Zip-tiedostot purkava lisäys\' osiota.',
-  'reg_instr_4' => 'Kun käytät URI/URL -lähetyskenttiä, anna osoite tässä muodossa: http://www.sivuni.fi/kuvat/esimerkki.jpg',
-  'reg_instr_5' => 'Kun olet täyttänyt lomakkeen, klikkaa \'Jatka\'.',
-  'reg_instr_6' => 'Zip-tiedostot purkava lisäys:',
-  'reg_instr_7' => 'Tiedoston lähetys:',
-  'reg_instr_8' => 'URI/URL -lähetys:',
-  'error_report' => 'Virheilmoitus',
-  'error_instr' => 'Seuraavien tiedostojen lähetyksessä oli ongelmia:',
-  'file_name_url' => 'Tiedosto/URL',
-  'error_message' => 'Virheviesti',
-  'no_post' => 'POST ei voinut lähettää tiedostoa.',
-  'forb_ext' => 'Kielletty tiedostopääte.',
-  'exc_php_ini' => 'Tiedoston koko on liian suuri (php.ini:n kokorajoitus).',
-  'exc_file_size' => 'Tiedoston koko on liian suuri (CPG:n kokorajoitus).',
-  'partial_upload' => 'Vain osittain lähetys onnistui.',
-  'no_upload' => 'Lähetystä ei tehty.',
-  'unknown_code' => 'Tuntematon PHP -lähetys virhe.',
-  'no_temp_name' => 'Ei lähetystä, ei väliaikaista nimeä.',
-  'no_file_size' => 'Ei sisällä dataa tai data on korruptoitunut',
-  'impossible' => 'Ei voida siirtää',
-  'not_image' => 'Tiedosto ei ole kuva tai se on korruptoitunut',
-  'not_GD' => 'Ei GD -tiedostopääte.',
-  'pixel_allowance' => 'Kuvan korkeus tai leveys on liian suuri.', //cpg1.4
-  'incorrect_prefix' => 'Väärä URI/URL etuliite (prefix)',
-  'could_not_open_URI' => 'URI:a ei voitu avata.',
-  'unsafe_URI' => 'Epäturvallinen URI.',
-  'meta_data_failure' => 'Metatietovirhe',
-  'http_401' => '401 Unauthorized / Ei oikeuksia',
-  'http_402' => '402 Payment Required / Maksullinen',
-  'http_403' => '403 Forbidden / Kielletty',
-  'http_404' => '404 Not Found / Ei löytynyt',
-  'http_500' => '500 Internal Server Error / Sisäinen palvelinvirhe',
-  'http_503' => '503 Service Unavailable / Palvelu tavoittamattomissa',
-  'MIME_extraction_failure' => 'MIME -tyyppiä ei voitu selvittää.',
-  'MIME_type_unknown' => 'Tuntematon MIME -tyyppi',
-  'cant_create_write' => 'Tiedostoa ei voitu luoda.',
-  'not_writable' => 'Tiedostoon ei voitu kirjoittaa.',
-  'cant_read_URI' => 'URI/URL:a ei voitu lukea',
-  'cant_open_write_file' => 'Ei voitu avata URI -tiedostoa.',
-  'cant_write_write_file' => 'Ei voitu kirjoittaa URI -tiedostoon.',
-  'cant_unzip' => 'Zip-tiedostoa ei voitu purkaa.',
-  'unknown' => 'Tuntematon virhe',
-  'succ' => 'Onnistuneet lähetykset',
-  'success' => '%s lähetystä onnistui.',
-  'add' => 'Klikkaa \'Jatka\' lisätäksesi kuvat albumeihin.',
-  'failure' => 'Lähetysvirhe',
-  'f_info' => 'Kuvatieto',
-  'no_place' => 'Edellistä kuvaa ei voitu sijoittaa paikalleen.',
-  'yes_place' => 'Edellinen kuva sijoitettiin paikalleen.',
-  'max_fsize' => 'Suurin sallittu tiedostokoko on %s KB',
-  'album' => 'Albumi',
-  'picture' => 'Kuva',
-  'pic_title' => 'Kuvan otsikko',
-  'description' => 'Kuvaus',
-  'keywords' => 'Hakusanat (erottele välilyönneillä)<br /><a href="#" onClick="return MM_openBrWindow(\'keyword_select.php\',\'selectKey\',\'width=250, height=400, scrollbars=yes,toolbar=no,status=yes,resizable=yes\')">Lisää listalta</a>', //cpg1.4
-  'keywords_sel' =>'Valitse hakusana', //cpg1.4
-  'err_no_alb_uploadables' => 'Ei löytynyt yhtään albumia, johon sinulla olisi oikeudet lisätä kuvia',
-  'place_instr_1' => 'Sijoita kuvat albumeihin. Voit myös lisätä kuvista tietoa.',
-  'place_instr_2' => 'Sijoita lisää kuvia. Klikkaa \'Jatka\'.',
-  'process_complete' => 'Kaikki kuvat on lisätty albumeihin.',
-   'albums_no_category' => 'Albumit, joilla ei ole kategoriaa', //cpg1.4. //album pulldown mod, added by frogfoot
-  'personal_albums' => '* Omat albumit', //cpg1.4 //album pulldown mod, added by frogfoot
-  'select_album' => 'Valitse albumi', //cpg1.4 //album pulldown mod, added by frogfoot
-  'close' => 'Sulje', //cpg1.4
-  'no_keywords' => 'Ei löytynyt yhtään hakusanaa!', //cpg1.4
-  'regenerate_dictionary' => 'Generoi sanakirja uudelleen', //cpg1.4
-);
+if (defined('UPLOAD_PHP')) {
+$lang_upload_php['title'] = 'Lataa tiedosto';
+$lang_upload_php['restrictions'] = 'Rajoitukset'; // cpg1.5
+$lang_upload_php['choose_method'] = 'Valitse käytettä tiedostojen lähetystapa'; // cpg1.5
+$lang_upload_php['upload_swf']    = 'Useita tiedostoja kerralla - Flash-pohjainen (suositeltu)'; // cpg1.5
+$lang_upload_php['upload_single'] = 'Yksinkertainen - yksi tiedosto kerralla'; // cpg1.5
+$lang_upload_php['up_instr_1'] = 'Valitse albumi listasta';
+$lang_upload_php['up_instr_2'] = 'Klikkaa alla olevaa "Selaa" -nappia ja etsi tiedosto, jonka haluat lisätä. voit valita useampia tiedostoja pitämällä Ctrl -nappia pohjassa.';
+$lang_upload_php['up_instr_3'] = 'Toista vaihe 2, jos haluat lisätä lisää tiedostoja';
+$lang_upload_php['up_instr_4'] = 'Klikkaa "Jatka" -painiketta kun olet lisännyt kaikki haluamasi tiedostot (painike ilmaantuu, kun olet lähettänyt vähintään yhden tiedoston).';
+$lang_upload_php['up_instr_5'] = 'Sinut ohjataan sivulle, jossa voit syöttää tietoa lähetetyistä tiedostoista. Kun olet täYttänyt tämän lomakkeen, lähetä se klikkaamalla lomakkeen lopussa olevaa "Toteuta muutokset" -nappia.';
+$lang_upload_php['restriction_zip'] = 'Lähetetyt ZIP -tiedostot pysyvät pakattuina, niitä ei pureta palvelimella.';
+$lang_upload_php['restriction_filesize'] = 'Palvelimelle lähettämiesi tiedostojen koko ei saa ylittää %s kappaleelta.';
+$lang_upload_php['reg_instr_1'] = 'Laiton toiminto lomakkeen luonnissa.';
+$lang_upload_php['no_name'] = 'Tiedostonimeä ei löydy'; // cpg 1.5
+$lang_upload_php['no_tmp_name'] = 'Ei voitu lähettää'; // cpg 1.5
+$lang_upload_php['no_post'] = 'POST ei voinut lähettää tiedostoa.';
+$lang_upload_php['forb_ext'] = 'Kielletty tiedostopääte.';
+$lang_upload_php['exc_php_ini'] = 'Tiedoston koko on liian suuri (php.ini:n kokorajoitus)';
+$lang_upload_php['exc_file_size'] = 'Tiedoston koko on liian suuri (CPG:n kokorajoitus).';
+$lang_upload_php['partial_upload'] = 'Lähetys onnistui vain osittain.';
+$lang_upload_php['no_upload'] = 'Lähetystä ei tehty.';
+$lang_upload_php['unknown_code'] = 'Tuntematon PHP -lähetys virhe.';
+$lang_upload_php['impossible'] = 'Ei voida siirtää.';
+$lang_upload_php['not_image'] = 'Tiedosto ei ole kuva tai se on korruptoitunut';
+$lang_upload_php['not_GD'] = 'Ei ole GD -tiedostopääte.';
+$lang_upload_php['pixel_allowance'] = 'Kuvan korkeus ja/tai leveys on liian suuri.';
+$lang_upload_php['failure'] = 'Lähetysvirhe';
+$lang_upload_php['no_place'] = 'Edellistä tiedostoa ei voitu sijoittaa paikalleen.';
+$lang_upload_php['max_fsize'] = 'Suurin sallittu tiedostokoko on %s';
+$lang_upload_php['picture'] = 'Tiedosto';
+$lang_upload_php['pic_title'] = 'Tiedoston otsikko';
+$lang_upload_php['description'] = 'Kuvaus';
+$lang_upload_php['keywords_sel'] = 'Valitse avainsana';
+$lang_upload_php['err_no_alb_uploadables'] = 'Ei löytynyt yhtään albumia, johon sinulla olisi oikeudet lisätä tiedostoja';
+$lang_upload_php['close'] = 'Sulje';
+$lang_upload_php['no_keywords'] = 'Avainsanoja ei löytynyt!';
+$lang_upload_php['regenerate_dictionary'] = 'Luo sanakirja uudelleen';
+$lang_upload_php['allowed_types'] = 'Sinulla ei ole oikeutta lähettää tiedostoja seuraavilla päätteillä:'; // cpg1.5
+$lang_upload_php['allowed_img_types'] = 'Kuvien päätteet: %s'; // cpg1.5
+$lang_upload_php['allowed_mov_types'] = 'Videoiden päätteet: %s'; // cpg1.5
+$lang_upload_php['allowed_doc_types'] = 'Dokumenttien päätteet: %s'; // cpg1.5
+$lang_upload_php['allowed_snd_types'] = 'Audion päätteet: %s'; // cpg1.5
+$lang_upload_php['please_wait'] = 'Ole hyvä ja odata sillä aikaa kun tiedostoja lisätään - tämä saattaa kestää jonkin aikaa'; // cpg1.5
+$lang_upload_php['alternative_upload'] = 'Muut tiedostojen lähetystavat'; // cpg1.5
+$lang_upload_php['xp_publish_promote'] = 'Jos käytät Windows XP:tä tai Vista:a, voit käyttää tiedostojen lisäykseen Windows XP webjulkaisuohjelmaa , joka tarjoaa helpomman tavan lisätä tiedostoja suoraan koneelta.'; // cpg1.5
+$lang_upload_php['err_js_disabled'] = 'Flash lähetyskäyttöliittymää ei voitu ladata. JavaScript -tuen pitää olla käytössä käyttääksesi sitä.'; // cpg1.5
+$lang_upload_php['err_flash_disabled'] = 'Lähetyskäyttöliittymän lataus kestää kauan tai lataus epäonnistui.  Ole hyvä ja tarkista, että Flash -lisäosa on käytössä ja että toimiva versio siitä on asennettu.'; // cpg1.5
+$lang_upload_php['err_alternate_method'] = 'Vaihtoehtoisesti voit käyttää <a href="upload.php?single=1">yksinkertaista</a> tiedostojen lähetyskäyttöliittymää.'; // cpg1.5
+$lang_upload_php['err_flash_version'] = 'Lähetyskäyttöliittymän lataus epäonnistui.  Sinun ehkä tarvitsee asentaa tai päivittää Flash Player -lisäosa. Vieraile <a href="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash">Adoben sivuilla</a> ladataksesi Flash Player:in.'; // cpg1.5
+$lang_upload_php['flash_loading'] = 'Lähetyskäyttöliittymää ladataan. Ole hyvä ja odota hetki...'; // cpg1.5
 
+$lang_upload_swf_php['browse'] = 'Selaa...'; //cpg1.5
+$lang_upload_swf_php['cancel_all'] = 'Peruuta kaikki lähetykset'; //cpg1.5
+$lang_upload_swf_php['upload_queue'] = 'Lähetysjono'; //cpg1.5
+$lang_upload_swf_php['files_uploaded'] = 'tiedostoa lähetetty'; //cpg1.5
+$lang_upload_swf_php['all_files'] = 'Kaikki tiedostot'; //cpg1.5
+$lang_upload_swf_php['status_pending'] = 'Odottaa...'; //cpg1.5
+$lang_upload_swf_php['status_uploading'] = 'Lähetetään...'; //cpg1.5
+$lang_upload_swf_php['status_complete'] = 'Valmis.'; //cpg1.5
+$lang_upload_swf_php['status_cancelled'] = 'Peruutettu.'; //cpg1.5
+$lang_upload_swf_php['status_stopped'] = 'Pysäytetty.'; //cpg1.5
+$lang_upload_swf_php['status_failed'] = 'Lähetys epäonnistui.'; //cpg1.5
+$lang_upload_swf_php['status_too_big'] = 'Tiedosto on liian suuri.'; //cpg1.5
+$lang_upload_swf_php['status_zero_byte'] = 'Nollan tavun tiedostoa ei voi lähettää.'; //cpg1.5
+$lang_upload_swf_php['status_invalid_type'] = 'Kelvoton tiedostotyyppi.'; //cpg1.5
+$lang_upload_swf_php['status_unhandled'] = 'Käsittelemätön virhe'; //cpg1.5
+$lang_upload_swf_php['status_upload_error'] = 'Lähetysvirhe: '; //cpg1.5
+$lang_upload_swf_php['status_server_error'] = 'Palvelin (IO) virhe'; //cpg1.5
+$lang_upload_swf_php['status_security_error'] = 'Turvallisuusvirhe'; //cpg1.5
+$lang_upload_swf_php['status_upload_limit'] = 'Lähetyksen raja saavutettiin.'; //cpg1.5
+$lang_upload_swf_php['status_validation_failed'] = 'Tarkistui epäonnistui.  Lähetys ohitettiin.'; //cpg1.5
+$lang_upload_swf_php['queue_limit'] = 'Yritit lisätä liian monta tiedostoa jonoon.'; //cpg1.5
+$lang_upload_swf_php['upload_limit_1'] = 'Ylitit lähetysrajan.'; //cpg1.5
+$lang_upload_swf_php['upload_limit_2'] = 'Voit valita jopa %s tiedostoa'; //cpg1.5
+}
 // ------------------------------------------------------------------------- //
 // File usermgr.php
 // ------------------------------------------------------------------------- //
+if (defined('USERMGR_PHP')) {
+$lang_usermgr_php['memberlist'] = 'Käyttäjälista';
+$lang_usermgr_php['user_manager'] = 'Käyttäjähallinta';
+$lang_usermgr_php['title'] = 'Hallitse käyttäjiä';
+$lang_usermgr_php['name_a'] = 'Nimen mukaan nousevasti';
+$lang_usermgr_php['name_d'] = 'Nimen mukaan laskevasti';
+$lang_usermgr_php['group_a'] = 'Ryhmän mukaan nousevasti';
+$lang_usermgr_php['group_d'] = 'Ryhmän mukaan laskevasti';
+$lang_usermgr_php['reg_a'] = 'Rekisteröinti päivän mukaan nousevasti';
+$lang_usermgr_php['reg_d'] = 'Rekisteröinti päivän mukaan laskevasti';
+$lang_usermgr_php['pic_a'] = 'Tiedostojen määrän mukaan nousevasti';
+$lang_usermgr_php['pic_d'] = 'Tiedostojen määrän mukaan nousevasti';
+$lang_usermgr_php['disku_a'] = 'Levytilan käytön mukaan nousevasti';
+$lang_usermgr_php['disku_d'] = 'Levytilan käytön mukaan laskevasti';
+$lang_usermgr_php['lv_a'] = 'Viimeisimmän vierailun mukaan nousevasti';
+$lang_usermgr_php['lv_d'] = 'Viimeisimmän vierailun mukaan laskevasti';
+$lang_usermgr_php['sort_by'] = 'Järjestä käyttäjät';
+$lang_usermgr_php['err_no_users'] = 'Käyttäjätaulu on tyhjä!';
+$lang_usermgr_php['err_edit_self'] = 'Et voi muokata profiiliasi täältä. Pääset tekemään sen \'Oma profiili\' linkistä.';
+$lang_usermgr_php['with_selected'] = 'Valitut:';
+$lang_usermgr_php['delete_files_no'] = 'pidä julkiset tiedostot (mutta lähettäjätiedot poistetaan)';
+$lang_usermgr_php['delete_files_yes'] = 'poista myös julkiset tiedostot';
+$lang_usermgr_php['delete_comments_no'] = 'pidä kommentit (mutta lähettäjätiedot poistetaan)';
+$lang_usermgr_php['delete_comments_yes'] = 'poista myös kommentit';
+$lang_usermgr_php['activate'] = 'Aktivoi';
+$lang_usermgr_php['deactivate'] = 'Poista käytöstä';
+$lang_usermgr_php['reset_password'] = 'Resetoi salasana';
+$lang_usermgr_php['change_primary_membergroup'] = 'Vaihda ensisijaista ryhmää';
+$lang_usermgr_php['add_secondary_membergroup'] = 'Lisää toissijainen ryhmä';
+$lang_usermgr_php['name'] = 'Käyttäjätunnus';
+$lang_usermgr_php['group'] = 'Ryhmä';
+$lang_usermgr_php['inactive'] = 'Epäaktiivinen';
+$lang_usermgr_php['operations'] = 'Toiminnot';
+$lang_usermgr_php['pictures'] = 'Tiedostot';
+$lang_usermgr_php['disk_space_used'] = 'Käytetty levytila';
+$lang_usermgr_php['disk_space_quota'] = 'Sallittu levytila'; // cpg1.5
+$lang_usermgr_php['registered_on'] = 'Rekisteröinti';
+$lang_usermgr_php['last_visit'] = 'Viimeisin vierailu';
+$lang_usermgr_php['u_user_on_p_pages'] = '%d käyttäjää ja %d sivua';
+$lang_usermgr_php['confirm_del'] = 'Haluatko varmasti POISTAA tämän käyttäjän? \\nKaikki hänen tiedostonsa ja albuminsa poistetaan.'; // js-alert
+$lang_usermgr_php['mail'] = 'POSTI';
+$lang_usermgr_php['err_unknown_user'] = 'Valittua käyttäjää ei löydy!';
+$lang_usermgr_php['modify_user'] = 'Muokkaa käyttäjää';
+$lang_usermgr_php['notes'] = 'Huomio';
+$lang_usermgr_php['note_list'] = 'Jos et halua vaihtaa nykyistä salasanaa, jätä "salasana" -kenttä tyhjäksi';
+$lang_usermgr_php['password'] = 'Salasana';
+$lang_usermgr_php['user_active'] = 'Käyttäjä on aktiivinen';
+$lang_usermgr_php['user_group'] = 'Käyttäjän ryhmä';
+$lang_usermgr_php['user_email'] = 'Käyttäjän sähköpostiosoite';
+$lang_usermgr_php['user_web_site'] = 'Käyttäjän kotisivu';
+$lang_usermgr_php['create_new_user'] = 'Luo uusi käyttäjä';
+$lang_usermgr_php['user_location'] = 'Käyttäjän sijainti';
+$lang_usermgr_php['user_interests'] = 'Käyttäjän kiinnostukset';
+$lang_usermgr_php['user_occupation'] = 'Käyttäjän ammatti';
+$lang_usermgr_php['user_profile1'] = '$user_profile1';
+$lang_usermgr_php['user_profile2'] = '$user_profile2';
+$lang_usermgr_php['user_profile3'] = '$user_profile3';
+$lang_usermgr_php['user_profile4'] = '$user_profile4';
+$lang_usermgr_php['user_profile5'] = '$user_profile5';
+$lang_usermgr_php['user_profile6'] = '$user_profile6';
+$lang_usermgr_php['latest_upload'] = 'Viimeisimmät lisäykset';
+$lang_usermgr_php['no_latest_upload'] = 'Ei ole lisännyt ainuttakaan tiedostoa'; // cpg1.5
+$lang_usermgr_php['last_comments'] = 'Viimeisimmät kommentit'; // cpg1.5
+$lang_usermgr_php['no_last_comments'] = 'Ei ole lisännyt ainuttakaan kommenttia'; // cpg1.5
+$lang_usermgr_php['comments'] = 'Kommentit'; // cpg1.5
+$lang_usermgr_php['never'] = 'ei koskaan';
+$lang_usermgr_php['search'] = 'Käyttäjähaku';
+$lang_usermgr_php['submit'] = 'Lähetä';
+$lang_usermgr_php['search_submit'] = 'Hae!';
+$lang_usermgr_php['search_result'] = 'Hakutulokset hakusanalle: ';
+$lang_usermgr_php['alert_no_selection'] = 'Sinun täytyy ensin valita vähintään yksi käyttäjä!'; // js-alert
+$lang_usermgr_php['select_group'] = 'Valitse ryhmä';
+$lang_usermgr_php['groups_alb_access'] = 'Albumin oikeudet ryhmän mukaan';
+$lang_usermgr_php['category'] = 'Kategoria';
+$lang_usermgr_php['modify'] = 'Muuta?';
+$lang_usermgr_php['group_no_access'] = 'Tällä ryhmällä ei ole erikoisoikeuksia';
+$lang_usermgr_php['notice'] = 'Huomio';
+$lang_usermgr_php['group_can_access'] = 'Albumit, joihin vain "%s" voi päästä';
+$lang_usermgr_php['send_login_data'] = 'Lähetä käyttäjälle kirjautumistiedot (salasana lähetetään säkhöpostitse)'; // cpg1.5
+$lang_usermgr_php['send_login_email_subject'] = 'Tietoa uudesta tilistäsi'; // cpg1.5
+$lang_usermgr_php['failed_sending_email'] = 'Kirjautumistietojen lähetys epäonnistui!'; // cpg1.5
+$lang_usermgr_php['view_profile'] = 'Näytä profiili'; // cpg1.5
+$lang_usermgr_php['edit_profile'] = 'Muokkaa profiilia'; // cpg1.5
+$lang_usermgr_php['ban_user'] = 'Bannaa käyttäjä'; // cpg1.5
+$lang_usermgr_php['user_is_banned'] = 'Käyttäjä on bannattu'; // cpg1.5
+$lang_usermgr_php['status'] = 'Tila'; // cpg1.5
+$lang_usermgr_php['status_active'] = 'aktiivinen'; // cpg1.5
+$lang_usermgr_php['status_inactive'] = 'epäaktiivinen'; // cpg1.5
+$lang_usermgr_php['total'] = 'Yhteensä'; // cpg1.5
+$lang_usermgr_php['send_login_data_email'] = <<< EOT
+Hei
 
-if (defined('USERMGR_PHP')) $lang_usermgr_php = array(
-  'memberlist' => 'Käyttäjälista', //cpg1.4
-  'user_manager' => 'Käyttäjähallinta', //cpg1.4
-  'title' => 'Muokkaa käyttäjiä',
-  'name_a' => 'Nimen mukaan nousevasti',
-  'name_d' => 'Nimen mukaan laskevasti',
-  'group_a' => 'Ryhmän mukaan nousevasti',
-  'group_d' => 'Ryhmän mukaan laskevasti',
-  'reg_a' => 'Rekisteröinti päivän mukaan nousevasti',
-  'reg_d' => 'Rekisteröinti päivän mukaan laskevasti',
-  'pic_a' => 'Kuvien määrän mukaan nousevasti',
-  'pic_d' => 'Kuvien määrän mukaan laskevasti',
-  'disku_a' => 'Levytilan käytön mukaan nousevasti',
-  'disku_d' => 'Levytilan käytön mukaan laskevasti',
-  'lv_a' => 'Viimeisimmän vierailun mukaan nousevasti',
-  'lv_d' => 'Viimeisimmän vierailun mukaan laskevasti',
-  'sort_by' => 'Järjestä käyttäjät',
-  'err_no_users' => 'Käyttäjätaulu on tyhjä!',
-  'err_edit_self' => 'Et voi muokata profiiliasi täältä. \'Oma profiili\' linkistä pääset tekemään sen',
-  'edit' => 'MUOKKAA',
-  'with_selected' => 'Valitut:', //cpg1.4
-  'delete' => 'Poista', //cpg1.4
-  'delete_files_no' => 'Pidä julkiset tiedostot (mutta lähettäjätiedot poistetaan)', //cpg1.4
-  'delete_files_yes' => 'Poista myös julkiset tiedostot', //cpg1.4
-  'delete_comments_no' => 'Pidä kommentit (mutta lähettäjätiedot poistetaan)', //cpg1.4
-  'delete_comments_yes' => 'Poista myös kommentit', //cpg1.4
-  'activate' => 'Aktivoi', //cpg1.4
-  'deactivate' => 'Epäaktivoi', //cpg1.4
-  'reset_password' => 'Resetoi salasana', //cpg1.4
-  'change_primary_membergroup' => 'Vaihda pääryhmää', //cpg1.4
-  'add_secondary_membergroup' => 'Lisää toissijainen ryhmä', //cpg1.4
-  'name' => 'Käyttäjänimi',
-  'group' => 'Ryhmä',
-  'inactive' => 'Epäaktiivinen',
-  'operations' => 'Toiminnot',
-  'pictures' => 'Tiedostot',
-  'disk_space_used' => 'Käytetty levytila', //cpg1.4
-  'disk_space_quota' => 'Levytilan maksimi', //cpg1.4
-  'registered_on' => 'Rekisteröinti', //cpg1.4
-  'last_visit' => 'Viimeisin vierailu',
-  'u_user_on_p_pages' => '%d käyttäjää ja %d sivua',
-  'confirm_del' => 'Oletko varma, että haluat POISTAA tämän käyttäjän? \\nKaikki hänen tiedostonsa ja albuminsa poistetaan.', //js-alert
-  'mail' => 'POSTI',
-  'err_unknown_user' => 'Valittua käyttäjää ei löydy!',
-  'modify_user' => 'Muokkaa käyttäjää',
-  'notes' => 'Huomio',
-  'note_list' => '<li>Jos et halua vaihtaa salasanaa, jätä "salasana" kenttä tyhjäksi',
-  'password' => 'Salasana',
-  'user_active' => 'Käyttäjä on aktiivinen',
-  'user_group' => 'Käyttäjän ryhmä',
-  'user_email' => 'Käyttäjän sähköpostiosoite',
-  'user_web_site' => 'Käyttäjän kotisivu',
-  'create_new_user' => 'Luo uusi käyttäjä',
-  'user_location' => 'Käyttäjän sijainti',
-  'user_interests' => 'Käyttäjän kiinnostukset',
-  'user_occupation' => 'Käyttäjän ammatti',
-  'user_profile1' => '$user_profile1', //cpg1.4
-  'user_profile2' => '$user_profile2', //cpg1.4
-  'user_profile3' => '$user_profile3', //cpg1.4
-  'user_profile4' => '$user_profile4', //cpg1.4
-  'user_profile5' => '$user_profile5', //cpg1.4
-  'user_profile6' => '$user_profile6', //cpg1.4
-  'latest_upload' => 'Viimeisimmän lisäykset',
-  'never' => 'ei koskaan',
-  'search' => 'Käyttäjähaku', //cpg1.4
-  'submit' => 'Lähetä', //cpg1.4
-  'search_submit' => 'Hae', //cpg1.4
-  'search_result' => 'Hakutulokset hakusanalle: ', //cpg1.4
-  'alert_no_selection' => 'Sinun täytyy ensin valita vähintään yksi käyttäjä!', //cpg1.4 //js-alert
-  'password' => 'salasana', //cpg1.4
-  'select_group' => 'Valitse ryhmä', //cpg1.4
-  'groups_alb_access' => 'Albumin oikeudet ryhmän mukaan', //cpg1.4
-  'album' => 'Albumi', //cpg1.4
-  'category' => 'Kategoria', //cpg1.4
-  'modify' => 'Muuta?', //cpg1.4
-  'group_no_access' => 'Tällä ryhmällä ei ole erikoisoikeuksia', //cpg1.4
-  'notice' => 'Huomio', //cpg1.4
-  'group_can_access' => 'Albumit, joihin vain "%s" voi päästä', //cpg1.4
-);
+Sinulle on luotu uusi tili sivustolle {SITE_NAME}.
+
+Voit kirjautua sisään osoitteessa <a href="{SITE_LINK}">{SITE_LINK}</a> käyttäen käyttäjätunnusta "{USER_NAME}" ja salasanaa "{USER_PASS}".
+
+
+Terveisin
+
+Sivuston {SITE_NAME} ylläpito
+
+EOT;
+}
+
+// ------------------------------------------------------------------------- //
+// File update.php
+// ------------------------------------------------------------------------- //
+if (defined('UPDATE_PHP')) {
+$lang_update_php['title'] = 'Päivittäjä'; // cpg1.5
+$lang_update_php['welcome_updater'] = 'Tervetuloa Copperminen päivitykseen'; // cpg1.5
+$lang_update_php['could_not_authenticate'] = 'Sinua ei voitu todentaa'; // cpg1.5
+$lang_update_php['provide_admin_account'] = 'Ole hyvä ja syötä Copperminen ylläpitäjän tiedot tai MySQL-tilisi tiedot'; // cpg1.5
+$lang_update_php['try_again'] = 'Yritä uudelleen'; // cpg1.5
+$lang_update_php['mysql_connect_error'] = 'MySQL-yhteyttä ei voitu luoda'; // cpg1.5
+$lang_update_php['mysql_database_error'] = 'MySQL ei löytänyt tietokantaa %s'; // cpg1.5
+$lang_update_php['mysql_said'] = 'MySQL sanoi'; // cpg1.5
+$lang_update_php['check_config_file'] = 'Ole hyvä ja tarkista MySQL -tiedot %s:ssa'; // cpg1.5
+$lang_update_php['performing_database_updates'] = 'Päivitetään tietokantaa'; // cpg1.5
+$lang_update_php['performing_file_updates'] = 'Päivitetään tiedostoja'; // cpg1.5
+$lang_update_php['already_done'] = 'On jo tehty'; // cpg1.5
+$lang_update_php['password_encryption'] = 'Salasanojen kryptaus'; // cpg1.5
+$lang_update_php['alb_password_encryption'] = 'Albumien salasanojen kryptaus'; // cpg1.5
+$lang_update_php['category_tree'] = 'Kategoriapuu'; // cpg1.5
+$lang_update_php['authentication_needed'] = 'Todennusta tarvitaan'; // cpg1.5
+$lang_update_php['username'] = 'Käyttäjätunnus'; // cpg1.5
+$lang_update_php['password'] = 'Salasana'; // cpg1.5
+$lang_update_php['update_completed'] = 'Päivitys valmis'; // cpg1.5
+$lang_update_php['check_versions'] = 'On suositeltavaa %starkistaa tiedostojesi versiot%s jos päivitit vanhemmasta Copperminen versiosta'; // cpg1.5 // Leave the %s untouched when translating - it wraps the link
+$lang_update_php['start_page'] = 'Jos et (tai et halua tarkistaa), voit mennä %sgalleriasi etusivulle%s'; // cpg1.5 // Leave the %s untouched when translating - it wraps the link
+$lang_update_php['errors_encountered'] = 'Seuraavat virheet havaittiin, ja ne on korjattava ensin'; // cpg1.5
+$lang_update_php['delete_file'] = 'Poista %s'; // cpg1.5
+$lang_update_php['could_not_delete'] = 'Tiedostoa ei voitu poistaa virheellisten oikeuksien vuoksi. Poista tiedosto käsin!'; // cpg1.5
+$lang_update_php['rename_file'] = 'Nimeä tiedosto %s uudelleen %s:ksi'; // cpg1.5
+$lang_update_php['could_not_rename'] = 'Tiedostoa ei voitu nimetä uudelleen virheellisten oikeuksien vuoksi. Nimeä tiedosto uudelleen käsin!'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
 // File util.php
 // ------------------------------------------------------------------------- //
-
 if (defined('UTIL_PHP')) {
-$lang_util_desc_php = array(
-'Lisää otsikot tiedostonnimestä', //cpg1.4
-'Poistaa otsikot', //cpg1.4
-'Luo thumbnailit ja pienennetyt/suurennetut kuvat uudelleen', //cpg1.4
-'Poistaa alkuperäiset kuvat ja korvaa ne pienennetyillä/suurennetuilla versioilla', //cpg1.4
-'Poistaa alkuperäiset tai keskikokoiset kuvat, jotta levytilaa säästyy', //cpg1.4
-'Poistaa kommentit, joilla ei ole enää omistajaa', //cpg1.4
-'Lukee uudelleen tiedostokoot ja kuvakoot (jos muutit kuvia manuaalisesti)', //cpg1.4
-'Resetoi näyttökertalaskuri', //cpg1.4
-'Näyttää PHP-infoa', //cpg1.4
-'Päivittää tietokannan', //cpg1.4
-'Näyttää lokitiedostot', //cpg1.4
-);
-$lang_util_php = array(
-  'title' => 'Ylläpitotyökalut (Muuta kuvakokoja)',
-  'what_it_does' => 'Mitä tekee',
-  'file' => 'Tiedosto',
-  'problem' => 'Ongelma', //cpg1.4
-  'status' => 'Status', //cpg1.4
-  'title_set_to' => 'otsikko muutettu:',
-  'submit_form' => 'lähetä',
-  'updated_succesfully' => 'päivitetty',
-  'error_create' => 'VIRHE luotaessa:',
-  'continue' => 'Muokkaa lisää kuvia',
-  'main_success' => 'Tiedostoa %s käytettiin onnistuneesti päätiedostona',
-  'error_rename' => 'Virhe nimettäessä kuvaa %s uudelle nimelle %s',
-  'error_not_found' => 'Tiedostoa %s ei löydy',
-  'back' => 'takaisin',
-  'thumbs_wait' => 'Päivitetään thumbnaileja ja/tai muita kuvakokoja. Odota...',
-  'thumbs_continue_wait' => 'Päivitetään yhä thumbnaileja ja/tai muita kuvakokoja...',
-  'titles_wait' => 'Päivitetään otsikoita. Odota...',
-  'delete_wait' => 'Poistetaan otsikoita. Odota...',
-  'replace_wait' => 'Poistetaan alkuperäisiä ja korvataan ne pienennetyillä/suurennetuilla kuvilla. Odota...',
-  'instruction' => 'Pikaohjeet',
-  'instruction_action' => 'Valitse toiminto',
-  'instruction_parameter' => 'Aseta parameterit',
-  'instruction_album' => 'Valitse albumi',
-  'instruction_press' => 'Paina %s',
-  'update' => 'Päivitä thumbnailit tai pienennetyt/suurennetut kuvat',
-  'update_what' => 'Mitä pitäisi päivittää',
-  'update_thumb' => 'Vain thumbnailit',
-  'update_pic' => 'Vain pienennetyt/suurennetut kuvat',
-  'update_both' => 'Sekä thumbnailit että pienennetyt/suurennetut kuvat',
-  'update_number' => 'Muokattavien kuvien määrä klikkausta kohti',
-  'update_option' => '(Kokeile muuttaa tätä pienemmäksi, jos saat timeoutteja.)',
-  'filename_title' => 'Tiedostonimi &rArr; Tiedosto otsikko',
-  'filename_how' => 'Kuinka tiedostonimeä muutetaan',
-  'filename_remove' => 'Poista .jpg -pääte ja korvaa _ (alaviiva) välilyönnillä',
-  'filename_euro' => 'Muuta 2003_11_23_13_20_20.jpg muotoon 23/11/2003 13:20',
-  'filename_us' => 'Muuta 2003_11_23_13_20_20.jpg muotoon 11/23/2003 13:20',
-  'filename_time' => 'Muuta 2003_11_23_13_20_20.jpg muotoon 13:20',
-  'delete' => 'Poista tiedosto-otsikot tai alkuperäisen kokoiset kuvat',
-  'delete_title' => 'Poista tiedosto-otsikot',
-  'delete_title_explanation' => 'Tämä poistaa kaikki otsikot valitussa albumissa.', //cpg1.4
-  'delete_original' => 'Poista alkuperäisen kokoiset kuvat',
-  'delete_original_explanation' => 'Tämä poistaa täysikokoiset kuvat.', //cpg1.4
-  'delete_intermediate' => 'Poista keskikokoiset kuvat', //cpg1.4
-  'delete_intermediate_explanation' => 'Tämä poistaa keskikokoiset (normaalikokoiset) kuvat.<br />Käytä tätä vapauttaaksesi tilaa, jos otit pois päältä kohdan \'Luo keskikokoiset kuvat\' asetuksissa kuvien lisäämisen jälkeen.', //cpg1.4
-  'delete_replace' => 'Poistaa alkuperäiset kuvat ja korvaa ne muutetuilla kuvakoilla',
-  'titles_deleted' => 'Kaikki otsikot valitsemassasi albumissa poistettu', //cpg1.4
-  'deleting_intermediates' => 'Poistetaan keskikokoisia kuvia. Odota...', //cpg1.4
-  'searching_orphans' => 'Etsitään kuvia, joilla ei ole enää omistajaa. Odota...', //cpg1.4
-  'select_album' => 'Valitse albumi',
-  'delete_orphans' => 'Poista kommentit puuttuvista tiedostoista', //cpg1.4
-  'delete_orphans_explanation' => 'Tämä etsii ja antaa poistaa kaikki kommentit, jotka liittyvät kuviin, joita ei enää ole galleriassa.<br />Tutkii kaikki albumit.', //cpg1.4
-  'refresh_db' => 'Lataa uudelleen tiedostokoot ja kuvakokotiedot', //cpg1.4
-  'refresh_db_explanation' => 'Tämä lukee uudelleen tiedostojen koot ja kuvakoot. Käytä tätä, jos levytilan käyttölaskurit ovat väärässä tai olet muokannut kuvia manuaalisesti.', //cpg1.4
-  'reset_views' => 'Resetoi näyttökertalaskurit', //cpg1.4
-  'reset_views_explanation' => 'Asettaa kaikki kuvien näyttökertalaskurit nollaan valitussa albumissa.', //cpg1.4
-  'orphan_comment' => 'kommenttia löydetty ilman omistajaa',
-  'delete' => 'Poista',
-  'delete_all' => 'Poista kaikki',
-  'delete_all_orphans' => 'Poista kaikki kommentit ilman omistajaa?', //cpg1.4
-  'comment' => 'Kommentti: ',
-  'nonexist' => 'liittyy olemattomaan tiedostoon # ',
-  'phpinfo' => 'Näytä PHP-info',
-  'phpinfo_explanation' => 'Sisältää teknistä tietoa palvelimestasi.<br /> - Sinua voidaan pyytää kertomaan näitä tietoja pyytäessäsi tukea.', //cpg1.4
-  'update_db' => 'Päivitä tietokanta',
-  'update_db_explanation' => 'Jos olet korvannut coppermine-tiedostoja, lisännyt muunnelman tai päivittänyt uuteen copperminen versioon, aja kerran tietokantapäivitys. Tämä luo vaadittavat taulut ja/tai asetusarvot coppermine-tietokantaasi.',
-  'view_log' => 'Näytä lokitiedostot', //cpg1.4
-  'view_log_explanation' => 'Coppermine voi pitää silmällä käyttäjien toimia sivustolla. Voit tutkia lokeja, jos olet asettanut lokittamisen päälle <a href="admin.php">copperminen asetuksissa</a>.', //cpg1.4
-  'versioncheck' => 'Tarkista versiot', //cpg1.4
-  'versioncheck_explanation' => 'Tarkista tiedostoversiosi, että olet korvannut kaikki tiedostot päivityksen jälkeen, tai jos Copperminen lähdetiedostot ovat päivittyneet uuden pakettiversion myötä.', //cpg1.4
-  'bridgemanager' => 'Yhteyshallinta muihin ohjelmiin', //cpg1.4
-  'bridgemanager_explanation' => 'Laita päälle/pois Copperminen integrointi muihin applikaatioihin (esim. BBS).', //cpg1.4
-);
+$lang_util_php['title'] = 'Ylläpitäjän työkalut';  // cpg1.5
+$lang_util_php['file'] = 'Tiedosto';
+$lang_util_php['problem'] = 'Ongelma';
+$lang_util_php['status'] = 'Tila';
+$lang_util_php['title_set_to'] = 'otsikko muutettu:';
+$lang_util_php['submit_form'] = 'lähetä';
+$lang_util_php['titles_updated'] = '%s otsikkoa päivitetty.'; // cpg1.5
+$lang_util_php['updated_successfully'] = 'päivitetty onnistuneesti'; // cpg1.5
+$lang_util_php['error_create'] = 'VIRHE luotaessa';
+$lang_util_php['continue'] = 'Käsittele lisää tiedostoja'; // cpg1.5
+$lang_util_php['main_success'] = 'Tiedostoa %s käytettiin onnistuneesti päätiedostona';
+$lang_util_php['error_rename'] = 'Virhe nimettäessä tiedostoa %s uudelleen %s:ksi';
+$lang_util_php['error_not_found'] = 'Tiedostoa %s ei löydy';
+$lang_util_php['back'] = 'takaisin ylläpitäjän työkalujen alkuun'; // cpg1.5
+$lang_util_php['thumbs_wait'] = 'Päivitetään pienoiskuvia ja/tai muita kuvakokoja. Ole hyvä ja odota...';
+$lang_util_php['thumbs_continue_wait'] = 'Päivitetään yhä pienoiskuvia ja/tai muita kuvakokoja...';
+$lang_util_php['titles_wait'] = 'Päivitetään otsikoita. Ole hyvä ja odota...';
+$lang_util_php['delete_wait'] = 'Poistetaan otsikoita. Ole hyvä ja odota...';
+$lang_util_php['replace_wait'] = 'Poistetaan alkuperäisiä ja korvataan ne pienennetyillä/suurennetuilla kuvilla. Ole hyvä ja odota...';
+$lang_util_php['update'] = 'Päivitä pienoiskuvat tai pienennetyt/suurennetut kuvat';
+$lang_util_php['update_what'] = 'Mitä pitäisi päivittää';
+$lang_util_php['update_thumb'] = 'Vain pienoiskuvat';
+$lang_util_php['update_pic'] = 'Vain pienennetyt/suurennetut kuvat';
+$lang_util_php['update_both'] = 'Sekä pienoiskuvat että pienennetyt/suurennetut kuvat';
+$lang_util_php['update_number'] = 'Muokattavien kuvien määrä klikkausta kohti';
+$lang_util_php['update_option'] = '(Kokeile muuttaa tätä pienemmäksi, jos saat aikakatkaisuja.)';
+$lang_util_php['update_missing'] = 'Päivitä vain puuttuvat tiedostot'; // cpg1.5
+$lang_util_php['filename_title'] = 'Tiedostonimi &rArr; Tiedoston otsikko';
+$lang_util_php['filename_how'] = 'Kuinka tiedostonimeä muutetaan';
+$lang_util_php['filename_remove'] = 'Poista pääte (kuten .jpg) ja korvaa _ (alaviiva) välilyönnillä'; // cpg1.5
+$lang_util_php['filename_euro'] = 'Muuta 2003_11_23_13_20_20.jpg muotoon 23/11/2003 13:20';
+$lang_util_php['filename_us'] = 'Muuta 2003_11_23_13_20_20.jpg muotoon 11/23/2003 13:20';
+$lang_util_php['filename_time'] = 'Muuta 2003_11_23_13_20_20.jpg muotoon 13:20';
+$lang_util_php['notitle'] = 'Toteuta vain tiedostoille, joissa ei ole otsikkoa'; // cpg1.5
+$lang_util_php['delete_title'] = 'Poista tiedostojen otsikot';
+$lang_util_php['delete_title_explanation'] = 'Tämä poistaa kaikki otsikot valitussa albumissa.';
+$lang_util_php['delete_original'] = 'Poista alkuperäisen kokoiset kuvat';
+$lang_util_php['delete_original_explanation'] = 'Tämä poistaa täysikokoiset kuvat.';
+$lang_util_php['delete_intermediate'] = 'Poista keskikokoiset kuvat';
+$lang_util_php['delete_intermediate_explanation1'] = 'Tämä poistaa keskikokoiset (normaalit) kuvat.'; // cpg1.5
+$lang_util_php['delete_intermediate_explanation2'] = 'Käytä tätä vapauttaaksesi levytilaa, jos olet ottanut asetuksen \'Luo keskikokoiset kuvat\' pois käytöstä asetuksista kuvien lisäämisen jälkeen.'; // cpg1.5
+$lang_util_php['delete_intermediate_check'] = 'Asetus \'Luo keskikokoiset kuvat\' on tällä hetkellä %s.'; // cpg1.5
+$lang_util_php['no_image'] = '%s ohitettiin, koska se ei ole kuva.'; // cpg1.5
+$lang_util_php['enabled'] = 'päällä'; // cpg1.5
+$lang_util_php['disabled'] = 'pois päältä'; // cpg1.5
+$lang_util_php['delete_replace'] = 'Poistaa alkuperäiset kuvat ja korvaa ne muutetuilla kuvakoilla';
+$lang_util_php['titles_deleted'] = 'Kaikki otsikot valitsemassasi albumissa poistettu';
+$lang_util_php['deleting_intermediates'] = 'Poistetaan keskikokoisia kuvia. Ole hyvä ja odata...';
+$lang_util_php['searching_orphans'] = 'Etsitään kuvia, joilla ei ole enää omistajaa. Ole hyvä ja odata...';
+$lang_util_php['delete_orphans'] = 'Poista kommentit puuttuvista tiedostoista';
+$lang_util_php['delete_orphans_explanation'] = 'Tämä etsii ja antaa poistaa kaikki kommentit, jotka liittyvät kuviin, joita ei enää ole galleriassa.<br />Tämä tutkii kaikki albumit.';
+$lang_util_php['update_full_normal_thumb'] = 'Kaikki: täysikokoinen kuva, muutettu kuva ja pienoiskuvat'; // cpg1.5
+$lang_util_php['update_full_normal'] = 'Sekä muutettu kuva että täysikoinen kuva (jos alkuperäinen kuva on saatavilla)'; // cpg1.5
+$lang_util_php['update_full'] = 'Vain täysikokoinen kuva (jos alkuperäinen kuva on saatavilla)'; // cpg1.5
+$lang_util_php['delete_back'] = 'Poista alkuperäinen kuvavarmuuskopio vesileimatuista kuvista'; // cpg1.5
+$lang_util_php['delete_back_explanation'] = 'Tämä poistaa kuvavarmuuskopion. Poistaminen  säästää levytilaa, mutta et voi enään poistaa kuvista vesileimaa!!! After that the watermark will be permanent.'; // cpg1.5
+$lang_util_php['finished'] = '<br />Kuvien/pienoiskuvien päivitys valmis!<br />'; // cpg1.5
+$lang_util_php['autorefresh'] = 'Päivitä sivu automaattisesti (ei enään tarvetta klikata jatka -nappia)'; // cpg1.5
+$lang_util_php['refresh_db'] = 'Lataa uudelleen tiedostokoot ja kuvakokotiedot';
+$lang_util_php['refresh_db_explanation'] = 'Tämä lukee uudelleen tiedostojen koot ja kuvakoot. Käytä tätä, jos levytilan käyttölaskurit ovat väärässä tai olet muokannut kuvia manuaalisesti.';
+$lang_util_php['reset_views'] = 'Resetoi näyttökertalaskurit';
+$lang_util_php['reset_views_explanation'] = 'Asettaa kaikki kuvien näyttökertalaskurit nollaan valitussa albumissa.';
+$lang_util_php['reset_success'] = 'Resetointi onnistui'; // cpg1.5
+$lang_util_php['orphan_comment'] = 'kommenttia löydetty ilman omistajaa';
+$lang_util_php['delete_all'] = 'Poista kaikki';
+$lang_util_php['delete_all_orphans'] = 'Poista kaikki kommentit ilman omistajaa?';
+$lang_util_php['comment'] = 'Kommentti: ';
+$lang_util_php['nonexist'] = 'liitety olemattomaan tiedostoon # ';
+$lang_util_php['delete_old'] = 'Poista tiedostot, jotka ovat vanhempia kuin päivinä annettu aika';  // cpg1.5
+$lang_util_php['delete_old_explanation'] = 'Tämä poistaa tiedostot, jotka ovat vanhempia kuin päivinä antamasi aika (täysikokoinen, keskikokoinen ja pienoiskuva). Käytä tätä toimintoa vapauttaaksesi levytilaa.';  // cpg1.5
+$lang_util_php['delete_old_warning'] = 'Varoitus: valitut tiedostot poistetaan ilman vahvistusta!';  // cpg1.5
+$lang_util_php['deleting_old'] = 'Poistetaan vanhoja tiedostoja. Ole hyvä ja odata...';  // cpg1.5
+$lang_util_php['older_than'] = 'Poistettiin tiedostot, jotka ovat vanhempia kuin %s päivää';  // cpg1.5
+$lang_util_php['del_orig'] = 'Alkuperäinen tiedosto %s poistettiin onnistuneesti';  // cpg1.5
+$lang_util_php['del_intermediate'] = 'Keskikokoinen kuva %s poistettiin onnistuneesti';  // cpg1.5
+$lang_util_php['del_thumb'] = 'Pienoiskuva %s poistettiin onnistuneesti';  // cpg1.5
+$lang_util_php['del_error'] = 'Virhe poistettaessa %s:a!';  // cpg1.5
+$lang_util_php['affected_records'] = 'vaikuttaa %s kohteeseen.'; // cpg1.5
+$lang_util_php['all_albums'] = 'Kaikki albumit'; // cpg1.5
+$lang_util_php['update_result'] = 'Päivityksen tulokset'; // cpg1.5
+$lang_util_php['incorrect_filesize'] = 'Tiedoston koko on virheellinen'; // cpg1.5
+$lang_util_php['database'] = 'Tietokanta: '; // cpg1.5
+$lang_util_php['bytes'] = ' tavua'; // cpg1.5
+$lang_util_php['actual'] = 'Nykyinen: '; // cpg1.5
+$lang_util_php['updated'] = 'Päivitetty'; // cpg1.5
+$lang_util_php['filesize_error'] = 'Tiedostokokoa ei saatu selville (tiedosto on ehkä virheellinen), ohitetaan...'; // cpg1.5
+$lang_util_php['skipped'] = 'Ohitettu'; // cpg1.5
+$lang_util_php['incorrect_dimension'] = 'Mitat ovat virheellisiä'; // cpg1.5
+$lang_util_php['dimension_error'] = 'Mittoja ei saatu selville, ohitetaa...'; // cpg1.5
+$lang_util_php['cannot_fix'] = 'Ei voitu korjata'; // cpg1.5
+$lang_util_php['fullpic_error'] = 'Tiedosto %s ei ole olemassa!'; // cpg1.5
+$lang_util_php['no_prob_detect'] = 'Ongelmia ei havaittu'; // cpg1.5
+$lang_util_php['no_prob_found'] = 'Ongelmia ei löydetty.'; // cpg1.5
+$lang_util_php['keyword_convert'] = 'Muuta avainsanojen erottajaa'; // cpg1.5
+$lang_util_php['keyword_from_to'] = 'Muuta avainsanojen erottaja %s:sta %s:ksi'; // cpg1.5
+$lang_util_php['keyword_set'] = 'Aseta gallerian avainsanojen erottajalle uusi arvo'; // cpg1.5
+$lang_util_php['keyword_replace_before'] = 'Ennen konvertointia, korvaa %s %s:lla'; // cpg1.5
+$lang_util_php['keyword_replace_after'] = 'Konvertoinnin jälkeen, korvaa %s %s:lla'; // cpg1.5
+$lang_util_php['keyword_replace_values'] = array('_'=>'alaviiva', '-'=>'väliviiva', '~'=>'tilde'); // cpg1.5
+$lang_util_php['keyword_explanation'] = 'Tämä muttaa annettuun arvoon avainsanojen erottajan kaikille tiedostoillesi. Saat lisätietoa dokumentaatiosta.'; // cpg1.5
 }
 
 // ------------------------------------------------------------------------- //
-// File versioncheck.php //cpg1.4
+// File versioncheck.php
 // ------------------------------------------------------------------------- //
-
-if (defined('VERSIONCHECK_PHP')) $lang_versioncheck_php = array(
-  'title' => 'Versiotarkistus', //cpg1.4
-  'what_it_does' => 'Tämä sivu on niille, jotka ovat päivittäneet Copperminen. Tämä scripti käy läpi web-palvelimen tiedostot ja tutkii, ovatko palvelimesi tiedostot samoja versioita kuin palvelimella http://coppermine.sourceforge.net.<br />Tiedostot, jotka pitää päivittää, näytetään punaisella. Keltaiset kannattaa käydä läpi. Vihreät (tai oletusväriset) tiedostot ovat kunnossa.<br />Klikkaa ohjeikoneita saadaksesi lisätietoa.', //cpg1.4
-  'online_repository_unable' => 'Online-kirjastoon ei saatu yhteyttä', //cpg1.4
-  'online_repository_noconnect' => 'Coppermine ei saanut yhteyttä online-kirjastoon. Syitä voi olla kaksi:', //cpg1.4
-  'online_repository_reason1' => 'Copperminen online-kirjasto on tällä hetkellä alhaalla - tarkista, pääsetkö selaimella tälle sivulle: %s - jos et, kokeile myöhemmin uudelleen.', //cpg1.4
-  'online_repository_reason2' => 'Palvelimesi PHP on konfiguroitu niin, että %s on pois päältä. (oletuksena se on päällä). Jos olet palvelimen ylläpitäjä, käännä valinta päälle tiedostossa <i>php.ini</i> (laita ainakin päävalinnaksi %s). Jos sinulla on ostettu web-palvelu, sinun täytynee tyytyä siihen, että vertaat omia tiedostojasi online-kirjastoon. Tällä sivulla näytetään vain ne tiedostoversiot, jotka ovat mukana sinun jakelussasi. Päivityksiä ei näytetä.', //cpg1.4
-  'online_repository_skipped' => 'Yhteys online-kirjastoon skipattu', //cpg1.4
-  'online_repository_to_local' => 'Paikalliset kopiot päivitetään nyt uusilla versioilla. Data voi olla epätarkkaa, jos olet päivittänyt Copperminen, etkä ole uploadannut kaikkia tiedostoja. Niitä tiedostomuutoksia, jotka on tehty versiojakelun, jälkeen ei oteta huomioon.', //cpg1.4
-  'local_repository_unable' => 'Palvelimesi kirjastoon ei saatu yhteyttä', //cpg1.4
-  'local_repository_explanation' => 'Coppermine ei saanut yhteyttä palvelimellasi tiedostoon %s. Tämä luultavasti tarkoittaa, että et ole lisännyt ko. tiedostoa palvelimellesi. Lisää tiedosto ja päivitä tämä sivu uudelleen.<br />Jos scriptiä ei vieläkään voida ajaa, palveluntarjoajasi on voinut ottaa osan <a href="http://www.php.net/manual/en/ref.filesystem.php">PHP:n tiedostojärjestelmäfunktioista</a> kokonaan pois käytöstä. Jos näin on, et voi käyttää tätä työkalua.', //cpg1.4
-  'coppermine_version_header' => 'Asennettu Copperminen versio', //cpg1.4
-  'coppermine_version_info' => 'Sinulla on tällä hetkellä asennettuna: %s', //cpg1.4
-  'coppermine_version_explanation' => 'Jos luulet, että tämä on täysin väärä tieto, ja sinulla pitäisi olla uudempi versio Copperminesta, voi olla, että sinulta puuttuu vain uusin versio tiedostosta <i>include/init.inc.php</i>', //cpg1.4
-  'version_comparison' => 'Versioiden vertailu', //cpg1.4
-  'folder_file' => 'hakemisto/tiedosto', //cpg1.4
-  'coppermine_version' => 'cpg -versio', //cpg1.4
-  'file_version' => 'tiedostoversio', //cpg1.4
-  'webcvs' => 'web-svn', //cpg1.4
-  'writable' => 'kirjoitettava', //cpg1.4
-  'not_writable' => 'ei kirjoitettava', //cpg1.4
-  'help' => 'Ohje', //cpg1.4
-  'help_file_not_exist_optional1' => 'Tiedostoa/hakemistoa ei löydy', //cpg1.4
-  'help_file_not_exist_optional2' => 'Tiedostoa/hakemistoa %s ei löydy palvelimelta. Vaikka se ei olekaan välttämätön, sinun  pitäisi kuitenkin lisätä se (käyttäen FTP-asiakasohjelmaa) palvelimellesi, jos sinulla on ongelmia toimivuuden kanssa.', //cpg1.4
-  'help_file_not_exist_mandatory1' => 'tiedostoa/hakemistoa ei löydy', //cpg1.4
-  'help_file_not_exist_mandatory2' => 'Tiedostoa/hakemistoa %s ei löydetty palvelimelta, vaikka se on pakollinen. Lisää se palvelimellesi (käyttäen FTP-asiakasohjelmaa).', //cpg1.4
-  'help_no_local_version1' => 'Ei paikallista tiedostoversiota', //cpg1.4
-  'help_no_local_version2' => 'Scripti ei löytänyt paikallista tiedostoversiota. Tiedosto on joko vanhentunut tai olet muokannut sitä ja poistanut samalla header -tiedot. Tiedoston päivitys on suositeltava.', //cpg1.4
-  'help_local_version_outdated1' => 'Paikallinen versio on vanhentunut', //cpg1.4
-  'help_local_version_outdated2' => 'Versiosi tästä tiedostoa vaikuttaa olevan vanhasta Copperminen versiosta (olet ilmeisesti päivittänyt uuteen). Päivitä myös tämä tiedosto!', //cpg1.4
-  'help_local_version_na1' => 'SVN -versioinfoa ei saatu', //cpg1.4
-  'help_local_version_na2' => 'Scripti ei saanut selville palvelimesi svn-versiota. Sinun pitäisi tiedosto paketistasi.', //cpg1.4
-  'help_local_version_dev1' => 'Kehitysversio', //cpg1.4
-  'help_local_version_dev2' => 'Tiedosto palvelimellasi vaikuttaa olevan uudempi kuin Copperminesi versio. Joko olet käyttämässä kehitysversiota (käytä vain, jos tiedät, mitä olet tekemässä), tai olet päivittänyt Copperminen, mutta include/init.inc.php on jäänyt päivittämättä.', //cpg1.4
-  'help_not_writable1' => 'Hakemistoon ei voitu kirjoittaa', //cpg1.4
-  'help_not_writable2' => 'Anna chmod:lla scriptille oikeudet kirjoittaa hakemistoon %s ja kaikkiin sen alla.', //cpg1.4
-  'help_writable1' => 'Hakemisto kirjoitettava', //cpg1.4
-  'help_writable2' => 'Hakemisto %s on kirjoitettava. Tämä on tarpeeton riski, sillä Copperminen tarvitsee vain luku- ja ajo-oikeudet.', //cpg1.4
-  'help_writable_undetermined' => 'Coppermine ei voinut tutkia, onko hakemisto kirjoitettava.', //cpg1.4
-  'your_file' => 'tiedostosi', //cpg1.4
-  'reference_file' => 'referenssitiedosto', //cpg1.4
-  'summary' => 'Tiivistelmä', //cpg1.4
-  'total' => 'Tiedostoja/hakemistoja tarkistettu yhteensä', //cpg1.4
-  'mandatory_files_missing' => 'Pakollisia tiedostoja puuttuu', //cpg1.4
-  'optional_files_missing' => 'Vapaaehtoisia tiedostoja puuttuu', //cpg1.4
-  'files_from_older_version' => 'Ylijääneitä tiedostoja vanhentuneista Copperminen versioista', //cpg1.4
-  'file_version_outdated' => 'Vanhentuneita tiedostoversioita', //cpg1.4
-  'error_no_data' => 'Scripti ei saanut mitään tietoa irti. Pahoittelut!', //cpg1.4
-  'go_to_webcvs' => 'mene websvn:ään %s', //cpg1.4
-  'options' => 'Valinnat', //cpg1.4
-  'show_optional_files' => 'näytä vapaaehtoiset hakemistot/tiedostot', //cpg1.4
-  'show_mandatory_files' => 'näytä pakolliset tiedostot', //cpg1.4
-  'show_file_versions' => 'näytä tiedostoversiot', //cpg1.4
-  'show_errors_only' => 'näytä vain virheelliset hakemistot/tiedostot', //cpg1.4
-  'show_permissions' => 'näytä hakemisto-oikeudet', //cpg1.4
-  'show_condensed_output' => 'näytä yhteenvetotiedot (aikaisemmille kuvankaappauksille)', //cpg1.4
-  'coppermine_in_webroot' => 'Coppermine on asennettu palvelimen juureen', //cpg1.4
-  'connect_online_repository' => 'yritä ottaa yhteys online-kirjastoon', //cpg1.4
-  'show_additional_information' => 'näytä lisätiedot', //cpg1.4
-  'no_webcvs_link' => 'älä näytä websvn-linkkiä', //cpg1.4
-  'stable_webcvs_link' => 'näytä websvn-linkki vakaaseen versioon', //cpg1.4
-  'devel_webcvs_link' => 'näytä websvn-linkki kehitysversioon', //cpg1.4
-  'submit' => 'hyväksy muutokset / päivitä', //cpg1.4
-  'reset_to_defaults' => 'palauta oletusarvot', //cpg1.4
-);
+if (defined('VERSIONCHECK_PHP')) {
+$lang_versioncheck_php['title'] = 'Versiotarkistus';
+$lang_versioncheck_php['versioncheck_output'] = 'Versiotarkistuksen tuloste';
+$lang_versioncheck_php['file'] = 'tiedosto';
+$lang_versioncheck_php['folder'] = 'kansio';
+$lang_versioncheck_php['outdated'] = 'vanhempi kuin %s';
+$lang_versioncheck_php['newer'] = 'uudempi kuin %s';
+$lang_versioncheck_php['modified'] = 'muokattu';
+$lang_versioncheck_php['not_modified'] = 'muokkaamaton'; // cpg1.5
+$lang_versioncheck_php['needs_change'] = 'tarvitsee muutosta';
+$lang_versioncheck_php['review_permissions'] = 'Tarkista oikeudet';
+$lang_versioncheck_php['inaccessible'] = 'Tiedosto on saavuttamattomissa';
+$lang_versioncheck_php['review_version'] = 'Tiedostosi on vanhentunut';
+$lang_versioncheck_php['review_dev_version'] = 'Tiedostosi on uudempi kuin odotettiin';
+$lang_versioncheck_php['review_modified'] = 'Tiedosto on korruptoitunut (tai olet muutanut sitä tarkoituksella)';
+$lang_versioncheck_php['review_missing'] = '%s puuttuu tai on saavuttamattomissa';
+$lang_versioncheck_php['existing'] = 'on olemassa';
+$lang_versioncheck_php['review_removed_existing'] = 'Tiedosto tulee poistaa turvallisuussyistä';
+$lang_versioncheck_php['counter'] = 'Laskuri';
+$lang_versioncheck_php['type'] = 'Tyyppi';
+$lang_versioncheck_php['path'] = 'Polku';
+$lang_versioncheck_php['missing'] = 'Puuttuva';
+$lang_versioncheck_php['permissions'] = 'Oikeudet';
+$lang_versioncheck_php['version'] = 'Versio';
+$lang_versioncheck_php['revision'] = 'Tarkistus';
+$lang_versioncheck_php['modified'] = 'Muokattu';
+$lang_versioncheck_php['comment'] = 'Kommentti';
+$lang_versioncheck_php['help'] = 'Ohje';
+$lang_versioncheck_php['repository_link'] = 'Hakemisto linkki';
+$lang_versioncheck_php['browse_corresponding_page_subversion'] = 'Selaa tiedostoa vastaavaa sivua projektin subversion -hakemistosta';
+$lang_versioncheck_php['mandatory'] = 'pakollinen';
+$lang_versioncheck_php['mandatory_missing'] = 'Pakollinen tiedosto puuttuu'; // cpg1.5
+$lang_versioncheck_php['optional'] = 'valinnainen';
+$lang_versioncheck_php['removed'] = 'poisteettu'; // cpg1.5
+$lang_versioncheck_php['options'] = 'Valinnat';
+$lang_versioncheck_php['display_output'] = 'Näytä tuloste';
+$lang_versioncheck_php['on_screen'] = 'Koko näyttö';
+$lang_versioncheck_php['text_only'] = 'Vain teksti';
+$lang_versioncheck_php['errors_only'] = 'Näytä vain  potentiaaliset virheet';
+$lang_versioncheck_php['hide_images'] = 'Piilota kuvat'; // cpg1.5
+$lang_versioncheck_php['no_modification_check'] = 'Älä tarkista muokattuja tiedostoja'; // cpg1.5
+$lang_versioncheck_php['do_not_connect_to_online_repository'] = 'Älä ota yhteyttä online -hakemistoon';
+$lang_versioncheck_php['online_repository_explain'] = 'suositeltavaa vain jos yhteyden luonti epäonnistuu';
+$lang_versioncheck_php['submit'] = 'lähetä / päivitä';
+$lang_versioncheck_php['select_all'] = 'Valitse kaikki'; // js-alert
+$lang_versioncheck_php['files_folder_processed'] = 'Näytetään %s kohdetta %s:sta kansiosta/tiedostosta, havaittiin %s mahdollista ongelmaa';
+$lang_versioncheck_php['read'] = 'Lue'; // cpg1.5
+$lang_versioncheck_php['write'] = 'Kirjoita'; // cpg1.5
+$lang_versioncheck_php['warning'] = 'Varoitus'; // cpg1.5
+$lang_versioncheck_php['not_applicable'] = 'ei käytössä'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
-// File view_log.php  //cpg1.4
+// File view_log.php
 // ------------------------------------------------------------------------- //
-
-if (defined('VIEWLOG_PHP')) $lang_viewlog_php = array(
-  'delete_all' => 'Poista kaikki lokit', //cpg1.4
-  'delete_this' => 'Poista tämä loki', //cpg1.4
-  'view_logs' => 'Näytä lokit', //cpg1.4
-  'no_logs' => 'Ei luotuja lokeja.', //cpg1.4
-);
-
+if (defined('VIEWLOG_PHP')) {
+$lang_viewlog_php['delete_all'] = 'Poista kaikki lokit';
+$lang_viewlog_php['delete_this'] = 'Poista tämä loki';
+$lang_viewlog_php['view_logs'] = 'Näytä lokit';
+$lang_viewlog_php['no_logs'] = 'Ei luotuja lokeja.';
+$lang_viewlog_php['last_updated'] = 'viimeisin päivitys'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
-// File xp_publish.php //cpg1.4
+// File xp_publish.php
 // ------------------------------------------------------------------------- //
-
 if (defined('XP_PUBLISH_PHP')) {
-
-$lang_xp_publish_client = <<<EOT
-<h1>XP -webjulkaisuohjelma</h1><p>Tämä moduuli mahdollistaa <b>Windows XP</b> -webjulkaisun käytön Copperminessa.</p><p>Koodi perustuu artikkeliin, jonka lähetti
-EOT;
-
-$lang_xp_publish_required = <<<EOT
-<h2>Mitä tarvitaan</h2><ul><li>Windows XP saadaksesi ohjelman toimimaan</li><li>Toimiva Coppermine -asennus, jossa <b>weblähetys toimii.</b></li></ul><h2>Kuinka asentaa asiakasohjelma</h2><ul><li>Klikkaa oikealla napilla:
-EOT;
-
-$lang_xp_publish_select = <<<EOT
-Valitse &quot;tallenna nimellä..&quot;. Tallenna tiedosto kovalevyllesi. Tarkista tallentaessasi, että ehdotettu tiedostonimi on <b>cpg_###.reg</b> (### esittää numeerista aikaleimaa). Muuta se tähän muotoon, jos tarpeen (jätä numerot). Kun olet ladannut, kaksoisklikkaa tiedostoa rekisteröidäksesi palvelimesi webjulkaisuohjelmaan.</li></ul>
-EOT;
-
-$lang_xp_publish_testing = <<<EOT
-<h2>Testaus</h2><ul><li>Valitse tiedostoja Windows Explorerissa, klikkaa <b>Julkaise xxx webissä</b> vasemmassa paneelissa.</li><li>Varmista tiedostovalikoima. Klikkaa <b>Seuraava</b>.</li><li>Valitse imestyneestä palveluiden listasta yksi kuvagalleriaasi (sen nimi vastaa galleriaasi). Jos palvelua ei löydy, varmista, että sinulla on <b>cpg_pub_wizard.reg</b> asennettuna kuten ylempänä kuvataan.</li><li>Anna kirjautumistiedot, jos tarvitaan.</li><li>Valitse kohdealbumi kuvillesi tai luo uusi.</li><li>Klikkaa <b>seuraava</b>. Kuvien lähetys alkaa.</li><li>Kun lähetys on valmis, tarkista, että kuvat lisättiin galleriaasi.</li></ul>
-EOT;
-
-$lang_xp_publish_notes = <<<EOT
-<h2>Huomaa:</h2><ul><li>Kun lähetys on alkanut, ohjelma ei voi näyttää scriptin virheilmoituksia, joten et voi tietää, onnistuiko lähetys. Sinun on siis tarkistettava galleriasi.</li><li>Jos lähetys epäonnistui, laita päälle &quot;Debug-tila&quot; Copperminen ylläpitosivulla, yritä lähettää yksi kuva ja tarkista virheviestit
-EOT;
-
-$lang_xp_publish_flood = <<<EOT
-tiedostosta, joka sijaitsee Copperminen hakemistossa palvelimellasi.</li><li>Välttääksesi gallerian <i>floodauksen</i> ohjelman kautta lisätyillä kuvilla, vain <b>gallerian ylläpitäjät</b> ja <b>käyttäjät, joilla on omia albumeita</b> voivat käyttää tätä ominaisuutta.</li>
-EOT;
-
-
-
-$lang_xp_publish_php = array(
-  'title' => 'Coppermine - XP Web-julkaisuohjelma', //cpg1.4
-  'welcome' => 'Tervetuloa <b>%s</b>,', //cpg1.4
-  'need_login' => 'Sinun on kirjauduttava galleriaan voidaksesi käyttää tätä ohjelmaa.<p/><p>Kun kirjaudut, älä unohda valita <b>muista minut</b> -valintaa, jos sellainen on.', //cpg1.4
-  'no_alb' => 'Ei löytynyt yhtään albumia, johon sinulla olisi oikeudet lisätä tiedostoja.', //cpg1.4
-  'upload' => 'Lisää kuvasi olemassa olevaan albumiin', //cpg1.4
-  'create_new' => 'Luo uusi albumi kuvillesi', //cpg1.4
-  'album' => 'Albumi', //cpg1.4
-  'category' => 'Kategoria', //cpg1.4
-  'new_alb_created' => 'Uusi albumisi &quot;<b>%s</b>&quot; on luotu.', //cpg1.4
-  'continue' => 'Paina &quot;Seuraava&quot; aloittaaksesi kuvien lisäämisen', //cpg1.4
-  'link' => 'XP-webjulkaisuohjelma', //cpg1.4
-);
+$lang_xp_publish_php['title'] = 'XP Web julkaisuvelho';
+$lang_xp_publish_php['client_header'] = 'XP web julkaisuvelho -ohjelma';  // cpg1.5
+$lang_xp_publish_php['requirements'] = 'Vaatimukset'; // cpg1.5
+$lang_xp_publish_php['windows_xp'] = 'Windows XP tai Vista'; // cpg1.5
+$lang_xp_publish_php['no_windows_xp'] = 'Näyttäisi siltä, että käytät jotain muuta tukematonta käyttöjärjestelmää'; // cpg1.5
+$lang_xp_publish_php['no_os_detect'] = 'Käyttöjärjestelmääsi ei tunnistettu'; // cpg1.5
+$lang_xp_publish_php['requirement_http_upload'] = 'Toimiva Copperminen, jossa http lähetys -funktio toimii oikein'; // cpg1.5
+$lang_xp_publish_php['requirement_ie'] = 'Microsoft Internet Explorer'; // cpg1.5
+$lang_xp_publish_php['requirement_permissions'] = 'Ylläpitän on täytynyt antaa sinulle oikeuden lähettää tiedostoja palvelimelle'; // cpg1.5
+$lang_xp_publish_php['requirement_login'] = 'Sinun tulee olla kirjautuneena sisään'; // cpg1.5
+$lang_xp_publish_php['no_ie'] = 'Näyttäisi siltä, että käytät jotain muuta tukematonta selainta'; // cpg1.5
+$lang_xp_publish_php['no_browser_detect'] = 'Selaintasi ei voitu tunnistaa'; // cpg1.5
+$lang_xp_publish_php['no_gallery_name'] = 'Sinun tarvitsee antaa gallerian nimi Copperminen asetuksiin'; // cpg1.5
+$lang_xp_publish_php['no_gallery_description'] = 'Sinun tarvitsee antaa gallerian kuvaus Copperminen asetuksiin'; // cpg1.5
+$lang_xp_publish_php['howto_install'] = 'Miten asennetaan'; // cpg1.5
+$lang_xp_publish_php['install_right_click'] = 'Klikkaa hiiren oikealla näppäimellä %stätä linkkiä%s ja valitse &quot;tallenna kohde nimellä...&quot;'; // cpg1.5 // translator note: don't replace the %s - that placeholder token needs to go untranslated
+$lang_xp_publish_php['install_save'] = 'Tallenna tiedosto koneellesi. Kun tallennat tiedostoa, varmista, että ehdoteetu tiedostonimi on <tt>cpg_###.reg</tt> (jossa ### on numeerinen aikaleima). Muuta nimeä tarpeen vaatiessa (säilytä numerot)'; // cpg1.5
+$lang_xp_publish_php['install_execute'] = 'Kun lataus on valmis, suorita tiedosto kaksoisklikkaamalla sitä rekisteröidäkesi palvelimesi web julkaisuohjelman kanssa';  // cpg1.5
+$lang_xp_publish_php['usage'] = 'Käyttö';  // cpg1.5
+$lang_xp_publish_php['select_files'] = 'Valitse Windowsin resurssienhallinnasta tiedostot, jotka haluat lähettää palvelimelle'; // cpg1.5
+$lang_xp_publish_php['display_tasks'] = 'Varmista, että kansiot eivät näy resurssienhallinan vasemmassa paneelissa'; // cpg1.5
+$lang_xp_publish_php['publish_on_the_web'] = 'Klikkaa &quot;Julkaise xxx webissä&quot; vasemmasta paneelista'; // cpg1.5
+$lang_xp_publish_php['confirm_selection'] = 'Vahvista valitsemasi tiedostot'; // cpg1.5
+$lang_xp_publish_php['select_service'] = 'Valitse palvelulistasta galleriasi oma (se on nimetty galleriasi mukaan)'; // cpg1.5
+$lang_xp_publish_php['enter_login'] = 'Syötä kirjautumistiedot tarvittaesa'; // cpg1.5
+$lang_xp_publish_php['select_album'] = 'Valitse kohde albumi kuvillesi tai luo uusi'; // cpg1.5
+$lang_xp_publish_php['next'] = 'ja klikkaa &quot;seuraava&quot;'; // cpg1.5
+$lang_xp_publish_php['upload_starts'] = 'Kuvien lähetys palvelimelle pitäisi alkaa'; // cpg1.5
+$lang_xp_publish_php['upload_completed'] = 'Kun se on valmis, tarkista galleriasta, että kuvasi ovat lisätty oikein'; // cpg1.5
+$lang_xp_publish_php['welcome'] = 'Tervetuloa <strong>%s</strong>,';
+$lang_xp_publish_php['need_login'] = 'sinun tulee kirjautua sisään galleriaan käyttäen Internet Explorer:ia ennen kuin voit käyttää tätä velhoa.<p/><p>Kun kirjaudut sisään, älä unohda valita &quot;muista minut&quot; -valintaa jos se on saatavilla.';
+$lang_xp_publish_php['no_alb'] = 'Valitettavasti galleriassa ei ole albumi, johon sinulla olisi lupa lähettää kuvia käyttäen tätä velhoa.';
+$lang_xp_publish_php['upload'] = 'Lisää kuvasi olemassa olevaan albumiin';
+$lang_xp_publish_php['create_new'] = 'Luo uusi albumi kuvillesi';
+$lang_xp_publish_php['category'] = 'Kategoria';
+$lang_xp_publish_php['new_alb_created'] = 'Uusi albumisi &quot;<strong>%s</strong>&quot; on luotu.';
+$lang_xp_publish_php['continue'] = 'Klikkaa &quot;Seuraava&quot; aloittaaksesi kuvien lähetyksen palvelimelle';
+$lang_xp_publish_php['link'] = '';
 }
+
+// ------------------------------------------------------------------------- //
+// Core plugins
+// ------------------------------------------------------------------------- //
+if (defined('CORE_PLUGIN')) {
+$lang_plugin_php['usergal_alphatabs_config_name'] = 'Käyttäjien gallerioiden aakkoselliset välilehdet'; // cpg1.5
+$lang_plugin_php['usergal_alphatabs_config_description'] = 'Mitä tekee: näyttää välilehdet A:sta Z:aan käyttäjien gallerioiden yläpuolella. Kirjaimia klikkaamalla käyttäjä voi siirtyä suoraan sivulle, joka näyttää kaikki valitulla kirjaimella alkavien käyttäjätunnusten galleriat. Lisäosaa suositellaan vain jos sinulla on todella paljon käyttäjien gallerioita.'; // cpg1.5
+$lang_plugin_php['usergal_alphatabs_jump_by_username'] = 'Selaa käyttäjätunnusten mukaan'; // cpg1.5
+$lang_plugin_php['sample_config_name'] = 'Malli -lisäosa'; // cpg1.5
+$lang_plugin_php['sample_config_description'] = 'Tämä on malli lisäosa. Se ei tee mitään erityisen hyödyllistä - se on tarkoitettu vain lisäosien ominaisuuksien ja ohjelmoinnin esittelyyn. Kun lisäosa on käytössä,  se näyttää punaista tekstiä galleriasa.'; // cpg1.5
+$lang_plugin_php['sample_plugin_documentation'] = 'Lisäosan dokumentaatio'; // cpg1.5
+$lang_plugin_php['sample_plugin_support'] = 'Lisäosan tuki'; // cpg1.5
+$lang_plugin_php['sample_install_explain'] = 'Syötä käyttäjätunnus (\'foo\') ja salasana (\'bar\') asentaaksesi tämän lisäosan'; // cpg1.5
+$lang_plugin_php['sample_install_username'] = 'Käyttäjätunnus'; // cpg1.5
+$lang_plugin_php['sample_install_password'] = 'Salasana'; // cpg1.5
+$lang_plugin_php['sample_output'] = 'Tämä on esimerkkitekstiä, minkä tuotti malli lisäosa.'; // cpg1.5
+$lang_plugin_php['opensearch_config_name'] = 'OpenSearch'; // cpg1.5
+$lang_plugin_php['opensearch_config_description'] = '<a href="http://www.opensearch.org/" rel="external" class="external">OpenSearch</a>:in implementaatio Copperminelle.<br />Kun lisäosa on käytössä, käyttäjät voivat lisätä galleriasi heidän selaimensa hakupalkkiin.'; // cpg1.5
+$lang_plugin_php['opensearch_search'] = 'Hae %s'; // cpg1.5
+$lang_plugin_php['opensearch_extra'] = 'Voit halutessasi lisätä sivustollesi tekstiä, joka kertoo mitä tämä lisäosa tekee'; // cpg1.5
+$lang_plugin_php['opensearch_failed_to_open_file'] = 'Tiedoston %s avaus '; // cpg1.5
+$lang_plugin_php['opensearch_failed_to_write_file'] = 'Tiedostoon %s kirjoittaminen epäonnistui - tarkista oikeudet'; // cpg1.5
+$lang_plugin_php['opensearch_form_header'] = 'Syötä käytettävät tiedot kuvaus -tiedostoa varten'; // cpg1.5
+$lang_plugin_php['opensearch_gallery_url'] = 'Gallerian URL (pitää olla oikein)'; // cpg1.5
+$lang_plugin_php['opensearch_display_name'] = 'Selaimessa näytettävä nimi'; // cpg1.5
+$lang_plugin_php['opensearch_description'] = 'Kuvaus'; // cpg1.5
+$lang_plugin_php['opensearch_character_limit'] = '%s merkin rajoitus'; // cpg1.5
+$lang_plugin_php['onlinestats_description'] = 'Näytä kenttä gallerian jokaisella sivulla paikalla olevista käyttäjistä ja vierailijoista.';
+$lang_plugin_php['onlinestats_name'] = 'Kuka on paikalla?';
+$lang_plugin_php['onlinestats_config_extra'] = 'Ottaaksesi lisäosan käyttöön (jotta se näyttää tilastokentän), merkkijono "onlinestats" (erotettuna kauttaviivalla) on lisätty "etusivun sisältöön" <a href="admin.php">Copperminen asetuksissa</a> kohdassa "Albumilistaus näkymä". Asetuksen pitäisi näyttää tämän kaltaiselta: "breadcrumb/catlist/alblist/onlinestats". Muuttaaksesi kentän siajaintia, siirrä merkkijonoa "onlinestats" asetuskentän sisällä';
+$lang_plugin_php['onlinestats_config_install'] = 'Lisäosa suorittaa ylimääräisiä kyselyitä tietokantaan jokaisella sivulatauksella kasvattaen suorittimen ja muistin kulutusta. Jos Coppermine-galleriasi on hidas tai jos sillä on paljon käyttäjiä, sinun tulisi poistaa lisäosa pois käytöstä.';
+$lang_plugin_php['onlinestats_we_have_reg_member'] = 'Paikalla on %s rekisteröityt käyttäjä';
+$lang_plugin_php['onlinestats_we_have_reg_members'] = 'Paikalla on %s rekisteröitynyttä käyttäjää';
+$lang_plugin_php['onlinestats_most_recent'] = 'Uusin rekisteröitynyt käyttäjä on %s';
+$lang_plugin_php['onlinestats_is'] = 'Paikalla on yhteensä %s käyttäjä';
+$lang_plugin_php['onlinestats_are'] = 'Paikalla on yhteensä %s käyttäjää';
+$lang_plugin_php['onlinestats_and'] = 'ja';
+$lang_plugin_php['onlinestats_reg_member'] = '%s rekisteröitynyt käyttäjä';
+$lang_plugin_php['onlinestats_reg_members'] = '%s rekisteröitynyttä käyttäjää';
+$lang_plugin_php['onlinestats_guest'] = '%s vieras';
+$lang_plugin_php['onlinestats_guests'] = '%s vierasta';
+$lang_plugin_php['onlinestats_record'] = 'Eniten käyttäjiä paikalla koskaan: %s (%s)';
+$lang_plugin_php['onlinestats_since'] = 'Sisäänkirjautuneet käyttäjät viimeisen %s minuutin aikana: %s';
+$lang_plugin_php['onlinestats_config_text'] = 'Kuinka kauan käyttäjää pidetään paikalla olevien listassa ennen kuin hänet katsotaan poistuneen sivustolta?';
+$lang_plugin_php['onlinestats_minute'] = 'minuuttia';
+$lang_plugin_php['onlinestats_remove'] = 'Poista taulu, jota käytettiin online datan säilytykseen?';
+$lang_plugin_php['link_target_name'] = 'Linkin kohde';
+$lang_plugin_php['link_target_description'] = 'Muuttaa ulkoisten linkkien avaamistapaa: kun lisäosa on käytössä, kaikki linkit, jotka sisältävät määritelmän rel="external", avataan uudessa ikkunassa (saman ikkunan sijaan).';
+$lang_plugin_php['link_target_extra'] = 'Tämä lisäosa vaikuttaa lähinnä "Powered by Coppermine" linkkiin gallerian alalaidassa.';
+$lang_plugin_php['link_target_recommendation'] = 'On suositeltavaa olla käyttämättä tätä lisäosaa välttääksesi käyttäjiesi ohjaamista muualle: linkkien avaaminen uuteen ikkunaan tarkoittaa käyttäjiesi ohjaamista sivustolla.';
+}
+
 ?>

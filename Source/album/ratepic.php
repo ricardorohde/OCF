@@ -2,126 +2,177 @@
 /*************************
   Coppermine Photo Gallery
   ************************
-  Copyright (c) 2003-2008 Dev Team
-  v1.1 originally written by Gregory DEMAR
+  Copyright (c) 2003-2016 Coppermine Dev Team
+  v1.0 originally written by Gregory Demar
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License version 3
   as published by the Free Software Foundation.
-  
+
   ********************************************
-  Coppermine version: 1.4.18
-  $HeadURL: https://coppermine.svn.sourceforge.net/svnroot/coppermine/trunk/cpg1.4.x/ratepic.php $
-  $Revision: 4380 $
-  $Author: gaugau $
-  $Date: 2008-04-12 12:00:19 +0200 (Sa, 12 Apr 2008) $
+  Coppermine version: 1.5.42
+  $HeadURL: https://svn.code.sf.net/p/coppermine/code/trunk/cpg1.5.x/ratepic.php $
+  $Revision: 8846 $
 **********************************************/
 
 define('IN_COPPERMINE', true);
 define('RATEPIC_PHP', true);
 
 require('include/init.inc.php');
+
+header("Content-Type: text/plain");
+
 // Check if required parameters are present
-if (!isset($_GET['pic']) || !isset($_GET['rate'])) cpg_die(CRITICAL_ERROR, $lang_errors['param_missing'], __FILE__, __LINE__);
+if (!$superCage->get->keyExists('pic') || !$superCage->get->keyExists('rate')) {
 
-$pic = (int)$_GET['pic'];
-$rate = (int)$_GET['rate'];
+    //send back voting failure to ajax request
+    $send_back = array(
+        'status' => 'error',
+        'msg'    => $lang_errors['param_missing'],
+    );
 
-$rate = min($rate, 5);
+    echo json_encode($send_back);
+    exit;
+}
+
+$rating_stars_amount = ($CONFIG['old_style_rating']) ? 5 : $CONFIG['rating_stars_amount'];
+
+$pic  = $superCage->get->getInt('pic');
+$rate = $superCage->get->getInt('rate');
+
+$rate = min($rate, $rating_stars_amount);
 $rate = max($rate, 0);
 
-// If user does not accept script's cookies, we don't accept the vote
-if (!isset($_COOKIE[$CONFIG['cookie_name'] . '_data'])) {
-    header('Location: displayimage.php?pos=' . (- $pic));
-    exit;
-}
-
-// If referer is not displayimage.php we don't accept the vote
-if (!eregi("displayimage",$_SERVER["HTTP_REFERER"])){
-    header('Location: displayimage.php?pos=' . (- $pic));
-    exit;
-}
-
-
 // Retrieve picture/album information & check if user can rate picture
-$sql = "SELECT a.votes as votes_allowed, p.votes as votes, pic_rating, owner_id " . "FROM {$CONFIG['TABLE_PICTURES']} AS p, {$CONFIG['TABLE_ALBUMS']} AS a " . "WHERE p.aid = a.aid AND pid = '$pic' LIMIT 1";
+$sql = "SELECT a.votes as votes_allowed, p.votes as votes, pic_rating, owner_id FROM {$CONFIG['TABLE_PICTURES']} AS p INNER JOIN {$CONFIG['TABLE_ALBUMS']} AS a ON p.aid = a.aid WHERE pid = $pic";
 $result = cpg_db_query($sql);
-if (!mysql_num_rows($result)) cpg_die(CRITICAL_ERROR, $lang_errors['non_exist_ap'], __FILE__, __LINE__);
-$row = mysql_fetch_array($result);
+
+if (!mysql_num_rows($result)) {
+
+    //send back voting failure to ajax request
+    $send_back = array(
+        'status' => 'error',
+        'msg'    => $lang_errors['non_exist_ap'],
+    );
+
+    echo json_encode($send_back);
+    exit;
+}
+//Check if the form token is valid
+if(!checkFormToken()){
+    //send back voting failure to ajax request
+    $send_back = array(
+        'status' => 'error',
+        'msg'    => $lang_errors['invalid_form_token'],
+    );
+
+    echo json_encode($send_back);
+    exit;
+}
+
+$row = mysql_fetch_assoc($result);
 mysql_free_result($result);
-if (!USER_CAN_RATE_PICTURES || $row['votes_allowed'] == 'NO') cpg_die(ERROR, $lang_errors['perm_denied'], __FILE__, __LINE__);
+
+if (!USER_CAN_RATE_PICTURES || $row['votes_allowed'] == 'NO') {
+
+    //send back voting failure to ajax request
+    $send_back = array(
+        'status' => 'error',
+        'msg'    => $lang_errors['perm_denied'],
+    );
+
+    echo json_encode($send_back);
+    exit;
+}
+
 // Clean votes older votes
-$curr_time = time();
-$clean_before = $curr_time - $CONFIG['keep_votes_time'] * 86400;
-$sql = "DELETE " . "FROM {$CONFIG['TABLE_VOTES']} " . "WHERE vote_time < $clean_before";
+$clean_before = time() - $CONFIG['keep_votes_time'] * 86400;
+$sql = "DELETE FROM {$CONFIG['TABLE_VOTES']} WHERE vote_time < $clean_before";
 $result = cpg_db_query($sql);
+
 // Check if user already rated this picture
 $user_md5_id = USER_ID ? md5(USER_ID) : $USER['ID'];
-$sql = "SELECT * " . "FROM {$CONFIG['TABLE_VOTES']} " . "WHERE pic_id = '$pic' AND user_md5_id = '$user_md5_id'";
+$sql = "SELECT null FROM {$CONFIG['TABLE_VOTES']} WHERE pic_id = $pic AND user_md5_id = '$user_md5_id'";
 $result = cpg_db_query($sql);
-if (mysql_num_rows($result)) cpg_die(ERROR, $lang_rate_pic_php['already_rated'], __FILE__, __LINE__);
+
+if (mysql_num_rows($result)) {
+
+    // user has already rated this file
+    $send_back = array(
+        'status' => 'error',
+        'msg'    => $lang_rate_pic_php['already_rated'],
+        'a'      => $USER,
+    );
+
+    echo json_encode($send_back);
+    exit;
+}
+
+mysql_free_result($result);
+
+// Check if user already rated this picture - vote stats table
+$sql = "SELECT null FROM {$CONFIG['TABLE_VOTE_STATS']} WHERE pid = $pic AND ip = '$raw_ip'";
+$result = cpg_db_query($sql);
+if (mysql_num_rows($result)) {
+    $send_back = array(
+        'status' => 'error',
+        'msg'    => $lang_rate_pic_php['already_rated'],
+        'a'      => $USER,
+    );
+    echo json_encode($send_back);
+    exit;
+}
+mysql_free_result($result);
+
 //Test for Self-Rating
-$user=USER_ID;
-$owner=$row['owner_id'];
+if (!empty($user_id) && $user_id == $row['owner_id'] && ($CONFIG['rate_own_files'] == 0 || $CONFIG['rate_own_files'] == 2 && !USER_IS_ADMIN)) {
 
-if (!empty($user) && $user==$owner && !USER_IS_ADMIN) cpg_die(ERROR, $lang_rate_pic_php['forbidden'], __FILE__, __LINE__);
+    $send_back = array(
+        'status' => 'error',
+        'msg'    => $lang_rate_pic_php['forbidden'],
+    );
+
+    echo json_encode($send_back);
+    exit;
+}
+
 // Update picture rating
-$new_rating = round(($row['votes'] * $row['pic_rating'] + $rate * 2000) / ($row['votes'] + 1));
-$sql = "UPDATE {$CONFIG['TABLE_PICTURES']} " . "SET pic_rating = '$new_rating', votes = votes + 1 " . "WHERE pid = '$pic' LIMIT 1";
+$new_rating = round(($row['votes'] * $row['pic_rating'] + ($rate * (5 / $rating_stars_amount)) * 2000) / ($row['votes'] + 1));
+$sql = "UPDATE {$CONFIG['TABLE_PICTURES']} SET pic_rating = $new_rating, votes = votes + 1 WHERE pid = $pic";
 $result = cpg_db_query($sql);
+
 // Update the votes table
-$sql = "INSERT INTO {$CONFIG['TABLE_VOTES']} " . "VALUES ('$pic', '$user_md5_id', '$curr_time')";
+$sql = "INSERT INTO {$CONFIG['TABLE_VOTES']} (pic_id, user_md5_id, vote_time) VALUES ($pic, '$user_md5_id', ".time().")";
 $result = cpg_db_query($sql);
 
-/**
- * Code to record the details of hits for the picture if the option is set in CONFIG
- */
+//
+// Code to record the details of votes for the picture if the option is set in CONFIG
+//
 if ($CONFIG['vote_details']) {
-// Get the details of user browser, IP, OS, etc
-$os = "Unknown";
-if(eregi("Linux",$_SERVER["HTTP_USER_AGENT"])) {
-    $os = "Linux";
-} else if(eregi("Windows NT 5.0",$_SERVER["HTTP_USER_AGENT"])) {
-    $os = "Windows 2000";
-} else if(eregi("win98|Windows 98",$_SERVER["HTTP_USER_AGENT"])) {
-    $os = "Windows 98";
+
+    // Get the details of user browser, IP, OS, etc
+    $client_details = cpg_determine_client();
+
+    // Code to write the user id if a user is logged in
+    $voteUserId = USER_ID;
+
+    $referer = urlencode($superCage->post->getEscaped('HTTP_REFERER'));
+
+    // Insert the record in database
+    $query = "INSERT INTO {$CONFIG['TABLE_VOTE_STATS']} (pid, rating, Ip, sdate, referer, browser, os, uid) VALUES ($pic, $rate, '$raw_ip', ".time().", '$referer', '{$client_details['browser']}', '{$client_details['os']}', $voteUserId)";
+    cpg_db_query($query);
 }
 
-$browser = 'Unknown';
-if(eregi("MSIE",$browser)) {
-    if(eregi("MSIE 5.5",$browser)) {
-        $browser = "Microsoft Internet Explorer 5.5";
-    } else if(eregi("MSIE 6.0",$browser)) {
-        $browser = "Microsoft Internet Explorer 6.0";
-    }
-} else if(eregi("Mozilla Firebird",$browser)) {
-    $browser = "Mozilla Firebird";
-} else if(eregi("netscape",$browser)) {
-    $browser = "Netscape";
-}
-$time = time();
+$new_rating = round(($new_rating / 2000) / (5 / $rating_stars_amount), 1);
+$new_rating_text = $lang_rate_pic_php['rate_ok'] . ' ' . sprintf($lang_rate_pic['rating'], $new_rating, $rating_stars_amount, $row['votes'] + 1);
 
-$referer = urlencode(addslashes($_SERVER['HTTP_REFERER']));
+$send_back = array(
+    'status'          => 'success',
+    'msg'             => $lang_rate_pic_php['rate_ok'],
+    'new_rating_text' => $new_rating_text,
+    'new_rating'      => round($new_rating, 0),
+);
 
-// Insert the record in database
-$query = "INSERT INTO {$CONFIG['TABLE_VOTE_STATS']}
-                  SET
-                    pid = $pic,
-                    rating = $rate,
-                    Ip   = '$raw_ip',
-                    sdate = '$time',
-                    referer = '$referer',
-                    browser = '$browser',
-                    os = '$os'";
-cpg_db_query($query);
-}
-
-$location = "displayimage.php?pos=" . (- $pic);
-$header_location = (@preg_match('/Microsoft|WebSTAR|Xitami/', getenv('SERVER_SOFTWARE'))) ? 'Refresh: 0; URL=' : 'Location: ';
-header($header_location . $location);
-pageheader($lang_info, "<META http-equiv=\"refresh\" content=\"1;url=$location\">");
-msg_box($lang_info, $lang_rate_pic_php['rate_ok'], $lang_continue, $location);
-pagefooter();
-ob_end_flush();
+echo json_encode($send_back);
 
 ?>

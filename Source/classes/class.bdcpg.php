@@ -34,29 +34,25 @@ function Conecta() {
 	}
 	else
 	{
-			$this->Link = mysql_connect('mysql.opalaclubefranca.com.br', 'opalaclubefran02', 'racnela')
+			$this->Link = mysql_connect('localhost', 'opalaclubefran02', 'racnela')
 				or die('Erro BD_Conecta: ' ."<br>". mysql_error($this->Link)); 
 			mysql_select_db("opalaclubefran02",$this->Link)
 	 				or die('\nErro Selecionando DB prod: ' . mysql_error($this->Link)); 
-	}
-
+		}
 //    ini_set('default_charset','utf-8');
-//      mysql_set_charset('utf-8'); 
-//	mysql_query("SET NAMES 'utf-8'");
+	//mysql_set_charset('latin1'); 
+//	mysql_query("SET NAMES 'latin1'");
 //mysql_query('SET character_set_connection=latin1');
 //mysql_query('SET character_set_client=latin1');
 //mysql_query('SET character_set_results=latin1');
- // define("SET CHARACTER SET UTF-8");
-  //  define("SET COLLATION_CONNECTION='utf8_general_ci'");
-
-//	define("SET CHARACTER SET ascii");
-//	define("SET COLLATION_CONNECTION='ascii_general_ci'");
+  //  define("SET CHARACTER SET UTF-8");
+//    define("SET COLLATION_CONNECTION='utf8_general_ci'");
 
 }
 	function getValue($ColName) { //Retorna o valor de uma coluna
 
 		return mb_convert_encoding($this->Row[$ColName], "ISO-8859-1", "UTF-8");
-//		return $this->Row[$ColName];
+
 	}
 }
 ?>

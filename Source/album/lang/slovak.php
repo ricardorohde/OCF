@@ -2,1575 +2,1905 @@
 /*************************
   Coppermine Photo Gallery
   ************************
-  Copyright (c) 2003-2008 Dev Team
-  v1.1 originally written by Gregory DEMAR
+  Copyright (c) 2003-2016 Coppermine Dev Team
+  v1.0 originally written by Gregory Demar
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License version 3
   as published by the Free Software Foundation.
-  
+
   ********************************************
-  Coppermine version: 1.4.18
-  $HeadURL: https://coppermine.svn.sourceforge.net/svnroot/coppermine/trunk/cpg1.4.x/lang/slovak.php $
-  $Revision: 4380 $
-  $Author: gaugau $
-  $Date: 2008-04-12 12:00:19 +0200 (Sa, 12 Apr 2008) $
+  Coppermine version: 1.5.42
+  $HeadURL: https://svn.code.sf.net/p/coppermine/code/trunk/cpg1.5.x/lang/slovak.php $
+  $Revision: 8846 $
 **********************************************/
 
-if (!defined('IN_COPPERMINE')) { die('Not in Coppermine...');}
+if (!defined('IN_COPPERMINE')) die('Not in Coppermine...');
 
 // info about translators and translated language
-$lang_translation_info = array(
-  'lang_name_english' => 'Slovak', //cpg1.4
-  'lang_name_native' => 'Slovensky', //cpg1.4
-  'lang_country_code' => 'sk', //cpg1.4
-  'trans_name'=> 'Piranha',
-  'trans_email' => 'rc@rc.sk',
-  'trans_website' => 'http://www.kravata.sk',
-  'trans_date' => '2006-02-02',
-);
+$lang_translation_info['lang_name_english'] = 'Slovak';
+$lang_translation_info['lang_name_native'] = 'Slovensky';
+$lang_translation_info['lang_country_code'] = 'sk';
+$lang_translation_info['trans_name'] = 'Aurel Klátik';
+$lang_translation_info['trans_email'] = 'aurel.klatik@gmail.com';
+$lang_translation_info['trans_website'] = 'http://www.foxy.sk/';
+$lang_translation_info['trans_date'] = '2010-07-20';
+
 
 $lang_charset = 'utf-8';
 $lang_text_dir = 'ltr'; // ('ltr' for left to right, 'rtl' for right to left)
 
-// shortcuts for Byte, Kilo, Mega
-$lang_byte_units = array('Bytov', 'KB', 'MB');
+// shortcuts for Bytes, Kibibytes, Mebibytes, Gibibytes
+$lang_byte_units = array('Bytov', 'KB', 'MB', 'GB');
+$lang_decimal_separator = array(',', '.');  //cpg1.5 // symbol used to separate thousands from hundreds and rounded number from decimal place
 
 // Day of weeks and months
-$lang_day_of_week = array('Ne', 'Po', 'Ut', 'St', 'Št', 'Pi', 'So');
+$lang_day_of_week = array('Ne', 'Po', 'Ut', 'St', 'Št', 'Pia', 'So');
 $lang_month = array('Január', 'Február', 'Marec', 'Apríl', 'Máj', 'Jún', 'Júl', 'August', 'September', 'Október', 'November', 'December');
-
-// Some common strings
-$lang_yes = 'Áno';
-$lang_no  = 'Nie';
-$lang_back = 'SPÄŤ';
-$lang_continue = 'POKRAČOVAŤ';
-$lang_info = 'Informácia';
-$lang_error = 'Chyba';
-$lang_check_uncheck_all = 'označ/odznač všetko'; //cpg1.4
 
 // The various date formats
 // See http://www.php.net/manual/en/function.strftime.php to define the variable below
-$album_date_fmt =    '%B %d, %Y';
-$lastcom_date_fmt =  '%m/%d/%y at %H:%M';
-$lastup_date_fmt = '%B %d, %Y';
-$register_date_fmt = '%B %d, %Y';
-$lasthit_date_fmt = '%B %d, %Y at %I:%M %p';
-$comment_date_fmt =  '%B %d, %Y at %I:%M %p';
-$log_date_fmt = '%B %d, %Y at %I:%M %p'; //cpg1.4
+$lang_date['album'] = '%d. %B %Y';
+$lang_date['lastcom'] = '%d. %B %Y v %H:%M';
+$lang_date['lastup'] = '%d. %B %Y';
+$lang_date['register'] = '%d. %B %Y';
+$lang_date['lasthit'] = '%d. %B %Y v %H:%M';
+$lang_date['comment'] = '%d. %B %Y v %H:%M';
+$lang_date['log'] = '%d. %B %Y v %H:%M';
+$lang_date['scientific'] = '%d. %B %Y %H:%M:%S';
 
 // For the word censor
-$lang_bad_words = array('*fuck*', 'asshole', 'assramer', 'bitch*', 'c0ck', 'clits', 'Cock', 'cum', 'cunt*', 'dago', 'daygo', 'dego', 'dick*', 'dildo', 'fanculo', 'feces', 'foreskin', 'Fu\(*', 'fuk*', 'honkey', 'hore', 'injun', 'kike', 'lesbo', 'masturbat*', 'motherfucker', 'nazis', 'nigger*', 'nutsack', 'penis', 'phuck', 'poop', 'pussy', 'scrotum', 'shit', 'slut', 'titties', 'titty', 'twaty', 'wank*', 'whore', 'wop*', 'piča', 'hovno', '*fuck*', 'prdel', 'čurák', 'bitch*', 'c0ck', 'clits', 'Cock', 'cum', 'cunt*', 'dago', 'daygo', 'dego', 'dick*', 'dildo', 'fanculo', 'feces', 'foreskin', 'Fu\(*', 'fuk*', 'honkey', 'hore', 'injun', 'kike', 'lesbo', 'masturbat*', 'motherfucker', 'nazis', 'nigger*', 'nutsack', 'penis', 'phuck', 'poop', 'pussy', 'scrotum', 'shit', 'slut', 'titties', 'titty', 'twaty', 'wank*', 'whore', 'wop*', 'kokot');
+$lang_bad_words = array('*fuck*', 'asshole', 'assramer', 'assrammer', 'bitch*', 'c0ck', 'clits', 'Cock', 'cum', 'cunt*', 'dago', 'daygo', 'dego', 'dick*', 'dildo', 'fanculo', 'feces', 'Fu\(*', 'fuk*', 'honkey', 'injun', 'kike', 'lesbo', 'masturbat*', 'motherfucker', 'nigger*', 'nutsack','penis', 'phuck', 'poop', 'pussy', 'scrotum', 'titties', 'titty', 'twaty', 'wank*', 'whore', 'wop*', 'kokot', 'piča', 'jebnut*', 'dojeba*', 'kokot*', 'pičov*', 'jebač*', 'jeba*');
 
-$lang_meta_album_names = array(
-  'random' => 'Náhodné súbory',
-  'lastup' => 'Najnovšie pridané',
-  'lastalb'=> 'Naposledy aktualizovaná galéria',
-  'lastcom' => 'Najnovšie komentáre',
-  'topn' => 'Najprezeranejšie',
-  'toprated' => 'Najvyššie hodnotené',
-  'lasthits' => 'Naposledy zobrazené',
-  'search' => 'Výsledky hľadania',
-  'favpics'=> 'Obľúbené súbory',  //cpg1.4
-);
 
-$lang_errors = array(
-  'access_denied' => 'Nemáte oprávnenie pre vstup na túto stránku.',
-  'perm_denied' => 'Nemáte oprávnenie vykonať túto operáciu.',
-  'param_missing' => 'Skript vyvolaný bez potrebných parametrov.',
-  'non_exist_ap' => 'Zvolený album/súbor neexistuje !',
-  'quota_exceeded' => 'Vyčerpali ste miesto na disku.<br /><br />Vaša kvóta je[quota]K, Vaše súbory zaberajú [space]K, pridaním tohto súboru by ste svoju kvótu prekročili.',
-  'gd_file_type_err' => 'Ak používate GD knižnicu sú podporované len obrázky JPG a PNG.',
-  'invalid_image' => 'Tento obrázok je poškodený/porušený alebo GD knihovňa s ním nemôže pracovať.',
-  'resize_failed' => 'Nemožno vytvoriť náhľad alebo zmenšený obrázok.',
-  'no_img_to_display' => 'Žiadny obrázok k zobrazeniu',
-  'non_exist_cat' => 'Zvolená kategória neexistuje',
-  'orphan_cat' => 'Táto kategória nemá nadradenú kategóriu. Problém opravte cez nastavenie kategorií!',
-  'directory_ro' => 'Do adresára \'%s\' nemožno zapisovať, súbor nemožno zmazať.',
-  'non_exist_comment' => 'Zvolený komentár neexistuje.',
-  'pic_in_invalid_album' => 'Súbor je v neexistujúcom albume (%s)!?',
-  'banned' => 'Momentálne máte zakázaný prístup k týmto stránkam.',
-  'not_with_udb' => 'Táto funkcia je vypnutá pretože je integrovaná vo fóre. Buď nie je požadovaná fukcia dostupná na tomto systéme, alebo túto funkciu plní fórum..',
-  'offline_title' => 'Odpojené',
-  'offline_text' => 'Galéria je momentálne nedostupná - skúste neskôr.',
-  'ecards_empty' => 'Teraz nie sú žiadne e-pohľadnice k zobrazeniu.',
-  'action_failed' => 'Akcia zlyhala. Galéria nie je schopná vašu požiadavku vykonať.',
-  'no_zip' => 'Knižnice potrebné pre zpracovanie ZIP súborov nie sú dostupné.  Prosím kontaktujte Vášho administrátora galérie.',
-  'zip_type' => 'Nemáte oprávnenie pridávať ZIP súbory.',
-  'database_query' => 'Vyskytla sa chyba pri spracovávaní databázovej požiadavky.', //cpg1.4
-  'non_exist_comment' => 'Zvolený komentár neexistuje.', //cpg1.4
-);
+$lang_meta_album_names['random'] = 'Náhodné obrázky';
+$lang_meta_album_names['lastup'] = 'Najnovšie obrázky';
+$lang_meta_album_names['lastalb'] = 'Posledné aktualizované albumy';
+$lang_meta_album_names['lastcom'] = 'Najnovšie komentáre';
+$lang_meta_album_names['topn'] = 'Najprezeranejšie';
+$lang_meta_album_names['toprated'] = 'Najvyššie hodnotené';
+$lang_meta_album_names['lasthits'] = 'Posledné zobrazené';
+$lang_meta_album_names['search'] = 'Výsledky hľadania';
+$lang_meta_album_names['album_search'] = 'Výsledky hľadania albumov';
+$lang_meta_album_names['category_search'] = 'Výsledky hľadania kategórií';
+$lang_meta_album_names['favpics'] = 'Obľúbené obrázky';
+$lang_meta_album_names['datebrowse'] = 'Prezerať podľa dátumu'; //cpg1.5
 
-$lang_bbcode_help_title = 'bbcode pomoc'; //cpg1.4
-$lang_bbcode_help = 'Môžete pridať klikateľné linky a formátovanie použitím bbcode tagov: <li>[b]Bold[/b] =&gt; <b>Bold</b></li><li>[i]Italic[/i] =&gt; <i>Italic</i></li><li>[url=http://yoursite.com/]Url Text[/url] =&gt; <a href="http://yoursite.com">Url Text</a></li><li>[email]user@domain.com[/email] =&gt; <a href="mailto:user@domain.com">user@domain.com</a></li><li>[color=red]some text[/color] =&gt; <span style="color:red">some text</span></li><li>[img]http://coppermine-gallery.net/demo/cpg14x/images/red.gif[/img] => <img src="../images/red.gif" border="0" alt="" /></li>'; //cpg1.4
+$lang_errors['access_denied'] = 'Nemáte prístup na túto stránku.';
+$lang_errors['invalid_form_token'] = 'Platný formulár nebol nájdený.'; //cpg1.5
+$lang_errors['perm_denied'] = 'Nemáte dostočné práva na potvrdenie tejto operácie.';
+$lang_errors['param_missing'] = 'Skriptu neboli predané potrebné parametre';
+$lang_errors['non_exist_ap'] = 'Vybraný album/obrázok neexistuje';
+$lang_errors['quota_exceeded'] = 'Disková kvóta prekročená.'; //cpg1.5
+$lang_errors['quota_exceeded_details'] = 'Vyčerpali ste miesto na disku.<br /><br />Vaša kvóta je[quota]K, Vaše obrázky zaberajú [space]K, pridaním tohto obrázku by ste svoju kvótu prekročili'; //cpg1.5
+$lang_errors['gd_file_type_err'] = 'Ak používate GD knihovňu sú podporované iba obrázky JPG a PNG';
+$lang_errors['invalid_image'] = 'Tento obrázok je poškodený GD knihovňa s ním nemôže pracovať.';
+$lang_errors['resize_failed'] = 'Nemožno vytvoriť náhľad alebo zmenšený obrázok';
+$lang_errors['no_img_to_display'] = 'Tu nie je žiaden obrázok, ktorý by ste si mohli pozrieť';
+$lang_errors['non_exist_cat'] = 'Zvolená kategória neexistuje';
+$lang_errors['directory_ro'] = 'Do adresára \'%s\' nemožno zapisovať (nedostatočné práva), obrázky nemohli byť zmazané.';
+$lang_errors['non_exist_comment'] = 'Zvolený komentár neexistuje';
+$lang_errors['pic_in_invalid_album'] = 'Obrázok(ky) je/sú v neexistujúcej galérii (%s)!?';
+$lang_errors['banned'] = 'Boli ste vylúčený z týchto stránok, nie je Vám umožnené ich používať.';
+$lang_errors['offline_title'] = 'Nedostupné';
+$lang_errors['offline_text'] = 'Galéria je momentálne nedostupná - prosím skúste to znova neskôr';
+$lang_errors['ecards_empty'] = 'Momentálne nie sú k dispozícii žiadne záznamy o ecards. Overte prosím, že je zapnutá funkcia "ecard logging" v konfigurácii coppermine!';
+$lang_errors['database_query'] = 'Vyskytla sa chyba pri databázovej operácii.';
+$lang_errors['non_exist_comment'] = 'Vybraný komentár neexistuje';
+$lang_errors['captcha_error'] = 'Potvrdzovací kód nesúhlasil'; // cpg1.5
+$lang_errors['login_needed'] = 'Pre prístup na túto stránku sa musíte %sregistrovať%s/%sprihlásiť%s'; // cpg1.5
+$lang_errors['error'] = 'Chyba'; // cpg1.5
+$lang_errors['critical_error'] = 'Kritická chyba'; // cpg1.5
+$lang_errors['access_thumbnail_only'] = 'Máte povolené prohliadať iba náhľady.'; // cpg1.5
+$lang_errors['access_intermediate_only'] = 'Nemáte povolené prehliadať obrázky v plnej veľkosti.'; // cpg1.5
+$lang_errors['access_none'] = 'Nemáte povolené prehliadať žiadne obrázky.'; // cpg1.5
+$lang_errors['register_globals_title'] = 'Register Globals on!';// cpg1.5
+$lang_errors['register_globals_warning'] = 'Nastavenie PHP register_globals je na vašom serveri povolené, čo z hľadiska bezpečnosti správne. Odporúčame ho vypnúť.'; //cpg1.5
+
+$lang_bbcode_help_title = 'bbcode pomoc';
+$lang_bbcode_help = 'Nasledujúce značky môžu byť užitočné: <li>[b]Bold[/b] =&gt; <b>Bold</b></li><li>[i]Italic[/i] =&gt; <i>Italic</i></li><li>[url=http://yoursite.com/]Url Text[/url] =&gt; <a href="http://yoursite.com">Url Text</a></li><li>[email]user@domain.com[/email] =&gt; <a href="mailto:user@domain.com">user@domain.com</a></li><li>[color=red]some text[/color] =&gt; <span style="color:red">nejaký text</span></li><li>[img]http://coppermine-gallery.net/demo/cpg14x/images/red.gif[/img] => <img src="../images/red.gif" border="0" alt="" /></li>';
+
+$lang_common['yes'] = 'Áno'; // cpg1.5
+$lang_common['no'] = 'Nie'; // cpg1.5
+$lang_common['back'] = 'Späť'; // cpg1.5
+$lang_common['continue'] = 'Pokračovať'; // cpg1.5
+$lang_common['information'] = 'Informácie'; // cpg1.5
+$lang_common['error'] = 'Chyba'; // cpg1.5
+$lang_common['check_uncheck_all'] = 'označ/odznač všetko'; // cpg1.5
+$lang_common['confirm'] = 'Potvrdenie'; // cpg1.5
+$lang_common['captcha_help_title'] = 'Vizuálne potvrdenie (captcha)'; // cpg1.5
+$lang_common['captcha_help'] = 'Aby sa zabránilo spamu, musíte zadaním zobrazeného textu potvrdiť, že ste skutočne ľudská bytosť a nie iba automatický robot<br />Nezáleží na veľkých a malých písmenách, môžete písať všetko malými písmenami.'; // cpg1.5
+$lang_common['title'] = 'Názov'; // cpg1.5
+$lang_common['caption'] = 'Titul'; // cpg1.5
+$lang_common['keywords'] = 'Kľúčové slová'; // cpg1.5
+$lang_common['keywords_insert1'] = 'Kľúčové slová (oddelovač %s)'; // cpg1.5
+$lang_common['keywords_insert2'] = 'Vložiť zo zoznamu'; // cpg1.5
+$lang_common['keyword_separator'] = 'Oddelovač kľúčových slov'; //cpg1.5
+$lang_common['keyword_separators'] = array(' '=>'medzera', ','=>'čiarka', ';'=>'stredník'); // cpg1.5
+$lang_common['owner_name'] = 'Vlastník'; // cpg1.5
+$lang_common['filename'] = 'Názov súboru'; // cpg1.5
+$lang_common['filesize'] = 'Veľkosť súboru'; // cpg1.5
+$lang_common['album'] = 'Album'; // cpg1.5
+$lang_common['file'] = 'Súbor'; // cpg1.5
+$lang_common['date'] = 'Dátum'; // cpg1.5
+$lang_common['help'] = 'Pomoc'; // cpg1.5
+$lang_common['close'] = 'Zavrieť'; // cpg1.5
+$lang_common['go'] = 'Ďalej!'; // cpg1.5
+$lang_common['javascript_needed'] = 'Táto stránka vyžaduje JavaScript. Prosím povolte JavaScript vo Vašom prehliadači.'; // cpg1.5
+$lang_common['move_up'] = 'Hore'; // cpg1.5
+$lang_common['move_down'] = 'Dole'; // cpg1.5
+$lang_common['move_top'] = 'Presuň na začiatok'; // cpg1.5
+$lang_common['move_bottom'] = 'Presuň na koniec'; // cpg1.5
+$lang_common['delete'] = 'Vymazať'; // cpg1.5
+$lang_common['edit'] = 'Upraviť'; // cpg1.5
+$lang_common['username_if_blank'] = 'Neplatný údaj'; // cpg1.5
+$lang_common['albums_no_category'] = 'Albumy nemajú žiadnu kategóriu'; // cpg1.5
+$lang_common['personal_albums'] = '* Osobné albumy'; // cpg1.5
+$lang_common['select_album'] = 'Vyberte Album'; // cpg1.5
+$lang_common['ok'] = 'OK'; // cpg1.5
+$lang_common['status'] = 'Status'; // cpg1.5
+$lang_common['apply_changes'] = 'Použiť zmeny'; // cpg1.5
+$lang_common['done'] = 'Hotovo'; // cpg1.5
+$lang_common['album_properties'] = 'Vlastnosti albumu'; // cpg1.5
+$lang_common['parent_category'] = 'Nadradená kategória'; // cpg1.5
+$lang_common['edit_files'] = 'Edituj súbory'; // cpg1.5
+$lang_common['thumbnail_view'] = 'Zobraz náhľady'; // cpg1.5
+$lang_common['album_manager'] = 'Správca albumov'; // cpg1.5
+$lang_common['more'] = 'viac'; // cpg1.5
 
 // ------------------------------------------------------------------------- //
 // File theme.php
 // ------------------------------------------------------------------------- //
 
-$lang_main_menu = array(
-  'home_title' => 'Choď na hlavnú stránku',
-  'home_lnk' => 'Domov',
-  'alb_list_title' => 'Choď na zoznam albumov',
-  'alb_list_lnk' => 'Zoznam albumov',
-  'my_gal_title' => 'Choď do osobnej galérie',
-  'my_gal_lnk' => 'Moja galéria',
-  'my_prof_title' => 'Choď na môj profil', //cpg1.4
-  'my_prof_lnk' => 'Môj profil',
-  'adm_mode_title' => 'Prepnúť do admin módu',
-  'adm_mode_lnk' => 'Admin mód',
-  'usr_mode_title' => 'Prepnúť do užívateľského módu',
-  'usr_mode_lnk' => 'Užívateľský mód',
-  'upload_pic_title' => 'Pridať súbor do albumu',
-  'upload_pic_lnk' => 'Pridať súbor',
-  'register_title' => 'Vytvoriť účet',
-  'register_lnk' => 'Registruj',
-  'login_title' => 'Prihlás ma', //cpg1.4
-  'login_lnk' => 'Prihlásiť',
-  'logout_title' => 'Odhlás ma', //cpg1.4
-  'logout_lnk' => 'Odhlásiť',
-  'lastup_title' => 'Zobraz najnovšie pridané', //cpg1.4
-  'lastup_lnk' => 'Najnovšie pridané',
-  'lastcom_title' => 'Zobraz najnovšie komentáre', //cpg1.4
-  'lastcom_lnk' => 'Najnovšie komentáre',
-  'topn_title' => 'Zobraz najprezeranejšie', //cpg1.4
-  'topn_lnk' => 'Najprezeranejšie',
-  'toprated_title' => 'Zobraz najvyššie hodnotené', //cpg1.4
-  'toprated_lnk' => 'Najvyššie hodnotené',
-  'search_title' => 'Hľadaj v galérii', //cpg1.4
-  'search_lnk' => 'Hľadať',
-  'fav_title' => 'Choď do mojich obľúbených', //cpg1.4
-  'fav_lnk' => 'Moje obľúbené',
-  'memberlist_title' => 'Zobraz členov',
-  'memberlist_lnk' => 'Zoznam členov',
-  'faq_title' => 'Často kladené otázky na galériu &quot;Coppermine&quot;',
-  'faq_lnk' => 'FAQ',
-);
+$lang_main_menu['home_title'] = 'Domov';
+$lang_main_menu['home_lnk'] = 'Domov';
+$lang_main_menu['alb_list_title'] = 'Prejsť na zoznam albumov';
+$lang_main_menu['alb_list_lnk'] = 'Zoznam albumov';
+$lang_main_menu['my_gal_title'] = 'Prejsť do mojej osobnej galérie';
+$lang_main_menu['my_gal_lnk'] = 'Moja galéria';
+$lang_main_menu['my_prof_title'] = 'Prejsť do mojeho osobného profilu';
+$lang_main_menu['my_prof_lnk'] = 'Môj Profil';
+$lang_main_menu['adm_mode_title'] = 'Do Admin módu'; // cpg1.5
+$lang_main_menu['adm_mode_lnk'] = 'Admin mód'; // cpg1.5
+$lang_main_menu['usr_mode_title'] = 'Do užívateľského módu'; // cpg1.5
+$lang_main_menu['usr_mode_lnk'] = 'Užívateľský mód'; // cpg1.5
+$lang_main_menu['upload_pic_title'] = 'Nahrať obrázok do albumu';
+$lang_main_menu['upload_pic_lnk'] = 'Upload súboru';
+$lang_main_menu['register_title'] = 'Vytvoriť účet';
+$lang_main_menu['register_lnk'] = 'Registrovať sa';
+$lang_main_menu['login_title'] = 'Prihlásenie';
+$lang_main_menu['login_lnk'] = 'Prihlásiť';
+$lang_main_menu['logout_title'] = 'Odhlásenie';
+$lang_main_menu['logout_lnk'] = 'Odhlásiť';
+$lang_main_menu['lastup_title'] = 'Zobraz najnovšie obrázky';
+$lang_main_menu['lastup_lnk'] = 'Najnovšie obrázky';
+$lang_main_menu['lastcom_title'] = 'Zobraz posledné komentáre';
+$lang_main_menu['lastcom_lnk'] = 'Posledné komentáre';
+$lang_main_menu['topn_title'] = 'Zobraz najprezeranejšie';
+$lang_main_menu['topn_lnk'] = 'Najprezeranejšie';
+$lang_main_menu['toprated_title'] = 'Zobraz najvyššie hodnotené';
+$lang_main_menu['toprated_lnk'] = 'Najvyššie hodnotené';
+$lang_main_menu['search_title'] = 'Hľadaj';
+$lang_main_menu['search_lnk'] = 'Vyhľadávanie';
+$lang_main_menu['fav_title'] = 'Choď na obľúbené';
+$lang_main_menu['fav_lnk'] = 'Obľúbené';
+$lang_main_menu['memberlist_title'] = 'Zobraz zoznam členov';
+$lang_main_menu['memberlist_lnk'] = 'Zoznam členov';
+$lang_main_menu['browse_by_date_lnk'] = 'Zobrazenie podľa dátumu'; // cpg1.5
+$lang_main_menu['browse_by_date_title'] = 'Prezerať podľa dátumu pridania'; // cpg1.5
+$lang_main_menu['contact_title'] = 'Kontaktovať: %s'; // cpg1.5
+$lang_main_menu['contact_lnk'] = 'Kontakt'; // cpg1.5
+$lang_main_menu['sidebar_title'] = 'Pridaj bočnú lištu do Vášho prehliadača'; // cpg1.5
+$lang_main_menu['sidebar_lnk'] = 'Bočná lišta'; // cpg1.5
 
-$lang_gallery_admin_menu = array(
-  'upl_app_title' => 'Schváliť pridanie súboru', //cpg1.4
-  'upl_app_lnk' => 'Potvrdiť pridanie',
-  'admin_title' => 'Choď do konfigurácie galérie', //cpg1.4
-  'admin_lnk' => 'Konfigurácia', //cpg1.4
-  'albums_title' => 'Choď do konfigurácie albumov', //cpg1.4
-  'albums_lnk' => 'Albumy',
-  'categories_title' => 'Choď do konfigurácie kategórií', //cpg1.4
-  'categories_lnk' => 'Kategórie',
-  'users_title' => 'Choď do konfigurácie členov', //cpg1.4
-  'users_lnk' => 'Členovia',
-  'groups_title' => 'Choď do konfigurácie skupín', //cpg1.4
-  'groups_lnk' => 'Skupiny',
-  'comments_title' => 'Prezerať komentáre', //cpg1.4
-  'comments_lnk' => 'Prezerať komentáre',
-  'searchnew_title' => 'Choď na hromadné pridanie súborov', //cpg1.4
-  'searchnew_lnk' => 'Hromadné pridanie',
-  'util_title' => 'Choď do administračného menu', //cpg1.4
-  'util_lnk' => 'Administrácia',
-  'key_title' => 'Choď do zoznamu kľúčových slov', //cpg1.4
-  'key_lnk' => 'Kľúčové slová', //cpg1.4
-  'ban_title' => 'Choď do zoznamu zakázaných členov', //cpg1.4
-  'ban_lnk' => 'Zakáž člena',
-  'db_ecard_title' => 'Prezrieť e-pohľadnice', //cpg1.4
-  'db_ecard_lnk' => 'Zobraziť e-pohľadnice',
-  'pictures_title' => 'Usporiadať moje obrázky', //cpg1.4
-  'pictures_lnk' => 'Usporiadať obrázky', //cpg1.4
-  'documentation_lnk' => 'Dokumentácia', //cpg1.4
-  'documentation_title' => 'Coppermine manuál', //cpg1.4
-);
+$lang_gallery_admin_menu['upl_app_title'] = 'Potvrdenie nového uploadu';
+$lang_gallery_admin_menu['upl_app_lnk'] = 'Potvrdenie uploadu';
+$lang_gallery_admin_menu['admin_title'] = 'Nastavenie CPG';
+$lang_gallery_admin_menu['admin_lnk'] = 'Konfigurácia';
+$lang_gallery_admin_menu['albums_title'] = 'Správca albumov';
+$lang_gallery_admin_menu['albums_lnk'] = 'Konfigurácuia albumov';
+$lang_gallery_admin_menu['categories_title'] = 'Správca kategórií';
+$lang_gallery_admin_menu['categories_lnk'] = 'Konfigurácia kategórií';
+$lang_gallery_admin_menu['users_title'] = 'Správca užívateľov';
+$lang_gallery_admin_menu['users_lnk'] = 'Užívatelia';
+$lang_gallery_admin_menu['groups_title'] = 'Správca užívateľských skupín';
+$lang_gallery_admin_menu['groups_lnk'] = 'Užívateľské skupiny';
+$lang_gallery_admin_menu['comments_title'] = 'Prehľad komentárov';
+$lang_gallery_admin_menu['comments_lnk'] = 'Komentáre';
+$lang_gallery_admin_menu['searchnew_title'] = 'Dávkové pridanie súborov';
+$lang_gallery_admin_menu['searchnew_lnk'] = 'Dávkové priadanie súborov';
+$lang_gallery_admin_menu['util_title'] = 'Administrátorské nástroje';
+$lang_gallery_admin_menu['util_lnk'] = 'Administrátorské nástroje';
+$lang_gallery_admin_menu['key_title'] = 'Správca kľúčových slov';
+$lang_gallery_admin_menu['key_lnk'] = 'Správca kľúčových slov';
+$lang_gallery_admin_menu['ban_title'] = 'Prejsť na blokácie';
+$lang_gallery_admin_menu['ban_lnk'] = 'Zákaz užívateľov';
+$lang_gallery_admin_menu['db_ecard_title'] = 'Zobraziť pohľadnice';
+$lang_gallery_admin_menu['db_ecard_lnk'] = 'Zobraziť pohľadnice';
+$lang_gallery_admin_menu['pictures_title'] = 'Zoradiť obrázky';
+$lang_gallery_admin_menu['pictures_lnk'] = 'Zoradiť obrázky';
+$lang_gallery_admin_menu['documentation_lnk'] = 'Dokumentácia';
+$lang_gallery_admin_menu['documentation_title'] = 'Coppermine príručka';
+$lang_gallery_admin_menu['phpinfo_lnk'] = 'phpinfo'; // cpg1.5
+$lang_gallery_admin_menu['phpinfo_title'] = 'Zobrazí technické informácie Vášho servera. Môžete byť požiadaní o poskytnutie týchto informácií, keď budete žiadať o podporu.'; // cpg1.5
+$lang_gallery_admin_menu['update_database_lnk'] = 'Aktualizácia databázy'; // cpg1.5
+$lang_gallery_admin_menu['update_database_title'] = 'Ak ste nahradili súbory Coppermine, pridávali modifikácie alebo upgradovali z predchádzajúcej verzie Coppermine, vykonajte altualizáciu databázy. Tá vytvorí potrebné tabuľky a/alebo konfiguračné hodnoty ve vašej databáze Coppermine.'; // cpg1.5
+$lang_gallery_admin_menu['view_log_files_lnk'] = 'Zobraziť logy'; // cpg1.5
+$lang_gallery_admin_menu['view_log_files_title'] = 'Coppermine môže sledovať rôzne činnosti užívateľov. Tieto logy (záznamy) môžete prezerať, ak máte povolený prístup do Coppermine config.'; // cpg1.5
+$lang_gallery_admin_menu['check_versions_lnk'] = 'Verzia CPG'; // cpg1.5
+$lang_gallery_admin_menu['check_versions_title'] = 'Skontrolujte si verzie vašich súborov, aby ste zistili, či jste nahradili všetky súbory pri upgrade alebo či zdrojové súbory Coppermine boli aktualizované.'; // cpg1.5
+$lang_gallery_admin_menu['bridgemgr_lnk'] = 'Správca aplikácií'; // cpg1.5
+$lang_gallery_admin_menu['bridgemgr_title'] = 'Zapne/vypne integráciu (propojeni) Coppermine s ďalšími aplikáciami (napr. forum a pod.).'; // cpg1.5
+$lang_gallery_admin_menu['pluginmgr_lnk'] = 'Správca zásuvných modulov'; // cpg1.5
+$lang_gallery_admin_menu['pluginmgr_title'] = 'Správca zásuvných modulov'; // cpg1.5
+$lang_gallery_admin_menu['overall_stats_lnk'] = 'Globálne štatistiky'; // cpg1.5
+$lang_gallery_admin_menu['overall_stats_title'] = 'Zobrazí štatistiky podľa prehliadača a operačného systému (ak je zodpovedajúca voľba zapnutá v konfigurácii).'; // cpg1.5
+$lang_gallery_admin_menu['keywordmgr_lnk'] = 'Správca kľúčových slov'; // cpg1.5
+$lang_gallery_admin_menu['keywordmgr_title'] = 'Spravuje kľúčové slová (ak je zodpovedajúca voľba zapnutá v konfigurácii).'; // cpg1.5
+$lang_gallery_admin_menu['exifmgr_lnk'] = 'Správca EXIF'; // cpg1.5
+$lang_gallery_admin_menu['exifmgr_title'] = 'Spravuje EXIF informácie (ak je zodpovedajúca voľba zapnutá v konfigurácii).'; // cpg1.5
+$lang_gallery_admin_menu['shownews_lnk'] = 'Novinky'; // cpg1.5
+$lang_gallery_admin_menu['shownews_title'] = 'Zobrazí novinky z coppermine-gallery.net'; // cpg1.5
+$lang_gallery_admin_menu['export_lnk'] = 'Export'; // cpg1.5
+$lang_gallery_admin_menu['export_title'] = 'Zálohuje súbory a albumy na disk'; // cpg1.5
 
-$lang_user_admin_menu = array(
-  'albmgr_title' => 'Vytvoriť a usporiadať albumy', //cpg1.4
-  'albmgr_lnk' => 'Vytvoriť/usporiadať albumy',
-  'modifyalb_title' => 'Choď na úpravu albumov',  //cpg1.4
-  'modifyalb_lnk' => 'Úprava albumov',
-  'my_prof_title' => 'Choď na úpravu môjho profilu', //cpg1.4
-  'my_prof_lnk' => 'Môj profil',
-);
+$lang_user_admin_menu['albmgr_title'] = 'Prejsť na konfiguráciu mojich albumov';
+$lang_user_admin_menu['albmgr_lnk'] = 'Vytvoriť / organizovať moje albumy';
+$lang_user_admin_menu['modifyalb_title'] = 'Prejsť na správu mojich albumov';
+$lang_user_admin_menu['modifyalb_lnk'] = 'Zmeniť moje albumy';
+$lang_user_admin_menu['my_prof_title'] = 'Prejsť na môj osobný profil';
+$lang_user_admin_menu['my_prof_lnk'] = 'Môj profil';
 
-$lang_cat_list = array(
-  'category' => 'Kategórie',
-  'albums' => 'Albumy',
-  'pictures' => 'Súbory',
-);
+$lang_cat_list['category'] = 'Kategórie';
+$lang_cat_list['albums'] = 'Albumy';
+$lang_cat_list['pictures'] = 'Súbory';
 
-$lang_album_list = array(
-  'album_on_page' => '%d albumov na %d stránkach',
-);
+$lang_album_list['album_on_page'] = 'Počet albumov: %d na %d stránke(kách)';
 
-$lang_thumb_view = array(
-  'date' => 'DÁTUM',
+$lang_thumb_view['date'] = 'Dátum';
   //Sort by filename and title
-  'name' => 'MENO SÚBORU',
-  'title' => 'NADPIS',
-  'sort_da' => 'Zoradiť vzostupne podľa dátumu',
-    'sort_dd' => 'Zoradiť zostupne podľa dátumu',
-    'sort_na' => 'Zoradiť vzostupne podľa mena',
-    'sort_nd' => 'Zoradiť zostupne podľa mena',
-    'sort_ta' => 'Zoradiť vzostupne podľa nadpisu',
-    'sort_td' => 'Zoradiť zostupne podľa nadpisu',
-  'position' => 'UMIESTNENIE', //cpg1.4
-  'sort_pa' => 'Zoradiť vzostupne podľa umiestnenia', //cpg1.4
-  'sort_pd' => 'Zoradiť zostupne podľa umiestnenia', //cpg1.4
-  'download_zip' => 'Stiahnuť ako Zip súbor',
-  'pic_on_page' => '%d súborov na %d stránkach',
-  'user_on_page' => '%d užívateľov na %d stránkach',
-  'enter_alb_pass' => 'Zadajte heslo pre album', //cpg1.4
-  'invalid_pass' => 'Neplatné heslo', //cpg1.4
-  'pass' => 'Heslo', //cpg1.4
-  'submit' => 'Potvrdiť', //cpg1.4
-);
+$lang_thumb_view['name'] = 'Názov súboru';
+$lang_thumb_view['sort_da'] = 'Zoradiť vzostupne podľa dátumu';
+$lang_thumb_view['sort_dd'] = 'Zoradiť zostupne podľa dátumu';
+$lang_thumb_view['sort_na'] = 'Zoradiť vzostupne podľa názvu súboru';
+$lang_thumb_view['sort_nd'] = 'Zoradiť zostupne podľa názvu súboru';
+$lang_thumb_view['sort_ta'] = 'Zoradiť vzostupne podľa názvu';
+$lang_thumb_view['sort_td'] = 'Zoradiť zostupne podľa názvu';
+$lang_thumb_view['position'] = 'Pozícia';
+$lang_thumb_view['sort_pa'] = 'Zoradiť vzostupne podľa pozície';
+$lang_thumb_view['sort_pd'] = 'Zoradiť zostupne podľa pozície';
+$lang_thumb_view['download_zip'] = 'Download ako Zip súbor';
+$lang_thumb_view['pic_on_page'] = 'Počet súborov: %d na %d stránke(kách)';
+$lang_thumb_view['user_on_page'] = 'Počet užívateľov %d na %d stránke(kách)';
+$lang_thumb_view['enter_alb_pass'] = 'Vložte heslo albumu';
+$lang_thumb_view['invalid_pass'] = 'Neplatné heslo';
+$lang_thumb_view['pass'] = 'Heslo';
+$lang_thumb_view['submit'] = 'Potvrdiť';
+$lang_thumb_view['zipdownload_copyright'] = 'Prosím rešpektujte autorské právo - používajte iba také súbory, ktoré boli vlastníkom galérie určené na stiahnutie'; // cpg1.5
+$lang_thumb_view['zipdownload_username'] = 'Tento archív obsahuje "zazipované" súbory z obľúbených od %s'; // cpg1.5
 
-$lang_img_nav_bar = array(
-  'thumb_title' => 'Návrat na stránku náhľadov',
-  'pic_info_title' => 'Zobraziť/schovať informácie o súbore',
-  'slideshow_title' => 'Slideshow - automatické posúvanie obrázkov',
-  'ecard_title' => 'Pošli súbor ako e-pohľadnicu ',
-  'ecard_disabled' => 'zasielanie e-pohľadníc je vypnuté',
-  'ecard_disabled_msg' => 'Nemáte oprávnenie na posielanie e-pohľadníc', //js-alert
-  'prev_title' => 'Pozri predchádzajúci súbor',
-  'next_title' => 'Pozri ďaľší súbor',
-  'pic_pos' => 'SÚBOR %s/%s',
-  'report_title' => 'Upozorni administrátora na tento súbor', //cpg1.4
-  'go_album_end' => 'Skoč na koniec', //cpg1.4
-  'go_album_start' => 'Skoč na začiatok', //cpg1.4
-  'go_back_x_items' => 'choď späť o %s položku/y', //cpg1.4
-  'go_forward_x_items' => 'choď vpred o %s položku/y', //cpg1.4
-);
+$lang_img_nav_bar['thumb_title'] = 'Späť na stránku náhľadmov';
+$lang_img_nav_bar['pic_info_title'] = 'Zobraz/skry informácie o obrázku';
+$lang_img_nav_bar['slideshow_title'] = 'Slideshow';
+$lang_img_nav_bar['ecard_title'] = 'Poslať tento obrázok ako pohľadnicu';
+$lang_img_nav_bar['ecard_disabled'] = 'Funkcia Pohľadnice je vypnutá';
+$lang_img_nav_bar['ecard_disabled_msg'] = 'Nemáte dostatočné práva na zasielanie pohľadníc'; // ak
+$lang_img_nav_bar['prev_title'] = 'Predchádzajúci obrázok';
+$lang_img_nav_bar['next_title'] = 'Ďalší obrázok';
+$lang_img_nav_bar['pic_pos'] = 'OBRÁZOK %s/%s';
+$lang_img_nav_bar['report_title'] = 'Odošli tento súbor administrátorovi';
+$lang_img_nav_bar['go_album_end'] = 'Skok na koniec';
+$lang_img_nav_bar['go_album_start'] = 'Skok na začiatok';
 
-$lang_rate_pic = array(
-  'rate_this_pic' => 'Hodnotiť tento súbor ',
-  'no_votes' => '(zatiaľ nehodnotené)',
-  'rating' => '(Aktuálne hodnotenie : %s / 5 hlasované %s krát)',
-  'rubbish' => 'Odpad',
-  'poor' => 'Slabý',
-  'fair' => 'Dá sa vydržať',
-  'good' => 'Dobrý',
-  'excellent' => 'Výborný',
-  'great' => 'Dokonalý',
-);
-
-// ------------------------------------------------------------------------- //
-// File include/exif.inc.php
-// ------------------------------------------------------------------------- //
-
-// void
+$lang_rate_pic['rate_this_pic'] = 'Hodnotiť tento obrázok ';
+$lang_rate_pic['no_votes'] = '(žiadne hodnotenie)';
+$lang_rate_pic['rating'] = '(Aktuálne hodnotenie : %s / z 5, hodnotené %s krát)';
+$lang_rate_pic['rubbish'] = 'Odpad';
+$lang_rate_pic['poor'] = 'Mizerné';
+$lang_rate_pic['fair'] = 'Ujde to';
+$lang_rate_pic['good'] = 'Dobré';
+$lang_rate_pic['excellent'] = 'Výborné';
+$lang_rate_pic['great'] = 'Dokonalé';
+$lang_rate_pic['js_warning'] = 'Javascript musí byť povolený, aby bolo možné hodnotiť.'; // cpg1.5
+$lang_rate_pic['already_voted'] = 'Tento obrázok ste už hodnotili.'; // cpg1.5
+$lang_rate_pic['forbidden'] = 'Nemôžete hodnotiť vlastné súbory.'; // cpg1.5
+$lang_rate_pic['rollover_to_rate'] = 'Ohodnoť tento obrázok'; // cpg1.5
 
 // ------------------------------------------------------------------------- //
 // File include/functions.inc.php
 // ------------------------------------------------------------------------- //
 
-$lang_cpg_die = array(
-  INFORMATION => $lang_info,
-  ERROR => $lang_error,
-  CRITICAL_ERROR => 'Kritická chyba',
-  'file' => 'Súbor: ',
-  'line' => 'Riadok: ',
-);
+$lang_cpg_die['file'] = 'Súbor: ';
+$lang_cpg_die['line'] = 'Riadok: ';
 
-$lang_display_thumbnails = array(
-  'filename' => 'Meno súboru=', //cpg1.4
-  'filesize' => 'Veľkost súboru=', //cpg1.4
-  'dimensions' => 'Rozmery=', //cpg1.4
-  'date_added' => 'Dátum pridania=', //cpg1.4
-);
+$lang_display_thumbnails['dimensions'] = 'Veľkosť=';
+$lang_display_thumbnails['date_added'] = 'Dátum pridania=';
 
-$lang_get_pic_data = array(
-  'n_comments' => '%s komentár(ov)',
-  'n_views' => '%s zobrazení',
-  'n_votes' => '(%s hlas(ov))',
-);
+$lang_get_pic_data['n_comments'] = '%s komentárov';
+$lang_get_pic_data['n_views'] = '%s zobrazení';
+$lang_get_pic_data['n_votes'] = '(%s hlasov)';
 
-$lang_cpg_debug_output = array(
-  'debug_info' => 'Informácia o chybách',
-  'select_all' => 'Vybrať všetko',
-  'copy_and_paste_instructions' => 'Pokiaľ sa chystáte požadovať pomoc u podpory coppermine, vložte tento ladiaci výstup do vášho príspevku. Pred takýmto vložením sa uistite, že ste všetky vaše heslá z tohto textu nahradili pomocou "***". <br /> Toto je len informácia, neznamená to chybu vo Vašej galérii.', //cpg1.4
-  'phpinfo' => 'zobraziť phpinfo',
-  'notices' => 'Oznamy', //cpg1.4
-);
+$lang_cpg_debug_output['debug_info'] = 'Debug Info';
+$lang_cpg_debug_output['debug_output'] = 'Debug Output'; // cpg1.5
+$lang_cpg_debug_output['select_all'] = 'Vybrať všetko';
+$lang_cpg_debug_output['copy_and_paste_instructions'] = 'Ak budete chcieť podporu coppermine, vložte tento ladiaci výstup do vašeho príspevku. Pred vložením se ubezpečte, že ste všetky vaše heslá z tohto textu zmenili na "***".'; // cpg1.5
+$lang_cpg_debug_output['debug_output_explain'] = 'Poznámka: Toto je iba pre informáciu a neznamená to, že je v galérii chyba.'; // cpg1.5
+$lang_cpg_debug_output['phpinfo'] = 'Zobraziť phpinfo';
+$lang_cpg_debug_output['notices'] = 'Poznámky';
+$lang_cpg_debug_output['notices_help_admin'] = 'Poznámky zobrazené na tejto stránke sa zobrazujú preto, lebo vy (ako administrátor galérie) ste vedome povolili tieto funkcie v Coppermine alebo Coppermine config. Neznamená to nutne, že je nejaký problém s vašou galériou. V skutočnosti ide o vývojársku funkciu, ktorú by mali používať iba skúsení vývojári na sledovanie chýb. Ak vás tieto poznámky obťažujú a/alebo neviete, čo znamenajú, vypnite v config príslušnú funkciu.'; // cpg1.5
+$lang_cpg_debug_output['notices_help_non_admin'] = 'Poznámky boli vedome povolené administrátorom. Neznamená to, že je chyba na vašej strane. Môžete tieto poznámky kľudne ignorovať.'; // cpg1.5
+$lang_cpg_debug_output['show_hide'] = 'zobraziť / skryť'; // cpg1.5
 
-$lang_language_selection = array(
-  'reset_language' => 'Prednastavený jazyk',
-  'choose_language' => 'Vyberte si Váš jazyk',
-);
+$lang_language_selection['reset_language'] = 'Prednastavený jazyk';
+$lang_language_selection['choose_language'] = 'Vyberte jazyk';
 
-$lang_theme_selection = array(
-  'reset_theme' => 'Prednastavená téma',
-  'choose_theme' => 'Vyberte tému',
-);
+$lang_theme_selection['reset_theme'] = 'Prednastavená téma';
+$lang_theme_selection['choose_theme'] = 'Vyberte tému';
 
-$lang_version_alert = array(
-  'version_alert' => 'Nepodporovaná verzia!', //cpg1.4
-  'security_alert' => 'Bezpečnostná výstraha!', //cpg1.4.3
-  'relocate_exists' => 'Odstráňte <a href="http://coppermine-gallery.net/forum/index.php?topic=24217.0" target=_blank>relocate_server.php</a> z vašich stránok!',
-  'no_stable_version' => 'Prevádzkujete verziu Coppermine %s (%s) ,ktorá je len pre veľmi skúsených užívateľov - táto verzia je bez podpory a záruky. použitie je na vlastnú zodpovednosť a nebezpečie!', //cpg1.4
-  'gallery_offline' => 'Galéria je momentálne offline a je viditeľná len pre administrátorov. Nezabudnite ju pripojiť online po ukončení údržby.', //cpg1.4
-);
+$lang_social_bookmarks['bookmark_this_page'] = 'Pridať túto stránku do záložiek'; // cpg1.5
+$lang_social_bookmarks['favorite'] = 'Pridať túto stránku do obľúbeých vo vašom prehliadači'; // cpg1.5 // ak
+$lang_social_bookmarks['favorite_close'] = 'Toto váš prehliadač nepodporuje.'."\n".'Prosím zavrite tento dialog a'."\n".'stlačte Ctrl-D pre pridanie tejto stránky do záložiek.'; // cpg1.5 // ak
 
-$lang_create_tabs = array(
-  'previous' => 'predchádzajúci', //cpg1.4
-  'next' => 'ďaľší', //cpg1.4
-);
+$lang_version_alert['version_alert'] = 'Nepodporovaná verzia!';
+$lang_version_alert['no_stable_version'] = 'Používate Coppermine %s (%s) ktorá je pro skúsených užívateľov - táto verzia je distribuovaná bez podpory a záruky funkčnosti. Riziko použitia je na užívateľovi!';
+$lang_version_alert['gallery_offline'] = 'Galéria je momentálně vypnutá a bude viditeľná iba pre administrátora. Nezabudnite ju po vykonaní údržby zapnúť.';
+$lang_version_alert['coppermine_news'] = 'Novinky z coppermine-gallery.net'; // cpg1.5
+$lang_version_alert['no_iframe'] = 'Váš prehliadač nepodporuje frames'; // cpg1.5
+$lang_version_alert['hide'] = 'skryť'; // cpg1.5
+
+$lang_create_tabs['previous'] = 'Predchádzajúci'; // cpg1.5
+$lang_create_tabs['next'] = 'Ďalší'; // cpg1.5
+$lang_create_tabs['jump_to_page'] = 'Skok na stránku'; // cpg1.5
+
+$lang_get_remote_file_by_url['no_data_returned'] = 'Žiadne dáta s použitím %s'; // cpg1.5
+$lang_get_remote_file_by_url['curl'] = 'CURL'; // cpg1.5
+$lang_get_remote_file_by_url['fsockopen'] = 'Nadviazané spojenie (FSOCKOPEN)'; // cpg1.5
+$lang_get_remote_file_by_url['fopen'] = 'fopen'; // cpg1.5
+$lang_get_remote_file_by_url['curl_not_available'] = 'Curl nedostupné na Vašom serveri.'; // cpg1.5
+$lang_get_remote_file_by_url['error_number'] = 'Číslo chyby: %s'; // cpg1.5
+$lang_get_remote_file_by_url['error_message'] = 'Chybová správa: %s'; // cpg1.5
 
 // ------------------------------------------------------------------------- //
-// File include/init.inc.php
+// File include/mailer.inc.php
 // ------------------------------------------------------------------------- //
-
-// void
-
-// ------------------------------------------------------------------------- //
-// File keyword.inc.php                                                      //
-// ------------------------------------------------------------------------- //
-
-// void
-
-// ------------------------------------------------------------------------- //
-// File include/picmgmt.inc.php
-// ------------------------------------------------------------------------- //
-
-// void
+$lang_mailer['provide_address'] = 'Musíte zadať aspoň jeden údaj.'; //
+$lang_mailer['mailer_not_supported'] = ' mailer nie je podporovaný.';
+$lang_mailer['execute'] = 'Nemožno vykonať: ';
+$lang_mailer['instantiate'] = 'Nemožno doložiť príkladom funkcie mailu.';
+$lang_mailer['authenticate'] = 'SMTP Chyba: Nemohlo byť overené.';
+$lang_mailer['from_failed'] = 'Nasledujúca adresa odosielateľa nenájdená: ';
+$lang_mailer['recipients_failed'] = 'SMTP Chyba: Nasledujúca ';
+$lang_mailer['data_not_accepted'] = 'SMTP Chyba: Dáta neboli prijaté.';
+$lang_mailer['connect_host'] = 'SMTP Chyba: Nemožno sa pripojiť k SMTP hostitelovi.';
+$lang_mailer['file_access'] = 'Nedostupný súbor: ';
+$lang_mailer['file_open'] = 'Chyba súboru: Nemožno otvoriť súbor: ';
+$lang_mailer['encoding'] = 'Neznáme kodovanie: ';
+$lang_mailer['signing'] = 'Chyba podpisu: ';
 
 // ------------------------------------------------------------------------- //
 // File include/plugin_api.inc.php
 // ------------------------------------------------------------------------- //
-$lang_plugin_api = array(
-  'error_wakeup' => "Nemôžem použiť zásuvný modul '%s'", //cpg1.4
-  'error_install' => "Nemôžem inštalovať zásuvný modul '%s'", //cpg1.4
-  'error_uninstall' => "Nemôžem odinštalovať zásuvný modul '%s'", //cpg1.4
-  'error_sleep' => "Nemôžem odinštalovať zásuvný modul '%s'<br />", //cpg1.4
-);
+$lang_plugin_api['error_install'] = 'Nie je možné nainštalovať zásuvný modul \'%s\'';
+$lang_plugin_api['error_uninstall'] = 'Nie je možné odinštalovať zásuvný modul \'%s\'';
+$lang_plugin_api['error_sleep'] = 'Nie je možné vypnúť zásuvný modul \'%s\''; // cpg1.5
 
 // ------------------------------------------------------------------------- //
 // File include/smilies.inc.php
 // ------------------------------------------------------------------------- //
-
-if (defined('SMILIES_PHP')) $lang_smilies_inc_php = array(
-  'Exclamation' => 'Exclamation',
-  'Question' => 'Question',
-  'Very Happy' => 'Very Happy',
-  'Smile' => 'Smile',
-  'Sad' => 'Sad',
-  'Surprised' => 'Surprised',
-  'Shocked' => 'Shocked',
-  'Confused' => 'Confused',
-  'Cool' => 'Cool',
-  'Laughing' => 'Laughing',
-  'Mad' => 'Mad',
-  'Razz' => 'Razz',
-  'Embarassed' => 'Embarassed',
-  'Crying or Very sad' => 'Crying or Very sad',
-  'Evil or Very Mad' => 'Evil or Very Mad',
-  'Twisted Evil' => 'Twisted Evil',
-  'Rolling Eyes' => 'Rolling Eyes',
-  'Wink' => 'Wink',
-  'Idea' => 'Idea',
-  'Arrow' => 'Arrow',
-  'Neutral' => 'Neutral',
-  'Mr. Green' => 'Mr. Green',
-);
-
-// ------------------------------------------------------------------------- //
-// File addpic.php
-// ------------------------------------------------------------------------- //
-
-// void
-
-// ------------------------------------------------------------------------- //
-// File mode.php //cpg1.4
-// ------------------------------------------------------------------------- //
-
-if (defined('MODE_PHP')) $lang_mode_php = array(
-  0 => 'Opúšťam admin mód ...',
-  1 => 'Aktivujem admin mód...',
-);
+if (defined('SMILIES_PHP')) {
+$lang_smilies_inc_php['Exclamation'] = 'Vykričník';
+$lang_smilies_inc_php['Question'] = 'Otáznik';
+$lang_smilies_inc_php['Very Happy'] = 'Veselý';
+$lang_smilies_inc_php['Smile'] = 'Usmievavý';
+$lang_smilies_inc_php['Sad'] = 'Smutný';
+$lang_smilies_inc_php['Surprised'] = 'Prekvapený';
+$lang_smilies_inc_php['Shocked'] = 'Šokovaný';
+$lang_smilies_inc_php['Confused'] = 'Zmätený';
+$lang_smilies_inc_php['Cool'] = 'Hustý';
+$lang_smilies_inc_php['Laughing'] = 'Smejúci sa(lol)';
+$lang_smilies_inc_php['Mad'] = 'Šialený';
+$lang_smilies_inc_php['Razz'] = 'Posmešný';
+$lang_smilies_inc_php['Embarrassed'] = 'Rozpačitý';  // cpg1.5
+$lang_smilies_inc_php['Crying or Very sad'] = 'Plačúci alebo veľmi smutný';
+$lang_smilies_inc_php['Evil or Very Mad'] = 'Diabolský alebo veľmi šialený';
+$lang_smilies_inc_php['Twisted Evil'] = 'Twisted Evil';
+$lang_smilies_inc_php['Rolling Eyes'] = 'Vygúľaný';
+$lang_smilies_inc_php['Wink'] = 'Mrkajúci';
+$lang_smilies_inc_php['Idea'] = 'Nápad';
+$lang_smilies_inc_php['Arrow'] = 'Šíp';
+$lang_smilies_inc_php['Neutral'] = 'Neutrálny';
+$lang_smilies_inc_php['Mr. Green'] = 'Pán Zelený';
+};
 
 // ------------------------------------------------------------------------- //
 // File albmgr.php
 // ------------------------------------------------------------------------- //
-
-if (defined('ALBMGR_PHP')) $lang_albmgr_php = array(
-  'alb_need_name' => 'Album musí mať meno !', //js-alert
-  'confirm_modifs' => 'Chcete vykonať tieto zmeny ?', //js-alert
-  'no_change' => 'Nevykonali sa žiadne zmeny !', //js-alert
-  'new_album' => 'Nový album',
-  'confirm_delete1' => 'Určite chcete zmazať tento album ?', //js-alert
-  'confirm_delete2' => '\nVšetky súbory a komentáre budú stratené !', //js-alert
-  'select_first' => 'Najprv vyberte album', //js-alert
-  'alb_mrg' => 'Správca albumov',
-  'my_gallery' => '* Moja galéria *',
-  'no_category' => '* Žiadna kategória *',
-  'delete' => 'Odstrániť',
-  'new' => 'Nový',
-  'apply_modifs' => 'Vykonať zmeny',
-  'select_category' => 'Vybrať kategóriu',
-);
+if (defined('ALBMGR_PHP')) {
+$lang_albmgr_php['title'] = 'Správca albumov'; // cpg1.5
+$lang_albmgr_php['alb_need_name'] = 'Album musí mať meno'; // ak
+$lang_albmgr_php['confirm_modifs'] = 'Ste si istý týmito zmenami?'; // ak
+$lang_albmgr_php['no_change'] = 'Neboli vykonané žiadne zmeny!'; // ak
+$lang_albmgr_php['new_album'] = 'Nový album';
+$lang_albmgr_php['delete_album'] = 'Zmazať album'; // cpg1.5
+$lang_albmgr_php['confirm_delete1'] = 'Ste si istý že chcete zmazať tento album?'; // ak
+$lang_albmgr_php['confirm_delete2'] = 'Všetky obrázky a komentáre budú zmazané!'; // ak
+$lang_albmgr_php['select_first'] = 'Najprv vyberte album'; // ak
+$lang_albmgr_php['my_gallery'] = '* Moja galéria *';
+$lang_albmgr_php['no_category'] = '* Nie je kategória *';
+$lang_albmgr_php['select_category'] = 'Vybrať kategóriu';
+$lang_albmgr_php['category_change'] = 'Ak zmeníte kategóriu, Vaše zmeny budú nenávratne stratené!'; // cpg1.5
+$lang_albmgr_php['page_change'] = 'Ak budete pokračovať, Vaše zmeny budú nenávratne stratené'; // cpg1.5
+$lang_albmgr_php['cancel'] = 'Zrušiť'; // cpg1.5
+$lang_albmgr_php['submit_reminder'] = 'Zmeny zoradenia nebudú uložené pokým nekliknete na &quot;Použiť zmeny&quot;.'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
 // File banning.php
 // ------------------------------------------------------------------------- //
 
-if (defined('BANNING_PHP')) $lang_banning_php = array(
-  'title' => 'Zakáž člena', //cpg1.4
-  'user_name' => 'Meno', //cpg1.4
-  'ip_address' => 'IP Adresa', //cpg1.4
-  'expiry' => 'Expiruje (prázdne znamená nastálo)', //cpg1.4
-  'edit_ban' => 'Ulož zmeny', //cpg1.4
-  'delete_ban' => 'Zmazať', //cpg1.4
-  'add_new' => 'Pridaj nový zákaz', //cpg1.4
-  'add_ban' => 'Pridaj', //cpg1.4
-  'error_user' => 'Nemožno nájsť člena', //cpg1.4
-  'error_specify' => 'Je nutné zadať meno člena alebo IP Adresu', //cpg1.4
-  'error_ban_id' => 'Nesprávne ID!', //cpg1.4
-  'error_admin_ban' => 'Nemožno zakázať sám seba!', //cpg1.4
-  'error_server_ban' => 'Chcete zakázať vlastný server? To sa nedá ...', //cpg1.4
-  'error_ip_forbidden' => 'Nemožno zakázať túto IP - určite nie je trasovateľna !<br />If you want to allow banning for private IPs, change this in your <a href="admin.php">Config</a> (only makes sense when Coppermine runs on a LAN).', //cpg1.4
-  'lookup_ip' => 'Vyhľadávanie IP adresy', //cpg1.4
-  'submit' => 'vykonať!', //cpg1.4
-  'select_date' => 'vybrať dátum', //cpg1.4
-);
+if (defined('BANNING_PHP')) {
+$lang_banning_php['title'] = 'Nežiadúci užívatelia';
+$lang_banning_php['user_name'] = 'Meno';
+$lang_banning_php['user_account'] = 'Užívateľský účet';
+$lang_banning_php['email_address'] = 'Emailová adresa'; // cpg1.5
+$lang_banning_php['ip_address'] = 'IP Addresa';
+$lang_banning_php['expires'] = 'Vyprší'; // cpg1.5
+$lang_banning_php['expiry_date'] = 'Dátum skončenia platnosti'; // cpg1.5
+$lang_banning_php['expired'] = 'Vypršal'; // cpg1.5
+$lang_banning_php['edit_ban'] = 'Uložiť zmeny';
+$lang_banning_php['add_new'] = 'Pridať nový BAN';
+$lang_banning_php['add_ban'] = 'Pridať';
+$lang_banning_php['error_user'] = 'Nemožno nájsť užívateľa';
+$lang_banning_php['error_specify'] = 'Musíte bližšie špecifikovať užívateľa menom alebo IP adresou.';
+$lang_banning_php['error_ban_id'] = 'Nežiadúce ID!';
+$lang_banning_php['error_admin_ban'] = 'Nemôžete zakázať sám seba!';
+$lang_banning_php['error_server_ban'] = 'Chceš zakázať svoj vlastný server? To nemôžete urobiť...';
+$lang_banning_php['skipping'] = 'Preskakujem tento príkaz'; // cpg1.5
+$lang_banning_php['lookup_ip'] = 'Zisti IP adresu';
+$lang_banning_php['select_date'] = 'Vyber dátum';
+$lang_banning_php['delete_comments'] = 'Zmazať komentáre'; // cpg1.5
+$lang_banning_php['current'] = 'označený'; // cpg1.5
+$lang_banning_php['all'] = 'všetky'; // cpg1.5
+$lang_banning_php['none'] = 'žiaden'; // cpg1.5
+$lang_banning_php['view'] = 'zobraziť'; // cpg1.5
+$lang_banning_php['ban_id'] = 'Ban ID'; // cpg1.5
+$lang_banning_php['existing_bans'] = 'Existujúce zákazy'; // cpg1.5
+$lang_banning_php['no_banning_when_bridged'] = 'Momentálne je Vaša galéria prepojená s inou aplikáciou. Použite zákaz prepojenej aplikácie namiesto toho, který je zabudovaný v Coppermine aplikácii. Zabudovaný zákazový mechanizmus Coperrmine nemôže fungovať, keď je Coppermine prepojený.'; // cpg1.5
+$lang_banning_php['records_on_page'] = 'Záznamov: %d na %d stránke(kách)'; // cpg1.5
+$lang_banning_php['ascending'] = 'vzostupne'; // cpg1.5
+$lang_banning_php['descending'] = 'zostupne'; // cpg1.5
+$lang_banning_php['sort_by'] = 'Zoradiť podľa'; // cpg1.5
+$lang_banning_php['sorted_by'] = 'zoradené podľa'; // cpg1.5
+$lang_banning_php['ban_record_x_updated'] = 'Zákaz %s bol aktualizovaný'; // cpg1.5
+$lang_banning_php['ban_record_x_deleted'] = 'Zákaz %s bol zmazaný'; // cpg1.5
+$lang_banning_php['new_ban_record_created'] = 'Nový zákaz bol vytvorený'; // cpg1.5
+$lang_banning_php['ban_record_x_already_exists'] = 'Zákaz pre %s už existuje'; // cpg1.5
+$lang_banning_php['comment_deleted'] = '%s komentár od %s bol zmazaný'; // cpg1.5
+$lang_banning_php['comments_deleted'] = '%s komentáre od %s boli zmazané'; // cpg1.5
+$lang_banning_php['email_field_invalid'] = 'Zadajte e-mailovú adresu v správnom tvare'; // cpg1.5
+$lang_banning_php['ip_address_field_invalid'] = 'Zadajte IP adresu v správnom tvare (x.x.x.x)'; // cpg1.5
+$lang_banning_php['expiry_field_invalid'] = 'Zadajte dátum platnosti v správnom tvare (YYYY-MM-DD)'; // cpg1.5
+$lang_banning_php['form_not_submit'] = 'Formulár nebol odoslaný - existujú v ňom chyby, ktoré musia byť najprv odstránené'; // cpg1.5
+};
 
 // ------------------------------------------------------------------------- //
-// File bridgemgr.php //cpg1.4
+// File bridgemgr.php
 // ------------------------------------------------------------------------- //
-
-if (defined('BRIDGEMGR_PHP')) $lang_bridgemgr_php = array(
-  'title' => 'Bridge Wizard',
-  'warning' => 'Warning: when using this wizard you have to understand that sensitive data is being sent using html forms. Only run it on your own PC (not on a public client like an internet cafe), and make sure to clear the browser cache and temporary files after you have finished, or others might be able to access your data!',
-  'back' => 'back',
-  'next' => 'next',
-  'start_wizard' => 'Start bridging wizard',
-  'finish' => 'Finish',
-  'hide_unused_fields' => 'hide unused form fields (recommended)',
-  'clear_unused_db_fields' => 'clear invalid database entries (recommended)',
-  'custom_bridge_file' => 'your custom bridge file\'s name (if the bridge file\'s name is <i>myfile.inc.php</i>, enter <i>myfile</i> into this field)',
-  'no_action_needed' => 'No action needed in this step. Just click \'next\' to continue.',
-  'reset_to_default' => 'Reset to default value',
-  'choose_bbs_app' => 'choose application to bridge coppermine with',
-  'support_url' => 'Go here for support on this application',
-  'settings_path' => 'path(s) used by your BBS app',
-  'database_connection' => 'database connection',
-  'database_tables' => 'database tables',
-  'bbs_groups' => 'BBS groups',
-  'license_number' => 'License number',
-  'license_number_explanation' => 'enter your license number (if applicable)',
-  'db_database_name' => 'Database name',
-  'db_database_name_explanation' => 'Enter the name of the database your BBS app uses',
-  'db_hostname' => 'Database host',
-  'db_hostname_explanation' => 'Hostname where your mySQL database resides, usually &quot;localhost&quot;',
-  'db_username' => 'Database user account',
-  'db_username_explanation' => 'mySQL user account to use for connection with BBS',
-  'db_password' => 'Database passsword',
-  'db_password_explanation' => 'Passsword for this mySQL user account',
-  'full_forum_url' => 'Forum URL',
-  'full_forum_url_explanation' => 'Full URL of your BBS app (including the leading http:// bit, e.g. http://www.yourdomain.tld/forum)',
-  'relative_path_of_forum_from_webroot' => 'Relative forum path',
-  'relative_path_of_forum_from_webroot_explanation' => 'Relative path to your BBS app from the webroot (Example: if your BBS is at http://www.yourdomain.tld/forum/, enter &quot;/forum/&quot; into this field)',
-  'relative_path_to_config_file' => 'Relative path to your BBS\'s config file',
-  'relative_path_to_config_file_explanation' => 'Relative path to your BBS, seen from your Coppermine folder (e.g. &quot;../forum/&quot; if your BBS is at http://www.yourdomain.tld/forum/ and Coppermine at http://www.yourdomain.tld/gallery/)',
-  'cookie_prefix' => 'Cookie prefix',
-  'cookie_prefix_explanation' => 'this has to be your BBS\'s cookie name',
-  'table_prefix' => 'Table prefix',
-  'table_prefix_explanation' => 'Must match the prefix you chose for your BBS when setting it up.',
-  'user_table' => 'User table',
-  'user_table_explanation' => '(usually default value should be OK, unless your BBS install isn\'t standard)',
-  'session_table' => 'Session table',
-  'session_table_explanation' => '(usually default value should be OK, unless your BBS install isn\'t standard)',
-  'group_table' => 'Group table',
-  'group_table_explanation' => '(usually default value should be OK, unless your BBS install isn\'t standard)',
-  'group_relation_table' => 'Group relation table',
-  'group_relation_table_explanation' => '(usually default value should be OK, unless your BBS install isn\'t standard)',
-  'group_mapping_table' => 'Group mapping table',
-  'group_mapping_table_explanation' => '(usually default value should be OK, unless your BBS install isn\'t standard)',
-  'use_standard_groups' => 'Use standard BBS usergroups',
-  'use_standard_groups_explanation' => 'Use standard (built-in) usergroups (recommended). This will make all custom usergroups settings made on this page become void. Only disable this option if you REALLY know what you\'re doing!',
-  'validating_group' => 'Validating group',
-  'validating_group_explanation' => 'The group ID of your BBS where users accounts that need validation are in (usually default value should be OK, unless your BBS install isn\'t standard)',
-  'guest_group' => 'Guest group',
-  'guest_group_explanation' => 'Group ID of your BBS where guests (anonymous users) are in (default value should be OK, only edit if you know what you\'re doing)',
-  'member_group' => 'Member group',
-  'member_group_explanation' => 'Group ID of your BBS where &quot;regular&quot; users accounts are in (default value should be OK, only edit if you know what you\'re doing)',
-  'admin_group' => 'Admin group',
-  'admin_group_explanation' => 'Group ID of your BBS where admins are in (default value should be OK, only edit if you know what you\'re doing)',
-  'banned_group' => 'Banned group',
-  'banned_group_explanation' => 'Group ID of your BBS where banned users are in (default value should be OK, only edit if you know what you\'re doing)',
-  'global_moderators_group' => 'Global moderators group',
-  'global_moderators_group_explanation' => 'Group ID of your BBS where global moderators of your BBS are in (default value should be OK, only edit if you know what you\'re doing)',
-  'special_settings' => 'BBS-specific settings',
-  'logout_flag' => 'phpBB version (logout flag)',
-  'logout_flag_explanation' => 'What\'s your BBS version (this setting specifies how logouts are being handled)',
-  'use_post_based_groups' => 'Use post-based groups?',
-  'logout_flag_yes' => '2.0.5 or higher',
-  'logout_flag_no' => '2.0.4 or lower',
-  'use_post_based_groups_explanation' => 'Should the groups from the BBS that are defined by the number of posts be taken into account (allows a granular permissions management) or just the default groups (makes administration easier, recommended). You can change this setting later as well.',
-  'use_post_based_groups_yes' => 'yes',
-  'use_post_based_groups_no' => 'no',
-  'error_title' => 'You need to correct these errors before you can continue. Go to the previous screen.',
-  'error_specify_bbs' => 'You have to specify what application you want to bridge your Coppermine install with.',
-  'error_no_blank_name' => 'You can\'t leave the name of your custom bridge file blank.',
-  'error_no_special_chars' => 'The bridge file name mustn\'t contain any special chars except underscore (_) and dash (-)!',
-  'error_bridge_file_not_exist' => 'The bridge file %s doesn\'t exist on the server. Check if you have actually uploaded it.',
-  'finalize' => 'enable/disable BBS integration',
-  'finalize_explanation' => 'So far, the settings you specified have been written into the database, but BBS integration hasn\'t been enabled. You can switch integration on/off later at any time. Make sure to remember the admin username and password from standalone Coppermine, you might need it later to be able to make any changes. If anything goes wrong, go to %s and disable BBS integration there, using your standalone (unbridged) admin account (usually the one you set up during Coppermine install).',
-  'your_bridge_settings' => 'Your bridge settings',
-  'title_enable' => 'Enable integration/bridging with %s',
-  'bridge_enable_yes' => 'enable',
-  'bridge_enable_no' => 'disable',
-  'error_must_not_be_empty' => 'must not be empty',
-  'error_either_be' => 'must either be %s or %s',
-  'error_folder_not_exist' => '%s doesn\'t exist. Correct the value you entered for %s',
-  'error_cookie_not_readible' => 'Coppermine can\'t read a cookie named %s. Correct the value you entered for %s, or go to your BBS administration panel and make sure that the cookie path is readible for coppermine.',
-  'error_mandatory_field_empty' => 'You can not leave the field %s blank - fill in the proper value.',
-  'error_no_trailing_slash' => 'There mustn\'t be a trailing slash in the field %s.',
-  'error_trailing_slash' => 'There must be a trailing slash in the field %s.',
-  'error_db_connect' => 'Could not connect to the mySQL database with the data you specified. Here\'s what mySQL said:',
-  'error_db_name' => 'Although Coppermine could establish a connection, it wasn\'t able to find the database %s. Make sure you have specified %s properly. Here\'s what mySQL said:',
-  'error_prefix_and_table' => '%s and ',
-  'error_db_table' => 'Could not find the table %s. Make sure you have specified %s correctly.',
-  'recovery_title' => 'Bridge Manager: emergency recovery',
-  'recovery_explanation' => 'If you came here to administer the BBS integration of your Coppermine gallery, you have to log in first as admin. If you can not log in because bridging doesn\'t work as expected, you can disable BBS integration with this page. Entering your username and password will not log you in, it will only disable BBS integration. Refer to the documentation for details.',
-  'username' => 'Username',
-  'password' => 'Password',
-  'disable_submit' => 'submit',
-  'recovery_success_title' => 'Authorization successful',
-  'recovery_success_content' => 'You have successfully disabled BBS bridging. Your Coppermine install runs now in standalone mode.',
-  'recovery_success_advice_login' => 'Log in as admin to edit your bridge settings and/or enable BBS integration again.',
-  'goto_login' => 'Go to login page',
-  'goto_bridgemgr' => 'Go to bridge manager',
-  'recovery_failure_title' => 'Authorization failed',
-  'recovery_failure_content' => 'You supplied the wrong credentials. You will have to supply the admin account data of the standalone version (usually the account you set up during Coppermine install).',
-  'try_again' => 'try again',
-  'recovery_wait_title' => 'Wait time has not elapsed',
-  'recovery_wait_content' => 'For security reasons this script does not allow failed logons in short succession, so you will have to wait a bit untill you\'re allowed to try to authenticate.',
-  'wait' => 'wait',
-  'create_redir_file' => 'Create redirection file (recommended)',
-  'create_redir_file_explanation' => 'To redirect users back to Coppermine once they logged into your BBS, you need a redirection file to be created within your BBS folder. When this option is checked, the bridge manager will attempt to create this file for you, or give you code ready to copy-and-paste to create the file manually.',
-  'browse' => 'browse',
-);
+if (defined('BRIDGEMGR_PHP')) {
+$lang_bridgemgr_php['title'] = 'Sprievodca prepojením';
+$lang_bridgemgr_php['back'] = 'späť';
+$lang_bridgemgr_php['next'] = 'ďalej';
+$lang_bridgemgr_php['start_wizard'] = 'Štart sprievodcu prepojením';
+$lang_bridgemgr_php['finish'] = 'Koniec';
+$lang_bridgemgr_php['no_action_needed'] = 'V tomto kroku nie je potrebné nič robiť. Iba kliknite na \'next\' a pokračujte.';
+$lang_bridgemgr_php['reset_to_default'] = 'Resetovať na prednastavenú hodnotu';
+$lang_bridgemgr_php['choose_bbs_app'] = 'vyberte aplikáciu prepojenia s coppermine';
+$lang_bridgemgr_php['support_url'] = 'Choď sem pre podporu tejto aplikácie';
+$lang_bridgemgr_php['settings_path'] = 'cesty použité vašou prepojovacou aplikáciou';
+$lang_bridgemgr_php['full_forum_url'] = 'URL adresa vašej prepojovacej aplikácie';
+$lang_bridgemgr_php['relative_path_of_forum_from_webroot'] = 'Absolútna cesta prepojovacej aplikácie';
+$lang_bridgemgr_php['relative_path_to_config_file'] = 'Relatívna cesta konfiguračného súboru vašej prepojovacej aplikácie';
+$lang_bridgemgr_php['cookie_prefix'] = 'Cookie prefix';
+$lang_bridgemgr_php['special_settings'] = 'špecifické nastavenia prepojovacej aplikácie';
+$lang_bridgemgr_php['use_post_based_groups'] = 'Použiť skupiny prepojovacej aplikácie?';
+$lang_bridgemgr_php['use_post_based_groups_yes'] = 'áno';
+$lang_bridgemgr_php['use_post_based_groups_no'] = 'nie';
+$lang_bridgemgr_php['error_title'] = 'Musíte opraviť tieto chyby, než budete pokračovať. Vráťte sa na predchádzajúcu obrazovku.';
+$lang_bridgemgr_php['error_specify_bbs'] = 'Musíte špecifikovaťovať akú aplikáciu chcete prepojiť s Coppermine inštaláciou.';
+$lang_bridgemgr_php['finalize'] = 'zapnúť/vypnúť prepojenie';
+$lang_bridgemgr_php['finalize_explanation'] = 'Aj keď nastavenia, ktoré ste špecifikovali, boli zapísané do databázy, prepojenie nebolo zapnuté. Prepojenie môžete zapnúť/vypnúť kedykoľvek neskôr. Nezabudnite administrátorské meno a heslo samostatnej inštalácie Coppermine, pre vykonanie zmien ho budete potrebovať. Ak by nebolo niečo v poriadku, choďte na %s a vypnite prepojenie použitím administrátorského účtu samostatnej (neprepojenej) inštalácie (toho, ktorý bol zriadený pri inštalácii Coppermine).';
+$lang_bridgemgr_php['your_bridge_settings'] = 'Vaše nastavenia prepojenia';
+$lang_bridgemgr_php['title_enable'] = 'Zapnúť integráciu/prepojenie s %s';
+$lang_bridgemgr_php['bridge_enable_yes'] = 'zapnuté';
+$lang_bridgemgr_php['bridge_enable_no'] = 'vypnuté';
+$lang_bridgemgr_php['error_must_not_be_empty'] = 'nesmie byť prázdne';
+$lang_bridgemgr_php['error_either_be'] = 'musí byť %s alebo %s';
+$lang_bridgemgr_php['error_folder_not_exist'] = '%s neexistuje. Opravte hodnotu zadanú pre %s';
+$lang_bridgemgr_php['error_cookie_not_readible'] = 'Coppermine nemôže prečítať cookie %s. Opravte hodnotu zadanú pre %s, alebo prejdite do administrátorského panelu prepojenia a skontrolujte, že cesta pre cookies je pre coppermine čitateľná.';
+$lang_bridgemgr_php['error_mandatory_field_empty'] = 'Nemôžete nechať pole %s prázdne - vyplňte správnu hodnotu.';
+$lang_bridgemgr_php['error_no_trailing_slash'] = 'V poli %s nesmie byť koncové lomítko.';
+$lang_bridgemgr_php['error_trailing_slash'] = 'V poli %s musí byť koncové lomítko.';
+$lang_bridgemgr_php['error_prefix_and_table'] = '%s a ';
+$lang_bridgemgr_php['recovery_title'] = 'Manažér prepojenia: núdzová oprava';
+$lang_bridgemgr_php['recovery_explanation'] = 'Ak ste sem prišli administrovať prepojenie vašej Coppermine galérie, najprv sa musíte prihlásiť ako administrátor. Ak sa nemôžete prihlásiť preto, že prepojenie nefunguje podľa očakávania, môžete pomocou tejto stránky vypnúť prepojenie. Zadaním vášho užívateľského mena a hesla sa neprihlásite, ale iba vypnete prepojenie. Pre viac informácii prečítajte dokumentáciu.';
+$lang_bridgemgr_php['username'] = 'Meno';
+$lang_bridgemgr_php['password'] = 'Heslo';
+$lang_bridgemgr_php['disable_submit'] = 'odoslať';
+$lang_bridgemgr_php['recovery_success_title'] = 'Autorizácia úspešná';
+$lang_bridgemgr_php['recovery_success_content'] = 'Úspešne ste vypli prepojenie. Vaša inštalácia Coppermine pracuje v samostatnom režime.';
+$lang_bridgemgr_php['recovery_success_advice_login'] = 'Pre editáciu prepojenia sa prihláste ako administrátor a/alebo znovu zapnite prepojenie.';
+$lang_bridgemgr_php['goto_login'] = 'Choď na prihlasovaciu stránku';
+$lang_bridgemgr_php['goto_bridgemgr'] = 'Choď na správcu prepojenia';
+$lang_bridgemgr_php['recovery_failure_title'] = 'Autorizácia sa nepodarila';
+$lang_bridgemgr_php['recovery_failure_content'] = 'Zadali ste nesprávne overovacie dáta. Budete musieť zadať dáta administrátorského účtu základnej verzie (účet, který ste vytvorili pri inštalácii Coppermine).';
+$lang_bridgemgr_php['try_again'] = 'skúste znova';
+$lang_bridgemgr_php['recovery_wait_title'] = 'Daný čas ešte neuplynul';
+$lang_bridgemgr_php['recovery_wait_content'] = 'Z bezpečnostných dôvodov tento skript nedovoluje opakované neúspešné prihlásenia krátko po sebe, musíte chvíľu počkať, aby ste sa mohli pokúsiť prihlásiť znova.';
+$lang_bridgemgr_php['wait'] = 'počkaj';
+$lang_bridgemgr_php['browse'] = 'prechádzať';
+}
 
 // ------------------------------------------------------------------------- //
-// File calendar.php //cpg1.4
+// File calendar.php
 // ------------------------------------------------------------------------- //
-
-if (defined('CALENDAR_PHP')) $lang_calendar_php = array(
-  'title' => 'Kalendár', //cpg1.4
-  'close' => 'zatvoriť', //cpg1.4
-  'clear_date' => 'vymazať dátum', //cpg1.4
-);
+if (defined('CALENDAR_PHP')) {
+$lang_calendar_php['title'] = 'Kalendár';
+$lang_calendar_php['clear_date'] = 'vymaž dátum';
+$lang_calendar_php['files'] = 'súbory'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
 // File catmgr.php
 // ------------------------------------------------------------------------- //
-
-if (defined('CATMGR_PHP')) $lang_catmgr_php = array(
-  'miss_param' => 'Parametre potrebné pre \'%s\'operáciu nie su dostupné !',
-  'unknown_cat' => 'Vybraná kategória v databáze neexistuje',
-  'usergal_cat_ro' => 'Uživateľské kategórie nie je možné zmazať !',
-  'manage_cat' => 'Upraviť kategórie',
-  'confirm_delete' => 'Naozaj chcete VYMAZAŤ túto kategóriu', //js-alert
-  'category' => 'Kategória',
-  'operations' => 'Operácie',
-  'move_into' => 'Presunúť do',
-  'update_create' => 'Aktualizovať/Vytvoriť kategóriu',
-  'parent_cat' => 'Nadradená kategória',
-  'cat_title' => 'Názov kategórie',
-  'cat_thumb' => 'Miniatúra kategórie',
-  'cat_desc' => 'Popis kategórie',
-  'categories_alpha_sort' => 'Usporiadať kategórie abecedne (namiesto voliteľného)', //cpg1.4
-  'save_cfg' => 'Uložiť konfiguráciu', //cpg1.4
-);
+if (defined('CATMGR_PHP')) {
+$lang_catmgr_php['miss_param'] = 'Parametre potrebné pre \'%s\'operáciu nie sú poskytnuté!';
+$lang_catmgr_php['unknown_cat'] = 'Vybraná kategória v databáze neexistuje';
+$lang_catmgr_php['usergal_cat_ro'] = 'Nemožno zmazať užívateľské albumy!';
+$lang_catmgr_php['manage_cat'] = 'Správuj kategórie';
+$lang_catmgr_php['confirm_delete'] = 'Naozaj chcete ZMAZAŤ túto kategóriu'; // ak
+$lang_catmgr_php['category'] = 'Kategória'; // cpg1.5
+$lang_catmgr_php['operations'] = 'Operácia';
+$lang_catmgr_php['move_into'] = 'Presunúť do';
+$lang_catmgr_php['update_create'] = 'Aktualizovať/vytvoriť kategóriu';
+$lang_catmgr_php['parent_cat'] = 'Nadradená kategória';
+$lang_catmgr_php['cat_title'] = 'Názov kategórie';
+$lang_catmgr_php['cat_thumb'] = 'Miniatúra kategórie';
+$lang_catmgr_php['cat_desc'] = 'Popis kategórie';
+$lang_catmgr_php['categories_alpha_sort'] = 'Zoradiť kategórie abecedne (namiesto užívateľským zoraďovacím kritériom)';
+$lang_catmgr_php['save_cfg'] = 'Ulož nastavenia';
+$lang_catmgr_php['no_category'] = '* Žiadna kategória *'; // cpg1.5
+$lang_catmgr_php['group_create_alb'] = 'Skupiny, ktorým je povolené vytvárať albumy v tejto kategórii'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
-// File admin.php //cpg1.4
+// File contact.php
 // ------------------------------------------------------------------------- //
+if (defined('CONTACT_PHP')) {
+$lang_contact_php['title'] = 'Kontakt'; // cpg1.5
+$lang_contact_php['your_name'] = 'Vaše meno'; // cpg1.5
+$lang_contact_php['your_email'] = 'Vaša e-mailová adresa'; // cpg1.5
+$lang_contact_php['subject'] = 'Predmet'; // cpg1.5
+$lang_contact_php['your_message'] = 'Vaša správa'; // cpg1.5
+$lang_contact_php['name_field_mandatory'] = 'Prosím zadajte Vaše meno'; // cpg1.5 // ak
+$lang_contact_php['name_field_invalid'] = 'Prosím zadajte Vaše správne meno'; // cpg1.5 // ak
+$lang_contact_php['email_field_mandatory'] = 'Prosím zadajte Vašu e-mailovú adresu'; // cpg1.5 // ak
+$lang_contact_php['email_field_invalid'] = 'Prosím vložte správnu e-mailovou adresu'; // cpg1.5 // ak
+$lang_contact_php['subject_field_mandatory'] = 'Prosím vložte zmysluplný predmet'; // cpg1.5 // ak
+$lang_contact_php['message_field_mandatory'] = 'Prosím vložte Vašu správu'; // cpg1.5 // ak
+$lang_contact_php['confirmation'] = 'Potvrdenie'; // cpg1.5
+$lang_contact_php['email_headline'] = 'Tento e-mail bol odoslaný na %s s použitím kontaktného formulára na %s z IP adresy %s'; // cpg1.5
+$lang_contact_php['registered_user'] = 'registrovaný užívateľ'; // cpg1.5
+$lang_contact_php['guest'] = 'návštevník'; // cpg1.5
+$lang_contact_php['unknown'] = 'neznámy'; // cpg1.5
+$lang_contact_php['user_info'] = '%s menom %s s e-mailovou adresou %s povedal:'; // cpg1.5
+$lang_contact_php['failed_sending_email'] = 'Nepodarilo sa odoslať e-mail. Prosím skúste znova neskôr.'; // cpg1.5
+$lang_contact_php['email_sent'] = 'Váš e-mail bol odoslaný.'; // cpg1.5
+}
 
-if (defined('ADMIN_PHP')) $lang_admin_php = array(
-  'title' => 'Konfigurácia galérie', //cpg1.4
-  'manage_exif' => 'Spravuj Exif zobrazenie', //cpg1.4
-  'manage_plugins' => 'Spravuj zásuvné moduly', //cpg1.4
-  'manage_keyword' => 'Spravuj kľúčové slová', //cpg1.4
-  'restore_cfg' => 'Obnoviť východzie nastavenia',
-  'save_cfg' => 'Uložiť novú konfiguráciu',
-  'notes' => 'Poznámky',
-  'info' => 'Oznam',
-  'upd_success' => 'Konfigurácia bola aktualizovaná',
-  'restore_success' => 'Východzie nastavenia boli obnovené',
-  'name_a' => 'Meno vzostupne',
-  'name_d' => 'Meno zostupne',
-  'title_a' => 'Nadpis vzostupne',
-  'title_d' => 'Nadpis zostupne',
-  'date_a' => 'Dátum vzostupne',
-  'date_d' => 'Dátum zostupne',
-  'pos_a' => 'Pozícia vzostupne', //cpg1.4
-  'pos_d' => 'Pozícia zostupne', //cpg1.4
-  'th_any' => 'Max pomer',
-  'th_ht' => 'Výška',
-  'th_wd' => 'Šírka',
-  'label' => 'návesť',
-  'item' => 'vlajočky',
-  'debug_everyone' => 'Každý',
-  'debug_admin' => 'iba Admin',
-  'no_logs'=> 'Vyp.', //cpg1.4
-  'log_normal'=> 'Normal', //cpg1.4
-  'log_all' => 'Všetko', //cpg1.4
-  'view_logs' => 'Ukáž logy', //cpg1.4
-  'click_expand' => 'klikni pre rozbalenie', //cpg1.4
-  'expand_all' => 'Rozbaliť všetko', //cpg1.4
-  'notice1' => '(*) Tieto nastavenia netreba meniť ak už máte súbory uložené v databáze .', //cpg1.4 - (relocated)
-  'notice2' => '(**) Meniť tieto nastavenia má význam len pred pridávaním súborov do databázy. Existujúce súbory upravíte pomocou &quot;<a href="util.php">administrácie</a> (administračné nástroje)&quot; .', //cpg1.4 - (relocated)
-  'notice3' => '(***) Všetky logy sú v anglickom jazyku.', //cpg1.4 - (relocated)
-  'bbs_disabled' => 'Funkcia je vypnutá ak je použitá bb integrácia', //cpg1.4
-  'auto_resize_everyone' => 'Každý', //cpg1.4
-  'auto_resize_user' => 'Len užívateľ', //cpg1.4
-  'ascending' => 'vzostupne', //cpg1.4
-  'descending' => 'zostupne', //cpg1.4
-);
-
-if (defined('ADMIN_PHP')) $lang_admin_data = array(
-  'Obecné nastavenia',
-  array('Názov galérie', 'gallery_name', 0, 'f=index.htm&amp;as=admin_general_name&amp;ae=admin_general_name_end'), //cpg1.4
-  array('Popis galérie', 'gallery_description', 0, 'f=index.htm&amp;as=admin_general_description&amp;ae=admin_general_description_end'), //cpg1.4
-  array('Adminov email', 'gallery_admin_email', 0, 'f=index.htm&amp;as=admin_general_email&amp;ae=admin_general_email_end'), //cpg1.4
-  array('URL adresára galérie (neuvádzajte tu \'index.php\' alebo podobné na konci)', 'ecards_more_pic_target', 0, 'f=index.htm&amp;as=admin_general_coppermine-url&amp;ae=admin_general_coppermine-url_end'), //cpg1.4
-  array('URL Vašej domácej stránky', 'home_target', 0, 'f=index.htm&amp;as=admin_general_home-url&amp;ae=admin_general_home-url_end'), //cpg1.4
-  array('Povoliť ZIP-download z obľúbených', 'enable_zipdownload', 1, 'f=index.htm&amp;as=admin_general_zip-download&amp;ae=admin_general_zip-download_end'), //cpg1.4
-  array('Časový posun proti GMT (aktuálny čas: ' . localised_date(-1, $comment_date_fmt) . ')','time_offset',0, 'f=index.htm&amp;as=admin_general_time-offset&amp;ae=admin_general_time-offset_end&amp;top=1'), //cpg1.4
-  array('Zapnúť kryptované heslá (nedá sa vrátiť)','enable_encrypted_passwords',1, 'f=index.htm&amp;as=admin_general_encrypt_password_start&amp;ae=admin_general_encrypt_password_end&amp;top=1'), // cpg 1.4
-  array('Zapnúť help-ikony (help iba v angličtine)','enable_help',9, 'f=index.htm&amp;as=admin_general_help&amp;ae=admin_general_help_end'), //cpg1.4
-  array('Zapnúť klikateľné kľúčové slová vo vyhľadávaní','clickable_keyword_search',14, 'f=index.htm&amp;as=admin_general_keywords_start&amp;ae=admin_general_keywords_end'), //cpg1.4
-  array('Zapnúť zásuvné moduly', 'enable_plugins', 12, 'f=index.htm&amp;as=admin_general_enable-plugins&amp;ae=admin_general_enable-plugins_end'),  //cpg1.4
-  array('Povoliť zakazovanie netrasovateľných IP adries ', 'ban_private_ip', 1,  'f=index.htm&amp;as=admin_general_private-ip&amp;ae=admin_general_private-ip_end'), //cpg1.4
-  array('Vizuálne rozhranie hromadného pridávania súborov', 'browse_batch_add', 1, 'f=index.htm&amp;as=admin_general_browsable_batch_add&amp;ae=admin_general_browsable_batch_add_end'), //cpg1.4
-
-  'Jazyky &amp; Znakové sady(kódovanie)',
-  array('Jazyk', 'lang', 5, 'f=index.htm&amp;as=admin_language_language&amp;ae=admin_language_language_end'), //cpg1.4
-  array('Prepnúť na angličtinu ak sa preklad nenájde?', 'language_fallback', 1, 'f=index.htm&amp;as=admin_language_fallback&amp;ae=admin_language_fallback_end'), //cpg1.4
-  array('Kódovanie - Znakové sady', 'charset', 4, 'f=index.htm&amp;as=admin_language_charset&amp;ae=admin_language_charset_end'), //cpg1.4
-  array('Zobraziť zoznam jazykov', 'language_list', 1, 'f=index.htm&amp;as=admin_language_list&amp;ae=admin_language_list_end'), //cpg1.4
-  array('Zobraziť vlajočky jazykov', 'language_flags', 8, 'f=index.htm&amp;as=admin_language_flags&amp;ae=admin_language_flags_end&amp;top=1'), //cpg1.4
-  array('Zobraziť &quot;reset&quot; vo voľbe jazykov', 'language_reset', 1, 'f=index.htm&amp;as=admin_language_reset&amp;ae=admin_language_reset_end&amp;top=1'), //cpg1.4
-  //array('Display previous/next on tabbed pages', 'previous_next_tab', 1), //cpg1.4
-
-  'Nastavenia vzhľadu',
-  array('Vzhľad', 'theme', 6, 'f=index.htm&amp;as=admin_theme_theme&amp;ae=admin_theme_theme_end'), //cpg1.4
-  array('Zobraziť zoznam vzhľadov', 'theme_list', 1, 'f=index.htm&amp;as=admin_theme_theme_list&amp;ae=admin_theme_theme_list_end'), //cpg1.4
-  array('Zobraziť &quot;reset&quot; v zozname vzhľadov', 'theme_reset', 1, 'f=index.htm&amp;as=admin_theme_theme_reset&amp;ae=admin_theme_theme_reset_end'), //cpg1.4
-  array('Zobraziť FAQ', 'display_faq', 1, 'f=index.htm&amp;as=admin_theme_faq&amp;ae=admin_theme_faq_end'), //cpg1.4
-  array('Názov vlastnej linky v menu', 'custom_lnk_name', 0,'f=index.htm&amp;as=admin_theme_custom_lnk_name&amp;ae=admin_theme_custom_lnk_name_end'), //cpg1.4
-  array('URL vlastnej linky v menu', 'custom_lnk_url', 0,'f=index.htm&amp;as=admin_language_custom_lnk_url&amp;ae=admin_language_custom_lnk_url_end'), //cpg1.4
-  array('Zobrazovať bbcode help', 'show_bbcode_help', 1, 'f=index.htm&amp;as=admin_theme_bbcode&amp;ae=admin_theme_bbcode_end&amp;top=1'), //cpg1.4
-  array('Zobraziť Vanity Block ktorý je definavaný v súlade s XHTML a CSS','vanity_block',1, 'f=index.htm&amp;as=vanity_block&amp;ae=vanity_block_end'), //cpg1.4
-  array('Cesta pre zákaznícky header include', 'custom_header_path', 0, 'f=index.htm&amp;as=admin_theme_include_path_start&amp;ae=admin_theme_include_path_end'), //cpg1.4
-  array('Cesta pre zákaznícky footer include', 'custom_footer_path', 0, 'f=index.htm&amp;as=admin_theme_include_path_start&amp;ae=admin_theme_include_path_end'), //cpg1.4
-
-  'Zobrazovanie zoznamu albumov',
-  array('Šírka hlavnej tabuľky (pixely alebo %)', 'main_table_width', 0, 'f=index.htm&amp;as=admin_album_table-width&amp;ae=admin_album_table-width_end'), //cpg1.4
-  array('Počet úrovní kategórií k zobrazeniu', 'subcat_level', 0, 'f=index.htm&amp;as=admin_album_category-levels&amp;ae=admin_album_category-levels_end'), //cpg1.4
-  array('Počet albumov k zobrazeniu', 'albums_per_page', 0, 'f=index.htm&amp;as=admin_album_number&amp;ae=admin_album_number_end'), //cpg1.4
-  array('Počet stĺpcov pre zoznam albumov', 'album_list_cols', 0, 'f=index.htm&amp;as=admin_album_columns&amp;ae=admin_album_columns_end'), //cpg1.4
-  array('Veľkosť náhľadu v pixeloch', 'alb_list_thumb_size', 0, 'f=index.htm&amp;as=admin_album_thumbnail-size&amp;ae=admin_album_thumbnail-size_end'), //cpg1.4
-  array('Obsah hlavnej stánky', 'main_page_layout', 0, 'f=index.htm&amp;as=admin_album_list_content&amp;ae=admin_album_list_content_end'), //cpg1.4
-  array('Zobraziť náhľady z albumu prvej úrovne v kategórii','first_level',1, 'f=index.htm&amp;as=admin_album_first-level_thumbs&amp;ae=admin_album_first-level_thumbs_end'), //cpg1.4
-  array('Triediť kategórie abecedne (namiesto užívateľského)','categories_alpha_sort',1, 'f=index.htm&amp;as=admin_album_list_alphasort_start&amp;ae=admin_album_list_alphasort_end'), //cpg1.4
-  array('Zobraziť počet linkovaných súborov','link_pic_count',1, 'f=index.htm&amp;as=admin_album_linked_files_start&amp;ae=admin_album_linked_files_end'), //cpg1.4
-
-  'Zobrazovanie náhľadov',
-  array('Počet stĺpcov na stránke náhľadov', 'thumbcols', 0, 'f=index.htm&amp;as=admin_thumbnail_columns&amp;ae=admin_thumbnail_columns_end'), //cpg1.4
-  array('Počet riadkov na stránke náhľadov', 'thumbrows', 0, 'f=index.htm&amp;as=admin_thumbnail_rows&amp;ae=admin_thumbnail_rows_end'), //cpg1.4
-  array('Maximum pre zobrazenie Tabs', 'max_tabs', 10, 'f=index.htm&amp;as=admin_thumbnail_tabs&amp;ae=admin_thumbnail_tabs_end'), //cpg1.4
-  array('Zobraziť popis súboru pod náhľadom', 'caption_in_thumbview', 1, 'f=index.htm&amp;as=admin_thumbnail_display_caption&amp;ae=admin_thumbnail_display_caption_end'), //cpg1.4
-  array('Zobraziť počet zobrazení pod náhľadom', 'views_in_thumbview', 1, 'f=index.htm&amp;as=admin_thumbnail_display_views&amp;ae=admin_thumbnail_display_views_end'), //cpg1.4
-  array('Zobraziť počet komentárov pod náhľadom', 'display_comment_count', 1, 'f=index.htm&amp;as=admin_thumbnail_display_comments&amp;ae=admin_thumbnail_display_comments_end'), //cpg1.4
-  array('Zobraziť meno pridávajúceho člena pod náhľadom', 'display_uploader', 1, 'f=index.htm&amp;as=admin_thumbnail_display_uploader&amp;ae=admin_thumbnail_display_uploader_end'), //cpg1.4
-  //array('Display name of admin uploaders below the thumbnail', 'display_admin_uploader', 1, 'f=index.htm&amp;as=admin_thumbnail_display_admin_uploader&amp;ae=admin_thumbnail_display_admin_uploader_end'), //cpg1.4
-  array('Zobraziť meno súboru pod náhľadom', 'display_filename', 1, 'f=index.htm&amp;as=admin_thumbnail_display_filename&amp;ae=admin_thumbnail_display_filename_end'), //cpg1.4
-  //array('Zobraziť popis albumu', 'alb_desc_thumb', 1, 'f=index.htm&amp;as=admin_thumbnail_display_description&amp;ae=admin_thumbnail_display_description_end'), //cpg1.4
-  array('Východzie zoradenie súborov', 'default_sort_order', 3, 'f=index.htm&amp;as=admin_thumbnail_default_sortorder&amp;ae=admin_thumbnail_default_sortorder_end'), //cpg1.4
-  array('Minimum počet hlasov pre zaradenie do zoznamu \'top-hodnotený\'', 'min_votes_for_rating', 0, 'f=index.htm&amp;as=admin_thumbnail_minimum_votes&amp;ae=admin_thumbnail_minimum_votes_end'), //cpg1.4
-
-  'Zobrazovanie obrázkov', //cpg1.4
-  array('Šírka hlavnej tabuľky (pixely alebo %)', 'picture_table_width', 0, 'f=index.htm&amp;as=admin_image_comment_table-width&amp;ae=admin_image_comment_table-width_end'), //cpg1.4
-  array('Informácie o súbore sú viditeľné súčasne s obrázkom', 'display_pic_info', 1, 'f=index.htm&amp;as=admin_image_comment_info_visible&amp;ae=admin_image_comment_info_visible_end'), //cpg1.4
-  array('Maximálny počet znakov pre popis obrázku', 'max_img_desc_length', 0, 'f=index.htm&amp;as=admin_image_comment_descr_length&amp;ae=admin_image_comment_descr_length_end'), //cpg1.4
-  array('Maximálny počet znakov v slove', 'max_com_wlength', 0, 'f=index.htm&amp;as=admin_image_comment_chars_per_word&amp;ae=admin_image_comment_chars_per_word_end'), //cpg1.4
-  array('Zobrazovať prúžok filmu', 'display_film_strip', 1, 'f=index.htm&amp;as=admin_image_comment_filmstrip_toggle&amp;ae=admin_image_comment_filmstrip_toggle_end'), //cpg1.4
-  array('Zobrazovať názov súboru pod prúžkom filmu', 'display_film_strip_filename', 1, 'f=index.htm&amp;as=admin_image_comment_display_film_strip_filename&amp;ae=admin_image_comment_display_film_strip_filename_end'), //cpg1.4
-  array('Počet náhľadov v prúžku filmu', 'max_film_strip_items', 0, 'f=index.htm&amp;as=admin_image_comment_filmstrip_number&amp;ae=admin_image_comment_filmstrip_number_end'), //cpg1.4
-  array('Slideshow interval v milisekundách (1 s = 1000 ms)', 'slideshow_interval', 0, 'f=index.htm&amp;as=admin_image_comment_slideshow_interval&amp;ae=admin_image_comment_slideshow_interval_end'), //cpg1.4
-
-  'Nastavenia komentárov', //cpg1.4
-  array('Filter nevhodných slov v komentároch', 'filter_bad_words', 1, 'f=index.htm&amp;as=admin_image_comment_bad_words&amp;ae=admin_image_comment_bad_words_end'), //cpg1.4
-  array('Povoliť smajlíkov', 'enable_smilies', 1, 'f=index.htm&amp;as=admin_image_comment_smilies&amp;ae=admin_image_comment_smilies_end'), //cpg1.4
-  array('Povoliť ďašie komentáre k jednému súboru od rovnakého člena (odporúčame:NIE)', 'disable_comment_flood_protect', 1, 'f=index.htm&amp;as=admin_image_comment_flood&amp;ae=admin_image_comment_flood_end'), //cpg1.4
-  array('Maximálny počet riadkov', 'max_com_lines', 0, 'f=index.htm&amp;as=admin_image_comment_lines&amp;ae=admin_image_comment_lines_end'), //cpg1.4
-  array('Maximálny počet znakov pre komentár', 'max_com_size', 0, 'f=index.htm&amp;as=admin_image_comment_length&amp;ae=admin_image_comment_length_end'), //cpg1.4
-  array('Upozorniť admina emailom na nový komentár', 'email_comment_notification', 1, 'f=index.htm&amp;as=admin_image_comment_admin_notify&amp;ae=admin_image_comment_admin_notify_end'), //cpg1.4
-  array('Usporiadanie zoznamu', 'comments_sort_descending', 17, 'f=index.htm&amp;as=admin_comment_sort_start&amp;ae=admin_comment_sort_end'), //cpg1.4
-  array('Prefix pre anonymov', 'comments_anon_pfx', 0, 'f=index.htm&amp;as=comments_anon_pfx&amp;ae=comments_anon_pfx_end'), //cpg1.4
-
-  'Nastavenia pre súbory a náhľady',
-  array('Kvalita pre JPEG súbory', 'jpeg_qual', 0, 'f=index.htm&amp;as=admin_picture_thumbnail_jpeg_quality&amp;ae=admin_picture_thumbnail_jpeg_quality_end'), //cpg1.4
-  array('Maximálny rozmer náhľadu <a href="#notice2" class="clickable_option">**</a>', 'thumb_width', 0, 'f=index.htm&amp;as=admin_picture_thumbnail_max-dimension&amp;ae=admin_picture_thumbnail_max-dimension_end'), //cpg1.4
-  array('Použi rozmer pre náhľad <a href="#notice2" class="clickable_option">**</a>', 'thumb_use', 7, 'f=index.htm&amp;as=admin_picture_thumbnail_use-dimension&amp;ae=admin_picture_thumbnail_use-dimension_end'), //cpg1.4
-  array('Vytvárať stredné obrázky ','make_intermediate',1, 'f=index.htm&amp;as=admin_picture_thumbnail_intermediate_toggle&amp;ae=admin_picture_thumbnail_intermediate_toggle_end'), //cpg1.4
-  array('Max šírka alebo výška pre stredný obrázok/video <a href="#notice2" class="clickable_option">**</a>', 'picture_width', 0, 'f=index.htm&amp;as=admin_picture_thumbnail_intermediate_dimension&amp;ae=admin_picture_thumbnail_intermediate_dimension_end'), //cpg1.4
-  array('Max veľkosť pre pridávaný súbor (KB)', 'max_upl_size', 0, 'f=index.htm&amp;as=admin_picture_thumbnail_max_upload_size&amp;ae=admin_picture_thumbnail_max_upload_size_end'), //cpg1.4
-  array('Max šírka alebo výška pre pridávaný obrázok/video (pixely)', 'max_upl_width_height', 0, 'f=index.htm&amp;as=admin_picture_thumbnail_max_upload_dimension&amp;ae=admin_picture_thumbnail_max_upload_dimension_end'), //cpg1.4
-  array('Automaticky zmenšiť pridávané obrázky (ak sú väčšie ako povolené maximá)', 'auto_resize', 16, 'f=index.htm&amp;as=admin_picture_thumbnail_auto-resize&amp;ae=admin_picture_thumbnail_auto-resize_end'), //cpg1.4
-
-  'Nastavenia (rozšírené) pre súbory a náhľady',
-  array('Povoliť privátne albumy ', 'allow_private_albums', 1, 'f=index.htm&amp;as=admin_picture_thumb_advanced_private_toggle&amp;ae=admin_picture_thumb_advanced_private_toggle_end'), //cpg1.4
-  array('Zobraziť ikonu privatnych albumov pre neprihlásených','show_private',1, 'f=index.htm&amp;as=admin_picture_thumb_advanced_private_icon_show&amp;ae=admin_picture_thumb_advanced_private_icon_show_end'), //cpg1.4
-  array('Nepovolené znaky v názvoch', 'forbiden_fname_char',0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_filename_forbidden_chars&amp;ae=admin_picture_thumb_advanced_filename_forbidden_chars_end'), //cpg1.4
-  //array('Accepted file extensions for uploaded pictures', 'allowed_file_extensions',0, 'f=index.htm&amp;as=&amp;ae=_end'), //cpg1.4
-  array('Povolené typy obrázkov', 'allowed_img_types',0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_pic_extensions&amp;ae=admin_picture_thumb_advanced_pic_extensions_end'), //cpg1.4
-  array('Povolené typy videa', 'allowed_mov_types',0, 'f=index.htm&amp;as=admin_thumbs_advanced_movie&amp;ae=admin_thumbs_advanced_movie_end'), //cpg1.4
-  array('Automaticky prehrať video', 'media_autostart',1, 'f=index.htm&amp;as=admin_movie_autoplay&amp;ae=admin_movie_autoplay_end'), //cpg1.4
-  array('Povolené typy pre audio', 'allowed_snd_types',0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_audio_extensions&amp;ae=admin_picture_thumb_advanced_audio_extensions_end'), //cpg1.4
-  array('Povolené typy dokumentov', 'allowed_doc_types',0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_doc_extensions&amp;ae=admin_picture_thumb_advanced_doc_extensions_end'), //cpg1.4
-  array('Metóda spracovania obrázkov','thumb_method',2, 'f=index.htm&amp;as=admin_picture_thumb_advanced_resize_method&amp;ae=admin_picture_thumb_advanced_resize_method_end'), //cpg1.4
-  array('Cesta pre ImageMagick \'convert\' utility (napr. /usr/bin/X11/)', 'impath', 0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_im_path&amp;ae=admin_picture_thumb_advanced_im_path_end'), //cpg1.4
-  //array('Allowed image types (only valid for ImageMagick)', 'allowed_img_types',0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_allowed_imagetypes&amp;ae=admin_picture_thumb_advanced_allowed_imagetypes_end'), //cpg1.4
-  array('Príkazový riadok pre ImageMagick', 'im_options', 0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_im_commandline&amp;ae=admin_picture_thumb_advanced_im_commandline_end'), //cpg1.4
-  array('Čítať EXIF dáta z JPEG ', 'read_exif_data', 13, 'f=index.htm&amp;as=admin_picture_thumb_advanced_exif&amp;ae=admin_picture_thumb_advanced_exif_end'), //cpg1.4
-  array('Čítať IPTC dáta z JPEG', 'read_iptc_data', 1, 'f=index.htm&amp;as=admin_picture_thumb_advanced_iptc&amp;ae=admin_picture_thumb_advanced_iptc_end'), //cpg1.4
-  array('Adresár albumov <a href="#notice1" class="clickable_option">*</a>', 'fullpath', 0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_albums_dir&amp;ae=admin_picture_thumb_advanced_albums_dir_end'), //cpg1.4
-  array('Adresár užívateľských súborov <a href="#notice1" class="clickable_option">*</a>', 'userpics', 0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_userpics_dir&amp;ae=admin_picture_thumb_advanced_userpics_dir_end'), //cpg1.4
-  array('Prefix pre stredné obrázky <a href="#notice1" class="clickable_option">*</a>', 'normal_pfx', 0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_intermediate_prefix&amp;ae=admin_picture_thumb_advanced_intermediate_prefix_end'), //cpg1.4
-  array('Prefix pre náhľady <a href="#notice1" class="clickable_option">*</a>', 'thumb_pfx', 0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_thumbs_prefix&amp;ae=admin_picture_thumb_advanced_thumbs_prefix_end'), //cpg1.4
-  array('Default mód pre adresáre', 'default_dir_mode', 0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_chmod_folder&amp;ae=admin_picture_thumb_advanced_chmod_folder_end'), //cpg1.4
-  array('Default mód pre súbory', 'default_file_mode', 0, 'f=index.htm&amp;as=admin_picture_thumb_advanced_chmod_files&amp;ae=admin_picture_thumb_advanced_chmod_files_end'), //cpg1.4
-
-  'Nastavenia užívateľov',
-  array('Povoliť návštevníkom registráciu', 'allow_user_registration', 1, 'f=index.htm&amp;as=admin_allow_registration&amp;ae=admin_allow_registration_end'), //cpg1.4
-  array('Povoliť prístup neprihláseným', 'allow_unlogged_access', 1, 'f=index.htm&amp;as=admin_allow_unlogged_access&amp;ae=admin_allow_unlogged_access_end'), //cpg1.4
-  array('Aktivácia registrácie emailom', 'reg_requires_valid_email', 1, 'f=index.htm&amp;as=admin_registration_verify&amp;ae=admin_registration_verify_end'), //cpg1.4
-  array('Upozorni admina na novú registráciu', 'reg_notify_admin_email', 1, 'f=index.htm&amp;as=admin_registration_notify&amp;ae=admin_registration_notify_end'), //cpg1.4
-  array('Admin aktivuje registrácie', 'admin_activation', 1, 'f=index.htm&amp;as=admin_activation&amp;ae=admin_activation_end'),  //cpg1.4
-  array('Povoliť dvom užívateľom použiť rovnaký email', 'allow_duplicate_emails_addr', 1, 'f=index.htm&amp;as=admin_allow_duplicate_emails_addr&amp;ae=admin_allow_duplicate_emails_addr_end'), //cpg1.4
-  array('Upozorniť admina na schválenie užívateľského pridania súborov', 'upl_notify_admin_email', 1, 'f=index.htm&amp;as=admin_approval_notify&amp;ae=admin_approval_notify_end'), //cpg1.4
-  array('Umožniť prihláseným vidieť zoznam členov', 'allow_memberlist', 1, 'f=index.htm&amp;as=admin_user_memberlist&amp;ae=admin_user_memberlist_end'), //cpg1.4
-  array('Umožniť členom meniť svoj email', 'allow_email_change', 1, 'f=index.htm&amp;as=admin_user_allow_email_change&amp;ae=admin_user_allow_email_change_end'), //cpg1.4
-  array('Umožniť členom kontrolu nad ich obr. vo verejných albumoch', 'users_can_edit_pics', 1, 'f=index.htm&amp;as=admin_user_editpics_public_start&amp;ae=admin_user_editpics_public_end'), //cpg1.4
-  array('Počet neplatných prihlásení pred dočasným zakázaním', 'login_threshold', 0, 'f=index.htm&amp;as=admin_user_login_start&amp;ae=admin_user_login_end'), //cpg1.4
-  array('Trvanie dočasného zakázania', 'login_expiry', 0, 'f=index.htm&amp;as=admin_user_login_start&amp;ae=admin_user_login_end'), //cpg1.4
-  array('Zapnúť hlásenia adminovi', 'report_post', 1, 'f=index.htm&amp;as=admin_user_enable_report&amp;ae=admin_user_enable_report_end'),  //cpg1.4
-
-// custom profile fields,  //cpg1.4
-  'Vlastné názvy vstupných užív. profilov (môže byť prázdne).
-  Profile 6 je pre dlhé texty.', //cpg1.4
-  array('Profil 1 názov', 'user_profile1_name', 0, 'f=index.htm&amp;as=admin_custom&amp;ae=admin_custom_end'), //cpg1.4
-  array('Profil 2 názov', 'user_profile2_name', 0), //cpg1.4
-  array('Profil 3 názov', 'user_profile3_name', 0), //cpg1.4
-  array('Profil 4 názov', 'user_profile4_name', 0), //cpg1.4
-  array('Profil 5 názov', 'user_profile5_name', 0), //cpg1.4
-  array('Profil 6 názov', 'user_profile6_name', 0), //cpg1.4
-
-  'Vlastné názvy vstupných políčiek popisu obrázkov (môže byť prázdne)',
-  array('Políčko 1 názov', 'user_field1_name', 0, 'f=index.htm&amp;as=admin_custom_image&amp;ae=admin_custom_image_end'), //cpg1.4
-  array('Políčko 2 názov', 'user_field2_name', 0),
-  array('Políčko 3 názov', 'user_field3_name', 0),
-  array('Políčko 4 názov', 'user_field4_name', 0),
-
-  'Nastavenia Cookies',
-  array('Cookie názov', 'cookie_name', 0, 'f=index.htm&amp;as=admin_cookie_name&amp;ae=admin_cookie_name_end'), //cpg1.4
-  array('Cookie cesta', 'cookie_path', 0, 'f=index.htm&amp;as=admin_cookie_path&amp;ae=admin_cookie_path_end'), //cpg1.4
-
-  'Nastavenia Emailu (nechať prázdne, ak ste si nie istý)', //cpg1.4
-  array('SMTP Host (when left blank, sendmail will be used)', 'smtp_host', 0, 'f=index.htm&amp;as=admin_email&amp;ae=admin_email_end'), //cpg1.4
-  array('SMTP Username', 'smtp_username', 0), //cpg1.4
-  array('SMTP Password', 'smtp_password', 0), //cpg1.4
-
-  'Logging a štatistiky', //cpg1.4
-  array('Logging mód <a href="#notice3" class="clickable_option">***</a>', 'log_mode', 11, 'f=index.htm&amp;as=admin_logging_log_mode&amp;ae=admin_logging_log_mode_end'), //cpg1.4
-  array('Loguj e-pohľadnice', 'log_ecards', 1, 'f=index.htm&amp;as=admin_general_log_ecards&amp;ae=admin_general_log_ecards_end'), //cpg1.4
-  array('Udržiavať detailnú štatistiku hlasovaní','vote_details',1, 'f=index.htm&amp;as=admin_logging_votedetails&amp;ae=admin_logging_votedetails_end'), //cpg1.4
-  array('Udržiavať detailnú štatistiku prehliadania','hit_details',1, 'f=index.htm&amp;as=admin_logging_hitdetails&amp;ae=admin_logging_hitdetails_end'), //cpg1.4
-
-  'Nastavenia údržbárske (pre skúsených)', //cpg1.4
-  array('Zapnúť debug mód', 'debug_mode', 9, 'f=index.htm&amp;as=debug_mode&amp;ae=debug_mode_end'), //cpg1.4
-  array('Zobrazovať poznámky v debug móde', 'debug_notice', 1, 'f=index.htm&amp;as=admin_misc_debug_notices&amp;ae=admin_misc_debug_notices_end'), //cpg1.4
-  array('Galéria je OFFLINE (neprístupná)', 'offline', 1, 'f=index.htm&amp;as=admin_general_offline&amp;ae=admin_general_offline_end'), //cpg1.4
-);
+// ------------------------------------------------------------------------- //
+// File admin.php
+// ------------------------------------------------------------------------- //
+if (defined('ADMIN_PHP')) {
+$lang_admin_php['title'] = 'Nastavenie galérie';
+$lang_admin_php['general_settings'] = 'Hlavné nastavenia'; // cpg1.5
+$lang_admin_php['language_charset_settings'] = 'Nastavenia jazyka &amp; znakové sady'; // cpg1.5
+$lang_admin_php['themes_settings'] = 'Nastavenia tém'; // cpg1.5
+$lang_admin_php['album_list_view'] = 'Nastavenia zobrazenia výpisu albumov'; // cpg1.5
+$lang_admin_php['thumbnail_view'] = 'Nastavenia náhľadov'; // cpg1.5
+$lang_admin_php['image_view'] = 'Nastavenia obrázkov'; // cpg1.5
+$lang_admin_php['comment_settings'] = 'Nastavenia komentárov'; // cpg1.5
+$lang_admin_php['thumbnail_settings'] = 'Nastavenia náhľadov'; // cpg1.5
+$lang_admin_php['file_settings'] = 'Nastavenia súborov'; // cpg1.5
+$lang_admin_php['image_watermarking'] = 'Nastavenia vodoznaku'; // cpg1.5
+$lang_admin_php['registration'] = 'Nastavenia registrácií'; // cpg1.5
+$lang_admin_php['user_settings'] = 'Nastavenia užívateľov'; // cpg1.5
+$lang_admin_php['custom_fields_user_profile'] = 'Voľné polia v užívateľovom profile (nechajte prázdne, ak nepoužijete). Použite pole 6 pre dlhšie zadania, jako napríklad životopis a pod.'; // cpg1.5
+$lang_admin_php['custom_fields_image_description'] = 'Voľné polia pre popisy obrázkov (nechajte prázdne, ak nepoužijete)'; // cpg1.5
+$lang_admin_php['cookie_settings'] = 'Nastavenie cookies'; // cpg1.5
+$lang_admin_php['email_settings'] = 'Nastavenie e-mailu (bežne tu nie je potrebné nič meniť; nechajte prázdne, ak nepoužijete)'; // cpg1.5
+$lang_admin_php['logging_stats'] = 'Záznamy prístupov a štatistika'; // cpg1.5
+$lang_admin_php['maintenance_settings'] = 'Nastavenie údržby'; // cpg1.5
+$lang_admin_php['manage_exif'] = 'Nastav zobrazovanie EXIF';
+$lang_admin_php['manage_plugins'] = 'Edituj zásuvné moduly';
+$lang_admin_php['manage_keyword'] = 'Edituj kľúčové slová';
+$lang_admin_php['restore_cfg'] = 'Reset - základné nastavenia';
+$lang_admin_php['restore_cfg_confirm'] = 'Naozaj chcete obnoviť celú konfiguráciu do základného nastavenia? Táto zmena sa nedá vrátiť!'; // cpg1.5 // ak
+$lang_admin_php['save_cfg'] = 'Uložiť novú konfiguráciu';
+$lang_admin_php['notes'] = 'Poznámky';
+$lang_admin_php['info'] = 'Informácie';
+$lang_admin_php['upd_success'] = 'Konfigurácia Coppermine bola zmenená';
+$lang_admin_php['restore_success'] = 'Konfigurácia bola zmenená na základné nastavenie';
+$lang_admin_php['name_a'] = 'Meno vzostupne';
+$lang_admin_php['name_d'] = 'Meno zostupne';
+$lang_admin_php['title_a'] = 'Nadpis vzostupne';
+$lang_admin_php['title_d'] = 'Nadpis zostupne';
+$lang_admin_php['date_a'] = 'Dátum vzostupne';
+$lang_admin_php['date_d'] = 'Dátum zostupne';
+$lang_admin_php['pos_a'] = 'Pozícia vzostupne';
+$lang_admin_php['pos_d'] = 'Pozícia zostupne';
+$lang_admin_php['th_any'] = 'Max rozlíšenie';
+$lang_admin_php['th_ht'] = 'Výška';
+$lang_admin_php['th_wd'] = 'Šírka';
+$lang_admin_php['th_ex'] = 'Presne'; // cpg1.5
+$lang_admin_php['debug_everyone'] = 'Každý';
+$lang_admin_php['debug_admin'] = 'Iba Admin';
+$lang_admin_php['no_logs'] = 'Vypnuté';
+$lang_admin_php['log_normal'] = 'Normalne';
+$lang_admin_php['log_all'] = 'Všetko';
+$lang_admin_php['view_logs'] = 'Zobraz logy';
+$lang_admin_php['click_expand'] = 'klikni na meno sekcie pre rozbalenie';
+$lang_admin_php['click_collapse'] = 'klikni na meno sekcie pre zbalenie'; // cpg1.5
+$lang_admin_php['expand_all'] = 'Rozbaliť všetko';
+$lang_admin_php['toggle_all'] = 'Obrátiť rozbalenie/zbalenie'; // cpg1.5
+$lang_admin_php['notice1'] = '(*) Toto nastavenie nesmie byť zmenené ak už máte súbory v databáze.';
+$lang_admin_php['notice2'] = '(**) Ak sa zmení toto nastavenie, bude mať vplyv iba na súbory pridané po zmene. Môžete však aplikovať túto zmenu na existujúce súbory cez &quot;<a href="util.php">administrátorské nástroje</a>&quot.';
+$lang_admin_php['notice3'] = '(***) Všetky log súbory sú v angličtine.';
+$lang_admin_php['bbs_disabled'] = 'Funkcia je vypnutá pri použití prepojenia/integrácie';
+$lang_admin_php['auto_resize_everyone'] = 'Ktokoľvek';
+$lang_admin_php['auto_resize_user'] = 'Iba užívateľ';
+$lang_admin_php['ascending'] = 'vzostupne';
+$lang_admin_php['descending'] = 'zostupne';
+$lang_admin_php['collapse_all'] = 'Zbaliť všetko'; // cpg1.5
+$lang_admin_php['separate_page'] = 'na samostatnej stránke'; // cpg1.5
+$lang_admin_php['inline'] = 'vložený'; // cpg1.5
+$lang_admin_php['guests_only'] = 'Iba návštevníci'; // cpg1.5
+$lang_admin_php['wm_bottomright'] = 'Vpravo dole'; // cpg1.5
+$lang_admin_php['wm_bottomleft'] = 'Vľavo dole'; // cpg1.5
+$lang_admin_php['wm_topleft'] = 'Vľavo hore'; // cpg1.5
+$lang_admin_php['wm_topright'] = 'Vpravo hore'; // cpg1.5
+$lang_admin_php['wm_center'] = 'V strede'; // cpg1.5
+$lang_admin_php['wm_both'] = 'Pôvodné aj s upravenou veľkosťou'; // cpg1.5
+$lang_admin_php['wm_original'] = 'Pôvodné'; // cpg1.5
+$lang_admin_php['wm_resized'] = 'S upravenou veľkosťou'; // cpg1.5
+$lang_admin_php['gallery_name'] = 'Meno galérie'; // cpg1.5
+$lang_admin_php['gallery_description'] = 'Popis galérie'; // cpg1.5
+$lang_admin_php['gallery_admin_email'] = 'E-mail administrátora'; // cpg1.5
+$lang_admin_php['ecards_more_pic_target'] = 'URL vašej coppermine galérie'; // cpg1.5
+$lang_admin_php['ecards_more_pic_target_detail'] = '(s koncovým lomítkom, bez \'index.php\' a podobne na konci)'; // cpg1.5
+$lang_admin_php['home_target'] = 'URL vašej domovskej stránky'; // cpg1.5
+$lang_admin_php['enable_zipdownload'] = 'Povoliť ZIP-download obľúbených'; // cpg1.5
+$lang_admin_php['enable_zipdownload_no_textfile'] = 'iba obľúbené'; // cpg1.5
+$lang_admin_php['enable_zipdownload_additional_textfile'] = 'obľúbené a súbor read me'; // cpg1.5
+$lang_admin_php['time_offset'] = 'Časové pásmo od GMT '; // cpg1.5
+$lang_admin_php['time_offset_detail'] = '(aktuálny lokálny čas: %s)'; // cpg1.5
+$lang_admin_php['enable_help'] = 'Zapnúť ikony pomoci'; // cpg1.5
+$lang_admin_php['enable_help_description'] = 'pomoc k dispozícii čiastočne v  angličtine'; // cpg1.5
+$lang_admin_php['clickable_keyword_search'] = 'Zapnúť klikatelné kľúčové slová vo vyhľadávaní'; // cpg1.5
+$lang_admin_php['keyword_separator'] = 'Oddelovač kľúčových slov'; // cpg1.5
+$lang_admin_php['keyword_convert'] = 'Zmeniť oddelovač kľúčových slov'; // cpg1.5
+$lang_admin_php['enable_plugins'] = 'Zapnúť zásuvné moduly'; // cpg1.5
+$lang_admin_php['purge_expired_bans'] = 'Automaticky odstrániť vypršané zákazy'; // cpg1.5
+$lang_admin_php['browse_batch_add'] = 'Dávkové pridávanie viacerých súborov naraz'; // cpg1.5
+$lang_admin_php['batch_proc_limit'] = 'Počet súborov spracovávaných súčasne pri dávkovom pridávání'; // cpg1.5
+$lang_admin_php['display_thumbs_batch_add'] = 'Zobraziť náhľady pri dávkovom pridávaní súborov'; // cpg1.5
+$lang_admin_php['lang'] = 'Jazyk'; // cpg1.5
+$lang_admin_php['language_autodetect'] = 'Autodetekcia jazyka'; // cpg1.5
+$lang_admin_php['charset'] = 'Znaková sada'; // cpg1.5
+  // 'previous_next_tab'] = 'Display previous/next on tabbed pages'; // cpg1.5
+$lang_admin_php['theme'] = 'Téma'; // cpg1.5
+$lang_admin_php['custom_lnk_name'] = 'Meno vlastnej položky v menu'; // cpg1.5
+$lang_admin_php['custom_lnk_url'] = 'URL vlastnej položky v menu'; // cpg1.5
+$lang_admin_php['enable_menu_icons'] = 'Povoliť menu ikony'; // cpg1.5
+$lang_admin_php['show_bbcode_help'] = 'Zobrazovať pomoc pre BBCode'; // cpg1.5
+$lang_admin_php['vanity_block'] = 'Zobraz ladiaci blok tém, ktoré sú definované jako kompatibilné s XHTML a CSS'; // cpg1.5
+$lang_admin_php['display_social_bookmarks'] = 'Zobrazuj ikony sociálnych sietí (facebook...)'; // cpg1.5
+$lang_admin_php['highlight_multiple'] = 'Stlačením CTRL označovat viacej riadkov'; // cpg1.5
+$lang_admin_php['custom_header_path'] = 'Cesta k vlastnému záhlaviu'; // cpg1.5
+$lang_admin_php['custom_footer_path'] = 'Cesta k vlastnej päte'; // cpg1.5
+$lang_admin_php['browse_by_date'] = 'Povoliť prehliadanie podľa dátumu'; // cpg1.5
+$lang_admin_php['display_redirection_page'] = 'Zobrazovať presmerovávacie stránky'; // cpg1.5
+$lang_admin_php['display_xp_publish_link'] = 'Podporovať použitie XP Publisher zobrazovaním príslušného odkazu na uploadovaciu stránku'; // cpg1.5
+$lang_admin_php['main_table_width'] = 'Šírka hlavnej tabuľky'; // cpg1.5
+$lang_admin_php['pixels_or_percent'] = 'pixelov alebo %'; // cpg1.5
+$lang_admin_php['subcat_level'] = 'Počet zobrazovaných úrovní kategórií'; // cpg1.5
+$lang_admin_php['albums_per_page'] = 'Počet albumov na zobrazenie'; // cpg1.5
+$lang_admin_php['album_list_cols'] = 'Počet stĺpcov na stránke albumu'; // cpg1.5
+$lang_admin_php['alb_list_thumb_size'] = 'Veľkosť náhľadov albumu'; // cpg1.5
+$lang_admin_php['main_page_layout'] = 'Obsah hlavnej stránky'; // cpg1.5
+$lang_admin_php['first_level'] = 'Ukáž album prvej úrovne v kategóriach'; // cpg1.5
+$lang_admin_php['categories_alpha_sort'] = 'Zoraď kategórie podľa abecedy'; // cpg1.5
+$lang_admin_php['categories_alpha_sort_details'] = '(namiesto užívateľského nastavenia zoraďovania)'; // cpg1.5
+$lang_admin_php['link_pic_count'] = 'Zobrazuj celkový počet súborov'; // cpg1.5
+$lang_admin_php['thumbcols'] = 'Počet stĺpcov na stránke náhľadov'; // cpg1.5
+$lang_admin_php['thumbrows'] = 'Počet riadkov na stránke náhľadov'; // cpg1.5
+$lang_admin_php['max_tabs'] = 'Maximálny počet štítkov číselníka stránok na lište'; // cpg1.5
+$lang_admin_php['tabs_dropdown'] = 'Zobrazuj zoznam všetkých stránok k štítkom číselníka stránok'; // cpg1.5
+$lang_admin_php['caption_in_thumbview'] = 'Zobrazuj popis súborov (pridaný k názvu) pod náhľadmi'; // cpg1.5
+$lang_admin_php['views_in_thumbview'] = 'Zobrazuj počet zobrazení pod náhľadom'; // cpg1.5
+$lang_admin_php['display_comment_count'] = 'Zobrazuj počet komentárov pod náhľadom'; // cpg1.5
+$lang_admin_php['display_uploader'] = 'Zobrazuj meno užívateľa ktorý súbor pridal pod náhľadom'; // cpg1.5
+  // 'display_admin_uploader'] = 'Display name of admin uploaders below the thumbnail'; // cpg1.5
+$lang_admin_php['display_filename'] = 'Zobrazuj meno súboru pod náhľadom'; // cpg1.5
+$lang_admin_php['display_thumbnail_rating'] = 'Zobrazuj hodnotenie súboru pod náhľadom'; // cpg1.5
+$lang_admin_php['alb_desc_thumb'] = 'Zobrazuj popis albumu'; // cpg1.5
+$lang_admin_php['thumbnail_to_fullsize'] = 'Ísť priamo z náhľadu na plnú veľkosť súboru'; // cpg1.5
+$lang_admin_php['default_sort_order'] = 'Prednastavené zoraďovanie súborov'; // cpg1.5
+$lang_admin_php['min_votes_for_rating'] = 'Minimálny počet hlasujúcích, aby bol súbor umiestnený medzi \'najvyššie hodnotené\''; // cpg1.5
+$lang_admin_php['picture_table_width'] = 'Šírka tabuľky pre zobrazenie obrázku'; // cpg1.5
+$lang_admin_php['display_pic_info'] = 'Informácie o súbore sú v základnom nastavení viditeľné'; // cpg1.5
+$lang_admin_php['picinfo_movie_download_link'] = 'Zobrazovať odkaz pre stiahnutie videa v oblasti informácii o súbore'; // cpg1.5
+$lang_admin_php['max_img_desc_length'] = 'Maximálna dĺžka poznámky k obrázku'; // cpg1.5
+$lang_admin_php['max_com_wlength'] = 'Maximálny počet písmen v slove'; // cpg1.5
+$lang_admin_php['display_film_strip'] = 'Zobrazuj filmový pás s náhľadmi'; // cpg1.5
+$lang_admin_php['max_film_strip_items'] = 'Počet položiek vo filmovom páse náhľadov'; // cpg1.5
+$lang_admin_php['slideshow_interval'] = 'Interval automatického prehliadania'; // cpg1.5
+$lang_admin_php['milliseconds'] = 'milisekúnd'; // cpg1.5
+$lang_admin_php['slideshow_interval_detail'] = '1 sekunda = 1000 milisekúnd'; // cpg1.5
+$lang_admin_php['slideshow_hits'] = 'Počítať zobrazenia v automatickom zobrazovaní'; // cpg1.5
+$lang_admin_php['ecard_flash'] = 'Povoliť Flash v E-pohľadniciach'; // cpg1.5
+$lang_admin_php['not_recommended'] = 'neodporúča sa'; // cpg1.5
+$lang_admin_php['recommended'] = 'odporučené'; // cpg1.5
+$lang_admin_php['transparent_overlay'] = 'Vložiť transparentnú vrstvu pre zamedzenie odcudzenia obrázka'; // cpg1.5
+$lang_admin_php['old_style_rating'] = 'Vrátiť sa na starý systém hodnotenia'; // cpg1.5
+$lang_admin_php['old_style_rating_extra'] = 'Táto hodnota vypne voľbu \'Počet hodnotiacich hviezdičiek pri používaní hlasovania\''; // cpg1.5
+$lang_admin_php['rating_stars_amount'] = 'Počet hviezdičiek stupnice pri hodnotení'; // cpg1.5
+$lang_admin_php['rate_own_files'] = 'Užívatelia môžu hodnotiť svoje súbory'; // cpg1.5
+$lang_admin_php['filter_bad_words'] = 'Filtrovanie zakázaných slov v komentároch'; // cpg1.5
+$lang_admin_php['enable_smilies'] = 'Povoliť smajlíky v komentároch'; // cpg1.5
+$lang_admin_php['disable_comment_flood_protect'] = 'Povoliť viacero za sebou nasledujúcich komentárov od jedného užívateľa'; // cpg1.5
+$lang_admin_php['disable_comment_flood_protect_details'] = '(vypnúť záplavovú ochranu)'; // cpg1.5
+$lang_admin_php['max_com_lines'] = 'Maximálny počet riadkov na komentár'; // cpg1.5
+$lang_admin_php['max_com_size'] = 'Maximálna dĺžka komentára'; // cpg1.5
+$lang_admin_php['email_comment_notification'] = 'Oznamuj adminovi komentáre e-mailom'; // cpg1.5
+$lang_admin_php['comments_sort_descending'] = 'Zoradiť poradie komentárov'; // cpg1.5
+$lang_admin_php['comments_per_page'] = 'Komentárov na stránke'; // cpg1.5
+$lang_admin_php['comments_anon_pfx'] = 'Prefix pre anonymných autorov komentárov'; // cpg1.5
+$lang_admin_php['comment_approval'] = 'Komentáre vyžadujú schválenie'; // cpg1.5
+$lang_admin_php['display_comment_approval_only'] = 'Zobrazovať iba komentáre, ktoré potrebujú schválenie na stránke &quot;Komentáre&quot;'; // cpg1.5
+$lang_admin_php['comment_placeholder'] = 'Zobrazovať náhradný text užívateľom pre komentáre, ktoré čakajú na schválenie administrátorom'; // cpg1.5
+$lang_admin_php['comment_user_edit'] = 'Povoliť užívateľom editovať vlastné komentáre'; // cpg1.5
+$lang_admin_php['comment_captcha'] = 'Zobrazovať Captcha (vizuálne potvrdenie) pre pridávanie komentárov'; // cpg1.5
+$lang_admin_php['comment_akismet_enable'] = 'Akismet voľby'; // cpg1.5
+$lang_admin_php['comment_akismet_enable_description'] = 'Čo sa má vykonať, ak Akismet zamietne komentár ako spam?'; // cpg1.5
+$lang_admin_php['comment_akismet_applicable_only'] = 'Nastavenia sa použijú iba v prípade ak bol Akismet spustený zadaním platného API kľúča'; // cpg1.5
+$lang_admin_php['comment_akismet_enable_approval'] = 'Povoliť komentáre, ktoré neprešli cez Akismet, ale označiť ich ako neschválené'; // cpg1.5
+$lang_admin_php['comment_akismet_drop_tell'] = 'Vypustiť komentáre, ktoré neprešli validáciou a oznámiť autorovi, že boli zamietnuté'; // cpg1.5
+$lang_admin_php['comment_akismet_drop_lie'] = 'Vypustiť komentáre, ktoré neprešli validáciou, ale oznámiť autorovi (spammerovi), že boli pridané'; // cpg1.5
+$lang_admin_php['comment_akismet_api_key'] = 'Akismet API kľúč'; // cpg1.5
+$lang_admin_php['comment_akismet_api_key_description'] = 'Nechajte prázdne pre vypnutie Akismet'; // cpg1.5
+$lang_admin_php['comment_akismet_group'] = 'Použiť Akismet pre komentáre od'; // cpg1.5
+$lang_admin_php['comment_promote_registration'] = 'Požiadať návštevníkov o prihlásenie pre zasielanie komentárov'; // cpg1.5
+$lang_admin_php['thumb_width'] = 'Maximálny rozmer náhľadu (šírka, ak používate "presne" v "Použiť rozmer")'; // cpg1.5
+$lang_admin_php['thumb_use'] = 'Použiť rozmer'; // cpg1.5
+$lang_admin_php['thumb_use_detail'] = '(šírka alebo výška alebo Max pomer náhľadu)'; // cpg1.5
+$lang_admin_php['thumb_height'] = 'Výška náhľadu'; // cpg1.5
+$lang_admin_php['thumb_height_detail'] = '(použiť iba ak používate &quot;presne&quot; v &quot;Použiť rozmer&quot;)'; // cpg1.5
+$lang_admin_php['movie_audio_document'] = 'video, audio, dokument'; // cpg1.5
+$lang_admin_php['thumb_pfx'] = 'Prefix náhľadov'; // cpg1.5
+$lang_admin_php['enable_unsharp'] = 'Zostrenie náhľadov: povoliť Unsharp Mask'; // cpg1.5
+$lang_admin_php['unsharp_amount'] = 'Sila zostrenia náhľadu'; // cpg1.5
+$lang_admin_php['unsharp_radius'] = 'Polomer zostrenia náhľadu'; // cpg1.5
+$lang_admin_php['unsharp_threshold'] = 'Prah zostrenia náhľadu'; // cpg1.5
+$lang_admin_php['jpeg_qual'] = 'Kvalita JPEG súborov'; // cpg1.5
+$lang_admin_php['make_intermediate'] = 'Vytvor stredné náhľady'; // cpg1.5
+$lang_admin_php['picture_use'] = 'Použiť rozmer'; // cpg1.5
+$lang_admin_php['picture_use_detail'] = '(šírka alebo výška alebo Max pomer pre stredný obrázok)'; // cpg1.5
+$lang_admin_php['picture_use_thumb'] = 'Ako náhľad'; // cpg1.5
+$lang_admin_php['picture_width'] = 'Max šírka alebo výška stredných náhľadov súborov'; // cpg1.5
+$lang_admin_php['max_upl_size'] = 'Max veľkosť uploadovaných súborov'; // cpg1.5
+$lang_admin_php['kilobytes'] = 'KB'; // cpg1.5
+$lang_admin_php['pixels'] = 'pixelov'; // cpg1.5
+$lang_admin_php['max_upl_width_height'] = 'Max šírka alebo výška uploudovaných súborov'; // cpg1.5
+$lang_admin_php['auto_resize'] = 'Automaticky zmeň veľkosť obrázka, ak je väčšia ako Max šírka alebo výška'; // cpg1.5
+$lang_admin_php['fullsize_padding_x'] = 'Horizontálny okraj pre celoobrazovkové pop-up okno'; // cpg1.5
+$lang_admin_php['fullsize_padding_y'] = 'Vertikálny okraj pre celoobrazovkové pop-up okno'; // cpg1.5
+$lang_admin_php['allow_private_albums'] = 'Galéria môže byť súkromná'; // cpg1.5
+$lang_admin_php['allow_private_albums_note'] = '(Poznámka: ak zmeníte \'Áno\' na \'Nie\' akákoľvek súčasná súkromná galéria sa stane verejnou.)'; // cpg1.5
+$lang_admin_php['show_private'] = 'Ukaž ikonu súkromnej galérie neprihlásenému návštevníkovi'; // cpg1.5
+$lang_admin_php['forbiden_fname_char'] = 'Zakázané znaky v názvoch súborov'; // cpg1.5
+$lang_admin_php['silly_safe_mode'] = 'Povoliť &quot;silly safe mode&quot;'; // cpg1.5
+$lang_admin_php['allowed_img_types'] = 'Povolené typy obrázkov'; // cpg1.5
+$lang_admin_php['allowed_mov_types'] = 'Povolené typy videí'; // cpg1.5
+$lang_admin_php['media_autostart'] = 'Automatický štart prehrávania videa'; // cpg1.5
+$lang_admin_php['allowed_snd_types'] = 'Povolené typy zvukových súborov'; // cpg1.5
+$lang_admin_php['allowed_doc_types'] = 'Povolené typy dokumentov'; // cpg1.5
+$lang_admin_php['thumb_method'] = 'Metóda zmeny veľkosti obrázkov'; // cpg1.5
+$lang_admin_php['impath'] = 'Cesta k programu ImageMagick pre manipuláciu s obrázkami'; // cpg1.5
+$lang_admin_php['impath_example'] = '(napríklad /usr/bin/)'; // cpg1.5
+$lang_admin_php['im_options'] = 'Doplnkové parametre príkazoveho riadku pre ImageMagick'; // cpg1.5
+$lang_admin_php['read_exif_data'] = 'Čítať EXIF dáta v JPEG súboroch'; // cpg1.5
+$lang_admin_php['read_iptc_data'] = 'Čtať IPTC dáta v JPEG súboroch'; // cpg1.5
+$lang_admin_php['fullpath'] = 'Adresár albumu'; // cpg1.5
+$lang_admin_php['userpics'] = 'Adresár pre užívateľské súbory'; // cpg1.5
+$lang_admin_php['normal_pfx'] = 'Predpona pre stredné náhľady'; // cpg1.5
+$lang_admin_php['default_dir_mode'] = 'Defaultný mód pre adresáre'; // cpg1.5
+$lang_admin_php['default_file_mode'] = 'Defaultný mód pre súbory'; // cpg1.5
+$lang_admin_php['enable_watermark'] = 'Vodoznak obrázkov'; // cpg1.5
+$lang_admin_php['enable_thumb_watermark'] = 'Vodoznak náhľadov'; // cpg1.5 ak
+$lang_admin_php['where_put_watermark'] = 'Umiestnenie vodoznaku'; // cpg1.5
+$lang_admin_php['which_files_to_watermark'] = 'Ktoré súbory označiť vodoznakom'; // cpg1
+$lang_admin_php['watermark_file'] = 'Aký súbor použiť ako vodoznak'; // cpg1.5
+$lang_admin_php['watermark_transparency'] = 'Priehľadnosť pre celý obraz'; // cpg1.5
+$lang_admin_php['zero_2_hundred'] = '0-100'; // cpg1.5
+$lang_admin_php['reduce_watermark'] = 'Zmenšiť vodoznak ak je šírka obrázka menšia ako zadaná hodnota. Tá je 100%. Zmena veľkosti vodoznaku je lineárne (0 - zakázať)'; // cpg1.5 ak
+$lang_admin_php['watermark_transparency_featherx'] = 'Nastaviť farebnú priehľadnosť x'; // cpg1.5
+$lang_admin_php['watermark_transparency_feathery'] = 'Nastaviť farebnú priehľadnosť y'; // cpg1.5
+$lang_admin_php['gd2_only'] = 'Iba GD2'; // cpg1.5
+$lang_admin_php['allow_user_registration'] = 'Povoliť registráciu nového užívateľa'; // cpg1.5
+$lang_admin_php['global_registration_pw'] = 'Globálne heslo pre registráciu'; // cpg1.5
+$lang_admin_php['user_registration_disclaimer'] = 'Zobraziť potvrdenie registrácie užívateľa'; // cpg1.5
+$lang_admin_php['registration_captcha'] = 'Zobraziť Captcha (Vizuálne potvrdenie) na registračnej stránke'; // cpg1.5
+$lang_admin_php['reg_requires_valid_email'] = 'Registrácia užívateľa vyžaduje e-mailové overenie'; // cpg1.5
+$lang_admin_php['reg_notify_admin_email'] = 'Oznám adminovi užívateľskú registráciu e-mailom'; // cpg1.5
+$lang_admin_php['admin_activation'] = 'Admin aktivuje registráciu'; // cpg1.5
+$lang_admin_php['personal_album_on_registration'] = 'Vytvoriť vlastný album v osobnej galérii pri registrácii.'; // cpg1.5
+$lang_admin_php['allow_unlogged_access'] = 'Povoliť prístup neprihláseným návštevníkom'; // cpg1.5
+$lang_admin_php['thumbnail_intermediate_full'] = 'náhľad, stredný a obrázok plnej veľkosti'; // cpg1.5
+$lang_admin_php['thumbnail_intermediate'] = 'náhľad a stredná veľkosť obrázka'; // cpg1.5
+$lang_admin_php['thumbnail_only'] = 'iba náhľad'; // cpg1.5
+$lang_admin_php['upload_mechanism'] = 'Východzia metóda pre upload'; // cpg1.5 //
+$lang_admin_php['upload_swf'] = 'rozšírená - viac súborov, Flash (odporúčané)'; // cpg1.5
+$lang_admin_php['upload_single'] = 'jednoduchá - po jednom súbore'; // cpg1.5
+$lang_admin_php['allow_user_upload_choice'] = 'Povoliť užívateľom výber metódy pre upload'; // cpg1.5
+$lang_admin_php['allow_duplicate_emails_addr'] = 'Povoliť dvom užívateľom rovnakú e-mailovú adresu'; // cpg1.5
+$lang_admin_php['upl_notify_admin_email'] = 'Oznám adminovi užívateľský upload očakávajúci schválenie'; // cpg1.5
+$lang_admin_php['allow_memberlist'] = 'Povoliť registrovaným užívateľom prezerať zoznam užívateľov'; // cpg1.5
+$lang_admin_php['allow_email_change'] = 'Povoliť užívateľovi meniť svoju e-mailovú adresu vo svojom portfóliu'; // cpg1.5
+$lang_admin_php['allow_user_account_delete'] = 'Povoliť užívateľom zmazanie vlastného účtu'; // cpg1.5
+$lang_admin_php['users_can_edit_pics'] = 'Povoliť užívateľom kontrolu nad ich uploadovanými obrázkami v albumoch'; // cpg1.5
+$lang_admin_php['allow_user_move_album'] = 'Povoliť užívateľom presúvať ich albumy z/do povolených kategórii'; // cpg1.5
+$lang_admin_php['allow_user_album_keyword'] = 'Povoliť užívateľom priraďovať kľúčové slová'; // cpg1.5
+$lang_admin_php['allow_user_edit_after_cat_close'] = 'Povoliť užívateľom upravovať ich albumy ak sú v uzamknutej kategórii'; // cpg1.5
+$lang_admin_php['login_method_username'] = 'Meno'; // cpg1.5
+$lang_admin_php['login_method_email'] = 'E-mailová adresa'; // cpg1.5
+$lang_admin_php['login_method_both'] = 'Obe'; // cpg1.5
+$lang_admin_php['login_method'] = 'Akým spôsobom chcete povoliť užívateľom prihlásenie'; // cpg1.5
+$lang_admin_php['login_threshold'] = 'Počet neúspešných prihlásení pre dočasné zablokovanie užívateľa'; // cpg1.5
+$lang_admin_php['login_threshold_detail'] = '(ochrana proti útoku silou)'; // cpg1.5
+$lang_admin_php['login_expiry'] = 'Čas dočasného zablokovania po neúspešných pokusoch o prihlásenie'; // cpg1.5
+$lang_admin_php['minutes'] = 'minút'; // cpg1.5
+$lang_admin_php['report_post'] = 'Povoliť správu pre admina'; // cpg1.5
+$lang_admin_php['user_profile1_name'] = 'Profil 1'; // cpg1.5
+$lang_admin_php['user_profile2_name'] = 'Profil 2'; // cpg1.5
+$lang_admin_php['user_profile3_name'] = 'Profil 3'; // cpg1.5
+$lang_admin_php['user_profile4_name'] = 'Profil 4'; // cpg1.5
+$lang_admin_php['user_profile5_name'] = 'Profil 5'; // cpg1.5
+$lang_admin_php['user_profile6_name'] = 'Profil 6'; // cpg1.5
+$lang_admin_php['user_field1_name'] = 'Pole 1'; // cpg1.5
+$lang_admin_php['user_field2_name'] = 'Pole 2'; // cpg1.5
+$lang_admin_php['user_field3_name'] = 'Pole 3'; // cpg1.5
+$lang_admin_php['user_field4_name'] = 'Pole 4'; // cpg1.5
+$lang_admin_php['cookie_name'] = 'Názov cookie'; // cpg1.5
+$lang_admin_php['cookie_path'] = 'Cesta ku cookie'; // cpg1.5
+$lang_admin_php['smtp_host'] = 'SMTP Hostiteľ (ak necháte pole prázdne, bude použitý sendmail)'; // cpg1.5
+$lang_admin_php['smtp_username'] = 'SMTP Meno'; // cpg1.5
+$lang_admin_php['smtp_password'] = 'SMTP Heslo'; // cpg1.5
+$lang_admin_php['log_mode'] = 'Mód logovania'; // cpg1.5
+$lang_admin_php['log_mode_details'] = 'Všetky log súbory sú v angličtine.'; // cpg1.5
+$lang_admin_php['log_ecards'] = 'Logovať pohľadnice'; // cpg1.5
+$lang_admin_php['log_ecards_detail'] = 'Poznámka: logovanie môe mať právne následky. Užívateľ by mal byť z dôvodu ochrany osobných údajov informovaný pri registrácii, že pohľadnice sú archivované'; // cpg1.5
+$lang_admin_php['vote_details'] = 'Zaznamenávať detailnú štatistiku hlasovania'; // cpg1.5
+$lang_admin_php['hit_details'] = 'Zaznamenávať detailnú štatistiku prístupov'; // cpg1.5
+$lang_admin_php['display_stats_on_index'] = 'Zobrazovať štatistiky na úvodnej stránke'; // cpg1.5
+$lang_admin_php['count_file_hits'] = 'Počítať zobrazenia súborov'; // cpg1.5
+$lang_admin_php['count_album_hits'] = 'Počítať zobrazenia albumov'; // cpg1.5
+$lang_admin_php['count_admin_hits'] = 'Počítať zobrazenia adminom'; // cpg1.5
+$lang_admin_php['debug_mode'] = 'Zapnúť testovací mód'; // cpg1.5
+$lang_admin_php['debug_notice'] = 'Zobrazovať poznámky v testovacom móde'; // cpg1.5
+$lang_admin_php['offline'] = 'Galéria je offline'; // cpg1.5
+$lang_admin_php['display_coppermine_news'] = 'Zobrazovať novinky z coppermine-gallery.net'; // cpg1.5
+$lang_admin_php['display_coppermine_detail'] = 'bude zobrazené iba pre administrátora'; // cpg1.5
+$lang_admin_php['config_setting_invalid'] = 'Hodnota ktorá bola zadaná pre &laquo;%s&raquo; je neplatná, prosím skontrolujte ju.'; // cpg1.5
+$lang_admin_php['config_setting_ok'] = 'Vaše nastavenia pre &laquo;%s&raquo; boli uložené.'; // cpg1.5
+$lang_admin_php['contact_form_settings'] = 'Nastavenia kontaktného formulára'; // cpg1.5
+$lang_admin_php['contact_form_guest_enable'] = 'Zobraziť kontaktný formulár pre anonymných návštevníkov'; // cpg1.5
+$lang_admin_php['contact_form_registered_enable'] = 'Zobraziť kontaktný formulár pre registrovaných úžívateľov'; // cpg1.5
+$lang_admin_php['with_captcha'] = 's captcha'; // cpg1.5
+$lang_admin_php['without_captcha'] = 'bez captcha'; // cpg1.5
+$lang_admin_php['optional'] = 'volitelne'; // cpg1.5
+$lang_admin_php['mandatory'] = 'povinne'; // cpg1.5
+$lang_admin_php['contact_form_guest_name_field'] = 'Zobrazovať návštevníkom meno odosielateľa'; // cpg1.5
+$lang_admin_php['contact_form_guest_email_field'] = 'Zobrazovať návštevníkom e-mail odosielateľa'; // cpg1.5
+$lang_admin_php['contact_form_subject_field'] = 'Zobraziť pole predmetu'; // cpg1.5
+$lang_admin_php['contact_form_subject_content'] = 'Prednastavený predmet pre e-maily generované kontaktným formulárom'; // cpg1.5
+$lang_admin_php['contact_form_sender_email'] = 'Použiť užívateľov e-mail ako &quot;od&quot; adresu'; // cpg1.5
+$lang_admin_php['allow_no_link'] = 'povoliť, ale nezobrazovať odkaz'; // cpg1.5
+$lang_admin_php['allow_show_link'] = 'povoliť a podporiť zobrazením odkazu'; // cpg1.5 ak
+$lang_admin_php['display_sidebar_user'] = 'Bočná lišta pre registrovaných užívateľov'; // cpg1.5
+$lang_admin_php['display_sidebar_guest'] = 'Bočná lišta pre návštevníkov'; // cpg1.5
+$lang_admin_php['do_not_change'] = 'Toto nemente ak si NAOZAJ nie ste istý čo robíte!'; // cpg1.5
+$lang_admin_php['reset_to_default'] = 'Nastaviť východzie'; // cpg1.5
+$lang_admin_php['no_change_needed'] = 'Žiadna zmena nie je potrebná, konfigurácia je už nastavená na východziu'; // cpg1.5 ak No change needed, config option already is set to default
+$lang_admin_php['enabled'] = 'povolený'; // cpg1.5
+$lang_admin_php['disabled'] = 'zakázaný'; // cpg1.5
+$lang_admin_php['none'] = 'žiaden'; // cpg1.5 ak
+$lang_admin_php['warning_change'] = 'Zmena tohto nastavenia, bude mať vplyv iba na odteraz pridané súbory, takže nie je doporučené túto zmenu robiť ak už sú v galérii nejaké súbory. Môžete však použiť zmeny v súboroch ktoré už sú v galérii použitím "Administrátorské nástroje (zmena veľkosti obrázkov)" v administrátorskom menu.'; // cpg1.5
+$lang_admin_php['warning_exist'] = 'Toto nastavenie nesmie byť zmenené, ak sa už nachádzajú súbory v databáze.'; // cpg1.5
+$lang_admin_php['warning_dont_submit'] = 'Ak si nie ste istí o následkoch týchto zmien nepotvrdzujte tento formulár a najprv si prečítajte dokumentáciu.'; // cpg1.5 // ak
+$lang_admin_php['menu_only'] = 'iba menu'; // cpg1.5
+$lang_admin_php['everywhere'] = 'všade'; // cpg1.5
+$lang_admin_php['manage_languages'] = 'Spravovať jazyky'; // cpg1.5
+$lang_admin_php['form_token_lifetime'] = 'Časový limit pre nahranie obrázkov'; // cpg1.5
+$lang_admin_php['seconds'] = 'sekúnd'; // cpg1.5
+$lang_admin_php['display_reset_boxes_in_config'] = 'Zobrazovať reset v konfigurácii copperminee'; // cpg1.5
+$lang_admin_php['upd_not_needed'] = 'Aktualizácia nie je potrebná'; // cpg 1.5
+}
 
 
 // ------------------------------------------------------------------------- //
 // File db_ecard.php
 // ------------------------------------------------------------------------- //
-
-if (defined('DB_ECARD_PHP')) $lang_db_ecard_php = array(
-  'title' => 'Poslať e-pohľadnicu',
-  'ecard_sender' => 'Odosielateľ',
-  'ecard_recipient' => 'Príjemca',
-  'ecard_date' => 'Dátum',
-  'ecard_display' => 'Zobraziť e-pohľadnicu',
-  'ecard_name' => 'Meno',
-  'ecard_email' => 'Email',
-  'ecard_ip' => 'IP #',
-  'ecard_ascending' => 'vzostupne',
-  'ecard_descending' => 'zostupne',
-  'ecard_sorted' => 'Zotriedené',
-  'ecard_by_date' => 'podľa dátumu',
-  'ecard_by_sender_name' => 'podľa mena odosielateľa',
-  'ecard_by_sender_email' => 'podľa emailu odesielateľa',
-  'ecard_by_sender_ip' => 'podľa IP addressy odesielateľa',
-  'ecard_by_recipient_name' => 'podľa mena príjemcu',
-  'ecard_by_recipient_email' => 'podľa emailu príjemcu',
-  'ecard_number' => 'zobrazenie záznamu %s až %s z %s',
-  'ecard_goto_page' => 'choď na stranu',
-  'ecard_records_per_page' => 'Záznamov na strane',
-  'check_all' => 'Označit všetko',
-  'uncheck_all' => 'Odznačit všetko',
-  'ecards_delete_selected' => 'Zmazať vybrané e-pohľadnice',
-  'ecards_delete_confirm' => 'Ste si istý, že chcete zmazať záznamy? Označte kontrolné okienko!',
-  'ecards_delete_sure' => 'Som si istý.',
-);
-
+if (defined('DB_ECARD_PHP')) {
+$lang_db_ecard_php['title'] = 'Odoslané pohľadnice';
+$lang_db_ecard_php['ecard_sender'] = 'Odosielateľ';
+$lang_db_ecard_php['ecard_recipient'] = 'Príjemca';
+$lang_db_ecard_php['ecard_date'] = 'Dátum';
+$lang_db_ecard_php['ecard_display'] = 'Zobraziť pohľadnicu';
+$lang_db_ecard_php['ecard_name'] = 'Meno';
+$lang_db_ecard_php['ecard_email'] = 'E-mail';
+$lang_db_ecard_php['ecard_ip'] = 'IP';
+$lang_db_ecard_php['ecard_ascending'] = 'vzostupne';
+$lang_db_ecard_php['ecard_descending'] = 'zostupně';
+$lang_db_ecard_php['ecard_sorted'] = 'Zotriedené';
+$lang_db_ecard_php['ecard_by_date'] = 'podľa dátumu';
+$lang_db_ecard_php['ecard_by_sender_name'] = 'podľa mena odosielateľa';
+$lang_db_ecard_php['ecard_by_sender_email'] = 'podľa e-mailu odosielateľa';
+$lang_db_ecard_php['ecard_by_sender_ip'] = 'podľa IP addresy odosielateľa';
+$lang_db_ecard_php['ecard_by_recipient_name'] = 'podľa mena príjemncu';
+$lang_db_ecard_php['ecard_by_recipient_email'] = 'podľa e-mailu príjemcu';
+$lang_db_ecard_php['ecard_number'] = 'Zobrazenie záznamu %s až %s z %s';
+$lang_db_ecard_php['ecard_goto_page'] = 'prejdi na stranu';
+$lang_db_ecard_php['ecard_records_per_page'] = 'Záznamov na jednej stránke';
+$lang_db_ecard_php['check_all'] = 'Označiť všetko';
+$lang_db_ecard_php['uncheck_all'] = 'Odznačiť všetko';
+$lang_db_ecard_php['ecards_delete_selected'] = 'Zmazať vybrané pohľadnice';
+$lang_db_ecard_php['ecards_delete_confirm'] = 'Ste si istý, že chcete zmazať záznamy? Nastavte checkbox!';
+$lang_db_ecard_php['ecards_delete_sure'] = 'Som si istý.';
+$lang_db_ecard_php['invalid_data'] = 'Údaje z pohľadnice ku ktorým sa snažíte dostať boli poškodené vaším e-mailovám klientom. Skontrolujte či je odkaz kompletný.';
+}
 
 // ------------------------------------------------------------------------- //
 // File db_input.php
 // ------------------------------------------------------------------------- //
-
-if (defined('DB_INPUT_PHP')) $lang_db_input_php = array(
-  'empty_name_or_com' => 'Vložte Vaše meno a Váš komentár',
-  'com_added' => 'Váš komentár bol pridaný',
-  'alb_need_title' => 'Zadajte názov pre album !',
-  'no_udp_needed' => 'Aktualizácia nie je potrebná.',
-  'alb_updated' => 'Album bol aktualizovaný',
-  'unknown_album' => 'Vybraný album neexistuje alebo nemáte práva pre pridávanie do tejto galérie',
-  'no_pic_uploaded' => 'Žiadny súbor nebol pridaný !<br /><br />Skontrlujte, či server podporuje pridávanie súborov...',
-  'err_mkdir' => 'Vytvorenie adresára %s zlyhalo!',
-  'dest_dir_ro' => 'Do adresára %s nemôže skript zapisovať !',
-  'err_move' => 'Nemožno presunúť %s do %s !',
-  'err_fsize_too_large' => 'Veľkosť súboru bola prekročená (maximum je %s x %s) !', //obsolete since cpg1.3 - consider removal in cpg1.4 once upload.php has been overhauled
-  'err_imgsize_too_large' => 'Veľkosť súboru bola prekročená (maximum je %s KB) !', //obsolete since cpg1.3 - consider removal in cpg1.4 once upload.php has been overhauled
-  'err_invalid_img' => 'Súbor nie je povolený obrázok !',
-  'allowed_img_types' => 'Môžete pridať iba %s obrázkov.',
-  'err_insert_pic' => 'Obrázok \'%s\' nie je možné vložiť do albumu ',
-  'upload_success' => 'Váš súbor bol pridaný.<br /><br />Bude viditeľný po schválení administrátorom.',
-  'notify_admin_email_subject' => '%s - Hlásenie pridania',
-  'notify_admin_email_body' => 'Člen %s pridal súbor, ktorý vyžaduje autorizáciu. Navštívte %s',
-  'info' => 'Informácia',
-  'com_added' => 'Komentár pridaný',
-  'alb_updated' => 'Album aktualizovaný',
-  'err_comment_empty' => 'Váš komentár je prázdny !',
-  'err_invalid_fext' => 'Iba súbory s následujúcimi koncovkami sú podporované : <br /><br />%s.',
-  'no_flood' => 'Prepáčte, ale ste autor posledného komentára k tomuto súboru.<br /><br />Použite voľbu na úpravu komentára',
-  'redirect_msg' => 'Práve ste boli presmerovaný.<br /><br /><br />Kliknite na \'POKRAČOVAT\' pokiaľ sa stránka nepresmeruje sama',
-  'upl_success' => 'Váš súbor bol v poriadku pridaný',
-  'email_comment_subject' => 'Komentár bol pridaný do Coppermine Photo Gallery',
-  'email_comment_body' => 'Niekto pridal komentár do Vašej galérie. Prezrite si ho na',
-  'album_not_selected' => 'Album nebol vybraný', //cpg1.4
-  'com_author_error' => 'Registrovaný člen už používa túto prezývku, login or use another one', //cpg1.4
-);
+if (defined('DB_INPUT_PHP')) {
+$lang_db_input_php['empty_name_or_com'] = 'Vložte meno a Váš komentár';
+$lang_db_input_php['com_added'] = 'Váš komentár bol pridaný'; // cpg1.5
+$lang_db_input_php['alb_need_title'] = 'Prosím, dajte albumu názov!';
+$lang_db_input_php['no_udp_needed'] = 'Aktualizácia nie je potrebná.';
+$lang_db_input_php['alb_updated'] = 'Album bol aktualizovaný';
+$lang_db_input_php['unknown_album'] = 'Vybraný album neexistuje alebo nemáte práva pre upload do tohto albumu';
+$lang_db_input_php['no_pic_uploaded'] = 'Obrázok nebol uploadovaný!<br /><br />skontrolujte či server podporuje upload súborov, a či ste naozaj zadali obrázok na upload...';
+$lang_db_input_php['err_mkdir'] = 'Chyba pri vytváraní adresára (nebol vytvorený) %s!';
+$lang_db_input_php['dest_dir_ro'] = 'Do cieľového adresára %s nemôže skript zapisovať (skontrolujte práva)!';
+$lang_db_input_php['err_move'] = 'Nemôžno presunúť %s do %s!';
+$lang_db_input_php['err_fsize_too_large'] = 'Rozmery obrázka, ktorý sa snažíte uploadovať, sú príliš veľké (max. veľkosť je %s x %s)!';
+$lang_db_input_php['err_imgsize_too_large'] = 'Veľkosť súboru, ktorý sa snažíte uploadovať, je príliš veľká (max. veľkosť je %s KB)!';
+$lang_db_input_php['err_invalid_img'] = 'Súbor ktorý ste nahrali na server nie je obrázkom!';
+$lang_db_input_php['allowed_img_types'] = 'Môžete uploadovať iba obrázky %s.';
+$lang_db_input_php['err_insert_pic'] = 'Obrázok \'%s\' nemožno vložiť do albumu ';
+$lang_db_input_php['upload_success'] = 'Váš obrázok bol pridaný na server bez problémov<br /><br />Bude viditeľný po schválení adminom.';
+$lang_db_input_php['notify_admin_email_subject'] = '%s - upozornenie na Upload';
+$lang_db_input_php['notify_admin_email_body'] = '%s nahral do albumu obrázok, ktorý vyžaduje vaše schválenie. Navštívte prosím %s';
+$lang_db_input_php['info'] = 'Informácie';
+$lang_db_input_php['com_added'] = 'Komentár pridaný';
+$lang_db_input_php['com_updated'] = 'Komentár aktualizovaný'; // cpg1.5
+$lang_db_input_php['alb_updated'] = 'Album aktualizovaný';
+$lang_db_input_php['err_comment_empty'] = 'Váš komentár je prázdny!';
+$lang_db_input_php['err_invalid_fext'] = 'Podporované sú iba súbory s nasledovnými príponami : <br /><br />%s.';
+$lang_db_input_php['no_flood'] = 'Prepáčte, ale ste autor posledného komentára k tomuto obrázku<br /><br />Ak ho chcete zmeniť použite voľbu upraviť';
+$lang_db_input_php['redirect_msg'] = 'Práve ste presmerovaný.<br /><br /><br />Kliknite na \'POKRAČOVAŤ\' ak sa stránka nepresmeruje sama';
+$lang_db_input_php['upl_success'] = 'Váš súbor bol v poriadku pridaný';
+$lang_db_input_php['email_comment_subject'] = 'Komentár bol pridaný do Coppermine Photo Gallery';
+$lang_db_input_php['email_comment_body'] = 'Niekto pridal komentár do vašej galérie. Pozrite si ho na';
+$lang_db_input_php['album_not_selected'] = 'Nebol zvolený album';
+$lang_db_input_php['com_author_error'] = 'Registrovaný užívateľ už toto méno používa. Skúste vybrať iné.';
+}
 
 // ------------------------------------------------------------------------- //
 // File delete.php
 // ------------------------------------------------------------------------- //
-
-if (defined('DELETE_PHP')) $lang_delete_php = array(
-  'caption' => 'Záhlavie',
-  'fs_pic' => 'plná veľkosť obrázku',
-  'del_success' => 'úspešne zmazané',
-  'ns_pic' => 'normálna veľkosť obrázku',
-  'err_del' => 'nemožno zmazať',
-  'thumb_pic' => 'náhľad',
-  'comment' => 'komentár',
-  'im_in_alb' => 'obrázok v albume',
-  'alb_del_success' => 'Album &laquo;%s&raquo; zmazaný', //cpg1.4
-  'alb_mgr' => 'Správca albumov',
-  'err_invalid_data' => 'Chybné dáta prijaté v \'%s\'',
-  'create_alb' => 'Vytváram album \'%s\'',
-  'update_alb' => 'Aktualizujem album \'%s\' s nadpisom \'%s\' a zoznamom \'%s\'',
-  'del_pic' => 'Zmazať obrázok',
-  'del_alb' => 'Zmazať album',
-  'del_user' => 'Zmazať člena',
-  'err_unknown_user' => 'Vybraný člen neexistuje !',
-  'err_empty_groups' => 'Neexistuje tabuľka skupiny, alebo tabuľka nie je prázdna!', //cpg1.4
-  'comment_deleted' => 'Komentár bol úspešne zmazaný',
-  'npic' => 'Obrázok', //cpg1.4
-  'pic_mgr' => 'Správca obrázkov', //cpg1.4
-  'update_pic' => 'Aktualizujem obrázok \'%s\' s názvom \'%s\' a indexom \'%s\'', //cpg1.4
-  'username' => 'Meno člena', //cpg1.4
-  'anonymized_comments' => '%s komentár anonymizovaný', //cpg1.4
-  'anonymized_uploads' => '%s verejné pridanie anonymizované', //cpg1.4
-  'deleted_comments' => '%s komentár zmazaný', //cpg1.4
-  'deleted_uploads' => '%s verejné pridanie zmazané', //cpg1.4
-  'user_deleted' => 'člen %s zmazaný', //cpg1.4
-  'activate_user' => 'Aktivovať člena', //cpg1.4
-  'user_already_active' => 'Účet už je aktívny', //cpg1.4
-  'activated' => 'Aktivované', //cpg1.4
-  'deactivate_user' => 'Deaktivovať člena', //cpg1.4
-  'user_already_inactive' => 'Účet už je neaktívny', //cpg1.4
-  'deactivated' => 'Deaktivované', //cpg1.4
-  'reset_password' => 'Resetovať heslo', //cpg1.4
-  'password_reset' => 'Heslo resetované na %s', //cpg1.4
-  'change_group' => 'Zmeniť primárnu skupinu', //cpg1.4
-  'change_group_to_group' => 'Zmeniť z %s na %s', //cpg1.4
-  'add_group' => 'Pridať sekundárnu skupinu', //cpg1.4
-  'add_group_to_group' => 'Pridávanie člena %s do skupiny %s. Teraz je členom %s ako primárnej a členom %s ako sekundárnej skupiny členov.', //cpg1.4
-  'status' => 'Stav', //cpg1.4
-);
-
-// ------------------------------------------------------------------------- //
-// File displayecard.php
-// ------------------------------------------------------------------------- //
-
-if (defined('DISPLAYECARD_PHP')) {
-
-$lang_displayecard_php = array(
-  'invalid_data' => 'The data for the ecard you are trying to access has been corrupted by your mail client. Check the link is complete.', //cpg1.4
-);
+if (defined('DELETE_PHP')) {
+$lang_delete_php['orig_pic'] = 'pôvodný obrázok'; // cpg1.5
+$lang_delete_php['fs_pic'] = 'obrázok v plnej veľkosti';
+$lang_delete_php['del_success'] = 'úspešne zmazané';
+$lang_delete_php['ns_pic'] = 'normálna veľkosť obrázka';
+$lang_delete_php['err_del'] = 'nemožno zmazať';
+$lang_delete_php['thumb_pic'] = 'náhľad';
+$lang_delete_php['comment'] = 'komentár';
+$lang_delete_php['im_in_alb'] = 'obrázok v albume';
+$lang_delete_php['alb_del_success'] = 'Album &laquo;%s&raquo; zmazaný';
+$lang_delete_php['alb_mgr'] = 'Správca albumov';
+$lang_delete_php['err_invalid_data'] = 'Boli obdržané chybné dáta v \'%s\'';
+$lang_delete_php['create_alb'] = 'Vytváram album \'%s\'';
+$lang_delete_php['update_alb'] = 'Aktualizujem album \'%s\' s názvom \'%s\' a indexom \'%s\'';
+$lang_delete_php['del_pic'] = 'Zmazať obrázok';
+$lang_delete_php['del_alb'] = 'Zmazať album';
+$lang_delete_php['del_user'] = 'Zmazať užívateľa';
+$lang_delete_php['err_unknown_user'] = 'Vybraný užívateľ neexistuje!';
+$lang_delete_php['err_empty_groups'] = 'Nie je vytvorená skupina alebo je skupina prázdna.';
+$lang_delete_php['comment_deleted'] = 'Komentár úspešne zmazaný';
+$lang_delete_php['npic'] = 'Obrázok';
+$lang_delete_php['pic_mgr'] = 'Manažér obrázkov';
+$lang_delete_php['update_pic'] = 'Aktualizácia obrázka \'%s\' s názvom \'%s\' a indexom \'%s\'';
+$lang_delete_php['username'] = 'Užívateľské meno';
+$lang_delete_php['anonymized_comments'] = '%s komentárov anonymizovaných';
+$lang_delete_php['anonymized_uploads'] = '%s verejných uploadov anonymizovaných';
+$lang_delete_php['deleted_comments'] = '%s komentárov zmazaných';
+$lang_delete_php['deleted_uploads'] = '%s verejných uploadov zmazaných';
+$lang_delete_php['user_deleted'] = 'užívateľ %s zmazaný';
+$lang_delete_php['activate_user'] = 'Aktívny užívateľ';
+$lang_delete_php['user_already_active'] = 'Účet je momentálne aktívny';
+$lang_delete_php['activated'] = 'Aktivovaný';
+$lang_delete_php['deactivate_user'] = 'Deaktivovať užívateľa';
+$lang_delete_php['user_already_inactive'] = 'Účet je momentálne neaktívny';
+$lang_delete_php['deactivated'] = 'Deaktivovaný';
+$lang_delete_php['reset_password'] = 'Reset hesla';
+$lang_delete_php['password_reset'] = 'Heslo bolo resetované %s';
+$lang_delete_php['change_group'] = 'Zmeň primárnu skupinu';
+$lang_delete_php['change_group_to_group'] = 'Mením z %s na %s';
+$lang_delete_php['add_group'] = 'Pridaj sekundárnu skupinu';
+$lang_delete_php['add_group_to_group'] = 'Pridávam užívateľa %s do skupiny %s. Teraz je členom %s ako primárnej a %s ako sekundárnej skupiny.';
+$lang_delete_php['status'] = 'Status';
+$lang_delete_php['updating_album'] = 'Aktualizujem album ';
+$lang_delete_php['position'] = ' Umiestniť do ';
+$lang_delete_php['updating_pic'] = 'Aktualizujem obrázky ';
 }
 
 // ------------------------------------------------------------------------- //
 // File displayimage.php
 // ------------------------------------------------------------------------- //
-
 if (defined('DISPLAYIMAGE_PHP')){
+$lang_display_image_php['confirm_del'] = 'Naozaj chcete zmazať tento obrázok?\\nPriložené komentáre budou stratené.';
+$lang_display_image_php['del_pic'] = 'ZMAZAŤ tento súbor';
+$lang_display_image_php['size'] = '%s x %s pixelelov';
+$lang_display_image_php['views'] = '%s krát';
+$lang_display_image_php['slideshow'] = 'Slideshow';
+$lang_display_image_php['stop_slideshow'] = 'ZASTAVIŤ SLIDESHOW';
+$lang_display_image_php['view_fs'] = 'Kliknite pre zobrazenie veľkého obrázka';
+$lang_display_image_php['edit_pic'] = 'Editácia informácii súboru';
+$lang_display_image_php['crop_pic'] = 'Orezať a otočiť';
+$lang_display_image_php['set_player'] = 'Zmena prehrávača';
 
-$lang_display_image_php = array(
-  'confirm_del' => 'Ste si istý, že chcete ZMAZAŤ tento súbor? \\nPriložené komentáre budú tiež zmazané.', //js-alert
-  'del_pic' => 'ZMAZAŤ TENTO SÚBOR',
-  'size' => '%s x %s pixelov',
-  'views' => '%s krát',
-  'slideshow' => 'Automatické prezeranie',
-  'stop_slideshow' => 'ZASTAVIŤ PREZERANIE',
-  'view_fs' => 'Kliknite pre zobrazenie v plnom rozlíšení',
-  'edit_pic' => 'Edituj info o súbore', //cpg1.4
-  'crop_pic' => 'Orezať/Otočiť',
-  'set_player' => 'Zmeniť prehrávač',
-);
+$lang_picinfo['title'] = 'Informácie o obrázku';
+$lang_picinfo['Album name'] = 'Názov albumu';
+$lang_picinfo['Rating'] = 'Hodnotenie (%s hlasov)';
+$lang_picinfo['Date Added'] = 'Pridané';
+$lang_picinfo['Dimensions'] = 'Rozmery';
+$lang_picinfo['Displayed'] = 'Zobrazené';
+$lang_picinfo['URL'] = 'URL';
+$lang_picinfo['Make'] = 'Vytvorené';
+$lang_picinfo['Model'] = 'Model';
+$lang_picinfo['DateTime'] = 'Dátum a čas';
+$lang_picinfo['ISOSpeedRatings'] = 'ISO';
+$lang_picinfo['MaxApertureValue'] = 'Maximálna svetelnosť';
+$lang_picinfo['FocalLength'] = 'Ohnisková vzdialenosť';
+$lang_picinfo['Comment'] = 'Komentár';
+$lang_picinfo['addFav'] = 'Pridať do obľúbených';
+$lang_picinfo['addFavPhrase'] = 'Obľúbené';
+$lang_picinfo['remFav'] = 'Vyňať z obľúbených';
+$lang_picinfo['iptcTitle'] = 'IPTC popis';
+$lang_picinfo['iptcCopyright'] = 'IPTC Copyright';
+$lang_picinfo['iptcKeywords'] = 'IPTC Kľúčové slová';
+$lang_picinfo['iptcCategory'] = 'IPTC Kategória';
+$lang_picinfo['iptcSubCategories'] = 'IPTC Podkategória';
+$lang_picinfo['ColorSpace'] = 'Farebná škála';
+$lang_picinfo['ExposureProgram'] = 'Expozičný režim';
+$lang_picinfo['Flash'] = 'Blesk';
+$lang_picinfo['MeteringMode'] = 'Meranie';
+$lang_picinfo['ExposureTime'] = 'Expozičný čas';
+$lang_picinfo['ExposureBiasValue'] = 'Expozícia';
+$lang_picinfo['ImageDescription'] = 'Popis obrázka';
+$lang_picinfo['Orientation'] = 'Orientácia';
+$lang_picinfo['xResolution'] = 'X Rozlíšenie';
+$lang_picinfo['yResolution'] = 'Y Rozlíšenie';
+$lang_picinfo['ResolutionUnit'] = 'Jednotka rozlíšenia';
+$lang_picinfo['Software'] = 'Software';
+$lang_picinfo['YCbCrPositioning'] = 'YCbCr Positioning';
+$lang_picinfo['ExifOffset'] = 'EXIF Offset';
+$lang_picinfo['IFD1Offset'] = 'IFD1 Offset';
+$lang_picinfo['FNumber'] = 'Clonové číslo';
+$lang_picinfo['ExifVersion'] = 'EXIF verzia';
+$lang_picinfo['DateTimeOriginal'] = 'Dátum a čas originalu';
+$lang_picinfo['DateTimedigitized'] = 'Dátum a čas digitalizácie';
+$lang_picinfo['ComponentsConfiguration'] = 'Konfigurácia';
+$lang_picinfo['CompressedBitsPerPixel'] = 'Kompresia Bity na Pixel';
+$lang_picinfo['LightSource'] = 'Zdroj svetla';
+$lang_picinfo['ISOSetting'] = 'ISO Nastavenie';
+$lang_picinfo['ColorMode'] = 'Farebný mód';
+$lang_picinfo['Quality'] = 'Kvalita';
+$lang_picinfo['ImageSharpening'] = 'Doostrovanie';
+$lang_picinfo['FocusMode'] = 'Režim zaostrovania';
+$lang_picinfo['FlashSetting'] = 'Nastavenie blesku';
+$lang_picinfo['ISOSelection'] = 'ISO Výber';
+$lang_picinfo['ImageAdjustment'] = 'Úprava obrázka';
+$lang_picinfo['Adapter'] = 'Adaptér';
+$lang_picinfo['ManualFocusDistance'] = 'Vzdialenosť manuálneho zaostrenia';
+$lang_picinfo['DigitalZoom'] = 'Digitálny Zoom';
+$lang_picinfo['AFFocusPosition'] = 'Pozícia automatického zaostrenia'; //ak
+$lang_picinfo['Saturation'] = 'Saturácia';
+$lang_picinfo['NoiseReduction'] = 'Odstraňovanie šumu'; //ak
+$lang_picinfo['FlashPixVersion'] = 'Flash Pix Verzia'; //ak
+$lang_picinfo['ExifImageWidth'] = 'EXIF šírka obrázka'; //ak
+$lang_picinfo['ExifImageHeight'] = 'EXIF výška obrázka'; //ak
+$lang_picinfo['ExifInteroperabilityOffset'] = 'EXIF Interoperability Offset'; //ak
+$lang_picinfo['FileSource'] = 'File source';
+$lang_picinfo['SceneType'] = 'Typ scény';
+$lang_picinfo['CustomerRender'] = 'Customer Render'; //ak
+$lang_picinfo['ExposureMode'] = 'Expozičný režim';
+$lang_picinfo['WhiteBalance'] = 'Vyváženie bielej';
+$lang_picinfo['DigitalZoomRatio'] = 'Digital Zoom Ratio'; //ak
+$lang_picinfo['SceneCaptureMode'] = 'Scene Capture Mode'; //ak
+$lang_picinfo['GainControl'] = 'Gain Control'; //ak
+$lang_picinfo['Contrast'] = 'Kontrast';
+$lang_picinfo['Sharpness'] = 'Doodtrovanie';
+$lang_picinfo['ManageExifDisplay'] = 'Upraviť zobrazovanie EXIF';
+$lang_picinfo['success'] = 'Informácie boli úspešne aktualizované.';
+$lang_picinfo['show_details'] = 'Zobraziť detaily'; // cpg1.5
+$lang_picinfo['hide_details'] = 'Skryť detaily'; // cpg1.5
+$lang_picinfo['download_URL'] = 'Link pre stiahnutie'; //ak
+$lang_picinfo['movie_player'] = 'Prehrávať súbor v štandardnej aplikácii.';
 
-$lang_picinfo = array(
-  'title' =>'Informácie o súbore',
-  'Filename' => 'Názov súboru',
-  'Album name' => 'Názov albumu',
-  'Rating' => 'Hodnotenie (%s hlasov)',
-  'Keywords' => 'Kľúčové slová',
-  'File Size' => 'Veľkosť súboru',
-  'Date Added' => 'Dátum pridania', //cpg1.4
-  'Dimensions' => 'Rozmery',
-  'Displayed' => 'Zobrazené',
-  'URL' => 'URL', //cpg1.4
-  'Make' => 'Vytvorené', //cpg1.4
-  'Model' => 'Model', //cpg1.4
-  'DateTime' => 'Dátum Čas', //cpg1.4
-  'ISOSpeedRatings'=>'ISO', //cpg1.4
-  'MaxApertureValue' => 'Max. clona', //cpg1.4
-  'FocalLength' => 'Ohnisková vzdialenosť', //cpg1.4
-  'Comment' => 'Komentár',
-  'addFav'=>'Pridať k obľúbeným',
-  'addFavPhrase'=>'Obľúbené',
-  'remFav'=>'Odobrať z obľúbených',
-  'iptcTitle'=>'IPTC Title',
-  'iptcCopyright'=>'IPTC Copyright',
-  'iptcKeywords'=>'IPTC Keywords',
-  'iptcCategory'=>'IPTC Category',
-  'iptcSubCategories'=>'IPTC Sub Categories',
-  'ColorSpace' => 'Farebný priestor', //cpg1.4
-  'ExposureProgram' => 'Expozičný program', //cpg1.4
-  'Flash' => 'Blesk', //cpg1.4
-  'MeteringMode' => 'Mód merania', //cpg1.4
-  'ExposureTime' => 'Expozičný čas', //cpg1.4
-  'ExposureBiasValue' => 'Korekcia expozície', //cpg1.4
-  'ImageDescription' => 'Popis obrázku', //cpg1.4
-  'Orientation' => 'Orientácia', //cpg1.4
-  'xResolution' => 'X Rozlíšenie', //cpg1.4
-  'yResolution' => 'Y Rozlíšenie', //cpg1.4
-  'ResolutionUnit' => 'Jednotka rozlíšenia', //cpg1.4
-  'Software' => 'Software', //cpg1.4
-  'YCbCrPositioning' => 'YCbCrPositioning', //cpg1.4
-  'ExifOffset' => 'Exif Offset', //cpg1.4
-  'IFD1Offset' => 'IFD1 Offset', //cpg1.4
-  'FNumber' => 'F číslo', //cpg1.4
-  'ExifVersion' => 'Exif verzia', //cpg1.4
-  'DateTimeOriginal' => 'Dátum/Čas Original', //cpg1.4
-  'DateTimedigitized' => 'Dátum/Čas digitalizácie', //cpg1.4
-  'ComponentsConfiguration' => 'Components Configuration', //cpg1.4
-  'CompressedBitsPerPixel' => 'Kompresia Bitov na Pixel', //cpg1.4
-  'LightSource' => 'Zdroj svetla', //cpg1.4
-  'ISOSetting' => 'ISO nastavenie', //cpg1.4
-  'ColorMode' => 'Farebný mód', //cpg1.4
-  'Quality' => 'Kvalita', //cpg1.4
-  'ImageSharpening' => 'Doostrenie', //cpg1.4
-  'FocusMode' => 'Fokus mód', //cpg1.4
-  'FlashSetting' => 'Nastavenie blesku', //cpg1.4
-  'ISOSelection' => 'ISO voľba', //cpg1.4
-  'ImageAdjustment' => 'Upravenie obrázku', //cpg1.4
-  'Adapter' => 'Adaptér', //cpg1.4
-  'ManualFocusDistance' => 'Manual Fokus vzdialenosť', //cpg1.4
-  'DigitalZoom' => 'Digital Zoom', //cpg1.4
-  'AFFocusPosition' => 'AF Focus pozícia', //cpg1.4
-  'Saturation' => 'Saturácia', //cpg1.4
-  'NoiseReduction' => 'Redukcia šumu', //cpg1.4
-  'FlashPixVersion' => 'Flash Pix Version', //cpg1.4
-  'ExifImageWidth' => 'Exif šírka', //cpg1.4
-  'ExifImageHeight' => 'Exif výška', //cpg1.4
-  'ExifInteroperabilityOffset' => 'Exif Interoperability Offset', //cpg1.4
-  'FileSource' => 'Zdroj', //cpg1.4
-  'SceneType' => 'Typ scény', //cpg1.4
-  'CustomerRender' => 'Customer Render', //cpg1.4
-  'ExposureMode' => 'Expozičný mód', //cpg1.4
-  'WhiteBalance' => 'Vyváženie bielej', //cpg1.4
-  'DigitalZoomRatio' => 'Digital Zoom pomer', //cpg1.4
-  'SceneCaptureMode' => 'Scene Capture Mode', //cpg1.4
-  'GainControl' => 'Citlivosť', //cpg1.4
-  'Contrast' => 'Kontrast', //cpg1.4
-  'Sharpness' => 'Doostrenie', //cpg1.4
-  'ManageExifDisplay' => 'Vybrať Exif položky k zobrazeniu', //cpg1.4
-  'submit' => 'Odoslať', //cpg1.4
-  'success' => 'Informácia úspešne aktualizovaná.', //cpg1.4
-  'details' => 'Detaily', //cpg1.4
-);
+$lang_display_comments['comment_x_to_y_of_z'] = '%d až %d z %d'; // cpg1.5
+$lang_display_comments['page'] = 'Strana'; // cpg1.5
+$lang_display_comments['edit_title'] = 'Upraviť tento komentár';
+$lang_display_comments['delete_title'] = 'ZMAZAŤ tento komentár'; // cpg1.5
+$lang_display_comments['confirm_delete'] = 'Naozaj chcete zmazať tento komentár?'; // ak
+$lang_display_comments['add_your_comment'] = 'Pridať komentár';
+$lang_display_comments['name'] = 'Meno';
+$lang_display_comments['comment'] = 'Komentár';
+$lang_display_comments['your_name'] = 'Anonym';
+$lang_display_comments['report_comment_title'] = 'Pošli tento komentár administrátorovi';
+$lang_display_comments['pending_approval'] = 'Komentár bude viiditeľný až po schválení administrátorom'; // cpg1.5
+$lang_display_comments['unapproved_comment'] = 'Neschválený komentár'; // cpg1.5
+$lang_display_comments['pending_approval_message'] = 'Niekto sem poslal komentár. Bude zobrazený po schválení administrátorom.'; // cpg1.5 ak
+$lang_display_comments['approve'] = 'Schváliť komentár'; // cpg1.5
+$lang_display_comments['disapprove'] = 'Označiť komentár ako neschválený'; // cpg1.5
+$lang_display_comments['log_in_to_comment'] = 'Anonymné komentáre ti nie sú povolené. Na pridanie komentára sa %sPrihláste%s.'; // cpg1.5 do not translate the %s placeholders - they will be used as wrappers for the link (<a>)
+$lang_display_comments['default_username_message'] = 'Prosím poskytnite vaše meno pro komentár'; // cpg1.5
+$lang_display_comments['comment_rejected'] = 'Váš komentár bol zamietnutý'; // cpg1.5
 
-$lang_display_comments = array(
-  'OK' => 'OK',
-  'edit_title' => 'Upraviť tento komentár',
-  'confirm_delete' => 'Ste si istý, že chcete zmazať tento komentár ?', //js-alert
-  'add_your_comment' => 'Pridať komentár',
-  'name'=>'Meno',
-  'comment'=>'Komentár',
-  'your_name' => 'Anonym',
-  'report_comment_title' => 'Upozorni administrátora na tento príspevok', //cpg1.4
-);
-
-$lang_fullsize_popup = array(
-  'click_to_close' => 'Kliknutím na obrázok zatvoríte okno.',
-);
-
+$lang_fullsize_popup['click_to_close'] = 'Klikni na obrázok pre zatvorenie okna';
+$lang_fullsize_popup['close_window'] = 'zavrieť okno'; // cpg1.5
 }
 
 // ------------------------------------------------------------------------- //
 // File ecard.php
 // ------------------------------------------------------------------------- //
 
-if (defined('ECARDS_PHP') || defined('DISPLAYECARD_PHP')) $lang_ecard_php =array(
-  'title' => 'Pošli e-pohľadnicu',
-  'invalid_email' => '<font color="red"><b>Warning</b></font>: neplatná emailová adresa:', //cpg1.4
-  'ecard_title' => 'Pohľadnica od %s pre Teba',
-  'error_not_image' => 'Iba obrázky môžu byť poslané ako e-pohľadnica.',
-  'view_ecard' => 'Alternatívna linka ak sa pohľadnica nezobrazila správne.', //cpg1.4
-  'view_ecard_plaintext' => 'Pre zobrazenie pohľadnice, kopíruj a vlož túto url do adresného riadku prehliadača:', //cpg1.4
-  'view_more_pics' => 'Ďaľšie obrázky tu!', //cpg1.4
-  'send_success' => 'Pohľadnica bola odoslaná',
-  'send_failed' => 'Prepáčte, ale server nemohol odoslať Vašu pohľadnicu...',
-  'from' => 'Od',
-  'your_name' => 'Vaše meno',
-  'your_email' => 'Váš email',
-  'to' => 'Komu',
-  'rcpt_name' => 'Meno príjemcu',
-  'rcpt_email' => 'Email príjemcu',
-  'greetings' => 'Záhlavie', //cpg1.4
-  'message' => 'Správa', //cpg1.4
-  'ecards_footer' => 'Poslal %s s IP %s o %s (Gallery time)', //cpg1.4
-  'preview' => 'Náhľad pohľadnice', //cpg1.4
-  'preview_button' => 'Náhľad', //cpg1.4
-  'submit_button' => 'Pošli pohľadnicu', //cpg1.4
-  'preview_view_ecard' => 'Toto je alternatívna linka k pohľadnici ak bola skutočne vygenerovaná, neslúži ako náhľad.', //cpg1.4
-);
+if (defined('ECARDS_PHP')) {
+$lang_ecard_php['title'] = 'Poslať pohľadnicu';
+$lang_ecard_php['invalid_email'] = 'Varovanie: neplatná e-mailová adresa:'; // cpg1.5
+$lang_ecard_php['ecard_title'] = 'Pohľadnica zo servera %s pre vás';
+$lang_ecard_php['error_not_image'] = 'Iba obrázky môžu byť poslané ako pohľadnica.'; // cpg1.5
+$lang_ecard_php['error_not_image_flash'] = 'Iba obrázky a flash súbory môžu byť poslané ako pohľadnica.'; // cpg1.5
+$lang_ecard_php['view_ecard'] = 'Ak sa pohľadnica nezobrazila klikni na odkaz';
+$lang_ecard_php['view_ecard_plaintext'] = 'Pre zobrazenie pohľadnice skopírujte a vložte tento odkaz do prehliadača';
+$lang_ecard_php['view_more_pics'] = 'Pozri viac obrázkov!';
+$lang_ecard_php['send_success'] = 'Vaša pohľadnica bola odoslaná';
+$lang_ecard_php['send_failed'] = 'Prepáčte, ale server nemohol odoslať vašu pohľadnicu...';
+$lang_ecard_php['from'] = 'Od';
+$lang_ecard_php['your_name'] = 'Vaše meno';
+$lang_ecard_php['your_email'] = 'Vaša e-mailová adresa';
+$lang_ecard_php['to'] = 'Komu';
+$lang_ecard_php['rcpt_name'] = 'Meno príjemcu';
+$lang_ecard_php['rcpt_email'] = 'Doručiť na e-mail';
+$lang_ecard_php['greetings'] = 'Pozdrav/oslovenie';
+$lang_ecard_php['message'] = 'Správa';
+$lang_ecard_php['ecards_footer'] = 'Odoslané od %s z IP %s o %s (čas servera)';
+$lang_ecard_php['preview'] = 'Náhľad pohľadnice';
+$lang_ecard_php['preview_button'] = 'Náhľad';
+$lang_ecard_php['submit_button'] = 'Poslať pohľadnicu';
+$lang_ecard_php['preview_view_ecard'] = 'Toto je alternatívny odkaz pre pohľadnicu. Nefunguje ako náhľad.';
+}
 
 // ------------------------------------------------------------------------- //
-// File report_file.php //cpg1.4
+// File report_file.php
 // ------------------------------------------------------------------------- //
 
-if (defined('REPORT_FILE_PHP') || defined('DISPLAYREPORT_PHP')) $lang_report_php =array(
-  'title' => 'Upozornenie pre administrátora', //cpg1.4
-  'invalid_email' => '<b>Varovanie</b> : neplatná emailová adresa !', //cpg1.4
-  'report_subject' => 'Hlásenie od %s z galérie %s', //cpg1.4
-  'view_report' => 'Náhradná linka ak sa hlásenie nezobrazilo správne', //cpg1.4
-  'view_report_plaintext' => 'Pre zobrazenie komentára, kopíruj a vlož túto url do adresného riadku prehliadača:', //cpg1.4
-  'view_more_pics' => 'Galéria', //cpg1.4
-  'send_success' => 'Hlásenie bolo odoslané', //cpg1.4
-  'send_failed' => 'Server nemôže odoslať Vaše hlásenie...', //cpg1.4
-  'from' => 'Od', //cpg1.4
-  'your_name' => 'Vaše meno', //cpg1.4
-  'your_email' => 'Váš email', //cpg1.4
-  'to' => 'Komu', //cpg1.4
-  'administrator' => 'Admonistrátor/Mod', //cpg1.4
-  'subject' => 'Predmet', //cpg1.4
-  'comment_field_name' => 'Hlásenie ku komentáru od "%s"', //cpg1.4
-  'reason' => 'Dôvod', //cpg1.4
-  'message' => 'Správa', //cpg1.4
-  'report_footer' => 'Odoslal %s z IP %s o %s (Gallery time)', //cpg1.4
-  'obscene' => 'obscénne', //cpg1.4
-  'offensive' => 'útočné', //cpg1.4
-  'misplaced' => 'zle zaradené', //cpg1.4
-  'missing' => 'chýbajúce', //cpg1.4
-  'issue' => 'chyba/nezobrazuje sa', //cpg1.4
-  'other' => 'iné', //cpg1.4
-  'refers_to' => 'Hlásenie o súbore odkazuje na', //cpg1.4
-  'reasons_list_heading' => 'dôvod hlásenia:', //cpg1.4
-  'no_reason_given' => 'dôvod neudaný', //cpg1.4
-  'go_comment' => 'Choď do komentárov', //cpg1.4
-  'view_comment' => 'Zobraziť celé hlásenie', //cpg1.4
-  'type_file' => 'súbor', //cpg1.4
-  'type_comment' => 'komentár', //cpg1.4
-);
+if (defined('REPORT_FILE_PHP')) {
+$lang_report_php['title'] = 'Oznam administrátorovi';
+$lang_report_php['invalid_email'] = '<strong>Pozor</strong> : nesprávny e-mail!';
+$lang_report_php['report_subject'] = 'Oznam od %s v albume %s';
+$lang_report_php['view_report'] = 'Alternatívny link ak nie je oznam správne zobrazený';
+$lang_report_php['view_report_plaintext'] = 'Pre zobrazenie oznamu skopírujte odkaz do prehliadača';
+$lang_report_php['view_more_pics'] = 'Album';
+$lang_report_php['send_success'] = 'Váš oznam bol odoslaný';
+$lang_report_php['send_failed'] = 'Prepáčte, ale server nemôže odoslať váš odkaz...';
+$lang_report_php['from'] = 'Od';
+$lang_report_php['your_name'] = 'Vaše meno';
+$lang_report_php['your_email'] = 'Vaša e-mailová adresa';
+$lang_report_php['to'] = 'Komu';
+$lang_report_php['administrator'] = 'Administrator/Mód';
+$lang_report_php['subject'] = 'Predmet';
+$lang_report_php['comment_field_name'] = 'Odkaz odoslaný "%s"';
+$lang_report_php['reason'] = 'Dôvod';
+$lang_report_php['message'] = 'Správa';
+$lang_report_php['report_footer'] = 'Odoslaný %s z IP %s o %s (čas servera)';
+$lang_report_php['obscene'] = 'obscénne';
+$lang_report_php['offensive'] = 'brutálne';
+$lang_report_php['misplaced'] = 'od veci/nepatrí sem';
+$lang_report_php['missing'] = 'chýba';
+$lang_report_php['issue'] = 'chyba/nevidno';
+$lang_report_php['other'] = 'iné';
+$lang_report_php['refers_to'] = 'Oznam sa týka';
+$lang_report_php['reasons_list_heading'] = 'dôvody oznamu:';
+$lang_report_php['no_reason_given'] = 'nebol uvedený dôvod';
+$lang_report_php['go_comment'] = 'Choď na komentár';
+$lang_report_php['view_comment'] = 'Zobraz úplný odkaz s komentárom';
+$lang_report_php['type_file'] = 'súbor';
+$lang_report_php['type_comment'] = 'komentár';
+$lang_report_php['invalid_data'] = 'Dáta odkazu, ktoré sa snažíte zobraziť boli poškodené vašim e-mailovým klientom. Skontrolujte prosím, či je odkaz úplný.'; //ak
+}
 
 // ------------------------------------------------------------------------- //
 // File editpics.php
 // ------------------------------------------------------------------------- //
 
-if (defined('EDITPICS_PHP')) $lang_editpics_php = array(
-  'pic_info' => 'Info o súbore',
-  'album' => 'Album',
-  'title' => 'Nadpis',
-  'filename' => 'Meno súboru', //cpg1.4
-  'desc' => 'Popis',
-  'keywords' => 'Kľúčové slová',
-  'new_keyword' => 'Nové kľúčové slovo', //cpg1.4
-  'new_keywords' => 'Nové kľúčové slová nájdené', //cpg1.4
-  'existing_keyword' => 'Existujúce kľúčové slovo ', //cpg1.4
-  'pic_info_str' => '%s &krát; %s - %s KB - %s zobrazení - %s hlasov',
-  'approve' => 'Schváliť súbor',
-  'postpone_app' => 'Odložiť schválenie',
-  'del_pic' => 'Zmazať súbor',
-  'del_all' => 'Zmazať všetky súbory', //cpg1.4
-  'read_exif' => 'Načítať EXIF info znova',
-  'reset_view_count' => 'Vynulovať počítadlo zobrazení',
-  'reset_all_view_count' => 'Vynulovať všetky počítadlá zobrazení', //cpg1.4
-  'reset_votes' => 'Nulovať hlasovania',
-  'reset_all_votes' => 'Nulovať všetky hlasovania', //cpg1.4
-  'del_comm' => 'Vymazať komentáre',
-  'del_all_comm' => 'Vymazať všetky komentáre', //cpg1.4
-  'upl_approval' => 'Schválenie pridania', //cpg1.4
-  'edit_pics' => 'Upraviť súbory',
-  'see_next' => 'Ukáž ďaľšie súbory',
-  'see_prev' => 'Ukáž predchádzajúce súbory',
-  'n_pic' => '%s súborov',
-  'n_of_pic_to_disp' => 'Počet súborov na zobrazenie',
-  'apply' => 'Vykonaj modifikácie',
-  'crop_title' => 'Coppermine Picture Editor',
-  'preview' => 'Náhľad',
-  'save' => 'Uložiť obrázok',
-  'save_thumb' =>'Uložiť ako náhľad',
-  'gallery_icon' => 'Ulož ako moju ikonu', //cpg1.4
-  'sel_on_img' =>'Výber musí celý ležať vo vnútri obrázku!', //js-alert
-  'album_properties' =>'Vlastnosti albumov', //cpg1.4
-  'parent_category' =>'Nadradená kategória', //cpg1.4
-  'thumbnail_view' =>'Náhľadové zobrazenie', //cpg1.4
-  'select_unselect' =>'označ/odznač všetko', //cpg1.4
-  'file_exists' => "Súbor '%s' už existuje.", //cpg1.4
-  'rename_failed' => "Nemožno premenovať '%s' na '%s'.", //cpg1.4
-  'src_file_missing' => "Zdrojový súbor '%s' chýba.", // cpg 1.4
-  'mime_conv' => "Nemožno konvertovať z '%s' na '%s'",//cpg1.4
-  'forb_ext' => 'Nepovolená prípona súboru.',//cpg1.4
-);
+if (defined('EDITPICS_PHP')) {
+$lang_editpics_php['pic_info'] = 'Informácie o súbore';
+$lang_editpics_php['desc'] = 'Popis';
+$lang_editpics_php['approval'] = 'Schválenie'; //cpg 1.5
+$lang_editpics_php['approved'] = 'Schválené'; // cpg 1.5
+$lang_editpics_php['unapproved'] = 'Neschválené'; // cpg 1.5
+$lang_editpics_php['new_keyword'] = 'Nové kľúčové slovo';
+$lang_editpics_php['new_keywords'] = 'Nové nájdené kľúčové slová';
+$lang_editpics_php['existing_keyword'] = 'Existujúce kľúčové slovo';
+$lang_editpics_php['pic_info_str'] = '%s &krát; %s - %s KB - %s zobrazení - %s hlasov';
+$lang_editpics_php['approve'] = 'Schváliť súbor';
+$lang_editpics_php['postpone_app'] = 'Odložiť schválenie';
+$lang_editpics_php['del_pic'] = 'Zmazať súbor';
+$lang_editpics_php['del_all'] = 'Zmazať VŠETKY súbory';
+$lang_editpics_php['read_exif'] = 'Načítať EXIF informácie znova';
+$lang_editpics_php['reset_view_count'] = 'Vynulovať počítadlo zobrazení';
+$lang_editpics_php['reset_all_view_count'] = 'Vynulovať VŠETKY počítadlá zobrazení';
+$lang_editpics_php['reset_votes'] = 'Vynulovať hlasy';
+$lang_editpics_php['reset_all_votes'] = 'Vynulovať VŠETKY hlasy';
+$lang_editpics_php['del_comm'] = 'Zmazať komentáre';
+$lang_editpics_php['del_all_comm'] = 'Zmazať VŠETKY komentáre';
+$lang_editpics_php['upl_approval'] = 'Schválenie uploadu';
+$lang_editpics_php['edit_pics'] = 'Upraviť súbory';
+$lang_editpics_php['edit_pic'] = 'Upraviť súbor'; // cpg 1.5
+$lang_editpics_php['see_next'] = 'Zobraziť ďalšie súbory';
+$lang_editpics_php['see_prev'] = 'Zobraziť predchádzajúce súbory';
+$lang_editpics_php['n_pic'] = '%s súborov';
+$lang_editpics_php['n_of_pic_to_disp'] = 'Počet súborov na zobrazenie';
+$lang_editpics_php['crop_title'] = 'Coppermine Editor Obrázkov';
+$lang_editpics_php['preview'] = 'Náhľad';
+$lang_editpics_php['save'] = 'Ulož obrázok';
+$lang_editpics_php['save_thumb'] = 'Ulož ako náhľad';
+$lang_editpics_php['gallery_icon'] = 'Použíť ako moju ikonu';
+$lang_editpics_php['sel_on_img'] = 'Výber musí byť celý v oblasti obrázka!'; // ak
+$lang_editpics_php['album_properties'] = 'Vlastnosti albumu';
+$lang_editpics_php['parent_category'] = 'Nadradená kategória';
+$lang_editpics_php['thumbnail_view'] = 'Náhľady';
+$lang_editpics_php['select_unselect'] = 'označ/odoznač všetko';
+$lang_editpics_php['file_exists'] = 'Cieľový súbor \'%s\' už existuje.';
+$lang_editpics_php['rename_failed'] = 'Chyba pri premenovaní \'%s\' na \'%s\'.';
+$lang_editpics_php['src_file_missing'] = 'Zdrojový súbor \'%s\' chýba.';
+$lang_editpics_php['mime_conv'] = 'Nemožno konvertovať súbor \'%s\' do \'%s\'';
+$lang_editpics_php['forb_ext'] = 'Zakázaná prípona súboru.';
+$lang_editpics_php['error_editor_class'] = 'Skript pre vašu metódu zmeny veľkosti nie je implementovaný'; // cpg 1.5 ak
+$lang_editpics_php['error_document_size'] = 'Dokument nemá šírku alebo výšku'; // cpg 1.5 // ak
+$lang_editpics_php['success_picture'] = 'Obrázok úspešne uložený - môžete teraz %szavrieť%s toto okno'; // cpg1.5 // do not translate "%s" here
+$lang_editpics_php['success_thumb'] = 'Náhľad úspěšne uložený - môžete teraz %szavrieť%s toto okno'; // cpg1.5 // do not translate "%s" here
+$lang_editpics_php['rotate'] = 'Otočiť'; // cpg 1.5
+$lang_editpics_php['mirror'] = 'Zrkadlovo'; // cpg 1.5
+$lang_editpics_php['scale'] = 'Merítko'; // cpg 1.5
+$lang_editpics_php['new_width'] = 'Nová šírka'; // cpg 1.5
+$lang_editpics_php['new_height'] = 'Nová výška'; // cpg 1.5
+$lang_editpics_php['enable_clipping'] = 'Zapnúť vyrezávanie, aplikovať na výrezy'; // cpg 1.5 ak
+$lang_editpics_php['jpeg_quality'] = 'Kvalita výstupného JPEGu'; // cpg 1.5
+$lang_editpics_php['or'] = 'ALEBO'; // cpg 1.5
+$lang_editpics_php['approve_pic'] = 'Schváliť obrázok'; // cpg 1.5
+$lang_editpics_php['approve_all'] = 'Schváliť VŠETKY súbory'; // cpg 1.5
+$lang_editpics_php['error_empty'] = 'Album je prázdny'; // cpg1.5
+$lang_editpics_php['error_approval_empty'] = 'Žiadne ďalšie obrázky na schválenie'; // cpg1.5
+$lang_editpics_php['error_linked_only'] = 'Album obsahuje iba odkazy na súbory, preto ich nemôžete tu editovať'; // cpg1.5 ak
+$lang_editpics_php['note_approve_public'] = 'Súbory prenesené do verejného albumu musia byť schválené administrátorom.'; // cpg1.5 ak
+$lang_editpics_php['note_approve_private'] = 'Súbory prenesené so súkromného albumu musia byť schválené administrátorom.' ; // cpg1.5 ak
+$lang_editpics_php['note_edit_control'] = 'Súbory prenesené do verejného albumu nemôžu byť editované.'; // cpg1.5 ak
+$lang_editpics_php['confirm_move'] = 'Naozaj chcete presunúť tento súbor?'; // cpg1.5 //ak
+$lang_editpics_php['success_changes'] = 'Zmeny úspešne uložené'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
-// File faq.php
+// File export.php
 // ------------------------------------------------------------------------- //
-
-if (defined('FAQ_PHP')) $lang_faq_php = array(
-  'faq' => 'Často kladené otázky',
-  'toc' => 'Obsah',
-  'question' => 'Otázka: ',
-  'answer' => 'Odpoveď: ',
-);
-
-if (defined('FAQ_PHP')) $lang_faq_data = array(
-  'General FAQ',
-  array('Why do I need to register?', 'Registration may or may not be required by the administrator. Registration gives a member additional features such as uploading, having a favorite list, rating pictures and posting comments etc.', 'allow_user_registration', '1'),
-  array('How do I register?', 'Go to &quot;Register&quot; and fill out the required fields (and the optional ones if you want to).<br />If the Administrator has Email Activation enabled, then after submitting your information you should recieve an email message at the address that you have submitted while registering, giving you instructions on how to activate your membership. Your membership must be activated in order for you to login.', 'allow_user_registration', '1'), //cpg1.4
-  array('How Do I login?', 'Go to &quot;Login&quot;, submit your username and password and check &quot;Remember Me&quot; so you will be logged in on the site if you should leave it.<br /><b>IMPORTANT:Cookies must be enabled and the cookie from this site must not be deleted in order to use &quot;Remember Me&quot;.</b>', 'offline', 0),
-  array('Why can I not login?', 'Did you register and click the link that was sent to you via email?. The link will activate your account. For other login problems contact the site administrator.', 'offline', 0),
-  array('What if I forgot my password?', 'If this site has a &quot;Forgot password&quot; link then use it. Other than that contact the site administrator for a new password.', 'offline', 0),
-  //array('What if I changed my email address?', 'Just simply login and change your email address through &quot;Profile&quot;', 'offline', 0),
-  array('How do I save a picture to &quot;My Favorites&quot;?', 'Click on a picture and click on the &quot;picture info&quot; link (<img src="images/info.gif" width="16" height="16" border="0" alt="Picture information" />); scroll down to the picture information set and click &quot;Add to fav&quot;.<br />The administrator may have the &quot;picture information&quot; on by default.<br />IMPORTANT:Cookies must be enabled and the cookie from this site must not be deleted.', 'offline', 0),
-  array('How do I rate a file?', 'Click on a thumbnail and go to the bottom and choose a rating.', 'offline', 0),
-  array('How do I post a comment for a picture?', 'Click on a thumbnail and go to the bottom and post a comment.', 'offline', 0),
-  array('How do I upload a file?', 'Go to &quot;Upload&quot;and select the album that you want to upload to. Click &quot;Browse,&quot; find the file to upload, and click &quot;open.&quot; Add a title and description if you want. Click &quot;Submit&quot;.<br /><br />Alternatively, for those users using <b>Windows XP</b>, you can upload multiple files directly to your own private albums using the XP Publishing wizard.<br />For instructions on how, and to get the required registry file, click <a href="xp_publish.php">here.</a>', 'allow_private_albums', 1), //cpg1.4
-  array('Where do I upload a picture to?', 'You will be able to upload a file to one of your albums in &quot;My Gallery&quot;. The Administrator may also allow you to upload a file to one or more of the albums in the Main Gallery.', 'allow_private_albums', 0),
-  array('What type and size of a file can I upload?', 'The size and type (jpg, png, etc.) is up to the administrator.', 'offline', 0),
-  array('How do I create, rename or delete an album in &quot;My Gallery&quot;?', 'You should already be in &quot;Admin-Mode&quot;<br />Go to &quot;Create/Order My Albums&quot;and click &quot;New&quot;. Change &quot;New Album&quot; to your desired name.<br />You can also rename any of the albums in your gallery.<br />Click &quot;Apply Modifications&quot;.', 'allow_private_albums', 0),
-  array('How can I modify and restrict users from viewing my albums?', 'You should already be in &quot;Admin Mode&quot;<br />Go to &quot;Modify My Albums. On the &quot;Update Album&quot; bar, select the album that you want to modify.<br />Here, you can change the name, description, thumbnail picture, restrict viewing and comment/rating permissions.<br />Click &quot;Update Album&quot;.', 'allow_private_albums', 0),
-  array('How can I view other users\' galleries?', 'Go to &quot;Album List&quot; and select &quot;User Galleries&quot;.', 'allow_private_albums', 0),
-  array('What are cookies?', 'Cookies are a plain text piece of data that is sent from a website and is put on to your computer.<br />Cookies usually allow a user to leave and return to the site without having to login again and other various chores.', 'offline', 0),
-  array('Where can I get this program for my site?', 'Coppermine is a free Multimedia Gallery, released under GNU GPL. It is full of features and has been ported to various platforms. Visit the <a href="http://coppermine.sf.net/">Coppermine Home Page</a> to find out more or download it.', 'offline', 0),
-
-  'Navigating the Site',
-  array('What\'s &quot;Album List&quot;?', 'This will show you the entire category you are currently in, with a link to each album. If you are not in a category, it will show you the entire gallery with a link to each category. Thumbnails may be a link to the category.', 'offline', 0),
-  array('What\'s &quot;My Gallery&quot;?', 'This feature lets users create their own galleries and add, delete or modify albums as well as upload to them.', 'allow_private_albums', 1), //cpg1.4
-  array('What\'s the difference between &quot;Admin Mode&quot; and &quot;User Mode&quot;?', 'This feature, when in admin-mode, allows a user to modify their gallery (as well as others if allowed by the administrator).', 'allow_private_albums', 0),
-  array('What\'s &quot;Upload Picture&quot;?', 'This feature allows a user to upload a file (size and type is set by the site administrator) to a gallery selected by either you or the administrator.', 'allow_private_albums', 0),
-  array('What\'s &quot;Last Uploads&quot;?', 'This feature shows the last uploads to the site.', 'offline', 0),
-  array('What\'s &quot;Last Comments&quot;?', 'This feature shows the last comments along with the files posted by users.', 'offline', 0),
-  array('What\'s &quot;Most Viewed&quot;?', 'This feature shows the most viewed files by all users (whether logged in or not).', 'offline', 0),
-  array('What\'s &quot;Top Rated&quot;?', 'This feature shows the top rated files rated by the users, showing the average rating (e.g: five users each gave a <img src="images/rating3.gif" width="65" height="14" border="0" alt="" />: the file would have an average rating of <img src="images/rating3.gif" width="65" height="14" border="0" alt="" /> ;Five users rated the file from 1 to 5 (1,2,3,4,5) would result in an average <img src="images/rating3.gif" width="65" height="14" border="0" alt="" /> .)<br />The ratings go from <img src="images/rating5.gif" width="65" height="14" border="0" alt="best" /> (best) to <img src="images/rating0.gif" width="65" height="14" border="0" alt="worst" /> (worst).', 'offline', 0),
-  array('What\'s &quot;My Favorites&quot;?', 'This feature will let a user store a favorite file in the cookie that was sent to your computer.', 'offline', 0),
-);
-
+if (defined('EXPORT_PHP')) {
+$lang_export_php['export'] = 'Export'; // cpg 1.5
+$lang_export_php['export_type'] = 'Typ exportu:'; // cpg 1.5
+$lang_export_php['html'] = 'Formátované HTML'; // cpg 1.5
+$lang_export_php['images'] = 'Iba Obrázky'; // cpg 1.5
+$lang_export_php['export_directory'] = 'Adresár pre export:'; // cpg 1.5
+$lang_export_php['processing'] = 'Vykonávam...'; // cpg 1.5
+}
 
 // ------------------------------------------------------------------------- //
 // File forgot_passwd.php
 // ------------------------------------------------------------------------- //
 
-if (defined('FORGOT_PASSWD_PHP')) $lang_forgot_passwd_php = array(
-  'forgot_passwd' => 'Pripomenutie hesla',
-  'err_already_logged_in' => 'Už ste prihlásený !',
-  'enter_email' => 'Zadajte Vašu emailovú adresu', //cpg1.4
-  'submit' => 'go',
-  'illegal_session' => 'Akcia zaslania zabudnutého hesla zlyhala alebo expirovala.', //cpg1.4
-  'failed_sending_email' => 'Email s heslom nemohol byť zaslaný !',
-  'email_sent' => 'Email s prístupovými údajmi bol zaslaný pre %s', //cpg1.4
-  'verify_email_sent' => 'Email bol zaslaný pre %s. Skontrolujte si Vašu emailovú schránku pre kompletnosť procesu.', //cpg1.4
-  'err_unk_user' => 'Vybraný člen neexistuje!',
-  'account_verify_subject' => '%s - Vyžiadanie nového hesla.', //cpg1.4
-  'account_verify_body' => 'Požiadali ste o nové heslo. Ak si prajet pokračovať vo vyžiadaní kliknite na nasl. link:
+if (defined('FORGOT_PASSWD_PHP')) {
+$lang_forgot_passwd_php['forgot_passwd'] = 'Pripomenutie hesla';
+$lang_forgot_passwd_php['err_already_logged_in'] = 'Už ste prihlásený!';
+$lang_forgot_passwd_php['enter_email'] = 'Zadajte Vašu e-mailovú adresu';
+$lang_forgot_passwd_php['submit'] = 'Potvrdiť';
+$lang_forgot_passwd_php['illegal_session'] = 'Pripomenutie hesla sa nepodarilo alebo vypršalo.';
+$lang_forgot_passwd_php['failed_sending_email'] = 'E-mail s pripomenutím hesla nemohol byť odoslaný!';
+$lang_forgot_passwd_php['email_sent'] = 'Na adresu %s bol odoslaný e-mail s Vaším užívateľským menom a heslom';
+$lang_forgot_passwd_php['verify_email_sent'] = 'E-mail bol odoslaný na %s. Pred dokončením si skontrolujte zadanú e-mailovou adresu.';
+$lang_forgot_passwd_php['err_unk_user'] = 'Zadaný užívateľ neexistuje!';
+$lang_forgot_passwd_php['account_verify_subject'] = '%s - Pripomenutie hesla';
+$lang_forgot_passwd_php['passwd_reset_subject'] = '%s - Vaše nové heslo';
+$lang_forgot_passwd_php['account_verify_email'] = <<<EOT
+Vyžiadali ste si zaslanie nového hesla. Pre zaslanie nového hesla, kliknite na nasledujúcí odkaz:
 
-%s', //cpg1.4
-  'passwd_reset_subject' => '%s - Vaše nové heslo', //cpg1.4
-  'passwd_reset_body' => 'Tu sú nové prihlasovacie údaje:
-Meno: %s
-Heslo: %s
-Kliknúť na %s pre prihlásenie.', //cpg1.4
-);
+<a href="{VERIFY_LINK}">{VERIFY_LINK}</a>
+
+
+S pozdravom,
+
+Administrátor {SITE_NAME}
+
+EOT;
+
+$lang_forgot_passwd_php['reset_email'] = <<<EOT
+Tu je vami vyžiadané nové heslo:
+
+Užívateľ: {USER_NAME}
+Heslo: {PASSWORD}
+
+Choďte na <a href="{SITE_LINK}">{SITE_LINK}</a> pre prihlásenie.
+
+
+S pozdravom,
+
+Administrátor {SITE_NAME}
+
+EOT;
+}
 
 // ------------------------------------------------------------------------- //
 // File groupmgr.php
 // ------------------------------------------------------------------------- //
-
-if (defined('GROUPMGR_PHP')) $lang_groupmgr_php = array(
-  'group_name' => 'Meno skupiny', //cpg1.4
-  'permissions' => 'Oprávnenia', //cpg1.4
-  'public_albums' => 'Pridávanie do verejných albumov', //cpg1.4
-  'personal_gallery' => 'Osobná galéria', //cpg1.4
-  'upload_method' => 'Metóda pridávania', //cpg1.4
-  'disk_quota' => 'Limit', //cpg1.4
-  'rating' => 'Hodnotenia', //cpg1.4
-  'ecards' => 'Pohľadnice', //cpg1.4
-  'comments' => 'Komentáre', //cpg1.4
-  'allowed' => 'Dovolené', //cpg1.4
-  'approval' => 'Overenie', //cpg1.4
-  'boxes_number' => 'Počet boxov', //cpg1.4
-  'variable' => 'premenné', //cpg1.4
-  'fixed' => 'pevné', //cpg1.4
-  'apply' => 'Potvrď zmeny',
-  'create_new_group' => 'Vytvoriť novú skupinu',
-  'del_groups' => 'Vymazať označené skupiny',
-  'confirm_del' => 'Pokiaľ zmažete túto skupinu, všetci užívatelia, patriaci do tejto skupiny budú presunutí do skupiny \'Registered\' !\n\nPrajete si pokračovať ?', //js-alert
-  'title' => 'Spravovať užívateľské skupiny',
-  'num_file_upload' => 'Boxy pre pridávanie súborov', //cpg1.4
-  'num_URI_upload' => 'Boxy pre pridávanie URI', //cpg1.4
-  'reset_to_default' => 'Obnoviť predvolené meno (%s) - odporúčané!', //cpg1.4
-  'error_group_empty' => 'Tabuľka skupín je prázdna !<br /><br />Predvolené skupiny vytvorené, načítajte znovu túto stránku', //cpg1.4
-  'explain_greyed_out_title' => 'Prečo je tonto riadok sivý?', //cpg1.4
-  'explain_guests_greyed_out_text' => 'Nemožno meniť vlastnosti tejto skupiny, pretože ste zvoli možnosť &quot; Allow unlogged users (guest or anonymous) access&quot; to &quot;No&quot; on the config page. All guest (members of the group %s) can\'t do anything but login; therefor group settings don\'t apply for them.', //cpg1.4
-  'explain_banned_greyed_out_text' => 'Nemožno meniť vlastnosti tejto skupiny, pretože aj tak nič nemôžu robiť.', //cpg1.4
-  'group_assigned_album' => 'priradené albumy', //cpg1.4
-);
+if (defined('GROUPMGR_PHP')) {
+$lang_groupmgr_php['group_manager'] = 'Správca skupín'; // cpg1.5.x
+$lang_groupmgr_php['group_name'] = 'Skupina';
+$lang_groupmgr_php['permissions'] = 'Oprávnenie';
+$lang_groupmgr_php['public_albums'] = 'Upload verejného albumu';
+$lang_groupmgr_php['personal_gallery'] = 'Osobná galéria';
+$lang_groupmgr_php['disk_quota'] = 'Kvóta';
+$lang_groupmgr_php['rating'] = 'Hodnotenie';
+$lang_groupmgr_php['ecards'] = 'Pohľadnice';
+$lang_groupmgr_php['comments'] = 'Komentáre';
+$lang_groupmgr_php['allowed'] = 'Povolené';
+$lang_groupmgr_php['approval'] = 'Schválenie';
+$lang_groupmgr_php['create_new_group'] = 'Vytvoriť novú skupinu';
+$lang_groupmgr_php['del_groups'] = 'Zmazať vybranú skupinu';
+$lang_groupmgr_php['confirm_del'] = 'Ak zmažete túto skupinu všetci užívatelia, patriaci do tejto skupiny budú presunutí do skupiny \'Registered\' !\n\nPrajete si pokračovať?'; // ak
+$lang_groupmgr_php['title'] = 'Spravovať užívateľské skupiny';
+$lang_groupmgr_php['reset_to_default'] = 'Resetovať na prednastavené meno (%s) - odporúčané!';
+$lang_groupmgr_php['error_group_empty'] = 'Tabuľka skupín je prázdna!<br /><br />Základné skupiny vytvorené, prosím obnovte stránku.';
+$lang_groupmgr_php['explain_greyed_out_title'] = 'Prečo je tento riadok vyšedený?'; //
+$lang_groupmgr_php['explain_guests_greyed_out_text'] = 'Nemôžete meniť vlastnosti tejto skupiny, pretože úroveň prístupu tejto skupiny je ŽIADNA. Všetci odhlásení užívatelia (členovia skupiny %s) sa môžu iba prihlásiť; preto sa ich nastavenie skupiny netýka. Zmeňte tu úroveň prístupu alebo v konfigurácii v kapitole "Užívateľské nastavenia" povoľte prístup neprihláseným návštevníkom.'; //ak
+$lang_groupmgr_php['group_assigned_album'] = 'Pripojené albumy';
+$lang_groupmgr_php['access_level'] = 'Úroveň prístupu'; // cpg1.5
+$lang_groupmgr_php['thumbnail_intermediate_full'] = 'náhľad, strednú a plnú veľkosť obrázka'; // cpg1.5
+$lang_groupmgr_php['thumbnail_intermediate'] = 'náhľad a strednú veľkosť obrázka'; // cpg1.5
+$lang_groupmgr_php['thumbnail_only'] = 'iba náhľady'; // cpg1.5
+$lang_groupmgr_php['none'] = 'žiadna'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
 // File index.php
 // ------------------------------------------------------------------------- //
-
 if (defined('INDEX_PHP')){
+$lang_index_php['welcome'] = 'Vitajte!';
 
-$lang_index_php = array(
-  'welcome' => 'Welcome !',
-);
+$lang_album_admin_menu['confirm_delete'] = 'Naozaj chcete zmazať túto galériu?\\nVšetky obrázky a komentáre budú zmazané.'; // ak
+$lang_album_admin_menu['delete'] = 'ZMAZAŤ';
+$lang_album_admin_menu['modify'] = 'Vlastnosti';
+$lang_album_admin_menu['edit_pics'] = 'Upraviť súbory';
+$lang_album_admin_menu['cat_locked'] = 'Tento album bol uzamknutý pre úpravy'; // cpg1.5.x
 
-$lang_album_admin_menu = array(
-  'confirm_delete' => 'Ste si istý, že chcete zmazať tento album ? \\nVšetky súbory a komentáre budú tiež zmazané.', //js-alert
-  'delete' => 'ZMAZAŤ',
-  'modify' => 'VLASTNOSTI',
-  'edit_pics' => 'UPRAVIŤ SÚBOR',
-);
+$lang_list_categories['home'] = 'Domov';
+$lang_list_categories['stat1'] = '[pictures] súborov v [albums] albumoch a [cat] kategóriach s [comments] komentármi zobrazené [views] krát'; // do not translate the stuff in square brackets
+$lang_list_categories['stat2'] = '[pictures] súborov v [albums] albumoch zobrazené [views] krát'; // do not translate the stuff in square brackets
+$lang_list_categories['xx_s_gallery'] = '%s Galéria';
+$lang_list_categories['stat3'] = '[pictures] súborov v [albums] albumoch s [comments] komentármi zobrazené [views] krát'; // do not translate the stuff in square brackets
 
-$lang_list_categories = array(
-  'home' => 'Home',
-  'stat1' => '<b>[pictures]</b> súborov v <b>[albums]</b> albumoch a <b>[cat]</b> kategóriách s <b>[comments]</b> komentármi zobrazené <b>[views]</b> krát',
-  'stat2' => '<b>[pictures]</b> súborov v <b>[albums]</b> albumoch zobrazených <b>[views]</b> krát',
-  'xx_s_gallery' => '%s\'s galérií',
-  'stat3' => '<b>[pictures]</b> súborov v <b>[albums]</b> albumoch s <b>[comments]</b> komentármi zobrazené <b>[views]</b> krát',
-);
+$lang_list_users['user_list'] = 'Zoznam užívateľov';
+$lang_list_users['no_user_gal'] = 'Nie sú žiadne užívateľské galérie';
+$lang_list_users['n_albums'] = '%s albumov';
+$lang_list_users['n_pics'] = '%s súborov';
 
-$lang_list_users = array(
-  'user_list' => 'Zoznam užívateľov',
-  'no_user_gal' => 'Nie sú žiadne užívateľské galérie',
-  'n_albums' => '%s album(ov)',
-  'n_pics' => '%s súbor(ov)',
-);
+$lang_list_albums['n_pictures'] = '%s súborov';
+$lang_list_albums['last_added'] = ', posledný pridaný %s';
+$lang_list_albums['n_link_pictures'] = '%s pripojených súborov';
+$lang_list_albums['total_pictures'] = '%s súborov celkom';
+$lang_list_albums['alb_hits'] = 'Album zobrazený %s krát'; // cpg1.5
+$lang_list_albums['from_category'] = ' - Z Kategórie: '; // cpg1.5
+}
 
-$lang_list_albums = array(
-  'n_pictures' => '%s súborov',
-  'last_added' => ', posledný pridaný do %s',
-  'n_link_pictures' => '%s vzdialené súbory', //cpg1.4
-  'total_pictures' => '%s súborov celkom', //cpg1.4
-);
+// ------------------------------------------------------------------------- //
+// File install.php
+// ------------------------------------------------------------------------- //
+
+if (defined('INSTALL_PHP')) {
+$lang_install['already_succ'] = 'Inštalačný program už raz úspešne prebehol a teraz je už uzamknutý.'; //ak
+$lang_install['already_succ_explain'] = 'Ak chcete spustiť inštalačný program znova, najprv musíte zmazať súbor \'include/config.inc.php\', ktorý bol vytvorený v Coppermine priečinku. Môžete to urobiť pomocou FTP programu'; //ak
+$lang_install['cant_read_tmp_conf'] = 'Inštalačný program nedokáže prečítať dočasný config súbor %s.'; //ak
+$lang_install['cant_write_tmp_conf'] = 'Inštalačný program nedokáže zapisovať do dočasného config súboru %s.'; //ak
+$lang_install['review_permissions'] = 'Prosím skontrolujte práva priečinku.'; //ak
+$lang_install['change_lang'] = 'Zmeň jazyk'; //ak
+$lang_install['check_path'] = 'Skontroluj cestu'; //ak
+$lang_install['continue'] = 'Ďalší krok'; //ak
+$lang_install['conv_said'] = 'Konvertér povedal:'; //ak
+$lang_install['license_info'] = 'Coppermine je obrázková a multimediálna galéria vydaná pod GNU GPL v3. Inštaláciou súhlasíte s licenčnými podmienkami Coppermine.'; //ak
+$lang_install['cpg_info_frames'] = 'Zdá sa, že váš prehliadač nie je schopný zobrazovať inline frames. Licenčné podmienky si môžete prečítať v priečinku dokumentov v balíku Coppermine.'; //ak
+$lang_install['license'] = 'Coppermine licenčná zmluva'; //ak
+$lang_install['create_table'] = 'Vytváram tabuľku \'%s\''; //ak
+$lang_install['db_populating'] = 'Pokus o vloženie dát do databázy.'; //ak
+$lang_install['db_alr_populated'] = 'Do databázy boli vložené potrebné dáta.'; //ak
+$lang_install['dir_ok'] = 'Priečinok nájdený'; //ak
+$lang_install['directory'] = 'Priečinok'; //ak
+$lang_install['email'] = 'E-mail adresa'; //ak
+$lang_install['email_no_match'] = 'E-mail adresy sa nezhodujú alebo sú neplatné.'; //ak
+$lang_install['email_verif'] = 'Kontrola e-mailu'; //ak
+$lang_install['err_cpgnuke'] = '<h1>ERROR</h1>You seem to be trying to install the standalone Coppermine into your Nuke portal.<br />This version can only be used as standalone!<br />Some server setups might display this warning even though you don\'t have a nuke portal installed - if this is the case for you, <a href="%s?continue_anyway=1">continue</a> with the install. If you are using a nuke portal, you might want to take a look into <a href=\"http://www.cpgnuke.com/\">CpgNuke</a> or use one of the (unsupported)<a href=\"http://sourceforge.net/project/showfiles.php?group_id=89658&amp;package_id=95984\">Coppermine ports</a> - do not continue!'; //ak
+$lang_install['error'] = 'CHYBA';
+$lang_install['error_need_corr'] = 'Boli zistené nasledovné chyby, ktoré musia byť najprv odstánené:'; //ak
+$lang_install['finish'] = 'Koniec inštalácie'; //ak
+$lang_install['gd_note'] = '<strong>Dôležité :</strong> staršie verzie GD graphic podporujú iba súbory JPEG a PNG. Ak je to váš prípad, skript nedokáže vytvárať náhľady z obrázkov GIF.'; //ak
+$lang_install['go_to_main'] = 'Prejsť na hlavnú stránku';
+$lang_install['im_no_convert_ex'] = 'Inštalačný program našiel ImageMagick \'konverzný\' program v \'%s\', avšak nemôže byť spustený.<br /><br />Zvážte použitie GD namiesto ImageMagick.'; //ak
+$lang_install['im_not_found'] = 'The installer tried to find ImageMagick, but could not determine its existence or there was an error. <br />Coppermine can use the <a href="http://www.imagemagick.org/">ImageMagick</a> \'convert\' program to create thumbnails. Quality of images produced by ImageMagick is superior to GD1 but equivalent to GD2.<br /><br />If ImageMagick is installed on your system and you want to use it, <br />you need to input the full path to the \'convert\' program below. <br />On Windows the path should look something like \'c:/ImageMagick/\' and should not contain any space, on Unix is it something like \'/usr/bin/\'.<br /><br />If you have no idea wether you have ImageMagick or not, leave this field empty - the installer will then try to use GD2 by default (which is what most users have). <br />You can change this later as well (in Coppermine\'s config screen), so don\'t be afraid if you\'re not sure what to enter here - leave it blank.'; //ak
+$lang_install['im_packages'] = 'Váš server podporuje naslednovné obrázkové balíky'; //ak
+$lang_install['im_path'] = 'Cesta k ImageMagick:'; //ak
+$lang_install['im_path_space'] = 'Cesta k ImageMagick (\'%s\') obsahuje aspoň jednu medzeru. Toto spôsobí problémy programu.<br /><br />Musíte presunúť ImageMagick do iného priečinku.'; //ak
+$lang_install['installation'] = 'inštalácia'; //ak
+$lang_install['installer_locked'] = 'Inštalačný program je uzamknutý'; //ak
+$lang_install['installer_selected'] = 'Inštalačný program zvolený'; //ak
+$lang_install['inv_im_path'] = 'Inštalačný program nenašiel priečinok \'%s\', ktorý ste zadali pre ImageMagick alebo nemá práva do neho vstupovať. Skontrolujte že tento priečinok existuje a že máte preň prístupové práva.'; //ak
+$lang_install['last_step'] = 'Posledný krok...';
+$lang_install['lets_go'] = 'Poďme!'; //ak
+$lang_install['mysql_create_btn'] = 'Vytvoriť';
+$lang_install['mysql_create_db'] = 'Vytvoriť novú MySQL databázu';
+$lang_install['mysql_db_name'] = 'Meno MySQL databázy';
+$lang_install['mysql_error'] = 'MySQL chyba: ';
+$lang_install['mysql_host'] = 'MySQL host<br />(localhost je bežne OK)'; //ak
+$lang_install['mysql_username'] = 'MySQL meno'; // cpg1.5
+$lang_install['mysql_password'] = 'MySQL heslo'; // cpg1.5
+$lang_install['mysql_no_create_db'] = 'Nemožno vytvoriť MySQL databazu.';
+$lang_install['mysql_no_sel_dbs'] = 'Nemožno obnoviť dostupné MySQL databázy'; //ak
+$lang_install['mysql_succ'] = 'Úspešné spojenie s databázou'; //ak
+$lang_install['mysql_tbl_pref'] = 'prefix MySQL tabuľky';
+$lang_install['mysql_test_connection'] = 'Test spojenia';
+$lang_install['mysql_wrong_db'] = 'MySQL nenašiel databázu s názvom \'%s\' prosím skontrolujte zadanú hodnotu'; //ak
+$lang_install['n_a'] = 'N/A'; //ak
+$lang_install['no_admin_email'] = 'Vložte prosím e-mailovú adresu administrátora';
+$lang_install['no_admin_password'] = 'Vložte prosím admin heslo';
+$lang_install['no_admin_username'] = 'Vložte prosím admin meno';
+$lang_install['no_dir'] = 'Adresár nie je dostupný';
+$lang_install['no_gd'] = 'Your installation of PHP does not seem to include the \'GD\' graphic library extension and you have not indicated that you want to use ImageMagick. Coppermine has been configured to use GD2 because the automatic GD detection sometimes fails. If GD is installed on your system, the script should work else you will need to install ImageMagick.'; //ak
+$lang_install['no_mysql_conn'] = 'Nemožno vytvoriť MySQL spojenie, prosím skontrolujte vložené údaje pre MySQL';
+$lang_install['no_mysql_support'] = 'PHP nemá zapnutú podporu MySQL.'; //ak
+$lang_install['no_thumb_method'] = 'Musíte zvojiť program pre manipuláciu s obrázkami (GD/IM)'; //ak
+$lang_install['nok'] = 'Nie je OK';
+$lang_install['not_here_yet'] = 'Ešte tu nič nie je, prosím kliknite %stu%s pre návrat.'; //ak
+$lang_install['ok'] = 'OK';
+$lang_install['on_q'] = 'on query'; //ak
+$lang_install['or'] = 'alebo';
+$lang_install['pass_err'] = 'Heslo nie je správne, žiadne ste nezadali alebo ste použili zakázané znaky.'; //ak
+$lang_install['password'] = 'Heslo';
+$lang_install['password_verif'] = 'Overenie hesla';
+$lang_install['perm_error'] = 'The permissions of \'%s\' are set to %s, please set them to'; //ak
+$lang_install['perm_ok'] = 'The permissions on certain directories have been checked, and seem to be ok. <br />Please proceed to the next step.'; //ak
+$lang_install['perm_not_ok'] = 'The permissions on certain directories are not set correctly.<br />Please change the permissions of the directories below that are marked "Not OK".'; // cpg1.5 //ak
+$lang_install['please_go_back'] = 'Please %sclick here%s to go back and fix this problem before proceeding.'; //ak
+$lang_install['populate_db'] = 'Plnenie databázy'; //ak
+$lang_install['ready_to_roll'] = '<a href="index.php">Coppermine</a> je teraz správne nakonfigurovaný a pripravený na použitie.<br /><br /><a href="login.php">Prihláste sa</a> použitím tak, ako ste zadefinovali pre administrátorský účet.'; //ak
+$lang_install['sect_create_adm'] = 'Táto časť vyžaduje informácie pre vytvorenie vášho administrátorského účtu Coppermine. Použite iba alfanumerické znaky. Zadávajte informácie pozorne!'; //ak
+$lang_install['sect_mysql_info'] = 'Táto časť vyžaduje informácie pre prístup k vašej MySQL databaze.<br />Ak neviete ako ich vyplniť, konzultujte to s podporou vášho webhostingu.'; //ak
+$lang_install['sect_mysql_sel_db'] = 'Here you have to choose which database you want to use for Coppermine. <br />If your Mysql account has the needed privileges, you can create a new database from within the installer or you can use an existing database. If you don\'t like both options, you will have to create a database first outside the Coppermine installer, then return here then select the new database from the dropdown box below. You can also change the table prefix (Don\'t use dots though), but keeping the default prefix is recommended.'; //ak
+$lang_install['select_lang'] = 'Vyberte základný jazyk: ';
+$lang_install['sql_file_not_found'] = 'Súbor \'%s\' nebol nájdený. Overte či ste nahrali všetky Coppermine súbory na váš server'; //ak
+$lang_install['status'] = 'Status';
+$lang_install['subdir_called'] = 'Priečinok \'%s\' by mal existovať v priečinku kam ste umiestnili Coppermine. <br />Inštalačný program nenašiel tento priečinok. Overte či ste nahrali všetky Coppermine súbory na váš server.';
+$lang_install['title_admin'] = 'Vytváranie Coppermine administrátora';
+$lang_install['title_dir_check'] = 'Kontrola práv priečinkov';
+$lang_install['title_file_check'] = 'Kontrola inštalačných súborov';
+$lang_install['title_finished'] = 'Inštalácia kompletná';
+$lang_install['title_imp'] = 'Výber programu pre manipuláciu s obrázkami';
+$lang_install['title_imp_test'] = 'Testovanie programu pre manipuláciu s obrázkami';
+$lang_install['title_mysql_db_sel'] = 'Výber MySQL Databázy';
+$lang_install['title_mysql_pop'] = 'Vytváranie štruktúry databázy';
+$lang_install['title_mysql_user'] = 'Autentifikácia užívateľov MySQL';
+$lang_install['title_welcome'] = 'Vitajte v Coppermine inštalácii';
+$lang_install['tmp_conf_error'] = 'Nemožno zapisovať do dočasného config súboru - overte či je povolené zapisovať do priečinku \'include\'.'; //ak
+$lang_install['tmp_conf_ser_err'] = 'V inštalačnom programe došlo k vážnej chybe, skúste znovu načítať vašu stránku alebo začnite znova odstránením súboru \'include/config.tmp\'.';
+$lang_install['try_again'] = 'Pokúste sa znova!';
+$lang_install['unable_write_config'] = 'Nemožno zapísať config súbor';
+$lang_install['user_err'] = 'Meno administrátora môže obsahovať iba alfanumerické znaky a nesmie byť prázdne.';
+$lang_install['username'] = 'Meno';
+$lang_install['your_admin_account'] = 'Váš admin účet';
+$lang_install['no_cookie'] = 'Váš prehliadač neakceptoval naše cookie. Odporúča sa akceptovať cookies.';
+$lang_install['no_javascript'] = 'Váš prehliadať nemá zapnutý Javascript - odporúča sa ho mať zapnutý.';
+$lang_install['register_globals_detected'] = 'Vaša konfigurácia PHP má zapnuté \'register_globals\' - z bezpečnostných dôvodov by ste mali toto nastavenie vypnúť.';
+$lang_install['more'] = 'viac';
+$lang_install['version_undetected'] = 'Skript nedokázal zistiť verziu %s ktorú používa váš server. Presvedčte sa, že je to aspoň verzia %s.'; //ak
+$lang_install['version_incompatible'] = 'Skript zistil nekompatibilnú verziu (%s) %s na vašom serveri.<br />Použite kompatibilnú verziu (%s alebo lepšiu) predtým ako budete pokračovať!';
+
+$lang_install['read_gif'] = 'Čítanie/Zápis súboru .gif';
+$lang_install['read_png'] = 'Čítanie/Zápis súboru .png';
+$lang_install['read_jpg'] = 'Čítanie/Zápis súboru .jpg';
+$lang_install['write_error'] = 'Nemožno zapísať vytvorený obrázok na disk.';
+$lang_install['read_error'] = 'Nemožno prečítať zdrojový obrázok.';
+$lang_install['combine_error'] = 'Nemožno kombinovať zdrojové obrázky';
+$lang_install['text_error'] = 'Nemožno pridať text do zdrojového obrázka';
+$lang_install['scale_error'] = 'Nemožno meniť veľkosť zdrojového obrázka';
+$lang_install['pixels'] = 'pixelov';
+$lang_install['combine'] = 'Kombinovanie 2 obrázkov';
+$lang_install['text'] = 'Zapísanie textu do obrázka';
+$lang_install['scale'] = 'Zmena veľkosti obrázka';
+$lang_install['generated_image'] = 'Vytvorený obrázok';
+$lang_install['reference_image'] = 'Referenčný obrázok';
+$lang_install['imp_test_error'] = 'V jednom alebo viacerých testoch došlo k chybe, prosím presvedčte sa, že ste vybrali vhodný program pre manipuláciu s obrázkami a že je správne nakonfigurovaný!';
+$lang_install['writable'] = 'Zapisovateľný';
+$lang_install['not_writable'] = 'Nezapisovateľný';
+$lang_install['not_exist'] = 'Neexistuje';
+$lang_install['old_install'] = 'Toto je nový sprievodca inštaláciou. Pre klasický typ sprievodcu kliknite %stu%s.'; //cpg1.5 //ak
 
 }
 
 // ------------------------------------------------------------------------- //
-// File keywordmgr.php //cpg1.4
+// File keywordmgr.php
 // ------------------------------------------------------------------------- //
+if (defined('KEYWORDMGR_PHP')) {
+$lang_keywordmgr_php['title'] = 'Správca kľúčových slov';
+$lang_keywordmgr_php['search'] = 'Hľadanie';
+$lang_keywordmgr_php['keyword_test_search'] = 'Hľadať %s v novom okne';
+$lang_keywordmgr_php['keyword_del'] = 'Zmazať kľúčové slovo %s';
+$lang_keywordmgr_php['confirm_delete'] = 'Naozaj chcete zmazať kľúčové slovo %s z celej galérie?'; // ak
+$lang_keywordmgr_php['change_keyword'] = 'Zmeniť kľúčové slovo';
+}
 
-if (defined('KEYWORDMGR_PHP')) $lang_keywordmgr_php = array(
-  'title' => 'Spravuj kľúčové slová', //cpg1.4
-  'edit' => 'upraviť', //cpg1.4
-  'delete' => 'zmazať', //cpg1.4
-  'search' => 'hľadať', //cpg1.4
-  'keyword_test_search' => 'hľadať %s v novom okne', //cpg1.4
-  'keyword_del' => 'zmazať kľúčové slovo %s', //cpg1.4
-  'confirm_delete' => 'Chcete skutočne zmazať kľúčové slovo %s z celej galérie?', //cpg1.4  // js-alert
-  'change_keyword' => 'zmeniť kľúčové slovo', //cpg1.4
-);
+// ------------------------------------------------------------------------- //
+// File langmgr.php
+// ------------------------------------------------------------------------- //
+if (defined('LANGMGR_PHP')) {
+$lang_langmgr_php['title'] = 'Správca jazykov';
+$lang_langmgr_php['english_language_name'] = 'Anglicky';
+$lang_langmgr_php['native_language_name'] = 'Natívny';
+$lang_langmgr_php['custom_language_name'] = 'Vlastný';
+$lang_langmgr_php['language_name'] = 'Meno jazyka';
+$lang_langmgr_php['language_file'] = 'Jazykový súbor';
+$lang_langmgr_php['flag'] = 'Vlajka';
+$lang_langmgr_php['file_available'] = 'Dostupný';
+$lang_langmgr_php['enabled'] = 'Povolené';
+$lang_langmgr_php['complete'] = 'Kompletné';
+$lang_langmgr_php['default'] = 'Východzí';
+$lang_langmgr_php['missing'] = 'chýbajúci';
+$lang_langmgr_php['broken'] = 'zdá sa byť rozbitý alebo nedostupný';
+$lang_langmgr_php['exists_in_db_and_file'] = 'existuje v databázi a ako súbor';
+$lang_langmgr_php['exists_as_file_only'] = 'existuje iba ako súbor';
+$lang_langmgr_php['pick_a_flag'] = 'Vyber jednu'; //ak
+$lang_langmgr_php['replace_x_with_y'] = 'Vymeň %s s %s'; //ak
+$lang_langmgr_php['tanslator_information'] = 'Informácia o prekladateľovi';
+$lang_langmgr_php['cpg_version'] = 'Coppermine verzia';
+$lang_langmgr_php['hide_details'] = 'Skryť detaily';
+$lang_langmgr_php['show_details'] = 'Zobraziť detaily';
+$lang_langmgr_php['loading'] = 'Načítavam';
+$lang_langmgr_php['english_missing'] = 'Súbor s anglickým jazykom chýba aj keď by nemal byť nikdy odstránený. Musíte ho okamžite obnoviť.'; //ak
+$lang_langmgr_php['enable_at_least_one'] = 'Aby mohla galéria fungovať, musíte zapnúť aspoň jeden jazyk'; //ak
+$lang_langmgr_php['enable_default'] = 'Zvolili ste východzí jazyk, ktorý nie je zapnutý. Zvoľte iný východzí jazyk, alebo zapnite jazyk, ktorý ste zvolili ako východzí!'; //ak
+$lang_langmgr_php['available_default'] = 'Zvolili ste východzí jazyk, ktorý ani nie je k dispozícii. Zvoľte iný východzí jazyk!'; //ak
+$lang_langmgr_php['version_does_not_match'] = 'Verzia tohto súboru nekorešponduje s vašou verziou Coppermine. Použite opatrne a dostatočne ho otestujte!'; //ak
+$lang_langmgr_php['no_version'] = 'Nebola zistená informácia o verzii. Pravdepodobne tento jazykový súbor nebude vôbec fungovať alebo nie je aktuálny.'; //ak
+$lang_langmgr_php['filesize'] = 'Nepravdepodobná veľkosť súboru %s'; //ak
+$lang_langmgr_php['content_missing'] = 'Súbor neobsahuje potrebné dáta, tak pravdepodobne nie je správnym jazykovým súborom.'; //ak
+$lang_langmgr_php['status'] = 'Status'; //ak
+$lang_langmgr_php['default_language'] = 'Východzí jazyk nastavený na %s';
+}
 
 // ------------------------------------------------------------------------- //
 // File login.php
 // ------------------------------------------------------------------------- //
-
-if (defined('LOGIN_PHP')) $lang_login_php = array(
-  'login' => 'Prihlásenie',
-  'enter_login_pswd' => 'Zadajte Vaše meno a heslo pre prihlásenie',
-  'username' => 'Meno',
-  'password' => 'Heslo',
-  'remember_me' => 'Pamätaj si ma',
-  'welcome' => 'Vítame Vás, %s ...',
-  'err_login' => '*** Chyba pri prihlásení. Skúste to znova! ***',
-  'err_already_logged_in' => 'Už ste prihlásený !',
-  'forgot_password_link' => 'Zabudol som svoje heslo',
-  'cookie_warning' => 'Upozornenie, Váš prehliadač neakceptuje cookies.', //cpg1.4
-);
+if (defined('LOGIN_PHP')) {
+$lang_login_php['login'] = 'Prihlásenie';
+$lang_login_php['enter_login_pswd'] = 'Zadajte Vaše meno a heslo pre prihlásenie';
+$lang_login_php['username'] = 'Meno';
+$lang_login_php['email'] = 'E-mailová adresa'; // cpg1.5
+$lang_login_php['both'] = 'Meno / E-mailová adresa'; // cpg1.5
+$lang_login_php['password'] = 'Heslo';
+$lang_login_php['remember_me'] = 'Pamätaj si ma';
+$lang_login_php['welcome'] = 'Vítame Vás %s ...';
+$lang_login_php['err_login'] = 'Chyba pri prihlásení. Pokúste sa znova';
+$lang_login_php['err_already_logged_in'] = 'Už ste prihlásený!';
+$lang_login_php['forgot_password_link'] = 'Zabudol som svoje heslo';
+$lang_login_php['cookie_warning'] = 'Upozornenie, váš prehliadač neakceptuje skripty s cookies';
+$lang_login_php['send_activation_link'] = 'Stratili ste aktivačný odkaz?';
+$lang_login_php['force_login'] = 'Pre zobrazenie tejto stránky sa musíte prihlásiť'; // cpg1.5
+$lang_login_php['force_login_title'] = 'Pre pokračovanie sa prihláste'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
 // File logout.php
 // ------------------------------------------------------------------------- //
 
-if (defined('LOGOUT_PHP')) $lang_logout_php = array(
-  'logout' => 'Odhlásiť',
-  'bye' => 'Ďakujeme za návštevu %s ...',
-  'err_not_loged_in' => 'Nie ste prihlásený !',
-);
+if (defined('LOGOUT_PHP')) {
+$lang_logout_php['logout'] = 'Odhlásiť';
+$lang_logout_php['bye'] = 'Ahoj %s ...';
+$lang_logout_php['err_not_logged_in'] = 'Nie ste prihlásený!'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
-// File minibrowser.php  //cpg1.4
+// File minibrowser.php
 // ------------------------------------------------------------------------- //
+if (defined('MINIBROWSER_PHP')) {
+$lang_minibrowser_php['up'] = 'hore o jednu úroveň';
+$lang_minibrowser_php['current_path'] = 'súčasná cesta';
+$lang_minibrowser_php['select_directory'] = 'prosím vyberte adresár';
+$lang_minibrowser_php['click_to_close'] = 'Kliknite na obrázok pre zatvorenie okna';
+$lang_minibrowser_php['folder'] = 'Priečinok'; // cpg1.5
+}
 
-if (defined('MINIBROWSER_PHP')) $lang_minibrowser_php = array(
-  'close' => 'zatvoriť', //cpg1.4
-  'submit' => 'OK', //cpg1.4
-  'up' => 'hore o jednu úroveň', //cpg1.4
-  'current_path' => 'súčasná cesta', //cpg1.4
-  'select_directory' => 'zvoľte adresár', //cpg1.4
-  'click_to_close' => 'Kliknutím na obrázok zatvoríte okno',
-);
+// ------------------------------------------------------------------------- //
+// File mode.php
+// ------------------------------------------------------------------------- //
+if (defined('MODE_PHP')) {
+$lang_mode_php[0] = 'Vypnutie administračnej lišty ...'; // cpg1.5
+$lang_mode_php[1] = 'Zapnutie administračnej lišty ...'; // cpg1.5
+$lang_mode_php['news_hide'] = 'Skrývam novinky...'; // cpg1.5
+$lang_mode_php['news_show'] = 'Zobrazujem novinky...'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
 // File modifyalb.php
 // ------------------------------------------------------------------------- //
-
-if (defined('MODIFYALB_PHP')) $lang_modifyalb_php = array(
-  'upd_alb_n' => 'Aktualizovať album %s',
-  'general_settings' => 'Základné nastavenia',
-  'alb_title' => 'Nadpis albumu',
-  'alb_cat' => 'Kategória albumu',
-  'alb_desc' => 'Popis albumu',
-  'alb_keyword' => 'Kľúčové slovo pre album', //cpg1.4
-  'alb_thumb' => 'Náhľad albumu',
-  'alb_perm' => 'Oprávnenia pre album',
-  'can_view' => 'Album môžu vidieť',
-  'can_upload' => 'Návštevníci môžu pridávať súbory',
-  'can_post_comments' => 'Návštevníci môžu pridávať komentáre',
-  'can_rate' => 'Návštevníci môžu hodnotiť súbory',
-  'user_gal' => 'Užívateľská galéria',
-  'no_cat' => '* Žiadna kategória *',
-  'alb_empty' => 'Album je prázdny',
-  'last_uploaded' => 'Naposledy pridané',
-  'public_alb' => 'Každý (verejný album)',
-  'me_only' => 'Len ja',
-  'owner_only' => 'Vlastník albumu (%s) len',
-  'groupp_only' => 'Členovia skupiny \'%s\'',
-  'err_no_alb_to_modify' => 'žiadny album k modifikácii.',
-  'update' => 'Aktualizovať album',
-  'reset_album' => 'Reset album', //cpg1.4
-  'reset_views' => 'Resetovať počítadlo zobrazení na &quot;0&quot; v %s', //cpg1.4
-  'reset_rating' => 'Resetovať hodnotenia súborov v %s', //cpg1.4
-  'delete_comments' => 'Zmazať všetky komentáre v %s', //cpg1.4
-  'delete_files' => '%sNEZVRATNÉ%s zmazanie všetkých súborov v %s', //cpg1.4
-  'views' => 'zobrazení', //cpg1.4
-  'votes' => 'hlasov', //cpg1.4
-  'comments' => 'komentárov', //cpg1.4
-  'files' => 'súborov', //cpg1.4
-  'submit_reset' => 'Odoslať zmeny', //cpg1.4
-  'reset_views_confirm' => 'Súhlasím', //cpg1.4
-  'notice1' => '(*) závislé od nastavenia %sskupín%s ',  //cpg1.4 //(do not translate %s!)
-  'alb_password' => 'Heslo pre album', //cpg1.4
-  'alb_password_hint' => 'Heslo pre album - naznačenie', //cpg1.4
-  'edit_files' =>'Upraviť súbory', //cpg1.4
-  'parent_category' =>'Nadradená kategória', //cpg1.4
-  'thumbnail_view' =>'Zobrazenie náhľadov', //cpg1.4
-);
+if (defined('MODIFYALB_PHP')) {
+$lang_modifyalb_php['upd_alb_n'] = 'Aktualizovať album %s';
+$lang_modifyalb_php['related_tasks'] = 'Príbuzné úlohy'; // cpg1.5 ak
+$lang_modifyalb_php['choose_album'] = 'Zvoľ album'; // cpg1.5
+$lang_modifyalb_php['general_settings'] = 'Základné nastavenie';
+$lang_modifyalb_php['alb_title'] = 'Názov albumu';
+$lang_modifyalb_php['alb_cat'] = 'Kategória albumu';
+$lang_modifyalb_php['alb_desc'] = 'Popis albumu';
+$lang_modifyalb_php['alb_keyword'] = 'Kľúčové slová albumu';
+$lang_modifyalb_php['alb_thumb'] = 'Náhľad reprezentujúci album';
+$lang_modifyalb_php['alb_perm'] = 'Prístupové práva pre tento album';
+$lang_modifyalb_php['can_view'] = 'Album si môžu prezerať';
+$lang_modifyalb_php['can_upload'] = 'Návštěvníci môžu pridávať obrázky';
+$lang_modifyalb_php['can_post_comments'] = 'Návštěvníci môžu pridávať komentáre';
+$lang_modifyalb_php['can_rate'] = 'Návštěvníci môžu hodnotiť súbory';
+$lang_modifyalb_php['user_gal'] = 'Galéria užívateľa';
+$lang_modifyalb_php['my_gal'] = '* Moja Galéria *'; // cpg 1.5
+$lang_modifyalb_php['no_cat'] = '* Nie je kategória *';
+$lang_modifyalb_php['alb_empty'] = 'Album je prázdny';
+$lang_modifyalb_php['last_uploaded'] = 'Najnovší obrázok';
+$lang_modifyalb_php['public_alb'] = 'ktokoľvek (verejný album)';
+$lang_modifyalb_php['me_only'] = 'Iba JA';
+$lang_modifyalb_php['owner_only'] = 'Iba vlastník albumu (%s)';
+$lang_modifyalb_php['group_only'] = 'Členovia skupiny \'%s\'';
+$lang_modifyalb_php['err_no_alb_to_modify'] = 'V databázi nemôžete modifikovať žiaden album.';
+$lang_modifyalb_php['update'] = 'Aktualizovať album';
+$lang_modifyalb_php['reset_album'] = 'Reset albumu';
+$lang_modifyalb_php['reset_views'] = 'Reset počítadiel zobrazení na &quot;0&quot; v %s';
+$lang_modifyalb_php['reset_rating'] = 'Reset hodnotenia pre všetky súbory v %s';
+$lang_modifyalb_php['delete_comments'] = 'Vymaž všetky komentáre vytvorené v %s';
+$lang_modifyalb_php['delete_files'] = '%sNa trvalo%s odstrániť všetky súbory v %s';
+$lang_modifyalb_php['views'] = 'zobrazení';
+$lang_modifyalb_php['votes'] = 'hlasov';
+$lang_modifyalb_php['comments'] = 'komentárov';
+$lang_modifyalb_php['files'] = 'súborov';
+$lang_modifyalb_php['submit_reset'] = 'potvrdiť zmeny';
+$lang_modifyalb_php['reset_views_confirm'] = 'Som si istý';
+$lang_modifyalb_php['notice1'] = '(*) podľa nastavenia %sskupín%s '; // do not translate the %s placeholders
+$lang_modifyalb_php['can_moderate'] = 'Album môže byť moderovaný'; // cpg 1.5
+$lang_modifyalb_php['admins_only'] = 'Iba administrátori'; // cpg 1.5
+$lang_modifyalb_php['alb_password'] = 'Heslo albumu (Nové heslo)';
+$lang_modifyalb_php['alb_password_hint'] = 'Pomoc pre heslo albumu';
+$lang_modifyalb_php['edit_files'] = 'Editácia súborov';
+$lang_modifyalb_php['parent_category'] = 'Nadradená kategória';
+$lang_modifyalb_php['thumbnail_view'] = 'Náhľady';
+$lang_modifyalb_php['random_image'] = 'Náhodný obrázok'; // cpg 1.5
+$lang_modifyalb_php['password_protect'] = 'Chrániť album heslom (Označ pre áno)'; //cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
 // File phpinfo.php
 // ------------------------------------------------------------------------- //
-
-if (defined('PHPINFO_PHP')) $lang_phpinfo_php = array(
-  'php_info' => 'PHP info',
-  'explanation' => 'This is the output generated by the PHP-function <a href="http://www.php.net/phpinfo">phpinfo()</a>, displayed within Coppermine (trimming the output at the right side).',
-  'no_link' => 'Having others see your phpinfo can be a security risk, that\'s why this page is only visible when you\'re logged in as admin. You can not post a link to this page for others, they will be denied access.',
-);
+if (defined('PHPINFO_PHP')) {
+$lang_phpinfo_php['php_info'] = 'PHP info';
+$lang_phpinfo_php['explanation'] = 'Tento výstup je generovaný ako PHP-funkcia <a href="http://www.php.net/phpinfo">phpinfo()</a>, zobrazená pomocou Coppermine.';
+$lang_phpinfo_php['no_link'] = 'Umožniť ostatným prezerať phpinfo môže byť bezpečnostný problém. Nezverejňujte link na túto stránku.';
+}
 
 // ------------------------------------------------------------------------- //
-// File picmgr.php //cpg1.4
+// File picmgr.php
 // ------------------------------------------------------------------------- //
-if (defined('PICMGR_PHP')) $lang_picmgr_php = array(
-  'pic_mgr' => 'Správca obrázkov', //cpg1.4
-  'select_album' => 'Vybrať album', //cpg1.4
-  'delete' => 'Zmazať', //cpg1.4
-  'confirm_delete1' => 'Určite chcete zmazať tento obrázok ?', //cpg1.4
-  'confirm_delete2' => '\nObrázok bude navždy zmazaný.', //cpg1.4
-  'apply_modifs' => 'Vykonať zmeny', //cpg1.4
-  'confirm_modifs' => 'Potvrdiť zmeny', //cpg1.4
-  'pic_need_name' => 'Obrázok musí mať meno !', //cpg1.4
-  'no_change' => 'Nemôžete robiť žiadne zmeny !', //cpg1.4
-  'no_album' => '* Žiadny album *', //cpg1.4
-  'explanation_header' => 'Užívateľsky môžete usporadúvať súbory iba ak', //cpg1.4
-  'explanation1' => 'administrátor nastavil východzie usporiadanie podľa pozície', //cpg1.4
-  'explanation2' => 'užívateľ nastavil usporiadanie podľa pozície na stránke náhľadov', //cpg1.4
-);
+if (defined('PICMGR_PHP')) {
+$lang_picmgr_php['pic_mgr'] = 'Správca obrázkov';
+$lang_picmgr_php['confirm_delete1'] = 'Naozaj vymazať tento obrázok?';
+$lang_picmgr_php['confirm_delete2'] = 'Obrázok bude nenávratne znazaný.';
+$lang_picmgr_php['confirm_modifs'] = 'Skutočne vykonať zmeny?';
+$lang_picmgr_php['pic_need_name'] = 'Obrázok musí mať meno!';
+$lang_picmgr_php['no_change'] = 'Nevykonali ste žiadne zmeny!';
+$lang_picmgr_php['no_album'] = '* žiaden album *';
+$lang_picmgr_php['explanation_header'] = 'Užívateľské pravidlá zoraďovania môžu byť nastavené iba ak sú špecifikované v účte';
+$lang_picmgr_php['explanation1'] = 'admin nastavil "prednastavené zoraďovacie pravidlá pre súbory" v konfigurácii "Pozícia zostupně" alebo "Pozícia vzostupne" (globálne nastavenie pre všetkých užívateľov ktorí nechcú zoraďovať individuálne)';
+$lang_picmgr_php['explanation2'] = 'užívateľ vybral "Pozica zostupne" alebo "Pozícia vzostupne" na náhľadovej stránke (užívateľské nastavenia)';
+$lang_picmgr_php['change_album'] = 'Ak zmeníte album, Vaše zmeny budú stratené.'; // cpg1.5
+$lang_picmgr_php['submit_reminder'] = 'Zoradenie nebude zmenené pokým nekliknete na &quot;Použiť zmeny&quot;.'; // cpg1.5
+}
 
 
 // ------------------------------------------------------------------------- //
-// File pluginmgr.php //cpg1.4
+// File pluginmgr.php
 // ------------------------------------------------------------------------- //
-
 if (defined('PLUGINMGR_PHP')){
-
-$lang_pluginmgr_php = array(
-  'confirm_uninstall' => 'Určite chcete odinštalovať tento zásuvný modul', //cpg1.4
-  'confirm_delete' => 'Určite chcete zmazať tento zásuvný modul', //cpg1.4
-  'pmgr' => 'Správca zásuvných modulov', //cpg1.4
-  'name' => 'Meno', //cpg1.4
-  'author' => 'Autor', //cpg1.4
-  'desc' => 'Popis', //cpg1.4
-  'vers' => 'ver.', //cpg1.4
-  'i_plugins' => 'Inštalované zásuvné moduly', //cpg1.4
-  'n_plugins' => 'Neinštalované zásuvné moduly', //cpg1.4
-  'none_installed' => 'Nič nenainštalované', //cpg1.4
-  'operation' => 'Operácia', //cpg1.4
-  'not_plugin_package' => 'Súbor nie je zásuvný modul.', //cpg1.4
-  'copy_error' => 'Chyba pri kopírovaní do adresára.', //cpg1.4
-  'upload' => 'Pridať', //cpg1.4
-  'configure_plugin' => 'Konfigurovať zásuvný modul.', //cpg1.4
-  'cleanup_plugin' => 'Odstrániť zásuvný modul.', //cpg1.4
-);
+$lang_pluginmgr_php['confirm_uninstall'] = 'Chcete určite ODINŠTALOVAŤ tento zásuvný modul?';
+$lang_pluginmgr_php['confirm_remove'] = 'POZNÁMKA: Zásuvný modul API je vypnutý/zakázaný(disabled). Chcete MANUÁLNE ODSTRÁNIŤ tento modul, ignorujúc akékoľvek čistiace akcie?'; // cpg1.5 ak
+$lang_pluginmgr_php['confirm_delete'] = 'Chcete naozaj ZMAZAŤ tento zásuvný modul?';
+$lang_pluginmgr_php['pmgr'] = 'Správca zásuvných modulov';
+$lang_pluginmgr_php['explanation'] = 'Inštalovať / odinštalovať / spravovať zásuvné moduly použité na tejto stránke.'; // cpg1.5
+$lang_pluginmgr_php['plugin_enabled'] = 'Povoliť API zásuvné moduly'; // cpg1.5
+$lang_pluginmgr_php['name'] = 'Meno';
+$lang_pluginmgr_php['author'] = 'Autor';
+$lang_pluginmgr_php['desc'] = 'Poznámka';
+$lang_pluginmgr_php['vers'] = 'v';
+$lang_pluginmgr_php['i_plugins'] = 'Nainštalované zásuvné moduly';
+$lang_pluginmgr_php['n_plugins'] = 'Nenainštalované zásuvné moduly';
+$lang_pluginmgr_php['none_installed'] = 'Nič nebolo nainštalované';
+$lang_pluginmgr_php['operation'] = 'Operácia';
+$lang_pluginmgr_php['not_plugin_package'] = 'Nahrávaný súbor nie je zásuvný modul.';
+$lang_pluginmgr_php['copy_error'] = 'Vyskytla sa chyba pri kopírovaní balíčka do priečinka zásuvných modulov.';
+$lang_pluginmgr_php['upload'] = 'Nahrať';
+$lang_pluginmgr_php['configure_plugin'] = 'Konfigurovať zásuvný modul';
+$lang_pluginmgr_php['cleanup_plugin'] = 'Vyčistiť zásuvný modul';
+$lang_pluginmgr_php['extra'] = 'Extra'; // cpg1.5
+$lang_pluginmgr_php['install_info'] = 'Inštalačné informácie'; // cpg1.5
+$lang_pluginmgr_php['plugin_disabled_note'] = 'Zásuvný modul API je zakázaný, takže tá operácia nie je povolená.'; // cpg1.5
+$lang_pluginmgr_php['install'] = 'nainštalovať'; // cpg1.5
+$lang_pluginmgr_php['uninstall'] = 'odinštalovať'; // cpg1.5
 }
 
 // ------------------------------------------------------------------------- //
 // File ratepic.php
 // ------------------------------------------------------------------------- //
-
-if (defined('RATEPIC_PHP')) $lang_rate_pic_php = array(
-  'already_rated' => 'Tento súbor ste už hodnotili',
-  'rate_ok' => 'Váš hlas bol prijatý. Ďakujeme.',
-  'forbidden' => 'YNemôžete hodnotiť vlastný súbor.',
-);
+if (defined('RATEPIC_PHP')) {
+$lang_rate_pic_php['already_rated'] = 'Tento obázok ste už hodnotili';
+$lang_rate_pic_php['rate_ok'] = 'Váš hlas bol prijatý. Ďakujeme.';
+$lang_rate_pic_php['forbidden'] = 'Nemôžete hodnotiť vaše vlastné obrázky.';
+}
 
 // ------------------------------------------------------------------------- //
 // File register.php & profile.php
 // ------------------------------------------------------------------------- //
-
 if (defined('REGISTER_PHP') || defined('PROFILE_PHP')) {
-
-$lang_register_disclamer = <<<EOT
-Aj keď správca {SITE_NAME} bude opravovať prípadne odstraňovať nepríjemný materiál čo najskôr, nie je možné recenzovať každé podanie ihneď. Preto týmto priznávate zodpovednosť za pridávaný materiál v plnej miere, vlastným menom. Nie všetci členovia majú možnosť pridávať súbory, komentáre, hodnotenia na týchto stránkach. Autor pridania prehlasuje, že neporušuje autorské práva tretej strany.<br />
+$lang_register_php['disclamer'] = <<<EOT
+Aj keď administrátori {SITE_NAME} odstánia alebo zmenia akýkoľvek nevhodný materiál z obsahu galérie tak rýchlo ako to bude možné, nie je možné kontrolovať každý príspevok. Všetky príspevky vložené na tento server vyjadrujú názory a postoje ich autorov a nie administrátorov alebo prevádzkovateľa servera (s výnimkou ich vlastných príspevkov) a preto nemôžu byť za takéto príspevky braní na zodpovednosť.<br />
 <br />
-Vy súhlasíte, že nebudete pridávať nijaký hrubý, odporný, nevychovaný, ohováračský, výhražný, nábožensky alebo sexuálne-orientovaný alebo každý iný materiál, ktorý porušuje nejaké platné práva v ktorejkoľvek krajine. Správca má právo odstrániť akýkoľvek príspevok (súbor,hodnotenie,komentár) podľa vlastného uváženia kedykoľvek to uzná za vhodné. Správca nie je povinný schváliť Vašu registráciu, pri porušovaní pravidiel prípadne autorských práv  môže Vašu registráciu zrušiť, či prípadne úplne zakázať prístup k stránkam {SITE_NAME}. Všetky dáta uložené v databáze sú použité výhradne pre chod galérie a nie sú nijak inak spracovávané. Pokiaľ nie je uvedené inak, všetky obrázky zverejnené v albumoch {SITE_NAME} sú chránené autorským právom a nie je dovolené ich kopírovať, upravovať, šíriť ďalej, komerčne využívať či inak reprodukovať. <br />
+Súhlasíte s tým, že nebudete pridávať žiadne hanlivé, urážajúce, obscénne, vulgárne, ohováračské, nevraživé, výhražné a sexuálne orientované príspevky alebo akýkoľvek materiál porušujúci zákon. Zároveň súhlasíte s tým, že administrátor, moderátor a prevádzkovateľ {SITE_NAME} má právo odstrániť alebo pozmeniť akýkoľvek obsah, vrátane užívateľských príspevkov, kedykoľvek podľa ich vlastného uváženia. Ako užívateľ súhlasíte s tým, že všetky vami pridané príspevky budú uložené v databáze, avšak aj keď tieto informácie nebudú postúpené tretím osobám bez vášho súhlasu, správca a administrátor nemôže ručiť za prípadný neautorizovaný vstup na server, ktorý by mohol mať za následok únik dát z databázy.<br />
 <br />
-Tieto stránky používajú cookies k ukladaniu informácií do Vášho počítača. Tieto cookies zlepšujú potešenie z prehliadania. E-mail je použitý iba na zaslanie aktivačných údajov a hesiel.<br />
+Táto stránka používa cookies na ukladanie informácii na vášom počítači. Tieto cookies slúžia iba pre zlepšenie komfortu prehliadania stránky. E-mailová adresa je použitá iba pre potvrdenie vašej registrácie a prístupových údajov.<br />
 <br />
-Stlačením tlačidla 'Súhlasím' potvrdzujete porozumenie s týmito podmienkami.
+Kliknutím na 'Súhlasím' nižšie vyjadrujete súhlas s tým, že ste viazaný týmito podmienkami.
 EOT;
+$lang_register_php['page_title'] = 'Registrácia nového užívateľa';
+$lang_register_php['term_cond'] = 'Podmienky a pravidlá';
+$lang_register_php['i_agree'] = 'Súhlasím';
+$lang_register_php['submit'] = 'Odoslať registráciu';
+$lang_register_php['err_user_exists'] = 'Zadané užívateľské meno už existuje, zvoľte prosím iné';
+$lang_register_php['err_global_pw'] = 'Neplatné globálne heslo pre registráciu'; // cpg1.5
+$lang_register_php['err_global_pass_same'] = 'Vaše heslo by malo byť odlišné od globálneho hesla'; // cpg1.5
+$lang_register_php['err_duplicate_email'] = 'S e-mailovou adresou, ktorú ste zadali sa zaregistroval už iný užívateľ';
+$lang_register_php['err_disclaimer'] = 'Musíte súhlasiť s uvedenými pravidlami'; // cpg1.5
+$lang_register_php['enter_info'] = 'Zadajte registračné informácie';
+$lang_register_php['required_info'] = 'Povinné informácie';
+$lang_register_php['optional_info'] = 'Nepovinné informácie';
+$lang_register_php['username'] = 'Meno';
+$lang_register_php['password'] = 'Heslo';
+$lang_register_php['password_again'] = 'Potvrdenie hesla';
+$lang_register_php['global_registration_pw'] = 'Globálne registračné heslo'; // cpg1.5
+$lang_register_php['email'] = 'E-mail';
+$lang_register_php['location'] = 'Miesto';
+$lang_register_php['interests'] = 'Záujmy';
+$lang_register_php['website'] = 'Domáca stránka';
+$lang_register_php['occupation'] = 'Povolanie';
+$lang_register_php['error'] = 'CHYBA';
+$lang_register_php['confirm_email_subject'] = '%s - Potvrdenie registrácie';
+$lang_register_php['information'] = 'Informácie';
+$lang_register_php['failed_sending_email'] = 'Nemožno odoslať e-mail pre potvrdenie registrácie!';
+$lang_register_php['thank_you'] = 'Ďakujeme za registráciu.<br /><br />Na adresu zadanú pri registrácii Vám budú odoslané prístupové informácie.';
+$lang_register_php['acct_created'] = 'Váš užívateľský účet bol úspešne vytvorený. Teraz sa prihláste použitím vášho mena a hesla';
+$lang_register_php['acct_active'] = 'Váš užívateľský účet je teraz aktívny.  Prihláste sa použitím vášho mena a hesla';
+$lang_register_php['acct_already_act'] = 'Váš účet je už aktívny!';
+$lang_register_php['acct_act_failed'] = 'Tento účet nemôže byť aktivovaný!';
+$lang_register_php['err_unk_user'] = 'Vybraný užívateľ neexistuje!';
+$lang_register_php['x_s_profile'] = '%s profil';
+$lang_register_php['group'] = 'Skupina';
+$lang_register_php['reg_date'] = 'Registrovaný';
+$lang_register_php['disk_usage'] = 'Využitie disku';
+$lang_register_php['change_pass'] = 'Zmeniť heslo';
+$lang_register_php['current_pass'] = 'Súčasné heslo';
+$lang_register_php['new_pass'] = 'Nové heslo';
+$lang_register_php['new_pass_again'] = 'Potvrdenie nového hesla';
+$lang_register_php['err_curr_pass'] = 'Súčasné heslo bolo zadané nesprávne';
+$lang_register_php['change_pass'] = 'Zmeniť moje heslo';
+$lang_register_php['update_success'] = 'Váš profil bol aktualizovaný';
+$lang_register_php['pass_chg_success'] = 'Vaše heslo bolo zmenené';
+$lang_register_php['pass_chg_error'] = 'Vaše heslo nebolo zmenené';
+$lang_register_php['notify_admin_email_subject'] = '%s - Oznámenie o registrácii';
+$lang_register_php['last_uploads'] = 'Posledný pridaný súbor'; // cpg1.5
+$lang_register_php['last_uploads_detail'] = 'Klikni pre zobrazenie všetkých pridaní od užívateľa %s'; // cpg1.5
+$lang_register_php['last_comments'] = 'Posledný komentár'; // cpg1.5
+$lang_register_php['you'] = 'Vy'; // cpg1.5
+$lang_register_php['last_comments_detail'] = 'Klikni pre zobrazenie všetkých komentárov od užívateľa %s'; // cpg1.5
+$lang_register_php['notify_admin_email_body'] = 'Nový užívateľ menom "%s" sa registroval vo vašej galérii';
+$lang_register_php['pic_count'] = 'pridaných súborov';
+$lang_register_php['notify_admin_request_email_subject'] = '%s - Žiadosť o registráciu'; //
+$lang_register_php['thank_you_admin_activation'] = 'Děkujeme.<br /><br />Vaša žiadosť o aktiváciu účtu bola odoslaná administrátorovi. Po jej potvrdení vám bude zaslaný e-mail.';
+$lang_register_php['acct_active_admin_activation'] = 'Účet je teraz aktívny a e-mail bol odoslaný užívateľovi.';
+$lang_register_php['notify_user_email_subject'] = '%s - Oznámenie o aktivácii'; //
+$lang_register_php['delete_my_account'] = 'ZMAZAŤ môj účet'; // cpg1.5
+$lang_register_php['warning_delete'] = 'Upozornenie: zmazanie vášho účtu nemožno vrátiť späť. %sSúbory, ktoré ste pridali%s do verejných albumov a vaše %skomentáre%s sa zmazaním vášho účtu nezmažú! Súbory pridané do vašej osobnej galérie budú zmazané.'; // cpg1.5 ak // The %s-placeholders mustn't be removed, they will later be replaced by the wrappers for the links
+$lang_register_php['i_am_sure'] = 'Naozaj chcem zmazať svoj užívateľský účet'; // cpg1.5
+$lang_register_php['really_delete'] = 'Naozaj chcete ZMAZAŤ váš užívateľský účet?'; // cpg1.5 // ak
+$lang_register_php['edit_xs_profile'] = 'Upraviť profil %s'; // cpg1.5
+$lang_register_php['edit_my_profile'] = 'Upraviť môj profil'; // cpg1.5
+$lang_register_php['none'] = 'žádný'; // cpg1.5 ak
+$lang_register_php['user_name_banned'] = 'Užívateľské meno, ktoré ste zadali nie je povolené. Zvoľte iné meno'; // cpg1.5 ak
+$lang_register_php['email_address_banned'] = 'V tejto galérii ste zakázaný. Nie je vám dovolené sa znovu registrovať. Odíďte!'; // cpg1.5 ak
+$lang_register_php['email_warning1'] = 'E-mailová adresa nesmie byť prázdna!'; // cpg1.5
+$lang_register_php['email_warning2'] = 'Vami zadaná e-mailová adresa nie je platná. Prosím skontrolujte!'; // cpg1.5
+$lang_register_php['username_warning1'] = 'Užívateľské meno nesmie byť prázdne!'; // cpg1.5
+$lang_register_php['username_warning2'] = 'Užívateľské meno musí mať aspoň dva znaky!'; // cpg1.5
+$lang_register_php['password_warning1'] = 'Heslo musí mať aspoň dva znaky!'; // cpg1.5
+$lang_register_php['password_warning2'] = 'Užívateľské meno a heslo nesmú byť rovnaké'; // cpg1.5
+$lang_register_php['password_verification_warning1'] = 'Dve heslá sa nezhodujú, prosím zadajte znova'; // cpg1.5
+$lang_register_php['form_not_submit'] = 'Formulár nebol odoslaný - existujú chyby, ktoré musíte najprv odstrániť!'; // cpg1.5 ak
+$lang_register_php['banned'] = 'Zakázaný'; // cpg1.5 ak
 
-$lang_register_php = array(
-  'page_title' => 'Registrácia nového užívateľa',
-  'term_cond' => 'Podmienky a pravidlá',
-  'i_agree' => 'Súhlasím',
-  'submit' => 'Odoslať registráciu',
-  'err_user_exists' => 'Zadané užívateľské meno už existuje vyberte si prosím iné',
-  'err_password_mismatch' => 'Zadané heslo sa musí zhodovať v oboch riadkoch, zadajte znova',
-  'err_uname_short' => 'Minimálna dĺžka uživateľskeho mena je 2 znaky',
-  'err_password_short' => 'Minimálna dĺžka hesla je 2 znaky',
-  'err_uname_pass_diff' => 'Meno a heslo se nesmie zhodovať',
-  'err_invalid_email' => 'Bola zadaná neplatná emailová adresa',
-  'err_duplicate_email' => 'Táto emailová adresa je už ragistrovaná, zadajte inú.',
-  'enter_info' => 'Zadať registračné informácie',
-  'required_info' => 'Povinné údaje',
-  'optional_info' => 'Voliteľné údaje',
-  'username' => 'Meno',
-  'password' => 'Heslo',
-  'password_again' => 'Zopakuj heslo',
-  'email' => 'Email',
-  'location' => 'Miesto',
-  'interests' => 'Záujmy',
-  'website' => 'www',
-  'occupation' => 'Zamestnanie',
-  'error' => 'CHYBA',
-  'confirm_email_subject' => '%s - Potvrdenie registrácie',
-  'information' => 'Informácia',
-  'failed_sending_email' => 'Nie je možné odoslať email o potvrdení registrácie !',
-  'thank_you' => 'Ďakujeme za registráciu.<br /><br />Na email adresu zadanú pri registrácii Vám budú doručené informácie o aktiváci vášho účtu.',
-  'acct_created' => 'Váš užívateľský účet bol úspešne vytvorený. Teraz sa môžete prihláste pomocou vášho mena a hesla',
-  'acct_active' => 'Váš užívateľský účet je odteraz aktívny a Vy sa môžete prihlásiť pomocou vášho mena a hesla ',
-  'acct_already_act' => 'Váš účet je už aktivny!', //cpg1.4
-  'acct_act_failed' => 'Tento účet nemôže byť aktivovaný !',
-  'err_unk_user' => 'Vybraný užívateľ neexistuje !',
-  'x_s_profile' => '%s\'s profil',
-  'group' => 'Skupina',
-  'reg_date' => 'Pripojený',
-  'disk_usage' => 'Využitie disku',
-  'change_pass' => 'Zmeniť heslo',
-  'current_pass' => 'Súčasné heslo',
-  'new_pass' => 'Nové heslo',
-  'new_pass_again' => 'Nové heslo znova',
-  'err_curr_pass' => 'Súčasné heslo je nesprávne',
-  'apply_modif' => 'Vykonať zmeny',
-  'change_pass' => 'Zmeniť moje heslo',
-  'update_success' => 'Váš profil bol aktualizovaný',
-  'pass_chg_success' => 'Vaše heslo bolo zmenené',
-  'pass_chg_error' => 'Vaše heslo nebolo zmenené',
-  'notify_admin_email_subject' => '%s - Upozornenie na registráciu',
-  'last_uploads' => 'Posledný pridaný súbor.<br />Klikni pre zobrazenie všetkých pridaní od', //cpg1.4
-  'last_comments' => 'Posledný komentár.<br />Klikni pre zobrazenie všetkých komentárov od', //cpg1.4
-  'notify_admin_email_body' => 'Nový užívateľ "%s" zaregistrovaný v galérii',
-  'pic_count' => 'Súborov pridaných', //cpg1.4
-  'notify_admin_request_email_subject' => '%s - Požiadavka registrácie.', //cpg1.4
-  'thank_you_admin_activation' => 'Ďakujeme.<br /><br />Vaša požiadavka o registráciu bolo odoslaná administrátorovi. Čoskoro obdržíte email.', //cpg1.4
-  'acct_active_admin_activation' => 'ˇUčet bol vytvorený a email bol zaslaný užívateľovi.', //cpg1.4
-  'notify_user_email_subject' => '%s - Oznámenie o aktivácii', //cpg1.4
-);
-
-$lang_register_confirm_email = <<<EOT
+$lang_register_php['confirm_email'] = <<<EOT
 Ďakujeme za registráciu na {SITE_NAME}
 
-Pre aktiváciu účtu užívateľa "{USER_NAME}", treba kliknúť na link ďalej alebo skopírovať do prehliadača.
-
+Aby ste aktivovali váš účet "{USER_NAME}", musíte kliknúť na odkaz nižšie alebo zadať ho do internetového prehliadača.
 <a href="{ACT_LINK}">{ACT_LINK}</a>
+
 
 S pozdravom,
 
-Administrátor od {SITE_NAME}
+Administrátor {SITE_NAME}
 
 EOT;
 
 $lang_register_approve_email = <<<EOT
-Nový užívateľ "{USER_NAME}" sa zaregistroval v galérii.
-
-Pre aktiváciu účtu užívateľa, treba kliknúť na link ďalej alebo skopírovať do prehliadača.
+Nový užívateľ menom "{USER_NAME}" sa zaregistroval vo vašej galérii.
+Aby ste aktivovali jeho účet, musíte kliknúť na odkaz nižšie alebo zadať ho do internetového prehliadača.
 
 <a href="{ACT_LINK}">{ACT_LINK}</a>
 
 EOT;
 
-$lang_register_activated_email = <<<EOT
-Váš účet bol vytvorený a aktivovaný
-Teraz sa môžete prihlásiť na  <a href="{SITE_LINK}">{SITE_LINK}</a> použitím mena "{USER_NAME}"
+$lang_register_php['activated_email'] = <<<EOT
+Váš účet bol schválený a aktivovaný.
+
+Teraz sa môžete prihlásiť na <a href="{SITE_LINK}">{SITE_LINK}</a> použitím užívateľského mena "{USER_NAME}"
 
 
 S pozdravom,
 
-Administrátor od {SITE_NAME}
+Administrátor {SITE_NAME}
 
 EOT;
 }
@@ -1578,529 +1908,711 @@ EOT;
 // ------------------------------------------------------------------------- //
 // File reviewcom.php
 // ------------------------------------------------------------------------- //
+if (defined('REVIEWCOM_PHP')) {
+$lang_reviewcom_php['title'] = 'Prezeranie komentárov';
+$lang_reviewcom_php['no_comment'] = 'Nie sú žiadne komentáre na prezeranie';
+$lang_reviewcom_php['n_comm_del'] = '%s komentárov zmazaných';
+$lang_reviewcom_php['n_comm_disp'] = 'Počet komentárov na zobrazenie';
+$lang_reviewcom_php['see_prev'] = 'Predchádzajúci';
+$lang_reviewcom_php['see_next'] = 'Ďalší';
+$lang_reviewcom_php['del_comm'] = 'Zmazať vybrané komentáre';
+$lang_reviewcom_php['user_name'] = 'Meno';
+$lang_reviewcom_php['date'] = 'Dátum';
+$lang_reviewcom_php['comment'] = 'Komentár';
+$lang_reviewcom_php['file'] = 'Súbor';
+$lang_reviewcom_php['name_a'] = 'Užívateľské meno vzostupne';
+$lang_reviewcom_php['name_d'] = 'Užívateľské meno zostupne';
+$lang_reviewcom_php['date_a'] = 'Dátum vzostupne';
+$lang_reviewcom_php['date_d'] = 'Dátum zostupne';
+$lang_reviewcom_php['comment_a'] = 'Komentár vzostupne';
+$lang_reviewcom_php['comment_d'] = 'Komentár zostupne';
+$lang_reviewcom_php['file_a'] = 'Súbor vzostupne';
+$lang_reviewcom_php['file_d'] = 'Súbor zostupne';
+$lang_reviewcom_php['approval_a'] = 'Schválenie vzostupne'; // cpg1.5
+$lang_reviewcom_php['approval_d'] = 'Schválenie zostupne'; // cpg1.5
+$lang_reviewcom_php['ip_a'] = 'IP adresa vzostupne'; // cpg1.5
+$lang_reviewcom_php['ip_d'] = 'IP adresa zostupne'; // cpg1.5
+$lang_reviewcom_php['akismet_a'] = 'Akismet hodnotenie (platné komentáre na koniec)'; // cpg1.5 ak
+$lang_reviewcom_php['akismet_d'] = 'Akismet hodnotenie (platné komentáre na začiatok)'; // cpg1.5 ak
+$lang_reviewcom_php['n_comm_appr'] = '%s schválených komentárov'; // cpg1.5
+$lang_reviewcom_php['n_comm_unappr'] = '%s neschválených komentárov'; // cpg1.5
+$lang_reviewcom_php['configuration_changed'] = 'Konfigurácia schvaľovania zmenená'; // cpg1.5 ak
+$lang_reviewcom_php['only_approval'] = 'zobraziť iba komentáre čakajúce na schválenie'; // cpg1.5
+$lang_reviewcom_php['approval'] = 'Schválené'; // cpg1.5
+$lang_reviewcom_php['save_changes'] = 'Uložiť zmeny'; // cpg1.5
+$lang_reviewcom_php['n_confirm_delete'] = 'Naozaj chcete zmazať vybrané komentáre?'; // cpg1.5
+$lang_reviewcom_php['with_selected'] = 'S vybranými'; // cpg1.5
+$lang_reviewcom_php['delete'] = 'zmazať'; // cpg1.5
+$lang_reviewcom_php['approve'] = 'schváliť'; // cpg1.5
+$lang_reviewcom_php['disapprove'] = 'označiť ako neschválené'; // cpg1.5
+$lang_reviewcom_php['do_nothing'] = 'neurobiť nič'; // cpg1.5
+$lang_reviewcom_php['comment_approved'] = 'Komentár schválený'; // cpg1.5
+$lang_reviewcom_php['comment_unapproved'] = 'Komentár označený ako neschválený'; // cpg1.5
+$lang_reviewcom_php['ban_and_delete'] = 'Zakázať užívateľa a zmazať komentáre'; // cpg1.5
+$lang_reviewcom_php['akismet_status'] = 'Akismet rozhodol'; // cpg1.5
+$lang_reviewcom_php['is_spam'] = 'je spam'; // cpg1.5
+$lang_reviewcom_php['is_not_spam'] = 'nie je spam'; // cpg1.5
+$lang_reviewcom_php['akismet'] = 'Akismet'; // cpg1.5
+$lang_reviewcom_php['akismet_count'] = 'Akismet doteraz zistil %s spamových odkazov'; // cpg1.5 ak
+$lang_reviewcom_php['akismet_test_result'] = 'Výsledok testu pre váš Akismet API kľúč %s'; // cpg1.5 ak
+$lang_reviewcom_php['invalid'] = 'neplatný'; // cpg1.5
+$lang_reviewcom_php['missing_gallery_url'] = 'V konfigurácii Coppermine musíte špecifikovať URL galérie'; // cpg1.5 ak
+$lang_reviewcom_php['unable_to_connect'] = 'Nie je možné sa pripojiť na akismet.com'; // cpg1.5
+$lang_reviewcom_php['not_found'] = 'Cieľové URL nebolo nájdené. Je možné že došlo k zmene štruktúry stránky akismet.com.'; // cpg1.5 ak
+$lang_reviewcom_php['unknown_error'] = 'Neznáma chyba'; // cpg1.5
+$lang_reviewcom_php['error_message'] = 'Vrátený chybový odkaz bol'; // cpg1.5 ak
+$lang_reviewcom_php['ip_address'] = 'IP adresa'; // cpg1.5
+}
 
-if (defined('REVIEWCOM_PHP')) $lang_reviewcom_php = array(
-  'title' => 'Kontrola komentárov',
-  'no_comment' => 'Nie sú žiadne komentáre na kontrolu',
-  'n_comm_del' => '%s komentárov zmazaných',
-  'n_comm_disp' => 'Počet komentárov k zobrazeniu',
-  'see_prev' => 'Predchádzajúci',
-  'see_next' => 'Ďaľší',
-  'del_comm' => 'Zmazať vybrané komentáre',
-  'user_name' => 'Meno', //cpg1.4
-  'date' => 'Dátum', //cpg1.4
-  'comment' => 'Komentár', //cpg1.4
-  'file' => 'Súbor', //cpg1.4
-  'name_a' => 'Užívatelia vzostupne', //cpg1.4
-  'name_d' => 'Užívatelia zostupne', //cpg1.4
-  'date_a' => 'Dátum vzostupne', //cpg1.4
-  'date_d' => 'Dátum zostupne', //cpg1.4
-  'comment_a' => 'Komentáre vzostupne', //cpg1.4
-  'comment_d' => 'Komentáre zostupne', //cpg1.4
-  'file_a' => 'Súbory vzostupne', //cpg1.4
-  'file_d' => 'Súbory zostupne', //cpg1.4
-);
+// ------------------------------------------------------------------------- //
+// File sidebar.php
+// ------------------------------------------------------------------------- //
+if (defined('SIDEBAR_PHP')) {
+$lang_sidebar_php['sidebar'] = 'Bočná lišta'; // cpg1.5
+$lang_sidebar_php['install'] = 'inštaluj'; // cpg1.5
+$lang_sidebar_php['install_explain'] = 'Spomedzi viacerých metód pre rýchly a pohodlný prístup k informáciam na vašej stránke, poskytujeme bočné lišty pre väčšinu rozšírených prehliadačov a operačných systémov. Tu môžete nájsť informácie pre nastavenie a inštaláciu na podporovaných prehliadačoch.'; // cpg1.5
+$lang_sidebar_php['os_browser_detect'] = 'Zisťujem váš operačný systém a internetový prehliadač'; // cpg1.5
+$lang_sidebar_php['os_browser_detect_explain'] = 'Program zisťuje váš operačný systém a verziu internetového prehliadača - prosím počkajte chvíľu. Ak dôjde k zlyhaniu automatickej detekcie, môžete %sotvoriť%s všetky možnosti inštalácie bočnej lišty manuálne.'; // cpg1.5
+$lang_sidebar_php['mozilla'] = 'Mozilla, Firefox, Netscape 6+, Konqueror 3.2+'; // cpg1.5
+$lang_sidebar_php['mozilla_explain'] = 'Ak používate Mozilla 0.9.4 alebo novšiu, môžete %spridať našu lištu k vašej sade%s. Pre odinštalovanie tejto bočnej lišty môžete potom použiť "Customize Sidebar" v Mozille.'; // cpg1.5
+$lang_sidebar_php['ie_mac'] = 'Internet Explorer 5 alebo novší na operačnom systéme Mac'; // cpg1.5
+$lang_sidebar_php['ie_mac_explain'] = 'Ak používate Internet Explorer 5 alebo novší na operačnom systéme Mac, %sotvorte stránku s našou lištou%s v samostatnom okne. V tom okne potom otvorte "Page Holder" na ľavej strane okna. Kliknite "Add". Ak ho chcete ponechať pre budúce použitie, kliknite "Favorites" a zvoľte "Add to Page Holder Favorites".'; // cpg1.5
+$lang_sidebar_php['ie_win'] = 'Internet Explorer 5 alebo novší na Windows'; // cpg1.5
+$lang_sidebar_php['ie_win_explain'] = 'Ak používate Internet Explorer 5 olebo novší na operačnom systéme Windows, môžete pridať bočnú lištu k vašej lište s odkazmi (Links) alebo ju môžete pridať k vašim obľúbeným (Favorites) a kliknutím na ňu ju uvidíte zobraziť sa namiesto políčka vyhľadávania (search bar) kliknutím pravým tlačidlom myši %stu%s a zvolení pridania k obľúbeným (Add to favorites) z otvoreného menu. Tento odkaz nenainštaluje našu bočnú lištu ako vaše základné políčko vyhľadávania, takže vo vašom systéme nebudú vykonané žiadne zmeny.'; // cpg1.5
+$lang_sidebar_php['ie7_win'] = 'Internet Explorer 7 na Windows XP/Vista'; // cpg1.5
+$lang_sidebar_php['ie7_win_explain'] = 'Ak používate Internet Explorer 7 na operačnom systéme Windows, môžete pridať navigačný pop-up k vašej lište odkazov (Links toolbar) alebo ju môžete pridať k vašim obľúbeným (Favorites) a kliknutím na ňu budete vidieť našu bočnú lištu ako pop-up okno kliknutím pravým tlačidlom myši %stu%s a zvolením pridania k obľúbeným (Add to favorites) na otvorenom menu. V starších verziách Internet Explorera bolo možné pridať bočnú lištu ako takú, ale v Internet Exploreri 7 to nemožno urobiť bez komplikovanej úpravy registrov. Ak chcete využívať skutočnú bočnú lištu, odporúčame používať iný internetový prehliadač.'; // cpg1.5
+$lang_sidebar_php['opera'] = 'Opera 6 and above'; // cpg1.5
+$lang_sidebar_php['opera_explain'] = 'Ak používate prehliadač Opera, môžete %skliknúť na tento odkaz pre pridanie našej bočnej lišty k vašej sade%s. Potom kliknite "Show in panel". Odstrániť bočnú lištu môžete kliknutím pravého tlačidla myši na lištu a zvoliť "Delete" na zobrazenom menu.'; // cpg1.5
+$lang_sidebar_php['additional_options'] = 'Doplnkové možnosti'; // cpg1.5
+$lang_sidebar_php['additional_options_explain'] = 'Ak máte iný prehliadač ako sú uvedené vyššie, kliknite %stu%s pre zobrazenie všetkých možností bočnej lišty.'; // cpg1.5
+$lang_sidebar_php['cannot_add_sidebar'] = 'Bočnú lištu nemožno pridať! Váš prehliadač nepodporuje túto metódu!'; // cpg1.5 // ak
+$lang_sidebar_php['search'] = 'Hľadať'; // cpg1.5
+$lang_sidebar_php['reload'] = 'Znovu načítať'; // cpg1.5
+}
 
 
 // ------------------------------------------------------------------------- //
 // File search.php                                                           //
 // ------------------------------------------------------------------------- //
-
-
 if (defined('SEARCH_PHP')){
-
-$lang_search_php = array(
-  'title' => 'Vyhľadávanie v albumoch', //cpg1.4
-  'submit_search' => 'hľadať', //cpg1.4
-  'keyword_list_title' => 'Zoznam kľúčových slov', //cpg1.4
-  'keyword_msg' => 'Uvedený list neobsahuje všetko.  Skúste full-textové vyhľadávanie.',  //cpg1.4
-  'edit_keywords' => 'Upraviť kľúčové slovo', //cpg1.4
-  'search in' => 'Hľadať v:', //cpg1.4
-  'ip_address' => 'IP adresa', //cpg1.4
-  'fields' => 'Hľadať v', //cpg1.4
-  'age' => 'Vek súboru', //cpg1.4
-  'newer_than' => 'Mladší ako', //cpg1.4
-  'older_than' => 'Starší ako', //cpg1.4
-  'days' => 'dní', //cpg1.4
-  'all_words' => 'Zhodné všetky výrazy (A)', //cpg1.4
-  'any_words' => 'Zhodné niektoré výrazy (ALEBO)', //cpg1.4
-);
-
-$lang_adv_opts = array(
-  'title' => 'Nadpis', //cpg1.4
-  'caption' => 'Záhlavie', //cpg1.4
-  'keywords' => 'Kľúčové slovo', //cpg1.4
-  'owner_name' => 'Vlastník', //cpg1.4
-  'filename' => 'Názov súboru', //cpg1.4
-);
-
+$lang_search_php['title'] = 'Hľadať';
+$lang_search_php['submit_search'] = 'hľadaj';
+$lang_search_php['keyword_list_title'] = 'Zoznam kľúčových slov';
+$lang_search_php['keyword_msg'] = 'Zoznam kľúčových slov neobsahuje slová názvov a popisov súborov. Pre ne skúste full-textové vyhľadávanie.';
+$lang_search_php['edit_keywords'] = 'Edituj kľúčové slová';
+$lang_search_php['search in'] = 'Hľadaj v:';
+$lang_search_php['ip_address'] = 'IP adresa';
+$lang_search_php['imgfields'] = 'Hľadaj v obrázkoch';
+$lang_search_php['albcatfields'] = 'Hľadaj v albumoch a kategóriach';
+$lang_search_php['age'] = 'Vek';
+$lang_search_php['newer_than'] = 'Novší ako';
+$lang_search_php['older_than'] = 'Starší ako';
+$lang_search_php['days'] = 'dní';
+$lang_search_php['all_words'] = 'Vyhľadať všetky slová (AND)';
+$lang_search_php['any_words'] = 'Vyhľadať akékoľvek slová (OR)';
+$lang_search_php['regex'] = 'Vyhľadať celý výraz'; //ak
+$lang_search_php['album_title'] = 'Názov albumu';
+$lang_search_php['category_title'] = 'Názov kategórie';
 }
 
 // ------------------------------------------------------------------------- //
 // File searchnew.php
 // ------------------------------------------------------------------------- //
-
-if (defined('SEARCHNEW_PHP')) $lang_search_new_php = array(
-  'page_title' => 'Hľadať nové súbory',
-  'select_dir' => 'Zvoliť adresár',
-  'select_dir_msg' => 'Táto funkcia vám umožní dávkovo pridať obrázky nahrané na server cez FTP.<br /><br />Vyberte adresár kam boli uložené súbory', //cpg1.4
-  'no_pic_to_add' => 'Žiadne súbory na pridanie',
-  'need_one_album' => 'Je potrebné, aby ste mali aspoň jeden album',
-  'warning' => 'Upozornenie',
-  'change_perm' => 'Skript nemôže zapisovať do tohto adresára, musíte nastaviť na CHMOD 755 alebo 777 pred pridaním súborov!',
-  'target_album' => '<b>Vložiť súbory z &quot;</b>%s<b>&quot; do </b>%s',
-  'folder' => 'Zložka',
-  'image' => 'súbor',
-  'album' => 'Album',
-  'result' => 'Result',
-  'dir_ro' => 'Nezapisovateľná. ',
-  'dir_cant_read' => 'Nečitateľná. ',
-  'insert' => 'Pridávanie nových súborov do galérie',
-  'list_new_pic' => 'Zoznam nových súborov',
-  'insert_selected' => 'Vložiť vybrané súbory',
-  'no_pic_found' => 'Žiadne nové súbory',
-  'be_patient' => 'Buďte trpezlivý, skript potrebuje trocha času na spracovanie...',
-  'no_album' => 'žiadny album vybraný',
-  'result_icon' => 'klikni pre detaily alebo znovunačítanie',  //cpg1.4
-  'notes' =>  '<ul>'.
-                          '<li><b>OK</b> : súbor bol pridaný'.
-                          '<li><b>DP</b> : súbor je duplikát a už je v galérii'.
-                          '<li><b>PB</b> : súbor nemohol byť pridaný, zkontrolujte konfiguráciu a oprávnenia'.
-                          '<li><b>NA</b> : nebol vybraný cieľový album, klikni \'<a href="javascript:history.back(1)">späť</a>\' a vyber existujúci album.</li>'.
-                          '<li>Ak sa neukáže \'označenie\' OK, DP, PB klepnite na súbor a uvidíte chybovú hlášku generovanú PHP, ktorá Vám pomôže zistiť príčinu problému'.
-                          '<li>Ak prehliadaču vypršal čas. limit, obnovte stránku'.
-                          '</ul>',
-  'select_album' => 'zvoľte album',
-  'check_all' => 'Označiť všetko',
-  'uncheck_all' => 'Odznačiť všetko',
-  'no_folders' => 'Žiadny adresár v adresári "albums". Vytvorte aspoň jeden adresár v adresári "albums" a pridajte doň svoje súbory pomocou FTP. Nepoužívajte adresáre "userpics" alebo "edit".', //cpg1.4
-   'albums_no_category' => 'Albumy bez kategórie', //cpg1.4 // album pulldown mod, added by frogfoot
-  'personal_albums' => '* Súkromné albumy', //cpg1.4 // album pulldown mod, added by frogfoot
-  'browse_batch_add' => 'Rozhranie s prehliadaním (odporúčame)', //cpg1.4
-  'edit_pics' => 'Uprav súbory', //cpg1.4
-  'edit_properties' => 'Vlastnosti albumu', //cpg1.4
-  'view_thumbs' => 'Náhľady', //cpg1.4
-);
-
-// ------------------------------------------------------------------------- //
-// File stat_details.php //cpg1.4
-// ------------------------------------------------------------------------- //
-
-if (defined('STAT_DETAILS_PHP')) $lang_stat_details_php = array(
-  'show_hide' => 'ukáž/schovaj tento stĺpec', //cpg1.4
-  'vote' => 'Detaily hlasovania', //cpg1.4
-  'hits' => 'Detaily videní', //cpg1.4
-  'stats' => 'Štatistika hlasovania', //cpg1.4
-  'sdate' => 'Dátum', //cpg1.4
-  'rating' => 'Hodnotenie', //cpg1.4
-  'search_phrase' => 'Hľadaný výraz', //cpg1.4
-  'referer' => 'Odkazavač', //cpg1.4
-  'browser' => 'Prehliadač', //cpg1.4
-  'os' => 'Operačný systém', //cpg1.4
-  'ip' => 'IP', //cpg1.4
-  'sort_by_xxx' => 'Usporiadať podľa %s', //cpg1.4
-  'ascending' => 'vzostupne', //cpg1.4
-  'descending' => 'zostupne', //cpg1.4
-  'internal' => 'int', //cpg1.4
-  'close' => 'zatvoriť', //cpg1.4
-  'hide_internal_referers' => 'skryť interné odkazovače', //cpg1.4
-  'date_display' => 'Dátum', //cpg1.4
-  'submit' => 'odoslať/vykonať', //cpg1.4
-);
+if (defined('SEARCHNEW_PHP')) {
+$lang_search_new_php['page_title'] = 'Nájsť nové súbory';
+$lang_search_new_php['select_dir'] = 'Vyberte adresár';
+$lang_search_new_php['select_dir_msg'] = 'Táto funkcia vám umožňuje pridať dávkovo obrázky nahrané na server cez FTP.<br /><br />Vyberte adresár kde sa nachádzajú obrázky na pridanie.';
+$lang_search_new_php['no_pic_to_add'] = 'Nie sú žiadne obrázky na pridanie';
+$lang_search_new_php['need_one_album'] = 'Porebujete mať vytvorený aspoň jeden album';
+$lang_search_new_php['warning'] = 'Upozornenie';
+$lang_search_new_php['change_perm'] = 'skript nemôže zapisovať do tohto adresára, musíte ho nastaviť na CHMOD 755 alebo 777 pred pridávaním obrázkov!';
+$lang_search_new_php['target_album'] = '<strong>Vložiť obrázky z &quot;</strong>%s<strong>&quot; do </strong>%s';
+$lang_search_new_php['folder'] = 'Priečinok';
+$lang_search_new_php['image'] = 'súbor';
+$lang_search_new_php['result'] = 'Výsledok';
+$lang_search_new_php['dir_ro'] = 'Nezapisovateľný.';
+$lang_search_new_php['dir_cant_read'] = 'Nečitateľný.';
+$lang_search_new_php['insert'] = 'Pridávam nové obrázky do albumu';
+$lang_search_new_php['list_new_pic'] = 'Zoznam obrázkov';
+$lang_search_new_php['insert_selected'] = 'Vložiť vybrané súbory';
+$lang_search_new_php['no_pic_found'] = 'Neboli nájdené žiadne nové súbory';
+$lang_search_new_php['be_patient'] = 'Prosím buďte trpezlivý, program potrebuje na spracovanie obrázkov nejaký čas.';
+$lang_search_new_php['no_album'] = 'Nebol vybraný žiaden album';
+$lang_search_new_php['result_icon'] = 'klikni na detail alebo na obnovenie(reload)';
+$lang_search_new_php['notes'] = <<< EOT
+    <ul>
+        <li>%s: súbor bol úspešne pridaný</li>
+        <li>%s: súbor je duplicitný!, tento súbor už v databázi existuje</li>
+        <li>%s: tento obrázok nemožno pridať, skontrolujte konfiguráciu prípadne prístupové práva</li>
+        <li>%s: najprv musíte zvoliť album</li>
+        <li>%s: súbor je poškodený alebo nedostupný</li>
+        <li>%s: neznámy typ súboru</li>
+        <li>%s: súbor je v skutočnosti GIF</li>
+        <li>Ak sa nezobrazia ikony, kliknite na poškodený súbor pre zobrazenie chybového odkazu vytvoreného PHP</li>
+        <li>Ak vyprší maximálny čas prehliadača (timeout), kliknite na obnovovacie tlačidlo</li>
+    </ul>
+EOT;
+// Translator note: Do not translate the %s placeholders - they are being replaced with icons
+$lang_search_new_php['check_all'] = 'Označ Všetko';
+$lang_search_new_php['uncheck_all'] = 'Odznač Všetko';
+$lang_search_new_php['no_folders'] = 'V priečinku "albums" ešte nie sú žiadne priečinky. Vytvorte aspoň jeden užívateľský priečinok pod priečinkom "albums" a nahrajte vaše súbory cez ftp tam. Nesmietie nahrávať súbory do priečinkov "userpics" a "edit", sú vyhradené pre uploady z web stránky a pre interné účely.'; //ak
+$lang_search_new_php['browse_batch_add'] = 'Prehliadateľné rozhranie'; // cpg1.5
+$lang_search_new_php['display_thumbs_batch_add'] = 'Zobrazovať náhľady'; // cpg1.5 ak
+$lang_search_new_php['edit_pics'] = 'Editovať súbory';
+$lang_search_new_php['edit_properties'] = 'Vlastnosti albumu';
+$lang_search_new_php['view_thumbs'] = 'Zobraz náhľady';
+$lang_search_new_php['add_more_folder'] = 'Pridať viacero súborov z priečinku %s'; // cpg1.5 ak
+}
 
 // ------------------------------------------------------------------------- //
-// File thumbnails.php
+//File send_activation.php
+// ------------------------------------------------------------------------- //
+if (defined('SEND_ACTIVATION_PHP')) {
+$lang_send_activation_php['err_already_logged_in'] = 'Už ste prihlásený!'; // cpg1.5
+$lang_send_activation_php['activation_not_required'] = 'Táto web stránka nevyžaduje aktiváciu e-mailom'; // cpg1.5 ak
+$lang_send_activation_php['err_unk_user'] = 'Vybraný užívateľ neexistuje!'; // cpg1.5
+$lang_send_activation_php['resend_act_link'] = 'Preposlať aktivačný odkaz'; // cpg1.5
+$lang_send_activation_php['enter_email'] = 'Vložte Vašu e-mailovú adresu'; // cpg1.5
+$lang_send_activation_php['submit'] = 'Potvrdiť'; // cpg1.5
+$lang_send_activation_php['failed_sending_email'] = 'Chyba pri zasielaní e-mailu s aktivačným odkazom'; // cpg1.5
+$lang_send_activation_php['activation_email_sent'] = 'E-mail s aktivačným odkazom bol zaslaný na %s. Prosím pozrite si e-mail a pokračujte'; // cpg1.5 ak
+}
+
+// ------------------------------------------------------------------------- //
+// File stat_details.php ak
 // ------------------------------------------------------------------------- //
 
-// Void
+if (defined('STAT_DETAILS_PHP')) {
+$lang_stat_details_php['show_hide'] = 'zobraziť/skryť tento stĺpec';
+$lang_stat_details_php['title'] = 'Detailné štatistiky'; // cpg1.5
+$lang_stat_details_php['vote'] = 'Detaily hlasov';
+$lang_stat_details_php['hits'] = 'Detaily prístupov';
+$lang_stat_details_php['stats'] = 'Štatistiky hlasovania';
+$lang_stat_details_php['users'] = 'Užívateľské štatistiky';
+$lang_stat_details_php['sdate'] = 'Dátum';
+$lang_stat_details_php['rating'] = 'Hodnotenie';
+$lang_stat_details_php['search_phrase'] = 'Vyhľadávaná fráza';
+$lang_stat_details_php['referer'] = 'Odkaz';
+$lang_stat_details_php['browser'] = 'Prehliadač';
+$lang_stat_details_php['os'] = 'Operačný systém';
+$lang_stat_details_php['ip'] = 'IP';
+$lang_stat_details_php['uid'] = 'Užívateľ'; // cpg1.5
+$lang_stat_details_php['sort_by_xxx'] = 'Zoraďovať podľa %s';
+$lang_stat_details_php['ascending'] = 'vzostupne';
+$lang_stat_details_php['descending'] = 'zostupne';
+$lang_stat_details_php['internal'] = 'int';
+$lang_stat_details_php['close'] = 'zavrieť';
+$lang_stat_details_php['hide_internal_referers'] = 'skryť interné odkazy';
+$lang_stat_details_php['date_display'] = 'Zobraziť dátum';
+$lang_stat_details_php['records_per_page'] = 'záznamov na stránke';
+$lang_stat_details_php['submit'] = 'potvrdiť / obnoviť';
+$lang_stat_details_php['overall_stats'] = 'Celkové štatistiky'; // cpg1.5
+$lang_stat_details_php['stats_by_os'] = 'Štatistika operačný systémov'; // cpg1.5
+$lang_stat_details_php['number_of_hits'] = 'Počet zobrazení'; // cpg1.5
+$lang_stat_details_php['total'] = 'Celkom'; // cpg1.5
+$lang_stat_details_php['stats_by_browser'] = 'Štatistika prehliadačov'; // cpg1.5
+$lang_stat_details_php['overall_stats_config'] = 'Konfigurácia celkovej štatistiky'; // cpg1.5
+$lang_stat_details_php['hit_details'] = 'Sleduj detailné štatistiky zobrazení'; // cpg1.5
+$lang_stat_details_php['hit_details_explanation'] = 'Sleduj detailné štatistiky zobrazení'; // cpg1.5
+$lang_stat_details_php['vote_details'] = 'Sleduj detailné štatistiky hodnotení'; // cpg1.5 ak
+$lang_stat_details_php['vote_details_explanation'] = 'Sleduj detailné štatistiky hodnotení'; // cpg1.5
+$lang_stat_details_php['empty_hits_table'] = 'Vymazať všetky štatistiky zobrazení'; // cpg1.5 ak
+$lang_stat_details_php['empty_hits_table_confirm'] = 'Ste si naozaj istý, že chcete vymazať VŠETKY zázanamy štatistiky zobrazení CELEJ vašej galérie? Tento krok nemožno vrátiť!'; // cpg1.5 ak // ak
+$lang_stat_details_php['empty_votes_table'] = 'Vymazať všetky štatistiky hodnotenia'; // cpg1.5 ak
+$lang_stat_details_php['empty_votes_table_confirm'] = 'Ste si naozaj istý, že chcete vymazať VŠETKY záznamy štatistiky hodnotení CELEJ vašej galérie? Tento krok nemožno vrátiť!'; // cpg1.5 ak // ak
+$lang_stat_details_php['submit'] = 'Potvrdiť'; // cpg1.5
+$lang_stat_details_php['upd_success'] = 'Konfigurácia Coppermine bola aktualizovaná'; // cpg1.5
+$lang_stat_details_php['votes'] = 'hodnotení'; // cpg1.5
+$lang_stat_details_php['reset_votes_individual'] = 'Zmazať vybrané hodnotenia'; // cpg1.5
+$lang_stat_details_php['reset_votes_individual_confirm'] = 'Naozaj chcete zmazať vybrané hodnotenia? Tento krok nemožno vrátiť!'; // cpg1.5 ak
+$lang_stat_details_php['back_to_intermediate'] = 'Späť na zobrazenie stredných súborov'; // cpg1.5
+$lang_stat_details_php['records_on_page'] = '%s záznamov na %s stránkach'; // cpg1.5
+$lang_stat_details_php['guest'] = 'Návštevník'; // cpg1.5
+$lang_stat_details_php['not_implemented'] = 'ešte neimplementované'; // cpg1.5 ak
+}
 
 // ------------------------------------------------------------------------- //
 // File upload.php
 // ------------------------------------------------------------------------- //
 
-if (defined('UPLOAD_PHP')) $lang_upload_php = array(
-  'title' => 'Upload file',
-  'custom_title' => 'Upravený Formulár',
-  'cust_instr_1' => 'Môžete zvoliť požadovaný počet vstupných boxov. Nie je možné prekročiť maximum uvedené nižšie.',
-  'cust_instr_2' => 'Požiadavka na boxy',
-  'cust_instr_3' => 'Boxy pre súbory: %s',
-  'cust_instr_4' => 'Boxy pre URI/URL: %s',
-  'cust_instr_5' => 'Boxy pre URI/URL:',
-  'cust_instr_6' => 'Boxy pre súbory:',
-  'cust_instr_7' => 'Prosím zadajte požadovaný počet boxov ku každému typu. Potom stlačte \'Pokračovať\'. ',
-  'reg_instr_1' => 'Neplatná akcia pre vytváranie formulára.',
-  'reg_instr_2' => 'Pomocou boxov dole môžete na server nahrať súbory. Veľkosť jednotlivých nahrávaných súborov pri uploade na server by nemala presiahnuť %s KB. Súbory ZIP nahrané pomocou sekcií \'Pridanie súborov\' alebo \'URI/URL pridanie\' zostanú zkomprimované ako jeden súbor aj po nahraní na server.',
-  'reg_instr_3' => 'Ak chcete, aby súbory zbalené v archíve ZIP boli rozbalené, musíte použiť pre zadanie súboru políčko v sekci \'Pridanie ZIP s rozbalením\'.',
-  'reg_instr_4' => 'Ak používate sekciu URI/URL pridanie, prosím zadávajte cestu k súboru takto: http://www.mojadomena.sk/obrazky/priklad.jpg',
-  'reg_instr_5' => 'Po vyplnení formulára stlačte tlačídlo \'Pokračovať\'.',
-  'reg_instr_6' => 'Pridanie ZIP s rozbalením:',
-  'reg_instr_7' => 'Pridanie súborov:',
-  'reg_instr_8' => 'URI/URL pridanie:',
-  'error_report' => 'Chybové hlásenie',
-  'error_instr' => 'Toto vykazuje chyby:',
-  'file_name_url' => 'Súbor meno/URL',
-  'error_message' => 'Chybová správa',
-  'no_post' => 'Súbor nebol pridaný cez POST.',
-  'forb_ext' => 'Nepovolená prípona súboru.',
-  'exc_php_ini' => 'Prekročená veľkosť súboru povolená v php.ini.',
-  'exc_file_size' => 'Prekročená veľkosť súboru povolená konfiguráciou.',
-  'partial_upload' => 'Iba čiastočné pridanie.',
-  'no_upload' => 'Nevykonalo sa žiadne pridanie.',
-  'unknown_code' => 'Neznáma PHP chyba.',
-  'no_temp_name' => 'Žiadne pridanie - žiadne dočasné meno.',
-  'no_file_size' => 'Neobsahuje dáta/poškodené',
-  'impossible' => 'Nemožno presunúť.',
-  'not_image' => 'Neobsahuje obrázok/poškodené',
-  'not_GD' => 'Chýba GD.',
-  'pixel_allowance' => 'Prekročená šírka alebo výška obrázku povolená konfiguráciou.', //cpg1.4
-  'incorrect_prefix' => 'Neplatný URI/URL prefix',
-  'could_not_open_URI' => 'Nemožno otvoriť URI.',
-  'unsafe_URI' => 'Neoverená bezpečnosť.',
-  'meta_data_failure' => 'Chyba v meta dátach',
-  'http_401' => '401 Neautorizovaný prístup',
-  'http_402' => '402 Požadovaná platba',
-  'http_403' => '403 Zakázaný prístup',
-  'http_404' => '404 Nebolo nájdené',
-  'http_500' => '500 Interná chyba serveru',
-  'http_503' => '503 Služba je nedostupná',
-  'MIME_extraction_failure' => 'MIME nebolo rozpoznané.',
-  'MIME_type_unknown' => 'Neznámy MIME typ',
-  'cant_create_write' => 'Nemožno vytvoriť súbor pre zápis.',
-  'not_writable' => 'Nemožno zapisovať do súboru pre zápis.',
-  'cant_read_URI' => 'Nemožno čítať URI/URL',
-  'cant_open_write_file' => 'Nebolo možné otvoriť súbor URI.',
-  'cant_write_write_file' => 'Nebolo možné zapisovať do súboru URI.',
-  'cant_unzip' => 'Nemožno rozbaliť.',
-  'unknown' => 'Neznámá chyba',
-  'succ' => 'Úspešné pridanie',
-  'success' => '%s pridaní bolo úspešných.',
-  'add' => 'Prosím stlačte \'Pokračovať\' pre pridanie súborov do galérie.',
-  'failure' => 'Chyba pridania',
-  'f_info' => 'Informácie o súbore',
-  'no_place' => 'Predchádzajúci súbor nie je možné umiestniť.',
-  'yes_place' => 'Predchádzajúci súbor bol úspešne umiestnený.',
-  'max_fsize' => 'Max. veľkosť súboru je %s KB',
-  'album' => 'Album',
-  'picture' => 'Súbor',
-  'pic_title' => 'Nadpis súboru',
-  'description' => 'Popis súboru',
-  'keywords' => 'Kľúčové slová ( oddelené medzerami)<br /><a href="#" onClick="return MM_openBrWindow(\'keyword_select.php\',\'selectKey\',\'width=250, height=400, scrollbars=yes,toolbar=no,status=yes,resizable=yes\')">Vložiť zo zoznamu</a>', //cpg1.4
-  'keywords_sel' =>'Vybrať kľúčové slovo', //cpg1.4
-  'err_no_alb_uploadables' => 'Tu sa nenachádza album do ktorého môžete pridávať',
-  'place_instr_1' => 'Prosím umiestnite teraz súbory do albumov. Môžete tiež zadať informácie týkajúce sa jednotlivých súborov.',
-  'place_instr_2' => 'Viac súborov je potreba umiestniť. Prosím stlačte \'Pokračovať\'.',
-  'process_complete' => 'Úspešne ste umiestnili všetky súbory.',
-   'albums_no_category' => 'Albumy bez kategórie', //cpg1.4. //album pulldown mod, added by frogfoot
-  'personal_albums' => '* Osobný album', //cpg1.4 //album pulldown mod, added by frogfoot
-  'select_album' => 'Vybrať album', //cpg1.4 //album pulldown mod, added by frogfoot
-  'close' => 'Zatvoriť', //cpg1.4
-  'no_keywords' => 'Žiadne kľúčové slová k výberu!', //cpg1.4
-  'regenerate_dictionary' => 'Obnoviť adresár', //cpg1.4
-);
+if (defined('UPLOAD_PHP')) {
+$lang_upload_php['title'] = 'Pridanie súboru';
+$lang_upload_php['restrictions'] = 'Obmedzenia'; // cpg1.5
+$lang_upload_php['choose_method'] = 'Zvoľ metódu pridávania'; // cpg1.5
+$lang_upload_php['upload_swf']    = 'rozšírené - viacej súborov, Flash (doporučené)'; // cpg1.5
+$lang_upload_php['upload_single'] = 'jednoduché - po jednom súbore'; // cpg1.5
+$lang_upload_php['up_instr_1'] = 'Zvoľte album zo zoznamu';
+$lang_upload_php['up_instr_2'] = 'Kliknite na "Prechádzať" a nájdite súbor, ktorý chete pridať. Naraz môžete označiť viacero súborov.';
+$lang_upload_php['up_instr_3'] = 'Zvoľte viac súborov na pridanie opakovaním kroku 2'; //ak
+$lang_upload_php['up_instr_4'] = 'Klinite "Pokračovať" ak budete mať všetky súbory, ktoré ste chceli pridať (zobrazí sa potom ako pridáte aspoň jeden súbor).';
+$lang_upload_php['up_instr_5'] = 'Budete poslaný na obrazovku, kde môžete zadať detaily o pridávaných súboroch. Po zadaní detailov odošlite formulár cez "Použi zmeny" v spodnej časti formulára.';
+$lang_upload_php['restriction_zip'] = 'Pridané ZIP súbory zostanú zazipované, nebudú na serveri extraktované.';
+$lang_upload_php['restriction_filesize'] = 'Veľkosť jednotlivých súborov pridávaných na server nesmú presiahnuť %s.';
+$lang_upload_php['reg_instr_1'] = 'Neplatná akcia pri vytváraní formulára.';
+$lang_upload_php['no_name'] = 'Nie je k dispozícii názov súboru'; // cpg 1.5
+$lang_upload_php['no_tmp_name'] = 'Nie je možné pridať'; // cpg 1.5
+$lang_upload_php['no_post'] = 'Súbor nie je pridaný POSTom.';
+$lang_upload_php['forb_ext'] = 'Zakázaná prípona súboru.';
+$lang_upload_php['exc_php_ini'] = 'Prekročená veľkosť súboru povolená v php.ini.';
+$lang_upload_php['exc_file_size'] = 'Prekročená veľkosť súboru povolená Coppermine galériou.';
+$lang_upload_php['partial_upload'] = 'Iba čiastočné pridanie.';
+$lang_upload_php['no_upload'] = 'Nedošlo k žiadnemu pridaniu.';
+$lang_upload_php['unknown_code'] = 'Neznámy PHP chybový kód pridania.';
+$lang_upload_php['impossible'] = 'Nemožno premiestniť.';
+$lang_upload_php['not_image'] = 'Nie je obrázok/poškodený';
+$lang_upload_php['not_GD'] = 'Nie je GD prípona.';
+$lang_upload_php['pixel_allowance'] = 'Výška a/alebo šírka pridávaného obrázka je väčšia ako povoľuje konfigurácia Coppermine galérie.';
+$lang_upload_php['failure'] = 'Chyba pridania';
+$lang_upload_php['no_place'] = 'Predchádzajúci súbor nebol umiestnený.';
+$lang_upload_php['max_fsize'] = 'Maximálna povolená veľkosť súboru je %s';
+$lang_upload_php['picture'] = 'Súbor';
+$lang_upload_php['pic_title'] = 'Názov';
+$lang_upload_php['description'] = 'Popis';
+$lang_upload_php['keywords_sel'] = 'Vybrať kľúčové slová';
+$lang_upload_php['err_no_alb_uploadables'] = 'Prepáčte, ale neexistuje žiaden album kam by ste mohli pridávať súbory';
+$lang_upload_php['close'] = 'Zavri';
+$lang_upload_php['no_keywords'] = 'Prepáčte, nie sú žiadne kľúčové slová!';
+$lang_upload_php['regenerate_dictionary'] = 'Obnoviť slovník';
+$lang_upload_php['allowed_types'] = 'Môžete pridávať súbory s týmito príponami:'; // cpg1.5
+$lang_upload_php['allowed_img_types'] = 'Prípony obrázkov: %s'; // cpg1.5
+$lang_upload_php['allowed_mov_types'] = 'Prípony video súborov: %s'; // cpg1.5
+$lang_upload_php['allowed_doc_types'] = 'Prípony dokumentov: %s'; // cpg1.5
+$lang_upload_php['allowed_snd_types'] = 'Prípony audio súborov: %s'; // cpg1.5
+$lang_upload_php['please_wait'] = 'Prosím počkajte kým prebehne pridávanie - toto môže chvíľu trvať'; // cpg1.5
+$lang_upload_php['alternative_upload'] = 'Alternatívna metóda pridávania'; // cpg1.5 ak
+$lang_upload_php['xp_publish_promote'] = 'Ak používate Windows XP alebo Windows Vista, môžete použiť aj Windows XP Uploading Wizard pre pridávanie súborov, čo poskytne jednoduchšie užívateľské rozhranie.'; // cpg1.5
+$lang_upload_php['err_js_disabled'] = 'Rozhranie pridávania vo Flash nemohlo byť nahrané. Musíte mať zapnuté JavaScript aby ste mohli používať túto metódu pridávania.'; // cpg1.5 ak
+$lang_upload_php['err_flash_disabled'] = 'Rozhranie pridávania trvá dlhý čas alebo došlo k chybe. Prosím presvedčte sa, že Flash Plugin je zapnutý a že správna verzia Flash Player-a je nainštalovaná.'; // cpg1.5 ak
+$lang_upload_php['err_alternate_method'] = 'Alternatívne môžete použiť <a href="upload.php?single=1">jednoduché</a> pridávanie súborov.'; // cpg1.5 ak
+$lang_upload_php['err_flash_version'] = 'Rozhranie pridávania nebolo načítané. Potrebujete nainštalovať alebo aktualizovať Flash Player. Navštívte <a href="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash">stránku Adobe</a> pre aktualizáciu alebo inštaláciu Flash Player-a.'; // cpg1.5
+$lang_upload_php['flash_loading'] = 'Rozhranie pridávania sa pripravuje. Prosím čakajte ...'; // cpg1.5
 
+$lang_upload_swf_php['browse'] = 'Prechádzať...'; //cpg1.5 ak ALL
+$lang_upload_swf_php['cancel_all'] = 'Zrušiť všetky pridania'; //cpg1.5
+$lang_upload_swf_php['upload_queue'] = 'Zoznam pridávaných súborov'; //cpg1.5
+$lang_upload_swf_php['files_uploaded'] = 'súborov pridané'; //cpg1.5
+$lang_upload_swf_php['all_files'] = 'Všetky súbory'; //cpg1.5
+$lang_upload_swf_php['status_pending'] = 'Pozdržané...'; //cpg1.5
+$lang_upload_swf_php['status_uploading'] = 'Pridávanie...'; //cpg1.5
+$lang_upload_swf_php['status_complete'] = 'Kompletné.'; //cpg1.5
+$lang_upload_swf_php['status_cancelled'] = 'Zrušené.'; //cpg1.5
+$lang_upload_swf_php['status_stopped'] = 'Zastavené.'; //cpg1.5
+$lang_upload_swf_php['status_failed'] = 'pridanie zlyhalo.'; //cpg1.5
+$lang_upload_swf_php['status_too_big'] = 'Súbor je príliž veľký.'; //cpg1.5
+$lang_upload_swf_php['status_zero_byte'] = 'Nie je možné pridať súbory s nulovou veľkosťou.'; //cpg1.5
+$lang_upload_swf_php['status_invalid_type'] = 'Neplatný typ súboru.'; //cpg1.5
+$lang_upload_swf_php['status_unhandled'] = 'Nevyriešená chyba'; //cpg1.5
+$lang_upload_swf_php['status_upload_error'] = 'Chyba pridávania: '; //cpg1.5
+$lang_upload_swf_php['status_server_error'] = 'Chyba servera (IO)'; //cpg1.5
+$lang_upload_swf_php['status_security_error'] = 'Bezpečnostná chyba'; //cpg1.5
+$lang_upload_swf_php['status_upload_limit'] = 'Prekročený limit pre pridanie.'; //cpg1.5
+$lang_upload_swf_php['status_validation_failed'] = 'Chyba validácie. Pridanie preskočené.'; //cpg1.5
+$lang_upload_swf_php['queue_limit'] = 'Pokúsili ste sa pridať príliš veľký počet súborov.'; //cpg1.5
+$lang_upload_swf_php['upload_limit_1'] = 'Dosiahli ste limit pre pridávanie.'; //cpg1.5
+$lang_upload_swf_php['upload_limit_2'] = 'Môžete zvoliť až %s súborov'; //cpg1.5
+}
 // ------------------------------------------------------------------------- //
 // File usermgr.php
 // ------------------------------------------------------------------------- //
+if (defined('USERMGR_PHP')) {
+$lang_usermgr_php['memberlist'] = 'Zoznam užívateľov';
+$lang_usermgr_php['user_manager'] = 'Správca užívateľov';
+$lang_usermgr_php['title'] = 'Správca užívateľov';
+$lang_usermgr_php['name_a'] = 'Meno vzostupne';
+$lang_usermgr_php['name_d'] = 'Meno zostupne';
+$lang_usermgr_php['group_a'] = 'Skupina vzostupne';
+$lang_usermgr_php['group_d'] = 'Skupina zostupne';
+$lang_usermgr_php['reg_a'] = 'Dátum registrácie vzostupne';
+$lang_usermgr_php['reg_d'] = 'Dátum registrácie zostupne';
+$lang_usermgr_php['pic_a'] = 'Počet súborov vzostupne';
+$lang_usermgr_php['pic_d'] = 'Počet súborov zostupne';
+$lang_usermgr_php['disku_a'] = 'Využitie disku vzostupne';
+$lang_usermgr_php['disku_d'] = 'Využitie disku zostupne';
+$lang_usermgr_php['lv_a'] = 'Posledná návšteva vzostupne';
+$lang_usermgr_php['lv_d'] = 'Posledná návšteva zostupne';
+$lang_usermgr_php['sort_by'] = 'Zoraďovať užívateľov podľa';
+$lang_usermgr_php['err_no_users'] = 'Užívateľská tabuľka je prázdna!';
+$lang_usermgr_php['err_edit_self'] = 'Nemôžete editovať svoj vlastný profil, na to použite \'Môj profil\''; //ak
+$lang_usermgr_php['with_selected'] = 'S vybranými:'; //ak
+$lang_usermgr_php['delete_files_no'] = 'ponechať verejné súbory (ale anonymizovať)'; //ak
+$lang_usermgr_php['delete_files_yes'] = 'vymazať verejné súbory'; //ak
+$lang_usermgr_php['delete_comments_no'] = 'ponechať komentáre (ale anonymizovať)'; //ak
+$lang_usermgr_php['delete_comments_yes'] = 'vymazať komentáre'; //ak
+$lang_usermgr_php['activate'] = 'Aktivovať';
+$lang_usermgr_php['deactivate'] = 'Deaktivovať';
+$lang_usermgr_php['reset_password'] = 'Nulovať heslo';
+$lang_usermgr_php['change_primary_membergroup'] = 'Zmeniť primárnu skupinu';
+$lang_usermgr_php['add_secondary_membergroup'] = 'Pridať sekundárnu skupinu';
+$lang_usermgr_php['name'] = 'Meno';
+$lang_usermgr_php['group'] = 'Skupina';
+$lang_usermgr_php['inactive'] = 'Neaktívny'; //ak
+$lang_usermgr_php['operations'] = 'Operácie'; //ak
+$lang_usermgr_php['pictures'] = 'Súbory';
+$lang_usermgr_php['disk_space_used'] = 'Použité miesto';
+$lang_usermgr_php['disk_space_quota'] = 'Kvóta'; // cpg1.5
+$lang_usermgr_php['registered_on'] = 'Registrovaný';
+$lang_usermgr_php['last_visit'] = 'Posledná návšteva';
+$lang_usermgr_php['u_user_on_p_pages'] = 'Užívateľov: %d na %d stránkach';
+$lang_usermgr_php['confirm_del'] = 'Naozaj chcete VYMAZAŤ tohto užívateľa?\\nVšetky jeho súbory a albumy budú vymazané.'; // ak
+$lang_usermgr_php['mail'] = 'MAIL';
+$lang_usermgr_php['err_unknown_user'] = 'Vybraný užívateľ neexistuje!';
+$lang_usermgr_php['modify_user'] = 'Zmeniť užívateľa';
+$lang_usermgr_php['notes'] = 'Poznámky';
+$lang_usermgr_php['note_list'] = 'Ak nechcete zmeniť súčasné heslo, nechajte políčko prázdne'; //ak
+$lang_usermgr_php['password'] = 'Heslo';
+$lang_usermgr_php['user_active'] = 'Užívateľ je aktívny';
+$lang_usermgr_php['user_group'] = 'Skupina';
+$lang_usermgr_php['user_email'] = 'E-mail';
+$lang_usermgr_php['user_web_site'] = 'Webová stránka';
+$lang_usermgr_php['create_new_user'] = 'Vytvoriť nového užívateľa';
+$lang_usermgr_php['user_location'] = 'Miesto';
+$lang_usermgr_php['user_interests'] = 'Záujmy';
+$lang_usermgr_php['user_occupation'] = 'Povolanie';
+$lang_usermgr_php['user_profile1'] = '$user_profile1'; //don't change
+$lang_usermgr_php['user_profile2'] = '$user_profile2'; //don't change
+$lang_usermgr_php['user_profile3'] = '$user_profile3'; //don't change
+$lang_usermgr_php['user_profile4'] = '$user_profile4'; //don't change
+$lang_usermgr_php['user_profile5'] = '$user_profile5'; //don't change
+$lang_usermgr_php['user_profile6'] = '$user_profile6'; //don't change
+$lang_usermgr_php['latest_upload'] = 'Posledné pridania';
+$lang_usermgr_php['no_latest_upload'] = 'Nepridal žiadne súbory'; // cpg1.5
+$lang_usermgr_php['last_comments'] = 'Posledné komentáre'; // cpg1.5
+$lang_usermgr_php['no_last_comments'] = 'Nepridal žiadne komentáre'; // cpg1.5
+$lang_usermgr_php['comments'] = 'Komentáre'; // cpg1.5
+$lang_usermgr_php['never'] = 'nikdy';
+$lang_usermgr_php['search'] = 'Hľadanie užívateľa'; //ak
+$lang_usermgr_php['submit'] = 'Potvrdiť';
+$lang_usermgr_php['search_submit'] = 'Potvrdiť!';
+$lang_usermgr_php['search_result'] = 'Výsledky hľadania pre: ';
+$lang_usermgr_php['alert_no_selection'] = 'Najprv musíte zvoliť aspoň jedného užívateľa!';
+$lang_usermgr_php['select_group'] = 'Zvoliť skupinu';
+$lang_usermgr_php['groups_alb_access'] = 'Práva albumu pre skupinu'; //ak
+$lang_usermgr_php['category'] = 'Kategória';
+$lang_usermgr_php['modify'] = 'Zmeniť?';
+$lang_usermgr_php['group_no_access'] = 'Táto skupina nemá špeciálny prístup';
+$lang_usermgr_php['notice'] = 'Oznámenie';
+$lang_usermgr_php['group_can_access'] = 'Albumy, ku ktorým má prístup iba "%s"';
+$lang_usermgr_php['send_login_data'] = 'Zaslať prihlasovacie informácie tomuto užívateľovi (heslo bude poslané cez e-mail)'; // cpg1.5
+$lang_usermgr_php['send_login_email_subject'] = 'Informácia o vašom novom účte'; // cpg1.5
+$lang_usermgr_php['failed_sending_email'] = 'E-mail s prihlasovacími informáciami nemôže byť odoslaný!'; // cpg1.5
+$lang_usermgr_php['view_profile'] = 'Zobraziť profil'; // cpg1.5
+$lang_usermgr_php['edit_profile'] = 'Upraviť profil'; // cpg1.5
+$lang_usermgr_php['ban_user'] = 'Zakázať užívateľa'; // cpg1.5
+$lang_usermgr_php['user_is_banned'] = 'Užívateľ je zakázaný'; // cpg1.5
+$lang_usermgr_php['status'] = 'Status'; // cpg1.5
+$lang_usermgr_php['status_active'] = 'aktívny'; // cpg1.5
+$lang_usermgr_php['status_inactive'] = 'neaktívny'; // cpg1.5
+$lang_usermgr_php['total'] = 'Celkom'; // cpg1.5
+$lang_usermgr_php['send_login_data_email'] = <<<EOT
+Bol pre vás vytvorený nový účet na {SITE_NAME}.
 
-if (defined('USERMGR_PHP')) $lang_usermgr_php = array(
-  'memberlist' => 'Zoznam členov', //cpg1.4
-  'user_manager' => 'Správca užívateľov', //cpg1.4
-  'title' => 'Spravuj užívateľov',
-  'name_a' => 'Meno vzostupne',
-  'name_d' => 'Meno zostupne',
-  'group_a' => 'Skupina vzostupne',
-  'group_d' => 'Skupina zostupne',
-  'reg_a' => 'Reg. dátum vzostupne',
-  'reg_d' => 'Reg. dátum zostupne',
-  'pic_a' => 'Počet súborov vzostupne',
-  'pic_d' => 'Počet súborov zostupne',
-  'disku_a' => 'Priestor vzostupne',
-  'disku_d' => 'Priestor zostupne',
-  'lv_a' => 'Posledná návšteva vzostupne',
-  'lv_d' => 'Posledná návšteva zostupne',
-  'sort_by' => 'Triediť užívateľov podľa:',
-  'err_no_users' => 'Tabuľka užívateľov je prázdna !',
-  'err_edit_self' => 'Na úpravu vlastného profilu použite link \'Môj profil\'',
-  'edit' => 'Upraviť', //cpg1.4
-  'with_selected' => 'Akcia pre označených:', //cpg1.4
-  'delete' => 'Vymazať', //cpg1.4
-  'delete_files_no' => 'ponechať verejné súbory (ale anonymizovať)', //cpg1.4
-  'delete_files_yes' => 'zmazať verejné súbory', //cpg1.4
-  'delete_comments_no' => 'ponechať komentáre (ale anonymizovať)', //cpg1.4
-  'delete_comments_yes' => 'zmazať verejné komentáre', //cpg1.4
-  'activate' => 'Aktivovať', //cpg1.4
-  'deactivate' => 'Deaktivovať', //cpg1.4
-  'reset_password' => 'Resetovať heslo', //cpg1.4
-  'change_primary_membergroup' => 'Zmeniť primárnu skupinu', //cpg1.4
-  'add_secondary_membergroup' => 'Zmeniť sekundárnu skupinu', //cpg1.4
-  'name' => 'Užívateľské meno',
-  'group' => 'Skupina',
-  'inactive' => 'Neaktívny',
-  'operations' => 'Operácie',
-  'pictures' => 'Súbory',
-  'disk_space_used' => 'Priestor(využitie)', //cpg1.4
-  'disk_space_quota' => 'Priestor(limit)', //cpg1.4
-  'registered_on' => 'Registrácia', //cpg1.4
-  'last_visit' => 'Posledná návšt.',
-  'u_user_on_p_pages' => '%d užívateľov na %d str.',
-  'confirm_del' => 'Naozaj chcete zmazať tohoto užívateľa? \\nVšetky jeho albumy a súbory budú tiež zmazané.', //js-alert
-  'mail' => 'MAIL',
-  'err_unknown_user' => 'Vybraný užívateľ neexistuje !',
-  'modify_user' => 'Upraviť užívateľa',
-  'notes' => 'Pozn.',
-  'note_list' => '<li>Pokiaľ nechcete zmeniť heslo ponechajte políčko pre heslo prázdne',
-  'password' => 'Password',
-  'user_active' => 'Užívateľ je aktívny',
-  'user_group' => 'Užív. skupina',
-  'user_email' => 'Užív. email',
-  'user_web_site' => 'Užív. www',
-  'create_new_user' => 'Vytvoriť užívateľa',
-  'user_location' => 'Užív. mesto',
-  'user_interests' => 'Užív. záujmy',
-  'user_occupation' => 'Užív. práca',
-  'user_profile1' => '$user_profile1', //cpg1.4
-  'user_profile2' => '$user_profile2', //cpg1.4
-  'user_profile3' => '$user_profile3', //cpg1.4
-  'user_profile4' => '$user_profile4', //cpg1.4
-  'user_profile5' => '$user_profile5', //cpg1.4
-  'user_profile6' => '$user_profile6', //cpg1.4
-  'latest_upload' => 'Čerstvé pridanie',
-  'never' => 'nikdy',
-  'search' => 'Vyhľadaj člena', //cpg1.4
-  'submit' => 'Odošli', //cpg1.4
-  'search_submit' => 'Choď!', //cpg1.4
-  'search_result' => 'Hľadaj výsledky pre: ', //cpg1.4
-  'alert_no_selection' => 'Najprvtreba aspoň jedného člena označiť!', //cpg1.4 //js-alert
-  'password' => 'Heslo', //cpg1.4
-  'select_group' => 'Vyber skupinu', //cpg1.4
-  'groups_alb_access' => 'Obmedzenia albumu podľa skupiny', //cpg1.4
-  'album' => 'Album', //cpg1.4
-  'category' => 'Kategória', //cpg1.4
-  'modify' => 'Zmeniť?', //cpg1.4
-  'group_no_access' => 'Táto skupina nemá špeciálny prístup', //cpg1.4
-  'notice' => 'Oznam', //cpg1.4
-  'group_can_access' => 'Album do ktorého len "%s" má vstup', //cpg1.4
-);
+Môžete sa prihlásiť na <a href="{SITE_LINK}">{SITE_LINK}</a> použitím užívateľského mena "{USER_NAME}" a hesla "{USER_PASS}"
+
+
+S pozdravom,
+
+Administrátor {SITE_NAME}
+
+EOT;
+}
+
+// ------------------------------------------------------------------------- //
+// File update.php
+// ------------------------------------------------------------------------- //
+if (defined('UPDATE_PHP')) {
+$lang_update_php['title'] = 'Aktualizácia'; // cpg1.5
+$lang_update_php['welcome_updater'] = 'Vitajte v aktualizácii Coppermine'; // cpg1.5
+$lang_update_php['could_not_authenticate'] = 'Nebolo možné vás autentifikovať'; // cpg1.5
+$lang_update_php['provide_admin_account'] = 'Prosím poskytnite detaily vášho administrátorského účtu Coppermine alebo informácie vášho MySQL účtu'; // cpg1.5
+$lang_update_php['try_again'] = 'Skúste znova'; // cpg1.5
+$lang_update_php['mysql_connect_error'] = 'Nebolo možné nadviazať spojenie s MySQL'; // cpg1.5
+$lang_update_php['mysql_database_error'] = 'MySQL nenašla databázu s názvom %s'; // cpg1.5
+$lang_update_php['mysql_said'] = 'MySQL povedala'; // cpg1.5
+$lang_update_php['check_config_file'] = 'Prosím skontrolujte detaily MySQL v %s'; // cpg1.5
+$lang_update_php['performing_database_updates'] = 'Vykonávam aktualizáciu databázy'; // cpg1.5
+$lang_update_php['performing_file_updates'] = 'Vykonávam aktualizáciu súborov'; // cpg1.5
+$lang_update_php['already_done'] = 'Už vykonané'; // cpg1.5
+$lang_update_php['password_encryption'] = 'Kryptovanie hesiel'; // cpg1.5
+$lang_update_php['alb_password_encryption'] = 'Kryptovanie hesiel albumov'; // cpg1.5
+$lang_update_php['category_tree'] = 'Strom kategórii'; // cpg1.5
+$lang_update_php['authentication_needed'] = 'Potrebná autentifikácia'; // cpg1.5
+$lang_update_php['username'] = 'Užívateľské meno'; // cpg1.5
+$lang_update_php['password'] = 'Heslo'; // cpg1.5
+$lang_update_php['update_completed'] = 'Aktualizácia ukončená'; // cpg1.5
+$lang_update_php['check_versions'] = 'Odporúča sa %sskontrolovať verzie vašich súborov%s ak ste práve aktualizovali Coppermine zo staršej verzie'; // cpg1.5 // Leave the %s untouched when translating - it wraps the link
+$lang_update_php['start_page'] = 'Ak ste neskontrolovali (alebo nechceli skontrolovať), môžete ísť na %sštartovaciu stránku vašej galérie%s'; // cpg1.5 // Leave the %s untouched when translating - it wraps the link
+$lang_update_php['errors_encountered'] = 'Nasledovné chyby sa vyskytli a musia byť najprv odstránené'; // cpg1.5
+$lang_update_php['delete_file'] = 'Zmazať %s'; // cpg1.5
+$lang_update_php['could_not_delete'] = 'Nebolo možné zmazať pre nedostatočné práva. Zmažte súbor manuálne!'; // cpg1.5
+$lang_update_php['rename_file'] = 'Premenovať %s na %s'; // cpg1.5
+$lang_update_php['could_not_rename'] = 'Nebolo možné premenovať pre nedostatočné práva. Premenujte súbor manuálne!'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
 // File util.php
 // ------------------------------------------------------------------------- //
-
 if (defined('UTIL_PHP')) {
-$lang_util_desc_php = array(
-'Aktualizovať nadpisy z názvu súboru', //cpg1.4
-'Vymazať nadpisy', //cpg1.4
-'Obnoviť náhľady a zmenšené obrázky', //cpg1.4
-'Vymazať originálne obrázky a nahradiť zmenšenými', //cpg1.4
-'Vymazať originálne a dočasné obrázky kvôli úspore web miesta', //cpg1.4
-'Vymazať osamelé komentáre', //cpg1.4
-'Znovu načítať veľkosť a rozmery obrázkov', //cpg1.4
-'Resetovať počítadlá zobrazení', //cpg1.4
-'Zobraziť phpinfo', //cpg1.4
-'Aktualizovať databázu', //cpg1.4
-'Zobraziť log súbory', //cpg1.4
-);
-$lang_util_php = array(
-  'title' => 'Administračné nástroje',
-  'what_it_does' => 'Čo robia',
-  'file' => 'Súbor',
-  'problem' => 'Problém', //cpg1.4
-  'status' => 'Stav', //cpg1.4
-  'title_set_to' => 'nadpis nastaviť na',
-  'submit_form' => 'poslať',
-  'updated_succesfully' => 'aktualizované',
-  'error_create' => 'ERROR vytvorenie',
-  'continue' => 'Spracovať viac obrázkov',
-  'main_success' => 'Súbor %s bol úspešne použitý ako hlavný',
-  'error_rename' => 'Chybné premenovanie %s na %s',
-  'error_not_found' => 'Súbor nebol %s nenájdený',
-  'back' => 'späť',
-  'thumbs_wait' => 'Aktualizujem, počkajte chvíľu...',
-  'thumbs_continue_wait' => 'Pokračujem v aktualizácii...',
-  'titles_wait' => 'Aktualizujem nadpisy, počkajte chvíľu...',
-  'delete_wait' => 'Mažem nadpisy, počkajte chvíľu...',
-  'replace_wait' => 'Vymazávam originálne obrázky a nahrádzam zmenšenými, počkajte chvíľu...',
-  'instruction' => 'Návod',
-  'instruction_action' => 'Zvoľte akciu',
-  'instruction_parameter' => 'Nastavte parametre',
-  'instruction_album' => 'Vyberte album',
-  'instruction_press' => 'Stlačte %s',
-  'update' => 'Aktualizovať náhľady a/alebo zmenšeniny',
-  'update_what' => 'Čo sa bude aktualizovať',
-  'update_thumb' => 'Len náhľady',
-  'update_pic' => 'Len zmenšeniny',
-  'update_both' => 'Aj náhľady aj zmenšeniny',
-  'update_number' => 'Počet obrázkov na klik ',
-  'update_option' => '(Nastavte menej, ak dochádza k časovým výpadkom prehliadača)',
-  'filename_title' => 'Názov súboru &rArr; Nadpis súboru',
-  'filename_how' => 'Ako vytvoriť nadpis súboru z názvu súboru',
-  'filename_remove' => 'Odobrať .jpg príponu a nahradiť _ (podčiarnik) medzerou',
-  'filename_euro' => 'Zmeniť 2003_11_23_13_20_20.jpg na 23/11/2003 13:20',
-  'filename_us' => 'Zmeniť 2003_11_23_13_20_20.jpg na 11/23/2003 13:20',
-  'filename_time' => 'Zmeniť 2003_11_23_13_20_20.jpg na 13:20',
-  'delete' => 'Vymazať nadpisy alebo originál súbory',
-  'delete_title' => 'Vymazať nadpisy',
-  'delete_title_explanation' => 'Vymaže všetky nadpisy vo zvolenom albume.', //cpg1.4
-  'delete_original' => 'Vymazať originál súbory',
-  'delete_original_explanation' => 'Vymaže všetky originál súbory vo zvolenom albume.', //cpg1.4
-  'delete_intermediate' => 'Zmazať pomocné obrázky', //cpg1.4
-  'delete_intermediate_explanation' => 'Vymaže všetky pomocné (normal) obrázky vo zvolenom albume.<br />Použiť na uvoľnenie miesta, ak je v konfigurácii vypnutá funkcia \'Vytvoriť pomocné obrázky\' (po pridaní súborov).', //cpg1.4
-  'delete_replace' => 'Vymaže originálne obrázky a nahradí zmenšenými',
-  'titles_deleted' => 'Všetky nadpisy vo zvolenom albume odobraté', //cpg1.4
-  'deleting_intermediates' => 'Mažem pomocné obrázky, počkajte chvíľu...', //cpg1.4
-  'searching_orphans' => 'Hľadám osamotené, počkajte chvíľu...', //cpg1.4
-  'select_album' => 'Vybrať album',
-  'delete_orphans' => 'Vymazať komentáre k chýbajúcim súborom', //cpg1.4
-  'delete_orphans_explanation' => 'Vymaže komentáre k chýbajúcim súborom, ktoré už nie sú v galérii.<br />Skontrolujte všetky albumy.', //cpg1.4
-  'refresh_db' => 'Znovunačítanie veľkostí a rozmerov súborov', //cpg1.4
-  'refresh_db_explanation' => 'Znovunačítanie veľkostí a rozmerov súborov použite na korkciu správnosti veľkosti priestoru.', //cpg1.4
-  'reset_views' => 'Nulovať počítadlá zobrazení', //cpg1.4
-  'reset_views_explanation' => 'Vo vybranom albume vynuluje počítadlá zobrazení.', //cpg1.4
-  'orphan_comment' => 'osamotený komentár nájdený',
-  'delete' => 'Zmazať',
-  'delete_all' => 'Zmazať všetko',
-  'delete_all_orphans' => 'Zmazať všetky osamotené?', //cpg1.4
-  'comment' => 'Komentár: ',
-  'nonexist' => 'priložiť k neexistujúcemu súboru # ',
-  'phpinfo' => 'Zobraziť phpinfo',
-  'phpinfo_explanation' => 'Technické info o Vašom serveri.<br /> - Zobrazí sa iba ak hosting povoľuje.', //cpg1.4
-  'update_db' => 'Aktualizovať databázu',
-  'update_db_explanation' => 'Použiť pri aktualizácii galérie, pri pridaní systémových súborov, zmene verzie CPG atd. Funkcia pre systémových inštalátorov.',
-  'view_log' => 'Zobraziť log súbory', //cpg1.4
-  'view_log_explanation' => 'Prehľad logov nastavených v <a href="admin.php">konfigurácii</a>.', //cpg1.4
-  'versioncheck' => 'Skontrolovať verzie', //cpg1.4
-  'versioncheck_explanation' => 'Kontrola správnosti a aktuálnosti systémových súborov galérie. Funkcia pre systémových inštalátorov.', //cpg1.4
-  'bridgemanager' => 'Správca prepojenia', //cpg1.4
-  'bridgemanager_explanation' => 'Zapína/vypína integráciu CPG galérie do prostredia inej aplikácie.', //cpg1.4
-);
+$lang_util_php['title'] = 'Administrátorské nástroje'; // cpg1.5
+$lang_util_php['file'] = 'Súbor';
+$lang_util_php['problem'] = 'Problém';
+$lang_util_php['status'] = 'Status';
+$lang_util_php['title_set_to'] = 'názov nastaviť na';
+$lang_util_php['submit_form'] = 'odoslať';
+$lang_util_php['titles_updated'] = '%s názvov aktualizované.'; // cpg1.5
+$lang_util_php['updated_successfully'] = 'aktualizácia úspešná'; // cpg1.5
+$lang_util_php['error_create'] = 'CHYBA pri vytváraní';
+$lang_util_php['continue'] = 'Spracovať viac súborov'; // cpg1.5
+$lang_util_php['main_success'] = 'Súbor %s bol úspešne použitý ako hlavný súbor';
+$lang_util_php['error_rename'] = 'Chyba pri premenovaní %s na %s';
+$lang_util_php['error_not_found'] = 'Súbor %s nebol nájdený';
+$lang_util_php['back'] = 'späť na začiatok Administrátorských nástrojov'; // cpg1.5 ak
+$lang_util_php['thumbs_wait'] = 'Aktualizujem náhľady a/alebo obrázky so zmenenou veľkosťou, prosím čakajte...';
+$lang_util_php['thumbs_continue_wait'] = 'Pokračujem v aktualizácii náhľadov a/alebo obrázkov so zmenenou veľkosťou...';
+$lang_util_php['titles_wait'] = 'Aktualizujem názvy, počkajte prosím...';
+$lang_util_php['delete_wait'] = 'Vymazávam názvy, počkajte prosím...';
+$lang_util_php['replace_wait'] = 'Vymazávam originály a nahrádzam ich obrázkami so zmenenou veľkosťou, prosím čakajte..';
+$lang_util_php['update'] = 'Aktualizovať náhľady a/alebo obrázky so zmenenou veľkosťou';
+$lang_util_php['update_what'] = 'Čo má byť aktualizované';
+$lang_util_php['update_thumb'] = 'Iba náhľady';
+$lang_util_php['update_pic'] = 'Iba obrázky so zmenenou veľkosťou';
+$lang_util_php['update_both'] = 'Obe, náhľady aj obrázky so zmenenou veľkosťou';
+$lang_util_php['update_number'] = 'Počet spracovaných obrázkov na klik';
+$lang_util_php['update_option'] = '(Skúste nastaviť túto možnosť nižšie ak máte problémy s timeoutom)';
+$lang_util_php['update_missing'] = 'Aktualizovať iba chýbajúce súbory'; // cpg1.5
+$lang_util_php['filename_title'] = 'Názov súboru &rArr; Názov súboru';
+$lang_util_php['filename_how'] = 'Ako by mal byť zmenený názov súboru';
+$lang_util_php['filename_remove'] = 'Odstrániť príponu súboru (.jpg a pod.) a nahradiť ju _ (underscores) prázdnymi znakmi'; // cpg1.5
+$lang_util_php['filename_euro'] = 'Zmeniť 2003_11_23_13_20_20.jpg na 23/11/2003 13:20';
+$lang_util_php['filename_us'] = 'Zmeniť 2003_11_23_13_20_20.jpg na 11/23/2003 13:20';
+$lang_util_php['filename_time'] = 'Zmeniť 2003_11_23_13_20_20.jpg na 13:20';
+$lang_util_php['notitle'] = 'Aplikovať iba na súbory bez názvov'; // cpg1.5
+$lang_util_php['delete_title'] = 'Zmazať názvy súborov';
+$lang_util_php['delete_title_explanation'] = 'Toto odstráni všetky názvy súborov v albume, ktorý označíte.';
+$lang_util_php['delete_original'] = 'Zmazať obrázky pôvodnej veľkosti';
+$lang_util_php['delete_original_explanation'] = 'Toto odstráni obrázky v plnej veľkosti.';
+$lang_util_php['delete_intermediate'] = 'Zmazať obrázky strednej veľkosti';
+$lang_util_php['delete_intermediate_explanation1'] = 'Toto odstráni obrázky strednej veľkosti.'; // cpg1.5
+$lang_util_php['delete_intermediate_explanation2'] = 'Použite toto pre uvoľbnenie miesta na disku ak ste vypli \'Vytvor obrázky strednej veľkosti\' v konfigurácii po pridaní obrázkov.'; // cpg1.5
+$lang_util_php['delete_intermediate_check'] = 'Nastavenie možnosti \'Vytvor obrázky strednej veľkosti\' je momentálne %s.'; // cpg1.5
+$lang_util_php['no_image'] = '%s bol preskočený, pretože nie je obrázok.'; // cpg1.5
+$lang_util_php['enabled'] = 'zapnutý'; // cpg1.5
+$lang_util_php['disabled'] = 'vypnutý'; // cpg1.5
+$lang_util_php['delete_replace'] = 'Zmaže originálne obrázky a nahradí ich obrázkami so zmenenou veľkosťou';
+$lang_util_php['titles_deleted'] = 'Všetky položky boli z špecifikovného albumu odstránené';
+$lang_util_php['deleting_intermediates'] = 'Vymazávam obrázky strednej veľkosti, prosím čakajte...';
+$lang_util_php['searching_orphans'] = 'Hľadám zanechané súbory, prosím čakajte...';
+$lang_util_php['delete_orphans'] = 'Zmazať komentáre chýbajúcich súborov';
+$lang_util_php['delete_orphans_explanation'] = 'Toto identifikuje a povolí zmazať komentáre spojené so súbormi, ktoré už v galérii neexistujú.<br />Skontroluje všetky albumy.';
+$lang_util_php['update_full_normal_thumb'] = 'Všetko: originálne, so zmenenou veľkosťou a náhľady'; // cpg1.5
+$lang_util_php['update_full_normal'] = 'So zmenenou veľkosťou a originálne (ak existuje kópia originálneho)'; // cpg1.5
+$lang_util_php['update_full'] = 'Iba originálne (ak existuje kópia originálneho)'; // cpg1.5
+$lang_util_php['delete_back'] = 'Zmazať originálne záložné obrázky do ktorých bol pridaný vodoznak'; // cpg1.5
+$lang_util_php['delete_back_explanation'] = 'Toto zmaže záložný obrázok. Ušetríte tým nejaké miesto na disku, ale z obrázka už nebude možné odstrániť vodoznak!!! Potom zostane vodoznak natrvalo v obrázku.'; // cpg1.5
+$lang_util_php['finished'] = '<br />Aktualizácia náhľadov/obrázkov ukončená!<br />'; // cpg1.5
+$lang_util_php['autorefresh'] = ' Automatický obnovovanie (nebude potrebné klikať pre pokračovanie)'; // cpg1.5
+$lang_util_php['refresh_db'] = 'Znovu načítať informáciu veľkosti a rozmerov súboru.';
+$lang_util_php['refresh_db_explanation'] = 'Toto znovu načíta veľkosti a rozmery súborov. Použite ak sú nesprávne alebo ak ste zmenili súbory manuálne.';
+$lang_util_php['reset_views'] = 'Reset view counters';
+$lang_util_php['reset_views_explanation'] = 'Sets all file view counts to zero in the album specified.';
+$lang_util_php['reset_success'] = 'Vynulovať počítadlá zobrazení'; // cpg1.5
+$lang_util_php['orphan_comment'] = 'nájdených zanechaných komentárov';
+$lang_util_php['delete_all'] = 'Vymazať všetko';
+$lang_util_php['delete_all_orphans'] = 'Zmazať všetky zanechané súbory?';
+$lang_util_php['comment'] = 'Komentár: ';
+$lang_util_php['nonexist'] = 'priradený k neexistujúcemu súboru # ';
+$lang_util_php['delete_old'] = 'Zmazať súbory staršie ako nastavený počet dní'; // cpg1.5
+$lang_util_php['delete_old_explanation'] = 'Toto zmaže súbory staršie ako vami špecifikovaný počet dní (normálne, strednej veľkosti, náhľady). Túto funkciu použite na uvoľnenie miesta na disku.'; // cpg1.5
+$lang_util_php['delete_old_warning'] = 'Upozornenie: súbory, ktoré označíte budú zmazané bez ďalších upozornení!'; // cpg1.5
+$lang_util_php['deleting_old'] = 'Vymazávam staršie obrázky, prosím čakajte...'; // cpg1.5
+$lang_util_php['older_than'] = 'Zmazať súbory staršie ako %s dní'; // cpg1.5
+$lang_util_php['del_orig'] = 'Originálny súbor %s bol úspešne zmazaný'; // cpg1.5
+$lang_util_php['del_intermediate'] = 'Obrázok strednej veľkosti %s bol úspešne zmazaný'; // cpg1.5
+$lang_util_php['del_thumb'] = 'Náhľad %s bol úspešne zmazaný'; // cpg1.5
+$lang_util_php['del_error'] = 'Chyba pri zmazávaní %s!'; // cpg1.5
+$lang_util_php['affected_records'] = '%s dotknutých záznamov.'; // cpg1.5
+$lang_util_php['all_albums'] = 'Všetky albumy'; // cpg1.5
+$lang_util_php['update_result'] = 'Výsledky aktualizácie'; // cpg1.5
+$lang_util_php['incorrect_filesize'] = 'Celková veľkosť súboru je nesprávna'; // cpg1.5
+$lang_util_php['database'] = 'Databáza: '; // cpg1.5
+$lang_util_php['bytes'] = ' bytov'; // cpg1.5
+$lang_util_php['actual'] = ' Aktuálnych: '; // cpg1.5
+$lang_util_php['updated'] = 'Aktializovaných'; // cpg1.5
+$lang_util_php['filesize_error'] = 'Nebolo možné zistiť veľkosť súboru (pravdepodobne nesprávny typ súboru), preskakujem....'; // cpg1.5
+$lang_util_php['skipped'] = 'Preskočených'; // cpg1.5
+$lang_util_php['incorrect_dimension'] = 'Rozmery sú nesprávne'; // cpg1.5
+$lang_util_php['dimension_error'] = 'Nebolo možné zistiť rozmery, preskakujem....'; // cpg1.5
+$lang_util_php['cannot_fix'] = 'Nie je možné opraviť'; // cpg1.5
+$lang_util_php['fullpic_error'] = 'Súbor %s neexistuje!'; // cpg1.5
+$lang_util_php['no_prob_detect'] = 'Neboli zistené žiadne problémy'; // cpg1.5
+$lang_util_php['no_prob_found'] = 'Neboli nájdené žiadne problémy.'; // cpg1.5
+$lang_util_php['keyword_convert'] = 'Zmeniť oddelovač kľúčových slov'; // cpg1.5
+$lang_util_php['keyword_from_to'] = 'Zmeniť oddelovač kľúčových slov z %s na %s'; // cpg1.5
+$lang_util_php['keyword_set'] = 'Nastaviť oddelovač kľúčových slov na novú hodnotu'; // cpg1.5
+$lang_util_php['keyword_replace_before'] = 'Pred konverziou, vymeniť %s s %s'; // cpg1.5
+$lang_util_php['keyword_replace_after'] = 'Po konverzii, vymeniť %s s %s'; // cpg1.5
+$lang_util_php['keyword_replace_values'] = array('_'=>'podtrhovník', '-'=>'pomlčka', '~'=>'vlnovka'); // cpg1.5
+$lang_util_php['keyword_explanation'] = 'Toto zmení oddelovač kľúčových slov na všetkých súboroch z jednej hodnoty na inú. Pre detaily pozrite dokumentáciu.'; // cpg1.5
 }
 
 // ------------------------------------------------------------------------- //
-// File versioncheck.php //cpg1.4
+// File versioncheck.php
 // ------------------------------------------------------------------------- //
-
-if (defined('VERSIONCHECK_PHP')) $lang_versioncheck_php = array(
-  'title' => 'Versioncheck', //cpg1.4
-  'what_it_does' => 'This page is meant for users who have updated their coppermine install. This script goes through the files on your webserver and tries to determine if your local file versions on the webserver are the same as the ones from the repository at http://coppermine.sourceforge.net, this way displaying the files you were meant to update as well.<br />It will show everything in red that needs to be fixed. Entries in yellow need looking into. Entries in green (or your default font color) are OK.<br />Click on the help icons to find out more.', //cpg1.4
-  'online_repository_unable' => 'Unable to connect to online repository', //cpg1.4
-  'online_repository_noconnect' => 'Coppermine was unable to connect to the online repository. This can have two reasons:', //cpg1.4
-  'online_repository_reason1' => 'the coppermine online repository is currently down - check if you can browse this page: %s - if you can\'t access this page, try again later.', //cpg1.4
-  'online_repository_reason2' => 'PHP on your webserver is configured with %s turned off (by default, it\'s turned on). If the server is yours to administer, turn this option on in <i>php.ini</i> (at least allow it to be overridden with %s). If you\'re webhosted, you will probably have to live with the fact that you can\'t compare your files to the online repository. This page will then only display the file versions that came with your distribution - updates will not be displayed.', //cpg1.4
-  'online_repository_skipped' => 'Connection to online repository skipped', //cpg1.4
-  'online_repository_to_local' => 'The script is defaulting to the local copy of the version-files now. The data may be inacurate if you have upgraded Coppermine and you haven\'t uploaded all files. Changes to the files after the release won\'t be taken into account as well.', //cpg1.4
-  'local_repository_unable' => 'Unable to connect to the repository on your server', //cpg1.4
-  'local_repository_explanation' => 'Coppermine was unable to connect to the repository file %s on your webserver. This probably means that you haven\'t uploaded the repository file to your webserver. Do so now and then try to run this page once more (hit refresh).<br />If the script still fails, your webhost might have disabled parts of <a href="http://www.php.net/manual/en/ref.filesystem.php">PHP\'s filesystem functions</a> completely. In this case, you simply won\'t be able to use this tool at all, sorry.', //cpg1.4
-  'coppermine_version_header' => 'Installed Coppermine version', //cpg1.4
-  'coppermine_version_info' => 'You have currently installed: %s', //cpg1.4
-  'coppermine_version_explanation' => 'If you think this is entirely wrong and you\'re supposed to be running a higher version of Coppermine, you probably haven\'t uploaded the most recent version of the file <i>include/init.inc.php</i>', //cpg1.4
-  'version_comparison' => 'Version comparison', //cpg1.4
-  'folder_file' => 'folder/file', //cpg1.4
-  'coppermine_version' => 'cpg version', //cpg1.4
-  'file_version' => 'file version', //cpg1.4
-  'webcvs' => 'web svn', //cpg1.4
-  'writable' => 'writable', //cpg1.4
-  'not_writable' => 'not writable', //cpg1.4
-  'help' => 'Help', //cpg1.4
-  'help_file_not_exist_optional1' => 'file/folder does not exist', //cpg1.4
-  'help_file_not_exist_optional2' => 'The file/folder %s has not been found on your server. Although it is optional you should upload it (using your FTP client) to your webserver if you are experiencing problems.', //cpg1.4
-  'help_file_not_exist_mandatory1' => 'file/folder does not exist', //cpg1.4
-  'help_file_not_exist_mandatory2' => 'The file/folder %s has not been found on your server, although it is mandatory. Upload the file to your webserver (using your FTP client).', //cpg1.4
-  'help_no_local_version1' => 'No local file version', //cpg1.4
-  'help_no_local_version2' => 'The script was unable to extract a local file version - your file is either outdated or you have modified it, removing the header information on the way. Updating the file is recommended.', //cpg1.4
-  'help_local_version_outdated1' => 'Local version outdated', //cpg1.4
-  'help_local_version_outdated2' => 'Your version of this file seems to be from an older version of Coppermine (you probably upgraded). Make sure to update this file as well.', //cpg1.4
-  'help_local_version_na1' => 'Unable to extract cvs version info', //cpg1.4
-  'help_local_version_na2' => 'The script could not determine what cvs version the file on your webserver is. You should upload the file from your package.', //cpg1.4
-  'help_local_version_dev1' => 'Development version', //cpg1.4
-  'help_local_version_dev2' => 'The file on your webserver seems to be newer than your Coppermine version. You are either using a development file (you should only do so if you know what you are doing), or you have upgraded your Coppermine install and not uploaded include/init.inc.php', //cpg1.4
-  'help_not_writable1' => 'Folder not writable', //cpg1.4
-  'help_not_writable2' => 'Change file permissions (CHMOD) to grant the script write access to the folder %s and everything within it.', //cpg1.4
-  'help_writable1' => 'Folder writable', //cpg1.4
-  'help_writable2' => 'The folder %s is writable. This is an unnecessary risk, coppermine only needs read/execute access.', //cpg1.4
-  'help_writable_undetermined' => 'Coppermine was not able to determine wether the folder is writable.', //cpg1.4
-  'your_file' => 'your file', //cpg1.4
-  'reference_file' => 'reference file', //cpg1.4
-  'summary' => 'Summary', //cpg1.4
-  'total' => 'Total files/folders checked', //cpg1.4
-  'mandatory_files_missing' => 'Mandatory files missing', //cpg1.4
-  'optional_files_missing' => 'Optional files missing', //cpg1.4
-  'files_from_older_version' => 'Files left over from outdated Coppermine version', //cpg1.4
-  'file_version_outdated' => 'Outdated file versions', //cpg1.4
-  'error_no_data' => 'The script made a boo, it was not able to retrieve any information. Sorry for the inconvenience.', //cpg1.4
-  'go_to_webcvs' => 'go to %s', //cpg1.4
-  'options' => 'Options', //cpg1.4
-  'show_optional_files' => 'show optional folders/files', //cpg1.4
-  'show_mandatory_files' => 'show mandatory files', //cpg1.4
-  'show_file_versions' => 'show file versions', //cpg1.4
-  'show_errors_only' => 'show folders/files with errors only', //cpg1.4
-  'show_permissions' => 'show folder permissions', //cpg1.4
-  'show_condensed_output' => 'show condensed ouput (for easier screenshots)', //cpg1.4
-  'coppermine_in_webroot' => 'coppermine is installed in the webroot', //cpg1.4
-  'connect_online_repository' => 'try connecting to the online repository', //cpg1.4
-  'show_additional_information' => 'show additional information', //cpg1.4
-  'no_webcvs_link' => 'don\'t display web svn link', //cpg1.4
-  'stable_webcvs_link' => 'display web svn link to stable branch', //cpg1.4
-  'devel_webcvs_link' => 'display web svn link to devel branch', //cpg1.4
-  'submit' => 'apply changes / refresh', //cpg1.4
-  'reset_to_defaults' => 'reset to default values', //cpg1.4
-);
+if (defined('VERSIONCHECK_PHP')) {
+$lang_versioncheck_php['title'] = 'Kontrola verzii';
+$lang_versioncheck_php['versioncheck_output'] = 'Výstup kontroly verzii';
+$lang_versioncheck_php['file'] = 'súbor';
+$lang_versioncheck_php['folder'] = 'zložka';
+$lang_versioncheck_php['outdated'] = 'starší ako %s';
+$lang_versioncheck_php['newer'] = 'novší ako %s';
+$lang_versioncheck_php['modified'] = 'zmenený';
+$lang_versioncheck_php['not_modified'] = 'nezmenený'; // cpg1.5
+$lang_versioncheck_php['needs_change'] = 'potrebuje zmenu';
+$lang_versioncheck_php['review_permissions'] = 'Prehľad práv';
+$lang_versioncheck_php['inaccessible'] = 'Súbor je nedostupný';
+$lang_versioncheck_php['review_version'] = 'Váš súbor je zastaralý';
+$lang_versioncheck_php['review_dev_version'] = 'Váš súbor je novší ako sa predpokladalo';
+$lang_versioncheck_php['review_modified'] = 'Súbor môže byť poškodený (alebo ste ho nevhodne zmenili)';
+$lang_versioncheck_php['review_missing'] = '%s chýba alebo je nedostupný';
+$lang_versioncheck_php['existing'] = 'existuje';
+$lang_versioncheck_php['review_removed_existing'] = 'Súbor musí byť z bezpečnostných dôvodov odstránený';
+$lang_versioncheck_php['counter'] = 'Počítadlo';
+$lang_versioncheck_php['type'] = 'Typ';
+$lang_versioncheck_php['path'] = 'Cesta';
+$lang_versioncheck_php['missing'] = 'Chýbajúcich';
+$lang_versioncheck_php['permissions'] = 'Práva';
+$lang_versioncheck_php['version'] = 'Verzia';
+$lang_versioncheck_php['revision'] = 'Revízia';
+$lang_versioncheck_php['modified'] = 'Modifikovaný';
+$lang_versioncheck_php['comment'] = 'Komentár';
+$lang_versioncheck_php['help'] = 'Pomoc';
+$lang_versioncheck_php['repository_link'] = 'Repository link';
+$lang_versioncheck_php['browse_corresponding_page_subversion'] = 'Browse page corresponding to this file in the project\'s subversion repository';
+$lang_versioncheck_php['mandatory'] = 'povinný';
+$lang_versioncheck_php['mandatory_missing'] = 'Povinný súbor chýba'; // cpg1.5
+$lang_versioncheck_php['optional'] = 'voliteľný';
+$lang_versioncheck_php['removed'] = 'odstránený'; // cpg1.5
+$lang_versioncheck_php['options'] = 'Voľby';
+$lang_versioncheck_php['display_output'] = 'Zobraziť výstup';
+$lang_versioncheck_php['on_screen'] = 'Celá obrazovka';
+$lang_versioncheck_php['text_only'] = 'Iba text';
+$lang_versioncheck_php['errors_only'] = 'Zobraz iba potenciálne chyby';
+$lang_versioncheck_php['hide_images'] = 'Skryť obrázky'; // cpg1.5
+$lang_versioncheck_php['no_modification_check'] = 'Nekontroluj zmenené súbory'; // cpg1.5
+$lang_versioncheck_php['do_not_connect_to_online_repository'] = 'Do not connect to the online repository';
+$lang_versioncheck_php['online_repository_explain'] = 'odporúčané iba ak zlyhá spojenie';
+$lang_versioncheck_php['submit'] = 'odoslať / obnoviť';
+$lang_versioncheck_php['select_all'] = 'Označiť všetko';
+$lang_versioncheck_php['files_folder_processed'] = 'Zobrazujem %s položiek z %s priečinkov/súborov procesovaných s %s potenciálnymi problémami';
+$lang_versioncheck_php['read'] = 'Read'; // cpg1.5
+$lang_versioncheck_php['write'] = 'Write'; // cpg1.5
+$lang_versioncheck_php['warning'] = 'Upozornenie'; // cpg1.5
+$lang_versioncheck_php['not_applicable'] = 'n/a'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
-// File view_log.php  //cpg1.4
+// File view_log.php
 // ------------------------------------------------------------------------- //
-
-if (defined('VIEWLOG_PHP')) $lang_viewlog_php = array(
-  'delete_all' => 'Vymazať všetky logy', //cpg1.4
-  'delete_this' => 'Vymazať tento log', //cpg1.4
-  'view_logs' => 'Zobraziť logy', //cpg1.4
-  'no_logs' => 'Nie sú žiadne logy vytvorené.', //cpg1.4
-);
-
+if (defined('VIEWLOG_PHP')) {
+$lang_viewlog_php['delete_all'] = 'Vymaž všetky logy';
+$lang_viewlog_php['delete_this'] = 'Vymaž tento log';
+$lang_viewlog_php['view_logs'] = 'Zobraz Logy';
+$lang_viewlog_php['no_logs'] = 'Logy neboli vytvorené.';
+$lang_viewlog_php['last_updated'] = 'posledná aktualizácia'; // cpg1.5
+}
 
 // ------------------------------------------------------------------------- //
-// File xp_publish.php //cpg1.4
+// File xp_publish.php
 // ------------------------------------------------------------------------- //
-
 if (defined('XP_PUBLISH_PHP')) {
-
-$lang_xp_publish_client = <<<EOT
-<h1>XP Web Publishing Wizard Client</h1><p>This module allows to use <b>Windows XP</b> web publishing wizard with Coppermine.</p><p>Code is based on article posted by
-EOT;
-
-$lang_xp_publish_required = <<<EOT
-<h2>What is required</h2><ul><li>Windows XP in order to have the wizard.</li><li>A working installation of Coppermine on which <b>the web upload function works properly.</b></li></ul><h2>How to install on client side</h2><ul><li>Right click on
-EOT;
-
-$lang_xp_publish_select = <<<EOT
-Select &quot;save target as..&quot;. Save the file on your hard drive. When saving the file, check that the proposed file name is <b>cpg_###.reg</b> (the ### represents a numerical timestamp). Change it to that name if necessary (leave the numbers). When downloaded, double click on the file in order to register your server with the web publishing wizard.</li></ul>
-EOT;
-
-$lang_xp_publish_testing = <<<EOT
-<h2>Testing</h2><ul><li>In Windows Explorer, select some files and click on <b>Publish xxx on the web</b> in the left pane.</li><li>Confirm your file selection. Click on <b>Next</b>.</li><li>In the list of services that appear, select the one for your photo gallery (it has the name of your gallery). If the service does not appear, check that you have installed <b>cpg_pub_wizard.reg</b> as described above.</li><li>Input your login information if required.</li><li>Select the target album for your pictures or create a new one.</li><li>Click on <b>next</b>. The upload of your pictures starts.</li><li>When it is completed, check your gallery to see if pictures have been properly added.</li></ul>
-EOT;
-
-$lang_xp_publish_notes = <<<EOT
-<h2>Notes :</h2><ul><li>Once the upload has started, the wizard can't display any error message returned by the script so you can't know if the upload failed or succeeded until you check your gallery.</li><li>If the upload fails, enable &quot;Debug mode&quot; on the Coppermine admin page, try with one single picture and check error messages in the
-EOT;
-
-$lang_xp_publish_flood = <<<EOT
-file that is located in Coppermine directory on your server.</li><li>In order to avoid that the gallery be <i>flooded</i> by pictures uploaded through the wizard, only the <b>gallery admins</b> and <b>users that can have their own albums</b> can use this feature.</li>
-EOT;
-
-
-
-$lang_xp_publish_php = array(
-  'title' => 'Coppermine - XP Web Publishing Wizard', //cpg1.4
-  'welcome' => 'Welcome <b>%s</b>,', //cpg1.4
-  'need_login' => 'You need to login to the gallery using your web browser before you can use this wizard.<p/><p>When you login don\'t forget to select the <b>remember me</b> option if it is present.', //cpg1.4
-  'no_alb' => 'Sorry but there is no album where you are allowed to upload pictures with this wizard.', //cpg1.4
-  'upload' => 'Upload your pictures into an existing album', //cpg1.4
-  'create_new' => 'Create a new album for your pictures', //cpg1.4
-  'album' => 'Album', //cpg1.4
-  'category' => 'Category', //cpg1.4
-  'new_alb_created' => 'Your new album &quot;<b>%s</b>&quot; was created.', //cpg1.4
-  'continue' => 'Press &quot;Next&quot; to start to upload your pictures', //cpg1.4
-  'link' => 'this link', //cpg1.4
-);
+$lang_xp_publish_php['title'] = 'XP Web Publishing Wizard';
+$lang_xp_publish_php['client_header'] = 'XP Web Publishing Wizard Client';  // cpg1.5
+$lang_xp_publish_php['requirements'] = 'Requirements'; // cpg1.5
+$lang_xp_publish_php['windows_xp'] = 'Windows XP / Vista'; // cpg1.5
+$lang_xp_publish_php['no_windows_xp'] = 'You appear to be running another, unsupported operating system'; // cpg1.5
+$lang_xp_publish_php['no_os_detect'] = 'Could not detect your operating system'; // cpg1.5
+$lang_xp_publish_php['requirement_http_upload'] = 'A working installation of Coppermine on which the http upload function works properly'; // cpg1.5
+$lang_xp_publish_php['requirement_ie'] = 'Microsoft Internet Explorer'; // cpg1.5
+$lang_xp_publish_php['requirement_permissions'] = 'The administrator of the gallery must have granted you permission to upload'; // cpg1.5
+$lang_xp_publish_php['requirement_login'] = 'You need to be logged in to upload'; // cpg1.5
+$lang_xp_publish_php['no_ie'] = 'You appear to be using another, unsupported browser'; // cpg1.5
+$lang_xp_publish_php['no_browser_detect'] = 'Could not detect your browser'; // cpg1.5
+$lang_xp_publish_php['no_gallery_name'] = 'You need to specify a gallery name in config'; // cpg1.5
+$lang_xp_publish_php['no_gallery_description'] = 'You need to specify a gallery description in config'; // cpg1.5
+$lang_xp_publish_php['howto_install'] = 'How to install'; // cpg1.5
+$lang_xp_publish_php['install_right_click'] = 'Right click on %sthis link%s and select &quot;save target as...&quot;'; // cpg1.5 // translator note: don't replace the %s - that placeholder token needs to go untranslated
+$lang_xp_publish_php['install_save'] = 'Save the file on your client. When saving the file, make sure that the proposed file name is <tt>cpg_###.reg</tt> (the ### represents a numerical timestamp). Change it to that name if necessary (leave the numbers)'; // cpg1.5
+$lang_xp_publish_php['install_execute'] = 'After the download has finished, execute the file by double clicking on it in order to register your server with the web publishing wizard'; // cpg1.5
+$lang_xp_publish_php['usage'] = 'Usage'; // cpg1.5
+$lang_xp_publish_php['select_files'] = 'In Windows Explorer, select the files you want to upload'; // cpg1.5
+$lang_xp_publish_php['display_tasks'] = 'Make sure that the folders are not being displayed in left bar of the Explorer'; // cpg1.5
+$lang_xp_publish_php['publish_on_the_web'] = 'click on &quot;Publish xxx on the web&quot; in the left pane'; // cpg1.5
+$lang_xp_publish_php['confirm_selection'] = 'Confirm your file selection'; // cpg1.5
+$lang_xp_publish_php['select_service'] = 'In the list of services that appear, select the one for your photo gallery (it has the name of your gallery)'; // cpg1.5
+$lang_xp_publish_php['enter_login'] = 'Enter your login information if required'; // cpg1.5
+$lang_xp_publish_php['select_album'] = 'Select the target album for your pictures or create a new one'; // cpg1.5
+$lang_xp_publish_php['next'] = 'Click on &quot;next&quot;'; // cpg1.5
+$lang_xp_publish_php['upload_starts'] = 'The upload of your pictures should start'; // cpg1.5
+$lang_xp_publish_php['upload_completed'] = 'When it is completed, check your gallery to see if pictures have been properly added'; // cpg1.5
+$lang_xp_publish_php['welcome'] = 'Welcome <strong>%s</strong>,';
+$lang_xp_publish_php['need_login'] = 'You need to login to the gallery using Internet Explorer before you can use this wizard.<p/><p>When you login don\'t forget to select the &quot;remember me&quot; option if it is present.';
+$lang_xp_publish_php['no_alb'] = 'Sorry but there is no album where you are allowed to upload pictures with this wizard.';
+$lang_xp_publish_php['upload'] = 'Upload your pictures into an existing album';
+$lang_xp_publish_php['create_new'] = 'Create a new album for your pictures';
+$lang_xp_publish_php['category'] = 'Category';
+$lang_xp_publish_php['new_alb_created'] = 'Your new album &quot;<strong>%s</strong>&quot; was created.';
+$lang_xp_publish_php['continue'] = 'Press &quot;Next&quot; to start to upload your pictures';
+$lang_xp_publish_php['link'] = '';
 }
+
+// ------------------------------------------------------------------------- //
+// Core plugins
+// ------------------------------------------------------------------------- //
+if (defined('CORE_PLUGIN')) {
+$lang_plugin_php['usergal_alphatabs_config_name'] = 'User Gallery Alphabetic Tabbing'; // cpg1.5
+$lang_plugin_php['usergal_alphatabs_config_description'] = 'What it does: displays tabs from A to Z at the top of user galleries that visitors can click on to directly jump to a page that displays all user galleries of the users who\'s username starts with that letter. Plugin only recommended to be used if you have a really large number of user galleries.'; // cpg1.5
+$lang_plugin_php['usergal_alphatabs_jump_by_username'] = 'Skákať podľa užívateľského mena'; // cpg1.5
+$lang_plugin_php['sample_config_name'] = 'Vzorový zásuvný modul'; // cpg1.5
+$lang_plugin_php['sample_config_description'] = 'Toto je vzorový zásuvný modul. Nerobí nič užitočné - iba demonštruje čo môžu zásuvné moduly robiť a ako ich písať. Keď je zapnutý, bude zobrazovať nejaký text červenou farbou.'; // cpg1.5
+$lang_plugin_php['sample_plugin_documentation'] = 'Dokumentácia zásuvných modulov'; // cpg1.5
+$lang_plugin_php['sample_plugin_support'] = 'Podpora zásuvných modulov'; // cpg1.5
+$lang_plugin_php['sample_install_explain'] = 'Zadajte užívateľské meno (\'foo\') a heslo (\'bar\') pre inštaláciu'; // cpg1.5
+$lang_plugin_php['sample_install_username'] = 'Užívateľské meno'; // cpg1.5
+$lang_plugin_php['sample_install_password'] = 'Heslo'; // cpg1.5
+$lang_plugin_php['sample_output'] = 'Toto sú vzorové dáta vrátené vzorovým zásuvným modulom'; // cpg1.5
+$lang_plugin_php['opensearch_config_name'] = 'OpenSearch'; // cpg1.5
+$lang_plugin_php['opensearch_config_description'] = 'An implementation of <a href="http://www.opensearch.org/" rel="external" class="external">OpenSearch</a> for Coppermine.<br />When enabled, visitors can add your gallery to their browser\'s search bar.'; // cpg1.5
+$lang_plugin_php['opensearch_search'] = 'Hľadať %s'; // cpg1.5
+$lang_plugin_php['opensearch_extra'] = 'You may want to add some text to your site that explains what this plugin does'; // cpg1.5
+$lang_plugin_php['opensearch_failed_to_open_file'] = 'Nemožno otvoriť súbor %s - skontrolujte práva'; // cpg1.5
+$lang_plugin_php['opensearch_failed_to_write_file'] = 'Nemožno zapisovať do súboru %s - skontrolujte práva'; // cpg1.5
+$lang_plugin_php['opensearch_form_header'] = 'Zadajte detaily pre popisný súbor'; // cpg1.5
+$lang_plugin_php['opensearch_gallery_url'] = 'URL galérie (musí byť správne)'; // cpg1.5
+$lang_plugin_php['opensearch_display_name'] = 'Meno ako sa zobrazuje v prehliadači'; // cpg1.5
+$lang_plugin_php['opensearch_description'] = 'Popis'; // cpg1.5
+$lang_plugin_php['opensearch_character_limit'] = '%s znakov limit'; // cpg1.5
+$lang_plugin_php['onlinestats_description'] = 'Zobrziť blok na každej stránke galérie zobrazujúci užívateľov a návštevníkov ktorí sú aktuálne on-line.';
+$lang_plugin_php['onlinestats_name'] = 'Kto je on-line?';
+$lang_plugin_php['onlinestats_config_extra'] = 'To enable this plugin (make it actually display the onlinestats block), the string "onlinestats" (separated with a slash) has been added to "the content of the main page" in <a href="admin.php">Coppermine\'s config</a> in the section "Album list view". The setting should now look like "breadcrumb/catlist/alblist/onlinestats" or similar. To change the position of the block, move the string "onlinestats" around inside that config field.';
+$lang_plugin_php['onlinestats_config_install'] = 'The plugin runs additional queries on the database each time it is being executed, burning CPU cycles and using resources. If your Coppermine gallery is slow or has got a lot of users, you shouldn\'t use it.';
+$lang_plugin_php['onlinestats_we_have_reg_member'] = 'There is %s registered user';
+$lang_plugin_php['onlinestats_we_have_reg_members'] = ' There are %s registered users';
+$lang_plugin_php['onlinestats_most_recent'] = 'Posledný registrovaný užívateľ je %s';
+$lang_plugin_php['onlinestats_is'] = 'Celkovo je %s návštevníkov on-line';
+$lang_plugin_php['onlinestats_are'] = 'Celkovo je %s návštevníkov on-line';
+$lang_plugin_php['onlinestats_and'] = 'a';
+$lang_plugin_php['onlinestats_reg_member'] = '%s registrovaný úžívateľ';
+$lang_plugin_php['onlinestats_reg_members'] = '%s registrovaných užívateľov';
+$lang_plugin_php['onlinestats_guest'] = '%s návštevník';
+$lang_plugin_php['onlinestats_guests'] = '%s návštevníkov';
+$lang_plugin_php['onlinestats_record'] = 'Väčšina užívateľov on-line: %s na %s';
+$lang_plugin_php['onlinestats_since'] = ' Registrovaných užívateľov, ktorí boli on-line v posledných %s minútach: %s';
+$lang_plugin_php['onlinestats_config_text'] = 'Ako dlho chcete aby boli užívatelia braní ako on-line, pokým sa pokladajú za to že odišli?';
+$lang_plugin_php['onlinestats_minute'] = 'minút';
+$lang_plugin_php['onlinestats_remove'] = 'Odstrániť tabuľku, ktorá bola použitá na uloženie on-line dát?';
+$lang_plugin_php['link_target_name'] = 'Link target';
+$lang_plugin_php['link_target_description'] = 'Changes the way external links are being opened: when this plugin is enabled, all links that contain the attribute rel="external" will open in a new window (instead of the same window).';
+$lang_plugin_php['link_target_extra'] = 'This plugin has an impact mostly on the "Powered by Coppermine" link at the bottom of the gallery output.';
+$lang_plugin_php['link_target_recommendation'] = 'It is recommended not to use this plugin to avoid bossing your users around: opening links in a new window means bossing around your site visitors.';
+}
+
 ?>

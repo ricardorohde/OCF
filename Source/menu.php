@@ -4,10 +4,10 @@
             <li class="mn_item1"><a href="./index.php" title="Pagina Inicial"><span>Home</span></a></li>
             <li class="mn_item2"><a href="#" title="Informações Sobre o Clube"><span>O Clube</span></a>
             	<ul>
-		            <li><a href="#" title="Nossa História">Nossa História</a> </li>
+		 <!--           <li><a href="#" title="Nossa História">Nossa História</a> </li> -->
 		            <li><a target="_blank" href="estatuto.doc" title="Estatuto">Estatuto</a> </li>
 		            <li><a href="frm_diretoria.php" title="Diretoria">Diretoria</a> </li>
-		            <li><a href="#" title="Como se associar ao Opala Clube Franca">Como Ser Sócio</a> </li>
+<!--		            <li><a href="#" title="Como se associar ao Opala Clube Franca">Como Ser Sócio</a> </li> -->
 					<?php 
 					       if ($_SESSION['logado'] == "SIM" && $_SESSION['niveluser'] == 999999) {
 					             echo ("<li> <a href='menu_admin.php'>Administra&ccedil;&atilde;o</a> </li>")."\n";
@@ -34,9 +34,9 @@
 		            <li><a href="javascript:janela('identchassi.php',50,50,500,500);" title="Identifique o opala pelo numero do chassi">Identificação por Chassi</a> </li>
 		            <li><a href="entrevistas.php" title="Entrevistas com Nossos Opaleiros">Entrevistas c/ Opaleiros</a> </li>
 		            <li><a href="javascript:janela('oracao.php',50,50,300,300);" title="Oração nossa de cada dia">Oração do Opala</a> </li>
-		            <li><a href="#" title="Sites uteis">Sites Úteis</a></li>
-		            <li><a href="#" title="Manuais do proprietário, Catalogo de peças, etc">Downloads</a></li>
-		            <li><a href="#" title="Calendário Anual de Eventos">Calendário de Eventos</a></li>
+<!--		            <li><a href="#" title="Sites uteis">Sites Úteis</a></li>-->
+<!--		            <li><a href="#" title="Manuais do proprietário, Catalogo de peças, etc">Downloads</a></li>--><!--
+		            <li><a href="#" title="Calendário Anual de Eventos">Calendário de Eventos</a></li>-->
             	</ul>
             </li>
             <li class="mn_item7"><a href="frm_contato.php" title="Fale Conosco"><span>Contato</span></a></li>
