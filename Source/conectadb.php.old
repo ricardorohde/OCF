@@ -1,0 +1,33 @@
+<?php
+	global $link;
+	
+
+/*    echo ("REMOTE_HOST = ".$_SERVER['REMOTE_HOST'])."\n";
+    echo ("HTTP_REFERER = ".$_SERVER['HTTP_REFERER'])."\n";
+    echo ("HTTP_HOST = ".$_SERVER['HTTP_HOST'])."\n";
+*/
+    if ($_SERVER['HTTP_HOST'] == 'clubedoopala.sytes.net') {
+			$link = mysql_connect('localhost', 'bolao', 'bolao')
+				or die('Erro conectando banco de dados: ' ."<br>". mysql_error()); 
+			mysql_select_db("clubedoopala",$link) 
+         		or die('Erro selecionando banco de dados: ' ."<br>". mysql_error()); 
+//			mysql_select_db("prodbol");
+		}
+    elseif ($_SERVER['HTTP_HOST'] == 'localhost') {
+			$link = mysql_connect('localhost', 'root', 'racnela')
+				or die('Erro BD_Conecta: ' ."<br>". mysql_error($link)); 
+			mysql_select_db("opalaclubefran",$link)
+	 				or die('\nErro Selecionando DB prod: ' . mysql_error($link)); 
+//		    echo ('Banco localhost');
+	}
+    else	{
+			$link = mysql_connect('mysql13.kinghost.net', 'opalaclubefran', 'racnela')
+				or die('Erro conectando banco de dados: ' ."<br>". mysql_error()); 
+			mysql_select_db("opalaclubefran",$link)
+         		or die('Erro selecionando banco de dados: ' ."<br>". mysql_error()); 
+		}
+
+//	define("SET CHARACTER SET ascii");
+//	define("SET COLLATION_CONNECTION='ascii_general_ci'");
+
+?>
