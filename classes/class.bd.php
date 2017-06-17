@@ -23,18 +23,17 @@ mysql://be9f415ede8850:4b611055@us-cdbr-iron-east-03.cleardb.net/heroku_1bdeda7a
 function Conecta() {
 	
     if ($_SERVER['HTTP_HOST'] == 'clubedoopala.sytes.net') {
-			$this->Link = mysql_connect('localhost', 'bolao', 'bolao')
-				or die('Erro BD_Conecta: ' ."<br>". mysql_error($this->Link)); 
-			mysql_select_db("clubedoopala",$this->Link) 
-	 				or die('\nErro Selecionando DB teste: ' . mysql_error($this->Link)); 
+			$this->Link = mysqli_connect('localhost', 'bolao', 'bolao')
+				or die('Erro BD_Conecta: ' ."<br>". mysqli_error($this->Link)); 
+			mysqli_select_db("clubedoopala",$this->Link) 
+	 				or die('\nErro Selecionando DB teste: ' . mysqli_error($this->Link)); 
 			}
 	else
 	{
-			$this->Link = mysql_connect('us-cdbr-iron-east-03.cleardb.net', 'be9f415ede8850', '4b611055')
-				or die('Erro BD_Conecta: ' ."<br>". mysql_error($this->Link)); 
-			mysql_select_db("heroku_1bdeda7a0b68034",$this->Link)
-	 				or die('\nErro Selecionando DB prod: ' . mysql_error($this->Link)); 
-		}
+			$this->Link = new mysqli('us-cdbr-iron-east-03.cleardb.net', 'be9f415ede8850', '4b611055','heroku_1bdeda7a0b68034');
+			if ($this->Link->connect_errno)
+				or die('Erro BD_Conecta: '	 ."<br>". $this->Link.connect_errno.' '.$this->Link.connect_error)); 
+			}
 
 //	define("SET CHARACTER SET ascii");
 //	define("SET COLLATION_CONNECTION='ascii_general_ci'");
@@ -59,8 +58,8 @@ function Query ($strsql) {
 	 
      $this->GravaLog($strsql);
 	 
-     $this->ResultSet = mysql_query($strsql,$this->Link)
-	 				or die('\nErro BD_Query: ' . mysql_error($this->Link)); 
+     $this->ResultSet = $this->Link->query($strsql)
+	 				or die('\nErro BD_Query: ' . $this->Link->errno . " " . $this->Link->error); 
 
 //	 return $this->Fetch(); 
 }
@@ -73,8 +72,7 @@ function Exec ($strsql) {
      $this->GravaLog($strsql);
 //	 echo ($strsql)."\n";
 	 
-     $this->ResultSet = mysql_query($strsql,$this->Link)
-	 				or die('\nErro BD_Exec: ' . mysql_error($this->Link)); 
+     $this->ResultSet = $this->Query($strsql);
 
 //	 return $this->Fetch(); 
 }
@@ -85,7 +83,7 @@ function Exec ($strsql) {
 */
 	function Fetch() { //Retorna matriz de resultados
 
-		return mysql_fetch_assoc($this->ResultSet);
+		return $this->ResultSet->fetch_assoc($this->ResultSet);
 
 	}
 
@@ -117,7 +115,7 @@ function Exec ($strsql) {
 	function Free() { //Libera o ResultSet
 	 
  	     if ($this->NumRows() > 0)
-		 	 mysql_free_result($this->ResultSet);
+		 	 $this->ResultSet->free_result();
 
 		 return;
 		 
@@ -128,7 +126,7 @@ function Exec ($strsql) {
 	function NumRows() { //Retorna o N�mero de linhas do ResultSet
 
        if ($this->ResultSet)
-    	   return mysql_num_rows($this->ResultSet);
+    	   return $this->ResultSet->num_rows();
 	   else
 	   	   return 0;
 
@@ -136,7 +134,7 @@ function Exec ($strsql) {
 
 	function getInsertID() { //Retorno o �ltimo insert_id gerado
 
-	   return mysql_insert_id ($this->Link);
+	   return $this->Link->insert_id ($this->Link);
 	}
 
 /*
@@ -155,8 +153,7 @@ function Exec ($strsql) {
 							values ("%s",%d,"%s","%s")',date("Y-m-d H-i-s"),$_SESSION['userid'],		$strsql,$_SERVER['SCRIPT_NAME']);
 	
 	   
-       $this->ResultSet = mysql_query($sqllog,$this->Link)
-	 				or die('\nErro incluindo registro no log: ' . mysql_error($this->Link)); 
+       $this->ResultSet = $this->Query($sqllog);
 
        //$this->Free();
 	      
