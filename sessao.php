@@ -3,6 +3,7 @@
       session_start();
       $_ID = session_id();
       $_SESSION['ID'] = session_id();
+      $_SERVER['DOCUMENT_ROOT'] = '.';
       $_SESSION['DOCROOT'] = $_SERVER['DOCUMENT_ROOT'];
 	  }
 //  $_SESSION['DOCROOT'] = '/var/www/html/clubedoopala';
