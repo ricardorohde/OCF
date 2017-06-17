@@ -33,7 +33,6 @@ function Conecta() {
 			
 			if ($this->Link->connect_errno)
 				die('Erro BD_Conecta: '	 ."<br>". $this->Link.connect_errno.' '.$this->Link.connect_error); 
-			}
 
 //	define("SET CHARACTER SET ascii");
 //	define("SET COLLATION_CONNECTION='ascii_general_ci'");
@@ -67,7 +66,7 @@ function Query ($strsql) {
 /*
 
 */
-public function Exec ($strsql) {
+function Exec ($strsql) {
 
      $this->GravaLog($strsql);
 //	 echo ($strsql)."\n";
