@@ -67,7 +67,7 @@ function Query ($strsql) {
 /*
 
 */
-function Exec ($strsql) {
+public function Exec ($strsql) {
 
      $this->GravaLog($strsql);
 //	 echo ($strsql)."\n";

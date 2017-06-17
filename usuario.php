@@ -1,15 +1,15 @@
 <?php include("sessao.php"); ?>
 <?php require_once($_SERVER['DOCUMENT_ROOT']."/classes/class.usuario.php"); ?>
+<?php require_once($_SERVER['DOCUMENT_ROOT']."/classes/class.bd.php"); ?>
 <?php
-    if (isset($_SESSION['logado']) && $_SESSION['logado'] == "SIM") // Se estiver logado apresenta as informações do usuário
+    if (isset($_SESSION['logado']) && $_SESSION['logado'] == "SIM") // Se estiver logado apresenta as informaï¿½ï¿½es do usuï¿½rio
         include ("infouser.php");
     else {
-			if (isset($_SESSION['registro']) && $_SESSION['registro'] == 'SIM') { // Se já registrou o acesso só apresenta o formulário de login
+			if (isset($_SESSION['registro']) && $_SESSION['registro'] == 'SIM') { // Se jï¿½ registrou o acesso sï¿½ apresenta o formulï¿½rio de login
 	     		include("frm_login.php");
 				}
 			else {
-					$_SESSION['registro'] = 'SIM'; // Registra a identificação do acesso
-					require_once($_SESSION['DOCROOT']."/classes/class.bd.php");
+					$_SESSION['registro'] = 'SIM'; // Registra a identificaï¿½ï¿½o do acesso
 					$db = new BD();
 
 					if (isset($_COOKIE['OpalaUserid'])) {
@@ -17,7 +17,7 @@
 							 
 							$usr = new Usuario($_COOKIE['OpalaUserid']);
 
-							if ($_COOKIE['LoginOpala'] == md5("LITTLEBOY-LOGADO".$usr->getUserid().trim($usr->getEMail())) && $usr->getAprovado() == 'S') { // Ainda não registrou mas estava logado quando fechou a ultima vez registra o acesso e entra logado.
+							if ($_COOKIE['LoginOpala'] == md5("LITTLEBOY-LOGADO".$usr->getUserid().trim($usr->getEMail())) && $usr->getAprovado() == 'S') { // Ainda nï¿½o registrou mas estava logado quando fechou a ultima vez registra o acesso e entra logado.
 								 $sql = sprintf("delete from usr_online where userid = %d",$usr->getUserid());
 								 $db->Exec($sql);
 	
@@ -34,10 +34,10 @@
 
              					 Usuario::LogUsuario($usr->getUserid(),'COOKIE','SIM');
 								 					 	
-								  //gera log de acesso dos usuários
+								  //gera log de acesso dos usuï¿½rios
 						         include ("infouser.php"); 
 							 }
-							else { // Se não está logado
+							else { // Se nï¿½o estï¿½ logado
 
 								 $sql = sprintf("delete from usr_online where userid = %d",$usr->getUserid());
 								 $db->Exec($sql);
@@ -46,7 +46,7 @@
 				                 include("frm_login.php");
 								}
 						}
-					else { // Se o cookie não está setado registro sem o userid
+					else { // Se o cookie nï¿½o estï¿½ setado registro sem o userid
        					 Usuario::LogUsuario(99999999,'COOKIE','NAO');
 		                 include("frm_login.php");
 						}
