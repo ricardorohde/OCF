@@ -32,7 +32,7 @@ function Conecta() {
 	{
 			$this->Link = new mysqli('us-cdbr-iron-east-03.cleardb.net', 'be9f415ede8850', '4b611055','heroku_1bdeda7a0b68034');
 			if ($this->Link->connect_errno)
-				or die('Erro BD_Conecta: '	 ."<br>". $this->Link.connect_errno.' '.$this->Link.connect_error); 
+				die('Erro BD_Conecta: '	 ."<br>". $this->Link.connect_errno.' '.$this->Link.connect_error); 
 			}
 
 //	define("SET CHARACTER SET ascii");
