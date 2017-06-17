@@ -22,14 +22,14 @@ mysql://be9f415ede8850:4b611055@us-cdbr-iron-east-03.cleardb.net/heroku_1bdeda7a
 */
 function Conecta() {
 	
-    if ($_SERVER['HTTP_HOST'] == 'clubedoopala.sytes.net') {
-			$this->Link = mysqli_connect('localhost', 'bolao', 'bolao')
-				or die('Erro BD_Conecta: ' ."<br>". mysqli_error($this->Link)); 
-			mysqli_select_db("clubedoopala",$this->Link) 
-	 				or die('\nErro Selecionando DB teste: ' . mysqli_error($this->Link)); 
-			}
-	else
-	{
+			$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+			$server = $url["host"];
+			$username = $url["user"];
+			$password = $url["pass"];
+			$db = substr($url["path"], 1);
+
+			$this->Link = new mysqli($server, $username, $password, $db);
 			$this->Link = new mysqli('us-cdbr-iron-east-03.cleardb.net', 'be9f415ede8850', '4b611055','heroku_1bdeda7a0b68034');
 			if ($this->Link->connect_errno)
 				die('Erro BD_Conecta: '	 ."<br>". $this->Link.connect_errno.' '.$this->Link.connect_error); 
