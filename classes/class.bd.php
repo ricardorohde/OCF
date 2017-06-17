@@ -1,7 +1,7 @@
 <?php
 /*
 	BD - Classe de acesso ao banco de dados
-	Descrição: Executa operações no banco de dados
+	Descriï¿½ï¿½o: Executa operaï¿½ï¿½es no banco de dados
 	Desenvolvido: Alencar
 	Data: 28/01/2006
 */
@@ -18,7 +18,7 @@ function BD () { //Construtor da classe
 
 }
 /*
-
+mysql://be9f415ede8850:4b611055@us-cdbr-iron-east-03.cleardb.net/heroku_1bdeda7a0b68034?reconnect=true
 */
 function Conecta() {
 	
@@ -30,9 +30,9 @@ function Conecta() {
 			}
 	else
 	{
-			$this->Link = mysql_connect('localhost', 'opalaclubefran', 'racnela')
+			$this->Link = mysql_connect('us-cdbr-iron-east-03.cleardb.net', 'be9f415ede8850', '4b611055')
 				or die('Erro BD_Conecta: ' ."<br>". mysql_error($this->Link)); 
-			mysql_select_db("opalaclubefran",$this->Link)
+			mysql_select_db("heroku_1bdeda7a0b68034",$this->Link)
 	 				or die('\nErro Selecionando DB prod: ' . mysql_error($this->Link)); 
 		}
 
@@ -93,7 +93,7 @@ function Exec ($strsql) {
 
 
 */
-	function Next() { //Carrega Próximo registro da tabela
+	function Next() { //Carrega Prï¿½ximo registro da tabela
 
 		if ($this->Row = $this->Fetch())
 			return TRUE;
@@ -125,7 +125,7 @@ function Exec ($strsql) {
 /*
 
 */
-	function NumRows() { //Retorna o Número de linhas do ResultSet
+	function NumRows() { //Retorna o Nï¿½mero de linhas do ResultSet
 
        if ($this->ResultSet)
     	   return mysql_num_rows($this->ResultSet);
@@ -134,14 +134,14 @@ function Exec ($strsql) {
 
 	}
 
-	function getInsertID() { //Retorno o último insert_id gerado
+	function getInsertID() { //Retorno o ï¿½ltimo insert_id gerado
 
 	   return mysql_insert_id ($this->Link);
 	}
 
 /*
-	Funcão: BD_GravaLog
-	Descrição: Gera log dos comandos sql executados no banco
+	Funcï¿½o: BD_GravaLog
+	Descriï¿½ï¿½o: Gera log dos comandos sql executados no banco
 	Desenvolvido: Alencar
 	Data: 28/01/2006
 */
