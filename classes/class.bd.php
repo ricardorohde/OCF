@@ -82,7 +82,7 @@ function Exec ($strsql) {
 */
 	function Fetch() { //Retorna matriz de resultados
 
-		return $this->ResultSet->fetch_assoc($this->ResultSet);
+		return $this->ResultSet->fetch_assoc();
 
 	}
 
