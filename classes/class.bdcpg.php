@@ -4,7 +4,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/classes/class.bd.php");
 <?php
 /*
 	BD - Classe de acesso ao banco de dados
-	Descrição: Executa operações no banco de dados
+	Descriï¿½ï¿½o: Executa operaï¿½ï¿½es no banco de dados
 	Desenvolvido: Alencar
 	Data: 28/01/2006
 */
@@ -19,26 +19,16 @@ function BDCPG () { //Construtor da classe
 
 function Conecta() {
 	
-    if ($_SERVER['HTTP_HOST'] == 'clubedoopala.sytes.net') {
-			$this->Link = mysql_connect('localhost', 'bolao', 'bolao')
-				or die('Erro BD_Conecta: ' ."<br>". mysql_error($this->Link)); 
-			mysql_select_db("clubedoopala",$this->Link) 
-	 				or die('\nErro Selecionando DB teste: ' . mysql_error($this->Link)); 
-			}
-    elseif ($_SERVER['HTTP_HOST'] == 'localhost') {
-			$this->Link = mysql_connect('localhost', 'root', 'racnela')
-				or die('Erro BD_Conecta: ' ."<br>". mysql_error($this->Link)); 
-			mysql_select_db("opalaclubefran02",$this->Link)
-	 				or die('\nErro Selecionando DB prod: ' . mysql_error($this->Link)); 
-//		    echo ('Banco localhost');
-	}
-	else
-	{
-			$this->Link = mysql_connect('localhost', 'opalaclubefran02', 'racnela')
-				or die('Erro BD_Conecta: ' ."<br>". mysql_error($this->Link)); 
-			mysql_select_db("opalaclubefran02",$this->Link)
-	 				or die('\nErro Selecionando DB prod: ' . mysql_error($this->Link)); 
-		}
+ 	$server = '107.180.21.14'; //$url["host"];
+			$username = 'opalaclubefranca';
+			$password = 'Jf?lOi~_a4%^';
+			$db = 'opalaclubefranca';
+
+			$this->Link = new mysqli($server, $username, $password, $db);
+			
+			if ($this->Link->connect_errno)
+				die('Erro BD_Conecta: '	 ."<br>". $this->Link.connect_errno.' '.$this->Link.connect_error); 
+				
 //    ini_set('default_charset','utf-8');
 	//mysql_set_charset('latin1'); 
 //	mysql_query("SET NAMES 'latin1'");

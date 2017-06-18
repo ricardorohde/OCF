@@ -369,7 +369,6 @@ class Usuario
 				 $sql = sprintf ("insert into log_usuario
 					(userid,datahora,origem,logado,ip,sessionid,cidade,estado,pais)
 					values (%d,now(),'%s','%s','%s','%s','%s','%s','%s')",$pUserid,$pOrigem,$pLogado,$_SERVER['REMOTE_ADDR'],session_id(),$geoip->city,RetornaEstado($geoip->country_code,$geoip->region),$geoip->country_name);
-					echo ($sql);
 			}
 		   else {
 				  $sql = sprintf("update log_usuario
