@@ -41,7 +41,9 @@ function Conecta() {
 }
 	function getValue($ColName) { //Retorna o valor de uma coluna
 
-		return mb_convert_encoding($this->Row[$ColName], "ISO-8859-1", "UTF-8");
+		return $this->Row[$ColName];
+
+//		return mb_convert_encoding($this->Row[$ColName], "ISO-8859-1", "UTF-8");
 
 	}
 }
