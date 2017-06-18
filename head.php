@@ -13,7 +13,7 @@
    if ($_SERVER['PHP_SELF'] == "/index.php")
        echo ('	<META HTTP-EQUIV="refresh" CONTENT="600">');
 ?>
-  <title>Opala Clube Franca - Seja um opaleiro de coraï¿½ï¿½o, participe desse clube</title>
+  <title>Opala Clube Franca - Seja um opaleiro de coração, participe desse clube</title>
   <link rel="stylesheet" type="text/css" media="screen" href="estilos.css" />
   <link rel="icon" type="image/gif" href="/imagens/escudinho.gif" />
 
