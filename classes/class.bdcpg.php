@@ -19,7 +19,7 @@ function BDCPG () { //Construtor da classe
 
 function Conecta() {
 	
- 	$server = '107.180.21.14'; //$url["host"];
+ 			$server = '107.180.21.14'; //$url["host"];
 			$username = 'opalaclubefranca';
 			$password = 'Jf?lOi~_a4%^';
 			$db = 'opalaclubefranca';
@@ -41,9 +41,9 @@ function Conecta() {
 }
 	function getValue($ColName) { //Retorna o valor de uma coluna
 
-		return $this->Row[$ColName];
+//		return $this->Row[$ColName];
 
-//		return mb_convert_encoding($this->Row[$ColName], "ISO-8859-1", "UTF-8");
+		return mb_convert_encoding($this->Row[$ColName], "ISO-8859-1", "UTF-8");
 
 	}
 }
