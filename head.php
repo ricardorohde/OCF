@@ -2,7 +2,7 @@
 <!-- Header da pagina -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+  <meta content="text/html; charset=utf-8" http-equiv="content-type">
   <META HTTP-EQUIV="control-cache" CONTENT="no-cache">
   <META NAME="author" CONTENT="Alencar Mendes de Oliveira">
   <META NAME="copyright" CONTENT="copyright 2005 Opala Clube Franca">
@@ -13,7 +13,7 @@
    if ($_SERVER['PHP_SELF'] == "/index.php")
        echo ('	<META HTTP-EQUIV="refresh" CONTENT="600">');
 ?>
-  <title>Opala Clube Franca - Seja um opaleiro de coração, participe desse clube</title>
+  <title>Opala Clube Franca - Seja um opaleiro de coraï¿½ï¿½o, participe desse clube</title>
   <link rel="stylesheet" type="text/css" media="screen" href="estilos.css" />
   <link rel="icon" type="image/gif" href="/imagens/escudinho.gif" />
 
