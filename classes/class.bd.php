@@ -22,18 +22,18 @@ mysql://be9f415ede8850:4b611055@us-cdbr-iron-east-03.cleardb.net/heroku_1bdeda7a
 */
 function Conecta() {
 	
-			$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-
-			$server = $url["host"];
-			$username = $url["user"];
-			$password = $url["pass"];
-			$db = substr($url["path"], 1);
+	//	$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+//Jf?lOi~_a4%^
+			$server = '107.180.21.14'; //$url["host"];
+			$username = 'opalaclubefranca';
+			$password = 'Jf?lOi~_a4%^';
+			$db = 'opalaclubefranca';
 
 			$this->Link = new mysqli($server, $username, $password, $db);
 			
 			if ($this->Link->connect_errno)
 				die('Erro BD_Conecta: '	 ."<br>". $this->Link.connect_errno.' '.$this->Link.connect_error); 
-
+				
 //	define("SET CHARACTER SET ascii");
 //	define("SET COLLATION_CONNECTION='ascii_general_ci'");
 

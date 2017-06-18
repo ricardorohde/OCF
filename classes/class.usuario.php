@@ -6,21 +6,21 @@ include($_SERVER['DOCUMENT_ROOT']."/geoipcity.inc");
 <?php
 
 ////////////////////////////////////////////////////
-// Usuario - classe usuário
+// Usuario - classe usuï¿½rio
 //
-// Classe para tratamento dos usuários
+// Classe para tratamento dos usuï¿½rios
 //
 ////////////////////////////////////////////////////
 
 /**
- * Usuario - Classe do cadastro de usuário
+ * Usuario - Classe do cadastro de usuï¿½rio
  * @package usuario
  * @author Alencar Mendes de Oliveira
  */
 class Usuario
 {
     /////////////////////////////////////////////////
-    // Variáveis Públicas
+    // Variï¿½veis Pï¿½blicas
     /////////////////////////////////////////////////
 
     var $Username         = "";
@@ -369,6 +369,7 @@ class Usuario
 				 $sql = sprintf ("insert into log_usuario
 					(userid,datahora,origem,logado,ip,sessionid,cidade,estado,pais)
 					values (%d,now(),'%s','%s','%s','%s','%s','%s','%s')",$pUserid,$pOrigem,$pLogado,$_SERVER['REMOTE_ADDR'],session_id(),$geoip->city,RetornaEstado($geoip->country_code,$geoip->region),$geoip->country_name);
+					echo ($sql);
 			}
 		   else {
 				  $sql = sprintf("update log_usuario
@@ -401,7 +402,7 @@ function Login($pUsername, $pPassword, $pMsgLoginError) {
 
 	if ($db_user->NumRows() == 0) {
 		$Status_login = false;
-		$pMsgLoginError = "Usuário não encontrado";
+		$pMsgLoginError = "Usuï¿½rio nï¿½o encontrado";
 	}
     else {
 			$db_user->Next();
