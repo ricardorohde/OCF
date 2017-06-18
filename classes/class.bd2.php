@@ -1,7 +1,7 @@
 <?php
 /*
 	BD - Classe de acesso ao banco de dados
-	Descrição: Executa operações no banco de dados
+	Descriï¿½ï¿½o: Executa operaï¿½ï¿½es no banco de dados
 	Desenvolvido: Alencar
 	Data: 28/01/2006
 */
@@ -21,10 +21,16 @@ function BD2($strBD) {
 */
 function Conecta($strBD) {
 	
-	$this->Link = mysql_connect('localhost', $strBD, 'racnela')
-		or die('Erro BD_Conecta: ' ."<br>". mysql_error($this->Link)); 
-			mysql_select_db($strBD,$this->Link)
-	 				or die('\nErro Selecionando DB prod: ' . mysql_error($this->Link)); 
+			$server = '107.180.21.14'; //$url["host"];
+			$username = 'opalaclubefranca';
+			$password = 'Jf?lOi~_a4%^';
+			$db = 'opalaclubefranca';
+
+			$this->Link = new mysqli($server, $username, $password, $db);
+			
+			if ($this->Link->connect_errno)
+				die('Erro BD_Conecta: '	 ."<br>". $this->Link.connect_errno.' '.$this->Link.connect_error); 
+				
 
 //	define("SET CHARACTER SET ascii");
 //	define("SET COLLATION_CONNECTION='ascii_general_ci'");
@@ -39,7 +45,7 @@ function Close() {
 //   $this->Free();
 
 /*   if ($this->Link != NULL)
-	   mysql_close($this->Link); */
+	   mysqli_close($this->Link); */
 
 }
 
@@ -50,8 +56,8 @@ function Query ($strsql) {
 	 
      $this->GravaLog($strsql);
 	 
-     $this->ResultSet = mysql_query($strsql,$this->Link)
-	 				or die('\nErro BD_Query: ' . mysql_error($this->Link)); 
+     $this->ResultSet = mysqli_query($this->Link,$strsql)
+	 				or die('\nErro BD_Query: ' . mysqli_error($this->Link)); 
 
 //	 return $this->Fetch(); 
 }
@@ -64,8 +70,8 @@ function Exec ($strsql) {
      $this->GravaLog($strsql);
 //	 echo ($strsql)."\n";
 	 
-     $this->ResultSet = mysql_query($strsql,$this->Link)
-	 				or die('\nErro BD_Exec: ' . mysql_error($this->Link)); 
+     $this->ResultSet = mysqli_query($strsql,$this->Link)
+	 				or die('\nErro BD_Exec: ' . mysqli_error($this->Link)); 
 
 //	 return $this->Fetch(); 
 }
@@ -76,7 +82,7 @@ function Exec ($strsql) {
 */
 	function Fetch() { //Retorna matriz de resultados
 
-		return mysql_fetch_assoc($this->ResultSet);
+		return mysqli_fetch_assoc($this->ResultSet);
 
 	}
 
@@ -84,7 +90,7 @@ function Exec ($strsql) {
 
 
 */
-	function Next() { //Carrega Próximo registro da tabela
+	function Next() { //Carrega Prï¿½ximo registro da tabela
 
 		if ($this->Row = $this->Fetch())
 			return TRUE;
@@ -108,7 +114,7 @@ function Exec ($strsql) {
 	function Free() { //Libera o ResultSet
 	 
  	     if ($this->NumRows() > 0)
-		 	 mysql_free_result($this->ResultSet);
+		 	 mysqli_free_result($this->ResultSet);
 
 		 return;
 		 
@@ -116,23 +122,23 @@ function Exec ($strsql) {
 /*
 
 */
-	function NumRows() { //Retorna o Número de linhas do ResultSet
+	function NumRows() { //Retorna o Nï¿½mero de linhas do ResultSet
 
        if ($this->ResultSet)
-    	   return mysql_num_rows($this->ResultSet);
+    	   return mysqli_num_rows($this->ResultSet);
 	   else
 	   	   return 0;
 
 	}
 
-	function getInsertID() { //Retorno o último insert_id gerado
+	function getInsertID() { //Retorno o ï¿½ltimo insert_id gerado
 
-	   return mysql_insert_id ($this->Link);
+	   return mysqli_insert_id ($this->Link);
 	}
 
 /*
-	Funcão: BD_GravaLog
-	Descrição: Gera log dos comandos sql executados no banco
+	Funcï¿½o: BD_GravaLog
+	Descriï¿½ï¿½o: Gera log dos comandos sql executados no banco
 	Desenvolvido: Alencar
 	Data: 28/01/2006
 */
@@ -146,8 +152,8 @@ function Exec ($strsql) {
 							values ("%s",%d,"%s","%s")',date("Y-m-d H-i-s"),$_SESSION['userid'],		$strsql,$_SERVER['SCRIPT_NAME']);
 	
 	   
-       $this->ResultSet = mysql_query($sqllog,$this->Link)
-	 				or die('\nErro incluindo registro no log: ' . mysql_error($this->Link)); 
+       $this->ResultSet = mysqli_query($sqllog,$this->Link)
+	 				or die('\nErro incluindo registro no log: ' . mysqli_error($this->Link)); 
 
        //$this->Free();
 	      

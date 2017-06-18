@@ -125,7 +125,7 @@ function Exec ($strsql) {
 	function NumRows() { //Retorna o N�mero de linhas do ResultSet
 
        if ($this->ResultSet)
-    	   return $this->ResultSet->num_rows();
+    	   return mysqli_num_rows($this->ResultSet);
 	   else
 	   	   return 0;
 
@@ -133,7 +133,7 @@ function Exec ($strsql) {
 
 	function getInsertID() { //Retorno o �ltimo insert_id gerado
 
-	   return $this->Link->insert_id ($this->Link);
+	   return $this->Link->insert_id;
 	}
 
 /*

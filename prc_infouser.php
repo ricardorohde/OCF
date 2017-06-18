@@ -9,10 +9,10 @@
      echo ("<span style='font-weight:bold;text-decoration:none;'>On-line agora:</span><br/>\n");
      
      $sql = "select cad.username from cad_usuario cad,usr_online usr where cad.userid = usr.userid order by cad.username";
-     $result = mysql_query($sql)
-								or die('\nErro verificando usuários ' . mysql_error()); 
+     $result = mysqli_query($link,$sql)
+								or die('\nErro verificando usuï¿½rios ' . mysqli_error()); 
      $conta = 0;
-     while ($row = mysql_fetch_assoc($result)) {
+     while ($row = mysqli_fetch_assoc($result)) {
            $conta+=1;
            $lin = sprintf("%02d: %s",$conta,$row['username']);
            echo ($lin)."\n";
@@ -36,15 +36,15 @@
 						u.userid,u.username
 						order by qtde desc";
 
-     $result = mysql_query($sql)
-								or die('\nErro verificando usuários ' . mysql_error()); 
+     $result = mysqli_query($link,$sql)
+								or die('\nErro verificando usuï¿½rios ' . mysqli_error()); 
 
-     while ($row = mysql_fetch_assoc($result)) {
+     while ($row = mysqli_fetch_assoc($result)) {
            $lin = sprintf("%s: %3d",$row['username'],$row['qtde']);
            echo ($lin)."\n";
 			}
 
-     mysql_free_result($result);
+     mysqli_free_result($result);
 
      echo ("<span style='font-weight:bold;text-decoration:none;'><br/><br/>Localidades:</span><br/>\n");
 
@@ -58,15 +58,15 @@
                         and l.pais = 'Brazil'
 						order by l.cidade";
 
-     $result = mysql_query($sql)
-								or die('\nErro verificando usuários ' . mysql_error()); 
+     $result = mysqli_query($link,$sql)
+								or die('\nErro verificando usuï¿½rios ' . mysqli_error()); 
 
-     while ($row = mysql_fetch_assoc($result)) {
+     while ($row = mysqli_fetch_assoc($result)) {
            $lin = sprintf("%s",$row['local']);
            echo ($lin)."<br/>\n";
 			}
 
-     mysql_close($link);
+     mysqli_close($link);
 
    ?>
    <br>
