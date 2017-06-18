@@ -2,7 +2,7 @@
 <!-- Header da pagina -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta content="text/html; charset=UTF-8 http-equiv="content-type">
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
   <META HTTP-EQUIV="control-cache" CONTENT="no-cache">
   <META NAME="author" CONTENT="Alencar Mendes de Oliveira">
   <META NAME="copyright" CONTENT="copyright 2005 Opala Clube Franca">
